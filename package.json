@@ -7,6 +7,8 @@
     "angular": "^1.3.13",
     "angular-webpack-plugin": "0.0.3",
     "bootstrap": "^3.3.2",
+    "bootstrap-webpack": "0.0.3",
+    "css-loader": "^0.9.1",
     "exports-loader": "^0.6.2",
     "famous": "^0.3.5",
     "famous-angular": "^0.4.0-3",
@@ -22,6 +24,7 @@
     "jquery": "^2.1.3",
     "path": "^0.11.14",
     "run-sequence": "^1.0.2",
+    "style-loader": "^0.8.3",
     "webpack": "^1.5.3",
     "webpack-dev-server": "^1.7.0"
   },

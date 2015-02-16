@@ -44,7 +44,14 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(2);
+	module.exports = __webpack_require__(1);
+
+
+/***/ },
+/* 1 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(4);
 	/* WEBPACK VAR INJECTION */(function(angular) {//var LayoutController = require('famous-flex/LayoutController');
 	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
 	//var ListLayout = require('famous-flex/layouts/ListLayout');
@@ -52,7 +59,8 @@
 	//var GridLayout = require('famous-flex/layouts/GridLayout');
 	//var NavBarLayout = require('famous-flex/layouts/NavBarLayout');
 	//require('famous-angular');
-	__webpack_require__(3);
+	//require('bootstrap.min.css');
+	__webpack_require__(2);
 
 	(module.exports['app'] = angular.module('app',['famousFlexAngular']))
 	.controller('GridCtrl', ['$scope', '$famous', function($scope,$famous) {
@@ -79,10 +87,18 @@
 
 	}]);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 1 */
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(6);
+	__webpack_require__(5);
+
+
+/***/ },
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(angular) {/**
@@ -26218,41 +26234,41 @@
 
 	/*** EXPORTS FROM exports-loader ***/
 	module.exports = window.angular
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 2 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(16);
+	__webpack_require__(8);
 	/* WEBPACK VAR INJECTION */(function(angular) {var ffa = (module.exports['famousFlexAngular'] = angular.module('famousFlexAngular',['famous.angular']));
 
 	ffa.config(function($famousProvider) {
-	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(17));
-	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(18));
-	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(19));
-	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(20));
-	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(21));
-	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(22));
-	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(23));
-	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(24));
-	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(25));
-	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(26));
-	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(27));
-	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(28));
-	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(29));
-	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(30));
-	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(31));
-	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(32));
-	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(33));
-	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(34));
-	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(35));
-	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(36));
-	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(37));
-	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(38));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(39));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(40));
-	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(41));
+	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(10));
+	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(11));
+	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(12));
+	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(13));
+	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(14));
+	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(15));
+	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(16));
+	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(17));
+	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(18));
+	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(19));
+	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(20));
+	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(21));
+	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(22));
+	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(23));
+	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(24));
+	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(25));
+	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(26));
+	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(27));
+	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(28));
+	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(29));
+	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(30));
+	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(31));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(32));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(33));
+	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(34));
 	  //console.log($famousProvider.$get());
 	});
 
@@ -26493,6 +26509,88 @@
 	}]);
 
 	angular.module('famousFlexAngular')
+	.directive('ffaNavBarControl', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+		return {
+			restrict: 'AE',
+			transclude: true,
+			compile: function(tElem,tAttrs,transclude) {
+				
+				var Surface = $famous['famous/core/Surface'];
+				var LayoutController = $famous['famous-flex/LayoutController'];
+				var NavBarLayout = $famous['famous-flex/layouts/NavBarLayout'];
+
+		
+				var _createLayoutController = function(options) {
+					var layoutController = new LayoutController({
+						layout: NavBarLayout,
+						layoutOptions: {
+							margins: [8],
+							itemSpacer: 5
+						}
+					});
+					return layoutController;
+				};
+
+				var _createBackground = function() {
+					var background = new Surface({classes: ['navbar', 'navbar-default']});
+					return background;
+				};
+
+				var _createTitle = function(myTitle) {
+					var title = new Surface({content: myTitle || 'famous-flex', classes: ['title']});
+					return title;
+				};
+
+	   			var _createButton = function(content) {
+	        			return new Surface({
+	            				size: [50, undefined],
+	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
+	        			});
+	    			};
+
+				var rightItems = [];
+
+				return {
+					pre: function(scope,elem,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+	                			var options = scope.$eval(attrs.faOptions) || {};
+	                			isolate.renderNode = _createLayoutController(options);
+
+				                $famousDecorator.addRole('renderable',isolate);
+	                			isolate.show();
+	                			console.log(isolate);
+					},
+					post: function(scope,element,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+		
+						transclude(scope, function(clone) {
+							var title = clone.find('div.title');
+							var buttons = clone.find('button.left');
+							var rightItems = [];
+							console.log(title);
+							angular.forEach(buttons, function(button) {
+								rightItems.push(_createButton('hello'));//button);
+							});
+	                				var isolate = $famousDecorator.ensureIsolate(scope);
+							console.log(rightItems);
+							console.log(_createTitle());
+							isolate.renderNode.setDataSource({
+								background: _createBackground(),
+								title: _createTitle(),
+								rightItems: rightItems
+							});
+						});
+
+
+						$famousDecorator.registerChild(scope, element, isolate);
+					}
+				};
+			}
+		};
+	}]);
+				
+
+	angular.module('famousFlexAngular')
 	.directive('resizable', function($window) {
 	        return function($scope) {
 	          $scope.initializeWindowSize = function() {
@@ -26507,2389 +26605,48 @@
 	        }
 	});
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// This file is autogenerated via the `commonjs` Grunt task. You can require() this file in a CommonJS environment.
-	__webpack_require__(4)
-	__webpack_require__(5)
-	__webpack_require__(6)
-	__webpack_require__(7)
-	__webpack_require__(8)
-	__webpack_require__(9)
-	__webpack_require__(10)
-	__webpack_require__(11)
-	__webpack_require__(12)
-	__webpack_require__(13)
-	__webpack_require__(14)
-	__webpack_require__(15)
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: transition.js v3.3.2
-	 * http://getbootstrap.com/javascript/#transitions
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
-	  // ============================================================
-
-	  function transitionEnd() {
-	    var el = document.createElement('bootstrap')
-
-	    var transEndEventNames = {
-	      WebkitTransition : 'webkitTransitionEnd',
-	      MozTransition    : 'transitionend',
-	      OTransition      : 'oTransitionEnd otransitionend',
-	      transition       : 'transitionend'
-	    }
-
-	    for (var name in transEndEventNames) {
-	      if (el.style[name] !== undefined) {
-	        return { end: transEndEventNames[name] }
-	      }
-	    }
-
-	    return false // explicit for ie8 (  ._.)
-	  }
-
-	  // http://blog.alexmaccaw.com/css-transitions
-	  $.fn.emulateTransitionEnd = function (duration) {
-	    var called = false
-	    var $el = this
-	    $(this).one('bsTransitionEnd', function () { called = true })
-	    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
-	    setTimeout(callback, duration)
-	    return this
-	  }
-
-	  $(function () {
-	    $.support.transition = transitionEnd()
-
-	    if (!$.support.transition) return
-
-	    $.event.special.bsTransitionEnd = {
-	      bindType: $.support.transition.end,
-	      delegateType: $.support.transition.end,
-	      handle: function (e) {
-	        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
-	      }
-	    }
-	  })
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: alert.js v3.3.2
-	 * http://getbootstrap.com/javascript/#alerts
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // ALERT CLASS DEFINITION
-	  // ======================
-
-	  var dismiss = '[data-dismiss="alert"]'
-	  var Alert   = function (el) {
-	    $(el).on('click', dismiss, this.close)
-	  }
-
-	  Alert.VERSION = '3.3.2'
-
-	  Alert.TRANSITION_DURATION = 150
-
-	  Alert.prototype.close = function (e) {
-	    var $this    = $(this)
-	    var selector = $this.attr('data-target')
-
-	    if (!selector) {
-	      selector = $this.attr('href')
-	      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
-	    }
-
-	    var $parent = $(selector)
-
-	    if (e) e.preventDefault()
-
-	    if (!$parent.length) {
-	      $parent = $this.closest('.alert')
-	    }
-
-	    $parent.trigger(e = $.Event('close.bs.alert'))
-
-	    if (e.isDefaultPrevented()) return
-
-	    $parent.removeClass('in')
-
-	    function removeElement() {
-	      // detach from parent, fire event then clean up data
-	      $parent.detach().trigger('closed.bs.alert').remove()
-	    }
-
-	    $.support.transition && $parent.hasClass('fade') ?
-	      $parent
-	        .one('bsTransitionEnd', removeElement)
-	        .emulateTransitionEnd(Alert.TRANSITION_DURATION) :
-	      removeElement()
-	  }
-
-
-	  // ALERT PLUGIN DEFINITION
-	  // =======================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this = $(this)
-	      var data  = $this.data('bs.alert')
-
-	      if (!data) $this.data('bs.alert', (data = new Alert(this)))
-	      if (typeof option == 'string') data[option].call($this)
-	    })
-	  }
-
-	  var old = $.fn.alert
-
-	  $.fn.alert             = Plugin
-	  $.fn.alert.Constructor = Alert
-
-
-	  // ALERT NO CONFLICT
-	  // =================
-
-	  $.fn.alert.noConflict = function () {
-	    $.fn.alert = old
-	    return this
-	  }
-
-
-	  // ALERT DATA-API
-	  // ==============
-
-	  $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
+	__webpack_require__(92);
+	__webpack_require__(93);
+	__webpack_require__(94);
+	__webpack_require__(95);
+	__webpack_require__(96);
+	__webpack_require__(97);
+	__webpack_require__(98);
+	__webpack_require__(99);
+	__webpack_require__(100);
+	__webpack_require__(101);
+	__webpack_require__(102);
+	__webpack_require__(103);
 
 /***/ },
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: button.js v3.3.2
-	 * http://getbootstrap.com/javascript/#buttons
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // BUTTON PUBLIC CLASS DEFINITION
-	  // ==============================
-
-	  var Button = function (element, options) {
-	    this.$element  = $(element)
-	    this.options   = $.extend({}, Button.DEFAULTS, options)
-	    this.isLoading = false
-	  }
-
-	  Button.VERSION  = '3.3.2'
-
-	  Button.DEFAULTS = {
-	    loadingText: 'loading...'
-	  }
-
-	  Button.prototype.setState = function (state) {
-	    var d    = 'disabled'
-	    var $el  = this.$element
-	    var val  = $el.is('input') ? 'val' : 'html'
-	    var data = $el.data()
-
-	    state = state + 'Text'
-
-	    if (data.resetText == null) $el.data('resetText', $el[val]())
-
-	    // push to event loop to allow forms to submit
-	    setTimeout($.proxy(function () {
-	      $el[val](data[state] == null ? this.options[state] : data[state])
-
-	      if (state == 'loadingText') {
-	        this.isLoading = true
-	        $el.addClass(d).attr(d, d)
-	      } else if (this.isLoading) {
-	        this.isLoading = false
-	        $el.removeClass(d).removeAttr(d)
-	      }
-	    }, this), 0)
-	  }
-
-	  Button.prototype.toggle = function () {
-	    var changed = true
-	    var $parent = this.$element.closest('[data-toggle="buttons"]')
-
-	    if ($parent.length) {
-	      var $input = this.$element.find('input')
-	      if ($input.prop('type') == 'radio') {
-	        if ($input.prop('checked') && this.$element.hasClass('active')) changed = false
-	        else $parent.find('.active').removeClass('active')
-	      }
-	      if (changed) $input.prop('checked', !this.$element.hasClass('active')).trigger('change')
-	    } else {
-	      this.$element.attr('aria-pressed', !this.$element.hasClass('active'))
-	    }
-
-	    if (changed) this.$element.toggleClass('active')
-	  }
-
-
-	  // BUTTON PLUGIN DEFINITION
-	  // ========================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.button')
-	      var options = typeof option == 'object' && option
-
-	      if (!data) $this.data('bs.button', (data = new Button(this, options)))
-
-	      if (option == 'toggle') data.toggle()
-	      else if (option) data.setState(option)
-	    })
-	  }
-
-	  var old = $.fn.button
-
-	  $.fn.button             = Plugin
-	  $.fn.button.Constructor = Button
-
-
-	  // BUTTON NO CONFLICT
-	  // ==================
-
-	  $.fn.button.noConflict = function () {
-	    $.fn.button = old
-	    return this
-	  }
-
-
-	  // BUTTON DATA-API
-	  // ===============
-
-	  $(document)
-	    .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-	      var $btn = $(e.target)
-	      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
-	      Plugin.call($btn, 'toggle')
-	      e.preventDefault()
-	    })
-	    .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
-	      $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
-	    })
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	var dispose = __webpack_require__(9)
+		// The css code:
+		(__webpack_require__(7));
+	// Hot Module Replacement
+	if(false) {
+		module.hot.accept();
+		module.hot.dispose(dispose);
+	}
 
 /***/ },
 /* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: carousel.js v3.3.2
-	 * http://getbootstrap.com/javascript/#carousel
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // CAROUSEL CLASS DEFINITION
-	  // =========================
-
-	  var Carousel = function (element, options) {
-	    this.$element    = $(element)
-	    this.$indicators = this.$element.find('.carousel-indicators')
-	    this.options     = options
-	    this.paused      =
-	    this.sliding     =
-	    this.interval    =
-	    this.$active     =
-	    this.$items      = null
-
-	    this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this))
-
-	    this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
-	      .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
-	      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
-	  }
-
-	  Carousel.VERSION  = '3.3.2'
-
-	  Carousel.TRANSITION_DURATION = 600
-
-	  Carousel.DEFAULTS = {
-	    interval: 5000,
-	    pause: 'hover',
-	    wrap: true,
-	    keyboard: true
-	  }
-
-	  Carousel.prototype.keydown = function (e) {
-	    if (/input|textarea/i.test(e.target.tagName)) return
-	    switch (e.which) {
-	      case 37: this.prev(); break
-	      case 39: this.next(); break
-	      default: return
-	    }
-
-	    e.preventDefault()
-	  }
-
-	  Carousel.prototype.cycle = function (e) {
-	    e || (this.paused = false)
-
-	    this.interval && clearInterval(this.interval)
-
-	    this.options.interval
-	      && !this.paused
-	      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
-
-	    return this
-	  }
-
-	  Carousel.prototype.getItemIndex = function (item) {
-	    this.$items = item.parent().children('.item')
-	    return this.$items.index(item || this.$active)
-	  }
-
-	  Carousel.prototype.getItemForDirection = function (direction, active) {
-	    var activeIndex = this.getItemIndex(active)
-	    var willWrap = (direction == 'prev' && activeIndex === 0)
-	                || (direction == 'next' && activeIndex == (this.$items.length - 1))
-	    if (willWrap && !this.options.wrap) return active
-	    var delta = direction == 'prev' ? -1 : 1
-	    var itemIndex = (activeIndex + delta) % this.$items.length
-	    return this.$items.eq(itemIndex)
-	  }
-
-	  Carousel.prototype.to = function (pos) {
-	    var that        = this
-	    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))
-
-	    if (pos > (this.$items.length - 1) || pos < 0) return
-
-	    if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"
-	    if (activeIndex == pos) return this.pause().cycle()
-
-	    return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos))
-	  }
-
-	  Carousel.prototype.pause = function (e) {
-	    e || (this.paused = true)
-
-	    if (this.$element.find('.next, .prev').length && $.support.transition) {
-	      this.$element.trigger($.support.transition.end)
-	      this.cycle(true)
-	    }
-
-	    this.interval = clearInterval(this.interval)
-
-	    return this
-	  }
-
-	  Carousel.prototype.next = function () {
-	    if (this.sliding) return
-	    return this.slide('next')
-	  }
-
-	  Carousel.prototype.prev = function () {
-	    if (this.sliding) return
-	    return this.slide('prev')
-	  }
-
-	  Carousel.prototype.slide = function (type, next) {
-	    var $active   = this.$element.find('.item.active')
-	    var $next     = next || this.getItemForDirection(type, $active)
-	    var isCycling = this.interval
-	    var direction = type == 'next' ? 'left' : 'right'
-	    var that      = this
-
-	    if ($next.hasClass('active')) return (this.sliding = false)
-
-	    var relatedTarget = $next[0]
-	    var slideEvent = $.Event('slide.bs.carousel', {
-	      relatedTarget: relatedTarget,
-	      direction: direction
-	    })
-	    this.$element.trigger(slideEvent)
-	    if (slideEvent.isDefaultPrevented()) return
-
-	    this.sliding = true
-
-	    isCycling && this.pause()
-
-	    if (this.$indicators.length) {
-	      this.$indicators.find('.active').removeClass('active')
-	      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
-	      $nextIndicator && $nextIndicator.addClass('active')
-	    }
-
-	    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
-	    if ($.support.transition && this.$element.hasClass('slide')) {
-	      $next.addClass(type)
-	      $next[0].offsetWidth // force reflow
-	      $active.addClass(direction)
-	      $next.addClass(direction)
-	      $active
-	        .one('bsTransitionEnd', function () {
-	          $next.removeClass([type, direction].join(' ')).addClass('active')
-	          $active.removeClass(['active', direction].join(' '))
-	          that.sliding = false
-	          setTimeout(function () {
-	            that.$element.trigger(slidEvent)
-	          }, 0)
-	        })
-	        .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
-	    } else {
-	      $active.removeClass('active')
-	      $next.addClass('active')
-	      this.sliding = false
-	      this.$element.trigger(slidEvent)
-	    }
-
-	    isCycling && this.cycle()
-
-	    return this
-	  }
-
-
-	  // CAROUSEL PLUGIN DEFINITION
-	  // ==========================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.carousel')
-	      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
-	      var action  = typeof option == 'string' ? option : options.slide
-
-	      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
-	      if (typeof option == 'number') data.to(option)
-	      else if (action) data[action]()
-	      else if (options.interval) data.pause().cycle()
-	    })
-	  }
-
-	  var old = $.fn.carousel
-
-	  $.fn.carousel             = Plugin
-	  $.fn.carousel.Constructor = Carousel
-
-
-	  // CAROUSEL NO CONFLICT
-	  // ====================
-
-	  $.fn.carousel.noConflict = function () {
-	    $.fn.carousel = old
-	    return this
-	  }
-
-
-	  // CAROUSEL DATA-API
-	  // =================
-
-	  var clickHandler = function (e) {
-	    var href
-	    var $this   = $(this)
-	    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
-	    if (!$target.hasClass('carousel')) return
-	    var options = $.extend({}, $target.data(), $this.data())
-	    var slideIndex = $this.attr('data-slide-to')
-	    if (slideIndex) options.interval = false
-
-	    Plugin.call($target, options)
-
-	    if (slideIndex) {
-	      $target.data('bs.carousel').to(slideIndex)
-	    }
-
-	    e.preventDefault()
-	  }
-
-	  $(document)
-	    .on('click.bs.carousel.data-api', '[data-slide]', clickHandler)
-	    .on('click.bs.carousel.data-api', '[data-slide-to]', clickHandler)
-
-	  $(window).on('load', function () {
-	    $('[data-ride="carousel"]').each(function () {
-	      var $carousel = $(this)
-	      Plugin.call($carousel, $carousel.data())
-	    })
-	  })
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
+	module.exports =
+		"/*! normalize.css v3.0.2 | MIT License | git.io/normalize */\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n}\nbody {\n  margin: 0;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  vertical-align: baseline;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n[hidden],\ntemplate {\n  display: none;\n}\na {\n  background-color: transparent;\n}\na:active,\na:hover {\n  outline: 0;\n}\nabbr[title] {\n  border-bottom: 1px dotted;\n}\nb,\nstrong {\n  font-weight: bold;\n}\ndfn {\n  font-style: italic;\n}\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\nmark {\n  background: #ff0;\n  color: #000;\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsup {\n  top: -0.5em;\n}\nsub {\n  bottom: -0.25em;\n}\nimg {\n  border: 0;\n}\nsvg:not(:root) {\n  overflow: hidden;\n}\nfigure {\n  margin: 1em 40px;\n}\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0;\n}\npre {\n  overflow: auto;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  font: inherit;\n  margin: 0;\n}\nbutton {\n  overflow: visible;\n}\nbutton,\nselect {\n  text-transform: none;\n}\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default;\n}\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\ninput {\n  line-height: normal;\n}\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0;\n}\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\nlegend {\n  border: 0;\n  padding: 0;\n}\ntextarea {\n  overflow: auto;\n}\noptgroup {\n  font-weight: bold;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\ntd,\nth {\n  padding: 0;\n}\n/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */\n@media print {\n  *,\n  *:before,\n  *:after {\n    background: transparent !important;\n    color: #000 !important;\n    box-shadow: none !important;\n    text-shadow: none !important;\n  }\n  a,\n  a:visited {\n    text-decoration: underline;\n  }\n  a[href]:after {\n    content: \" (\" attr(href) \")\";\n  }\n  abbr[title]:after {\n    content: \" (\" attr(title) \")\";\n  }\n  a[href^=\"#\"]:after,\n  a[href^=\"javascript:\"]:after {\n    content: \"\";\n  }\n  pre,\n  blockquote {\n    border: 1px solid #999;\n    page-break-inside: avoid;\n  }\n  thead {\n    display: table-header-group;\n  }\n  tr,\n  img {\n    page-break-inside: avoid;\n  }\n  img {\n    max-width: 100% !important;\n  }\n  p,\n  h2,\n  h3 {\n    orphans: 3;\n    widows: 3;\n  }\n  h2,\n  h3 {\n    page-break-after: avoid;\n  }\n  select {\n    background: #fff !important;\n  }\n  .navbar {\n    display: none;\n  }\n  .btn > .caret,\n  .dropup > .btn > .caret {\n    border-top-color: #000 !important;\n  }\n  .label {\n    border: 1px solid #000;\n  }\n  .table {\n    border-collapse: collapse !important;\n  }\n  .table td,\n  .table th {\n    background-color: #fff !important;\n  }\n  .table-bordered th,\n  .table-bordered td {\n    border: 1px solid #ddd !important;\n  }\n}\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\nhtml {\n  font-size: 10px;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nbody {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #333333;\n  background-color: #ffffff;\n}\ninput,\nbutton,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\na {\n  color: #337ab7;\n  text-decoration: none;\n}\na:hover,\na:focus {\n  color: #23527c;\n  text-decoration: underline;\n}\na:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\nfigure {\n  margin: 0;\n}\nimg {\n  vertical-align: middle;\n}\n.img-responsive,\n.thumbnail > img,\n.thumbnail a > img,\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  display: block;\n  max-width: 100%;\n  height: auto;\n}\n.img-rounded {\n  border-radius: 6px;\n}\n.img-thumbnail {\n  padding: 4px;\n  line-height: 1.428571429;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 4px;\n  -webkit-transition: all 0.2s ease-in-out;\n  -o-transition: all 0.2s ease-in-out;\n  transition: all 0.2s ease-in-out;\n  display: inline-block;\n  max-width: 100%;\n  height: auto;\n}\n.img-circle {\n  border-radius: 50%;\n}\nhr {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  border: 0;\n  border-top: 1px solid #eeeeee;\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-only-focusable:active,\n.sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\n.h1,\n.h2,\n.h3,\n.h4,\n.h5,\n.h6 {\n  font-family: inherit;\n  font-weight: 500;\n  line-height: 1.1;\n  color: inherit;\n}\nh1 small,\nh2 small,\nh3 small,\nh4 small,\nh5 small,\nh6 small,\n.h1 small,\n.h2 small,\n.h3 small,\n.h4 small,\n.h5 small,\n.h6 small,\nh1 .small,\nh2 .small,\nh3 .small,\nh4 .small,\nh5 .small,\nh6 .small,\n.h1 .small,\n.h2 .small,\n.h3 .small,\n.h4 .small,\n.h5 .small,\n.h6 .small {\n  font-weight: normal;\n  line-height: 1;\n  color: #777777;\n}\nh1,\n.h1,\nh2,\n.h2,\nh3,\n.h3 {\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\nh1 small,\n.h1 small,\nh2 small,\n.h2 small,\nh3 small,\n.h3 small,\nh1 .small,\n.h1 .small,\nh2 .small,\n.h2 .small,\nh3 .small,\n.h3 .small {\n  font-size: 65%;\n}\nh4,\n.h4,\nh5,\n.h5,\nh6,\n.h6 {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\nh4 small,\n.h4 small,\nh5 small,\n.h5 small,\nh6 small,\n.h6 small,\nh4 .small,\n.h4 .small,\nh5 .small,\n.h5 .small,\nh6 .small,\n.h6 .small {\n  font-size: 75%;\n}\nh1,\n.h1 {\n  font-size: 36px;\n}\nh2,\n.h2 {\n  font-size: 30px;\n}\nh3,\n.h3 {\n  font-size: 24px;\n}\nh4,\n.h4 {\n  font-size: 18px;\n}\nh5,\n.h5 {\n  font-size: 14px;\n}\nh6,\n.h6 {\n  font-size: 12px;\n}\np {\n  margin: 0 0 10px;\n}\n.lead {\n  margin-bottom: 20px;\n  font-size: 16px;\n  font-weight: 300;\n  line-height: 1.4;\n}\n@media (min-width: 768px) {\n  .lead {\n    font-size: 21px;\n  }\n}\nsmall,\n.small {\n  font-size: 85%;\n}\nmark,\n.mark {\n  background-color: #fcf8e3;\n  padding: .2em;\n}\n.text-left {\n  text-align: left;\n}\n.text-right {\n  text-align: right;\n}\n.text-center {\n  text-align: center;\n}\n.text-justify {\n  text-align: justify;\n}\n.text-nowrap {\n  white-space: nowrap;\n}\n.text-lowercase {\n  text-transform: lowercase;\n}\n.text-uppercase {\n  text-transform: uppercase;\n}\n.text-capitalize {\n  text-transform: capitalize;\n}\n.text-muted {\n  color: #777777;\n}\n.text-primary {\n  color: #337ab7;\n}\na.text-primary:hover {\n  color: #286090;\n}\n.text-success {\n  color: #3c763d;\n}\na.text-success:hover {\n  color: #2b542c;\n}\n.text-info {\n  color: #31708f;\n}\na.text-info:hover {\n  color: #245269;\n}\n.text-warning {\n  color: #8a6d3b;\n}\na.text-warning:hover {\n  color: #66512c;\n}\n.text-danger {\n  color: #a94442;\n}\na.text-danger:hover {\n  color: #843534;\n}\n.bg-primary {\n  color: #fff;\n  background-color: #337ab7;\n}\na.bg-primary:hover {\n  background-color: #286090;\n}\n.bg-success {\n  background-color: #dff0d8;\n}\na.bg-success:hover {\n  background-color: #c1e2b3;\n}\n.bg-info {\n  background-color: #d9edf7;\n}\na.bg-info:hover {\n  background-color: #afd9ee;\n}\n.bg-warning {\n  background-color: #fcf8e3;\n}\na.bg-warning:hover {\n  background-color: #f7ecb5;\n}\n.bg-danger {\n  background-color: #f2dede;\n}\na.bg-danger:hover {\n  background-color: #e4b9b9;\n}\n.page-header {\n  padding-bottom: 9px;\n  margin: 40px 0 20px;\n  border-bottom: 1px solid #eeeeee;\n}\nul,\nol {\n  margin-top: 0;\n  margin-bottom: 10px;\n}\nul ul,\nol ul,\nul ol,\nol ol {\n  margin-bottom: 0;\n}\n.list-unstyled {\n  padding-left: 0;\n  list-style: none;\n}\n.list-inline {\n  padding-left: 0;\n  list-style: none;\n  margin-left: -5px;\n}\n.list-inline > li {\n  display: inline-block;\n  padding-left: 5px;\n  padding-right: 5px;\n}\ndl {\n  margin-top: 0;\n  margin-bottom: 20px;\n}\ndt,\ndd {\n  line-height: 1.428571429;\n}\ndt {\n  font-weight: bold;\n}\ndd {\n  margin-left: 0;\n}\n@media (min-width: 768px) {\n  .dl-horizontal dt {\n    float: left;\n    width: 160px;\n    clear: left;\n    text-align: right;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n  }\n  .dl-horizontal dd {\n    margin-left: 180px;\n  }\n}\nabbr[title],\nabbr[data-original-title] {\n  cursor: help;\n  border-bottom: 1px dotted #777777;\n}\n.initialism {\n  font-size: 90%;\n  text-transform: uppercase;\n}\nblockquote {\n  padding: 10px 20px;\n  margin: 0 0 20px;\n  font-size: 17.5px;\n  border-left: 5px solid #eeeeee;\n}\nblockquote p:last-child,\nblockquote ul:last-child,\nblockquote ol:last-child {\n  margin-bottom: 0;\n}\nblockquote footer,\nblockquote small,\nblockquote .small {\n  display: block;\n  font-size: 80%;\n  line-height: 1.428571429;\n  color: #777777;\n}\nblockquote footer:before,\nblockquote small:before,\nblockquote .small:before {\n  content: '\\2014 \\00A0';\n}\n.blockquote-reverse,\nblockquote.pull-right {\n  padding-right: 15px;\n  padding-left: 0;\n  border-right: 5px solid #eeeeee;\n  border-left: 0;\n  text-align: right;\n}\n.blockquote-reverse footer:before,\nblockquote.pull-right footer:before,\n.blockquote-reverse small:before,\nblockquote.pull-right small:before,\n.blockquote-reverse .small:before,\nblockquote.pull-right .small:before {\n  content: '';\n}\n.blockquote-reverse footer:after,\nblockquote.pull-right footer:after,\n.blockquote-reverse small:after,\nblockquote.pull-right small:after,\n.blockquote-reverse .small:after,\nblockquote.pull-right .small:after {\n  content: '\\00A0 \\2014';\n}\naddress {\n  margin-bottom: 20px;\n  font-style: normal;\n  line-height: 1.428571429;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: Menlo, Monaco, Consolas, \"Courier New\", monospace;\n}\ncode {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px;\n}\nkbd {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #ffffff;\n  background-color: #333333;\n  border-radius: 3px;\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);\n}\nkbd kbd {\n  padding: 0;\n  font-size: 100%;\n  font-weight: bold;\n  box-shadow: none;\n}\npre {\n  display: block;\n  padding: 9.5px;\n  margin: 0 0 10px;\n  font-size: 13px;\n  line-height: 1.428571429;\n  word-break: break-all;\n  word-wrap: break-word;\n  color: #333333;\n  background-color: #f5f5f5;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\npre code {\n  padding: 0;\n  font-size: inherit;\n  color: inherit;\n  white-space: pre-wrap;\n  background-color: transparent;\n  border-radius: 0;\n}\n.pre-scrollable {\n  max-height: 340px;\n  overflow-y: scroll;\n}\n.container {\n  margin-right: auto;\n  margin-left: auto;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n@media (min-width: 768px) {\n  .container {\n    width: 750px;\n  }\n}\n@media (min-width: 992px) {\n  .container {\n    width: 970px;\n  }\n}\n@media (min-width: 1200px) {\n  .container {\n    width: 1170px;\n  }\n}\n.container-fluid {\n  margin-right: auto;\n  margin-left: auto;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.row {\n  margin-left: -15px;\n  margin-right: -15px;\n}\n.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {\n  position: relative;\n  min-height: 1px;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {\n  float: left;\n}\n.col-xs-12 {\n  width: 100%;\n}\n.col-xs-11 {\n  width: 91.66666666666666%;\n}\n.col-xs-10 {\n  width: 83.33333333333334%;\n}\n.col-xs-9 {\n  width: 75%;\n}\n.col-xs-8 {\n  width: 66.66666666666666%;\n}\n.col-xs-7 {\n  width: 58.333333333333336%;\n}\n.col-xs-6 {\n  width: 50%;\n}\n.col-xs-5 {\n  width: 41.66666666666667%;\n}\n.col-xs-4 {\n  width: 33.33333333333333%;\n}\n.col-xs-3 {\n  width: 25%;\n}\n.col-xs-2 {\n  width: 16.666666666666664%;\n}\n.col-xs-1 {\n  width: 8.333333333333332%;\n}\n.col-xs-pull-12 {\n  right: 100%;\n}\n.col-xs-pull-11 {\n  right: 91.66666666666666%;\n}\n.col-xs-pull-10 {\n  right: 83.33333333333334%;\n}\n.col-xs-pull-9 {\n  right: 75%;\n}\n.col-xs-pull-8 {\n  right: 66.66666666666666%;\n}\n.col-xs-pull-7 {\n  right: 58.333333333333336%;\n}\n.col-xs-pull-6 {\n  right: 50%;\n}\n.col-xs-pull-5 {\n  right: 41.66666666666667%;\n}\n.col-xs-pull-4 {\n  right: 33.33333333333333%;\n}\n.col-xs-pull-3 {\n  right: 25%;\n}\n.col-xs-pull-2 {\n  right: 16.666666666666664%;\n}\n.col-xs-pull-1 {\n  right: 8.333333333333332%;\n}\n.col-xs-pull-0 {\n  right: auto;\n}\n.col-xs-push-12 {\n  left: 100%;\n}\n.col-xs-push-11 {\n  left: 91.66666666666666%;\n}\n.col-xs-push-10 {\n  left: 83.33333333333334%;\n}\n.col-xs-push-9 {\n  left: 75%;\n}\n.col-xs-push-8 {\n  left: 66.66666666666666%;\n}\n.col-xs-push-7 {\n  left: 58.333333333333336%;\n}\n.col-xs-push-6 {\n  left: 50%;\n}\n.col-xs-push-5 {\n  left: 41.66666666666667%;\n}\n.col-xs-push-4 {\n  left: 33.33333333333333%;\n}\n.col-xs-push-3 {\n  left: 25%;\n}\n.col-xs-push-2 {\n  left: 16.666666666666664%;\n}\n.col-xs-push-1 {\n  left: 8.333333333333332%;\n}\n.col-xs-push-0 {\n  left: auto;\n}\n.col-xs-offset-12 {\n  margin-left: 100%;\n}\n.col-xs-offset-11 {\n  margin-left: 91.66666666666666%;\n}\n.col-xs-offset-10 {\n  margin-left: 83.33333333333334%;\n}\n.col-xs-offset-9 {\n  margin-left: 75%;\n}\n.col-xs-offset-8 {\n  margin-left: 66.66666666666666%;\n}\n.col-xs-offset-7 {\n  margin-left: 58.333333333333336%;\n}\n.col-xs-offset-6 {\n  margin-left: 50%;\n}\n.col-xs-offset-5 {\n  margin-left: 41.66666666666667%;\n}\n.col-xs-offset-4 {\n  margin-left: 33.33333333333333%;\n}\n.col-xs-offset-3 {\n  margin-left: 25%;\n}\n.col-xs-offset-2 {\n  margin-left: 16.666666666666664%;\n}\n.col-xs-offset-1 {\n  margin-left: 8.333333333333332%;\n}\n.col-xs-offset-0 {\n  margin-left: 0%;\n}\n@media (min-width: 768px) {\n  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {\n    float: left;\n  }\n  .col-sm-12 {\n    width: 100%;\n  }\n  .col-sm-11 {\n    width: 91.66666666666666%;\n  }\n  .col-sm-10 {\n    width: 83.33333333333334%;\n  }\n  .col-sm-9 {\n    width: 75%;\n  }\n  .col-sm-8 {\n    width: 66.66666666666666%;\n  }\n  .col-sm-7 {\n    width: 58.333333333333336%;\n  }\n  .col-sm-6 {\n    width: 50%;\n  }\n  .col-sm-5 {\n    width: 41.66666666666667%;\n  }\n  .col-sm-4 {\n    width: 33.33333333333333%;\n  }\n  .col-sm-3 {\n    width: 25%;\n  }\n  .col-sm-2 {\n    width: 16.666666666666664%;\n  }\n  .col-sm-1 {\n    width: 8.333333333333332%;\n  }\n  .col-sm-pull-12 {\n    right: 100%;\n  }\n  .col-sm-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-sm-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-sm-pull-9 {\n    right: 75%;\n  }\n  .col-sm-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-sm-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-sm-pull-6 {\n    right: 50%;\n  }\n  .col-sm-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-sm-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-sm-pull-3 {\n    right: 25%;\n  }\n  .col-sm-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-sm-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-sm-pull-0 {\n    right: auto;\n  }\n  .col-sm-push-12 {\n    left: 100%;\n  }\n  .col-sm-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-sm-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-sm-push-9 {\n    left: 75%;\n  }\n  .col-sm-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-sm-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-sm-push-6 {\n    left: 50%;\n  }\n  .col-sm-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-sm-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-sm-push-3 {\n    left: 25%;\n  }\n  .col-sm-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-sm-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-sm-push-0 {\n    left: auto;\n  }\n  .col-sm-offset-12 {\n    margin-left: 100%;\n  }\n  .col-sm-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-sm-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-sm-offset-9 {\n    margin-left: 75%;\n  }\n  .col-sm-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-sm-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-sm-offset-6 {\n    margin-left: 50%;\n  }\n  .col-sm-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-sm-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-sm-offset-3 {\n    margin-left: 25%;\n  }\n  .col-sm-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-sm-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-sm-offset-0 {\n    margin-left: 0%;\n  }\n}\n@media (min-width: 992px) {\n  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {\n    float: left;\n  }\n  .col-md-12 {\n    width: 100%;\n  }\n  .col-md-11 {\n    width: 91.66666666666666%;\n  }\n  .col-md-10 {\n    width: 83.33333333333334%;\n  }\n  .col-md-9 {\n    width: 75%;\n  }\n  .col-md-8 {\n    width: 66.66666666666666%;\n  }\n  .col-md-7 {\n    width: 58.333333333333336%;\n  }\n  .col-md-6 {\n    width: 50%;\n  }\n  .col-md-5 {\n    width: 41.66666666666667%;\n  }\n  .col-md-4 {\n    width: 33.33333333333333%;\n  }\n  .col-md-3 {\n    width: 25%;\n  }\n  .col-md-2 {\n    width: 16.666666666666664%;\n  }\n  .col-md-1 {\n    width: 8.333333333333332%;\n  }\n  .col-md-pull-12 {\n    right: 100%;\n  }\n  .col-md-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-md-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-md-pull-9 {\n    right: 75%;\n  }\n  .col-md-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-md-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-md-pull-6 {\n    right: 50%;\n  }\n  .col-md-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-md-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-md-pull-3 {\n    right: 25%;\n  }\n  .col-md-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-md-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-md-pull-0 {\n    right: auto;\n  }\n  .col-md-push-12 {\n    left: 100%;\n  }\n  .col-md-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-md-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-md-push-9 {\n    left: 75%;\n  }\n  .col-md-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-md-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-md-push-6 {\n    left: 50%;\n  }\n  .col-md-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-md-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-md-push-3 {\n    left: 25%;\n  }\n  .col-md-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-md-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-md-push-0 {\n    left: auto;\n  }\n  .col-md-offset-12 {\n    margin-left: 100%;\n  }\n  .col-md-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-md-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-md-offset-9 {\n    margin-left: 75%;\n  }\n  .col-md-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-md-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-md-offset-6 {\n    margin-left: 50%;\n  }\n  .col-md-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-md-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-md-offset-3 {\n    margin-left: 25%;\n  }\n  .col-md-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-md-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-md-offset-0 {\n    margin-left: 0%;\n  }\n}\n@media (min-width: 1200px) {\n  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {\n    float: left;\n  }\n  .col-lg-12 {\n    width: 100%;\n  }\n  .col-lg-11 {\n    width: 91.66666666666666%;\n  }\n  .col-lg-10 {\n    width: 83.33333333333334%;\n  }\n  .col-lg-9 {\n    width: 75%;\n  }\n  .col-lg-8 {\n    width: 66.66666666666666%;\n  }\n  .col-lg-7 {\n    width: 58.333333333333336%;\n  }\n  .col-lg-6 {\n    width: 50%;\n  }\n  .col-lg-5 {\n    width: 41.66666666666667%;\n  }\n  .col-lg-4 {\n    width: 33.33333333333333%;\n  }\n  .col-lg-3 {\n    width: 25%;\n  }\n  .col-lg-2 {\n    width: 16.666666666666664%;\n  }\n  .col-lg-1 {\n    width: 8.333333333333332%;\n  }\n  .col-lg-pull-12 {\n    right: 100%;\n  }\n  .col-lg-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-lg-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-lg-pull-9 {\n    right: 75%;\n  }\n  .col-lg-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-lg-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-lg-pull-6 {\n    right: 50%;\n  }\n  .col-lg-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-lg-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-lg-pull-3 {\n    right: 25%;\n  }\n  .col-lg-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-lg-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-lg-pull-0 {\n    right: auto;\n  }\n  .col-lg-push-12 {\n    left: 100%;\n  }\n  .col-lg-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-lg-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-lg-push-9 {\n    left: 75%;\n  }\n  .col-lg-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-lg-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-lg-push-6 {\n    left: 50%;\n  }\n  .col-lg-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-lg-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-lg-push-3 {\n    left: 25%;\n  }\n  .col-lg-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-lg-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-lg-push-0 {\n    left: auto;\n  }\n  .col-lg-offset-12 {\n    margin-left: 100%;\n  }\n  .col-lg-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-lg-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-lg-offset-9 {\n    margin-left: 75%;\n  }\n  .col-lg-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-lg-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-lg-offset-6 {\n    margin-left: 50%;\n  }\n  .col-lg-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-lg-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-lg-offset-3 {\n    margin-left: 25%;\n  }\n  .col-lg-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-lg-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-lg-offset-0 {\n    margin-left: 0%;\n  }\n}\ntable {\n  background-color: transparent;\n}\ncaption {\n  padding-top: 8px;\n  padding-bottom: 8px;\n  color: #777777;\n  text-align: left;\n}\nth {\n  text-align: left;\n}\n.table {\n  width: 100%;\n  max-width: 100%;\n  margin-bottom: 20px;\n}\n.table > thead > tr > th,\n.table > tbody > tr > th,\n.table > tfoot > tr > th,\n.table > thead > tr > td,\n.table > tbody > tr > td,\n.table > tfoot > tr > td {\n  padding: 8px;\n  line-height: 1.428571429;\n  vertical-align: top;\n  border-top: 1px solid #dddddd;\n}\n.table > thead > tr > th {\n  vertical-align: bottom;\n  border-bottom: 2px solid #dddddd;\n}\n.table > caption + thead > tr:first-child > th,\n.table > colgroup + thead > tr:first-child > th,\n.table > thead:first-child > tr:first-child > th,\n.table > caption + thead > tr:first-child > td,\n.table > colgroup + thead > tr:first-child > td,\n.table > thead:first-child > tr:first-child > td {\n  border-top: 0;\n}\n.table > tbody + tbody {\n  border-top: 2px solid #dddddd;\n}\n.table .table {\n  background-color: #ffffff;\n}\n.table-condensed > thead > tr > th,\n.table-condensed > tbody > tr > th,\n.table-condensed > tfoot > tr > th,\n.table-condensed > thead > tr > td,\n.table-condensed > tbody > tr > td,\n.table-condensed > tfoot > tr > td {\n  padding: 5px;\n}\n.table-bordered {\n  border: 1px solid #dddddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > tbody > tr > th,\n.table-bordered > tfoot > tr > th,\n.table-bordered > thead > tr > td,\n.table-bordered > tbody > tr > td,\n.table-bordered > tfoot > tr > td {\n  border: 1px solid #dddddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > thead > tr > td {\n  border-bottom-width: 2px;\n}\n.table-striped > tbody > tr:nth-of-type(odd) {\n  background-color: #f9f9f9;\n}\n.table-hover > tbody > tr:hover {\n  background-color: #f5f5f5;\n}\ntable col[class*=\"col-\"] {\n  position: static;\n  float: none;\n  display: table-column;\n}\ntable td[class*=\"col-\"],\ntable th[class*=\"col-\"] {\n  position: static;\n  float: none;\n  display: table-cell;\n}\n.table > thead > tr > td.active,\n.table > tbody > tr > td.active,\n.table > tfoot > tr > td.active,\n.table > thead > tr > th.active,\n.table > tbody > tr > th.active,\n.table > tfoot > tr > th.active,\n.table > thead > tr.active > td,\n.table > tbody > tr.active > td,\n.table > tfoot > tr.active > td,\n.table > thead > tr.active > th,\n.table > tbody > tr.active > th,\n.table > tfoot > tr.active > th {\n  background-color: #f5f5f5;\n}\n.table-hover > tbody > tr > td.active:hover,\n.table-hover > tbody > tr > th.active:hover,\n.table-hover > tbody > tr.active:hover > td,\n.table-hover > tbody > tr:hover > .active,\n.table-hover > tbody > tr.active:hover > th {\n  background-color: #e8e8e8;\n}\n.table > thead > tr > td.success,\n.table > tbody > tr > td.success,\n.table > tfoot > tr > td.success,\n.table > thead > tr > th.success,\n.table > tbody > tr > th.success,\n.table > tfoot > tr > th.success,\n.table > thead > tr.success > td,\n.table > tbody > tr.success > td,\n.table > tfoot > tr.success > td,\n.table > thead > tr.success > th,\n.table > tbody > tr.success > th,\n.table > tfoot > tr.success > th {\n  background-color: #dff0d8;\n}\n.table-hover > tbody > tr > td.success:hover,\n.table-hover > tbody > tr > th.success:hover,\n.table-hover > tbody > tr.success:hover > td,\n.table-hover > tbody > tr:hover > .success,\n.table-hover > tbody > tr.success:hover > th {\n  background-color: #d0e9c6;\n}\n.table > thead > tr > td.info,\n.table > tbody > tr > td.info,\n.table > tfoot > tr > td.info,\n.table > thead > tr > th.info,\n.table > tbody > tr > th.info,\n.table > tfoot > tr > th.info,\n.table > thead > tr.info > td,\n.table > tbody > tr.info > td,\n.table > tfoot > tr.info > td,\n.table > thead > tr.info > th,\n.table > tbody > tr.info > th,\n.table > tfoot > tr.info > th {\n  background-color: #d9edf7;\n}\n.table-hover > tbody > tr > td.info:hover,\n.table-hover > tbody > tr > th.info:hover,\n.table-hover > tbody > tr.info:hover > td,\n.table-hover > tbody > tr:hover > .info,\n.table-hover > tbody > tr.info:hover > th {\n  background-color: #c4e3f3;\n}\n.table > thead > tr > td.warning,\n.table > tbody > tr > td.warning,\n.table > tfoot > tr > td.warning,\n.table > thead > tr > th.warning,\n.table > tbody > tr > th.warning,\n.table > tfoot > tr > th.warning,\n.table > thead > tr.warning > td,\n.table > tbody > tr.warning > td,\n.table > tfoot > tr.warning > td,\n.table > thead > tr.warning > th,\n.table > tbody > tr.warning > th,\n.table > tfoot > tr.warning > th {\n  background-color: #fcf8e3;\n}\n.table-hover > tbody > tr > td.warning:hover,\n.table-hover > tbody > tr > th.warning:hover,\n.table-hover > tbody > tr.warning:hover > td,\n.table-hover > tbody > tr:hover > .warning,\n.table-hover > tbody > tr.warning:hover > th {\n  background-color: #faf2cc;\n}\n.table > thead > tr > td.danger,\n.table > tbody > tr > td.danger,\n.table > tfoot > tr > td.danger,\n.table > thead > tr > th.danger,\n.table > tbody > tr > th.danger,\n.table > tfoot > tr > th.danger,\n.table > thead > tr.danger > td,\n.table > tbody > tr.danger > td,\n.table > tfoot > tr.danger > td,\n.table > thead > tr.danger > th,\n.table > tbody > tr.danger > th,\n.table > tfoot > tr.danger > th {\n  background-color: #f2dede;\n}\n.table-hover > tbody > tr > td.danger:hover,\n.table-hover > tbody > tr > th.danger:hover,\n.table-hover > tbody > tr.danger:hover > td,\n.table-hover > tbody > tr:hover > .danger,\n.table-hover > tbody > tr.danger:hover > th {\n  background-color: #ebcccc;\n}\n.table-responsive {\n  overflow-x: auto;\n  min-height: 0.01%;\n}\n@media screen and (max-width: 767px) {\n  .table-responsive {\n    width: 100%;\n    margin-bottom: 15px;\n    overflow-y: hidden;\n    -ms-overflow-style: -ms-autohiding-scrollbar;\n    border: 1px solid #dddddd;\n  }\n  .table-responsive > .table {\n    margin-bottom: 0;\n  }\n  .table-responsive > .table > thead > tr > th,\n  .table-responsive > .table > tbody > tr > th,\n  .table-responsive > .table > tfoot > tr > th,\n  .table-responsive > .table > thead > tr > td,\n  .table-responsive > .table > tbody > tr > td,\n  .table-responsive > .table > tfoot > tr > td {\n    white-space: nowrap;\n  }\n  .table-responsive > .table-bordered {\n    border: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:first-child,\n  .table-responsive > .table-bordered > tbody > tr > th:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n  .table-responsive > .table-bordered > thead > tr > td:first-child,\n  .table-responsive > .table-bordered > tbody > tr > td:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n    border-left: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:last-child,\n  .table-responsive > .table-bordered > tbody > tr > th:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n  .table-responsive > .table-bordered > thead > tr > td:last-child,\n  .table-responsive > .table-bordered > tbody > tr > td:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n    border-right: 0;\n  }\n  .table-responsive > .table-bordered > tbody > tr:last-child > th,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > th,\n  .table-responsive > .table-bordered > tbody > tr:last-child > td,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > td {\n    border-bottom: 0;\n  }\n}\nfieldset {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  min-width: 0;\n}\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 20px;\n  font-size: 21px;\n  line-height: inherit;\n  color: #333333;\n  border: 0;\n  border-bottom: 1px solid #e5e5e5;\n}\nlabel {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 5px;\n  font-weight: bold;\n}\ninput[type=\"search\"] {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\ninput[type=\"radio\"],\ninput[type=\"checkbox\"] {\n  margin: 4px 0 0;\n  margin-top: 1px \\9;\n  line-height: normal;\n}\ninput[type=\"file\"] {\n  display: block;\n}\ninput[type=\"range\"] {\n  display: block;\n  width: 100%;\n}\nselect[multiple],\nselect[size] {\n  height: auto;\n}\ninput[type=\"file\"]:focus,\ninput[type=\"radio\"]:focus,\ninput[type=\"checkbox\"]:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\noutput {\n  display: block;\n  padding-top: 7px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #555555;\n}\n.form-control {\n  display: block;\n  width: 100%;\n  height: 34px;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #555555;\n  background-color: #ffffff;\n  background-image: none;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n}\n.form-control:focus {\n  border-color: #66afe9;\n  outline: 0;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);\n}\n.form-control::-moz-placeholder {\n  color: #999999;\n  opacity: 1;\n}\n.form-control:-ms-input-placeholder {\n  color: #999999;\n}\n.form-control::-webkit-input-placeholder {\n  color: #999999;\n}\n.form-control[disabled],\n.form-control[readonly],\nfieldset[disabled] .form-control {\n  cursor: not-allowed;\n  background-color: #eeeeee;\n  opacity: 1;\n}\ntextarea.form-control {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: none;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 0) {\n  input[type=\"date\"],\n  input[type=\"time\"],\n  input[type=\"datetime-local\"],\n  input[type=\"month\"] {\n    line-height: 34px;\n  }\n  input[type=\"date\"].input-sm,\n  input[type=\"time\"].input-sm,\n  input[type=\"datetime-local\"].input-sm,\n  input[type=\"month\"].input-sm,\n  .input-group-sm input[type=\"date\"],\n  .input-group-sm input[type=\"time\"],\n  .input-group-sm input[type=\"datetime-local\"],\n  .input-group-sm input[type=\"month\"] {\n    line-height: 30px;\n  }\n  input[type=\"date\"].input-lg,\n  input[type=\"time\"].input-lg,\n  input[type=\"datetime-local\"].input-lg,\n  input[type=\"month\"].input-lg,\n  .input-group-lg input[type=\"date\"],\n  .input-group-lg input[type=\"time\"],\n  .input-group-lg input[type=\"datetime-local\"],\n  .input-group-lg input[type=\"month\"] {\n    line-height: 46px;\n  }\n}\n.form-group {\n  margin-bottom: 15px;\n}\n.radio,\n.checkbox {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.radio label,\n.checkbox label {\n  min-height: 20px;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: normal;\n  cursor: pointer;\n}\n.radio input[type=\"radio\"],\n.radio-inline input[type=\"radio\"],\n.checkbox input[type=\"checkbox\"],\n.checkbox-inline input[type=\"checkbox\"] {\n  position: absolute;\n  margin-left: -20px;\n  margin-top: 4px \\9;\n}\n.radio + .radio,\n.checkbox + .checkbox {\n  margin-top: -5px;\n}\n.radio-inline,\n.checkbox-inline {\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  vertical-align: middle;\n  font-weight: normal;\n  cursor: pointer;\n}\n.radio-inline + .radio-inline,\n.checkbox-inline + .checkbox-inline {\n  margin-top: 0;\n  margin-left: 10px;\n}\ninput[type=\"radio\"][disabled],\ninput[type=\"checkbox\"][disabled],\ninput[type=\"radio\"].disabled,\ninput[type=\"checkbox\"].disabled,\nfieldset[disabled] input[type=\"radio\"],\nfieldset[disabled] input[type=\"checkbox\"] {\n  cursor: not-allowed;\n}\n.radio-inline.disabled,\n.checkbox-inline.disabled,\nfieldset[disabled] .radio-inline,\nfieldset[disabled] .checkbox-inline {\n  cursor: not-allowed;\n}\n.radio.disabled label,\n.checkbox.disabled label,\nfieldset[disabled] .radio label,\nfieldset[disabled] .checkbox label {\n  cursor: not-allowed;\n}\n.form-control-static {\n  padding-top: 7px;\n  padding-bottom: 7px;\n  margin-bottom: 0;\n}\n.form-control-static.input-lg,\n.form-control-static.input-sm {\n  padding-left: 0;\n  padding-right: 0;\n}\n.input-sm {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-sm {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-sm,\nselect[multiple].input-sm {\n  height: auto;\n}\n.form-group-sm .form-control {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.form-group-sm .form-control {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.form-group-sm .form-control,\nselect[multiple].form-group-sm .form-control {\n  height: auto;\n}\n.form-group-sm .form-control-static {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n}\n.input-lg {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-lg {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-lg,\nselect[multiple].input-lg {\n  height: auto;\n}\n.form-group-lg .form-control {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.form-group-lg .form-control {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.form-group-lg .form-control,\nselect[multiple].form-group-lg .form-control {\n  height: auto;\n}\n.form-group-lg .form-control-static {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n}\n.has-feedback {\n  position: relative;\n}\n.has-feedback .form-control {\n  padding-right: 42.5px;\n}\n.form-control-feedback {\n  position: absolute;\n  top: 0;\n  right: 0;\n  z-index: 2;\n  display: block;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  text-align: center;\n  pointer-events: none;\n}\n.input-lg + .form-control-feedback {\n  width: 46px;\n  height: 46px;\n  line-height: 46px;\n}\n.input-sm + .form-control-feedback {\n  width: 30px;\n  height: 30px;\n  line-height: 30px;\n}\n.has-success .help-block,\n.has-success .control-label,\n.has-success .radio,\n.has-success .checkbox,\n.has-success .radio-inline,\n.has-success .checkbox-inline,\n.has-success.radio label,\n.has-success.checkbox label,\n.has-success.radio-inline label,\n.has-success.checkbox-inline label {\n  color: #3c763d;\n}\n.has-success .form-control {\n  border-color: #3c763d;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-success .form-control:focus {\n  border-color: #2b542c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n}\n.has-success .input-group-addon {\n  color: #3c763d;\n  border-color: #3c763d;\n  background-color: #dff0d8;\n}\n.has-success .form-control-feedback {\n  color: #3c763d;\n}\n.has-warning .help-block,\n.has-warning .control-label,\n.has-warning .radio,\n.has-warning .checkbox,\n.has-warning .radio-inline,\n.has-warning .checkbox-inline,\n.has-warning.radio label,\n.has-warning.checkbox label,\n.has-warning.radio-inline label,\n.has-warning.checkbox-inline label {\n  color: #8a6d3b;\n}\n.has-warning .form-control {\n  border-color: #8a6d3b;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-warning .form-control:focus {\n  border-color: #66512c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n}\n.has-warning .input-group-addon {\n  color: #8a6d3b;\n  border-color: #8a6d3b;\n  background-color: #fcf8e3;\n}\n.has-warning .form-control-feedback {\n  color: #8a6d3b;\n}\n.has-error .help-block,\n.has-error .control-label,\n.has-error .radio,\n.has-error .checkbox,\n.has-error .radio-inline,\n.has-error .checkbox-inline,\n.has-error.radio label,\n.has-error.checkbox label,\n.has-error.radio-inline label,\n.has-error.checkbox-inline label {\n  color: #a94442;\n}\n.has-error .form-control {\n  border-color: #a94442;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-error .form-control:focus {\n  border-color: #843534;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n}\n.has-error .input-group-addon {\n  color: #a94442;\n  border-color: #a94442;\n  background-color: #f2dede;\n}\n.has-error .form-control-feedback {\n  color: #a94442;\n}\n.has-feedback label ~ .form-control-feedback {\n  top: 25px;\n}\n.has-feedback label.sr-only ~ .form-control-feedback {\n  top: 0;\n}\n.help-block {\n  display: block;\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #737373;\n}\n@media (min-width: 768px) {\n  .form-inline .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .form-inline .form-control-static {\n    display: inline-block;\n  }\n  .form-inline .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .form-inline .input-group .input-group-addon,\n  .form-inline .input-group .input-group-btn,\n  .form-inline .input-group .form-control {\n    width: auto;\n  }\n  .form-inline .input-group > .form-control {\n    width: 100%;\n  }\n  .form-inline .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio,\n  .form-inline .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio label,\n  .form-inline .checkbox label {\n    padding-left: 0;\n  }\n  .form-inline .radio input[type=\"radio\"],\n  .form-inline .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .form-inline .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox,\n.form-horizontal .radio-inline,\n.form-horizontal .checkbox-inline {\n  margin-top: 0;\n  margin-bottom: 0;\n  padding-top: 7px;\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox {\n  min-height: 27px;\n}\n.form-horizontal .form-group {\n  margin-left: -15px;\n  margin-right: -15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .control-label {\n    text-align: right;\n    margin-bottom: 0;\n    padding-top: 7px;\n  }\n}\n.form-horizontal .has-feedback .form-control-feedback {\n  right: 15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-lg .control-label {\n    padding-top: 14.333333px;\n  }\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-sm .control-label {\n    padding-top: 6px;\n  }\n}\n.btn {\n  display: inline-block;\n  margin-bottom: 0;\n  font-weight: normal;\n  text-align: center;\n  vertical-align: middle;\n  touch-action: manipulation;\n  cursor: pointer;\n  background-image: none;\n  border: 1px solid transparent;\n  white-space: nowrap;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  border-radius: 4px;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.btn:focus,\n.btn:active:focus,\n.btn.active:focus,\n.btn.focus,\n.btn:active.focus,\n.btn.active.focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\n.btn:hover,\n.btn:focus,\n.btn.focus {\n  color: #333333;\n  text-decoration: none;\n}\n.btn:active,\n.btn.active {\n  outline: 0;\n  background-image: none;\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n}\n.btn.disabled,\n.btn[disabled],\nfieldset[disabled] .btn {\n  cursor: not-allowed;\n  pointer-events: none;\n  opacity: 0.65;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn-default {\n  color: #333333;\n  background-color: #ffffff;\n  border-color: #cccccc;\n}\n.btn-default:hover,\n.btn-default:focus,\n.btn-default.focus,\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  color: #333333;\n  background-color: #e6e6e6;\n  border-color: #adadad;\n}\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  background-image: none;\n}\n.btn-default.disabled,\n.btn-default[disabled],\nfieldset[disabled] .btn-default,\n.btn-default.disabled:hover,\n.btn-default[disabled]:hover,\nfieldset[disabled] .btn-default:hover,\n.btn-default.disabled:focus,\n.btn-default[disabled]:focus,\nfieldset[disabled] .btn-default:focus,\n.btn-default.disabled.focus,\n.btn-default[disabled].focus,\nfieldset[disabled] .btn-default.focus,\n.btn-default.disabled:active,\n.btn-default[disabled]:active,\nfieldset[disabled] .btn-default:active,\n.btn-default.disabled.active,\n.btn-default[disabled].active,\nfieldset[disabled] .btn-default.active {\n  background-color: #ffffff;\n  border-color: #cccccc;\n}\n.btn-default .badge {\n  color: #ffffff;\n  background-color: #333333;\n}\n.btn-primary {\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary:hover,\n.btn-primary:focus,\n.btn-primary.focus,\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  color: #ffffff;\n  background-color: #286090;\n  border-color: #204d74;\n}\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  background-image: none;\n}\n.btn-primary.disabled,\n.btn-primary[disabled],\nfieldset[disabled] .btn-primary,\n.btn-primary.disabled:hover,\n.btn-primary[disabled]:hover,\nfieldset[disabled] .btn-primary:hover,\n.btn-primary.disabled:focus,\n.btn-primary[disabled]:focus,\nfieldset[disabled] .btn-primary:focus,\n.btn-primary.disabled.focus,\n.btn-primary[disabled].focus,\nfieldset[disabled] .btn-primary.focus,\n.btn-primary.disabled:active,\n.btn-primary[disabled]:active,\nfieldset[disabled] .btn-primary:active,\n.btn-primary.disabled.active,\n.btn-primary[disabled].active,\nfieldset[disabled] .btn-primary.active {\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.btn-success {\n  color: #ffffff;\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success:hover,\n.btn-success:focus,\n.btn-success.focus,\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  color: #ffffff;\n  background-color: #449d44;\n  border-color: #398439;\n}\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  background-image: none;\n}\n.btn-success.disabled,\n.btn-success[disabled],\nfieldset[disabled] .btn-success,\n.btn-success.disabled:hover,\n.btn-success[disabled]:hover,\nfieldset[disabled] .btn-success:hover,\n.btn-success.disabled:focus,\n.btn-success[disabled]:focus,\nfieldset[disabled] .btn-success:focus,\n.btn-success.disabled.focus,\n.btn-success[disabled].focus,\nfieldset[disabled] .btn-success.focus,\n.btn-success.disabled:active,\n.btn-success[disabled]:active,\nfieldset[disabled] .btn-success:active,\n.btn-success.disabled.active,\n.btn-success[disabled].active,\nfieldset[disabled] .btn-success.active {\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success .badge {\n  color: #5cb85c;\n  background-color: #ffffff;\n}\n.btn-info {\n  color: #ffffff;\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info:hover,\n.btn-info:focus,\n.btn-info.focus,\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  color: #ffffff;\n  background-color: #31b0d5;\n  border-color: #269abc;\n}\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  background-image: none;\n}\n.btn-info.disabled,\n.btn-info[disabled],\nfieldset[disabled] .btn-info,\n.btn-info.disabled:hover,\n.btn-info[disabled]:hover,\nfieldset[disabled] .btn-info:hover,\n.btn-info.disabled:focus,\n.btn-info[disabled]:focus,\nfieldset[disabled] .btn-info:focus,\n.btn-info.disabled.focus,\n.btn-info[disabled].focus,\nfieldset[disabled] .btn-info.focus,\n.btn-info.disabled:active,\n.btn-info[disabled]:active,\nfieldset[disabled] .btn-info:active,\n.btn-info.disabled.active,\n.btn-info[disabled].active,\nfieldset[disabled] .btn-info.active {\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info .badge {\n  color: #5bc0de;\n  background-color: #ffffff;\n}\n.btn-warning {\n  color: #ffffff;\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning:hover,\n.btn-warning:focus,\n.btn-warning.focus,\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  color: #ffffff;\n  background-color: #ec971f;\n  border-color: #d58512;\n}\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  background-image: none;\n}\n.btn-warning.disabled,\n.btn-warning[disabled],\nfieldset[disabled] .btn-warning,\n.btn-warning.disabled:hover,\n.btn-warning[disabled]:hover,\nfieldset[disabled] .btn-warning:hover,\n.btn-warning.disabled:focus,\n.btn-warning[disabled]:focus,\nfieldset[disabled] .btn-warning:focus,\n.btn-warning.disabled.focus,\n.btn-warning[disabled].focus,\nfieldset[disabled] .btn-warning.focus,\n.btn-warning.disabled:active,\n.btn-warning[disabled]:active,\nfieldset[disabled] .btn-warning:active,\n.btn-warning.disabled.active,\n.btn-warning[disabled].active,\nfieldset[disabled] .btn-warning.active {\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning .badge {\n  color: #f0ad4e;\n  background-color: #ffffff;\n}\n.btn-danger {\n  color: #ffffff;\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger:hover,\n.btn-danger:focus,\n.btn-danger.focus,\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  color: #ffffff;\n  background-color: #c9302c;\n  border-color: #ac2925;\n}\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  background-image: none;\n}\n.btn-danger.disabled,\n.btn-danger[disabled],\nfieldset[disabled] .btn-danger,\n.btn-danger.disabled:hover,\n.btn-danger[disabled]:hover,\nfieldset[disabled] .btn-danger:hover,\n.btn-danger.disabled:focus,\n.btn-danger[disabled]:focus,\nfieldset[disabled] .btn-danger:focus,\n.btn-danger.disabled.focus,\n.btn-danger[disabled].focus,\nfieldset[disabled] .btn-danger.focus,\n.btn-danger.disabled:active,\n.btn-danger[disabled]:active,\nfieldset[disabled] .btn-danger:active,\n.btn-danger.disabled.active,\n.btn-danger[disabled].active,\nfieldset[disabled] .btn-danger.active {\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger .badge {\n  color: #d9534f;\n  background-color: #ffffff;\n}\n.btn-link {\n  color: #337ab7;\n  font-weight: normal;\n  border-radius: 0;\n}\n.btn-link,\n.btn-link:active,\n.btn-link.active,\n.btn-link[disabled],\nfieldset[disabled] .btn-link {\n  background-color: transparent;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn-link,\n.btn-link:hover,\n.btn-link:focus,\n.btn-link:active {\n  border-color: transparent;\n}\n.btn-link:hover,\n.btn-link:focus {\n  color: #23527c;\n  text-decoration: underline;\n  background-color: transparent;\n}\n.btn-link[disabled]:hover,\nfieldset[disabled] .btn-link:hover,\n.btn-link[disabled]:focus,\nfieldset[disabled] .btn-link:focus {\n  color: #777777;\n  text-decoration: none;\n}\n.btn-lg,\n.btn-group-lg > .btn {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\n.btn-sm,\n.btn-group-sm > .btn {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-xs,\n.btn-group-xs > .btn {\n  padding: 1px 5px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-block {\n  display: block;\n  width: 100%;\n}\n.btn-block + .btn-block {\n  margin-top: 5px;\n}\ninput[type=\"submit\"].btn-block,\ninput[type=\"reset\"].btn-block,\ninput[type=\"button\"].btn-block {\n  width: 100%;\n}\n.fade {\n  opacity: 0;\n  -webkit-transition: opacity 0.15s linear;\n  -o-transition: opacity 0.15s linear;\n  transition: opacity 0.15s linear;\n}\n.fade.in {\n  opacity: 1;\n}\n.collapse {\n  display: none;\n  visibility: hidden;\n}\n.collapse.in {\n  display: block;\n  visibility: visible;\n}\ntr.collapse.in {\n  display: table-row;\n}\ntbody.collapse.in {\n  display: table-row-group;\n}\n.collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-property: height, visibility;\n  transition-property: height, visibility;\n  -webkit-transition-duration: 0.35s;\n  transition-duration: 0.35s;\n  -webkit-transition-timing-function: ease;\n  transition-timing-function: ease;\n}\n@font-face {\n  font-family: 'Glyphicons Halflings';\n  src: url("+__webpack_require__(220)+");\n  src: url("+__webpack_require__(220)+"?#iefix) format('embedded-opentype'), url("+__webpack_require__(221)+") format('woff2'), url("+__webpack_require__(222)+") format('woff'), url("+__webpack_require__(223)+") format('truetype'), url("+__webpack_require__(224)+"#glyphicons_halflingsregular) format('svg');\n}\n.glyphicon {\n  position: relative;\n  top: 1px;\n  display: inline-block;\n  font-family: 'Glyphicons Halflings';\n  font-style: normal;\n  font-weight: normal;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.glyphicon-asterisk:before {\n  content: \"\\2a\";\n}\n.glyphicon-plus:before {\n  content: \"\\2b\";\n}\n.glyphicon-euro:before,\n.glyphicon-eur:before {\n  content: \"\\20ac\";\n}\n.glyphicon-minus:before {\n  content: \"\\2212\";\n}\n.glyphicon-cloud:before {\n  content: \"\\2601\";\n}\n.glyphicon-envelope:before {\n  content: \"\\2709\";\n}\n.glyphicon-pencil:before {\n  content: \"\\270f\";\n}\n.glyphicon-glass:before {\n  content: \"\\e001\";\n}\n.glyphicon-music:before {\n  content: \"\\e002\";\n}\n.glyphicon-search:before {\n  content: \"\\e003\";\n}\n.glyphicon-heart:before {\n  content: \"\\e005\";\n}\n.glyphicon-star:before {\n  content: \"\\e006\";\n}\n.glyphicon-star-empty:before {\n  content: \"\\e007\";\n}\n.glyphicon-user:before {\n  content: \"\\e008\";\n}\n.glyphicon-film:before {\n  content: \"\\e009\";\n}\n.glyphicon-th-large:before {\n  content: \"\\e010\";\n}\n.glyphicon-th:before {\n  content: \"\\e011\";\n}\n.glyphicon-th-list:before {\n  content: \"\\e012\";\n}\n.glyphicon-ok:before {\n  content: \"\\e013\";\n}\n.glyphicon-remove:before {\n  content: \"\\e014\";\n}\n.glyphicon-zoom-in:before {\n  content: \"\\e015\";\n}\n.glyphicon-zoom-out:before {\n  content: \"\\e016\";\n}\n.glyphicon-off:before {\n  content: \"\\e017\";\n}\n.glyphicon-signal:before {\n  content: \"\\e018\";\n}\n.glyphicon-cog:before {\n  content: \"\\e019\";\n}\n.glyphicon-trash:before {\n  content: \"\\e020\";\n}\n.glyphicon-home:before {\n  content: \"\\e021\";\n}\n.glyphicon-file:before {\n  content: \"\\e022\";\n}\n.glyphicon-time:before {\n  content: \"\\e023\";\n}\n.glyphicon-road:before {\n  content: \"\\e024\";\n}\n.glyphicon-download-alt:before {\n  content: \"\\e025\";\n}\n.glyphicon-download:before {\n  content: \"\\e026\";\n}\n.glyphicon-upload:before {\n  content: \"\\e027\";\n}\n.glyphicon-inbox:before {\n  content: \"\\e028\";\n}\n.glyphicon-play-circle:before {\n  content: \"\\e029\";\n}\n.glyphicon-repeat:before {\n  content: \"\\e030\";\n}\n.glyphicon-refresh:before {\n  content: \"\\e031\";\n}\n.glyphicon-list-alt:before {\n  content: \"\\e032\";\n}\n.glyphicon-lock:before {\n  content: \"\\e033\";\n}\n.glyphicon-flag:before {\n  content: \"\\e034\";\n}\n.glyphicon-headphones:before {\n  content: \"\\e035\";\n}\n.glyphicon-volume-off:before {\n  content: \"\\e036\";\n}\n.glyphicon-volume-down:before {\n  content: \"\\e037\";\n}\n.glyphicon-volume-up:before {\n  content: \"\\e038\";\n}\n.glyphicon-qrcode:before {\n  content: \"\\e039\";\n}\n.glyphicon-barcode:before {\n  content: \"\\e040\";\n}\n.glyphicon-tag:before {\n  content: \"\\e041\";\n}\n.glyphicon-tags:before {\n  content: \"\\e042\";\n}\n.glyphicon-book:before {\n  content: \"\\e043\";\n}\n.glyphicon-bookmark:before {\n  content: \"\\e044\";\n}\n.glyphicon-print:before {\n  content: \"\\e045\";\n}\n.glyphicon-camera:before {\n  content: \"\\e046\";\n}\n.glyphicon-font:before {\n  content: \"\\e047\";\n}\n.glyphicon-bold:before {\n  content: \"\\e048\";\n}\n.glyphicon-italic:before {\n  content: \"\\e049\";\n}\n.glyphicon-text-height:before {\n  content: \"\\e050\";\n}\n.glyphicon-text-width:before {\n  content: \"\\e051\";\n}\n.glyphicon-align-left:before {\n  content: \"\\e052\";\n}\n.glyphicon-align-center:before {\n  content: \"\\e053\";\n}\n.glyphicon-align-right:before {\n  content: \"\\e054\";\n}\n.glyphicon-align-justify:before {\n  content: \"\\e055\";\n}\n.glyphicon-list:before {\n  content: \"\\e056\";\n}\n.glyphicon-indent-left:before {\n  content: \"\\e057\";\n}\n.glyphicon-indent-right:before {\n  content: \"\\e058\";\n}\n.glyphicon-facetime-video:before {\n  content: \"\\e059\";\n}\n.glyphicon-picture:before {\n  content: \"\\e060\";\n}\n.glyphicon-map-marker:before {\n  content: \"\\e062\";\n}\n.glyphicon-adjust:before {\n  content: \"\\e063\";\n}\n.glyphicon-tint:before {\n  content: \"\\e064\";\n}\n.glyphicon-edit:before {\n  content: \"\\e065\";\n}\n.glyphicon-share:before {\n  content: \"\\e066\";\n}\n.glyphicon-check:before {\n  content: \"\\e067\";\n}\n.glyphicon-move:before {\n  content: \"\\e068\";\n}\n.glyphicon-step-backward:before {\n  content: \"\\e069\";\n}\n.glyphicon-fast-backward:before {\n  content: \"\\e070\";\n}\n.glyphicon-backward:before {\n  content: \"\\e071\";\n}\n.glyphicon-play:before {\n  content: \"\\e072\";\n}\n.glyphicon-pause:before {\n  content: \"\\e073\";\n}\n.glyphicon-stop:before {\n  content: \"\\e074\";\n}\n.glyphicon-forward:before {\n  content: \"\\e075\";\n}\n.glyphicon-fast-forward:before {\n  content: \"\\e076\";\n}\n.glyphicon-step-forward:before {\n  content: \"\\e077\";\n}\n.glyphicon-eject:before {\n  content: \"\\e078\";\n}\n.glyphicon-chevron-left:before {\n  content: \"\\e079\";\n}\n.glyphicon-chevron-right:before {\n  content: \"\\e080\";\n}\n.glyphicon-plus-sign:before {\n  content: \"\\e081\";\n}\n.glyphicon-minus-sign:before {\n  content: \"\\e082\";\n}\n.glyphicon-remove-sign:before {\n  content: \"\\e083\";\n}\n.glyphicon-ok-sign:before {\n  content: \"\\e084\";\n}\n.glyphicon-question-sign:before {\n  content: \"\\e085\";\n}\n.glyphicon-info-sign:before {\n  content: \"\\e086\";\n}\n.glyphicon-screenshot:before {\n  content: \"\\e087\";\n}\n.glyphicon-remove-circle:before {\n  content: \"\\e088\";\n}\n.glyphicon-ok-circle:before {\n  content: \"\\e089\";\n}\n.glyphicon-ban-circle:before {\n  content: \"\\e090\";\n}\n.glyphicon-arrow-left:before {\n  content: \"\\e091\";\n}\n.glyphicon-arrow-right:before {\n  content: \"\\e092\";\n}\n.glyphicon-arrow-up:before {\n  content: \"\\e093\";\n}\n.glyphicon-arrow-down:before {\n  content: \"\\e094\";\n}\n.glyphicon-share-alt:before {\n  content: \"\\e095\";\n}\n.glyphicon-resize-full:before {\n  content: \"\\e096\";\n}\n.glyphicon-resize-small:before {\n  content: \"\\e097\";\n}\n.glyphicon-exclamation-sign:before {\n  content: \"\\e101\";\n}\n.glyphicon-gift:before {\n  content: \"\\e102\";\n}\n.glyphicon-leaf:before {\n  content: \"\\e103\";\n}\n.glyphicon-fire:before {\n  content: \"\\e104\";\n}\n.glyphicon-eye-open:before {\n  content: \"\\e105\";\n}\n.glyphicon-eye-close:before {\n  content: \"\\e106\";\n}\n.glyphicon-warning-sign:before {\n  content: \"\\e107\";\n}\n.glyphicon-plane:before {\n  content: \"\\e108\";\n}\n.glyphicon-calendar:before {\n  content: \"\\e109\";\n}\n.glyphicon-random:before {\n  content: \"\\e110\";\n}\n.glyphicon-comment:before {\n  content: \"\\e111\";\n}\n.glyphicon-magnet:before {\n  content: \"\\e112\";\n}\n.glyphicon-chevron-up:before {\n  content: \"\\e113\";\n}\n.glyphicon-chevron-down:before {\n  content: \"\\e114\";\n}\n.glyphicon-retweet:before {\n  content: \"\\e115\";\n}\n.glyphicon-shopping-cart:before {\n  content: \"\\e116\";\n}\n.glyphicon-folder-close:before {\n  content: \"\\e117\";\n}\n.glyphicon-folder-open:before {\n  content: \"\\e118\";\n}\n.glyphicon-resize-vertical:before {\n  content: \"\\e119\";\n}\n.glyphicon-resize-horizontal:before {\n  content: \"\\e120\";\n}\n.glyphicon-hdd:before {\n  content: \"\\e121\";\n}\n.glyphicon-bullhorn:before {\n  content: \"\\e122\";\n}\n.glyphicon-bell:before {\n  content: \"\\e123\";\n}\n.glyphicon-certificate:before {\n  content: \"\\e124\";\n}\n.glyphicon-thumbs-up:before {\n  content: \"\\e125\";\n}\n.glyphicon-thumbs-down:before {\n  content: \"\\e126\";\n}\n.glyphicon-hand-right:before {\n  content: \"\\e127\";\n}\n.glyphicon-hand-left:before {\n  content: \"\\e128\";\n}\n.glyphicon-hand-up:before {\n  content: \"\\e129\";\n}\n.glyphicon-hand-down:before {\n  content: \"\\e130\";\n}\n.glyphicon-circle-arrow-right:before {\n  content: \"\\e131\";\n}\n.glyphicon-circle-arrow-left:before {\n  content: \"\\e132\";\n}\n.glyphicon-circle-arrow-up:before {\n  content: \"\\e133\";\n}\n.glyphicon-circle-arrow-down:before {\n  content: \"\\e134\";\n}\n.glyphicon-globe:before {\n  content: \"\\e135\";\n}\n.glyphicon-wrench:before {\n  content: \"\\e136\";\n}\n.glyphicon-tasks:before {\n  content: \"\\e137\";\n}\n.glyphicon-filter:before {\n  content: \"\\e138\";\n}\n.glyphicon-briefcase:before {\n  content: \"\\e139\";\n}\n.glyphicon-fullscreen:before {\n  content: \"\\e140\";\n}\n.glyphicon-dashboard:before {\n  content: \"\\e141\";\n}\n.glyphicon-paperclip:before {\n  content: \"\\e142\";\n}\n.glyphicon-heart-empty:before {\n  content: \"\\e143\";\n}\n.glyphicon-link:before {\n  content: \"\\e144\";\n}\n.glyphicon-phone:before {\n  content: \"\\e145\";\n}\n.glyphicon-pushpin:before {\n  content: \"\\e146\";\n}\n.glyphicon-usd:before {\n  content: \"\\e148\";\n}\n.glyphicon-gbp:before {\n  content: \"\\e149\";\n}\n.glyphicon-sort:before {\n  content: \"\\e150\";\n}\n.glyphicon-sort-by-alphabet:before {\n  content: \"\\e151\";\n}\n.glyphicon-sort-by-alphabet-alt:before {\n  content: \"\\e152\";\n}\n.glyphicon-sort-by-order:before {\n  content: \"\\e153\";\n}\n.glyphicon-sort-by-order-alt:before {\n  content: \"\\e154\";\n}\n.glyphicon-sort-by-attributes:before {\n  content: \"\\e155\";\n}\n.glyphicon-sort-by-attributes-alt:before {\n  content: \"\\e156\";\n}\n.glyphicon-unchecked:before {\n  content: \"\\e157\";\n}\n.glyphicon-expand:before {\n  content: \"\\e158\";\n}\n.glyphicon-collapse-down:before {\n  content: \"\\e159\";\n}\n.glyphicon-collapse-up:before {\n  content: \"\\e160\";\n}\n.glyphicon-log-in:before {\n  content: \"\\e161\";\n}\n.glyphicon-flash:before {\n  content: \"\\e162\";\n}\n.glyphicon-log-out:before {\n  content: \"\\e163\";\n}\n.glyphicon-new-window:before {\n  content: \"\\e164\";\n}\n.glyphicon-record:before {\n  content: \"\\e165\";\n}\n.glyphicon-save:before {\n  content: \"\\e166\";\n}\n.glyphicon-open:before {\n  content: \"\\e167\";\n}\n.glyphicon-saved:before {\n  content: \"\\e168\";\n}\n.glyphicon-import:before {\n  content: \"\\e169\";\n}\n.glyphicon-export:before {\n  content: \"\\e170\";\n}\n.glyphicon-send:before {\n  content: \"\\e171\";\n}\n.glyphicon-floppy-disk:before {\n  content: \"\\e172\";\n}\n.glyphicon-floppy-saved:before {\n  content: \"\\e173\";\n}\n.glyphicon-floppy-remove:before {\n  content: \"\\e174\";\n}\n.glyphicon-floppy-save:before {\n  content: \"\\e175\";\n}\n.glyphicon-floppy-open:before {\n  content: \"\\e176\";\n}\n.glyphicon-credit-card:before {\n  content: \"\\e177\";\n}\n.glyphicon-transfer:before {\n  content: \"\\e178\";\n}\n.glyphicon-cutlery:before {\n  content: \"\\e179\";\n}\n.glyphicon-header:before {\n  content: \"\\e180\";\n}\n.glyphicon-compressed:before {\n  content: \"\\e181\";\n}\n.glyphicon-earphone:before {\n  content: \"\\e182\";\n}\n.glyphicon-phone-alt:before {\n  content: \"\\e183\";\n}\n.glyphicon-tower:before {\n  content: \"\\e184\";\n}\n.glyphicon-stats:before {\n  content: \"\\e185\";\n}\n.glyphicon-sd-video:before {\n  content: \"\\e186\";\n}\n.glyphicon-hd-video:before {\n  content: \"\\e187\";\n}\n.glyphicon-subtitles:before {\n  content: \"\\e188\";\n}\n.glyphicon-sound-stereo:before {\n  content: \"\\e189\";\n}\n.glyphicon-sound-dolby:before {\n  content: \"\\e190\";\n}\n.glyphicon-sound-5-1:before {\n  content: \"\\e191\";\n}\n.glyphicon-sound-6-1:before {\n  content: \"\\e192\";\n}\n.glyphicon-sound-7-1:before {\n  content: \"\\e193\";\n}\n.glyphicon-copyright-mark:before {\n  content: \"\\e194\";\n}\n.glyphicon-registration-mark:before {\n  content: \"\\e195\";\n}\n.glyphicon-cloud-download:before {\n  content: \"\\e197\";\n}\n.glyphicon-cloud-upload:before {\n  content: \"\\e198\";\n}\n.glyphicon-tree-conifer:before {\n  content: \"\\e199\";\n}\n.glyphicon-tree-deciduous:before {\n  content: \"\\e200\";\n}\n.glyphicon-cd:before {\n  content: \"\\e201\";\n}\n.glyphicon-save-file:before {\n  content: \"\\e202\";\n}\n.glyphicon-open-file:before {\n  content: \"\\e203\";\n}\n.glyphicon-level-up:before {\n  content: \"\\e204\";\n}\n.glyphicon-copy:before {\n  content: \"\\e205\";\n}\n.glyphicon-paste:before {\n  content: \"\\e206\";\n}\n.glyphicon-alert:before {\n  content: \"\\e209\";\n}\n.glyphicon-equalizer:before {\n  content: \"\\e210\";\n}\n.glyphicon-king:before {\n  content: \"\\e211\";\n}\n.glyphicon-queen:before {\n  content: \"\\e212\";\n}\n.glyphicon-pawn:before {\n  content: \"\\e213\";\n}\n.glyphicon-bishop:before {\n  content: \"\\e214\";\n}\n.glyphicon-knight:before {\n  content: \"\\e215\";\n}\n.glyphicon-baby-formula:before {\n  content: \"\\e216\";\n}\n.glyphicon-tent:before {\n  content: \"\\26fa\";\n}\n.glyphicon-blackboard:before {\n  content: \"\\e218\";\n}\n.glyphicon-bed:before {\n  content: \"\\e219\";\n}\n.glyphicon-apple:before {\n  content: \"\\f8ff\";\n}\n.glyphicon-erase:before {\n  content: \"\\e221\";\n}\n.glyphicon-hourglass:before {\n  content: \"\\231b\";\n}\n.glyphicon-lamp:before {\n  content: \"\\e223\";\n}\n.glyphicon-duplicate:before {\n  content: \"\\e224\";\n}\n.glyphicon-piggy-bank:before {\n  content: \"\\e225\";\n}\n.glyphicon-scissors:before {\n  content: \"\\e226\";\n}\n.glyphicon-bitcoin:before {\n  content: \"\\e227\";\n}\n.glyphicon-yen:before {\n  content: \"\\00a5\";\n}\n.glyphicon-ruble:before {\n  content: \"\\20bd\";\n}\n.glyphicon-scale:before {\n  content: \"\\e230\";\n}\n.glyphicon-ice-lolly:before {\n  content: \"\\e231\";\n}\n.glyphicon-ice-lolly-tasted:before {\n  content: \"\\e232\";\n}\n.glyphicon-education:before {\n  content: \"\\e233\";\n}\n.glyphicon-option-horizontal:before {\n  content: \"\\e234\";\n}\n.glyphicon-option-vertical:before {\n  content: \"\\e235\";\n}\n.glyphicon-menu-hamburger:before {\n  content: \"\\e236\";\n}\n.glyphicon-modal-window:before {\n  content: \"\\e237\";\n}\n.glyphicon-oil:before {\n  content: \"\\e238\";\n}\n.glyphicon-grain:before {\n  content: \"\\e239\";\n}\n.glyphicon-sunglasses:before {\n  content: \"\\e240\";\n}\n.glyphicon-text-size:before {\n  content: \"\\e241\";\n}\n.glyphicon-text-color:before {\n  content: \"\\e242\";\n}\n.glyphicon-text-background:before {\n  content: \"\\e243\";\n}\n.glyphicon-object-align-top:before {\n  content: \"\\e244\";\n}\n.glyphicon-object-align-bottom:before {\n  content: \"\\e245\";\n}\n.glyphicon-object-align-horizontal:before {\n  content: \"\\e246\";\n}\n.glyphicon-object-align-left:before {\n  content: \"\\e247\";\n}\n.glyphicon-object-align-vertical:before {\n  content: \"\\e248\";\n}\n.glyphicon-object-align-right:before {\n  content: \"\\e249\";\n}\n.glyphicon-triangle-right:before {\n  content: \"\\e250\";\n}\n.glyphicon-triangle-left:before {\n  content: \"\\e251\";\n}\n.glyphicon-triangle-bottom:before {\n  content: \"\\e252\";\n}\n.glyphicon-triangle-top:before {\n  content: \"\\e253\";\n}\n.glyphicon-console:before {\n  content: \"\\e254\";\n}\n.glyphicon-superscript:before {\n  content: \"\\e255\";\n}\n.glyphicon-subscript:before {\n  content: \"\\e256\";\n}\n.glyphicon-menu-left:before {\n  content: \"\\e257\";\n}\n.glyphicon-menu-right:before {\n  content: \"\\e258\";\n}\n.glyphicon-menu-down:before {\n  content: \"\\e259\";\n}\n.glyphicon-menu-up:before {\n  content: \"\\e260\";\n}\n.caret {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  margin-left: 2px;\n  vertical-align: middle;\n  border-top: 4px solid;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent;\n}\n.dropup,\n.dropdown {\n  position: relative;\n}\n.dropdown-toggle:focus {\n  outline: 0;\n}\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  text-align: left;\n  background-color: #ffffff;\n  border: 1px solid #cccccc;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  background-clip: padding-box;\n}\n.dropdown-menu.pull-right {\n  right: 0;\n  left: auto;\n}\n.dropdown-menu .divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.dropdown-menu > li > a {\n  display: block;\n  padding: 3px 20px;\n  clear: both;\n  font-weight: normal;\n  line-height: 1.428571429;\n  color: #333333;\n  white-space: nowrap;\n}\n.dropdown-menu > li > a:hover,\n.dropdown-menu > li > a:focus {\n  text-decoration: none;\n  color: #262626;\n  background-color: #f5f5f5;\n}\n.dropdown-menu > .active > a,\n.dropdown-menu > .active > a:hover,\n.dropdown-menu > .active > a:focus {\n  color: #ffffff;\n  text-decoration: none;\n  outline: 0;\n  background-color: #337ab7;\n}\n.dropdown-menu > .disabled > a,\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  color: #777777;\n}\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  text-decoration: none;\n  background-color: transparent;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n  cursor: not-allowed;\n}\n.open > .dropdown-menu {\n  display: block;\n}\n.open > a {\n  outline: 0;\n}\n.dropdown-menu-right {\n  left: auto;\n  right: 0;\n}\n.dropdown-menu-left {\n  left: 0;\n  right: auto;\n}\n.dropdown-header {\n  display: block;\n  padding: 3px 20px;\n  font-size: 12px;\n  line-height: 1.428571429;\n  color: #777777;\n  white-space: nowrap;\n}\n.dropdown-backdrop {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  z-index: 990;\n}\n.pull-right > .dropdown-menu {\n  right: 0;\n  left: auto;\n}\n.dropup .caret,\n.navbar-fixed-bottom .dropdown .caret {\n  border-top: 0;\n  border-bottom: 4px solid;\n  content: \"\";\n}\n.dropup .dropdown-menu,\n.navbar-fixed-bottom .dropdown .dropdown-menu {\n  top: auto;\n  bottom: 100%;\n  margin-bottom: 2px;\n}\n@media (min-width: 768px) {\n  .navbar-right .dropdown-menu {\n    left: auto;\n    right: 0;\n  }\n  .navbar-right .dropdown-menu-left {\n    left: 0;\n    right: auto;\n  }\n}\n.btn-group,\n.btn-group-vertical {\n  position: relative;\n  display: inline-block;\n  vertical-align: middle;\n}\n.btn-group > .btn,\n.btn-group-vertical > .btn {\n  position: relative;\n  float: left;\n}\n.btn-group > .btn:hover,\n.btn-group-vertical > .btn:hover,\n.btn-group > .btn:focus,\n.btn-group-vertical > .btn:focus,\n.btn-group > .btn:active,\n.btn-group-vertical > .btn:active,\n.btn-group > .btn.active,\n.btn-group-vertical > .btn.active {\n  z-index: 2;\n}\n.btn-group .btn + .btn,\n.btn-group .btn + .btn-group,\n.btn-group .btn-group + .btn,\n.btn-group .btn-group + .btn-group {\n  margin-left: -1px;\n}\n.btn-toolbar {\n  margin-left: -5px;\n}\n.btn-toolbar .btn-group,\n.btn-toolbar .input-group {\n  float: left;\n}\n.btn-toolbar > .btn,\n.btn-toolbar > .btn-group,\n.btn-toolbar > .input-group {\n  margin-left: 5px;\n}\n.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n  border-radius: 0;\n}\n.btn-group > .btn:first-child {\n  margin-left: 0;\n}\n.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.btn-group > .btn:last-child:not(:first-child),\n.btn-group > .dropdown-toggle:not(:first-child) {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group > .btn-group {\n  float: left;\n}\n.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group .dropdown-toggle:active,\n.btn-group.open .dropdown-toggle {\n  outline: 0;\n}\n.btn-group > .btn + .dropdown-toggle {\n  padding-left: 8px;\n  padding-right: 8px;\n}\n.btn-group > .btn-lg + .dropdown-toggle {\n  padding-left: 12px;\n  padding-right: 12px;\n}\n.btn-group.open .dropdown-toggle {\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n}\n.btn-group.open .dropdown-toggle.btn-link {\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn .caret {\n  margin-left: 0;\n}\n.btn-lg .caret {\n  border-width: 5px 5px 0;\n  border-bottom-width: 0;\n}\n.dropup .btn-lg .caret {\n  border-width: 0 5px 5px;\n}\n.btn-group-vertical > .btn,\n.btn-group-vertical > .btn-group,\n.btn-group-vertical > .btn-group > .btn {\n  display: block;\n  float: none;\n  width: 100%;\n  max-width: 100%;\n}\n.btn-group-vertical > .btn-group > .btn {\n  float: none;\n}\n.btn-group-vertical > .btn + .btn,\n.btn-group-vertical > .btn + .btn-group,\n.btn-group-vertical > .btn-group + .btn,\n.btn-group-vertical > .btn-group + .btn-group {\n  margin-top: -1px;\n  margin-left: 0;\n}\n.btn-group-vertical > .btn:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn:first-child:not(:last-child) {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn:last-child:not(:first-child) {\n  border-bottom-left-radius: 4px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group-justified {\n  display: table;\n  width: 100%;\n  table-layout: fixed;\n  border-collapse: separate;\n}\n.btn-group-justified > .btn,\n.btn-group-justified > .btn-group {\n  float: none;\n  display: table-cell;\n  width: 1%;\n}\n.btn-group-justified > .btn-group .btn {\n  width: 100%;\n}\n.btn-group-justified > .btn-group .dropdown-menu {\n  left: auto;\n}\n[data-toggle=\"buttons\"] > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn input[type=\"checkbox\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"checkbox\"] {\n  position: absolute;\n  clip: rect(0, 0, 0, 0);\n  pointer-events: none;\n}\n.input-group {\n  position: relative;\n  display: table;\n  border-collapse: separate;\n}\n.input-group[class*=\"col-\"] {\n  float: none;\n  padding-left: 0;\n  padding-right: 0;\n}\n.input-group .form-control {\n  position: relative;\n  z-index: 2;\n  float: left;\n  width: 100%;\n  margin-bottom: 0;\n}\n.input-group-lg > .form-control,\n.input-group-lg > .input-group-addon,\n.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-group-lg > .form-control,\nselect.input-group-lg > .input-group-addon,\nselect.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-group-lg > .form-control,\ntextarea.input-group-lg > .input-group-addon,\ntextarea.input-group-lg > .input-group-btn > .btn,\nselect[multiple].input-group-lg > .form-control,\nselect[multiple].input-group-lg > .input-group-addon,\nselect[multiple].input-group-lg > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-sm > .form-control,\n.input-group-sm > .input-group-addon,\n.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-group-sm > .form-control,\nselect.input-group-sm > .input-group-addon,\nselect.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-group-sm > .form-control,\ntextarea.input-group-sm > .input-group-addon,\ntextarea.input-group-sm > .input-group-btn > .btn,\nselect[multiple].input-group-sm > .form-control,\nselect[multiple].input-group-sm > .input-group-addon,\nselect[multiple].input-group-sm > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-addon,\n.input-group-btn,\n.input-group .form-control {\n  display: table-cell;\n}\n.input-group-addon:not(:first-child):not(:last-child),\n.input-group-btn:not(:first-child):not(:last-child),\n.input-group .form-control:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.input-group-addon,\n.input-group-btn {\n  width: 1%;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.input-group-addon {\n  padding: 6px 12px;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1;\n  color: #555555;\n  text-align: center;\n  background-color: #eeeeee;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\n.input-group-addon.input-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  border-radius: 3px;\n}\n.input-group-addon.input-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  border-radius: 6px;\n}\n.input-group-addon input[type=\"radio\"],\n.input-group-addon input[type=\"checkbox\"] {\n  margin-top: 0;\n}\n.input-group .form-control:first-child,\n.input-group-addon:first-child,\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group > .btn,\n.input-group-btn:first-child > .dropdown-toggle,\n.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),\n.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.input-group-addon:first-child {\n  border-right: 0;\n}\n.input-group .form-control:last-child,\n.input-group-addon:last-child,\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group > .btn,\n.input-group-btn:last-child > .dropdown-toggle,\n.input-group-btn:first-child > .btn:not(:first-child),\n.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.input-group-addon:last-child {\n  border-left: 0;\n}\n.input-group-btn {\n  position: relative;\n  font-size: 0;\n  white-space: nowrap;\n}\n.input-group-btn > .btn {\n  position: relative;\n}\n.input-group-btn > .btn + .btn {\n  margin-left: -1px;\n}\n.input-group-btn > .btn:hover,\n.input-group-btn > .btn:focus,\n.input-group-btn > .btn:active {\n  z-index: 2;\n}\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group {\n  margin-right: -1px;\n}\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group {\n  margin-left: -1px;\n}\n.nav {\n  margin-bottom: 0;\n  padding-left: 0;\n  list-style: none;\n}\n.nav > li {\n  position: relative;\n  display: block;\n}\n.nav > li > a {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n}\n.nav > li > a:hover,\n.nav > li > a:focus {\n  text-decoration: none;\n  background-color: #eeeeee;\n}\n.nav > li.disabled > a {\n  color: #777777;\n}\n.nav > li.disabled > a:hover,\n.nav > li.disabled > a:focus {\n  color: #777777;\n  text-decoration: none;\n  background-color: transparent;\n  cursor: not-allowed;\n}\n.nav .open > a,\n.nav .open > a:hover,\n.nav .open > a:focus {\n  background-color: #eeeeee;\n  border-color: #337ab7;\n}\n.nav .nav-divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.nav > li > a > img {\n  max-width: none;\n}\n.nav-tabs {\n  border-bottom: 1px solid #dddddd;\n}\n.nav-tabs > li {\n  float: left;\n  margin-bottom: -1px;\n}\n.nav-tabs > li > a {\n  margin-right: 2px;\n  line-height: 1.428571429;\n  border: 1px solid transparent;\n  border-radius: 4px 4px 0 0;\n}\n.nav-tabs > li > a:hover {\n  border-color: #eeeeee #eeeeee #dddddd;\n}\n.nav-tabs > li.active > a,\n.nav-tabs > li.active > a:hover,\n.nav-tabs > li.active > a:focus {\n  color: #555555;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-bottom-color: transparent;\n  cursor: default;\n}\n.nav-tabs.nav-justified {\n  width: 100%;\n  border-bottom: 0;\n}\n.nav-tabs.nav-justified > li {\n  float: none;\n}\n.nav-tabs.nav-justified > li > a {\n  text-align: center;\n  margin-bottom: 5px;\n}\n.nav-tabs.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-tabs.nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs.nav-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs.nav-justified > .active > a,\n.nav-tabs.nav-justified > .active > a:hover,\n.nav-tabs.nav-justified > .active > a:focus {\n  border: 1px solid #dddddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li > a {\n    border-bottom: 1px solid #dddddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs.nav-justified > .active > a,\n  .nav-tabs.nav-justified > .active > a:hover,\n  .nav-tabs.nav-justified > .active > a:focus {\n    border-bottom-color: #ffffff;\n  }\n}\n.nav-pills > li {\n  float: left;\n}\n.nav-pills > li > a {\n  border-radius: 4px;\n}\n.nav-pills > li + li {\n  margin-left: 2px;\n}\n.nav-pills > li.active > a,\n.nav-pills > li.active > a:hover,\n.nav-pills > li.active > a:focus {\n  color: #ffffff;\n  background-color: #337ab7;\n}\n.nav-stacked > li {\n  float: none;\n}\n.nav-stacked > li + li {\n  margin-top: 2px;\n  margin-left: 0;\n}\n.nav-justified {\n  width: 100%;\n}\n.nav-justified > li {\n  float: none;\n}\n.nav-justified > li > a {\n  text-align: center;\n  margin-bottom: 5px;\n}\n.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs-justified {\n  border-bottom: 0;\n}\n.nav-tabs-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs-justified > .active > a,\n.nav-tabs-justified > .active > a:hover,\n.nav-tabs-justified > .active > a:focus {\n  border: 1px solid #dddddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs-justified > li > a {\n    border-bottom: 1px solid #dddddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs-justified > .active > a,\n  .nav-tabs-justified > .active > a:hover,\n  .nav-tabs-justified > .active > a:focus {\n    border-bottom-color: #ffffff;\n  }\n}\n.tab-content > .tab-pane {\n  display: none;\n  visibility: hidden;\n}\n.tab-content > .active {\n  display: block;\n  visibility: visible;\n}\n.nav-tabs .dropdown-menu {\n  margin-top: -1px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.navbar {\n  position: relative;\n  min-height: 50px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n}\n@media (min-width: 768px) {\n  .navbar {\n    border-radius: 4px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-header {\n    float: left;\n  }\n}\n.navbar-collapse {\n  overflow-x: visible;\n  padding-right: 15px;\n  padding-left: 15px;\n  border-top: 1px solid transparent;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);\n  -webkit-overflow-scrolling: touch;\n}\n.navbar-collapse.in {\n  overflow-y: auto;\n}\n@media (min-width: 768px) {\n  .navbar-collapse {\n    width: auto;\n    border-top: 0;\n    box-shadow: none;\n  }\n  .navbar-collapse.collapse {\n    display: block !important;\n    visibility: visible !important;\n    height: auto !important;\n    padding-bottom: 0;\n    overflow: visible !important;\n  }\n  .navbar-collapse.in {\n    overflow-y: visible;\n  }\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-static-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    padding-left: 0;\n    padding-right: 0;\n  }\n}\n.navbar-fixed-top .navbar-collapse,\n.navbar-fixed-bottom .navbar-collapse {\n  max-height: 340px;\n}\n@media (max-device-width: 480px) and (orientation: landscape) {\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    max-height: 200px;\n  }\n}\n.container > .navbar-header,\n.container-fluid > .navbar-header,\n.container > .navbar-collapse,\n.container-fluid > .navbar-collapse {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n@media (min-width: 768px) {\n  .container > .navbar-header,\n  .container-fluid > .navbar-header,\n  .container > .navbar-collapse,\n  .container-fluid > .navbar-collapse {\n    margin-right: 0;\n    margin-left: 0;\n  }\n}\n.navbar-static-top {\n  z-index: 1000;\n  border-width: 0 0 1px;\n}\n@media (min-width: 768px) {\n  .navbar-static-top {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top,\n.navbar-fixed-bottom {\n  position: fixed;\n  right: 0;\n  left: 0;\n  z-index: 1030;\n}\n@media (min-width: 768px) {\n  .navbar-fixed-top,\n  .navbar-fixed-bottom {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top {\n  top: 0;\n  border-width: 0 0 1px;\n}\n.navbar-fixed-bottom {\n  bottom: 0;\n  margin-bottom: 0;\n  border-width: 1px 0 0;\n}\n.navbar-brand {\n  float: left;\n  padding: 15px 15px;\n  font-size: 18px;\n  line-height: 20px;\n  height: 50px;\n}\n.navbar-brand:hover,\n.navbar-brand:focus {\n  text-decoration: none;\n}\n.navbar-brand > img {\n  display: block;\n}\n@media (min-width: 768px) {\n  .navbar > .container .navbar-brand,\n  .navbar > .container-fluid .navbar-brand {\n    margin-left: -15px;\n  }\n}\n.navbar-toggle {\n  position: relative;\n  float: right;\n  margin-right: 15px;\n  padding: 9px 10px;\n  margin-top: 8px;\n  margin-bottom: 8px;\n  background-color: transparent;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.navbar-toggle:focus {\n  outline: 0;\n}\n.navbar-toggle .icon-bar {\n  display: block;\n  width: 22px;\n  height: 2px;\n  border-radius: 1px;\n}\n.navbar-toggle .icon-bar + .icon-bar {\n  margin-top: 4px;\n}\n@media (min-width: 768px) {\n  .navbar-toggle {\n    display: none;\n  }\n}\n.navbar-nav {\n  margin: 7.5px -15px;\n}\n.navbar-nav > li > a {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  line-height: 20px;\n}\n@media (max-width: 767px) {\n  .navbar-nav .open .dropdown-menu {\n    position: static;\n    float: none;\n    width: auto;\n    margin-top: 0;\n    background-color: transparent;\n    border: 0;\n    box-shadow: none;\n  }\n  .navbar-nav .open .dropdown-menu > li > a,\n  .navbar-nav .open .dropdown-menu .dropdown-header {\n    padding: 5px 15px 5px 25px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a {\n    line-height: 20px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-nav .open .dropdown-menu > li > a:focus {\n    background-image: none;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-nav {\n    float: left;\n    margin: 0;\n  }\n  .navbar-nav > li {\n    float: left;\n  }\n  .navbar-nav > li > a {\n    padding-top: 15px;\n    padding-bottom: 15px;\n  }\n}\n.navbar-form {\n  margin-left: -15px;\n  margin-right: -15px;\n  padding: 10px 15px;\n  border-top: 1px solid transparent;\n  border-bottom: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n@media (min-width: 768px) {\n  .navbar-form .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control-static {\n    display: inline-block;\n  }\n  .navbar-form .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .navbar-form .input-group .input-group-addon,\n  .navbar-form .input-group .input-group-btn,\n  .navbar-form .input-group .form-control {\n    width: auto;\n  }\n  .navbar-form .input-group > .form-control {\n    width: 100%;\n  }\n  .navbar-form .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio,\n  .navbar-form .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio label,\n  .navbar-form .checkbox label {\n    padding-left: 0;\n  }\n  .navbar-form .radio input[type=\"radio\"],\n  .navbar-form .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .navbar-form .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n@media (max-width: 767px) {\n  .navbar-form .form-group {\n    margin-bottom: 5px;\n  }\n  .navbar-form .form-group:last-child {\n    margin-bottom: 0;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-form {\n    width: auto;\n    border: 0;\n    margin-left: 0;\n    margin-right: 0;\n    padding-top: 0;\n    padding-bottom: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n  }\n}\n.navbar-nav > li > .dropdown-menu {\n  margin-top: 0;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {\n  margin-bottom: 0;\n  border-top-right-radius: 4px;\n  border-top-left-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.navbar-btn {\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n.navbar-btn.btn-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.navbar-btn.btn-xs {\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.navbar-text {\n  margin-top: 15px;\n  margin-bottom: 15px;\n}\n@media (min-width: 768px) {\n  .navbar-text {\n    float: left;\n    margin-left: 15px;\n    margin-right: 15px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-left {\n    float: left !important;\n  }\n  .navbar-right {\n    float: right !important;\n    margin-right: -15px;\n  }\n  .navbar-right ~ .navbar-right {\n    margin-right: 0;\n  }\n}\n.navbar-default {\n  background-color: #f8f8f8;\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-brand {\n  color: #777777;\n}\n.navbar-default .navbar-brand:hover,\n.navbar-default .navbar-brand:focus {\n  color: #5e5e5e;\n  background-color: transparent;\n}\n.navbar-default .navbar-text {\n  color: #777777;\n}\n.navbar-default .navbar-nav > li > a {\n  color: #777777;\n}\n.navbar-default .navbar-nav > li > a:hover,\n.navbar-default .navbar-nav > li > a:focus {\n  color: #333333;\n  background-color: transparent;\n}\n.navbar-default .navbar-nav > .active > a,\n.navbar-default .navbar-nav > .active > a:hover,\n.navbar-default .navbar-nav > .active > a:focus {\n  color: #555555;\n  background-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .disabled > a,\n.navbar-default .navbar-nav > .disabled > a:hover,\n.navbar-default .navbar-nav > .disabled > a:focus {\n  color: #cccccc;\n  background-color: transparent;\n}\n.navbar-default .navbar-toggle {\n  border-color: #dddddd;\n}\n.navbar-default .navbar-toggle:hover,\n.navbar-default .navbar-toggle:focus {\n  background-color: #dddddd;\n}\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #888888;\n}\n.navbar-default .navbar-collapse,\n.navbar-default .navbar-form {\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .open > a,\n.navbar-default .navbar-nav > .open > a:hover,\n.navbar-default .navbar-nav > .open > a:focus {\n  background-color: #e7e7e7;\n  color: #555555;\n}\n@media (max-width: 767px) {\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a {\n    color: #777777;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #333333;\n    background-color: transparent;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #555555;\n    background-color: #e7e7e7;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #cccccc;\n    background-color: transparent;\n  }\n}\n.navbar-default .navbar-link {\n  color: #777777;\n}\n.navbar-default .navbar-link:hover {\n  color: #333333;\n}\n.navbar-default .btn-link {\n  color: #777777;\n}\n.navbar-default .btn-link:hover,\n.navbar-default .btn-link:focus {\n  color: #333333;\n}\n.navbar-default .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-default .btn-link:hover,\n.navbar-default .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-default .btn-link:focus {\n  color: #cccccc;\n}\n.navbar-inverse {\n  background-color: #222222;\n  border-color: #080808;\n}\n.navbar-inverse .navbar-brand {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-brand:hover,\n.navbar-inverse .navbar-brand:focus {\n  color: #ffffff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-text {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a:hover,\n.navbar-inverse .navbar-nav > li > a:focus {\n  color: #ffffff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-nav > .active > a,\n.navbar-inverse .navbar-nav > .active > a:hover,\n.navbar-inverse .navbar-nav > .active > a:focus {\n  color: #ffffff;\n  background-color: #080808;\n}\n.navbar-inverse .navbar-nav > .disabled > a,\n.navbar-inverse .navbar-nav > .disabled > a:hover,\n.navbar-inverse .navbar-nav > .disabled > a:focus {\n  color: #444444;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-toggle {\n  border-color: #333333;\n}\n.navbar-inverse .navbar-toggle:hover,\n.navbar-inverse .navbar-toggle:focus {\n  background-color: #333333;\n}\n.navbar-inverse .navbar-toggle .icon-bar {\n  background-color: #ffffff;\n}\n.navbar-inverse .navbar-collapse,\n.navbar-inverse .navbar-form {\n  border-color: #101010;\n}\n.navbar-inverse .navbar-nav > .open > a,\n.navbar-inverse .navbar-nav > .open > a:hover,\n.navbar-inverse .navbar-nav > .open > a:focus {\n  background-color: #080808;\n  color: #ffffff;\n}\n@media (max-width: 767px) {\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {\n    border-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {\n    color: #9d9d9d;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #ffffff;\n    background-color: transparent;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #ffffff;\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #444444;\n    background-color: transparent;\n  }\n}\n.navbar-inverse .navbar-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-link:hover {\n  color: #ffffff;\n}\n.navbar-inverse .btn-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link:focus {\n  color: #ffffff;\n}\n.navbar-inverse .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-inverse .btn-link:focus {\n  color: #444444;\n}\n.breadcrumb {\n  padding: 8px 15px;\n  margin-bottom: 20px;\n  list-style: none;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n}\n.breadcrumb > li {\n  display: inline-block;\n}\n.breadcrumb > li + li:before {\n  content: \"/\\00a0\";\n  padding: 0 5px;\n  color: #cccccc;\n}\n.breadcrumb > .active {\n  color: #777777;\n}\n.pagination {\n  display: inline-block;\n  padding-left: 0;\n  margin: 20px 0;\n  border-radius: 4px;\n}\n.pagination > li {\n  display: inline;\n}\n.pagination > li > a,\n.pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  line-height: 1.428571429;\n  text-decoration: none;\n  color: #337ab7;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  margin-left: -1px;\n}\n.pagination > li:first-child > a,\n.pagination > li:first-child > span {\n  margin-left: 0;\n  border-bottom-left-radius: 4px;\n  border-top-left-radius: 4px;\n}\n.pagination > li:last-child > a,\n.pagination > li:last-child > span {\n  border-bottom-right-radius: 4px;\n  border-top-right-radius: 4px;\n}\n.pagination > li > a:hover,\n.pagination > li > span:hover,\n.pagination > li > a:focus,\n.pagination > li > span:focus {\n  color: #23527c;\n  background-color: #eeeeee;\n  border-color: #dddddd;\n}\n.pagination > .active > a,\n.pagination > .active > span,\n.pagination > .active > a:hover,\n.pagination > .active > span:hover,\n.pagination > .active > a:focus,\n.pagination > .active > span:focus {\n  z-index: 2;\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n  cursor: default;\n}\n.pagination > .disabled > span,\n.pagination > .disabled > span:hover,\n.pagination > .disabled > span:focus,\n.pagination > .disabled > a,\n.pagination > .disabled > a:hover,\n.pagination > .disabled > a:focus {\n  color: #777777;\n  background-color: #ffffff;\n  border-color: #dddddd;\n  cursor: not-allowed;\n}\n.pagination-lg > li > a,\n.pagination-lg > li > span {\n  padding: 10px 16px;\n  font-size: 18px;\n}\n.pagination-lg > li:first-child > a,\n.pagination-lg > li:first-child > span {\n  border-bottom-left-radius: 6px;\n  border-top-left-radius: 6px;\n}\n.pagination-lg > li:last-child > a,\n.pagination-lg > li:last-child > span {\n  border-bottom-right-radius: 6px;\n  border-top-right-radius: 6px;\n}\n.pagination-sm > li > a,\n.pagination-sm > li > span {\n  padding: 5px 10px;\n  font-size: 12px;\n}\n.pagination-sm > li:first-child > a,\n.pagination-sm > li:first-child > span {\n  border-bottom-left-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.pagination-sm > li:last-child > a,\n.pagination-sm > li:last-child > span {\n  border-bottom-right-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.pager {\n  padding-left: 0;\n  margin: 20px 0;\n  list-style: none;\n  text-align: center;\n}\n.pager li {\n  display: inline;\n}\n.pager li > a,\n.pager li > span {\n  display: inline-block;\n  padding: 5px 14px;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 15px;\n}\n.pager li > a:hover,\n.pager li > a:focus {\n  text-decoration: none;\n  background-color: #eeeeee;\n}\n.pager .next > a,\n.pager .next > span {\n  float: right;\n}\n.pager .previous > a,\n.pager .previous > span {\n  float: left;\n}\n.pager .disabled > a,\n.pager .disabled > a:hover,\n.pager .disabled > a:focus,\n.pager .disabled > span {\n  color: #777777;\n  background-color: #ffffff;\n  cursor: not-allowed;\n}\n.label {\n  display: inline;\n  padding: .2em .6em .3em;\n  font-size: 75%;\n  font-weight: bold;\n  line-height: 1;\n  color: #ffffff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: .25em;\n}\na.label:hover,\na.label:focus {\n  color: #ffffff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.label:empty {\n  display: none;\n}\n.btn .label {\n  position: relative;\n  top: -1px;\n}\n.label-default {\n  background-color: #777777;\n}\n.label-default[href]:hover,\n.label-default[href]:focus {\n  background-color: #5e5e5e;\n}\n.label-primary {\n  background-color: #337ab7;\n}\n.label-primary[href]:hover,\n.label-primary[href]:focus {\n  background-color: #286090;\n}\n.label-success {\n  background-color: #5cb85c;\n}\n.label-success[href]:hover,\n.label-success[href]:focus {\n  background-color: #449d44;\n}\n.label-info {\n  background-color: #5bc0de;\n}\n.label-info[href]:hover,\n.label-info[href]:focus {\n  background-color: #31b0d5;\n}\n.label-warning {\n  background-color: #f0ad4e;\n}\n.label-warning[href]:hover,\n.label-warning[href]:focus {\n  background-color: #ec971f;\n}\n.label-danger {\n  background-color: #d9534f;\n}\n.label-danger[href]:hover,\n.label-danger[href]:focus {\n  background-color: #c9302c;\n}\n.badge {\n  display: inline-block;\n  min-width: 10px;\n  padding: 3px 7px;\n  font-size: 12px;\n  font-weight: bold;\n  color: #ffffff;\n  line-height: 1;\n  vertical-align: baseline;\n  white-space: nowrap;\n  text-align: center;\n  background-color: #777777;\n  border-radius: 10px;\n}\n.badge:empty {\n  display: none;\n}\n.btn .badge {\n  position: relative;\n  top: -1px;\n}\n.btn-xs .badge {\n  top: 0;\n  padding: 1px 5px;\n}\na.badge:hover,\na.badge:focus {\n  color: #ffffff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.list-group-item.active > .badge,\n.nav-pills > .active > a > .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.list-group-item > .badge {\n  float: right;\n}\n.list-group-item > .badge + .badge {\n  margin-right: 5px;\n}\n.nav-pills > li > a > .badge {\n  margin-left: 3px;\n}\n.jumbotron {\n  padding: 30px 15px;\n  margin-bottom: 30px;\n  color: inherit;\n  background-color: #eeeeee;\n}\n.jumbotron h1,\n.jumbotron .h1 {\n  color: inherit;\n}\n.jumbotron p {\n  margin-bottom: 15px;\n  font-size: 21px;\n  font-weight: 200;\n}\n.jumbotron > hr {\n  border-top-color: #d5d5d5;\n}\n.container .jumbotron,\n.container-fluid .jumbotron {\n  border-radius: 6px;\n}\n.jumbotron .container {\n  max-width: 100%;\n}\n@media screen and (min-width: 768px) {\n  .jumbotron {\n    padding: 48px 0;\n  }\n  .container .jumbotron,\n  .container-fluid .jumbotron {\n    padding-left: 60px;\n    padding-right: 60px;\n  }\n  .jumbotron h1,\n  .jumbotron .h1 {\n    font-size: 63px;\n  }\n}\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.428571429;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 4px;\n  -webkit-transition: border 0.2s ease-in-out;\n  -o-transition: border 0.2s ease-in-out;\n  transition: border 0.2s ease-in-out;\n}\n.thumbnail > img,\n.thumbnail a > img {\n  margin-left: auto;\n  margin-right: auto;\n}\na.thumbnail:hover,\na.thumbnail:focus,\na.thumbnail.active {\n  border-color: #337ab7;\n}\n.thumbnail .caption {\n  padding: 9px;\n  color: #333333;\n}\n.alert {\n  padding: 15px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.alert h4 {\n  margin-top: 0;\n  color: inherit;\n}\n.alert .alert-link {\n  font-weight: bold;\n}\n.alert > p,\n.alert > ul {\n  margin-bottom: 0;\n}\n.alert > p + p {\n  margin-top: 5px;\n}\n.alert-dismissable,\n.alert-dismissible {\n  padding-right: 35px;\n}\n.alert-dismissable .close,\n.alert-dismissible .close {\n  position: relative;\n  top: -2px;\n  right: -21px;\n  color: inherit;\n}\n.alert-success {\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n  color: #3c763d;\n}\n.alert-success hr {\n  border-top-color: #c9e2b3;\n}\n.alert-success .alert-link {\n  color: #2b542c;\n}\n.alert-info {\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n  color: #31708f;\n}\n.alert-info hr {\n  border-top-color: #a6e1ec;\n}\n.alert-info .alert-link {\n  color: #245269;\n}\n.alert-warning {\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n  color: #8a6d3b;\n}\n.alert-warning hr {\n  border-top-color: #f7e1b5;\n}\n.alert-warning .alert-link {\n  color: #66512c;\n}\n.alert-danger {\n  background-color: #f2dede;\n  border-color: #ebccd1;\n  color: #a94442;\n}\n.alert-danger hr {\n  border-top-color: #e4b9c0;\n}\n.alert-danger .alert-link {\n  color: #843534;\n}\n@-webkit-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n@keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n.progress {\n  overflow: hidden;\n  height: 20px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.progress-bar {\n  float: left;\n  width: 0%;\n  height: 100%;\n  font-size: 12px;\n  line-height: 20px;\n  color: #ffffff;\n  text-align: center;\n  background-color: #337ab7;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  -webkit-transition: width 0.6s ease;\n  -o-transition: width 0.6s ease;\n  transition: width 0.6s ease;\n}\n.progress-striped .progress-bar,\n.progress-bar-striped {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-size: 40px 40px;\n}\n.progress.active .progress-bar,\n.progress-bar.active {\n  -webkit-animation: progress-bar-stripes 2s linear infinite;\n  -o-animation: progress-bar-stripes 2s linear infinite;\n  animation: progress-bar-stripes 2s linear infinite;\n}\n.progress-bar-success {\n  background-color: #5cb85c;\n}\n.progress-striped .progress-bar-success {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-info {\n  background-color: #5bc0de;\n}\n.progress-striped .progress-bar-info {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-warning {\n  background-color: #f0ad4e;\n}\n.progress-striped .progress-bar-warning {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-danger {\n  background-color: #d9534f;\n}\n.progress-striped .progress-bar-danger {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.media {\n  margin-top: 15px;\n}\n.media:first-child {\n  margin-top: 0;\n}\n.media,\n.media-body {\n  zoom: 1;\n  overflow: hidden;\n}\n.media-body {\n  width: 10000px;\n}\n.media-object {\n  display: block;\n}\n.media-right,\n.media > .pull-right {\n  padding-left: 10px;\n}\n.media-left,\n.media > .pull-left {\n  padding-right: 10px;\n}\n.media-left,\n.media-right,\n.media-body {\n  display: table-cell;\n  vertical-align: top;\n}\n.media-middle {\n  vertical-align: middle;\n}\n.media-bottom {\n  vertical-align: bottom;\n}\n.media-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.media-list {\n  padding-left: 0;\n  list-style: none;\n}\n.list-group {\n  margin-bottom: 20px;\n  padding-left: 0;\n}\n.list-group-item {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n  margin-bottom: -1px;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n}\n.list-group-item:first-child {\n  border-top-right-radius: 4px;\n  border-top-left-radius: 4px;\n}\n.list-group-item:last-child {\n  margin-bottom: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\na.list-group-item {\n  color: #555555;\n}\na.list-group-item .list-group-item-heading {\n  color: #333333;\n}\na.list-group-item:hover,\na.list-group-item:focus {\n  text-decoration: none;\n  color: #555555;\n  background-color: #f5f5f5;\n}\n.list-group-item.disabled,\n.list-group-item.disabled:hover,\n.list-group-item.disabled:focus {\n  background-color: #eeeeee;\n  color: #777777;\n  cursor: not-allowed;\n}\n.list-group-item.disabled .list-group-item-heading,\n.list-group-item.disabled:hover .list-group-item-heading,\n.list-group-item.disabled:focus .list-group-item-heading {\n  color: inherit;\n}\n.list-group-item.disabled .list-group-item-text,\n.list-group-item.disabled:hover .list-group-item-text,\n.list-group-item.disabled:focus .list-group-item-text {\n  color: #777777;\n}\n.list-group-item.active,\n.list-group-item.active:hover,\n.list-group-item.active:focus {\n  z-index: 2;\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.list-group-item.active .list-group-item-heading,\n.list-group-item.active:hover .list-group-item-heading,\n.list-group-item.active:focus .list-group-item-heading,\n.list-group-item.active .list-group-item-heading > small,\n.list-group-item.active:hover .list-group-item-heading > small,\n.list-group-item.active:focus .list-group-item-heading > small,\n.list-group-item.active .list-group-item-heading > .small,\n.list-group-item.active:hover .list-group-item-heading > .small,\n.list-group-item.active:focus .list-group-item-heading > .small {\n  color: inherit;\n}\n.list-group-item.active .list-group-item-text,\n.list-group-item.active:hover .list-group-item-text,\n.list-group-item.active:focus .list-group-item-text {\n  color: #c7ddef;\n}\n.list-group-item-success {\n  color: #3c763d;\n  background-color: #dff0d8;\n}\na.list-group-item-success {\n  color: #3c763d;\n}\na.list-group-item-success .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-success:hover,\na.list-group-item-success:focus {\n  color: #3c763d;\n  background-color: #d0e9c6;\n}\na.list-group-item-success.active,\na.list-group-item-success.active:hover,\na.list-group-item-success.active:focus {\n  color: #fff;\n  background-color: #3c763d;\n  border-color: #3c763d;\n}\n.list-group-item-info {\n  color: #31708f;\n  background-color: #d9edf7;\n}\na.list-group-item-info {\n  color: #31708f;\n}\na.list-group-item-info .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-info:hover,\na.list-group-item-info:focus {\n  color: #31708f;\n  background-color: #c4e3f3;\n}\na.list-group-item-info.active,\na.list-group-item-info.active:hover,\na.list-group-item-info.active:focus {\n  color: #fff;\n  background-color: #31708f;\n  border-color: #31708f;\n}\n.list-group-item-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n}\na.list-group-item-warning {\n  color: #8a6d3b;\n}\na.list-group-item-warning .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-warning:hover,\na.list-group-item-warning:focus {\n  color: #8a6d3b;\n  background-color: #faf2cc;\n}\na.list-group-item-warning.active,\na.list-group-item-warning.active:hover,\na.list-group-item-warning.active:focus {\n  color: #fff;\n  background-color: #8a6d3b;\n  border-color: #8a6d3b;\n}\n.list-group-item-danger {\n  color: #a94442;\n  background-color: #f2dede;\n}\na.list-group-item-danger {\n  color: #a94442;\n}\na.list-group-item-danger .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-danger:hover,\na.list-group-item-danger:focus {\n  color: #a94442;\n  background-color: #ebcccc;\n}\na.list-group-item-danger.active,\na.list-group-item-danger.active:hover,\na.list-group-item-danger.active:focus {\n  color: #fff;\n  background-color: #a94442;\n  border-color: #a94442;\n}\n.list-group-item-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.list-group-item-text {\n  margin-bottom: 0;\n  line-height: 1.3;\n}\n.panel {\n  margin-bottom: 20px;\n  background-color: #ffffff;\n  border: 1px solid transparent;\n  border-radius: 4px;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n}\n.panel-body {\n  padding: 15px;\n}\n.panel-heading {\n  padding: 10px 15px;\n  border-bottom: 1px solid transparent;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel-heading > .dropdown .dropdown-toggle {\n  color: inherit;\n}\n.panel-title {\n  margin-top: 0;\n  margin-bottom: 0;\n  font-size: 16px;\n  color: inherit;\n}\n.panel-title > a,\n.panel-title > small,\n.panel-title > .small,\n.panel-title > small > a,\n.panel-title > .small > a {\n  color: inherit;\n}\n.panel-footer {\n  padding: 10px 15px;\n  background-color: #f5f5f5;\n  border-top: 1px solid #dddddd;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .list-group,\n.panel > .panel-collapse > .list-group {\n  margin-bottom: 0;\n}\n.panel > .list-group .list-group-item,\n.panel > .panel-collapse > .list-group .list-group-item {\n  border-width: 1px 0;\n  border-radius: 0;\n}\n.panel > .list-group:first-child .list-group-item:first-child,\n.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {\n  border-top: 0;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel > .list-group:last-child .list-group-item:last-child,\n.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {\n  border-bottom: 0;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel-heading + .list-group .list-group-item:first-child {\n  border-top-width: 0;\n}\n.list-group + .panel-footer {\n  border-top-width: 0;\n}\n.panel > .table,\n.panel > .table-responsive > .table,\n.panel > .panel-collapse > .table {\n  margin-bottom: 0;\n}\n.panel > .table caption,\n.panel > .table-responsive > .table caption,\n.panel > .panel-collapse > .table caption {\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.panel > .table:first-child,\n.panel > .table-responsive:first-child > .table:first-child {\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {\n  border-top-left-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {\n  border-top-right-radius: 3px;\n}\n.panel > .table:last-child,\n.panel > .table-responsive:last-child > .table:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {\n  border-bottom-right-radius: 3px;\n}\n.panel > .panel-body + .table,\n.panel > .panel-body + .table-responsive,\n.panel > .table + .panel-body,\n.panel > .table-responsive + .panel-body {\n  border-top: 1px solid #dddddd;\n}\n.panel > .table > tbody:first-child > tr:first-child th,\n.panel > .table > tbody:first-child > tr:first-child td {\n  border-top: 0;\n}\n.panel > .table-bordered,\n.panel > .table-responsive > .table-bordered {\n  border: 0;\n}\n.panel > .table-bordered > thead > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:first-child,\n.panel > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-bordered > thead > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:first-child,\n.panel > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-bordered > tfoot > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n  border-left: 0;\n}\n.panel > .table-bordered > thead > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:last-child,\n.panel > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-bordered > thead > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:last-child,\n.panel > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-bordered > tfoot > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n  border-right: 0;\n}\n.panel > .table-bordered > thead > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > td,\n.panel > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-bordered > thead > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > th,\n.panel > .table-bordered > tbody > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > th {\n  border-bottom: 0;\n}\n.panel > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-bordered > tfoot > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n  border-bottom: 0;\n}\n.panel > .table-responsive {\n  border: 0;\n  margin-bottom: 0;\n}\n.panel-group {\n  margin-bottom: 20px;\n}\n.panel-group .panel {\n  margin-bottom: 0;\n  border-radius: 4px;\n}\n.panel-group .panel + .panel {\n  margin-top: 5px;\n}\n.panel-group .panel-heading {\n  border-bottom: 0;\n}\n.panel-group .panel-heading + .panel-collapse > .panel-body,\n.panel-group .panel-heading + .panel-collapse > .list-group {\n  border-top: 1px solid #dddddd;\n}\n.panel-group .panel-footer {\n  border-top: 0;\n}\n.panel-group .panel-footer + .panel-collapse .panel-body {\n  border-bottom: 1px solid #dddddd;\n}\n.panel-default {\n  border-color: #dddddd;\n}\n.panel-default > .panel-heading {\n  color: #333333;\n  background-color: #f5f5f5;\n  border-color: #dddddd;\n}\n.panel-default > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #dddddd;\n}\n.panel-default > .panel-heading .badge {\n  color: #f5f5f5;\n  background-color: #333333;\n}\n.panel-default > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #dddddd;\n}\n.panel-primary {\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading {\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #337ab7;\n}\n.panel-primary > .panel-heading .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.panel-primary > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #337ab7;\n}\n.panel-success {\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #d6e9c6;\n}\n.panel-success > .panel-heading .badge {\n  color: #dff0d8;\n  background-color: #3c763d;\n}\n.panel-success > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #d6e9c6;\n}\n.panel-info {\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #bce8f1;\n}\n.panel-info > .panel-heading .badge {\n  color: #d9edf7;\n  background-color: #31708f;\n}\n.panel-info > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #bce8f1;\n}\n.panel-warning {\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #faebcc;\n}\n.panel-warning > .panel-heading .badge {\n  color: #fcf8e3;\n  background-color: #8a6d3b;\n}\n.panel-warning > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #faebcc;\n}\n.panel-danger {\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ebccd1;\n}\n.panel-danger > .panel-heading .badge {\n  color: #f2dede;\n  background-color: #a94442;\n}\n.panel-danger > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ebccd1;\n}\n.well {\n  min-height: 20px;\n  padding: 19px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n}\n.well blockquote {\n  border-color: #ddd;\n  border-color: rgba(0, 0, 0, 0.15);\n}\n.well-lg {\n  padding: 24px;\n  border-radius: 6px;\n}\n.well-sm {\n  padding: 9px;\n  border-radius: 3px;\n}\n.close {\n  float: right;\n  font-size: 21px;\n  font-weight: bold;\n  line-height: 1;\n  color: #000000;\n  text-shadow: 0 1px 0 #ffffff;\n  opacity: 0.2;\n  filter: alpha(opacity=20);\n}\n.close:hover,\n.close:focus {\n  color: #000000;\n  text-decoration: none;\n  cursor: pointer;\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n}\nbutton.close {\n  padding: 0;\n  cursor: pointer;\n  background: transparent;\n  border: 0;\n  -webkit-appearance: none;\n}\n.modal-open {\n  overflow: hidden;\n}\n.modal {\n  display: none;\n  overflow: hidden;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  -webkit-overflow-scrolling: touch;\n  outline: 0;\n}\n.modal.fade .modal-dialog {\n  -webkit-transform: translate(0, -25%);\n  -ms-transform: translate(0, -25%);\n  -o-transform: translate(0, -25%);\n  transform: translate(0, -25%);\n  -webkit-transition: -webkit-transform 0.3s ease-out;\n  -moz-transition: -moz-transform 0.3s ease-out;\n  -o-transition: -o-transform 0.3s ease-out;\n  transition: transform 0.3s ease-out;\n}\n.modal.in .modal-dialog {\n  -webkit-transform: translate(0, 0);\n  -ms-transform: translate(0, 0);\n  -o-transform: translate(0, 0);\n  transform: translate(0, 0);\n}\n.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal-dialog {\n  position: relative;\n  width: auto;\n  margin: 10px;\n}\n.modal-content {\n  position: relative;\n  background-color: #ffffff;\n  border: 1px solid #999999;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  background-clip: padding-box;\n  outline: 0;\n}\n.modal-backdrop {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  background-color: #000000;\n}\n.modal-backdrop.fade {\n  opacity: 0;\n  filter: alpha(opacity=0);\n}\n.modal-backdrop.in {\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n}\n.modal-header {\n  padding: 15px;\n  border-bottom: 1px solid #e5e5e5;\n  min-height: 16.428571429px;\n}\n.modal-header .close {\n  margin-top: -2px;\n}\n.modal-title {\n  margin: 0;\n  line-height: 1.428571429;\n}\n.modal-body {\n  position: relative;\n  padding: 15px;\n}\n.modal-footer {\n  padding: 15px;\n  text-align: right;\n  border-top: 1px solid #e5e5e5;\n}\n.modal-footer .btn + .btn {\n  margin-left: 5px;\n  margin-bottom: 0;\n}\n.modal-footer .btn-group .btn + .btn {\n  margin-left: -1px;\n}\n.modal-footer .btn-block + .btn-block {\n  margin-left: 0;\n}\n.modal-scrollbar-measure {\n  position: absolute;\n  top: -9999px;\n  width: 50px;\n  height: 50px;\n  overflow: scroll;\n}\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto;\n  }\n  .modal-content {\n    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n  }\n  .modal-sm {\n    width: 300px;\n  }\n}\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px;\n  }\n}\n.tooltip {\n  position: absolute;\n  z-index: 1070;\n  display: block;\n  visibility: visible;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 1.4;\n  opacity: 0;\n  filter: alpha(opacity=0);\n}\n.tooltip.in {\n  opacity: 0.9;\n  filter: alpha(opacity=90);\n}\n.tooltip.top {\n  margin-top: -3px;\n  padding: 5px 0;\n}\n.tooltip.right {\n  margin-left: 3px;\n  padding: 0 5px;\n}\n.tooltip.bottom {\n  margin-top: 3px;\n  padding: 5px 0;\n}\n.tooltip.left {\n  margin-left: -3px;\n  padding: 0 5px;\n}\n.tooltip-inner {\n  max-width: 200px;\n  padding: 3px 8px;\n  color: #ffffff;\n  text-align: center;\n  text-decoration: none;\n  background-color: #000000;\n  border-radius: 4px;\n}\n.tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.tooltip.top .tooltip-arrow {\n  bottom: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.top-left .tooltip-arrow {\n  bottom: 0;\n  right: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.top-right .tooltip-arrow {\n  bottom: 0;\n  left: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.right .tooltip-arrow {\n  top: 50%;\n  left: 0;\n  margin-top: -5px;\n  border-width: 5px 5px 5px 0;\n  border-right-color: #000000;\n}\n.tooltip.left .tooltip-arrow {\n  top: 50%;\n  right: 0;\n  margin-top: -5px;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #000000;\n}\n.tooltip.bottom .tooltip-arrow {\n  top: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.tooltip.bottom-left .tooltip-arrow {\n  top: 0;\n  right: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.tooltip.bottom-right .tooltip-arrow {\n  top: 0;\n  left: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.popover {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1060;\n  display: none;\n  max-width: 276px;\n  padding: 1px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1.428571429;\n  text-align: left;\n  background-color: #ffffff;\n  background-clip: padding-box;\n  border: 1px solid #cccccc;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  white-space: normal;\n}\n.popover.top {\n  margin-top: -10px;\n}\n.popover.right {\n  margin-left: 10px;\n}\n.popover.bottom {\n  margin-top: 10px;\n}\n.popover.left {\n  margin-left: -10px;\n}\n.popover-title {\n  margin: 0;\n  padding: 8px 14px;\n  font-size: 14px;\n  background-color: #f7f7f7;\n  border-bottom: 1px solid #ebebeb;\n  border-radius: 5px 5px 0 0;\n}\n.popover-content {\n  padding: 9px 14px;\n}\n.popover > .arrow,\n.popover > .arrow:after {\n  position: absolute;\n  display: block;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.popover > .arrow {\n  border-width: 11px;\n}\n.popover > .arrow:after {\n  border-width: 10px;\n  content: \"\";\n}\n.popover.top > .arrow {\n  left: 50%;\n  margin-left: -11px;\n  border-bottom-width: 0;\n  border-top-color: #999999;\n  border-top-color: rgba(0, 0, 0, 0.25);\n  bottom: -11px;\n}\n.popover.top > .arrow:after {\n  content: \" \";\n  bottom: 1px;\n  margin-left: -10px;\n  border-bottom-width: 0;\n  border-top-color: #ffffff;\n}\n.popover.right > .arrow {\n  top: 50%;\n  left: -11px;\n  margin-top: -11px;\n  border-left-width: 0;\n  border-right-color: #999999;\n  border-right-color: rgba(0, 0, 0, 0.25);\n}\n.popover.right > .arrow:after {\n  content: \" \";\n  left: 1px;\n  bottom: -10px;\n  border-left-width: 0;\n  border-right-color: #ffffff;\n}\n.popover.bottom > .arrow {\n  left: 50%;\n  margin-left: -11px;\n  border-top-width: 0;\n  border-bottom-color: #999999;\n  border-bottom-color: rgba(0, 0, 0, 0.25);\n  top: -11px;\n}\n.popover.bottom > .arrow:after {\n  content: \" \";\n  top: 1px;\n  margin-left: -10px;\n  border-top-width: 0;\n  border-bottom-color: #ffffff;\n}\n.popover.left > .arrow {\n  top: 50%;\n  right: -11px;\n  margin-top: -11px;\n  border-right-width: 0;\n  border-left-color: #999999;\n  border-left-color: rgba(0, 0, 0, 0.25);\n}\n.popover.left > .arrow:after {\n  content: \" \";\n  right: 1px;\n  border-right-width: 0;\n  border-left-color: #ffffff;\n  bottom: -10px;\n}\n.carousel {\n  position: relative;\n}\n.carousel-inner {\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n}\n.carousel-inner > .item {\n  display: none;\n  position: relative;\n  -webkit-transition: 0.6s ease-in-out left;\n  -o-transition: 0.6s ease-in-out left;\n  transition: 0.6s ease-in-out left;\n}\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  line-height: 1;\n}\n@media all and (transform-3d), (-webkit-transform-3d) {\n  .carousel-inner > .item {\n    -webkit-transition: -webkit-transform 0.6s ease-in-out;\n    -moz-transition: -moz-transform 0.6s ease-in-out;\n    -o-transition: -o-transform 0.6s ease-in-out;\n    transition: transform 0.6s ease-in-out;\n    -webkit-backface-visibility: hidden;\n    -moz-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -webkit-perspective: 1000;\n    -moz-perspective: 1000;\n    perspective: 1000;\n  }\n  .carousel-inner > .item.next,\n  .carousel-inner > .item.active.right {\n    -webkit-transform: translate3d(100%, 0, 0);\n    transform: translate3d(100%, 0, 0);\n    left: 0;\n  }\n  .carousel-inner > .item.prev,\n  .carousel-inner > .item.active.left {\n    -webkit-transform: translate3d(-100%, 0, 0);\n    transform: translate3d(-100%, 0, 0);\n    left: 0;\n  }\n  .carousel-inner > .item.next.left,\n  .carousel-inner > .item.prev.right,\n  .carousel-inner > .item.active {\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0);\n    left: 0;\n  }\n}\n.carousel-inner > .active,\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  display: block;\n}\n.carousel-inner > .active {\n  left: 0;\n}\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  position: absolute;\n  top: 0;\n  width: 100%;\n}\n.carousel-inner > .next {\n  left: 100%;\n}\n.carousel-inner > .prev {\n  left: -100%;\n}\n.carousel-inner > .next.left,\n.carousel-inner > .prev.right {\n  left: 0;\n}\n.carousel-inner > .active.left {\n  left: -100%;\n}\n.carousel-inner > .active.right {\n  left: 100%;\n}\n.carousel-control {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  width: 15%;\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n  font-size: 20px;\n  color: #ffffff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n}\n.carousel-control.left {\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);\n}\n.carousel-control.right {\n  left: auto;\n  right: 0;\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);\n}\n.carousel-control:hover,\n.carousel-control:focus {\n  outline: 0;\n  color: #ffffff;\n  text-decoration: none;\n  opacity: 0.9;\n  filter: alpha(opacity=90);\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-left,\n.carousel-control .glyphicon-chevron-right {\n  position: absolute;\n  top: 50%;\n  z-index: 5;\n  display: inline-block;\n}\n.carousel-control .icon-prev,\n.carousel-control .glyphicon-chevron-left {\n  left: 50%;\n  margin-left: -10px;\n}\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-right {\n  right: 50%;\n  margin-right: -10px;\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next {\n  width: 20px;\n  height: 20px;\n  margin-top: -10px;\n  line-height: 1;\n  font-family: serif;\n}\n.carousel-control .icon-prev:before {\n  content: '\\2039';\n}\n.carousel-control .icon-next:before {\n  content: '\\203a';\n}\n.carousel-indicators {\n  position: absolute;\n  bottom: 10px;\n  left: 50%;\n  z-index: 15;\n  width: 60%;\n  margin-left: -30%;\n  padding-left: 0;\n  list-style: none;\n  text-align: center;\n}\n.carousel-indicators li {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n  text-indent: -999px;\n  border: 1px solid #ffffff;\n  border-radius: 10px;\n  cursor: pointer;\n  background-color: #000 \\9;\n  background-color: rgba(0, 0, 0, 0);\n}\n.carousel-indicators .active {\n  margin: 0;\n  width: 12px;\n  height: 12px;\n  background-color: #ffffff;\n}\n.carousel-caption {\n  position: absolute;\n  left: 15%;\n  right: 15%;\n  bottom: 20px;\n  z-index: 10;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  color: #ffffff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n}\n.carousel-caption .btn {\n  text-shadow: none;\n}\n@media screen and (min-width: 768px) {\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-prev,\n  .carousel-control .icon-next {\n    width: 30px;\n    height: 30px;\n    margin-top: -15px;\n    font-size: 30px;\n  }\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .icon-prev {\n    margin-left: -15px;\n  }\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-next {\n    margin-right: -15px;\n  }\n  .carousel-caption {\n    left: 20%;\n    right: 20%;\n    padding-bottom: 30px;\n  }\n  .carousel-indicators {\n    bottom: 20px;\n  }\n}\n.clearfix:before,\n.clearfix:after,\n.dl-horizontal dd:before,\n.dl-horizontal dd:after,\n.container:before,\n.container:after,\n.container-fluid:before,\n.container-fluid:after,\n.row:before,\n.row:after,\n.form-horizontal .form-group:before,\n.form-horizontal .form-group:after,\n.btn-toolbar:before,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:before,\n.btn-group-vertical > .btn-group:after,\n.nav:before,\n.nav:after,\n.navbar:before,\n.navbar:after,\n.navbar-header:before,\n.navbar-header:after,\n.navbar-collapse:before,\n.navbar-collapse:after,\n.pager:before,\n.pager:after,\n.panel-body:before,\n.panel-body:after,\n.modal-footer:before,\n.modal-footer:after {\n  content: \" \";\n  display: table;\n}\n.clearfix:after,\n.dl-horizontal dd:after,\n.container:after,\n.container-fluid:after,\n.row:after,\n.form-horizontal .form-group:after,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:after,\n.nav:after,\n.navbar:after,\n.navbar-header:after,\n.navbar-collapse:after,\n.pager:after,\n.panel-body:after,\n.modal-footer:after {\n  clear: both;\n}\n.center-block {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n.pull-right {\n  float: right !important;\n}\n.pull-left {\n  float: left !important;\n}\n.hide {\n  display: none !important;\n}\n.show {\n  display: block !important;\n}\n.invisible {\n  visibility: hidden;\n}\n.text-hide {\n  font: 0/0 a;\n  color: transparent;\n  text-shadow: none;\n  background-color: transparent;\n  border: 0;\n}\n.hidden {\n  display: none !important;\n  visibility: hidden !important;\n}\n.affix {\n  position: fixed;\n}\n@-ms-viewport {\n  width: device-width;\n}\n.visible-xs,\n.visible-sm,\n.visible-md,\n.visible-lg {\n  display: none !important;\n}\n.visible-xs-block,\n.visible-xs-inline,\n.visible-xs-inline-block,\n.visible-sm-block,\n.visible-sm-inline,\n.visible-sm-inline-block,\n.visible-md-block,\n.visible-md-inline,\n.visible-md-inline-block,\n.visible-lg-block,\n.visible-lg-inline,\n.visible-lg-inline-block {\n  display: none !important;\n}\n@media (max-width: 767px) {\n  .visible-xs {\n    display: block !important;\n  }\n  table.visible-xs {\n    display: table;\n  }\n  tr.visible-xs {\n    display: table-row !important;\n  }\n  th.visible-xs,\n  td.visible-xs {\n    display: table-cell !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-block {\n    display: block !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline {\n    display: inline !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm {\n    display: block !important;\n  }\n  table.visible-sm {\n    display: table;\n  }\n  tr.visible-sm {\n    display: table-row !important;\n  }\n  th.visible-sm,\n  td.visible-sm {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-block {\n    display: block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md {\n    display: block !important;\n  }\n  table.visible-md {\n    display: table;\n  }\n  tr.visible-md {\n    display: table-row !important;\n  }\n  th.visible-md,\n  td.visible-md {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-block {\n    display: block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg {\n    display: block !important;\n  }\n  table.visible-lg {\n    display: table;\n  }\n  tr.visible-lg {\n    display: table-row !important;\n  }\n  th.visible-lg,\n  td.visible-lg {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-block {\n    display: block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (max-width: 767px) {\n  .hidden-xs {\n    display: none !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important;\n  }\n}\n@media (min-width: 1200px) {\n  .hidden-lg {\n    display: none !important;\n  }\n}\n.visible-print {\n  display: none !important;\n}\n@media print {\n  .visible-print {\n    display: block !important;\n  }\n  table.visible-print {\n    display: table;\n  }\n  tr.visible-print {\n    display: table-row !important;\n  }\n  th.visible-print,\n  td.visible-print {\n    display: table-cell !important;\n  }\n}\n.visible-print-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-block {\n    display: block !important;\n  }\n}\n.visible-print-inline {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline {\n    display: inline !important;\n  }\n}\n.visible-print-inline-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline-block {\n    display: inline-block !important;\n  }\n}\n@media print {\n  .hidden-print {\n    display: none !important;\n  }\n}\n";
 
 /***/ },
 /* 8 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: collapse.js v3.3.2
-	 * http://getbootstrap.com/javascript/#collapse
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // COLLAPSE PUBLIC CLASS DEFINITION
-	  // ================================
-
-	  var Collapse = function (element, options) {
-	    this.$element      = $(element)
-	    this.options       = $.extend({}, Collapse.DEFAULTS, options)
-	    this.$trigger      = $(this.options.trigger).filter('[href="#' + element.id + '"], [data-target="#' + element.id + '"]')
-	    this.transitioning = null
-
-	    if (this.options.parent) {
-	      this.$parent = this.getParent()
-	    } else {
-	      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
-	    }
-
-	    if (this.options.toggle) this.toggle()
-	  }
-
-	  Collapse.VERSION  = '3.3.2'
-
-	  Collapse.TRANSITION_DURATION = 350
-
-	  Collapse.DEFAULTS = {
-	    toggle: true,
-	    trigger: '[data-toggle="collapse"]'
-	  }
-
-	  Collapse.prototype.dimension = function () {
-	    var hasWidth = this.$element.hasClass('width')
-	    return hasWidth ? 'width' : 'height'
-	  }
-
-	  Collapse.prototype.show = function () {
-	    if (this.transitioning || this.$element.hasClass('in')) return
-
-	    var activesData
-	    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
-
-	    if (actives && actives.length) {
-	      activesData = actives.data('bs.collapse')
-	      if (activesData && activesData.transitioning) return
-	    }
-
-	    var startEvent = $.Event('show.bs.collapse')
-	    this.$element.trigger(startEvent)
-	    if (startEvent.isDefaultPrevented()) return
-
-	    if (actives && actives.length) {
-	      Plugin.call(actives, 'hide')
-	      activesData || actives.data('bs.collapse', null)
-	    }
-
-	    var dimension = this.dimension()
-
-	    this.$element
-	      .removeClass('collapse')
-	      .addClass('collapsing')[dimension](0)
-	      .attr('aria-expanded', true)
-
-	    this.$trigger
-	      .removeClass('collapsed')
-	      .attr('aria-expanded', true)
-
-	    this.transitioning = 1
-
-	    var complete = function () {
-	      this.$element
-	        .removeClass('collapsing')
-	        .addClass('collapse in')[dimension]('')
-	      this.transitioning = 0
-	      this.$element
-	        .trigger('shown.bs.collapse')
-	    }
-
-	    if (!$.support.transition) return complete.call(this)
-
-	    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
-
-	    this.$element
-	      .one('bsTransitionEnd', $.proxy(complete, this))
-	      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
-	  }
-
-	  Collapse.prototype.hide = function () {
-	    if (this.transitioning || !this.$element.hasClass('in')) return
-
-	    var startEvent = $.Event('hide.bs.collapse')
-	    this.$element.trigger(startEvent)
-	    if (startEvent.isDefaultPrevented()) return
-
-	    var dimension = this.dimension()
-
-	    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
-
-	    this.$element
-	      .addClass('collapsing')
-	      .removeClass('collapse in')
-	      .attr('aria-expanded', false)
-
-	    this.$trigger
-	      .addClass('collapsed')
-	      .attr('aria-expanded', false)
-
-	    this.transitioning = 1
-
-	    var complete = function () {
-	      this.transitioning = 0
-	      this.$element
-	        .removeClass('collapsing')
-	        .addClass('collapse')
-	        .trigger('hidden.bs.collapse')
-	    }
-
-	    if (!$.support.transition) return complete.call(this)
-
-	    this.$element
-	      [dimension](0)
-	      .one('bsTransitionEnd', $.proxy(complete, this))
-	      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
-	  }
-
-	  Collapse.prototype.toggle = function () {
-	    this[this.$element.hasClass('in') ? 'hide' : 'show']()
-	  }
-
-	  Collapse.prototype.getParent = function () {
-	    return $(this.options.parent)
-	      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
-	      .each($.proxy(function (i, element) {
-	        var $element = $(element)
-	        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
-	      }, this))
-	      .end()
-	  }
-
-	  Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
-	    var isOpen = $element.hasClass('in')
-
-	    $element.attr('aria-expanded', isOpen)
-	    $trigger
-	      .toggleClass('collapsed', !isOpen)
-	      .attr('aria-expanded', isOpen)
-	  }
-
-	  function getTargetFromTrigger($trigger) {
-	    var href
-	    var target = $trigger.attr('data-target')
-	      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
-
-	    return $(target)
-	  }
-
-
-	  // COLLAPSE PLUGIN DEFINITION
-	  // ==========================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.collapse')
-	      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
-
-	      if (!data && options.toggle && option == 'show') options.toggle = false
-	      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
-	      if (typeof option == 'string') data[option]()
-	    })
-	  }
-
-	  var old = $.fn.collapse
-
-	  $.fn.collapse             = Plugin
-	  $.fn.collapse.Constructor = Collapse
-
-
-	  // COLLAPSE NO CONFLICT
-	  // ====================
-
-	  $.fn.collapse.noConflict = function () {
-	    $.fn.collapse = old
-	    return this
-	  }
-
-
-	  // COLLAPSE DATA-API
-	  // =================
-
-	  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
-	    var $this   = $(this)
-
-	    if (!$this.attr('data-target')) e.preventDefault()
-
-	    var $target = getTargetFromTrigger($this)
-	    var data    = $target.data('bs.collapse')
-	    var option  = data ? 'toggle' : $.extend({}, $this.data(), { trigger: this })
-
-	    Plugin.call($target, option)
-	  })
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: dropdown.js v3.3.2
-	 * http://getbootstrap.com/javascript/#dropdowns
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // DROPDOWN CLASS DEFINITION
-	  // =========================
-
-	  var backdrop = '.dropdown-backdrop'
-	  var toggle   = '[data-toggle="dropdown"]'
-	  var Dropdown = function (element) {
-	    $(element).on('click.bs.dropdown', this.toggle)
-	  }
-
-	  Dropdown.VERSION = '3.3.2'
-
-	  Dropdown.prototype.toggle = function (e) {
-	    var $this = $(this)
-
-	    if ($this.is('.disabled, :disabled')) return
-
-	    var $parent  = getParent($this)
-	    var isActive = $parent.hasClass('open')
-
-	    clearMenus()
-
-	    if (!isActive) {
-	      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
-	        // if mobile we use a backdrop because click events don't delegate
-	        $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
-	      }
-
-	      var relatedTarget = { relatedTarget: this }
-	      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
-
-	      if (e.isDefaultPrevented()) return
-
-	      $this
-	        .trigger('focus')
-	        .attr('aria-expanded', 'true')
-
-	      $parent
-	        .toggleClass('open')
-	        .trigger('shown.bs.dropdown', relatedTarget)
-	    }
-
-	    return false
-	  }
-
-	  Dropdown.prototype.keydown = function (e) {
-	    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
-
-	    var $this = $(this)
-
-	    e.preventDefault()
-	    e.stopPropagation()
-
-	    if ($this.is('.disabled, :disabled')) return
-
-	    var $parent  = getParent($this)
-	    var isActive = $parent.hasClass('open')
-
-	    if ((!isActive && e.which != 27) || (isActive && e.which == 27)) {
-	      if (e.which == 27) $parent.find(toggle).trigger('focus')
-	      return $this.trigger('click')
-	    }
-
-	    var desc = ' li:not(.divider):visible a'
-	    var $items = $parent.find('[role="menu"]' + desc + ', [role="listbox"]' + desc)
-
-	    if (!$items.length) return
-
-	    var index = $items.index(e.target)
-
-	    if (e.which == 38 && index > 0)                 index--                        // up
-	    if (e.which == 40 && index < $items.length - 1) index++                        // down
-	    if (!~index)                                      index = 0
-
-	    $items.eq(index).trigger('focus')
-	  }
-
-	  function clearMenus(e) {
-	    if (e && e.which === 3) return
-	    $(backdrop).remove()
-	    $(toggle).each(function () {
-	      var $this         = $(this)
-	      var $parent       = getParent($this)
-	      var relatedTarget = { relatedTarget: this }
-
-	      if (!$parent.hasClass('open')) return
-
-	      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
-
-	      if (e.isDefaultPrevented()) return
-
-	      $this.attr('aria-expanded', 'false')
-	      $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
-	    })
-	  }
-
-	  function getParent($this) {
-	    var selector = $this.attr('data-target')
-
-	    if (!selector) {
-	      selector = $this.attr('href')
-	      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
-	    }
-
-	    var $parent = selector && $(selector)
-
-	    return $parent && $parent.length ? $parent : $this.parent()
-	  }
-
-
-	  // DROPDOWN PLUGIN DEFINITION
-	  // ==========================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this = $(this)
-	      var data  = $this.data('bs.dropdown')
-
-	      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
-	      if (typeof option == 'string') data[option].call($this)
-	    })
-	  }
-
-	  var old = $.fn.dropdown
-
-	  $.fn.dropdown             = Plugin
-	  $.fn.dropdown.Constructor = Dropdown
-
-
-	  // DROPDOWN NO CONFLICT
-	  // ====================
-
-	  $.fn.dropdown.noConflict = function () {
-	    $.fn.dropdown = old
-	    return this
-	  }
-
-
-	  // APPLY TO STANDARD DROPDOWN ELEMENTS
-	  // ===================================
-
-	  $(document)
-	    .on('click.bs.dropdown.data-api', clearMenus)
-	    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
-	    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
-	    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
-	    .on('keydown.bs.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
-	    .on('keydown.bs.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: modal.js v3.3.2
-	 * http://getbootstrap.com/javascript/#modals
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // MODAL CLASS DEFINITION
-	  // ======================
-
-	  var Modal = function (element, options) {
-	    this.options        = options
-	    this.$body          = $(document.body)
-	    this.$element       = $(element)
-	    this.$backdrop      =
-	    this.isShown        = null
-	    this.scrollbarWidth = 0
-
-	    if (this.options.remote) {
-	      this.$element
-	        .find('.modal-content')
-	        .load(this.options.remote, $.proxy(function () {
-	          this.$element.trigger('loaded.bs.modal')
-	        }, this))
-	    }
-	  }
-
-	  Modal.VERSION  = '3.3.2'
-
-	  Modal.TRANSITION_DURATION = 300
-	  Modal.BACKDROP_TRANSITION_DURATION = 150
-
-	  Modal.DEFAULTS = {
-	    backdrop: true,
-	    keyboard: true,
-	    show: true
-	  }
-
-	  Modal.prototype.toggle = function (_relatedTarget) {
-	    return this.isShown ? this.hide() : this.show(_relatedTarget)
-	  }
-
-	  Modal.prototype.show = function (_relatedTarget) {
-	    var that = this
-	    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
-
-	    this.$element.trigger(e)
-
-	    if (this.isShown || e.isDefaultPrevented()) return
-
-	    this.isShown = true
-
-	    this.checkScrollbar()
-	    this.setScrollbar()
-	    this.$body.addClass('modal-open')
-
-	    this.escape()
-	    this.resize()
-
-	    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
-
-	    this.backdrop(function () {
-	      var transition = $.support.transition && that.$element.hasClass('fade')
-
-	      if (!that.$element.parent().length) {
-	        that.$element.appendTo(that.$body) // don't move modals dom position
-	      }
-
-	      that.$element
-	        .show()
-	        .scrollTop(0)
-
-	      if (that.options.backdrop) that.adjustBackdrop()
-	      that.adjustDialog()
-
-	      if (transition) {
-	        that.$element[0].offsetWidth // force reflow
-	      }
-
-	      that.$element
-	        .addClass('in')
-	        .attr('aria-hidden', false)
-
-	      that.enforceFocus()
-
-	      var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
-
-	      transition ?
-	        that.$element.find('.modal-dialog') // wait for modal to slide in
-	          .one('bsTransitionEnd', function () {
-	            that.$element.trigger('focus').trigger(e)
-	          })
-	          .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
-	        that.$element.trigger('focus').trigger(e)
-	    })
-	  }
-
-	  Modal.prototype.hide = function (e) {
-	    if (e) e.preventDefault()
-
-	    e = $.Event('hide.bs.modal')
-
-	    this.$element.trigger(e)
-
-	    if (!this.isShown || e.isDefaultPrevented()) return
-
-	    this.isShown = false
-
-	    this.escape()
-	    this.resize()
-
-	    $(document).off('focusin.bs.modal')
-
-	    this.$element
-	      .removeClass('in')
-	      .attr('aria-hidden', true)
-	      .off('click.dismiss.bs.modal')
-
-	    $.support.transition && this.$element.hasClass('fade') ?
-	      this.$element
-	        .one('bsTransitionEnd', $.proxy(this.hideModal, this))
-	        .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
-	      this.hideModal()
-	  }
-
-	  Modal.prototype.enforceFocus = function () {
-	    $(document)
-	      .off('focusin.bs.modal') // guard against infinite focus loop
-	      .on('focusin.bs.modal', $.proxy(function (e) {
-	        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
-	          this.$element.trigger('focus')
-	        }
-	      }, this))
-	  }
-
-	  Modal.prototype.escape = function () {
-	    if (this.isShown && this.options.keyboard) {
-	      this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
-	        e.which == 27 && this.hide()
-	      }, this))
-	    } else if (!this.isShown) {
-	      this.$element.off('keydown.dismiss.bs.modal')
-	    }
-	  }
-
-	  Modal.prototype.resize = function () {
-	    if (this.isShown) {
-	      $(window).on('resize.bs.modal', $.proxy(this.handleUpdate, this))
-	    } else {
-	      $(window).off('resize.bs.modal')
-	    }
-	  }
-
-	  Modal.prototype.hideModal = function () {
-	    var that = this
-	    this.$element.hide()
-	    this.backdrop(function () {
-	      that.$body.removeClass('modal-open')
-	      that.resetAdjustments()
-	      that.resetScrollbar()
-	      that.$element.trigger('hidden.bs.modal')
-	    })
-	  }
-
-	  Modal.prototype.removeBackdrop = function () {
-	    this.$backdrop && this.$backdrop.remove()
-	    this.$backdrop = null
-	  }
-
-	  Modal.prototype.backdrop = function (callback) {
-	    var that = this
-	    var animate = this.$element.hasClass('fade') ? 'fade' : ''
-
-	    if (this.isShown && this.options.backdrop) {
-	      var doAnimate = $.support.transition && animate
-
-	      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
-	        .prependTo(this.$element)
-	        .on('click.dismiss.bs.modal', $.proxy(function (e) {
-	          if (e.target !== e.currentTarget) return
-	          this.options.backdrop == 'static'
-	            ? this.$element[0].focus.call(this.$element[0])
-	            : this.hide.call(this)
-	        }, this))
-
-	      if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
-
-	      this.$backdrop.addClass('in')
-
-	      if (!callback) return
-
-	      doAnimate ?
-	        this.$backdrop
-	          .one('bsTransitionEnd', callback)
-	          .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
-	        callback()
-
-	    } else if (!this.isShown && this.$backdrop) {
-	      this.$backdrop.removeClass('in')
-
-	      var callbackRemove = function () {
-	        that.removeBackdrop()
-	        callback && callback()
-	      }
-	      $.support.transition && this.$element.hasClass('fade') ?
-	        this.$backdrop
-	          .one('bsTransitionEnd', callbackRemove)
-	          .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
-	        callbackRemove()
-
-	    } else if (callback) {
-	      callback()
-	    }
-	  }
-
-	  // these following methods are used to handle overflowing modals
-
-	  Modal.prototype.handleUpdate = function () {
-	    if (this.options.backdrop) this.adjustBackdrop()
-	    this.adjustDialog()
-	  }
-
-	  Modal.prototype.adjustBackdrop = function () {
-	    this.$backdrop
-	      .css('height', 0)
-	      .css('height', this.$element[0].scrollHeight)
-	  }
-
-	  Modal.prototype.adjustDialog = function () {
-	    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
-
-	    this.$element.css({
-	      paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
-	      paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
-	    })
-	  }
-
-	  Modal.prototype.resetAdjustments = function () {
-	    this.$element.css({
-	      paddingLeft: '',
-	      paddingRight: ''
-	    })
-	  }
-
-	  Modal.prototype.checkScrollbar = function () {
-	    this.bodyIsOverflowing = document.body.scrollHeight > document.documentElement.clientHeight
-	    this.scrollbarWidth = this.measureScrollbar()
-	  }
-
-	  Modal.prototype.setScrollbar = function () {
-	    var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
-	    if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
-	  }
-
-	  Modal.prototype.resetScrollbar = function () {
-	    this.$body.css('padding-right', '')
-	  }
-
-	  Modal.prototype.measureScrollbar = function () { // thx walsh
-	    var scrollDiv = document.createElement('div')
-	    scrollDiv.className = 'modal-scrollbar-measure'
-	    this.$body.append(scrollDiv)
-	    var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
-	    this.$body[0].removeChild(scrollDiv)
-	    return scrollbarWidth
-	  }
-
-
-	  // MODAL PLUGIN DEFINITION
-	  // =======================
-
-	  function Plugin(option, _relatedTarget) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.modal')
-	      var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
-
-	      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
-	      if (typeof option == 'string') data[option](_relatedTarget)
-	      else if (options.show) data.show(_relatedTarget)
-	    })
-	  }
-
-	  var old = $.fn.modal
-
-	  $.fn.modal             = Plugin
-	  $.fn.modal.Constructor = Modal
-
-
-	  // MODAL NO CONFLICT
-	  // =================
-
-	  $.fn.modal.noConflict = function () {
-	    $.fn.modal = old
-	    return this
-	  }
-
-
-	  // MODAL DATA-API
-	  // ==============
-
-	  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
-	    var $this   = $(this)
-	    var href    = $this.attr('href')
-	    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
-	    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
-
-	    if ($this.is('a')) e.preventDefault()
-
-	    $target.one('show.bs.modal', function (showEvent) {
-	      if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
-	      $target.one('hidden.bs.modal', function () {
-	        $this.is(':visible') && $this.trigger('focus')
-	      })
-	    })
-	    Plugin.call($target, option, this)
-	  })
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 11 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: tooltip.js v3.3.2
-	 * http://getbootstrap.com/javascript/#tooltip
-	 * Inspired by the original jQuery.tipsy by Jason Frame
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // TOOLTIP PUBLIC CLASS DEFINITION
-	  // ===============================
-
-	  var Tooltip = function (element, options) {
-	    this.type       =
-	    this.options    =
-	    this.enabled    =
-	    this.timeout    =
-	    this.hoverState =
-	    this.$element   = null
-
-	    this.init('tooltip', element, options)
-	  }
-
-	  Tooltip.VERSION  = '3.3.2'
-
-	  Tooltip.TRANSITION_DURATION = 150
-
-	  Tooltip.DEFAULTS = {
-	    animation: true,
-	    placement: 'top',
-	    selector: false,
-	    template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
-	    trigger: 'hover focus',
-	    title: '',
-	    delay: 0,
-	    html: false,
-	    container: false,
-	    viewport: {
-	      selector: 'body',
-	      padding: 0
-	    }
-	  }
-
-	  Tooltip.prototype.init = function (type, element, options) {
-	    this.enabled   = true
-	    this.type      = type
-	    this.$element  = $(element)
-	    this.options   = this.getOptions(options)
-	    this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
-
-	    var triggers = this.options.trigger.split(' ')
-
-	    for (var i = triggers.length; i--;) {
-	      var trigger = triggers[i]
-
-	      if (trigger == 'click') {
-	        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
-	      } else if (trigger != 'manual') {
-	        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
-	        var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
-
-	        this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
-	        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
-	      }
-	    }
-
-	    this.options.selector ?
-	      (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
-	      this.fixTitle()
-	  }
-
-	  Tooltip.prototype.getDefaults = function () {
-	    return Tooltip.DEFAULTS
-	  }
-
-	  Tooltip.prototype.getOptions = function (options) {
-	    options = $.extend({}, this.getDefaults(), this.$element.data(), options)
-
-	    if (options.delay && typeof options.delay == 'number') {
-	      options.delay = {
-	        show: options.delay,
-	        hide: options.delay
-	      }
-	    }
-
-	    return options
-	  }
-
-	  Tooltip.prototype.getDelegateOptions = function () {
-	    var options  = {}
-	    var defaults = this.getDefaults()
-
-	    this._options && $.each(this._options, function (key, value) {
-	      if (defaults[key] != value) options[key] = value
-	    })
-
-	    return options
-	  }
-
-	  Tooltip.prototype.enter = function (obj) {
-	    var self = obj instanceof this.constructor ?
-	      obj : $(obj.currentTarget).data('bs.' + this.type)
-
-	    if (self && self.$tip && self.$tip.is(':visible')) {
-	      self.hoverState = 'in'
-	      return
-	    }
-
-	    if (!self) {
-	      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
-	      $(obj.currentTarget).data('bs.' + this.type, self)
-	    }
-
-	    clearTimeout(self.timeout)
-
-	    self.hoverState = 'in'
-
-	    if (!self.options.delay || !self.options.delay.show) return self.show()
-
-	    self.timeout = setTimeout(function () {
-	      if (self.hoverState == 'in') self.show()
-	    }, self.options.delay.show)
-	  }
-
-	  Tooltip.prototype.leave = function (obj) {
-	    var self = obj instanceof this.constructor ?
-	      obj : $(obj.currentTarget).data('bs.' + this.type)
-
-	    if (!self) {
-	      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
-	      $(obj.currentTarget).data('bs.' + this.type, self)
-	    }
-
-	    clearTimeout(self.timeout)
-
-	    self.hoverState = 'out'
-
-	    if (!self.options.delay || !self.options.delay.hide) return self.hide()
-
-	    self.timeout = setTimeout(function () {
-	      if (self.hoverState == 'out') self.hide()
-	    }, self.options.delay.hide)
-	  }
-
-	  Tooltip.prototype.show = function () {
-	    var e = $.Event('show.bs.' + this.type)
-
-	    if (this.hasContent() && this.enabled) {
-	      this.$element.trigger(e)
-
-	      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0])
-	      if (e.isDefaultPrevented() || !inDom) return
-	      var that = this
-
-	      var $tip = this.tip()
-
-	      var tipId = this.getUID(this.type)
-
-	      this.setContent()
-	      $tip.attr('id', tipId)
-	      this.$element.attr('aria-describedby', tipId)
-
-	      if (this.options.animation) $tip.addClass('fade')
-
-	      var placement = typeof this.options.placement == 'function' ?
-	        this.options.placement.call(this, $tip[0], this.$element[0]) :
-	        this.options.placement
-
-	      var autoToken = /\s?auto?\s?/i
-	      var autoPlace = autoToken.test(placement)
-	      if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
-
-	      $tip
-	        .detach()
-	        .css({ top: 0, left: 0, display: 'block' })
-	        .addClass(placement)
-	        .data('bs.' + this.type, this)
-
-	      this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
-
-	      var pos          = this.getPosition()
-	      var actualWidth  = $tip[0].offsetWidth
-	      var actualHeight = $tip[0].offsetHeight
-
-	      if (autoPlace) {
-	        var orgPlacement = placement
-	        var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
-	        var containerDim = this.getPosition($container)
-
-	        placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
-	                    placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
-	                    placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
-	                    placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
-	                    placement
-
-	        $tip
-	          .removeClass(orgPlacement)
-	          .addClass(placement)
-	      }
-
-	      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
-
-	      this.applyPlacement(calculatedOffset, placement)
-
-	      var complete = function () {
-	        var prevHoverState = that.hoverState
-	        that.$element.trigger('shown.bs.' + that.type)
-	        that.hoverState = null
-
-	        if (prevHoverState == 'out') that.leave(that)
-	      }
-
-	      $.support.transition && this.$tip.hasClass('fade') ?
-	        $tip
-	          .one('bsTransitionEnd', complete)
-	          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-	        complete()
-	    }
-	  }
-
-	  Tooltip.prototype.applyPlacement = function (offset, placement) {
-	    var $tip   = this.tip()
-	    var width  = $tip[0].offsetWidth
-	    var height = $tip[0].offsetHeight
-
-	    // manually read margins because getBoundingClientRect includes difference
-	    var marginTop = parseInt($tip.css('margin-top'), 10)
-	    var marginLeft = parseInt($tip.css('margin-left'), 10)
-
-	    // we must check for NaN for ie 8/9
-	    if (isNaN(marginTop))  marginTop  = 0
-	    if (isNaN(marginLeft)) marginLeft = 0
-
-	    offset.top  = offset.top  + marginTop
-	    offset.left = offset.left + marginLeft
-
-	    // $.fn.offset doesn't round pixel values
-	    // so we use setOffset directly with our own function B-0
-	    $.offset.setOffset($tip[0], $.extend({
-	      using: function (props) {
-	        $tip.css({
-	          top: Math.round(props.top),
-	          left: Math.round(props.left)
-	        })
-	      }
-	    }, offset), 0)
-
-	    $tip.addClass('in')
-
-	    // check to see if placing tip in new offset caused the tip to resize itself
-	    var actualWidth  = $tip[0].offsetWidth
-	    var actualHeight = $tip[0].offsetHeight
-
-	    if (placement == 'top' && actualHeight != height) {
-	      offset.top = offset.top + height - actualHeight
-	    }
-
-	    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
-
-	    if (delta.left) offset.left += delta.left
-	    else offset.top += delta.top
-
-	    var isVertical          = /top|bottom/.test(placement)
-	    var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight
-	    var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight'
-
-	    $tip.offset(offset)
-	    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
-	  }
-
-	  Tooltip.prototype.replaceArrow = function (delta, dimension, isHorizontal) {
-	    this.arrow()
-	      .css(isHorizontal ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
-	      .css(isHorizontal ? 'top' : 'left', '')
-	  }
-
-	  Tooltip.prototype.setContent = function () {
-	    var $tip  = this.tip()
-	    var title = this.getTitle()
-
-	    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
-	    $tip.removeClass('fade in top bottom left right')
-	  }
-
-	  Tooltip.prototype.hide = function (callback) {
-	    var that = this
-	    var $tip = this.tip()
-	    var e    = $.Event('hide.bs.' + this.type)
-
-	    function complete() {
-	      if (that.hoverState != 'in') $tip.detach()
-	      that.$element
-	        .removeAttr('aria-describedby')
-	        .trigger('hidden.bs.' + that.type)
-	      callback && callback()
-	    }
-
-	    this.$element.trigger(e)
-
-	    if (e.isDefaultPrevented()) return
-
-	    $tip.removeClass('in')
-
-	    $.support.transition && this.$tip.hasClass('fade') ?
-	      $tip
-	        .one('bsTransitionEnd', complete)
-	        .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
-	      complete()
-
-	    this.hoverState = null
-
-	    return this
-	  }
-
-	  Tooltip.prototype.fixTitle = function () {
-	    var $e = this.$element
-	    if ($e.attr('title') || typeof ($e.attr('data-original-title')) != 'string') {
-	      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
-	    }
-	  }
-
-	  Tooltip.prototype.hasContent = function () {
-	    return this.getTitle()
-	  }
-
-	  Tooltip.prototype.getPosition = function ($element) {
-	    $element   = $element || this.$element
-
-	    var el     = $element[0]
-	    var isBody = el.tagName == 'BODY'
-
-	    var elRect    = el.getBoundingClientRect()
-	    if (elRect.width == null) {
-	      // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
-	      elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
-	    }
-	    var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
-	    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
-	    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
-
-	    return $.extend({}, elRect, scroll, outerDims, elOffset)
-	  }
-
-	  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
-	    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
-	           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
-	           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
-	        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
-
-	  }
-
-	  Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
-	    var delta = { top: 0, left: 0 }
-	    if (!this.$viewport) return delta
-
-	    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
-	    var viewportDimensions = this.getPosition(this.$viewport)
-
-	    if (/right|left/.test(placement)) {
-	      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
-	      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
-	      if (topEdgeOffset < viewportDimensions.top) { // top overflow
-	        delta.top = viewportDimensions.top - topEdgeOffset
-	      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
-	        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
-	      }
-	    } else {
-	      var leftEdgeOffset  = pos.left - viewportPadding
-	      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
-	      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
-	        delta.left = viewportDimensions.left - leftEdgeOffset
-	      } else if (rightEdgeOffset > viewportDimensions.width) { // right overflow
-	        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
-	      }
-	    }
-
-	    return delta
-	  }
-
-	  Tooltip.prototype.getTitle = function () {
-	    var title
-	    var $e = this.$element
-	    var o  = this.options
-
-	    title = $e.attr('data-original-title')
-	      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
-
-	    return title
-	  }
-
-	  Tooltip.prototype.getUID = function (prefix) {
-	    do prefix += ~~(Math.random() * 1000000)
-	    while (document.getElementById(prefix))
-	    return prefix
-	  }
-
-	  Tooltip.prototype.tip = function () {
-	    return (this.$tip = this.$tip || $(this.options.template))
-	  }
-
-	  Tooltip.prototype.arrow = function () {
-	    return (this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow'))
-	  }
-
-	  Tooltip.prototype.enable = function () {
-	    this.enabled = true
-	  }
-
-	  Tooltip.prototype.disable = function () {
-	    this.enabled = false
-	  }
-
-	  Tooltip.prototype.toggleEnabled = function () {
-	    this.enabled = !this.enabled
-	  }
-
-	  Tooltip.prototype.toggle = function (e) {
-	    var self = this
-	    if (e) {
-	      self = $(e.currentTarget).data('bs.' + this.type)
-	      if (!self) {
-	        self = new this.constructor(e.currentTarget, this.getDelegateOptions())
-	        $(e.currentTarget).data('bs.' + this.type, self)
-	      }
-	    }
-
-	    self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
-	  }
-
-	  Tooltip.prototype.destroy = function () {
-	    var that = this
-	    clearTimeout(this.timeout)
-	    this.hide(function () {
-	      that.$element.off('.' + that.type).removeData('bs.' + that.type)
-	    })
-	  }
-
-
-	  // TOOLTIP PLUGIN DEFINITION
-	  // =========================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.tooltip')
-	      var options = typeof option == 'object' && option
-
-	      if (!data && option == 'destroy') return
-	      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
-	      if (typeof option == 'string') data[option]()
-	    })
-	  }
-
-	  var old = $.fn.tooltip
-
-	  $.fn.tooltip             = Plugin
-	  $.fn.tooltip.Constructor = Tooltip
-
-
-	  // TOOLTIP NO CONFLICT
-	  // ===================
-
-	  $.fn.tooltip.noConflict = function () {
-	    $.fn.tooltip = old
-	    return this
-	  }
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 12 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: popover.js v3.3.2
-	 * http://getbootstrap.com/javascript/#popovers
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // POPOVER PUBLIC CLASS DEFINITION
-	  // ===============================
-
-	  var Popover = function (element, options) {
-	    this.init('popover', element, options)
-	  }
-
-	  if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
-
-	  Popover.VERSION  = '3.3.2'
-
-	  Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
-	    placement: 'right',
-	    trigger: 'click',
-	    content: '',
-	    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
-	  })
-
-
-	  // NOTE: POPOVER EXTENDS tooltip.js
-	  // ================================
-
-	  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
-
-	  Popover.prototype.constructor = Popover
-
-	  Popover.prototype.getDefaults = function () {
-	    return Popover.DEFAULTS
-	  }
-
-	  Popover.prototype.setContent = function () {
-	    var $tip    = this.tip()
-	    var title   = this.getTitle()
-	    var content = this.getContent()
-
-	    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
-	    $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
-	      this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
-	    ](content)
-
-	    $tip.removeClass('fade top bottom left right in')
-
-	    // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
-	    // this manually by checking the contents.
-	    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
-	  }
-
-	  Popover.prototype.hasContent = function () {
-	    return this.getTitle() || this.getContent()
-	  }
-
-	  Popover.prototype.getContent = function () {
-	    var $e = this.$element
-	    var o  = this.options
-
-	    return $e.attr('data-content')
-	      || (typeof o.content == 'function' ?
-	            o.content.call($e[0]) :
-	            o.content)
-	  }
-
-	  Popover.prototype.arrow = function () {
-	    return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
-	  }
-
-	  Popover.prototype.tip = function () {
-	    if (!this.$tip) this.$tip = $(this.options.template)
-	    return this.$tip
-	  }
-
-
-	  // POPOVER PLUGIN DEFINITION
-	  // =========================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.popover')
-	      var options = typeof option == 'object' && option
-
-	      if (!data && option == 'destroy') return
-	      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
-	      if (typeof option == 'string') data[option]()
-	    })
-	  }
-
-	  var old = $.fn.popover
-
-	  $.fn.popover             = Plugin
-	  $.fn.popover.Constructor = Popover
-
-
-	  // POPOVER NO CONFLICT
-	  // ===================
-
-	  $.fn.popover.noConflict = function () {
-	    $.fn.popover = old
-	    return this
-	  }
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 13 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: scrollspy.js v3.3.2
-	 * http://getbootstrap.com/javascript/#scrollspy
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // SCROLLSPY CLASS DEFINITION
-	  // ==========================
-
-	  function ScrollSpy(element, options) {
-	    var process  = $.proxy(this.process, this)
-
-	    this.$body          = $('body')
-	    this.$scrollElement = $(element).is('body') ? $(window) : $(element)
-	    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-	    this.selector       = (this.options.target || '') + ' .nav li > a'
-	    this.offsets        = []
-	    this.targets        = []
-	    this.activeTarget   = null
-	    this.scrollHeight   = 0
-
-	    this.$scrollElement.on('scroll.bs.scrollspy', process)
-	    this.refresh()
-	    this.process()
-	  }
-
-	  ScrollSpy.VERSION  = '3.3.2'
-
-	  ScrollSpy.DEFAULTS = {
-	    offset: 10
-	  }
-
-	  ScrollSpy.prototype.getScrollHeight = function () {
-	    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
-	  }
-
-	  ScrollSpy.prototype.refresh = function () {
-	    var offsetMethod = 'offset'
-	    var offsetBase   = 0
-
-	    if (!$.isWindow(this.$scrollElement[0])) {
-	      offsetMethod = 'position'
-	      offsetBase   = this.$scrollElement.scrollTop()
-	    }
-
-	    this.offsets = []
-	    this.targets = []
-	    this.scrollHeight = this.getScrollHeight()
-
-	    var self     = this
-
-	    this.$body
-	      .find(this.selector)
-	      .map(function () {
-	        var $el   = $(this)
-	        var href  = $el.data('target') || $el.attr('href')
-	        var $href = /^#./.test(href) && $(href)
-
-	        return ($href
-	          && $href.length
-	          && $href.is(':visible')
-	          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
-	      })
-	      .sort(function (a, b) { return a[0] - b[0] })
-	      .each(function () {
-	        self.offsets.push(this[0])
-	        self.targets.push(this[1])
-	      })
-	  }
-
-	  ScrollSpy.prototype.process = function () {
-	    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
-	    var scrollHeight = this.getScrollHeight()
-	    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
-	    var offsets      = this.offsets
-	    var targets      = this.targets
-	    var activeTarget = this.activeTarget
-	    var i
-
-	    if (this.scrollHeight != scrollHeight) {
-	      this.refresh()
-	    }
-
-	    if (scrollTop >= maxScroll) {
-	      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
-	    }
-
-	    if (activeTarget && scrollTop < offsets[0]) {
-	      this.activeTarget = null
-	      return this.clear()
-	    }
-
-	    for (i = offsets.length; i--;) {
-	      activeTarget != targets[i]
-	        && scrollTop >= offsets[i]
-	        && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
-	        && this.activate(targets[i])
-	    }
-	  }
-
-	  ScrollSpy.prototype.activate = function (target) {
-	    this.activeTarget = target
-
-	    this.clear()
-
-	    var selector = this.selector +
-	        '[data-target="' + target + '"],' +
-	        this.selector + '[href="' + target + '"]'
-
-	    var active = $(selector)
-	      .parents('li')
-	      .addClass('active')
-
-	    if (active.parent('.dropdown-menu').length) {
-	      active = active
-	        .closest('li.dropdown')
-	        .addClass('active')
-	    }
-
-	    active.trigger('activate.bs.scrollspy')
-	  }
-
-	  ScrollSpy.prototype.clear = function () {
-	    $(this.selector)
-	      .parentsUntil(this.options.target, '.active')
-	      .removeClass('active')
-	  }
-
-
-	  // SCROLLSPY PLUGIN DEFINITION
-	  // ===========================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.scrollspy')
-	      var options = typeof option == 'object' && option
-
-	      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-	      if (typeof option == 'string') data[option]()
-	    })
-	  }
-
-	  var old = $.fn.scrollspy
-
-	  $.fn.scrollspy             = Plugin
-	  $.fn.scrollspy.Constructor = ScrollSpy
-
-
-	  // SCROLLSPY NO CONFLICT
-	  // =====================
-
-	  $.fn.scrollspy.noConflict = function () {
-	    $.fn.scrollspy = old
-	    return this
-	  }
-
-
-	  // SCROLLSPY DATA-API
-	  // ==================
-
-	  $(window).on('load.bs.scrollspy.data-api', function () {
-	    $('[data-spy="scroll"]').each(function () {
-	      var $spy = $(this)
-	      Plugin.call($spy, $spy.data())
-	    })
-	  })
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 14 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: tab.js v3.3.2
-	 * http://getbootstrap.com/javascript/#tabs
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // TAB CLASS DEFINITION
-	  // ====================
-
-	  var Tab = function (element) {
-	    this.element = $(element)
-	  }
-
-	  Tab.VERSION = '3.3.2'
-
-	  Tab.TRANSITION_DURATION = 150
-
-	  Tab.prototype.show = function () {
-	    var $this    = this.element
-	    var $ul      = $this.closest('ul:not(.dropdown-menu)')
-	    var selector = $this.data('target')
-
-	    if (!selector) {
-	      selector = $this.attr('href')
-	      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
-	    }
-
-	    if ($this.parent('li').hasClass('active')) return
-
-	    var $previous = $ul.find('.active:last a')
-	    var hideEvent = $.Event('hide.bs.tab', {
-	      relatedTarget: $this[0]
-	    })
-	    var showEvent = $.Event('show.bs.tab', {
-	      relatedTarget: $previous[0]
-	    })
-
-	    $previous.trigger(hideEvent)
-	    $this.trigger(showEvent)
-
-	    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return
-
-	    var $target = $(selector)
-
-	    this.activate($this.closest('li'), $ul)
-	    this.activate($target, $target.parent(), function () {
-	      $previous.trigger({
-	        type: 'hidden.bs.tab',
-	        relatedTarget: $this[0]
-	      })
-	      $this.trigger({
-	        type: 'shown.bs.tab',
-	        relatedTarget: $previous[0]
-	      })
-	    })
-	  }
-
-	  Tab.prototype.activate = function (element, container, callback) {
-	    var $active    = container.find('> .active')
-	    var transition = callback
-	      && $.support.transition
-	      && (($active.length && $active.hasClass('fade')) || !!container.find('> .fade').length)
-
-	    function next() {
-	      $active
-	        .removeClass('active')
-	        .find('> .dropdown-menu > .active')
-	          .removeClass('active')
-	        .end()
-	        .find('[data-toggle="tab"]')
-	          .attr('aria-expanded', false)
-
-	      element
-	        .addClass('active')
-	        .find('[data-toggle="tab"]')
-	          .attr('aria-expanded', true)
-
-	      if (transition) {
-	        element[0].offsetWidth // reflow for transition
-	        element.addClass('in')
-	      } else {
-	        element.removeClass('fade')
-	      }
-
-	      if (element.parent('.dropdown-menu')) {
-	        element
-	          .closest('li.dropdown')
-	            .addClass('active')
-	          .end()
-	          .find('[data-toggle="tab"]')
-	            .attr('aria-expanded', true)
-	      }
-
-	      callback && callback()
-	    }
-
-	    $active.length && transition ?
-	      $active
-	        .one('bsTransitionEnd', next)
-	        .emulateTransitionEnd(Tab.TRANSITION_DURATION) :
-	      next()
-
-	    $active.removeClass('in')
-	  }
-
-
-	  // TAB PLUGIN DEFINITION
-	  // =====================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this = $(this)
-	      var data  = $this.data('bs.tab')
-
-	      if (!data) $this.data('bs.tab', (data = new Tab(this)))
-	      if (typeof option == 'string') data[option]()
-	    })
-	  }
-
-	  var old = $.fn.tab
-
-	  $.fn.tab             = Plugin
-	  $.fn.tab.Constructor = Tab
-
-
-	  // TAB NO CONFLICT
-	  // ===============
-
-	  $.fn.tab.noConflict = function () {
-	    $.fn.tab = old
-	    return this
-	  }
-
-
-	  // TAB DATA-API
-	  // ============
-
-	  var clickHandler = function (e) {
-	    e.preventDefault()
-	    Plugin.call($(this), 'show')
-	  }
-
-	  $(document)
-	    .on('click.bs.tab.data-api', '[data-toggle="tab"]', clickHandler)
-	    .on('click.bs.tab.data-api', '[data-toggle="pill"]', clickHandler)
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 15 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(jQuery) {/* ========================================================================
-	 * Bootstrap: affix.js v3.3.2
-	 * http://getbootstrap.com/javascript/#affix
-	 * ========================================================================
-	 * Copyright 2011-2015 Twitter, Inc.
-	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-	 * ======================================================================== */
-
-
-	+function ($) {
-	  'use strict';
-
-	  // AFFIX CLASS DEFINITION
-	  // ======================
-
-	  var Affix = function (element, options) {
-	    this.options = $.extend({}, Affix.DEFAULTS, options)
-
-	    this.$target = $(this.options.target)
-	      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
-	      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
-
-	    this.$element     = $(element)
-	    this.affixed      =
-	    this.unpin        =
-	    this.pinnedOffset = null
-
-	    this.checkPosition()
-	  }
-
-	  Affix.VERSION  = '3.3.2'
-
-	  Affix.RESET    = 'affix affix-top affix-bottom'
-
-	  Affix.DEFAULTS = {
-	    offset: 0,
-	    target: window
-	  }
-
-	  Affix.prototype.getState = function (scrollHeight, height, offsetTop, offsetBottom) {
-	    var scrollTop    = this.$target.scrollTop()
-	    var position     = this.$element.offset()
-	    var targetHeight = this.$target.height()
-
-	    if (offsetTop != null && this.affixed == 'top') return scrollTop < offsetTop ? 'top' : false
-
-	    if (this.affixed == 'bottom') {
-	      if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom'
-	      return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom'
-	    }
-
-	    var initializing   = this.affixed == null
-	    var colliderTop    = initializing ? scrollTop : position.top
-	    var colliderHeight = initializing ? targetHeight : height
-
-	    if (offsetTop != null && scrollTop <= offsetTop) return 'top'
-	    if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom'
-
-	    return false
-	  }
-
-	  Affix.prototype.getPinnedOffset = function () {
-	    if (this.pinnedOffset) return this.pinnedOffset
-	    this.$element.removeClass(Affix.RESET).addClass('affix')
-	    var scrollTop = this.$target.scrollTop()
-	    var position  = this.$element.offset()
-	    return (this.pinnedOffset = position.top - scrollTop)
-	  }
-
-	  Affix.prototype.checkPositionWithEventLoop = function () {
-	    setTimeout($.proxy(this.checkPosition, this), 1)
-	  }
-
-	  Affix.prototype.checkPosition = function () {
-	    if (!this.$element.is(':visible')) return
-
-	    var height       = this.$element.height()
-	    var offset       = this.options.offset
-	    var offsetTop    = offset.top
-	    var offsetBottom = offset.bottom
-	    var scrollHeight = $('body').height()
-
-	    if (typeof offset != 'object')         offsetBottom = offsetTop = offset
-	    if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
-	    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this.$element)
-
-	    var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom)
-
-	    if (this.affixed != affix) {
-	      if (this.unpin != null) this.$element.css('top', '')
-
-	      var affixType = 'affix' + (affix ? '-' + affix : '')
-	      var e         = $.Event(affixType + '.bs.affix')
-
-	      this.$element.trigger(e)
-
-	      if (e.isDefaultPrevented()) return
-
-	      this.affixed = affix
-	      this.unpin = affix == 'bottom' ? this.getPinnedOffset() : null
-
-	      this.$element
-	        .removeClass(Affix.RESET)
-	        .addClass(affixType)
-	        .trigger(affixType.replace('affix', 'affixed') + '.bs.affix')
-	    }
-
-	    if (affix == 'bottom') {
-	      this.$element.offset({
-	        top: scrollHeight - height - offsetBottom
-	      })
-	    }
-	  }
-
-
-	  // AFFIX PLUGIN DEFINITION
-	  // =======================
-
-	  function Plugin(option) {
-	    return this.each(function () {
-	      var $this   = $(this)
-	      var data    = $this.data('bs.affix')
-	      var options = typeof option == 'object' && option
-
-	      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
-	      if (typeof option == 'string') data[option]()
-	    })
-	  }
-
-	  var old = $.fn.affix
-
-	  $.fn.affix             = Plugin
-	  $.fn.affix.Constructor = Affix
-
-
-	  // AFFIX NO CONFLICT
-	  // =================
-
-	  $.fn.affix.noConflict = function () {
-	    $.fn.affix = old
-	    return this
-	  }
-
-
-	  // AFFIX DATA-API
-	  // ==============
-
-	  $(window).on('load', function () {
-	    $('[data-spy="affix"]').each(function () {
-	      var $spy = $(this)
-	      var data = $spy.data()
-
-	      data.offset = data.offset || {}
-
-	      if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
-	      if (data.offsetTop    != null) data.offset.top    = data.offsetTop
-
-	      Plugin.call($spy, data)
-	    })
-	  })
-
-	}(jQuery);
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(60)))
-
-/***/ },
-/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(angular, famous) {/**
@@ -35432,10 +33189,37 @@
 	    };
 	  }]);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(42)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(35)))
 
 /***/ },
-/* 17 */
+/* 9 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	module.exports = function addStyle(cssCode) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		var head = document.getElementsByTagName("head")[0];
+		head.appendChild(styleElement);
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = cssCode;
+		} else {
+			styleElement.appendChild(document.createTextNode(cssCode));
+		}
+		return function() {
+			head.removeChild(styleElement);
+		};
+	}
+
+
+/***/ },
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -35471,9 +33255,9 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(23);
-	    var ScrollController = __webpack_require__(24);
-	    var ListLayout = __webpack_require__(33);
+	    var LayoutUtility = __webpack_require__(16);
+	    var ScrollController = __webpack_require__(17);
+	    var ListLayout = __webpack_require__(26);
 
 	    //
 	    // Pull to refresh states
@@ -36036,7 +33820,7 @@
 
 
 /***/ },
-/* 18 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36060,14 +33844,14 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var OptionsManager = __webpack_require__(43);
-	    var Transform = __webpack_require__(44);
-	    var Vector = __webpack_require__(45);
-	    var Particle = __webpack_require__(46);
-	    var Spring = __webpack_require__(47);
-	    var PhysicsEngine = __webpack_require__(48);
-	    var LayoutNode = __webpack_require__(21);
-	    var Transitionable = __webpack_require__(49);
+	    var OptionsManager = __webpack_require__(75);
+	    var Transform = __webpack_require__(76);
+	    var Vector = __webpack_require__(77);
+	    var Particle = __webpack_require__(78);
+	    var Spring = __webpack_require__(79);
+	    var PhysicsEngine = __webpack_require__(80);
+	    var LayoutNode = __webpack_require__(14);
+	    var Transitionable = __webpack_require__(81);
 
 	    /**
 	     * @class
@@ -36539,7 +34323,7 @@
 
 
 /***/ },
-/* 19 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36809,7 +34593,7 @@
 
 
 /***/ },
-/* 20 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36842,17 +34626,17 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
-	    var Entity = __webpack_require__(51);
-	    var ViewSequence = __webpack_require__(52);
-	    var OptionsManager = __webpack_require__(43);
-	    var EventHandler = __webpack_require__(53);
-	    var LayoutUtility = __webpack_require__(23);
-	    var LayoutNodeManager = __webpack_require__(22);
-	    var LayoutNode = __webpack_require__(21);
-	    var FlowLayoutNode = __webpack_require__(18);
-	    var Transform = __webpack_require__(44);
-	    __webpack_require__(27);
+	    var Utility = __webpack_require__(82);
+	    var Entity = __webpack_require__(83);
+	    var ViewSequence = __webpack_require__(84);
+	    var OptionsManager = __webpack_require__(75);
+	    var EventHandler = __webpack_require__(85);
+	    var LayoutUtility = __webpack_require__(16);
+	    var LayoutNodeManager = __webpack_require__(15);
+	    var LayoutNode = __webpack_require__(14);
+	    var FlowLayoutNode = __webpack_require__(11);
+	    var Transform = __webpack_require__(76);
+	    __webpack_require__(20);
 
 	    /**
 	     * @class
@@ -37633,7 +35417,7 @@
 
 
 /***/ },
-/* 21 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -37657,8 +35441,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Transform = __webpack_require__(44);
-	    var LayoutUtility = __webpack_require__(23);
+	    var Transform = __webpack_require__(76);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    /**
 	     * @class
@@ -37834,7 +35618,7 @@
 
 
 /***/ },
-/* 22 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -37867,8 +35651,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutContext = __webpack_require__(19);
-	    var LayoutUtility = __webpack_require__(23);
+	    var LayoutContext = __webpack_require__(12);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    var MAX_POOL_SIZE = 100;
 
@@ -38571,7 +36355,7 @@
 
 
 /***/ },
-/* 23 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -38595,7 +36379,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
+	    var Utility = __webpack_require__(82);
 
 	    /**
 	     * @class
@@ -38861,7 +36645,7 @@
 
 
 /***/ },
-/* 24 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -38904,22 +36688,22 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(23);
-	    var LayoutController = __webpack_require__(20);
-	    var LayoutNode = __webpack_require__(21);
-	    var FlowLayoutNode = __webpack_require__(18);
-	    var LayoutNodeManager = __webpack_require__(22);
-	    var ContainerSurface = __webpack_require__(54);
-	    var Transform = __webpack_require__(44);
-	    var EventHandler = __webpack_require__(53);
-	    var Group = __webpack_require__(55);
-	    var Vector = __webpack_require__(45);
-	    var PhysicsEngine = __webpack_require__(48);
-	    var Particle = __webpack_require__(46);
-	    var Drag = __webpack_require__(56);
-	    var Spring = __webpack_require__(47);
-	    var ScrollSync = __webpack_require__(57);
-	    var ViewSequence = __webpack_require__(52);
+	    var LayoutUtility = __webpack_require__(16);
+	    var LayoutController = __webpack_require__(13);
+	    var LayoutNode = __webpack_require__(14);
+	    var FlowLayoutNode = __webpack_require__(11);
+	    var LayoutNodeManager = __webpack_require__(15);
+	    var ContainerSurface = __webpack_require__(86);
+	    var Transform = __webpack_require__(76);
+	    var EventHandler = __webpack_require__(85);
+	    var Group = __webpack_require__(87);
+	    var Vector = __webpack_require__(77);
+	    var PhysicsEngine = __webpack_require__(80);
+	    var Particle = __webpack_require__(78);
+	    var Drag = __webpack_require__(88);
+	    var Spring = __webpack_require__(79);
+	    var ScrollSync = __webpack_require__(89);
+	    var ViewSequence = __webpack_require__(84);
 
 	    /**
 	     * Boudary reached detection
@@ -40777,7 +38561,7 @@
 
 
 /***/ },
-/* 25 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;// Deprecated, require FlexScrollView instead
@@ -40787,12 +38571,12 @@
 	    if (console.warn) {
 	        console.warn('file famous-flex/ScrollView has been deprecated, use famous-flex/FlexScrollView instead');
 	    }
-	    module.exports = __webpack_require__(17);
+	    module.exports = __webpack_require__(10);
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ },
-/* 26 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40851,7 +38635,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var EventHandler = __webpack_require__(53);
+	    var EventHandler = __webpack_require__(85);
 
 	    /**
 	     * @class
@@ -41060,7 +38844,7 @@
 
 
 /***/ },
-/* 27 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41113,7 +38897,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(23);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    /**
 	     * @class
@@ -41328,7 +39112,7 @@
 
 
 /***/ },
-/* 28 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41380,8 +39164,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
-	    var LayoutUtility = __webpack_require__(23);
+	    var Utility = __webpack_require__(82);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -41596,7 +39380,7 @@
 
 
 /***/ },
-/* 29 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41644,7 +39428,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
+	    var Utility = __webpack_require__(82);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -41741,7 +39525,7 @@
 
 
 /***/ },
-/* 30 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41830,7 +39614,7 @@
 
 
 /***/ },
-/* 31 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41880,8 +39664,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
-	    var LayoutUtility = __webpack_require__(23);
+	    var Utility = __webpack_require__(82);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -41937,7 +39721,7 @@
 
 
 /***/ },
-/* 32 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41984,7 +39768,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutDockHelper = __webpack_require__(27);
+	    var LayoutDockHelper = __webpack_require__(20);
 
 	    // Layout function
 	    module.exports = function HeaderFooterLayout(context, options) {
@@ -41997,7 +39781,7 @@
 
 
 /***/ },
-/* 33 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42070,8 +39854,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
-	    var LayoutUtility = __webpack_require__(23);
+	    var Utility = __webpack_require__(82);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -42295,7 +40079,7 @@
 
 
 /***/ },
-/* 34 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42362,7 +40146,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutDockHelper = __webpack_require__(27);
+	    var LayoutDockHelper = __webpack_require__(20);
 
 	    // Layout function
 	    module.exports = function NavBarLayout(context, options) {
@@ -42407,7 +40191,7 @@
 
 
 /***/ },
-/* 35 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42453,7 +40237,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
+	    var Utility = __webpack_require__(82);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -42520,7 +40304,7 @@
 
 
 /***/ },
-/* 36 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42586,8 +40370,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
-	    var LayoutUtility = __webpack_require__(23);
+	    var Utility = __webpack_require__(82);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -42713,7 +40497,7 @@
 
 
 /***/ },
-/* 37 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42740,12 +40524,12 @@
 		if (console.warn) {
 			console.warn('TableLayout has been deprecated and will be removed in the future, use ListLayout instead');
 		}
-	    module.exports = __webpack_require__(33);
+	    module.exports = __webpack_require__(26);
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ },
-/* 38 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42805,7 +40589,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(50);
+	    var Utility = __webpack_require__(82);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -42921,7 +40705,7 @@
 
 
 /***/ },
-/* 39 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -42981,17 +40765,17 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var View = __webpack_require__(58);
-	    var Surface = __webpack_require__(59);
-	    var Utility = __webpack_require__(50);
-	    var ContainerSurface = __webpack_require__(54);
-	    var LayoutController = __webpack_require__(20);
-	    var ScrollController = __webpack_require__(24);
-	    var WheelLayout = __webpack_require__(38);
-	    var ProportionalLayout = __webpack_require__(35);
-	    var VirtualViewSequence = __webpack_require__(26);
-	    var DatePickerComponents = __webpack_require__(40);
-	    var LayoutUtility = __webpack_require__(23);
+	    var View = __webpack_require__(90);
+	    var Surface = __webpack_require__(91);
+	    var Utility = __webpack_require__(82);
+	    var ContainerSurface = __webpack_require__(86);
+	    var LayoutController = __webpack_require__(13);
+	    var ScrollController = __webpack_require__(17);
+	    var WheelLayout = __webpack_require__(31);
+	    var ProportionalLayout = __webpack_require__(28);
+	    var VirtualViewSequence = __webpack_require__(19);
+	    var DatePickerComponents = __webpack_require__(33);
+	    var LayoutUtility = __webpack_require__(16);
 
 	    /**
 	     * @class
@@ -43376,7 +41160,7 @@
 
 
 /***/ },
-/* 40 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -43400,8 +41184,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Surface = __webpack_require__(59);
-	    var EventHandler = __webpack_require__(53);
+	    var Surface = __webpack_require__(91);
+	    var EventHandler = __webpack_require__(85);
 
 	    /**
 	     * Helper functions for formatting values with X decimal places.
@@ -43696,7 +41480,7 @@
 
 
 /***/ },
-/* 41 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -43768,10 +41552,10 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Surface = __webpack_require__(59);
-	    var View = __webpack_require__(58);
-	    var LayoutController = __webpack_require__(20);
-	    var TabBarLayout = __webpack_require__(36);
+	    var Surface = __webpack_require__(91);
+	    var View = __webpack_require__(90);
+	    var LayoutController = __webpack_require__(13);
+	    var TabBarLayout = __webpack_require__(29);
 
 	    /**
 	     * @class
@@ -44028,26 +41812,65 @@
 
 
 /***/ },
-/* 42 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  core: __webpack_require__(61),
-	  events: __webpack_require__(62),
-	  inputs: __webpack_require__(63),
-	  math: __webpack_require__(64),
-	  modifiers: __webpack_require__(65),
-	  physics: __webpack_require__(66),
-	  surfaces: __webpack_require__(67),
-	  transitions: __webpack_require__(68),
-	  utilities: __webpack_require__(69),
-	  views: __webpack_require__(70),
-	  widgets: __webpack_require__(71)
+	  core: __webpack_require__(104),
+	  events: __webpack_require__(105),
+	  inputs: __webpack_require__(106),
+	  math: __webpack_require__(107),
+	  modifiers: __webpack_require__(108),
+	  physics: __webpack_require__(109),
+	  surfaces: __webpack_require__(110),
+	  transitions: __webpack_require__(111),
+	  utilities: __webpack_require__(112),
+	  views: __webpack_require__(113),
+	  widgets: __webpack_require__(114)
 	};
 
 
 /***/ },
-/* 43 */
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */,
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44057,7 +41880,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(53);
+	var EventHandler = __webpack_require__(85);
 	function OptionsManager(value) {
 	    this._value = value;
 	    this.eventOutput = null;
@@ -44133,7 +41956,7 @@
 	module.exports = OptionsManager;
 
 /***/ },
-/* 44 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44842,7 +42665,7 @@
 	module.exports = Transform;
 
 /***/ },
-/* 45 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45001,7 +42824,7 @@
 	module.exports = Vector;
 
 /***/ },
-/* 46 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45011,10 +42834,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Vector = __webpack_require__(45);
-	var Transform = __webpack_require__(44);
-	var EventHandler = __webpack_require__(53);
-	var Integrator = __webpack_require__(72);
+	var Vector = __webpack_require__(77);
+	var Transform = __webpack_require__(76);
+	var EventHandler = __webpack_require__(85);
+	var Integrator = __webpack_require__(144);
 	function Particle(options) {
 	    options = options || {};
 	    var defaults = Particle.DEFAULT_OPTIONS;
@@ -45209,7 +43032,7 @@
 	module.exports = Particle;
 
 /***/ },
-/* 47 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45219,8 +43042,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(73);
-	var Vector = __webpack_require__(45);
+	var Force = __webpack_require__(145);
+	var Vector = __webpack_require__(77);
 	function Spring(options) {
 	    Force.call(this);
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -45344,7 +43167,7 @@
 	module.exports = Spring;
 
 /***/ },
-/* 48 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45354,7 +43177,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(53);
+	var EventHandler = __webpack_require__(85);
 	function PhysicsEngine(options) {
 	    this.options = Object.create(PhysicsEngine.DEFAULT_OPTIONS);
 	    if (options)
@@ -45623,7 +43446,7 @@
 	module.exports = PhysicsEngine;
 
 /***/ },
-/* 49 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45633,8 +43456,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var MultipleTransition = __webpack_require__(74);
-	var TweenTransition = __webpack_require__(75);
+	var MultipleTransition = __webpack_require__(146);
+	var TweenTransition = __webpack_require__(147);
 	function Transitionable(start) {
 	    this.currentAction = null;
 	    this.actionQueue = [];
@@ -45763,7 +43586,7 @@
 	module.exports = Transitionable;
 
 /***/ },
-/* 50 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45832,7 +43655,7 @@
 	module.exports = Utility;
 
 /***/ },
-/* 51 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45865,7 +43688,7 @@
 	};
 
 /***/ },
-/* 52 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46118,7 +43941,7 @@
 	module.exports = ViewSequence;
 
 /***/ },
-/* 53 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46128,7 +43951,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventEmitter = __webpack_require__(77);
+	var EventEmitter = __webpack_require__(148);
 	function EventHandler() {
 	    EventEmitter.apply(this, arguments);
 	    this.downstream = [];
@@ -46230,7 +44053,7 @@
 	module.exports = EventHandler;
 
 /***/ },
-/* 54 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46240,8 +44063,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(59);
-	var Context = __webpack_require__(76);
+	var Surface = __webpack_require__(91);
+	var Context = __webpack_require__(149);
 	function ContainerSurface(options) {
 	    Surface.call(this, options);
 	    this._container = document.createElement('div');
@@ -46283,7 +44106,7 @@
 	module.exports = ContainerSurface;
 
 /***/ },
-/* 55 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46293,9 +44116,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(76);
-	var Transform = __webpack_require__(44);
-	var Surface = __webpack_require__(59);
+	var Context = __webpack_require__(149);
+	var Transform = __webpack_require__(76);
+	var Surface = __webpack_require__(91);
 	function Group(options) {
 	    Surface.call(this, options);
 	    this._shouldRecalculateSize = false;
@@ -46358,7 +44181,7 @@
 	module.exports = Group;
 
 /***/ },
-/* 56 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46368,7 +44191,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(73);
+	var Force = __webpack_require__(145);
 	function Drag(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -46408,7 +44231,7 @@
 	module.exports = Drag;
 
 /***/ },
-/* 57 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46418,9 +44241,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(53);
-	var Engine = __webpack_require__(80);
-	var OptionsManager = __webpack_require__(43);
+	var EventHandler = __webpack_require__(85);
+	var Engine = __webpack_require__(150);
+	var OptionsManager = __webpack_require__(75);
 	function ScrollSync(options) {
 	    this.options = Object.create(ScrollSync.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -46551,7 +44374,7 @@
 	module.exports = ScrollSync;
 
 /***/ },
-/* 58 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46561,10 +44384,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(53);
-	var OptionsManager = __webpack_require__(43);
-	var RenderNode = __webpack_require__(78);
-	var Utility = __webpack_require__(50);
+	var EventHandler = __webpack_require__(85);
+	var OptionsManager = __webpack_require__(75);
+	var RenderNode = __webpack_require__(151);
+	var Utility = __webpack_require__(82);
 	function View(options) {
 	    this._node = new RenderNode();
 	    this._eventInput = new EventHandler();
@@ -46599,7 +44422,7 @@
 	module.exports = View;
 
 /***/ },
-/* 59 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46609,7 +44432,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var ElementOutput = __webpack_require__(79);
+	var ElementOutput = __webpack_require__(152);
 	function Surface(options) {
 	    ElementOutput.call(this);
 	    this.options = {};
@@ -46913,7 +44736,10182 @@
 	module.exports = Surface;
 
 /***/ },
-/* 60 */
+/* 92 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: transition.js v3.3.2
+	 * http://getbootstrap.com/javascript/#transitions
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // CSS TRANSITION SUPPORT (Shoutout: http://www.modernizr.com/)
+	  // ============================================================
+
+	  function transitionEnd() {
+	    var el = document.createElement('bootstrap')
+
+	    var transEndEventNames = {
+	      WebkitTransition : 'webkitTransitionEnd',
+	      MozTransition    : 'transitionend',
+	      OTransition      : 'oTransitionEnd otransitionend',
+	      transition       : 'transitionend'
+	    }
+
+	    for (var name in transEndEventNames) {
+	      if (el.style[name] !== undefined) {
+	        return { end: transEndEventNames[name] }
+	      }
+	    }
+
+	    return false // explicit for ie8 (  ._.)
+	  }
+
+	  // http://blog.alexmaccaw.com/css-transitions
+	  $.fn.emulateTransitionEnd = function (duration) {
+	    var called = false
+	    var $el = this
+	    $(this).one('bsTransitionEnd', function () { called = true })
+	    var callback = function () { if (!called) $($el).trigger($.support.transition.end) }
+	    setTimeout(callback, duration)
+	    return this
+	  }
+
+	  $(function () {
+	    $.support.transition = transitionEnd()
+
+	    if (!$.support.transition) return
+
+	    $.event.special.bsTransitionEnd = {
+	      bindType: $.support.transition.end,
+	      delegateType: $.support.transition.end,
+	      handle: function (e) {
+	        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments)
+	      }
+	    }
+	  })
+
+	}(jQuery);
+
+
+/***/ },
+/* 93 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: alert.js v3.3.2
+	 * http://getbootstrap.com/javascript/#alerts
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // ALERT CLASS DEFINITION
+	  // ======================
+
+	  var dismiss = '[data-dismiss="alert"]'
+	  var Alert   = function (el) {
+	    $(el).on('click', dismiss, this.close)
+	  }
+
+	  Alert.VERSION = '3.3.2'
+
+	  Alert.TRANSITION_DURATION = 150
+
+	  Alert.prototype.close = function (e) {
+	    var $this    = $(this)
+	    var selector = $this.attr('data-target')
+
+	    if (!selector) {
+	      selector = $this.attr('href')
+	      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+	    }
+
+	    var $parent = $(selector)
+
+	    if (e) e.preventDefault()
+
+	    if (!$parent.length) {
+	      $parent = $this.closest('.alert')
+	    }
+
+	    $parent.trigger(e = $.Event('close.bs.alert'))
+
+	    if (e.isDefaultPrevented()) return
+
+	    $parent.removeClass('in')
+
+	    function removeElement() {
+	      // detach from parent, fire event then clean up data
+	      $parent.detach().trigger('closed.bs.alert').remove()
+	    }
+
+	    $.support.transition && $parent.hasClass('fade') ?
+	      $parent
+	        .one('bsTransitionEnd', removeElement)
+	        .emulateTransitionEnd(Alert.TRANSITION_DURATION) :
+	      removeElement()
+	  }
+
+
+	  // ALERT PLUGIN DEFINITION
+	  // =======================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this = $(this)
+	      var data  = $this.data('bs.alert')
+
+	      if (!data) $this.data('bs.alert', (data = new Alert(this)))
+	      if (typeof option == 'string') data[option].call($this)
+	    })
+	  }
+
+	  var old = $.fn.alert
+
+	  $.fn.alert             = Plugin
+	  $.fn.alert.Constructor = Alert
+
+
+	  // ALERT NO CONFLICT
+	  // =================
+
+	  $.fn.alert.noConflict = function () {
+	    $.fn.alert = old
+	    return this
+	  }
+
+
+	  // ALERT DATA-API
+	  // ==============
+
+	  $(document).on('click.bs.alert.data-api', dismiss, Alert.prototype.close)
+
+	}(jQuery);
+
+
+/***/ },
+/* 94 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: button.js v3.3.2
+	 * http://getbootstrap.com/javascript/#buttons
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // BUTTON PUBLIC CLASS DEFINITION
+	  // ==============================
+
+	  var Button = function (element, options) {
+	    this.$element  = $(element)
+	    this.options   = $.extend({}, Button.DEFAULTS, options)
+	    this.isLoading = false
+	  }
+
+	  Button.VERSION  = '3.3.2'
+
+	  Button.DEFAULTS = {
+	    loadingText: 'loading...'
+	  }
+
+	  Button.prototype.setState = function (state) {
+	    var d    = 'disabled'
+	    var $el  = this.$element
+	    var val  = $el.is('input') ? 'val' : 'html'
+	    var data = $el.data()
+
+	    state = state + 'Text'
+
+	    if (data.resetText == null) $el.data('resetText', $el[val]())
+
+	    // push to event loop to allow forms to submit
+	    setTimeout($.proxy(function () {
+	      $el[val](data[state] == null ? this.options[state] : data[state])
+
+	      if (state == 'loadingText') {
+	        this.isLoading = true
+	        $el.addClass(d).attr(d, d)
+	      } else if (this.isLoading) {
+	        this.isLoading = false
+	        $el.removeClass(d).removeAttr(d)
+	      }
+	    }, this), 0)
+	  }
+
+	  Button.prototype.toggle = function () {
+	    var changed = true
+	    var $parent = this.$element.closest('[data-toggle="buttons"]')
+
+	    if ($parent.length) {
+	      var $input = this.$element.find('input')
+	      if ($input.prop('type') == 'radio') {
+	        if ($input.prop('checked') && this.$element.hasClass('active')) changed = false
+	        else $parent.find('.active').removeClass('active')
+	      }
+	      if (changed) $input.prop('checked', !this.$element.hasClass('active')).trigger('change')
+	    } else {
+	      this.$element.attr('aria-pressed', !this.$element.hasClass('active'))
+	    }
+
+	    if (changed) this.$element.toggleClass('active')
+	  }
+
+
+	  // BUTTON PLUGIN DEFINITION
+	  // ========================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.button')
+	      var options = typeof option == 'object' && option
+
+	      if (!data) $this.data('bs.button', (data = new Button(this, options)))
+
+	      if (option == 'toggle') data.toggle()
+	      else if (option) data.setState(option)
+	    })
+	  }
+
+	  var old = $.fn.button
+
+	  $.fn.button             = Plugin
+	  $.fn.button.Constructor = Button
+
+
+	  // BUTTON NO CONFLICT
+	  // ==================
+
+	  $.fn.button.noConflict = function () {
+	    $.fn.button = old
+	    return this
+	  }
+
+
+	  // BUTTON DATA-API
+	  // ===============
+
+	  $(document)
+	    .on('click.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+	      var $btn = $(e.target)
+	      if (!$btn.hasClass('btn')) $btn = $btn.closest('.btn')
+	      Plugin.call($btn, 'toggle')
+	      e.preventDefault()
+	    })
+	    .on('focus.bs.button.data-api blur.bs.button.data-api', '[data-toggle^="button"]', function (e) {
+	      $(e.target).closest('.btn').toggleClass('focus', /^focus(in)?$/.test(e.type))
+	    })
+
+	}(jQuery);
+
+
+/***/ },
+/* 95 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: carousel.js v3.3.2
+	 * http://getbootstrap.com/javascript/#carousel
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // CAROUSEL CLASS DEFINITION
+	  // =========================
+
+	  var Carousel = function (element, options) {
+	    this.$element    = $(element)
+	    this.$indicators = this.$element.find('.carousel-indicators')
+	    this.options     = options
+	    this.paused      =
+	    this.sliding     =
+	    this.interval    =
+	    this.$active     =
+	    this.$items      = null
+
+	    this.options.keyboard && this.$element.on('keydown.bs.carousel', $.proxy(this.keydown, this))
+
+	    this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
+	      .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
+	      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
+	  }
+
+	  Carousel.VERSION  = '3.3.2'
+
+	  Carousel.TRANSITION_DURATION = 600
+
+	  Carousel.DEFAULTS = {
+	    interval: 5000,
+	    pause: 'hover',
+	    wrap: true,
+	    keyboard: true
+	  }
+
+	  Carousel.prototype.keydown = function (e) {
+	    if (/input|textarea/i.test(e.target.tagName)) return
+	    switch (e.which) {
+	      case 37: this.prev(); break
+	      case 39: this.next(); break
+	      default: return
+	    }
+
+	    e.preventDefault()
+	  }
+
+	  Carousel.prototype.cycle = function (e) {
+	    e || (this.paused = false)
+
+	    this.interval && clearInterval(this.interval)
+
+	    this.options.interval
+	      && !this.paused
+	      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
+
+	    return this
+	  }
+
+	  Carousel.prototype.getItemIndex = function (item) {
+	    this.$items = item.parent().children('.item')
+	    return this.$items.index(item || this.$active)
+	  }
+
+	  Carousel.prototype.getItemForDirection = function (direction, active) {
+	    var activeIndex = this.getItemIndex(active)
+	    var willWrap = (direction == 'prev' && activeIndex === 0)
+	                || (direction == 'next' && activeIndex == (this.$items.length - 1))
+	    if (willWrap && !this.options.wrap) return active
+	    var delta = direction == 'prev' ? -1 : 1
+	    var itemIndex = (activeIndex + delta) % this.$items.length
+	    return this.$items.eq(itemIndex)
+	  }
+
+	  Carousel.prototype.to = function (pos) {
+	    var that        = this
+	    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))
+
+	    if (pos > (this.$items.length - 1) || pos < 0) return
+
+	    if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"
+	    if (activeIndex == pos) return this.pause().cycle()
+
+	    return this.slide(pos > activeIndex ? 'next' : 'prev', this.$items.eq(pos))
+	  }
+
+	  Carousel.prototype.pause = function (e) {
+	    e || (this.paused = true)
+
+	    if (this.$element.find('.next, .prev').length && $.support.transition) {
+	      this.$element.trigger($.support.transition.end)
+	      this.cycle(true)
+	    }
+
+	    this.interval = clearInterval(this.interval)
+
+	    return this
+	  }
+
+	  Carousel.prototype.next = function () {
+	    if (this.sliding) return
+	    return this.slide('next')
+	  }
+
+	  Carousel.prototype.prev = function () {
+	    if (this.sliding) return
+	    return this.slide('prev')
+	  }
+
+	  Carousel.prototype.slide = function (type, next) {
+	    var $active   = this.$element.find('.item.active')
+	    var $next     = next || this.getItemForDirection(type, $active)
+	    var isCycling = this.interval
+	    var direction = type == 'next' ? 'left' : 'right'
+	    var that      = this
+
+	    if ($next.hasClass('active')) return (this.sliding = false)
+
+	    var relatedTarget = $next[0]
+	    var slideEvent = $.Event('slide.bs.carousel', {
+	      relatedTarget: relatedTarget,
+	      direction: direction
+	    })
+	    this.$element.trigger(slideEvent)
+	    if (slideEvent.isDefaultPrevented()) return
+
+	    this.sliding = true
+
+	    isCycling && this.pause()
+
+	    if (this.$indicators.length) {
+	      this.$indicators.find('.active').removeClass('active')
+	      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
+	      $nextIndicator && $nextIndicator.addClass('active')
+	    }
+
+	    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
+	    if ($.support.transition && this.$element.hasClass('slide')) {
+	      $next.addClass(type)
+	      $next[0].offsetWidth // force reflow
+	      $active.addClass(direction)
+	      $next.addClass(direction)
+	      $active
+	        .one('bsTransitionEnd', function () {
+	          $next.removeClass([type, direction].join(' ')).addClass('active')
+	          $active.removeClass(['active', direction].join(' '))
+	          that.sliding = false
+	          setTimeout(function () {
+	            that.$element.trigger(slidEvent)
+	          }, 0)
+	        })
+	        .emulateTransitionEnd(Carousel.TRANSITION_DURATION)
+	    } else {
+	      $active.removeClass('active')
+	      $next.addClass('active')
+	      this.sliding = false
+	      this.$element.trigger(slidEvent)
+	    }
+
+	    isCycling && this.cycle()
+
+	    return this
+	  }
+
+
+	  // CAROUSEL PLUGIN DEFINITION
+	  // ==========================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.carousel')
+	      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
+	      var action  = typeof option == 'string' ? option : options.slide
+
+	      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
+	      if (typeof option == 'number') data.to(option)
+	      else if (action) data[action]()
+	      else if (options.interval) data.pause().cycle()
+	    })
+	  }
+
+	  var old = $.fn.carousel
+
+	  $.fn.carousel             = Plugin
+	  $.fn.carousel.Constructor = Carousel
+
+
+	  // CAROUSEL NO CONFLICT
+	  // ====================
+
+	  $.fn.carousel.noConflict = function () {
+	    $.fn.carousel = old
+	    return this
+	  }
+
+
+	  // CAROUSEL DATA-API
+	  // =================
+
+	  var clickHandler = function (e) {
+	    var href
+	    var $this   = $(this)
+	    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
+	    if (!$target.hasClass('carousel')) return
+	    var options = $.extend({}, $target.data(), $this.data())
+	    var slideIndex = $this.attr('data-slide-to')
+	    if (slideIndex) options.interval = false
+
+	    Plugin.call($target, options)
+
+	    if (slideIndex) {
+	      $target.data('bs.carousel').to(slideIndex)
+	    }
+
+	    e.preventDefault()
+	  }
+
+	  $(document)
+	    .on('click.bs.carousel.data-api', '[data-slide]', clickHandler)
+	    .on('click.bs.carousel.data-api', '[data-slide-to]', clickHandler)
+
+	  $(window).on('load', function () {
+	    $('[data-ride="carousel"]').each(function () {
+	      var $carousel = $(this)
+	      Plugin.call($carousel, $carousel.data())
+	    })
+	  })
+
+	}(jQuery);
+
+
+/***/ },
+/* 96 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: collapse.js v3.3.2
+	 * http://getbootstrap.com/javascript/#collapse
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // COLLAPSE PUBLIC CLASS DEFINITION
+	  // ================================
+
+	  var Collapse = function (element, options) {
+	    this.$element      = $(element)
+	    this.options       = $.extend({}, Collapse.DEFAULTS, options)
+	    this.$trigger      = $(this.options.trigger).filter('[href="#' + element.id + '"], [data-target="#' + element.id + '"]')
+	    this.transitioning = null
+
+	    if (this.options.parent) {
+	      this.$parent = this.getParent()
+	    } else {
+	      this.addAriaAndCollapsedClass(this.$element, this.$trigger)
+	    }
+
+	    if (this.options.toggle) this.toggle()
+	  }
+
+	  Collapse.VERSION  = '3.3.2'
+
+	  Collapse.TRANSITION_DURATION = 350
+
+	  Collapse.DEFAULTS = {
+	    toggle: true,
+	    trigger: '[data-toggle="collapse"]'
+	  }
+
+	  Collapse.prototype.dimension = function () {
+	    var hasWidth = this.$element.hasClass('width')
+	    return hasWidth ? 'width' : 'height'
+	  }
+
+	  Collapse.prototype.show = function () {
+	    if (this.transitioning || this.$element.hasClass('in')) return
+
+	    var activesData
+	    var actives = this.$parent && this.$parent.children('.panel').children('.in, .collapsing')
+
+	    if (actives && actives.length) {
+	      activesData = actives.data('bs.collapse')
+	      if (activesData && activesData.transitioning) return
+	    }
+
+	    var startEvent = $.Event('show.bs.collapse')
+	    this.$element.trigger(startEvent)
+	    if (startEvent.isDefaultPrevented()) return
+
+	    if (actives && actives.length) {
+	      Plugin.call(actives, 'hide')
+	      activesData || actives.data('bs.collapse', null)
+	    }
+
+	    var dimension = this.dimension()
+
+	    this.$element
+	      .removeClass('collapse')
+	      .addClass('collapsing')[dimension](0)
+	      .attr('aria-expanded', true)
+
+	    this.$trigger
+	      .removeClass('collapsed')
+	      .attr('aria-expanded', true)
+
+	    this.transitioning = 1
+
+	    var complete = function () {
+	      this.$element
+	        .removeClass('collapsing')
+	        .addClass('collapse in')[dimension]('')
+	      this.transitioning = 0
+	      this.$element
+	        .trigger('shown.bs.collapse')
+	    }
+
+	    if (!$.support.transition) return complete.call(this)
+
+	    var scrollSize = $.camelCase(['scroll', dimension].join('-'))
+
+	    this.$element
+	      .one('bsTransitionEnd', $.proxy(complete, this))
+	      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)[dimension](this.$element[0][scrollSize])
+	  }
+
+	  Collapse.prototype.hide = function () {
+	    if (this.transitioning || !this.$element.hasClass('in')) return
+
+	    var startEvent = $.Event('hide.bs.collapse')
+	    this.$element.trigger(startEvent)
+	    if (startEvent.isDefaultPrevented()) return
+
+	    var dimension = this.dimension()
+
+	    this.$element[dimension](this.$element[dimension]())[0].offsetHeight
+
+	    this.$element
+	      .addClass('collapsing')
+	      .removeClass('collapse in')
+	      .attr('aria-expanded', false)
+
+	    this.$trigger
+	      .addClass('collapsed')
+	      .attr('aria-expanded', false)
+
+	    this.transitioning = 1
+
+	    var complete = function () {
+	      this.transitioning = 0
+	      this.$element
+	        .removeClass('collapsing')
+	        .addClass('collapse')
+	        .trigger('hidden.bs.collapse')
+	    }
+
+	    if (!$.support.transition) return complete.call(this)
+
+	    this.$element
+	      [dimension](0)
+	      .one('bsTransitionEnd', $.proxy(complete, this))
+	      .emulateTransitionEnd(Collapse.TRANSITION_DURATION)
+	  }
+
+	  Collapse.prototype.toggle = function () {
+	    this[this.$element.hasClass('in') ? 'hide' : 'show']()
+	  }
+
+	  Collapse.prototype.getParent = function () {
+	    return $(this.options.parent)
+	      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+	      .each($.proxy(function (i, element) {
+	        var $element = $(element)
+	        this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element)
+	      }, this))
+	      .end()
+	  }
+
+	  Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
+	    var isOpen = $element.hasClass('in')
+
+	    $element.attr('aria-expanded', isOpen)
+	    $trigger
+	      .toggleClass('collapsed', !isOpen)
+	      .attr('aria-expanded', isOpen)
+	  }
+
+	  function getTargetFromTrigger($trigger) {
+	    var href
+	    var target = $trigger.attr('data-target')
+	      || (href = $trigger.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '') // strip for ie7
+
+	    return $(target)
+	  }
+
+
+	  // COLLAPSE PLUGIN DEFINITION
+	  // ==========================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.collapse')
+	      var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+	      if (!data && options.toggle && option == 'show') options.toggle = false
+	      if (!data) $this.data('bs.collapse', (data = new Collapse(this, options)))
+	      if (typeof option == 'string') data[option]()
+	    })
+	  }
+
+	  var old = $.fn.collapse
+
+	  $.fn.collapse             = Plugin
+	  $.fn.collapse.Constructor = Collapse
+
+
+	  // COLLAPSE NO CONFLICT
+	  // ====================
+
+	  $.fn.collapse.noConflict = function () {
+	    $.fn.collapse = old
+	    return this
+	  }
+
+
+	  // COLLAPSE DATA-API
+	  // =================
+
+	  $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
+	    var $this   = $(this)
+
+	    if (!$this.attr('data-target')) e.preventDefault()
+
+	    var $target = getTargetFromTrigger($this)
+	    var data    = $target.data('bs.collapse')
+	    var option  = data ? 'toggle' : $.extend({}, $this.data(), { trigger: this })
+
+	    Plugin.call($target, option)
+	  })
+
+	}(jQuery);
+
+
+/***/ },
+/* 97 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: dropdown.js v3.3.2
+	 * http://getbootstrap.com/javascript/#dropdowns
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // DROPDOWN CLASS DEFINITION
+	  // =========================
+
+	  var backdrop = '.dropdown-backdrop'
+	  var toggle   = '[data-toggle="dropdown"]'
+	  var Dropdown = function (element) {
+	    $(element).on('click.bs.dropdown', this.toggle)
+	  }
+
+	  Dropdown.VERSION = '3.3.2'
+
+	  Dropdown.prototype.toggle = function (e) {
+	    var $this = $(this)
+
+	    if ($this.is('.disabled, :disabled')) return
+
+	    var $parent  = getParent($this)
+	    var isActive = $parent.hasClass('open')
+
+	    clearMenus()
+
+	    if (!isActive) {
+	      if ('ontouchstart' in document.documentElement && !$parent.closest('.navbar-nav').length) {
+	        // if mobile we use a backdrop because click events don't delegate
+	        $('<div class="dropdown-backdrop"/>').insertAfter($(this)).on('click', clearMenus)
+	      }
+
+	      var relatedTarget = { relatedTarget: this }
+	      $parent.trigger(e = $.Event('show.bs.dropdown', relatedTarget))
+
+	      if (e.isDefaultPrevented()) return
+
+	      $this
+	        .trigger('focus')
+	        .attr('aria-expanded', 'true')
+
+	      $parent
+	        .toggleClass('open')
+	        .trigger('shown.bs.dropdown', relatedTarget)
+	    }
+
+	    return false
+	  }
+
+	  Dropdown.prototype.keydown = function (e) {
+	    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return
+
+	    var $this = $(this)
+
+	    e.preventDefault()
+	    e.stopPropagation()
+
+	    if ($this.is('.disabled, :disabled')) return
+
+	    var $parent  = getParent($this)
+	    var isActive = $parent.hasClass('open')
+
+	    if ((!isActive && e.which != 27) || (isActive && e.which == 27)) {
+	      if (e.which == 27) $parent.find(toggle).trigger('focus')
+	      return $this.trigger('click')
+	    }
+
+	    var desc = ' li:not(.divider):visible a'
+	    var $items = $parent.find('[role="menu"]' + desc + ', [role="listbox"]' + desc)
+
+	    if (!$items.length) return
+
+	    var index = $items.index(e.target)
+
+	    if (e.which == 38 && index > 0)                 index--                        // up
+	    if (e.which == 40 && index < $items.length - 1) index++                        // down
+	    if (!~index)                                      index = 0
+
+	    $items.eq(index).trigger('focus')
+	  }
+
+	  function clearMenus(e) {
+	    if (e && e.which === 3) return
+	    $(backdrop).remove()
+	    $(toggle).each(function () {
+	      var $this         = $(this)
+	      var $parent       = getParent($this)
+	      var relatedTarget = { relatedTarget: this }
+
+	      if (!$parent.hasClass('open')) return
+
+	      $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
+
+	      if (e.isDefaultPrevented()) return
+
+	      $this.attr('aria-expanded', 'false')
+	      $parent.removeClass('open').trigger('hidden.bs.dropdown', relatedTarget)
+	    })
+	  }
+
+	  function getParent($this) {
+	    var selector = $this.attr('data-target')
+
+	    if (!selector) {
+	      selector = $this.attr('href')
+	      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+	    }
+
+	    var $parent = selector && $(selector)
+
+	    return $parent && $parent.length ? $parent : $this.parent()
+	  }
+
+
+	  // DROPDOWN PLUGIN DEFINITION
+	  // ==========================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this = $(this)
+	      var data  = $this.data('bs.dropdown')
+
+	      if (!data) $this.data('bs.dropdown', (data = new Dropdown(this)))
+	      if (typeof option == 'string') data[option].call($this)
+	    })
+	  }
+
+	  var old = $.fn.dropdown
+
+	  $.fn.dropdown             = Plugin
+	  $.fn.dropdown.Constructor = Dropdown
+
+
+	  // DROPDOWN NO CONFLICT
+	  // ====================
+
+	  $.fn.dropdown.noConflict = function () {
+	    $.fn.dropdown = old
+	    return this
+	  }
+
+
+	  // APPLY TO STANDARD DROPDOWN ELEMENTS
+	  // ===================================
+
+	  $(document)
+	    .on('click.bs.dropdown.data-api', clearMenus)
+	    .on('click.bs.dropdown.data-api', '.dropdown form', function (e) { e.stopPropagation() })
+	    .on('click.bs.dropdown.data-api', toggle, Dropdown.prototype.toggle)
+	    .on('keydown.bs.dropdown.data-api', toggle, Dropdown.prototype.keydown)
+	    .on('keydown.bs.dropdown.data-api', '[role="menu"]', Dropdown.prototype.keydown)
+	    .on('keydown.bs.dropdown.data-api', '[role="listbox"]', Dropdown.prototype.keydown)
+
+	}(jQuery);
+
+
+/***/ },
+/* 98 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: modal.js v3.3.2
+	 * http://getbootstrap.com/javascript/#modals
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // MODAL CLASS DEFINITION
+	  // ======================
+
+	  var Modal = function (element, options) {
+	    this.options        = options
+	    this.$body          = $(document.body)
+	    this.$element       = $(element)
+	    this.$backdrop      =
+	    this.isShown        = null
+	    this.scrollbarWidth = 0
+
+	    if (this.options.remote) {
+	      this.$element
+	        .find('.modal-content')
+	        .load(this.options.remote, $.proxy(function () {
+	          this.$element.trigger('loaded.bs.modal')
+	        }, this))
+	    }
+	  }
+
+	  Modal.VERSION  = '3.3.2'
+
+	  Modal.TRANSITION_DURATION = 300
+	  Modal.BACKDROP_TRANSITION_DURATION = 150
+
+	  Modal.DEFAULTS = {
+	    backdrop: true,
+	    keyboard: true,
+	    show: true
+	  }
+
+	  Modal.prototype.toggle = function (_relatedTarget) {
+	    return this.isShown ? this.hide() : this.show(_relatedTarget)
+	  }
+
+	  Modal.prototype.show = function (_relatedTarget) {
+	    var that = this
+	    var e    = $.Event('show.bs.modal', { relatedTarget: _relatedTarget })
+
+	    this.$element.trigger(e)
+
+	    if (this.isShown || e.isDefaultPrevented()) return
+
+	    this.isShown = true
+
+	    this.checkScrollbar()
+	    this.setScrollbar()
+	    this.$body.addClass('modal-open')
+
+	    this.escape()
+	    this.resize()
+
+	    this.$element.on('click.dismiss.bs.modal', '[data-dismiss="modal"]', $.proxy(this.hide, this))
+
+	    this.backdrop(function () {
+	      var transition = $.support.transition && that.$element.hasClass('fade')
+
+	      if (!that.$element.parent().length) {
+	        that.$element.appendTo(that.$body) // don't move modals dom position
+	      }
+
+	      that.$element
+	        .show()
+	        .scrollTop(0)
+
+	      if (that.options.backdrop) that.adjustBackdrop()
+	      that.adjustDialog()
+
+	      if (transition) {
+	        that.$element[0].offsetWidth // force reflow
+	      }
+
+	      that.$element
+	        .addClass('in')
+	        .attr('aria-hidden', false)
+
+	      that.enforceFocus()
+
+	      var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
+
+	      transition ?
+	        that.$element.find('.modal-dialog') // wait for modal to slide in
+	          .one('bsTransitionEnd', function () {
+	            that.$element.trigger('focus').trigger(e)
+	          })
+	          .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
+	        that.$element.trigger('focus').trigger(e)
+	    })
+	  }
+
+	  Modal.prototype.hide = function (e) {
+	    if (e) e.preventDefault()
+
+	    e = $.Event('hide.bs.modal')
+
+	    this.$element.trigger(e)
+
+	    if (!this.isShown || e.isDefaultPrevented()) return
+
+	    this.isShown = false
+
+	    this.escape()
+	    this.resize()
+
+	    $(document).off('focusin.bs.modal')
+
+	    this.$element
+	      .removeClass('in')
+	      .attr('aria-hidden', true)
+	      .off('click.dismiss.bs.modal')
+
+	    $.support.transition && this.$element.hasClass('fade') ?
+	      this.$element
+	        .one('bsTransitionEnd', $.proxy(this.hideModal, this))
+	        .emulateTransitionEnd(Modal.TRANSITION_DURATION) :
+	      this.hideModal()
+	  }
+
+	  Modal.prototype.enforceFocus = function () {
+	    $(document)
+	      .off('focusin.bs.modal') // guard against infinite focus loop
+	      .on('focusin.bs.modal', $.proxy(function (e) {
+	        if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
+	          this.$element.trigger('focus')
+	        }
+	      }, this))
+	  }
+
+	  Modal.prototype.escape = function () {
+	    if (this.isShown && this.options.keyboard) {
+	      this.$element.on('keydown.dismiss.bs.modal', $.proxy(function (e) {
+	        e.which == 27 && this.hide()
+	      }, this))
+	    } else if (!this.isShown) {
+	      this.$element.off('keydown.dismiss.bs.modal')
+	    }
+	  }
+
+	  Modal.prototype.resize = function () {
+	    if (this.isShown) {
+	      $(window).on('resize.bs.modal', $.proxy(this.handleUpdate, this))
+	    } else {
+	      $(window).off('resize.bs.modal')
+	    }
+	  }
+
+	  Modal.prototype.hideModal = function () {
+	    var that = this
+	    this.$element.hide()
+	    this.backdrop(function () {
+	      that.$body.removeClass('modal-open')
+	      that.resetAdjustments()
+	      that.resetScrollbar()
+	      that.$element.trigger('hidden.bs.modal')
+	    })
+	  }
+
+	  Modal.prototype.removeBackdrop = function () {
+	    this.$backdrop && this.$backdrop.remove()
+	    this.$backdrop = null
+	  }
+
+	  Modal.prototype.backdrop = function (callback) {
+	    var that = this
+	    var animate = this.$element.hasClass('fade') ? 'fade' : ''
+
+	    if (this.isShown && this.options.backdrop) {
+	      var doAnimate = $.support.transition && animate
+
+	      this.$backdrop = $('<div class="modal-backdrop ' + animate + '" />')
+	        .prependTo(this.$element)
+	        .on('click.dismiss.bs.modal', $.proxy(function (e) {
+	          if (e.target !== e.currentTarget) return
+	          this.options.backdrop == 'static'
+	            ? this.$element[0].focus.call(this.$element[0])
+	            : this.hide.call(this)
+	        }, this))
+
+	      if (doAnimate) this.$backdrop[0].offsetWidth // force reflow
+
+	      this.$backdrop.addClass('in')
+
+	      if (!callback) return
+
+	      doAnimate ?
+	        this.$backdrop
+	          .one('bsTransitionEnd', callback)
+	          .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
+	        callback()
+
+	    } else if (!this.isShown && this.$backdrop) {
+	      this.$backdrop.removeClass('in')
+
+	      var callbackRemove = function () {
+	        that.removeBackdrop()
+	        callback && callback()
+	      }
+	      $.support.transition && this.$element.hasClass('fade') ?
+	        this.$backdrop
+	          .one('bsTransitionEnd', callbackRemove)
+	          .emulateTransitionEnd(Modal.BACKDROP_TRANSITION_DURATION) :
+	        callbackRemove()
+
+	    } else if (callback) {
+	      callback()
+	    }
+	  }
+
+	  // these following methods are used to handle overflowing modals
+
+	  Modal.prototype.handleUpdate = function () {
+	    if (this.options.backdrop) this.adjustBackdrop()
+	    this.adjustDialog()
+	  }
+
+	  Modal.prototype.adjustBackdrop = function () {
+	    this.$backdrop
+	      .css('height', 0)
+	      .css('height', this.$element[0].scrollHeight)
+	  }
+
+	  Modal.prototype.adjustDialog = function () {
+	    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight
+
+	    this.$element.css({
+	      paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
+	      paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
+	    })
+	  }
+
+	  Modal.prototype.resetAdjustments = function () {
+	    this.$element.css({
+	      paddingLeft: '',
+	      paddingRight: ''
+	    })
+	  }
+
+	  Modal.prototype.checkScrollbar = function () {
+	    this.bodyIsOverflowing = document.body.scrollHeight > document.documentElement.clientHeight
+	    this.scrollbarWidth = this.measureScrollbar()
+	  }
+
+	  Modal.prototype.setScrollbar = function () {
+	    var bodyPad = parseInt((this.$body.css('padding-right') || 0), 10)
+	    if (this.bodyIsOverflowing) this.$body.css('padding-right', bodyPad + this.scrollbarWidth)
+	  }
+
+	  Modal.prototype.resetScrollbar = function () {
+	    this.$body.css('padding-right', '')
+	  }
+
+	  Modal.prototype.measureScrollbar = function () { // thx walsh
+	    var scrollDiv = document.createElement('div')
+	    scrollDiv.className = 'modal-scrollbar-measure'
+	    this.$body.append(scrollDiv)
+	    var scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth
+	    this.$body[0].removeChild(scrollDiv)
+	    return scrollbarWidth
+	  }
+
+
+	  // MODAL PLUGIN DEFINITION
+	  // =======================
+
+	  function Plugin(option, _relatedTarget) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.modal')
+	      var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == 'object' && option)
+
+	      if (!data) $this.data('bs.modal', (data = new Modal(this, options)))
+	      if (typeof option == 'string') data[option](_relatedTarget)
+	      else if (options.show) data.show(_relatedTarget)
+	    })
+	  }
+
+	  var old = $.fn.modal
+
+	  $.fn.modal             = Plugin
+	  $.fn.modal.Constructor = Modal
+
+
+	  // MODAL NO CONFLICT
+	  // =================
+
+	  $.fn.modal.noConflict = function () {
+	    $.fn.modal = old
+	    return this
+	  }
+
+
+	  // MODAL DATA-API
+	  // ==============
+
+	  $(document).on('click.bs.modal.data-api', '[data-toggle="modal"]', function (e) {
+	    var $this   = $(this)
+	    var href    = $this.attr('href')
+	    var $target = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))) // strip for ie7
+	    var option  = $target.data('bs.modal') ? 'toggle' : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data())
+
+	    if ($this.is('a')) e.preventDefault()
+
+	    $target.one('show.bs.modal', function (showEvent) {
+	      if (showEvent.isDefaultPrevented()) return // only register focus restorer if modal will actually get shown
+	      $target.one('hidden.bs.modal', function () {
+	        $this.is(':visible') && $this.trigger('focus')
+	      })
+	    })
+	    Plugin.call($target, option, this)
+	  })
+
+	}(jQuery);
+
+
+/***/ },
+/* 99 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: tooltip.js v3.3.2
+	 * http://getbootstrap.com/javascript/#tooltip
+	 * Inspired by the original jQuery.tipsy by Jason Frame
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // TOOLTIP PUBLIC CLASS DEFINITION
+	  // ===============================
+
+	  var Tooltip = function (element, options) {
+	    this.type       =
+	    this.options    =
+	    this.enabled    =
+	    this.timeout    =
+	    this.hoverState =
+	    this.$element   = null
+
+	    this.init('tooltip', element, options)
+	  }
+
+	  Tooltip.VERSION  = '3.3.2'
+
+	  Tooltip.TRANSITION_DURATION = 150
+
+	  Tooltip.DEFAULTS = {
+	    animation: true,
+	    placement: 'top',
+	    selector: false,
+	    template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+	    trigger: 'hover focus',
+	    title: '',
+	    delay: 0,
+	    html: false,
+	    container: false,
+	    viewport: {
+	      selector: 'body',
+	      padding: 0
+	    }
+	  }
+
+	  Tooltip.prototype.init = function (type, element, options) {
+	    this.enabled   = true
+	    this.type      = type
+	    this.$element  = $(element)
+	    this.options   = this.getOptions(options)
+	    this.$viewport = this.options.viewport && $(this.options.viewport.selector || this.options.viewport)
+
+	    var triggers = this.options.trigger.split(' ')
+
+	    for (var i = triggers.length; i--;) {
+	      var trigger = triggers[i]
+
+	      if (trigger == 'click') {
+	        this.$element.on('click.' + this.type, this.options.selector, $.proxy(this.toggle, this))
+	      } else if (trigger != 'manual') {
+	        var eventIn  = trigger == 'hover' ? 'mouseenter' : 'focusin'
+	        var eventOut = trigger == 'hover' ? 'mouseleave' : 'focusout'
+
+	        this.$element.on(eventIn  + '.' + this.type, this.options.selector, $.proxy(this.enter, this))
+	        this.$element.on(eventOut + '.' + this.type, this.options.selector, $.proxy(this.leave, this))
+	      }
+	    }
+
+	    this.options.selector ?
+	      (this._options = $.extend({}, this.options, { trigger: 'manual', selector: '' })) :
+	      this.fixTitle()
+	  }
+
+	  Tooltip.prototype.getDefaults = function () {
+	    return Tooltip.DEFAULTS
+	  }
+
+	  Tooltip.prototype.getOptions = function (options) {
+	    options = $.extend({}, this.getDefaults(), this.$element.data(), options)
+
+	    if (options.delay && typeof options.delay == 'number') {
+	      options.delay = {
+	        show: options.delay,
+	        hide: options.delay
+	      }
+	    }
+
+	    return options
+	  }
+
+	  Tooltip.prototype.getDelegateOptions = function () {
+	    var options  = {}
+	    var defaults = this.getDefaults()
+
+	    this._options && $.each(this._options, function (key, value) {
+	      if (defaults[key] != value) options[key] = value
+	    })
+
+	    return options
+	  }
+
+	  Tooltip.prototype.enter = function (obj) {
+	    var self = obj instanceof this.constructor ?
+	      obj : $(obj.currentTarget).data('bs.' + this.type)
+
+	    if (self && self.$tip && self.$tip.is(':visible')) {
+	      self.hoverState = 'in'
+	      return
+	    }
+
+	    if (!self) {
+	      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
+	      $(obj.currentTarget).data('bs.' + this.type, self)
+	    }
+
+	    clearTimeout(self.timeout)
+
+	    self.hoverState = 'in'
+
+	    if (!self.options.delay || !self.options.delay.show) return self.show()
+
+	    self.timeout = setTimeout(function () {
+	      if (self.hoverState == 'in') self.show()
+	    }, self.options.delay.show)
+	  }
+
+	  Tooltip.prototype.leave = function (obj) {
+	    var self = obj instanceof this.constructor ?
+	      obj : $(obj.currentTarget).data('bs.' + this.type)
+
+	    if (!self) {
+	      self = new this.constructor(obj.currentTarget, this.getDelegateOptions())
+	      $(obj.currentTarget).data('bs.' + this.type, self)
+	    }
+
+	    clearTimeout(self.timeout)
+
+	    self.hoverState = 'out'
+
+	    if (!self.options.delay || !self.options.delay.hide) return self.hide()
+
+	    self.timeout = setTimeout(function () {
+	      if (self.hoverState == 'out') self.hide()
+	    }, self.options.delay.hide)
+	  }
+
+	  Tooltip.prototype.show = function () {
+	    var e = $.Event('show.bs.' + this.type)
+
+	    if (this.hasContent() && this.enabled) {
+	      this.$element.trigger(e)
+
+	      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0])
+	      if (e.isDefaultPrevented() || !inDom) return
+	      var that = this
+
+	      var $tip = this.tip()
+
+	      var tipId = this.getUID(this.type)
+
+	      this.setContent()
+	      $tip.attr('id', tipId)
+	      this.$element.attr('aria-describedby', tipId)
+
+	      if (this.options.animation) $tip.addClass('fade')
+
+	      var placement = typeof this.options.placement == 'function' ?
+	        this.options.placement.call(this, $tip[0], this.$element[0]) :
+	        this.options.placement
+
+	      var autoToken = /\s?auto?\s?/i
+	      var autoPlace = autoToken.test(placement)
+	      if (autoPlace) placement = placement.replace(autoToken, '') || 'top'
+
+	      $tip
+	        .detach()
+	        .css({ top: 0, left: 0, display: 'block' })
+	        .addClass(placement)
+	        .data('bs.' + this.type, this)
+
+	      this.options.container ? $tip.appendTo(this.options.container) : $tip.insertAfter(this.$element)
+
+	      var pos          = this.getPosition()
+	      var actualWidth  = $tip[0].offsetWidth
+	      var actualHeight = $tip[0].offsetHeight
+
+	      if (autoPlace) {
+	        var orgPlacement = placement
+	        var $container   = this.options.container ? $(this.options.container) : this.$element.parent()
+	        var containerDim = this.getPosition($container)
+
+	        placement = placement == 'bottom' && pos.bottom + actualHeight > containerDim.bottom ? 'top'    :
+	                    placement == 'top'    && pos.top    - actualHeight < containerDim.top    ? 'bottom' :
+	                    placement == 'right'  && pos.right  + actualWidth  > containerDim.width  ? 'left'   :
+	                    placement == 'left'   && pos.left   - actualWidth  < containerDim.left   ? 'right'  :
+	                    placement
+
+	        $tip
+	          .removeClass(orgPlacement)
+	          .addClass(placement)
+	      }
+
+	      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight)
+
+	      this.applyPlacement(calculatedOffset, placement)
+
+	      var complete = function () {
+	        var prevHoverState = that.hoverState
+	        that.$element.trigger('shown.bs.' + that.type)
+	        that.hoverState = null
+
+	        if (prevHoverState == 'out') that.leave(that)
+	      }
+
+	      $.support.transition && this.$tip.hasClass('fade') ?
+	        $tip
+	          .one('bsTransitionEnd', complete)
+	          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+	        complete()
+	    }
+	  }
+
+	  Tooltip.prototype.applyPlacement = function (offset, placement) {
+	    var $tip   = this.tip()
+	    var width  = $tip[0].offsetWidth
+	    var height = $tip[0].offsetHeight
+
+	    // manually read margins because getBoundingClientRect includes difference
+	    var marginTop = parseInt($tip.css('margin-top'), 10)
+	    var marginLeft = parseInt($tip.css('margin-left'), 10)
+
+	    // we must check for NaN for ie 8/9
+	    if (isNaN(marginTop))  marginTop  = 0
+	    if (isNaN(marginLeft)) marginLeft = 0
+
+	    offset.top  = offset.top  + marginTop
+	    offset.left = offset.left + marginLeft
+
+	    // $.fn.offset doesn't round pixel values
+	    // so we use setOffset directly with our own function B-0
+	    $.offset.setOffset($tip[0], $.extend({
+	      using: function (props) {
+	        $tip.css({
+	          top: Math.round(props.top),
+	          left: Math.round(props.left)
+	        })
+	      }
+	    }, offset), 0)
+
+	    $tip.addClass('in')
+
+	    // check to see if placing tip in new offset caused the tip to resize itself
+	    var actualWidth  = $tip[0].offsetWidth
+	    var actualHeight = $tip[0].offsetHeight
+
+	    if (placement == 'top' && actualHeight != height) {
+	      offset.top = offset.top + height - actualHeight
+	    }
+
+	    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight)
+
+	    if (delta.left) offset.left += delta.left
+	    else offset.top += delta.top
+
+	    var isVertical          = /top|bottom/.test(placement)
+	    var arrowDelta          = isVertical ? delta.left * 2 - width + actualWidth : delta.top * 2 - height + actualHeight
+	    var arrowOffsetPosition = isVertical ? 'offsetWidth' : 'offsetHeight'
+
+	    $tip.offset(offset)
+	    this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical)
+	  }
+
+	  Tooltip.prototype.replaceArrow = function (delta, dimension, isHorizontal) {
+	    this.arrow()
+	      .css(isHorizontal ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
+	      .css(isHorizontal ? 'top' : 'left', '')
+	  }
+
+	  Tooltip.prototype.setContent = function () {
+	    var $tip  = this.tip()
+	    var title = this.getTitle()
+
+	    $tip.find('.tooltip-inner')[this.options.html ? 'html' : 'text'](title)
+	    $tip.removeClass('fade in top bottom left right')
+	  }
+
+	  Tooltip.prototype.hide = function (callback) {
+	    var that = this
+	    var $tip = this.tip()
+	    var e    = $.Event('hide.bs.' + this.type)
+
+	    function complete() {
+	      if (that.hoverState != 'in') $tip.detach()
+	      that.$element
+	        .removeAttr('aria-describedby')
+	        .trigger('hidden.bs.' + that.type)
+	      callback && callback()
+	    }
+
+	    this.$element.trigger(e)
+
+	    if (e.isDefaultPrevented()) return
+
+	    $tip.removeClass('in')
+
+	    $.support.transition && this.$tip.hasClass('fade') ?
+	      $tip
+	        .one('bsTransitionEnd', complete)
+	        .emulateTransitionEnd(Tooltip.TRANSITION_DURATION) :
+	      complete()
+
+	    this.hoverState = null
+
+	    return this
+	  }
+
+	  Tooltip.prototype.fixTitle = function () {
+	    var $e = this.$element
+	    if ($e.attr('title') || typeof ($e.attr('data-original-title')) != 'string') {
+	      $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')
+	    }
+	  }
+
+	  Tooltip.prototype.hasContent = function () {
+	    return this.getTitle()
+	  }
+
+	  Tooltip.prototype.getPosition = function ($element) {
+	    $element   = $element || this.$element
+
+	    var el     = $element[0]
+	    var isBody = el.tagName == 'BODY'
+
+	    var elRect    = el.getBoundingClientRect()
+	    if (elRect.width == null) {
+	      // width and height are missing in IE8, so compute them manually; see https://github.com/twbs/bootstrap/issues/14093
+	      elRect = $.extend({}, elRect, { width: elRect.right - elRect.left, height: elRect.bottom - elRect.top })
+	    }
+	    var elOffset  = isBody ? { top: 0, left: 0 } : $element.offset()
+	    var scroll    = { scroll: isBody ? document.documentElement.scrollTop || document.body.scrollTop : $element.scrollTop() }
+	    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null
+
+	    return $.extend({}, elRect, scroll, outerDims, elOffset)
+	  }
+
+	  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
+	    return placement == 'bottom' ? { top: pos.top + pos.height,   left: pos.left + pos.width / 2 - actualWidth / 2 } :
+	           placement == 'top'    ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 } :
+	           placement == 'left'   ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth } :
+	        /* placement == 'right' */ { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width }
+
+	  }
+
+	  Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
+	    var delta = { top: 0, left: 0 }
+	    if (!this.$viewport) return delta
+
+	    var viewportPadding = this.options.viewport && this.options.viewport.padding || 0
+	    var viewportDimensions = this.getPosition(this.$viewport)
+
+	    if (/right|left/.test(placement)) {
+	      var topEdgeOffset    = pos.top - viewportPadding - viewportDimensions.scroll
+	      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight
+	      if (topEdgeOffset < viewportDimensions.top) { // top overflow
+	        delta.top = viewportDimensions.top - topEdgeOffset
+	      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) { // bottom overflow
+	        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset
+	      }
+	    } else {
+	      var leftEdgeOffset  = pos.left - viewportPadding
+	      var rightEdgeOffset = pos.left + viewportPadding + actualWidth
+	      if (leftEdgeOffset < viewportDimensions.left) { // left overflow
+	        delta.left = viewportDimensions.left - leftEdgeOffset
+	      } else if (rightEdgeOffset > viewportDimensions.width) { // right overflow
+	        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset
+	      }
+	    }
+
+	    return delta
+	  }
+
+	  Tooltip.prototype.getTitle = function () {
+	    var title
+	    var $e = this.$element
+	    var o  = this.options
+
+	    title = $e.attr('data-original-title')
+	      || (typeof o.title == 'function' ? o.title.call($e[0]) :  o.title)
+
+	    return title
+	  }
+
+	  Tooltip.prototype.getUID = function (prefix) {
+	    do prefix += ~~(Math.random() * 1000000)
+	    while (document.getElementById(prefix))
+	    return prefix
+	  }
+
+	  Tooltip.prototype.tip = function () {
+	    return (this.$tip = this.$tip || $(this.options.template))
+	  }
+
+	  Tooltip.prototype.arrow = function () {
+	    return (this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow'))
+	  }
+
+	  Tooltip.prototype.enable = function () {
+	    this.enabled = true
+	  }
+
+	  Tooltip.prototype.disable = function () {
+	    this.enabled = false
+	  }
+
+	  Tooltip.prototype.toggleEnabled = function () {
+	    this.enabled = !this.enabled
+	  }
+
+	  Tooltip.prototype.toggle = function (e) {
+	    var self = this
+	    if (e) {
+	      self = $(e.currentTarget).data('bs.' + this.type)
+	      if (!self) {
+	        self = new this.constructor(e.currentTarget, this.getDelegateOptions())
+	        $(e.currentTarget).data('bs.' + this.type, self)
+	      }
+	    }
+
+	    self.tip().hasClass('in') ? self.leave(self) : self.enter(self)
+	  }
+
+	  Tooltip.prototype.destroy = function () {
+	    var that = this
+	    clearTimeout(this.timeout)
+	    this.hide(function () {
+	      that.$element.off('.' + that.type).removeData('bs.' + that.type)
+	    })
+	  }
+
+
+	  // TOOLTIP PLUGIN DEFINITION
+	  // =========================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.tooltip')
+	      var options = typeof option == 'object' && option
+
+	      if (!data && option == 'destroy') return
+	      if (!data) $this.data('bs.tooltip', (data = new Tooltip(this, options)))
+	      if (typeof option == 'string') data[option]()
+	    })
+	  }
+
+	  var old = $.fn.tooltip
+
+	  $.fn.tooltip             = Plugin
+	  $.fn.tooltip.Constructor = Tooltip
+
+
+	  // TOOLTIP NO CONFLICT
+	  // ===================
+
+	  $.fn.tooltip.noConflict = function () {
+	    $.fn.tooltip = old
+	    return this
+	  }
+
+	}(jQuery);
+
+
+/***/ },
+/* 100 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: popover.js v3.3.2
+	 * http://getbootstrap.com/javascript/#popovers
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // POPOVER PUBLIC CLASS DEFINITION
+	  // ===============================
+
+	  var Popover = function (element, options) {
+	    this.init('popover', element, options)
+	  }
+
+	  if (!$.fn.tooltip) throw new Error('Popover requires tooltip.js')
+
+	  Popover.VERSION  = '3.3.2'
+
+	  Popover.DEFAULTS = $.extend({}, $.fn.tooltip.Constructor.DEFAULTS, {
+	    placement: 'right',
+	    trigger: 'click',
+	    content: '',
+	    template: '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+	  })
+
+
+	  // NOTE: POPOVER EXTENDS tooltip.js
+	  // ================================
+
+	  Popover.prototype = $.extend({}, $.fn.tooltip.Constructor.prototype)
+
+	  Popover.prototype.constructor = Popover
+
+	  Popover.prototype.getDefaults = function () {
+	    return Popover.DEFAULTS
+	  }
+
+	  Popover.prototype.setContent = function () {
+	    var $tip    = this.tip()
+	    var title   = this.getTitle()
+	    var content = this.getContent()
+
+	    $tip.find('.popover-title')[this.options.html ? 'html' : 'text'](title)
+	    $tip.find('.popover-content').children().detach().end()[ // we use append for html objects to maintain js events
+	      this.options.html ? (typeof content == 'string' ? 'html' : 'append') : 'text'
+	    ](content)
+
+	    $tip.removeClass('fade top bottom left right in')
+
+	    // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
+	    // this manually by checking the contents.
+	    if (!$tip.find('.popover-title').html()) $tip.find('.popover-title').hide()
+	  }
+
+	  Popover.prototype.hasContent = function () {
+	    return this.getTitle() || this.getContent()
+	  }
+
+	  Popover.prototype.getContent = function () {
+	    var $e = this.$element
+	    var o  = this.options
+
+	    return $e.attr('data-content')
+	      || (typeof o.content == 'function' ?
+	            o.content.call($e[0]) :
+	            o.content)
+	  }
+
+	  Popover.prototype.arrow = function () {
+	    return (this.$arrow = this.$arrow || this.tip().find('.arrow'))
+	  }
+
+	  Popover.prototype.tip = function () {
+	    if (!this.$tip) this.$tip = $(this.options.template)
+	    return this.$tip
+	  }
+
+
+	  // POPOVER PLUGIN DEFINITION
+	  // =========================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.popover')
+	      var options = typeof option == 'object' && option
+
+	      if (!data && option == 'destroy') return
+	      if (!data) $this.data('bs.popover', (data = new Popover(this, options)))
+	      if (typeof option == 'string') data[option]()
+	    })
+	  }
+
+	  var old = $.fn.popover
+
+	  $.fn.popover             = Plugin
+	  $.fn.popover.Constructor = Popover
+
+
+	  // POPOVER NO CONFLICT
+	  // ===================
+
+	  $.fn.popover.noConflict = function () {
+	    $.fn.popover = old
+	    return this
+	  }
+
+	}(jQuery);
+
+
+/***/ },
+/* 101 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: scrollspy.js v3.3.2
+	 * http://getbootstrap.com/javascript/#scrollspy
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // SCROLLSPY CLASS DEFINITION
+	  // ==========================
+
+	  function ScrollSpy(element, options) {
+	    var process  = $.proxy(this.process, this)
+
+	    this.$body          = $('body')
+	    this.$scrollElement = $(element).is('body') ? $(window) : $(element)
+	    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
+	    this.selector       = (this.options.target || '') + ' .nav li > a'
+	    this.offsets        = []
+	    this.targets        = []
+	    this.activeTarget   = null
+	    this.scrollHeight   = 0
+
+	    this.$scrollElement.on('scroll.bs.scrollspy', process)
+	    this.refresh()
+	    this.process()
+	  }
+
+	  ScrollSpy.VERSION  = '3.3.2'
+
+	  ScrollSpy.DEFAULTS = {
+	    offset: 10
+	  }
+
+	  ScrollSpy.prototype.getScrollHeight = function () {
+	    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+	  }
+
+	  ScrollSpy.prototype.refresh = function () {
+	    var offsetMethod = 'offset'
+	    var offsetBase   = 0
+
+	    if (!$.isWindow(this.$scrollElement[0])) {
+	      offsetMethod = 'position'
+	      offsetBase   = this.$scrollElement.scrollTop()
+	    }
+
+	    this.offsets = []
+	    this.targets = []
+	    this.scrollHeight = this.getScrollHeight()
+
+	    var self     = this
+
+	    this.$body
+	      .find(this.selector)
+	      .map(function () {
+	        var $el   = $(this)
+	        var href  = $el.data('target') || $el.attr('href')
+	        var $href = /^#./.test(href) && $(href)
+
+	        return ($href
+	          && $href.length
+	          && $href.is(':visible')
+	          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
+	      })
+	      .sort(function (a, b) { return a[0] - b[0] })
+	      .each(function () {
+	        self.offsets.push(this[0])
+	        self.targets.push(this[1])
+	      })
+	  }
+
+	  ScrollSpy.prototype.process = function () {
+	    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
+	    var scrollHeight = this.getScrollHeight()
+	    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
+	    var offsets      = this.offsets
+	    var targets      = this.targets
+	    var activeTarget = this.activeTarget
+	    var i
+
+	    if (this.scrollHeight != scrollHeight) {
+	      this.refresh()
+	    }
+
+	    if (scrollTop >= maxScroll) {
+	      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+	    }
+
+	    if (activeTarget && scrollTop < offsets[0]) {
+	      this.activeTarget = null
+	      return this.clear()
+	    }
+
+	    for (i = offsets.length; i--;) {
+	      activeTarget != targets[i]
+	        && scrollTop >= offsets[i]
+	        && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
+	        && this.activate(targets[i])
+	    }
+	  }
+
+	  ScrollSpy.prototype.activate = function (target) {
+	    this.activeTarget = target
+
+	    this.clear()
+
+	    var selector = this.selector +
+	        '[data-target="' + target + '"],' +
+	        this.selector + '[href="' + target + '"]'
+
+	    var active = $(selector)
+	      .parents('li')
+	      .addClass('active')
+
+	    if (active.parent('.dropdown-menu').length) {
+	      active = active
+	        .closest('li.dropdown')
+	        .addClass('active')
+	    }
+
+	    active.trigger('activate.bs.scrollspy')
+	  }
+
+	  ScrollSpy.prototype.clear = function () {
+	    $(this.selector)
+	      .parentsUntil(this.options.target, '.active')
+	      .removeClass('active')
+	  }
+
+
+	  // SCROLLSPY PLUGIN DEFINITION
+	  // ===========================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.scrollspy')
+	      var options = typeof option == 'object' && option
+
+	      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
+	      if (typeof option == 'string') data[option]()
+	    })
+	  }
+
+	  var old = $.fn.scrollspy
+
+	  $.fn.scrollspy             = Plugin
+	  $.fn.scrollspy.Constructor = ScrollSpy
+
+
+	  // SCROLLSPY NO CONFLICT
+	  // =====================
+
+	  $.fn.scrollspy.noConflict = function () {
+	    $.fn.scrollspy = old
+	    return this
+	  }
+
+
+	  // SCROLLSPY DATA-API
+	  // ==================
+
+	  $(window).on('load.bs.scrollspy.data-api', function () {
+	    $('[data-spy="scroll"]').each(function () {
+	      var $spy = $(this)
+	      Plugin.call($spy, $spy.data())
+	    })
+	  })
+
+	}(jQuery);
+
+
+/***/ },
+/* 102 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: tab.js v3.3.2
+	 * http://getbootstrap.com/javascript/#tabs
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // TAB CLASS DEFINITION
+	  // ====================
+
+	  var Tab = function (element) {
+	    this.element = $(element)
+	  }
+
+	  Tab.VERSION = '3.3.2'
+
+	  Tab.TRANSITION_DURATION = 150
+
+	  Tab.prototype.show = function () {
+	    var $this    = this.element
+	    var $ul      = $this.closest('ul:not(.dropdown-menu)')
+	    var selector = $this.data('target')
+
+	    if (!selector) {
+	      selector = $this.attr('href')
+	      selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
+	    }
+
+	    if ($this.parent('li').hasClass('active')) return
+
+	    var $previous = $ul.find('.active:last a')
+	    var hideEvent = $.Event('hide.bs.tab', {
+	      relatedTarget: $this[0]
+	    })
+	    var showEvent = $.Event('show.bs.tab', {
+	      relatedTarget: $previous[0]
+	    })
+
+	    $previous.trigger(hideEvent)
+	    $this.trigger(showEvent)
+
+	    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return
+
+	    var $target = $(selector)
+
+	    this.activate($this.closest('li'), $ul)
+	    this.activate($target, $target.parent(), function () {
+	      $previous.trigger({
+	        type: 'hidden.bs.tab',
+	        relatedTarget: $this[0]
+	      })
+	      $this.trigger({
+	        type: 'shown.bs.tab',
+	        relatedTarget: $previous[0]
+	      })
+	    })
+	  }
+
+	  Tab.prototype.activate = function (element, container, callback) {
+	    var $active    = container.find('> .active')
+	    var transition = callback
+	      && $.support.transition
+	      && (($active.length && $active.hasClass('fade')) || !!container.find('> .fade').length)
+
+	    function next() {
+	      $active
+	        .removeClass('active')
+	        .find('> .dropdown-menu > .active')
+	          .removeClass('active')
+	        .end()
+	        .find('[data-toggle="tab"]')
+	          .attr('aria-expanded', false)
+
+	      element
+	        .addClass('active')
+	        .find('[data-toggle="tab"]')
+	          .attr('aria-expanded', true)
+
+	      if (transition) {
+	        element[0].offsetWidth // reflow for transition
+	        element.addClass('in')
+	      } else {
+	        element.removeClass('fade')
+	      }
+
+	      if (element.parent('.dropdown-menu')) {
+	        element
+	          .closest('li.dropdown')
+	            .addClass('active')
+	          .end()
+	          .find('[data-toggle="tab"]')
+	            .attr('aria-expanded', true)
+	      }
+
+	      callback && callback()
+	    }
+
+	    $active.length && transition ?
+	      $active
+	        .one('bsTransitionEnd', next)
+	        .emulateTransitionEnd(Tab.TRANSITION_DURATION) :
+	      next()
+
+	    $active.removeClass('in')
+	  }
+
+
+	  // TAB PLUGIN DEFINITION
+	  // =====================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this = $(this)
+	      var data  = $this.data('bs.tab')
+
+	      if (!data) $this.data('bs.tab', (data = new Tab(this)))
+	      if (typeof option == 'string') data[option]()
+	    })
+	  }
+
+	  var old = $.fn.tab
+
+	  $.fn.tab             = Plugin
+	  $.fn.tab.Constructor = Tab
+
+
+	  // TAB NO CONFLICT
+	  // ===============
+
+	  $.fn.tab.noConflict = function () {
+	    $.fn.tab = old
+	    return this
+	  }
+
+
+	  // TAB DATA-API
+	  // ============
+
+	  var clickHandler = function (e) {
+	    e.preventDefault()
+	    Plugin.call($(this), 'show')
+	  }
+
+	  $(document)
+	    .on('click.bs.tab.data-api', '[data-toggle="tab"]', clickHandler)
+	    .on('click.bs.tab.data-api', '[data-toggle="pill"]', clickHandler)
+
+	}(jQuery);
+
+
+/***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*** IMPORTS FROM imports-loader ***/
+	var jQuery = __webpack_require__(217);
+
+	/* ========================================================================
+	 * Bootstrap: affix.js v3.3.2
+	 * http://getbootstrap.com/javascript/#affix
+	 * ========================================================================
+	 * Copyright 2011-2015 Twitter, Inc.
+	 * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+	 * ======================================================================== */
+
+
+	+function ($) {
+	  'use strict';
+
+	  // AFFIX CLASS DEFINITION
+	  // ======================
+
+	  var Affix = function (element, options) {
+	    this.options = $.extend({}, Affix.DEFAULTS, options)
+
+	    this.$target = $(this.options.target)
+	      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
+	      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
+
+	    this.$element     = $(element)
+	    this.affixed      =
+	    this.unpin        =
+	    this.pinnedOffset = null
+
+	    this.checkPosition()
+	  }
+
+	  Affix.VERSION  = '3.3.2'
+
+	  Affix.RESET    = 'affix affix-top affix-bottom'
+
+	  Affix.DEFAULTS = {
+	    offset: 0,
+	    target: window
+	  }
+
+	  Affix.prototype.getState = function (scrollHeight, height, offsetTop, offsetBottom) {
+	    var scrollTop    = this.$target.scrollTop()
+	    var position     = this.$element.offset()
+	    var targetHeight = this.$target.height()
+
+	    if (offsetTop != null && this.affixed == 'top') return scrollTop < offsetTop ? 'top' : false
+
+	    if (this.affixed == 'bottom') {
+	      if (offsetTop != null) return (scrollTop + this.unpin <= position.top) ? false : 'bottom'
+	      return (scrollTop + targetHeight <= scrollHeight - offsetBottom) ? false : 'bottom'
+	    }
+
+	    var initializing   = this.affixed == null
+	    var colliderTop    = initializing ? scrollTop : position.top
+	    var colliderHeight = initializing ? targetHeight : height
+
+	    if (offsetTop != null && scrollTop <= offsetTop) return 'top'
+	    if (offsetBottom != null && (colliderTop + colliderHeight >= scrollHeight - offsetBottom)) return 'bottom'
+
+	    return false
+	  }
+
+	  Affix.prototype.getPinnedOffset = function () {
+	    if (this.pinnedOffset) return this.pinnedOffset
+	    this.$element.removeClass(Affix.RESET).addClass('affix')
+	    var scrollTop = this.$target.scrollTop()
+	    var position  = this.$element.offset()
+	    return (this.pinnedOffset = position.top - scrollTop)
+	  }
+
+	  Affix.prototype.checkPositionWithEventLoop = function () {
+	    setTimeout($.proxy(this.checkPosition, this), 1)
+	  }
+
+	  Affix.prototype.checkPosition = function () {
+	    if (!this.$element.is(':visible')) return
+
+	    var height       = this.$element.height()
+	    var offset       = this.options.offset
+	    var offsetTop    = offset.top
+	    var offsetBottom = offset.bottom
+	    var scrollHeight = $('body').height()
+
+	    if (typeof offset != 'object')         offsetBottom = offsetTop = offset
+	    if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
+	    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this.$element)
+
+	    var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom)
+
+	    if (this.affixed != affix) {
+	      if (this.unpin != null) this.$element.css('top', '')
+
+	      var affixType = 'affix' + (affix ? '-' + affix : '')
+	      var e         = $.Event(affixType + '.bs.affix')
+
+	      this.$element.trigger(e)
+
+	      if (e.isDefaultPrevented()) return
+
+	      this.affixed = affix
+	      this.unpin = affix == 'bottom' ? this.getPinnedOffset() : null
+
+	      this.$element
+	        .removeClass(Affix.RESET)
+	        .addClass(affixType)
+	        .trigger(affixType.replace('affix', 'affixed') + '.bs.affix')
+	    }
+
+	    if (affix == 'bottom') {
+	      this.$element.offset({
+	        top: scrollHeight - height - offsetBottom
+	      })
+	    }
+	  }
+
+
+	  // AFFIX PLUGIN DEFINITION
+	  // =======================
+
+	  function Plugin(option) {
+	    return this.each(function () {
+	      var $this   = $(this)
+	      var data    = $this.data('bs.affix')
+	      var options = typeof option == 'object' && option
+
+	      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
+	      if (typeof option == 'string') data[option]()
+	    })
+	  }
+
+	  var old = $.fn.affix
+
+	  $.fn.affix             = Plugin
+	  $.fn.affix.Constructor = Affix
+
+
+	  // AFFIX NO CONFLICT
+	  // =================
+
+	  $.fn.affix.noConflict = function () {
+	    $.fn.affix = old
+	    return this
+	  }
+
+
+	  // AFFIX DATA-API
+	  // ==============
+
+	  $(window).on('load', function () {
+	    $('[data-spy="affix"]').each(function () {
+	      var $spy = $(this)
+	      var data = $spy.data()
+
+	      data.offset = data.offset || {}
+
+	      if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
+	      if (data.offsetTop    != null) data.offset.top    = data.offsetTop
+
+	      Plugin.call($spy, data)
+	    })
+	  })
+
+	}(jQuery);
+
+
+/***/ },
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Context: __webpack_require__(149),
+	  ElementAllocator: __webpack_require__(171),
+	  ElementOutput: __webpack_require__(152),
+	  Engine: __webpack_require__(150),
+	  Entity: __webpack_require__(83),
+	  EventEmitter: __webpack_require__(148),
+	  EventHandler: __webpack_require__(85),
+	  Group: __webpack_require__(87),
+	  Modifier: __webpack_require__(172),
+	  OptionsManager: __webpack_require__(75),
+	  RenderNode: __webpack_require__(151),
+	  Scene: __webpack_require__(173),
+	  SpecParser: __webpack_require__(174),
+	  Surface: __webpack_require__(91),
+	  Transform: __webpack_require__(76),
+	  View: __webpack_require__(90),
+	  ViewSequence: __webpack_require__(84)
+	};
+
+
+/***/ },
+/* 105 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  EventArbiter: __webpack_require__(153),
+	  EventFilter: __webpack_require__(154),
+	  EventMapper: __webpack_require__(155)
+	};
+
+
+/***/ },
+/* 106 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Accumulator: __webpack_require__(156),
+	  DesktopEmulationMode: __webpack_require__(157),
+	  FastClick: __webpack_require__(158),
+	  GenericSync: __webpack_require__(159),
+	  MouseSync: __webpack_require__(160),
+	  PinchSync: __webpack_require__(161),
+	  RotateSync: __webpack_require__(162),
+	  ScaleSync: __webpack_require__(163),
+	  ScrollSync: __webpack_require__(89),
+	  TouchSync: __webpack_require__(164),
+	  TouchTracker: __webpack_require__(165),
+	  TwoFingerSync: __webpack_require__(166)
+	};
+
+
+/***/ },
+/* 107 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Matrix: __webpack_require__(167),
+	  Quaternion: __webpack_require__(168),
+	  Random: __webpack_require__(169),
+	  Utilities: __webpack_require__(170),
+	  Vector: __webpack_require__(77)
+	};
+
+
+/***/ },
+/* 108 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Draggable: __webpack_require__(181),
+	  Fader: __webpack_require__(182),
+	  ModifierChain: __webpack_require__(183),
+	  StateModifier: __webpack_require__(184)
+	};
+
+
+/***/ },
+/* 109 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  PhysicsEngine: __webpack_require__(80),
+	  bodies: __webpack_require__(207),
+	  constraints: __webpack_require__(208),
+	  forces: __webpack_require__(209),
+	  integrators: __webpack_require__(210)
+	};
+
+
+/***/ },
+/* 110 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  CanvasSurface: __webpack_require__(185),
+	  ContainerSurface: __webpack_require__(86),
+	  FormContainerSurface: __webpack_require__(186),
+	  ImageSurface: __webpack_require__(187),
+	  InputSurface: __webpack_require__(188),
+	  SubmitInputSurface: __webpack_require__(189),
+	  TextareaSurface: __webpack_require__(190),
+	  VideoSurface: __webpack_require__(191)
+	};
+
+
+/***/ },
+/* 111 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  CachedMap: __webpack_require__(175),
+	  Easing: __webpack_require__(176),
+	  MultipleTransition: __webpack_require__(146),
+	  SnapTransition: __webpack_require__(177),
+	  SpringTransition: __webpack_require__(178),
+	  Transitionable: __webpack_require__(81),
+	  TransitionableTransform: __webpack_require__(179),
+	  TweenTransition: __webpack_require__(147),
+	  WallTransition: __webpack_require__(180)
+	};
+
+
+/***/ },
+/* 112 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  KeyCodes: __webpack_require__(215),
+	  Timer: __webpack_require__(216),
+	  Utility: __webpack_require__(82)
+	};
+
+
+/***/ },
+/* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  ContextualView: __webpack_require__(192),
+	  Deck: __webpack_require__(193),
+	  DrawerLayout: __webpack_require__(194),
+	  EdgeSwapper: __webpack_require__(195),
+	  FlexibleLayout: __webpack_require__(196),
+	  Flipper: __webpack_require__(197),
+	  GridLayout: __webpack_require__(198),
+	  HeaderFooterLayout: __webpack_require__(199),
+	  Lightbox: __webpack_require__(200),
+	  RenderController: __webpack_require__(201),
+	  ScrollContainer: __webpack_require__(202),
+	  Scroller: __webpack_require__(203),
+	  Scrollview: __webpack_require__(204),
+	  SequentialLayout: __webpack_require__(205),
+	  SizeAwareView: __webpack_require__(206)
+	};
+
+
+/***/ },
+/* 114 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  NavigationBar: __webpack_require__(211),
+	  Slider: __webpack_require__(212),
+	  TabBar: __webpack_require__(213),
+	  ToggleButton: __webpack_require__(214)
+	};
+
+
+/***/ },
+/* 115 */,
+/* 116 */,
+/* 117 */,
+/* 118 */,
+/* 119 */,
+/* 120 */,
+/* 121 */,
+/* 122 */,
+/* 123 */,
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var SymplecticEuler = {};
+	SymplecticEuler.integrateVelocity = function integrateVelocity(body, dt) {
+	    var v = body.velocity;
+	    var w = body.inverseMass;
+	    var f = body.force;
+	    if (f.isZero())
+	        return;
+	    v.add(f.mult(dt * w)).put(v);
+	    f.clear();
+	};
+	SymplecticEuler.integratePosition = function integratePosition(body, dt) {
+	    var p = body.position;
+	    var v = body.velocity;
+	    p.add(v.mult(dt)).put(p);
+	};
+	SymplecticEuler.integrateAngularMomentum = function integrateAngularMomentum(body, dt) {
+	    var L = body.angularMomentum;
+	    var t = body.torque;
+	    if (t.isZero())
+	        return;
+	    L.add(t.mult(dt)).put(L);
+	    t.clear();
+	};
+	SymplecticEuler.integrateOrientation = function integrateOrientation(body, dt) {
+	    var q = body.orientation;
+	    var w = body.angularVelocity;
+	    if (w.isZero())
+	        return;
+	    q.add(q.multiply(w).scalarMultiply(0.5 * dt)).put(q);
+	};
+	module.exports = SymplecticEuler;
+
+/***/ },
+/* 145 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Vector = __webpack_require__(77);
+	var EventHandler = __webpack_require__(85);
+	function Force(force) {
+	    this.force = new Vector(force);
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	}
+	Force.prototype.setOptions = function setOptions(options) {
+	    this._eventOutput.emit('change', options);
+	};
+	Force.prototype.applyForce = function applyForce(targets) {
+	    var length = targets.length;
+	    while (length--) {
+	        targets[length].applyForce(this.force);
+	    }
+	};
+	Force.prototype.getEnergy = function getEnergy() {
+	    return 0;
+	};
+	module.exports = Force;
+
+/***/ },
+/* 146 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Utility = __webpack_require__(82);
+	function MultipleTransition(method) {
+	    this.method = method;
+	    this._instances = [];
+	    this.state = [];
+	}
+	MultipleTransition.SUPPORTS_MULTIPLE = true;
+	MultipleTransition.prototype.get = function get() {
+	    for (var i = 0; i < this._instances.length; i++) {
+	        this.state[i] = this._instances[i].get();
+	    }
+	    return this.state;
+	};
+	MultipleTransition.prototype.set = function set(endState, transition, callback) {
+	    var _allCallback = Utility.after(endState.length, callback);
+	    for (var i = 0; i < endState.length; i++) {
+	        if (!this._instances[i])
+	            this._instances[i] = new this.method();
+	        this._instances[i].set(endState[i], transition, _allCallback);
+	    }
+	};
+	MultipleTransition.prototype.reset = function reset(startState) {
+	    for (var i = 0; i < startState.length; i++) {
+	        if (!this._instances[i])
+	            this._instances[i] = new this.method();
+	        this._instances[i].reset(startState[i]);
+	    }
+	};
+	module.exports = MultipleTransition;
+
+/***/ },
+/* 147 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function TweenTransition(options) {
+	    this.options = Object.create(TweenTransition.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this._startTime = 0;
+	    this._startValue = 0;
+	    this._updateTime = 0;
+	    this._endValue = 0;
+	    this._curve = undefined;
+	    this._duration = 0;
+	    this._active = false;
+	    this._callback = undefined;
+	    this.state = 0;
+	    this.velocity = undefined;
+	}
+	TweenTransition.Curves = {
+	    linear: function (t) {
+	        return t;
+	    },
+	    easeIn: function (t) {
+	        return t * t;
+	    },
+	    easeOut: function (t) {
+	        return t * (2 - t);
+	    },
+	    easeInOut: function (t) {
+	        if (t <= 0.5)
+	            return 2 * t * t;
+	        else
+	            return -2 * t * t + 4 * t - 1;
+	    },
+	    easeOutBounce: function (t) {
+	        return t * (3 - 2 * t);
+	    },
+	    spring: function (t) {
+	        return (1 - t) * Math.sin(6 * Math.PI * t) + t;
+	    }
+	};
+	TweenTransition.SUPPORTS_MULTIPLE = true;
+	TweenTransition.DEFAULT_OPTIONS = {
+	    curve: TweenTransition.Curves.linear,
+	    duration: 500,
+	    speed: 0
+	};
+	var registeredCurves = {};
+	TweenTransition.registerCurve = function registerCurve(curveName, curve) {
+	    if (!registeredCurves[curveName]) {
+	        registeredCurves[curveName] = curve;
+	        return true;
+	    } else {
+	        return false;
+	    }
+	};
+	TweenTransition.unregisterCurve = function unregisterCurve(curveName) {
+	    if (registeredCurves[curveName]) {
+	        delete registeredCurves[curveName];
+	        return true;
+	    } else {
+	        return false;
+	    }
+	};
+	TweenTransition.getCurve = function getCurve(curveName) {
+	    var curve = registeredCurves[curveName];
+	    if (curve !== undefined)
+	        return curve;
+	    else
+	        throw new Error('curve not registered');
+	};
+	TweenTransition.getCurves = function getCurves() {
+	    return registeredCurves;
+	};
+	function _interpolate(a, b, t) {
+	    return (1 - t) * a + t * b;
+	}
+	function _clone(obj) {
+	    if (obj instanceof Object) {
+	        if (obj instanceof Array)
+	            return obj.slice(0);
+	        else
+	            return Object.create(obj);
+	    } else
+	        return obj;
+	}
+	function _normalize(transition, defaultTransition) {
+	    var result = { curve: defaultTransition.curve };
+	    if (defaultTransition.duration)
+	        result.duration = defaultTransition.duration;
+	    if (defaultTransition.speed)
+	        result.speed = defaultTransition.speed;
+	    if (transition instanceof Object) {
+	        if (transition.duration !== undefined)
+	            result.duration = transition.duration;
+	        if (transition.curve)
+	            result.curve = transition.curve;
+	        if (transition.speed)
+	            result.speed = transition.speed;
+	    }
+	    if (typeof result.curve === 'string')
+	        result.curve = TweenTransition.getCurve(result.curve);
+	    return result;
+	}
+	TweenTransition.prototype.setOptions = function setOptions(options) {
+	    if (options.curve !== undefined)
+	        this.options.curve = options.curve;
+	    if (options.duration !== undefined)
+	        this.options.duration = options.duration;
+	    if (options.speed !== undefined)
+	        this.options.speed = options.speed;
+	};
+	TweenTransition.prototype.set = function set(endValue, transition, callback) {
+	    if (!transition) {
+	        this.reset(endValue);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._startValue = _clone(this.get());
+	    transition = _normalize(transition, this.options);
+	    if (transition.speed) {
+	        var startValue = this._startValue;
+	        if (startValue instanceof Object) {
+	            var variance = 0;
+	            for (var i in startValue)
+	                variance += (endValue[i] - startValue[i]) * (endValue[i] - startValue[i]);
+	            transition.duration = Math.sqrt(variance) / transition.speed;
+	        } else {
+	            transition.duration = Math.abs(endValue - startValue) / transition.speed;
+	        }
+	    }
+	    this._startTime = Date.now();
+	    this._endValue = _clone(endValue);
+	    this._startVelocity = _clone(transition.velocity);
+	    this._duration = transition.duration;
+	    this._curve = transition.curve;
+	    this._active = true;
+	    this._callback = callback;
+	};
+	TweenTransition.prototype.reset = function reset(startValue, startVelocity) {
+	    if (this._callback) {
+	        var callback = this._callback;
+	        this._callback = undefined;
+	        callback();
+	    }
+	    this.state = _clone(startValue);
+	    this.velocity = _clone(startVelocity);
+	    this._startTime = 0;
+	    this._duration = 0;
+	    this._updateTime = 0;
+	    this._startValue = this.state;
+	    this._startVelocity = this.velocity;
+	    this._endValue = this.state;
+	    this._active = false;
+	};
+	TweenTransition.prototype.getVelocity = function getVelocity() {
+	    return this.velocity;
+	};
+	TweenTransition.prototype.get = function get(timestamp) {
+	    this.update(timestamp);
+	    return this.state;
+	};
+	function _calculateVelocity(current, start, curve, duration, t) {
+	    var velocity;
+	    var eps = 1e-7;
+	    var speed = (curve(t) - curve(t - eps)) / eps;
+	    if (current instanceof Array) {
+	        velocity = [];
+	        for (var i = 0; i < current.length; i++) {
+	            if (typeof current[i] === 'number')
+	                velocity[i] = speed * (current[i] - start[i]) / duration;
+	            else
+	                velocity[i] = 0;
+	        }
+	    } else
+	        velocity = speed * (current - start) / duration;
+	    return velocity;
+	}
+	function _calculateState(start, end, t) {
+	    var state;
+	    if (start instanceof Array) {
+	        state = [];
+	        for (var i = 0; i < start.length; i++) {
+	            if (typeof start[i] === 'number')
+	                state[i] = _interpolate(start[i], end[i], t);
+	            else
+	                state[i] = start[i];
+	        }
+	    } else
+	        state = _interpolate(start, end, t);
+	    return state;
+	}
+	TweenTransition.prototype.update = function update(timestamp) {
+	    if (!this._active) {
+	        if (this._callback) {
+	            var callback = this._callback;
+	            this._callback = undefined;
+	            callback();
+	        }
+	        return;
+	    }
+	    if (!timestamp)
+	        timestamp = Date.now();
+	    if (this._updateTime >= timestamp)
+	        return;
+	    this._updateTime = timestamp;
+	    var timeSinceStart = timestamp - this._startTime;
+	    if (timeSinceStart >= this._duration) {
+	        this.state = this._endValue;
+	        this.velocity = _calculateVelocity(this.state, this._startValue, this._curve, this._duration, 1);
+	        this._active = false;
+	    } else if (timeSinceStart < 0) {
+	        this.state = this._startValue;
+	        this.velocity = this._startVelocity;
+	    } else {
+	        var t = timeSinceStart / this._duration;
+	        this.state = _calculateState(this._startValue, this._endValue, this._curve(t));
+	        this.velocity = _calculateVelocity(this.state, this._startValue, this._curve, this._duration, t);
+	    }
+	};
+	TweenTransition.prototype.isActive = function isActive() {
+	    return this._active;
+	};
+	TweenTransition.prototype.halt = function halt() {
+	    this.reset(this.get());
+	};
+	TweenTransition.registerCurve('linear', TweenTransition.Curves.linear);
+	TweenTransition.registerCurve('easeIn', TweenTransition.Curves.easeIn);
+	TweenTransition.registerCurve('easeOut', TweenTransition.Curves.easeOut);
+	TweenTransition.registerCurve('easeInOut', TweenTransition.Curves.easeInOut);
+	TweenTransition.registerCurve('easeOutBounce', TweenTransition.Curves.easeOutBounce);
+	TweenTransition.registerCurve('spring', TweenTransition.Curves.spring);
+	TweenTransition.customCurve = function customCurve(v1, v2) {
+	    v1 = v1 || 0;
+	    v2 = v2 || 0;
+	    return function (t) {
+	        return v1 * t + (-2 * v1 - v2 + 3) * t * t + (v1 + v2 - 2) * t * t * t;
+	    };
+	};
+	module.exports = TweenTransition;
+
+/***/ },
+/* 148 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function EventEmitter() {
+	    this.listeners = {};
+	    this._owner = this;
+	}
+	EventEmitter.prototype.emit = function emit(type, event) {
+	    var handlers = this.listeners[type];
+	    if (handlers) {
+	        for (var i = 0; i < handlers.length; i++) {
+	            handlers[i].call(this._owner, event);
+	        }
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.on = function on(type, handler) {
+	    if (!(type in this.listeners))
+	        this.listeners[type] = [];
+	    var index = this.listeners[type].indexOf(handler);
+	    if (index < 0)
+	        this.listeners[type].push(handler);
+	    return this;
+	};
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
+	    var listener = this.listeners[type];
+	    if (listener !== undefined) {
+	        var index = listener.indexOf(handler);
+	        if (index >= 0)
+	            listener.splice(index, 1);
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.bindThis = function bindThis(owner) {
+	    this._owner = owner;
+	};
+	module.exports = EventEmitter;
+
+/***/ },
+/* 149 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var RenderNode = __webpack_require__(151);
+	var EventHandler = __webpack_require__(85);
+	var ElementAllocator = __webpack_require__(171);
+	var Transform = __webpack_require__(76);
+	var Transitionable = __webpack_require__(81);
+	var _zeroZero = [
+	    0,
+	    0
+	];
+	var usePrefix = !('perspective' in document.documentElement.style);
+	function _getElementSize() {
+	    var element = this.container;
+	    return [
+	        element.clientWidth,
+	        element.clientHeight
+	    ];
+	}
+	var _setPerspective = usePrefix ? function (element, perspective) {
+	    element.style.webkitPerspective = perspective ? perspective.toFixed() + 'px' : '';
+	} : function (element, perspective) {
+	    element.style.perspective = perspective ? perspective.toFixed() + 'px' : '';
+	};
+	function Context(container) {
+	    this.container = container;
+	    this._allocator = new ElementAllocator(container);
+	    this._node = new RenderNode();
+	    this._eventOutput = new EventHandler();
+	    this._size = _getElementSize.call(this);
+	    this._perspectiveState = new Transitionable(0);
+	    this._perspective = undefined;
+	    this._nodeContext = {
+	        allocator: this._allocator,
+	        transform: Transform.identity,
+	        opacity: 1,
+	        origin: _zeroZero,
+	        align: _zeroZero,
+	        size: this._size
+	    };
+	    this._eventOutput.on('resize', function () {
+	        this.setSize(_getElementSize.call(this));
+	    }.bind(this));
+	}
+	Context.prototype.getAllocator = function getAllocator() {
+	    return this._allocator;
+	};
+	Context.prototype.add = function add(obj) {
+	    return this._node.add(obj);
+	};
+	Context.prototype.migrate = function migrate(container) {
+	    if (container === this.container)
+	        return;
+	    this.container = container;
+	    this._allocator.migrate(container);
+	};
+	Context.prototype.getSize = function getSize() {
+	    return this._size;
+	};
+	Context.prototype.setSize = function setSize(size) {
+	    if (!size)
+	        size = _getElementSize.call(this);
+	    this._size[0] = size[0];
+	    this._size[1] = size[1];
+	};
+	Context.prototype.update = function update(contextParameters) {
+	    if (contextParameters) {
+	        if (contextParameters.transform)
+	            this._nodeContext.transform = contextParameters.transform;
+	        if (contextParameters.opacity)
+	            this._nodeContext.opacity = contextParameters.opacity;
+	        if (contextParameters.origin)
+	            this._nodeContext.origin = contextParameters.origin;
+	        if (contextParameters.align)
+	            this._nodeContext.align = contextParameters.align;
+	        if (contextParameters.size)
+	            this._nodeContext.size = contextParameters.size;
+	    }
+	    var perspective = this._perspectiveState.get();
+	    if (perspective !== this._perspective) {
+	        _setPerspective(this.container, perspective);
+	        this._perspective = perspective;
+	    }
+	    this._node.commit(this._nodeContext);
+	};
+	Context.prototype.getPerspective = function getPerspective() {
+	    return this._perspectiveState.get();
+	};
+	Context.prototype.setPerspective = function setPerspective(perspective, transition, callback) {
+	    return this._perspectiveState.set(perspective, transition, callback);
+	};
+	Context.prototype.emit = function emit(type, event) {
+	    return this._eventOutput.emit(type, event);
+	};
+	Context.prototype.on = function on(type, handler) {
+	    return this._eventOutput.on(type, handler);
+	};
+	Context.prototype.removeListener = function removeListener(type, handler) {
+	    return this._eventOutput.removeListener(type, handler);
+	};
+	Context.prototype.pipe = function pipe(target) {
+	    return this._eventOutput.pipe(target);
+	};
+	Context.prototype.unpipe = function unpipe(target) {
+	    return this._eventOutput.unpipe(target);
+	};
+	module.exports = Context;
+
+/***/ },
+/* 150 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Context = __webpack_require__(149);
+	var EventHandler = __webpack_require__(85);
+	var OptionsManager = __webpack_require__(75);
+	var Engine = {};
+	var contexts = [];
+	var nextTickQueue = [];
+	var currentFrame = 0;
+	var nextTickFrame = 0;
+	var deferQueue = [];
+	var lastTime = Date.now();
+	var frameTime;
+	var frameTimeLimit;
+	var loopEnabled = true;
+	var eventForwarders = {};
+	var eventHandler = new EventHandler();
+	var options = {
+	    containerType: 'div',
+	    containerClass: 'famous-container',
+	    fpsCap: undefined,
+	    runLoop: true,
+	    appMode: true
+	};
+	var optionsManager = new OptionsManager(options);
+	var MAX_DEFER_FRAME_TIME = 10;
+	Engine.step = function step() {
+	    currentFrame++;
+	    nextTickFrame = currentFrame;
+	    var currentTime = Date.now();
+	    if (frameTimeLimit && currentTime - lastTime < frameTimeLimit)
+	        return;
+	    var i = 0;
+	    frameTime = currentTime - lastTime;
+	    lastTime = currentTime;
+	    eventHandler.emit('prerender');
+	    var numFunctions = nextTickQueue.length;
+	    while (numFunctions--)
+	        nextTickQueue.shift()(currentFrame);
+	    while (deferQueue.length && Date.now() - currentTime < MAX_DEFER_FRAME_TIME) {
+	        deferQueue.shift().call(this);
+	    }
+	    for (i = 0; i < contexts.length; i++)
+	        contexts[i].update();
+	    eventHandler.emit('postrender');
+	};
+	function loop() {
+	    if (options.runLoop) {
+	        Engine.step();
+	        window.requestAnimationFrame(loop);
+	    } else
+	        loopEnabled = false;
+	}
+	window.requestAnimationFrame(loop);
+	function handleResize(event) {
+	    for (var i = 0; i < contexts.length; i++) {
+	        contexts[i].emit('resize');
+	    }
+	    eventHandler.emit('resize');
+	}
+	window.addEventListener('resize', handleResize, false);
+	handleResize();
+	function initialize() {
+	    window.addEventListener('touchmove', function (event) {
+	        event.preventDefault();
+	    }, true);
+	    addRootClasses();
+	}
+	var initialized = false;
+	function addRootClasses() {
+	    if (!document.body) {
+	        Engine.nextTick(addRootClasses);
+	        return;
+	    }
+	    document.body.classList.add('famous-root');
+	    document.documentElement.classList.add('famous-root');
+	}
+	Engine.pipe = function pipe(target) {
+	    if (target.subscribe instanceof Function)
+	        return target.subscribe(Engine);
+	    else
+	        return eventHandler.pipe(target);
+	};
+	Engine.unpipe = function unpipe(target) {
+	    if (target.unsubscribe instanceof Function)
+	        return target.unsubscribe(Engine);
+	    else
+	        return eventHandler.unpipe(target);
+	};
+	Engine.on = function on(type, handler) {
+	    if (!(type in eventForwarders)) {
+	        eventForwarders[type] = eventHandler.emit.bind(eventHandler, type);
+	        addEngineListener(type, eventForwarders[type]);
+	    }
+	    return eventHandler.on(type, handler);
+	};
+	function addEngineListener(type, forwarder) {
+	    if (!document.body) {
+	        Engine.nextTick(addEventListener.bind(this, type, forwarder));
+	        return;
+	    }
+	    document.body.addEventListener(type, forwarder);
+	}
+	Engine.emit = function emit(type, event) {
+	    return eventHandler.emit(type, event);
+	};
+	Engine.removeListener = function removeListener(type, handler) {
+	    return eventHandler.removeListener(type, handler);
+	};
+	Engine.getFPS = function getFPS() {
+	    return 1000 / frameTime;
+	};
+	Engine.setFPSCap = function setFPSCap(fps) {
+	    frameTimeLimit = Math.floor(1000 / fps);
+	};
+	Engine.getOptions = function getOptions(key) {
+	    return optionsManager.getOptions(key);
+	};
+	Engine.setOptions = function setOptions(options) {
+	    return optionsManager.setOptions.apply(optionsManager, arguments);
+	};
+	Engine.createContext = function createContext(el) {
+	    if (!initialized && options.appMode)
+	        Engine.nextTick(initialize);
+	    var needMountContainer = false;
+	    if (!el) {
+	        el = document.createElement(options.containerType);
+	        el.classList.add(options.containerClass);
+	        needMountContainer = true;
+	    }
+	    var context = new Context(el);
+	    Engine.registerContext(context);
+	    if (needMountContainer)
+	        mount(context, el);
+	    return context;
+	};
+	function mount(context, el) {
+	    if (!document.body) {
+	        Engine.nextTick(mount.bind(this, context, el));
+	        return;
+	    }
+	    document.body.appendChild(el);
+	    context.emit('resize');
+	}
+	Engine.registerContext = function registerContext(context) {
+	    contexts.push(context);
+	    return context;
+	};
+	Engine.getContexts = function getContexts() {
+	    return contexts;
+	};
+	Engine.deregisterContext = function deregisterContext(context) {
+	    var i = contexts.indexOf(context);
+	    if (i >= 0)
+	        contexts.splice(i, 1);
+	};
+	Engine.nextTick = function nextTick(fn) {
+	    nextTickQueue.push(fn);
+	};
+	Engine.defer = function defer(fn) {
+	    deferQueue.push(fn);
+	};
+	optionsManager.on('change', function (data) {
+	    if (data.id === 'fpsCap')
+	        Engine.setFPSCap(data.value);
+	    else if (data.id === 'runLoop') {
+	        if (!loopEnabled && data.value) {
+	            loopEnabled = true;
+	            window.requestAnimationFrame(loop);
+	        }
+	    }
+	});
+	module.exports = Engine;
+
+/***/ },
+/* 151 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(83);
+	var SpecParser = __webpack_require__(174);
+	function RenderNode(object) {
+	    this._object = null;
+	    this._child = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = false;
+	    this._isModifier = false;
+	    this._resultCache = {};
+	    this._prevResults = {};
+	    this._childResult = null;
+	    if (object)
+	        this.set(object);
+	}
+	RenderNode.prototype.add = function add(child) {
+	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
+	    if (this._child instanceof Array)
+	        this._child.push(childNode);
+	    else if (this._child) {
+	        this._child = [
+	            this._child,
+	            childNode
+	        ];
+	        this._hasMultipleChildren = true;
+	        this._childResult = [];
+	    } else
+	        this._child = childNode;
+	    return childNode;
+	};
+	RenderNode.prototype.get = function get() {
+	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
+	};
+	RenderNode.prototype.set = function set(child) {
+	    this._childResult = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = child.render ? true : false;
+	    this._isModifier = child.modify ? true : false;
+	    this._object = child;
+	    this._child = null;
+	    if (child instanceof RenderNode)
+	        return child;
+	    else
+	        return this;
+	};
+	RenderNode.prototype.getSize = function getSize() {
+	    var result = null;
+	    var target = this.get();
+	    if (target && target.getSize)
+	        result = target.getSize();
+	    if (!result && this._child && this._child.getSize)
+	        result = this._child.getSize();
+	    return result;
+	};
+	function _applyCommit(spec, context, cacheStorage) {
+	    var result = SpecParser.parse(spec, context);
+	    var keys = Object.keys(result);
+	    for (var i = 0; i < keys.length; i++) {
+	        var id = keys[i];
+	        var childNode = Entity.get(id);
+	        var commitParams = result[id];
+	        commitParams.allocator = context.allocator;
+	        var commitResult = childNode.commit(commitParams);
+	        if (commitResult)
+	            _applyCommit(commitResult, context, cacheStorage);
+	        else
+	            cacheStorage[id] = commitParams;
+	    }
+	}
+	RenderNode.prototype.commit = function commit(context) {
+	    var prevKeys = Object.keys(this._prevResults);
+	    for (var i = 0; i < prevKeys.length; i++) {
+	        var id = prevKeys[i];
+	        if (this._resultCache[id] === undefined) {
+	            var object = Entity.get(id);
+	            if (object.cleanup)
+	                object.cleanup(context.allocator);
+	        }
+	    }
+	    this._prevResults = this._resultCache;
+	    this._resultCache = {};
+	    _applyCommit(this.render(), context, this._resultCache);
+	};
+	RenderNode.prototype.render = function render() {
+	    if (this._isRenderable)
+	        return this._object.render();
+	    var result = null;
+	    if (this._hasMultipleChildren) {
+	        result = this._childResult;
+	        var children = this._child;
+	        for (var i = 0; i < children.length; i++) {
+	            result[i] = children[i].render();
+	        }
+	    } else if (this._child)
+	        result = this._child.render();
+	    return this._isModifier ? this._object.modify(result) : result;
+	};
+	module.exports = RenderNode;
+
+/***/ },
+/* 152 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(83);
+	var EventHandler = __webpack_require__(85);
+	var Transform = __webpack_require__(76);
+	var usePrefix = !('transform' in document.documentElement.style);
+	var devicePixelRatio = window.devicePixelRatio || 1;
+	function ElementOutput(element) {
+	    this._matrix = null;
+	    this._opacity = 1;
+	    this._origin = null;
+	    this._size = null;
+	    this._eventOutput = new EventHandler();
+	    this._eventOutput.bindThis(this);
+	    this.eventForwarder = function eventForwarder(event) {
+	        this._eventOutput.emit(event.type, event);
+	    }.bind(this);
+	    this.id = Entity.register(this);
+	    this._element = null;
+	    this._sizeDirty = false;
+	    this._originDirty = false;
+	    this._transformDirty = false;
+	    this._invisible = false;
+	    if (element)
+	        this.attach(element);
+	}
+	ElementOutput.prototype.on = function on(type, fn) {
+	    if (this._element)
+	        this._element.addEventListener(type, this.eventForwarder);
+	    this._eventOutput.on(type, fn);
+	};
+	ElementOutput.prototype.removeListener = function removeListener(type, fn) {
+	    this._eventOutput.removeListener(type, fn);
+	};
+	ElementOutput.prototype.emit = function emit(type, event) {
+	    if (event && !event.origin)
+	        event.origin = this;
+	    var handled = this._eventOutput.emit(type, event);
+	    if (handled && event && event.stopPropagation)
+	        event.stopPropagation();
+	    return handled;
+	};
+	ElementOutput.prototype.pipe = function pipe(target) {
+	    return this._eventOutput.pipe(target);
+	};
+	ElementOutput.prototype.unpipe = function unpipe(target) {
+	    return this._eventOutput.unpipe(target);
+	};
+	ElementOutput.prototype.render = function render() {
+	    return this.id;
+	};
+	function _addEventListeners(target) {
+	    for (var i in this._eventOutput.listeners) {
+	        target.addEventListener(i, this.eventForwarder);
+	    }
+	}
+	function _removeEventListeners(target) {
+	    for (var i in this._eventOutput.listeners) {
+	        target.removeEventListener(i, this.eventForwarder);
+	    }
+	}
+	function _formatCSSTransform(m) {
+	    m[12] = Math.round(m[12] * devicePixelRatio) / devicePixelRatio;
+	    m[13] = Math.round(m[13] * devicePixelRatio) / devicePixelRatio;
+	    var result = 'matrix3d(';
+	    for (var i = 0; i < 15; i++) {
+	        result += m[i] < 0.000001 && m[i] > -0.000001 ? '0,' : m[i] + ',';
+	    }
+	    result += m[15] + ')';
+	    return result;
+	}
+	var _setMatrix;
+	if (usePrefix) {
+	    _setMatrix = function (element, matrix) {
+	        element.style.webkitTransform = _formatCSSTransform(matrix);
+	    };
+	} else {
+	    _setMatrix = function (element, matrix) {
+	        element.style.transform = _formatCSSTransform(matrix);
+	    };
+	}
+	function _formatCSSOrigin(origin) {
+	    return 100 * origin[0] + '% ' + 100 * origin[1] + '%';
+	}
+	var _setOrigin = usePrefix ? function (element, origin) {
+	    element.style.webkitTransformOrigin = _formatCSSOrigin(origin);
+	} : function (element, origin) {
+	    element.style.transformOrigin = _formatCSSOrigin(origin);
+	};
+	var _setInvisible = usePrefix ? function (element) {
+	    element.style.webkitTransform = 'scale3d(0.0001,0.0001,0.0001)';
+	    element.style.opacity = 0;
+	} : function (element) {
+	    element.style.transform = 'scale3d(0.0001,0.0001,0.0001)';
+	    element.style.opacity = 0;
+	};
+	function _xyNotEquals(a, b) {
+	    return a && b ? a[0] !== b[0] || a[1] !== b[1] : a !== b;
+	}
+	ElementOutput.prototype.commit = function commit(context) {
+	    var target = this._element;
+	    if (!target)
+	        return;
+	    var matrix = context.transform;
+	    var opacity = context.opacity;
+	    var origin = context.origin;
+	    var size = context.size;
+	    if (!matrix && this._matrix) {
+	        this._matrix = null;
+	        this._opacity = 0;
+	        _setInvisible(target);
+	        return;
+	    }
+	    if (_xyNotEquals(this._origin, origin))
+	        this._originDirty = true;
+	    if (Transform.notEquals(this._matrix, matrix))
+	        this._transformDirty = true;
+	    if (this._invisible) {
+	        this._invisible = false;
+	        this._element.style.display = '';
+	    }
+	    if (this._opacity !== opacity) {
+	        this._opacity = opacity;
+	        target.style.opacity = opacity >= 1 ? '0.999999' : opacity;
+	    }
+	    if (this._transformDirty || this._originDirty || this._sizeDirty) {
+	        if (this._sizeDirty)
+	            this._sizeDirty = false;
+	        if (this._originDirty) {
+	            if (origin) {
+	                if (!this._origin)
+	                    this._origin = [
+	                        0,
+	                        0
+	                    ];
+	                this._origin[0] = origin[0];
+	                this._origin[1] = origin[1];
+	            } else
+	                this._origin = null;
+	            _setOrigin(target, this._origin);
+	            this._originDirty = false;
+	        }
+	        if (!matrix)
+	            matrix = Transform.identity;
+	        this._matrix = matrix;
+	        var aaMatrix = this._size ? Transform.thenMove(matrix, [
+	            -this._size[0] * origin[0],
+	            -this._size[1] * origin[1],
+	            0
+	        ]) : matrix;
+	        _setMatrix(target, aaMatrix);
+	        this._transformDirty = false;
+	    }
+	};
+	ElementOutput.prototype.cleanup = function cleanup() {
+	    if (this._element) {
+	        this._invisible = true;
+	        this._element.style.display = 'none';
+	    }
+	};
+	ElementOutput.prototype.attach = function attach(target) {
+	    this._element = target;
+	    _addEventListeners.call(this, target);
+	};
+	ElementOutput.prototype.detach = function detach() {
+	    var target = this._element;
+	    if (target) {
+	        _removeEventListeners.call(this, target);
+	        if (this._invisible) {
+	            this._invisible = false;
+	            this._element.style.display = '';
+	        }
+	    }
+	    this._element = null;
+	    return target;
+	};
+	module.exports = ElementOutput;
+
+/***/ },
+/* 153 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	function EventArbiter(startMode) {
+	    this.dispatchers = {};
+	    this.currMode = undefined;
+	    this.setMode(startMode);
+	}
+	EventArbiter.prototype.setMode = function setMode(mode) {
+	    if (mode !== this.currMode) {
+	        var startMode = this.currMode;
+	        if (this.dispatchers[this.currMode])
+	            this.dispatchers[this.currMode].trigger('unpipe');
+	        this.currMode = mode;
+	        if (this.dispatchers[mode])
+	            this.dispatchers[mode].emit('pipe');
+	        this.emit('change', {
+	            from: startMode,
+	            to: mode
+	        });
+	    }
+	};
+	EventArbiter.prototype.forMode = function forMode(mode) {
+	    if (!this.dispatchers[mode])
+	        this.dispatchers[mode] = new EventHandler();
+	    return this.dispatchers[mode];
+	};
+	EventArbiter.prototype.emit = function emit(eventType, event) {
+	    if (this.currMode === undefined)
+	        return false;
+	    if (!event)
+	        event = {};
+	    var dispatcher = this.dispatchers[this.currMode];
+	    if (dispatcher)
+	        return dispatcher.trigger(eventType, event);
+	};
+	module.exports = EventArbiter;
+
+/***/ },
+/* 154 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	function EventFilter(condition) {
+	    EventHandler.call(this);
+	    this._condition = condition;
+	}
+	EventFilter.prototype = Object.create(EventHandler.prototype);
+	EventFilter.prototype.constructor = EventFilter;
+	EventFilter.prototype.emit = function emit(type, data) {
+	    if (this._condition(type, data))
+	        return EventHandler.prototype.emit.apply(this, arguments);
+	};
+	EventFilter.prototype.trigger = EventFilter.prototype.emit;
+	module.exports = EventFilter;
+
+/***/ },
+/* 155 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	function EventMapper(mappingFunction) {
+	    EventHandler.call(this);
+	    this._mappingFunction = mappingFunction;
+	}
+	EventMapper.prototype = Object.create(EventHandler.prototype);
+	EventMapper.prototype.constructor = EventMapper;
+	EventMapper.prototype.subscribe = null;
+	EventMapper.prototype.unsubscribe = null;
+	EventMapper.prototype.emit = function emit(type, data) {
+	    var target = this._mappingFunction.apply(this, arguments);
+	    if (target && target.emit instanceof Function)
+	        target.emit(type, data);
+	};
+	EventMapper.prototype.trigger = EventMapper.prototype.emit;
+	module.exports = EventMapper;
+
+/***/ },
+/* 156 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	var Transitionable = __webpack_require__(81);
+	function Accumulator(value, eventName) {
+	    if (eventName === undefined)
+	        eventName = 'update';
+	    this._state = value && value.get && value.set ? value : new Transitionable(value || 0);
+	    this._eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    this._eventInput.on(eventName, _handleUpdate.bind(this));
+	}
+	function _handleUpdate(data) {
+	    var delta = data.delta;
+	    var state = this.get();
+	    if (delta.constructor === state.constructor) {
+	        var newState = delta instanceof Array ? [
+	            state[0] + delta[0],
+	            state[1] + delta[1]
+	        ] : state + delta;
+	        this.set(newState);
+	    }
+	}
+	Accumulator.prototype.get = function get() {
+	    return this._state.get();
+	};
+	Accumulator.prototype.set = function set(value) {
+	    this._state.set(value);
+	};
+	module.exports = Accumulator;
+
+/***/ },
+/* 157 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var hasTouch = 'ontouchstart' in window;
+	function kill(type) {
+	    window.addEventListener(type, function (event) {
+	        event.stopPropagation();
+	        return false;
+	    }, true);
+	}
+	if (hasTouch) {
+	    kill('mousedown');
+	    kill('mousemove');
+	    kill('mouseup');
+	    kill('mouseleave');
+	}
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	(function () {
+	    if (!window.CustomEvent)
+	        return;
+	    var clickThreshold = 300;
+	    var clickWindow = 500;
+	    var potentialClicks = {};
+	    var recentlyDispatched = {};
+	    var _now = Date.now;
+	    window.addEventListener('touchstart', function (event) {
+	        var timestamp = _now();
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            potentialClicks[touch.identifier] = timestamp;
+	        }
+	    });
+	    window.addEventListener('touchmove', function (event) {
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            delete potentialClicks[touch.identifier];
+	        }
+	    });
+	    window.addEventListener('touchend', function (event) {
+	        var currTime = _now();
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            var startTime = potentialClicks[touch.identifier];
+	            if (startTime && currTime - startTime < clickThreshold) {
+	                var clickEvt = new window.CustomEvent('click', {
+	                    'bubbles': true,
+	                    'detail': touch
+	                });
+	                recentlyDispatched[currTime] = event;
+	                event.target.dispatchEvent(clickEvt);
+	            }
+	            delete potentialClicks[touch.identifier];
+	        }
+	    });
+	    window.addEventListener('click', function (event) {
+	        var currTime = _now();
+	        for (var i in recentlyDispatched) {
+	            var previousEvent = recentlyDispatched[i];
+	            if (currTime - i < clickWindow) {
+	                if (event instanceof window.MouseEvent && event.target === previousEvent.target)
+	                    event.stopPropagation();
+	            } else
+	                delete recentlyDispatched[i];
+	        }
+	    }, true);
+	}());
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	function GenericSync(syncs, options) {
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._syncs = {};
+	    if (syncs)
+	        this.addSync(syncs);
+	    if (options)
+	        this.setOptions(options);
+	}
+	GenericSync.DIRECTION_X = 0;
+	GenericSync.DIRECTION_Y = 1;
+	GenericSync.DIRECTION_Z = 2;
+	var registry = {};
+	GenericSync.register = function register(syncObject) {
+	    for (var key in syncObject) {
+	        if (registry[key]) {
+	            if (registry[key] !== syncObject[key])
+	                throw new Error('Conflicting sync classes for key: ' + key);
+	        } else
+	            registry[key] = syncObject[key];
+	    }
+	};
+	GenericSync.prototype.setOptions = function (options) {
+	    for (var key in this._syncs) {
+	        this._syncs[key].setOptions(options);
+	    }
+	};
+	GenericSync.prototype.pipeSync = function pipeToSync(key) {
+	    var sync = this._syncs[key];
+	    this._eventInput.pipe(sync);
+	    sync.pipe(this._eventOutput);
+	};
+	GenericSync.prototype.unpipeSync = function unpipeFromSync(key) {
+	    var sync = this._syncs[key];
+	    this._eventInput.unpipe(sync);
+	    sync.unpipe(this._eventOutput);
+	};
+	function _addSingleSync(key, options) {
+	    if (!registry[key])
+	        return;
+	    this._syncs[key] = new registry[key](options);
+	    this.pipeSync(key);
+	}
+	GenericSync.prototype.addSync = function addSync(syncs) {
+	    if (syncs instanceof Array)
+	        for (var i = 0; i < syncs.length; i++)
+	            _addSingleSync.call(this, syncs[i]);
+	    else if (syncs instanceof Object)
+	        for (var key in syncs)
+	            _addSingleSync.call(this, key, syncs[key]);
+	};
+	module.exports = GenericSync;
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	var OptionsManager = __webpack_require__(75);
+	function MouseSync(options) {
+	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._eventInput.on('mousedown', _handleStart.bind(this));
+	    this._eventInput.on('mousemove', _handleMove.bind(this));
+	    this._eventInput.on('mouseup', _handleEnd.bind(this));
+	    if (this.options.propogate)
+	        this._eventInput.on('mouseleave', _handleLeave.bind(this));
+	    else
+	        this._eventInput.on('mouseleave', _handleEnd.bind(this));
+	    if (this.options.clickThreshold) {
+	        window.addEventListener('click', function (event) {
+	            if (Math.sqrt(Math.pow(this._displacement[0], 2) + Math.pow(this._displacement[1], 2)) > this.options.clickThreshold) {
+	                event.stopPropagation();
+	            }
+	        }.bind(this), true);
+	    }
+	    this._payload = {
+	        delta: null,
+	        position: null,
+	        velocity: null,
+	        clientX: 0,
+	        clientY: 0,
+	        offsetX: 0,
+	        offsetY: 0
+	    };
+	    this._positionHistory = [];
+	    this._position = null;
+	    this._prevCoord = undefined;
+	    this._prevTime = undefined;
+	    this._down = false;
+	    this._moved = false;
+	    this._displacement = [
+	        0,
+	        0
+	    ];
+	    this._documentActive = false;
+	}
+	MouseSync.DEFAULT_OPTIONS = {
+	    clickThreshold: undefined,
+	    direction: undefined,
+	    rails: false,
+	    scale: 1,
+	    propogate: true,
+	    velocitySampleLength: 10,
+	    preventDefault: true
+	};
+	MouseSync.DIRECTION_X = 0;
+	MouseSync.DIRECTION_Y = 1;
+	var MINIMUM_TICK_TIME = 8;
+	function _handleStart(event) {
+	    var delta;
+	    var velocity;
+	    if (this.options.preventDefault)
+	        event.preventDefault();
+	    var x = event.clientX;
+	    var y = event.clientY;
+	    this._prevCoord = [
+	        x,
+	        y
+	    ];
+	    this._prevTime = Date.now();
+	    this._down = true;
+	    this._move = false;
+	    if (this.options.direction !== undefined) {
+	        this._position = 0;
+	        delta = 0;
+	        velocity = 0;
+	    } else {
+	        this._position = [
+	            0,
+	            0
+	        ];
+	        delta = [
+	            0,
+	            0
+	        ];
+	        velocity = [
+	            0,
+	            0
+	        ];
+	    }
+	    if (this.options.clickThreshold) {
+	        this._displacement = [
+	            0,
+	            0
+	        ];
+	    }
+	    var payload = this._payload;
+	    payload.delta = delta;
+	    payload.position = this._position;
+	    payload.velocity = velocity;
+	    payload.clientX = x;
+	    payload.clientY = y;
+	    payload.offsetX = event.offsetX;
+	    payload.offsetY = event.offsetY;
+	    this._positionHistory.push({
+	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
+	        time: this._prevTime
+	    });
+	    this._eventOutput.emit('start', payload);
+	    this._documentActive = false;
+	}
+	function _handleMove(event) {
+	    if (!this._prevCoord)
+	        return;
+	    var prevCoord = this._prevCoord;
+	    var prevTime = this._prevTime;
+	    var x = event.clientX;
+	    var y = event.clientY;
+	    var currTime = Date.now();
+	    var diffX = x - prevCoord[0];
+	    var diffY = y - prevCoord[1];
+	    if (this.options.rails) {
+	        if (Math.abs(diffX) > Math.abs(diffY))
+	            diffY = 0;
+	        else
+	            diffX = 0;
+	    }
+	    var diffTime = Math.max(currTime - this._positionHistory[0].time, MINIMUM_TICK_TIME);
+	    var scale = this.options.scale;
+	    var nextVel;
+	    var nextDelta;
+	    if (this.options.direction === MouseSync.DIRECTION_X) {
+	        nextDelta = scale * diffX;
+	        this._position += nextDelta;
+	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
+	    } else if (this.options.direction === MouseSync.DIRECTION_Y) {
+	        nextDelta = scale * diffY;
+	        this._position += nextDelta;
+	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
+	    } else {
+	        nextDelta = [
+	            scale * diffX,
+	            scale * diffY
+	        ];
+	        nextVel = [
+	            scale * (this._position[0] - this._positionHistory[0].position[0]) / diffTime,
+	            scale * (this._position[1] - this._positionHistory[0].position[1]) / diffTime
+	        ];
+	        this._position[0] += nextDelta[0];
+	        this._position[1] += nextDelta[1];
+	    }
+	    if (this.options.clickThreshold !== false) {
+	        this._displacement[0] += diffX;
+	        this._displacement[1] += diffY;
+	    }
+	    var payload = this._payload;
+	    payload.delta = nextDelta;
+	    payload.position = this._position;
+	    payload.velocity = nextVel;
+	    payload.clientX = x;
+	    payload.clientY = y;
+	    payload.offsetX = event.offsetX;
+	    payload.offsetY = event.offsetY;
+	    if (this._positionHistory.length === this.options.velocitySampleLength) {
+	        this._positionHistory.shift();
+	    }
+	    this._positionHistory.push({
+	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
+	        time: currTime
+	    });
+	    this._eventOutput.emit('update', payload);
+	    this._prevCoord = [
+	        x,
+	        y
+	    ];
+	    this._prevTime = currTime;
+	    this._move = true;
+	}
+	function _handleEnd(event) {
+	    if (!this._down)
+	        return;
+	    this._eventOutput.emit('end', this._payload);
+	    this._prevCoord = undefined;
+	    this._prevTime = undefined;
+	    this._down = false;
+	    this._move = false;
+	    this._positionHistory = [];
+	}
+	function _handleLeave(event) {
+	    if (!this._down || !this._move)
+	        return;
+	    if (!this._documentActive) {
+	        var boundMove = _handleMove.bind(this);
+	        var boundEnd = function (event) {
+	            _handleEnd.call(this, event);
+	            document.removeEventListener('mousemove', boundMove);
+	            document.removeEventListener('mouseup', boundEnd);
+	        }.bind(this, event);
+	        document.addEventListener('mousemove', boundMove);
+	        document.addEventListener('mouseup', boundEnd);
+	        this._documentActive = true;
+	    }
+	}
+	MouseSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	MouseSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = MouseSync;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(166);
+	var OptionsManager = __webpack_require__(75);
+	function PinchSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._displacement = 0;
+	    this._previousDistance = 0;
+	}
+	PinchSync.prototype = Object.create(TwoFingerSync.prototype);
+	PinchSync.prototype.constructor = PinchSync;
+	PinchSync.DEFAULT_OPTIONS = { scale: 1 };
+	PinchSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._previousDistance = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    this._displacement = 0;
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ],
+	        distance: this._dist,
+	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
+	    });
+	};
+	PinchSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var scale = this.options.scale;
+	    var delta = scale * (currDist - this._previousDistance);
+	    var velocity = delta / diffTime;
+	    this._previousDistance = currDist;
+	    this._displacement += delta;
+	    this._eventOutput.emit('update', {
+	        delta: delta,
+	        velocity: velocity,
+	        distance: currDist,
+	        displacement: this._displacement,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	};
+	PinchSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	PinchSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = PinchSync;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(166);
+	var OptionsManager = __webpack_require__(75);
+	function RotateSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._angle = 0;
+	    this._previousAngle = 0;
+	}
+	RotateSync.prototype = Object.create(TwoFingerSync.prototype);
+	RotateSync.prototype.constructor = RotateSync;
+	RotateSync.DEFAULT_OPTIONS = { scale: 1 };
+	RotateSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._angle = 0;
+	    this._previousAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        angle: this._angle,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	};
+	RotateSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var scale = this.options.scale;
+	    var currAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var diffTheta = scale * (currAngle - this._previousAngle);
+	    var velTheta = diffTheta / diffTime;
+	    this._angle += diffTheta;
+	    this._eventOutput.emit('update', {
+	        delta: diffTheta,
+	        velocity: velTheta,
+	        angle: this._angle,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	    this._previousAngle = currAngle;
+	};
+	RotateSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	RotateSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = RotateSync;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(166);
+	var OptionsManager = __webpack_require__(75);
+	function ScaleSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._scaleFactor = 1;
+	    this._startDist = 0;
+	    this._eventInput.on('pipe', _reset.bind(this));
+	}
+	ScaleSync.prototype = Object.create(TwoFingerSync.prototype);
+	ScaleSync.prototype.constructor = ScaleSync;
+	ScaleSync.DEFAULT_OPTIONS = { scale: 1 };
+	function _reset() {
+	    this.touchAId = undefined;
+	    this.touchBId = undefined;
+	}
+	ScaleSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._scaleFactor = 1;
+	    this._startDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ],
+	        distance: this._startDist,
+	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
+	    });
+	};
+	ScaleSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var scale = this.options.scale;
+	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var delta = (currDist - this._startDist) / this._startDist;
+	    var newScaleFactor = Math.max(1 + scale * delta, 0);
+	    var veloScale = (newScaleFactor - this._scaleFactor) / diffTime;
+	    this._eventOutput.emit('update', {
+	        delta: delta,
+	        scale: newScaleFactor,
+	        velocity: veloScale,
+	        distance: currDist,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	    this._scaleFactor = newScaleFactor;
+	};
+	ScaleSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	ScaleSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = ScaleSync;
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TouchTracker = __webpack_require__(165);
+	var EventHandler = __webpack_require__(85);
+	var OptionsManager = __webpack_require__(75);
+	function TouchSync(options) {
+	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._eventOutput = new EventHandler();
+	    this._touchTracker = new TouchTracker({ touchLimit: this.options.touchLimit });
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    EventHandler.setInputHandler(this, this._touchTracker);
+	    this._touchTracker.on('trackstart', _handleStart.bind(this));
+	    this._touchTracker.on('trackmove', _handleMove.bind(this));
+	    this._touchTracker.on('trackend', _handleEnd.bind(this));
+	    this._payload = {
+	        delta: null,
+	        position: null,
+	        velocity: null,
+	        clientX: undefined,
+	        clientY: undefined,
+	        count: 0,
+	        touch: undefined
+	    };
+	    this._position = null;
+	}
+	TouchSync.DEFAULT_OPTIONS = {
+	    direction: undefined,
+	    rails: false,
+	    touchLimit: 1,
+	    velocitySampleLength: 10,
+	    scale: 1
+	};
+	TouchSync.DIRECTION_X = 0;
+	TouchSync.DIRECTION_Y = 1;
+	var MINIMUM_TICK_TIME = 8;
+	function _handleStart(data) {
+	    var velocity;
+	    var delta;
+	    if (this.options.direction !== undefined) {
+	        this._position = 0;
+	        velocity = 0;
+	        delta = 0;
+	    } else {
+	        this._position = [
+	            0,
+	            0
+	        ];
+	        velocity = [
+	            0,
+	            0
+	        ];
+	        delta = [
+	            0,
+	            0
+	        ];
+	    }
+	    var payload = this._payload;
+	    payload.delta = delta;
+	    payload.position = this._position;
+	    payload.velocity = velocity;
+	    payload.clientX = data.x;
+	    payload.clientY = data.y;
+	    payload.count = data.count;
+	    payload.touch = data.identifier;
+	    this._eventOutput.emit('start', payload);
+	}
+	function _handleMove(data) {
+	    var history = data.history;
+	    var currHistory = history[history.length - 1];
+	    var prevHistory = history[history.length - 2];
+	    var distantHistory = history[history.length - this.options.velocitySampleLength] ? history[history.length - this.options.velocitySampleLength] : history[history.length - 2];
+	    var distantTime = distantHistory.timestamp;
+	    var currTime = currHistory.timestamp;
+	    var diffX = currHistory.x - prevHistory.x;
+	    var diffY = currHistory.y - prevHistory.y;
+	    var velDiffX = currHistory.x - distantHistory.x;
+	    var velDiffY = currHistory.y - distantHistory.y;
+	    if (this.options.rails) {
+	        if (Math.abs(diffX) > Math.abs(diffY))
+	            diffY = 0;
+	        else
+	            diffX = 0;
+	        if (Math.abs(velDiffX) > Math.abs(velDiffY))
+	            velDiffY = 0;
+	        else
+	            velDiffX = 0;
+	    }
+	    var diffTime = Math.max(currTime - distantTime, MINIMUM_TICK_TIME);
+	    var velX = velDiffX / diffTime;
+	    var velY = velDiffY / diffTime;
+	    var scale = this.options.scale;
+	    var nextVel;
+	    var nextDelta;
+	    if (this.options.direction === TouchSync.DIRECTION_X) {
+	        nextDelta = scale * diffX;
+	        nextVel = scale * velX;
+	        this._position += nextDelta;
+	    } else if (this.options.direction === TouchSync.DIRECTION_Y) {
+	        nextDelta = scale * diffY;
+	        nextVel = scale * velY;
+	        this._position += nextDelta;
+	    } else {
+	        nextDelta = [
+	            scale * diffX,
+	            scale * diffY
+	        ];
+	        nextVel = [
+	            scale * velX,
+	            scale * velY
+	        ];
+	        this._position[0] += nextDelta[0];
+	        this._position[1] += nextDelta[1];
+	    }
+	    var payload = this._payload;
+	    payload.delta = nextDelta;
+	    payload.velocity = nextVel;
+	    payload.position = this._position;
+	    payload.clientX = data.x;
+	    payload.clientY = data.y;
+	    payload.count = data.count;
+	    payload.touch = data.identifier;
+	    this._eventOutput.emit('update', payload);
+	}
+	function _handleEnd(data) {
+	    this._payload.count = data.count;
+	    this._eventOutput.emit('end', this._payload);
+	}
+	TouchSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	TouchSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	module.exports = TouchSync;
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	var _now = Date.now;
+	function _timestampTouch(touch, event, history) {
+	    return {
+	        x: touch.clientX,
+	        y: touch.clientY,
+	        identifier: touch.identifier,
+	        origin: event.origin,
+	        timestamp: _now(),
+	        count: event.touches.length,
+	        history: history
+	    };
+	}
+	function _handleStart(event) {
+	    if (event.touches.length > this.touchLimit)
+	        return;
+	    this.isTouched = true;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var data = _timestampTouch(touch, event, null);
+	        this.eventOutput.emit('trackstart', data);
+	        if (!this.selective && !this.touchHistory[touch.identifier])
+	            this.track(data);
+	    }
+	}
+	function _handleMove(event) {
+	    if (event.touches.length > this.touchLimit)
+	        return;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var history = this.touchHistory[touch.identifier];
+	        if (history) {
+	            var data = _timestampTouch(touch, event, history);
+	            this.touchHistory[touch.identifier].push(data);
+	            this.eventOutput.emit('trackmove', data);
+	        }
+	    }
+	}
+	function _handleEnd(event) {
+	    if (!this.isTouched)
+	        return;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var history = this.touchHistory[touch.identifier];
+	        if (history) {
+	            var data = _timestampTouch(touch, event, history);
+	            this.eventOutput.emit('trackend', data);
+	            delete this.touchHistory[touch.identifier];
+	        }
+	    }
+	    this.isTouched = false;
+	}
+	function _handleUnpipe() {
+	    for (var i in this.touchHistory) {
+	        var history = this.touchHistory[i];
+	        this.eventOutput.emit('trackend', {
+	            touch: history[history.length - 1].touch,
+	            timestamp: Date.now(),
+	            count: 0,
+	            history: history
+	        });
+	        delete this.touchHistory[i];
+	    }
+	}
+	function TouchTracker(options) {
+	    this.selective = options.selective;
+	    this.touchLimit = options.touchLimit || 1;
+	    this.touchHistory = {};
+	    this.eventInput = new EventHandler();
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.eventInput);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    this.eventInput.on('touchstart', _handleStart.bind(this));
+	    this.eventInput.on('touchmove', _handleMove.bind(this));
+	    this.eventInput.on('touchend', _handleEnd.bind(this));
+	    this.eventInput.on('touchcancel', _handleEnd.bind(this));
+	    this.eventInput.on('unpipe', _handleUnpipe.bind(this));
+	    this.isTouched = false;
+	}
+	TouchTracker.prototype.track = function track(data) {
+	    this.touchHistory[data.identifier] = [data];
+	};
+	module.exports = TouchTracker;
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(85);
+	function TwoFingerSync() {
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.touchAEnabled = false;
+	    this.touchAId = 0;
+	    this.posA = null;
+	    this.timestampA = 0;
+	    this.touchBEnabled = false;
+	    this.touchBId = 0;
+	    this.posB = null;
+	    this.timestampB = 0;
+	    this._eventInput.on('touchstart', this.handleStart.bind(this));
+	    this._eventInput.on('touchmove', this.handleMove.bind(this));
+	    this._eventInput.on('touchend', this.handleEnd.bind(this));
+	    this._eventInput.on('touchcancel', this.handleEnd.bind(this));
+	}
+	TwoFingerSync.calculateAngle = function (posA, posB) {
+	    var diffX = posB[0] - posA[0];
+	    var diffY = posB[1] - posA[1];
+	    return Math.atan2(diffY, diffX);
+	};
+	TwoFingerSync.calculateDistance = function (posA, posB) {
+	    var diffX = posB[0] - posA[0];
+	    var diffY = posB[1] - posA[1];
+	    return Math.sqrt(diffX * diffX + diffY * diffY);
+	};
+	TwoFingerSync.calculateCenter = function (posA, posB) {
+	    return [
+	        (posA[0] + posB[0]) / 2,
+	        (posA[1] + posB[1]) / 2
+	    ];
+	};
+	var _now = Date.now;
+	TwoFingerSync.prototype.handleStart = function handleStart(event) {
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (!this.touchAEnabled) {
+	            this.touchAId = touch.identifier;
+	            this.touchAEnabled = true;
+	            this.posA = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampA = _now();
+	        } else if (!this.touchBEnabled) {
+	            this.touchBId = touch.identifier;
+	            this.touchBEnabled = true;
+	            this.posB = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampB = _now();
+	            this._startUpdate(event);
+	        }
+	    }
+	};
+	TwoFingerSync.prototype.handleMove = function handleMove(event) {
+	    if (!(this.touchAEnabled && this.touchBEnabled))
+	        return;
+	    var prevTimeA = this.timestampA;
+	    var prevTimeB = this.timestampB;
+	    var diffTime;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (touch.identifier === this.touchAId) {
+	            this.posA = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampA = _now();
+	            diffTime = this.timestampA - prevTimeA;
+	        } else if (touch.identifier === this.touchBId) {
+	            this.posB = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampB = _now();
+	            diffTime = this.timestampB - prevTimeB;
+	        }
+	    }
+	    if (diffTime)
+	        this._moveUpdate(diffTime);
+	};
+	TwoFingerSync.prototype.handleEnd = function handleEnd(event) {
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (touch.identifier === this.touchAId || touch.identifier === this.touchBId) {
+	            if (this.touchAEnabled && this.touchBEnabled) {
+	                this._eventOutput.emit('end', {
+	                    touches: [
+	                        this.touchAId,
+	                        this.touchBId
+	                    ],
+	                    angle: this._angle
+	                });
+	            }
+	            this.touchAEnabled = false;
+	            this.touchAId = 0;
+	            this.touchBEnabled = false;
+	            this.touchBId = 0;
+	        }
+	    }
+	};
+	module.exports = TwoFingerSync;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Vector = __webpack_require__(77);
+	function Matrix(values) {
+	    this.values = values || [
+	        [
+	            1,
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            1,
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            1
+	        ]
+	    ];
+	    return this;
+	}
+	var _register = new Matrix();
+	var _vectorRegister = new Vector();
+	Matrix.prototype.get = function get() {
+	    return this.values;
+	};
+	Matrix.prototype.set = function set(values) {
+	    this.values = values;
+	};
+	Matrix.prototype.vectorMultiply = function vectorMultiply(v) {
+	    var M = this.get();
+	    var v0 = v.x;
+	    var v1 = v.y;
+	    var v2 = v.z;
+	    var M0 = M[0];
+	    var M1 = M[1];
+	    var M2 = M[2];
+	    var M00 = M0[0];
+	    var M01 = M0[1];
+	    var M02 = M0[2];
+	    var M10 = M1[0];
+	    var M11 = M1[1];
+	    var M12 = M1[2];
+	    var M20 = M2[0];
+	    var M21 = M2[1];
+	    var M22 = M2[2];
+	    return _vectorRegister.setXYZ(M00 * v0 + M01 * v1 + M02 * v2, M10 * v0 + M11 * v1 + M12 * v2, M20 * v0 + M21 * v1 + M22 * v2);
+	};
+	Matrix.prototype.multiply = function multiply(M2) {
+	    var M1 = this.get();
+	    var result = [[]];
+	    for (var i = 0; i < 3; i++) {
+	        result[i] = [];
+	        for (var j = 0; j < 3; j++) {
+	            var sum = 0;
+	            for (var k = 0; k < 3; k++) {
+	                sum += M1[i][k] * M2[k][j];
+	            }
+	            result[i][j] = sum;
+	        }
+	    }
+	    return _register.set(result);
+	};
+	Matrix.prototype.transpose = function transpose() {
+	    var result = [
+	        [],
+	        [],
+	        []
+	    ];
+	    var M = this.get();
+	    for (var row = 0; row < 3; row++) {
+	        for (var col = 0; col < 3; col++) {
+	            result[row][col] = M[col][row];
+	        }
+	    }
+	    return _register.set(result);
+	};
+	Matrix.prototype.clone = function clone() {
+	    var values = this.get();
+	    var M = [];
+	    for (var row = 0; row < 3; row++)
+	        M[row] = values[row].slice();
+	    return new Matrix(M);
+	};
+	module.exports = Matrix;
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Matrix = __webpack_require__(167);
+	function Quaternion(w, x, y, z) {
+	    if (arguments.length === 1)
+	        this.set(w);
+	    else {
+	        this.w = w !== undefined ? w : 1;
+	        this.x = x !== undefined ? x : 0;
+	        this.y = y !== undefined ? y : 0;
+	        this.z = z !== undefined ? z : 0;
+	    }
+	    return this;
+	}
+	var register = new Quaternion(1, 0, 0, 0);
+	Quaternion.prototype.add = function add(q) {
+	    return register.setWXYZ(this.w + q.w, this.x + q.x, this.y + q.y, this.z + q.z);
+	};
+	Quaternion.prototype.sub = function sub(q) {
+	    return register.setWXYZ(this.w - q.w, this.x - q.x, this.y - q.y, this.z - q.z);
+	};
+	Quaternion.prototype.scalarDivide = function scalarDivide(s) {
+	    return this.scalarMultiply(1 / s);
+	};
+	Quaternion.prototype.scalarMultiply = function scalarMultiply(s) {
+	    return register.setWXYZ(this.w * s, this.x * s, this.y * s, this.z * s);
+	};
+	Quaternion.prototype.multiply = function multiply(q) {
+	    var x1 = this.x;
+	    var y1 = this.y;
+	    var z1 = this.z;
+	    var w1 = this.w;
+	    var x2 = q.x;
+	    var y2 = q.y;
+	    var z2 = q.z;
+	    var w2 = q.w || 0;
+	    return register.setWXYZ(w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2, x1 * w2 + x2 * w1 + y2 * z1 - y1 * z2, y1 * w2 + y2 * w1 + x1 * z2 - x2 * z1, z1 * w2 + z2 * w1 + x2 * y1 - x1 * y2);
+	};
+	var conj = new Quaternion(1, 0, 0, 0);
+	Quaternion.prototype.rotateVector = function rotateVector(v) {
+	    conj.set(this.conj());
+	    return register.set(this.multiply(v).multiply(conj));
+	};
+	Quaternion.prototype.inverse = function inverse() {
+	    return register.set(this.conj().scalarDivide(this.normSquared()));
+	};
+	Quaternion.prototype.negate = function negate() {
+	    return this.scalarMultiply(-1);
+	};
+	Quaternion.prototype.conj = function conj() {
+	    return register.setWXYZ(this.w, -this.x, -this.y, -this.z);
+	};
+	Quaternion.prototype.normalize = function normalize(length) {
+	    length = length === undefined ? 1 : length;
+	    return this.scalarDivide(length * this.norm());
+	};
+	Quaternion.prototype.makeFromAngleAndAxis = function makeFromAngleAndAxis(angle, v) {
+	    var n = v.normalize();
+	    var ha = angle * 0.5;
+	    var s = -Math.sin(ha);
+	    this.x = s * n.x;
+	    this.y = s * n.y;
+	    this.z = s * n.z;
+	    this.w = Math.cos(ha);
+	    return this;
+	};
+	Quaternion.prototype.setWXYZ = function setWXYZ(w, x, y, z) {
+	    register.clear();
+	    this.w = w;
+	    this.x = x;
+	    this.y = y;
+	    this.z = z;
+	    return this;
+	};
+	Quaternion.prototype.set = function set(v) {
+	    if (v instanceof Array) {
+	        this.w = 0;
+	        this.x = v[0];
+	        this.y = v[1];
+	        this.z = v[2];
+	    } else {
+	        this.w = v.w;
+	        this.x = v.x;
+	        this.y = v.y;
+	        this.z = v.z;
+	    }
+	    if (this !== register)
+	        register.clear();
+	    return this;
+	};
+	Quaternion.prototype.put = function put(q) {
+	    q.set(register);
+	};
+	Quaternion.prototype.clone = function clone() {
+	    return new Quaternion(this);
+	};
+	Quaternion.prototype.clear = function clear() {
+	    this.w = 1;
+	    this.x = 0;
+	    this.y = 0;
+	    this.z = 0;
+	    return this;
+	};
+	Quaternion.prototype.isEqual = function isEqual(q) {
+	    return q.w === this.w && q.x === this.x && q.y === this.y && q.z === this.z;
+	};
+	Quaternion.prototype.dot = function dot(q) {
+	    return this.w * q.w + this.x * q.x + this.y * q.y + this.z * q.z;
+	};
+	Quaternion.prototype.normSquared = function normSquared() {
+	    return this.dot(this);
+	};
+	Quaternion.prototype.norm = function norm() {
+	    return Math.sqrt(this.normSquared());
+	};
+	Quaternion.prototype.isZero = function isZero() {
+	    return !(this.x || this.y || this.z);
+	};
+	Quaternion.prototype.getTransform = function getTransform() {
+	    var temp = this.normalize(1);
+	    var x = temp.x;
+	    var y = temp.y;
+	    var z = temp.z;
+	    var w = temp.w;
+	    return [
+	        1 - 2 * y * y - 2 * z * z,
+	        2 * x * y - 2 * z * w,
+	        2 * x * z + 2 * y * w,
+	        0,
+	        2 * x * y + 2 * z * w,
+	        1 - 2 * x * x - 2 * z * z,
+	        2 * y * z - 2 * x * w,
+	        0,
+	        2 * x * z - 2 * y * w,
+	        2 * y * z + 2 * x * w,
+	        1 - 2 * x * x - 2 * y * y,
+	        0,
+	        0,
+	        0,
+	        0,
+	        1
+	    ];
+	};
+	var matrixRegister = new Matrix();
+	Quaternion.prototype.getMatrix = function getMatrix() {
+	    var temp = this.normalize(1);
+	    var x = temp.x;
+	    var y = temp.y;
+	    var z = temp.z;
+	    var w = temp.w;
+	    return matrixRegister.set([
+	        [
+	            1 - 2 * y * y - 2 * z * z,
+	            2 * x * y + 2 * z * w,
+	            2 * x * z - 2 * y * w
+	        ],
+	        [
+	            2 * x * y - 2 * z * w,
+	            1 - 2 * x * x - 2 * z * z,
+	            2 * y * z + 2 * x * w
+	        ],
+	        [
+	            2 * x * z + 2 * y * w,
+	            2 * y * z - 2 * x * w,
+	            1 - 2 * x * x - 2 * y * y
+	        ]
+	    ]);
+	};
+	var epsilon = 0.00001;
+	Quaternion.prototype.slerp = function slerp(q, t) {
+	    var omega;
+	    var cosomega;
+	    var sinomega;
+	    var scaleFrom;
+	    var scaleTo;
+	    cosomega = this.dot(q);
+	    if (1 - cosomega > epsilon) {
+	        omega = Math.acos(cosomega);
+	        sinomega = Math.sin(omega);
+	        scaleFrom = Math.sin((1 - t) * omega) / sinomega;
+	        scaleTo = Math.sin(t * omega) / sinomega;
+	    } else {
+	        scaleFrom = 1 - t;
+	        scaleTo = t;
+	    }
+	    return register.set(this.scalarMultiply(scaleFrom / scaleTo).add(q).scalarMultiply(scaleTo));
+	};
+	module.exports = Quaternion;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var RAND = Math.random;
+	function _randomFloat(min, max) {
+	    return min + RAND() * (max - min);
+	}
+	function _randomInteger(min, max) {
+	    return min + (RAND() * (max - min + 1) >> 0);
+	}
+	function _range(randomFunction, min, max, dim) {
+	    min = min !== undefined ? min : 0;
+	    max = max !== undefined ? max : 1;
+	    if (dim !== undefined) {
+	        var result = [];
+	        for (var i = 0; i < dim; i++)
+	            result.push(randomFunction(min, max));
+	        return result;
+	    } else
+	        return randomFunction(min, max);
+	}
+	var Random = {};
+	Random.integer = function integer(min, max, dim) {
+	    return _range(_randomInteger, min, max, dim);
+	};
+	Random.range = function range(min, max, dim) {
+	    return _range(_randomFloat, min, max, dim);
+	};
+	Random.sign = function sign(prob) {
+	    return Random.bool(prob) ? 1 : -1;
+	};
+	Random.bool = function bool(prob) {
+	    prob = prob !== undefined ? prob : 0.5;
+	    return RAND() < prob;
+	};
+	module.exports = Random;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Utilities = {};
+	Utilities.clamp = function clamp(value, range) {
+	    return Math.max(Math.min(value, range[1]), range[0]);
+	};
+	Utilities.length = function length(array) {
+	    var distanceSquared = 0;
+	    for (var i = 0; i < array.length; i++) {
+	        distanceSquared += array[i] * array[i];
+	    }
+	    return Math.sqrt(distanceSquared);
+	};
+	module.exports = Utilities;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function ElementAllocator(container) {
+	    if (!container)
+	        container = document.createDocumentFragment();
+	    this.container = container;
+	    this.detachedNodes = {};
+	    this.nodeCount = 0;
+	}
+	ElementAllocator.prototype.migrate = function migrate(container) {
+	    var oldContainer = this.container;
+	    if (container === oldContainer)
+	        return;
+	    if (oldContainer instanceof DocumentFragment) {
+	        container.appendChild(oldContainer);
+	    } else {
+	        while (oldContainer.hasChildNodes()) {
+	            container.appendChild(oldContainer.firstChild);
+	        }
+	    }
+	    this.container = container;
+	};
+	ElementAllocator.prototype.allocate = function allocate(type) {
+	    type = type.toLowerCase();
+	    if (!(type in this.detachedNodes))
+	        this.detachedNodes[type] = [];
+	    var nodeStore = this.detachedNodes[type];
+	    var result;
+	    if (nodeStore.length > 0) {
+	        result = nodeStore.pop();
+	    } else {
+	        result = document.createElement(type);
+	        this.container.appendChild(result);
+	    }
+	    this.nodeCount++;
+	    return result;
+	};
+	ElementAllocator.prototype.deallocate = function deallocate(element) {
+	    var nodeType = element.nodeName.toLowerCase();
+	    var nodeStore = this.detachedNodes[nodeType];
+	    nodeStore.push(element);
+	    this.nodeCount--;
+	};
+	ElementAllocator.prototype.getNodeCount = function getNodeCount() {
+	    return this.nodeCount;
+	};
+	module.exports = ElementAllocator;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(76);
+	var Transitionable = __webpack_require__(81);
+	var TransitionableTransform = __webpack_require__(179);
+	function Modifier(options) {
+	    this._transformGetter = null;
+	    this._opacityGetter = null;
+	    this._originGetter = null;
+	    this._alignGetter = null;
+	    this._sizeGetter = null;
+	    this._proportionGetter = null;
+	    this._legacyStates = {};
+	    this._output = {
+	        transform: Transform.identity,
+	        opacity: 1,
+	        origin: null,
+	        align: null,
+	        size: null,
+	        proportions: null,
+	        target: null
+	    };
+	    if (options) {
+	        if (options.transform)
+	            this.transformFrom(options.transform);
+	        if (options.opacity !== undefined)
+	            this.opacityFrom(options.opacity);
+	        if (options.origin)
+	            this.originFrom(options.origin);
+	        if (options.align)
+	            this.alignFrom(options.align);
+	        if (options.size)
+	            this.sizeFrom(options.size);
+	        if (options.proportions)
+	            this.proportionsFrom(options.proportions);
+	    }
+	}
+	Modifier.prototype.transformFrom = function transformFrom(transform) {
+	    if (transform instanceof Function)
+	        this._transformGetter = transform;
+	    else if (transform instanceof Object && transform.get)
+	        this._transformGetter = transform.get.bind(transform);
+	    else {
+	        this._transformGetter = null;
+	        this._output.transform = transform;
+	    }
+	    return this;
+	};
+	Modifier.prototype.opacityFrom = function opacityFrom(opacity) {
+	    if (opacity instanceof Function)
+	        this._opacityGetter = opacity;
+	    else if (opacity instanceof Object && opacity.get)
+	        this._opacityGetter = opacity.get.bind(opacity);
+	    else {
+	        this._opacityGetter = null;
+	        this._output.opacity = opacity;
+	    }
+	    return this;
+	};
+	Modifier.prototype.originFrom = function originFrom(origin) {
+	    if (origin instanceof Function)
+	        this._originGetter = origin;
+	    else if (origin instanceof Object && origin.get)
+	        this._originGetter = origin.get.bind(origin);
+	    else {
+	        this._originGetter = null;
+	        this._output.origin = origin;
+	    }
+	    return this;
+	};
+	Modifier.prototype.alignFrom = function alignFrom(align) {
+	    if (align instanceof Function)
+	        this._alignGetter = align;
+	    else if (align instanceof Object && align.get)
+	        this._alignGetter = align.get.bind(align);
+	    else {
+	        this._alignGetter = null;
+	        this._output.align = align;
+	    }
+	    return this;
+	};
+	Modifier.prototype.sizeFrom = function sizeFrom(size) {
+	    if (size instanceof Function)
+	        this._sizeGetter = size;
+	    else if (size instanceof Object && size.get)
+	        this._sizeGetter = size.get.bind(size);
+	    else {
+	        this._sizeGetter = null;
+	        this._output.size = size;
+	    }
+	    return this;
+	};
+	Modifier.prototype.proportionsFrom = function proportionsFrom(proportions) {
+	    if (proportions instanceof Function)
+	        this._proportionGetter = proportions;
+	    else if (proportions instanceof Object && proportions.get)
+	        this._proportionGetter = proportions.get.bind(proportions);
+	    else {
+	        this._proportionGetter = null;
+	        this._output.proportions = proportions;
+	    }
+	    return this;
+	};
+	Modifier.prototype.setTransform = function setTransform(transform, transition, callback) {
+	    if (transition || this._legacyStates.transform) {
+	        if (!this._legacyStates.transform) {
+	            this._legacyStates.transform = new TransitionableTransform(this._output.transform);
+	        }
+	        if (!this._transformGetter)
+	            this.transformFrom(this._legacyStates.transform);
+	        this._legacyStates.transform.set(transform, transition, callback);
+	        return this;
+	    } else
+	        return this.transformFrom(transform);
+	};
+	Modifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
+	    if (transition || this._legacyStates.opacity) {
+	        if (!this._legacyStates.opacity) {
+	            this._legacyStates.opacity = new Transitionable(this._output.opacity);
+	        }
+	        if (!this._opacityGetter)
+	            this.opacityFrom(this._legacyStates.opacity);
+	        return this._legacyStates.opacity.set(opacity, transition, callback);
+	    } else
+	        return this.opacityFrom(opacity);
+	};
+	Modifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
+	    if (transition || this._legacyStates.origin) {
+	        if (!this._legacyStates.origin) {
+	            this._legacyStates.origin = new Transitionable(this._output.origin || [
+	                0,
+	                0
+	            ]);
+	        }
+	        if (!this._originGetter)
+	            this.originFrom(this._legacyStates.origin);
+	        this._legacyStates.origin.set(origin, transition, callback);
+	        return this;
+	    } else
+	        return this.originFrom(origin);
+	};
+	Modifier.prototype.setAlign = function setAlign(align, transition, callback) {
+	    if (transition || this._legacyStates.align) {
+	        if (!this._legacyStates.align) {
+	            this._legacyStates.align = new Transitionable(this._output.align || [
+	                0,
+	                0
+	            ]);
+	        }
+	        if (!this._alignGetter)
+	            this.alignFrom(this._legacyStates.align);
+	        this._legacyStates.align.set(align, transition, callback);
+	        return this;
+	    } else
+	        return this.alignFrom(align);
+	};
+	Modifier.prototype.setSize = function setSize(size, transition, callback) {
+	    if (size && (transition || this._legacyStates.size)) {
+	        if (!this._legacyStates.size) {
+	            this._legacyStates.size = new Transitionable(this._output.size || [
+	                0,
+	                0
+	            ]);
+	        }
+	        if (!this._sizeGetter)
+	            this.sizeFrom(this._legacyStates.size);
+	        this._legacyStates.size.set(size, transition, callback);
+	        return this;
+	    } else
+	        return this.sizeFrom(size);
+	};
+	Modifier.prototype.setProportions = function setProportions(proportions, transition, callback) {
+	    if (proportions && (transition || this._legacyStates.proportions)) {
+	        if (!this._legacyStates.proportions) {
+	            this._legacyStates.proportions = new Transitionable(this._output.proportions || [
+	                0,
+	                0
+	            ]);
+	        }
+	        if (!this._proportionGetter)
+	            this.proportionsFrom(this._legacyStates.proportions);
+	        this._legacyStates.proportions.set(proportions, transition, callback);
+	        return this;
+	    } else
+	        return this.proportionsFrom(proportions);
+	};
+	Modifier.prototype.halt = function halt() {
+	    if (this._legacyStates.transform)
+	        this._legacyStates.transform.halt();
+	    if (this._legacyStates.opacity)
+	        this._legacyStates.opacity.halt();
+	    if (this._legacyStates.origin)
+	        this._legacyStates.origin.halt();
+	    if (this._legacyStates.align)
+	        this._legacyStates.align.halt();
+	    if (this._legacyStates.size)
+	        this._legacyStates.size.halt();
+	    if (this._legacyStates.proportions)
+	        this._legacyStates.proportions.halt();
+	    this._transformGetter = null;
+	    this._opacityGetter = null;
+	    this._originGetter = null;
+	    this._alignGetter = null;
+	    this._sizeGetter = null;
+	    this._proportionGetter = null;
+	};
+	Modifier.prototype.getTransform = function getTransform() {
+	    return this._transformGetter();
+	};
+	Modifier.prototype.getFinalTransform = function getFinalTransform() {
+	    return this._legacyStates.transform ? this._legacyStates.transform.getFinal() : this._output.transform;
+	};
+	Modifier.prototype.getOpacity = function getOpacity() {
+	    return this._opacityGetter();
+	};
+	Modifier.prototype.getOrigin = function getOrigin() {
+	    return this._originGetter();
+	};
+	Modifier.prototype.getAlign = function getAlign() {
+	    return this._alignGetter();
+	};
+	Modifier.prototype.getSize = function getSize() {
+	    return this._sizeGetter ? this._sizeGetter() : this._output.size;
+	};
+	Modifier.prototype.getProportions = function getProportions() {
+	    return this._proportionGetter ? this._proportionGetter() : this._output.proportions;
+	};
+	function _update() {
+	    if (this._transformGetter)
+	        this._output.transform = this._transformGetter();
+	    if (this._opacityGetter)
+	        this._output.opacity = this._opacityGetter();
+	    if (this._originGetter)
+	        this._output.origin = this._originGetter();
+	    if (this._alignGetter)
+	        this._output.align = this._alignGetter();
+	    if (this._sizeGetter)
+	        this._output.size = this._sizeGetter();
+	    if (this._proportionGetter)
+	        this._output.proportions = this._proportionGetter();
+	}
+	Modifier.prototype.modify = function modify(target) {
+	    _update.call(this);
+	    this._output.target = target;
+	    return this._output;
+	};
+	module.exports = Modifier;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(76);
+	var Modifier = __webpack_require__(172);
+	var RenderNode = __webpack_require__(151);
+	function Scene(definition) {
+	    this.id = null;
+	    this._objects = null;
+	    this.node = new RenderNode();
+	    this._definition = null;
+	    if (definition)
+	        this.load(definition);
+	}
+	var _MATRIX_GENERATORS = {
+	    'translate': Transform.translate,
+	    'rotate': Transform.rotate,
+	    'rotateX': Transform.rotateX,
+	    'rotateY': Transform.rotateY,
+	    'rotateZ': Transform.rotateZ,
+	    'rotateAxis': Transform.rotateAxis,
+	    'scale': Transform.scale,
+	    'skew': Transform.skew,
+	    'matrix3d': function () {
+	        return arguments;
+	    }
+	};
+	Scene.prototype.create = function create() {
+	    return new Scene(this._definition);
+	};
+	function _resolveTransformMatrix(matrixDefinition) {
+	    for (var type in _MATRIX_GENERATORS) {
+	        if (type in matrixDefinition) {
+	            var args = matrixDefinition[type];
+	            if (!(args instanceof Array))
+	                args = [args];
+	            return _MATRIX_GENERATORS[type].apply(this, args);
+	        }
+	    }
+	}
+	function _parseTransform(definition) {
+	    var transformDefinition = definition.transform;
+	    var opacity = definition.opacity;
+	    var origin = definition.origin;
+	    var align = definition.align;
+	    var size = definition.size;
+	    var transform = Transform.identity;
+	    if (transformDefinition instanceof Array) {
+	        if (transformDefinition.length === 16 && typeof transformDefinition[0] === 'number') {
+	            transform = transformDefinition;
+	        } else {
+	            for (var i = 0; i < transformDefinition.length; i++) {
+	                transform = Transform.multiply(transform, _resolveTransformMatrix(transformDefinition[i]));
+	            }
+	        }
+	    } else if (transformDefinition instanceof Function) {
+	        transform = transformDefinition;
+	    } else if (transformDefinition instanceof Object) {
+	        transform = _resolveTransformMatrix(transformDefinition);
+	    }
+	    var result = new Modifier({
+	        transform: transform,
+	        opacity: opacity,
+	        origin: origin,
+	        align: align,
+	        size: size
+	    });
+	    return result;
+	}
+	function _parseArray(definition) {
+	    var result = new RenderNode();
+	    for (var i = 0; i < definition.length; i++) {
+	        var obj = _parse.call(this, definition[i]);
+	        if (obj)
+	            result.add(obj);
+	    }
+	    return result;
+	}
+	function _parse(definition) {
+	    var result;
+	    var id;
+	    if (definition instanceof Array) {
+	        result = _parseArray.call(this, definition);
+	    } else {
+	        id = this._objects.length;
+	        if (definition.render && definition.render instanceof Function) {
+	            result = definition;
+	        } else if (definition.target) {
+	            var targetObj = _parse.call(this, definition.target);
+	            var obj = _parseTransform.call(this, definition);
+	            result = new RenderNode(obj);
+	            result.add(targetObj);
+	            if (definition.id)
+	                this.id[definition.id] = obj;
+	        } else if (definition.id) {
+	            result = new RenderNode();
+	            this.id[definition.id] = result;
+	        }
+	    }
+	    this._objects[id] = result;
+	    return result;
+	}
+	Scene.prototype.load = function load(definition) {
+	    this._definition = definition;
+	    this.id = {};
+	    this._objects = [];
+	    this.node.set(_parse.call(this, definition));
+	};
+	Scene.prototype.add = function add() {
+	    return this.node.add.apply(this.node, arguments);
+	};
+	Scene.prototype.render = function render() {
+	    return this.node.render.apply(this.node, arguments);
+	};
+	module.exports = Scene;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(76);
+	function SpecParser() {
+	    this.result = {};
+	}
+	SpecParser._instance = new SpecParser();
+	SpecParser.parse = function parse(spec, context) {
+	    return SpecParser._instance.parse(spec, context);
+	};
+	SpecParser.prototype.parse = function parse(spec, context) {
+	    this.reset();
+	    this._parseSpec(spec, context, Transform.identity);
+	    return this.result;
+	};
+	SpecParser.prototype.reset = function reset() {
+	    this.result = {};
+	};
+	function _vecInContext(v, m) {
+	    return [
+	        v[0] * m[0] + v[1] * m[4] + v[2] * m[8],
+	        v[0] * m[1] + v[1] * m[5] + v[2] * m[9],
+	        v[0] * m[2] + v[1] * m[6] + v[2] * m[10]
+	    ];
+	}
+	var _zeroZero = [
+	    0,
+	    0
+	];
+	SpecParser.prototype._parseSpec = function _parseSpec(spec, parentContext, sizeContext) {
+	    var id;
+	    var target;
+	    var transform;
+	    var opacity;
+	    var origin;
+	    var align;
+	    var size;
+	    if (typeof spec === 'number') {
+	        id = spec;
+	        transform = parentContext.transform;
+	        align = parentContext.align || _zeroZero;
+	        if (parentContext.size && align && (align[0] || align[1])) {
+	            var alignAdjust = [
+	                align[0] * parentContext.size[0],
+	                align[1] * parentContext.size[1],
+	                0
+	            ];
+	            transform = Transform.thenMove(transform, _vecInContext(alignAdjust, sizeContext));
+	        }
+	        this.result[id] = {
+	            transform: transform,
+	            opacity: parentContext.opacity,
+	            origin: parentContext.origin || _zeroZero,
+	            align: parentContext.align || _zeroZero,
+	            size: parentContext.size
+	        };
+	    } else if (!spec) {
+	        return;
+	    } else if (spec instanceof Array) {
+	        for (var i = 0; i < spec.length; i++) {
+	            this._parseSpec(spec[i], parentContext, sizeContext);
+	        }
+	    } else {
+	        target = spec.target;
+	        transform = parentContext.transform;
+	        opacity = parentContext.opacity;
+	        origin = parentContext.origin;
+	        align = parentContext.align;
+	        size = parentContext.size;
+	        var nextSizeContext = sizeContext;
+	        if (spec.opacity !== undefined)
+	            opacity = parentContext.opacity * spec.opacity;
+	        if (spec.transform)
+	            transform = Transform.multiply(parentContext.transform, spec.transform);
+	        if (spec.origin) {
+	            origin = spec.origin;
+	            nextSizeContext = parentContext.transform;
+	        }
+	        if (spec.align)
+	            align = spec.align;
+	        if (spec.size || spec.proportions) {
+	            var parentSize = size;
+	            size = [
+	                size[0],
+	                size[1]
+	            ];
+	            if (spec.size) {
+	                if (spec.size[0] !== undefined)
+	                    size[0] = spec.size[0];
+	                if (spec.size[1] !== undefined)
+	                    size[1] = spec.size[1];
+	            }
+	            if (spec.proportions) {
+	                if (spec.proportions[0] !== undefined)
+	                    size[0] = size[0] * spec.proportions[0];
+	                if (spec.proportions[1] !== undefined)
+	                    size[1] = size[1] * spec.proportions[1];
+	            }
+	            if (parentSize) {
+	                if (align && (align[0] || align[1]))
+	                    transform = Transform.thenMove(transform, _vecInContext([
+	                        align[0] * parentSize[0],
+	                        align[1] * parentSize[1],
+	                        0
+	                    ], sizeContext));
+	                if (origin && (origin[0] || origin[1]))
+	                    transform = Transform.moveThen([
+	                        -origin[0] * size[0],
+	                        -origin[1] * size[1],
+	                        0
+	                    ], transform);
+	            }
+	            nextSizeContext = parentContext.transform;
+	            origin = null;
+	            align = null;
+	        }
+	        this._parseSpec(target, {
+	            transform: transform,
+	            opacity: opacity,
+	            origin: origin,
+	            align: align,
+	            size: size
+	        }, nextSizeContext);
+	    }
+	};
+	module.exports = SpecParser;
+
+/***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function CachedMap(mappingFunction) {
+	    this._map = mappingFunction || null;
+	    this._cachedOutput = null;
+	    this._cachedInput = Number.NaN;
+	}
+	CachedMap.create = function create(mappingFunction) {
+	    var instance = new CachedMap(mappingFunction);
+	    return instance.get.bind(instance);
+	};
+	CachedMap.prototype.get = function get(input) {
+	    if (input !== this._cachedInput) {
+	        this._cachedInput = input;
+	        this._cachedOutput = this._map(input);
+	    }
+	    return this._cachedOutput;
+	};
+	module.exports = CachedMap;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Easing = {
+	    inQuad: function (t) {
+	        return t * t;
+	    },
+	    outQuad: function (t) {
+	        return -(t -= 1) * t + 1;
+	    },
+	    inOutQuad: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t;
+	        return -0.5 * (--t * (t - 2) - 1);
+	    },
+	    inCubic: function (t) {
+	        return t * t * t;
+	    },
+	    outCubic: function (t) {
+	        return --t * t * t + 1;
+	    },
+	    inOutCubic: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t;
+	        return 0.5 * ((t -= 2) * t * t + 2);
+	    },
+	    inQuart: function (t) {
+	        return t * t * t * t;
+	    },
+	    outQuart: function (t) {
+	        return -(--t * t * t * t - 1);
+	    },
+	    inOutQuart: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t * t;
+	        return -0.5 * ((t -= 2) * t * t * t - 2);
+	    },
+	    inQuint: function (t) {
+	        return t * t * t * t * t;
+	    },
+	    outQuint: function (t) {
+	        return --t * t * t * t * t + 1;
+	    },
+	    inOutQuint: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t * t * t;
+	        return 0.5 * ((t -= 2) * t * t * t * t + 2);
+	    },
+	    inSine: function (t) {
+	        return -1 * Math.cos(t * (Math.PI / 2)) + 1;
+	    },
+	    outSine: function (t) {
+	        return Math.sin(t * (Math.PI / 2));
+	    },
+	    inOutSine: function (t) {
+	        return -0.5 * (Math.cos(Math.PI * t) - 1);
+	    },
+	    inExpo: function (t) {
+	        return t === 0 ? 0 : Math.pow(2, 10 * (t - 1));
+	    },
+	    outExpo: function (t) {
+	        return t === 1 ? 1 : -Math.pow(2, -10 * t) + 1;
+	    },
+	    inOutExpo: function (t) {
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * Math.pow(2, 10 * (t - 1));
+	        return 0.5 * (-Math.pow(2, -10 * --t) + 2);
+	    },
+	    inCirc: function (t) {
+	        return -(Math.sqrt(1 - t * t) - 1);
+	    },
+	    outCirc: function (t) {
+	        return Math.sqrt(1 - --t * t);
+	    },
+	    inOutCirc: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return -0.5 * (Math.sqrt(1 - t * t) - 1);
+	        return 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+	    },
+	    inElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if (!p)
+	            p = 0.3;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+	    },
+	    outElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if (!p)
+	            p = 0.3;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
+	    },
+	    inOutElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if ((t /= 0.5) === 2)
+	            return 1;
+	        if (!p)
+	            p = 0.3 * 1.5;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        if (t < 1)
+	            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+	        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p) * 0.5 + 1;
+	    },
+	    inBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        return t * t * ((s + 1) * t - s);
+	    },
+	    outBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        return --t * t * ((s + 1) * t + s) + 1;
+	    },
+	    inOutBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * (t * t * (((s *= 1.525) + 1) * t - s));
+	        return 0.5 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2);
+	    },
+	    inBounce: function (t) {
+	        return 1 - Easing.outBounce(1 - t);
+	    },
+	    outBounce: function (t) {
+	        if (t < 1 / 2.75) {
+	            return 7.5625 * t * t;
+	        } else if (t < 2 / 2.75) {
+	            return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
+	        } else if (t < 2.5 / 2.75) {
+	            return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
+	        } else {
+	            return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
+	        }
+	    },
+	    inOutBounce: function (t) {
+	        if (t < 0.5)
+	            return Easing.inBounce(t * 2) * 0.5;
+	        return Easing.outBounce(t * 2 - 1) * 0.5 + 0.5;
+	    }
+	};
+	module.exports = Easing;
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var PE = __webpack_require__(80);
+	var Particle = __webpack_require__(78);
+	var Spring = __webpack_require__(218);
+	var Vector = __webpack_require__(77);
+	function SnapTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this._dimensions = 1;
+	    this._restTolerance = 1e-10;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.particle = new Particle();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.PE.addBody(this.particle);
+	    this.PE.attach(this.spring, this.particle);
+	}
+	SnapTransition.SUPPORTS_MULTIPLE = 3;
+	SnapTransition.DEFAULT_OPTIONS = {
+	    period: 100,
+	    dampingRatio: 0.2,
+	    velocity: 0
+	};
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _setParticlePosition(p) {
+	    this.particle.position.set(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.velocity.set(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _setupDefinition(definition) {
+	    var defaults = SnapTransition.DEFAULT_OPTIONS;
+	    if (definition.period === undefined)
+	        definition.period = defaults.period;
+	    if (definition.dampingRatio === undefined)
+	        definition.dampingRatio = defaults.dampingRatio;
+	    if (definition.velocity === undefined)
+	        definition.velocity = defaults.velocity;
+	    this.spring.setOptions({
+	        period: definition.period,
+	        dampingRatio: definition.dampingRatio
+	    });
+	    _setParticleVelocity.call(this, definition.velocity);
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
+	    }
+	    if (_getEnergy.call(this) < this._absRestTolerance) {
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	        _sleep.call(this);
+	    }
+	}
+	SnapTransition.prototype.reset = function reset(state, velocity) {
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    this.initState.set(state);
+	    _setParticlePosition.call(this, state);
+	    _setTarget.call(this, state);
+	    if (velocity)
+	        _setParticleVelocity.call(this, velocity);
+	    _setCallback.call(this, undefined);
+	};
+	SnapTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
+	};
+	SnapTransition.prototype.setVelocity = function setVelocity(velocity) {
+	    this.call(this, _setParticleVelocity(velocity));
+	};
+	SnapTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
+	};
+	SnapTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	SnapTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	SnapTransition.prototype.set = function set(state, definition, callback) {
+	    if (!definition) {
+	        this.reset(state);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = SnapTransition;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var PE = __webpack_require__(80);
+	var Particle = __webpack_require__(78);
+	var Spring = __webpack_require__(79);
+	var Vector = __webpack_require__(77);
+	function SpringTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this._dimensions = undefined;
+	    this._restTolerance = 1e-10;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.particle = new Particle();
+	    this.PE.addBody(this.particle);
+	    this.PE.attach(this.spring, this.particle);
+	}
+	SpringTransition.SUPPORTS_MULTIPLE = 3;
+	SpringTransition.DEFAULT_OPTIONS = {
+	    period: 300,
+	    dampingRatio: 0.5,
+	    velocity: 0
+	};
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setParticlePosition(p) {
+	    this.particle.setPosition(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.setVelocity(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
+	    }
+	    if (_getEnergy.call(this) < this._absRestTolerance) {
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	        _sleep.call(this);
+	    }
+	}
+	function _setupDefinition(definition) {
+	    var defaults = SpringTransition.DEFAULT_OPTIONS;
+	    if (definition.period === undefined)
+	        definition.period = defaults.period;
+	    if (definition.dampingRatio === undefined)
+	        definition.dampingRatio = defaults.dampingRatio;
+	    if (definition.velocity === undefined)
+	        definition.velocity = defaults.velocity;
+	    if (definition.period < 150) {
+	        definition.period = 150;
+	        console.warn('The period of a SpringTransition is capped at 150 ms. Use a SnapTransition for faster transitions');
+	    }
+	    this.spring.setOptions({
+	        period: definition.period,
+	        dampingRatio: definition.dampingRatio
+	    });
+	    _setParticleVelocity.call(this, definition.velocity);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	SpringTransition.prototype.reset = function reset(pos, vel) {
+	    this._dimensions = pos instanceof Array ? pos.length : 0;
+	    this.initState.set(pos);
+	    _setParticlePosition.call(this, pos);
+	    _setTarget.call(this, pos);
+	    if (vel)
+	        _setParticleVelocity.call(this, vel);
+	    _setCallback.call(this, undefined);
+	};
+	SpringTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
+	};
+	SpringTransition.prototype.setVelocity = function setVelocity(v) {
+	    this.call(this, _setParticleVelocity(v));
+	};
+	SpringTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
+	};
+	SpringTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	SpringTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	SpringTransition.prototype.set = function set(endState, definition, callback) {
+	    if (!definition) {
+	        this.reset(endState);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = endState instanceof Array ? endState.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, endState);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = SpringTransition;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transitionable = __webpack_require__(81);
+	var Transform = __webpack_require__(76);
+	var Utility = __webpack_require__(82);
+	function TransitionableTransform(transform) {
+	    this._final = Transform.identity.slice();
+	    this._finalTranslate = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalRotate = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalSkew = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalScale = [
+	        1,
+	        1,
+	        1
+	    ];
+	    this.translate = new Transitionable(this._finalTranslate);
+	    this.rotate = new Transitionable(this._finalRotate);
+	    this.skew = new Transitionable(this._finalSkew);
+	    this.scale = new Transitionable(this._finalScale);
+	    if (transform)
+	        this.set(transform);
+	}
+	function _build() {
+	    return Transform.build({
+	        translate: this.translate.get(),
+	        rotate: this.rotate.get(),
+	        skew: this.skew.get(),
+	        scale: this.scale.get()
+	    });
+	}
+	function _buildFinal() {
+	    return Transform.build({
+	        translate: this._finalTranslate,
+	        rotate: this._finalRotate,
+	        skew: this._finalSkew,
+	        scale: this._finalScale
+	    });
+	}
+	TransitionableTransform.prototype.setTranslate = function setTranslate(translate, transition, callback) {
+	    this._finalTranslate = translate;
+	    this._final = _buildFinal.call(this);
+	    this.translate.set(translate, transition, callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.setScale = function setScale(scale, transition, callback) {
+	    this._finalScale = scale;
+	    this._final = _buildFinal.call(this);
+	    this.scale.set(scale, transition, callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.setRotate = function setRotate(eulerAngles, transition, callback) {
+	    this._finalRotate = eulerAngles;
+	    this._final = _buildFinal.call(this);
+	    this.rotate.set(eulerAngles, transition, callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.setSkew = function setSkew(skewAngles, transition, callback) {
+	    this._finalSkew = skewAngles;
+	    this._final = _buildFinal.call(this);
+	    this.skew.set(skewAngles, transition, callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.set = function set(transform, transition, callback) {
+	    var components = Transform.interpret(transform);
+	    this._finalTranslate = components.translate;
+	    this._finalRotate = components.rotate;
+	    this._finalSkew = components.skew;
+	    this._finalScale = components.scale;
+	    this._final = transform;
+	    var _callback = callback ? Utility.after(4, callback) : null;
+	    this.translate.set(components.translate, transition, _callback);
+	    this.rotate.set(components.rotate, transition, _callback);
+	    this.skew.set(components.skew, transition, _callback);
+	    this.scale.set(components.scale, transition, _callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.setDefaultTransition = function setDefaultTransition(transition) {
+	    this.translate.setDefault(transition);
+	    this.rotate.setDefault(transition);
+	    this.skew.setDefault(transition);
+	    this.scale.setDefault(transition);
+	};
+	TransitionableTransform.prototype.get = function get() {
+	    if (this.isActive()) {
+	        return _build.call(this);
+	    } else
+	        return this._final;
+	};
+	TransitionableTransform.prototype.getFinal = function getFinal() {
+	    return this._final;
+	};
+	TransitionableTransform.prototype.isActive = function isActive() {
+	    return this.translate.isActive() || this.rotate.isActive() || this.scale.isActive() || this.skew.isActive();
+	};
+	TransitionableTransform.prototype.halt = function halt() {
+	    this.translate.halt();
+	    this.rotate.halt();
+	    this.skew.halt();
+	    this.scale.halt();
+	    this._final = this.get();
+	    this._finalTranslate = this.translate.get();
+	    this._finalRotate = this.rotate.get();
+	    this._finalSkew = this.skew.get();
+	    this._finalScale = this.scale.get();
+	    return this;
+	};
+	module.exports = TransitionableTransform;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var PE = __webpack_require__(80);
+	var Particle = __webpack_require__(78);
+	var Spring = __webpack_require__(79);
+	var Wall = __webpack_require__(219);
+	var Vector = __webpack_require__(77);
+	function WallTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.wall = new Wall();
+	    this._restTolerance = 1e-10;
+	    this._dimensions = 1;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.particle = new Particle();
+	    this.PE.addBody(this.particle);
+	    this.PE.attach([
+	        this.wall,
+	        this.spring
+	    ], this.particle);
+	}
+	WallTransition.SUPPORTS_MULTIPLE = 3;
+	WallTransition.DEFAULT_OPTIONS = {
+	    period: 300,
+	    dampingRatio: 0.5,
+	    velocity: 0,
+	    restitution: 0.5
+	};
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    var dist = this.endState.sub(this.initState).norm();
+	    this.wall.setOptions({
+	        distance: this.endState.norm(),
+	        normal: dist === 0 ? this.particle.velocity.normalize(-1) : this.endState.sub(this.initState).normalize(-1)
+	    });
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	function _setParticlePosition(p) {
+	    this.particle.position.set(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.velocity.set(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
+	    }
+	    var energy = _getEnergy.call(this);
+	    if (energy < this._absRestTolerance) {
+	        _sleep.call(this);
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	    }
+	}
+	function _setupDefinition(def) {
+	    var defaults = WallTransition.DEFAULT_OPTIONS;
+	    if (def.period === undefined)
+	        def.period = defaults.period;
+	    if (def.dampingRatio === undefined)
+	        def.dampingRatio = defaults.dampingRatio;
+	    if (def.velocity === undefined)
+	        def.velocity = defaults.velocity;
+	    if (def.restitution === undefined)
+	        def.restitution = defaults.restitution;
+	    if (def.drift === undefined)
+	        def.drift = Wall.DEFAULT_OPTIONS.drift;
+	    if (def.slop === undefined)
+	        def.slop = Wall.DEFAULT_OPTIONS.slop;
+	    this.spring.setOptions({
+	        period: def.period,
+	        dampingRatio: def.dampingRatio
+	    });
+	    this.wall.setOptions({
+	        restitution: def.restitution,
+	        drift: def.drift,
+	        slop: def.slop
+	    });
+	    _setParticleVelocity.call(this, def.velocity);
+	}
+	WallTransition.prototype.reset = function reset(state, velocity) {
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    this.initState.set(state);
+	    _setParticlePosition.call(this, state);
+	    if (velocity)
+	        _setParticleVelocity.call(this, velocity);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, undefined);
+	};
+	WallTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
+	};
+	WallTransition.prototype.setVelocity = function setVelocity(velocity) {
+	    this.call(this, _setParticleVelocity(velocity));
+	};
+	WallTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
+	};
+	WallTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	WallTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	WallTransition.prototype.set = function set(state, definition, callback) {
+	    if (!definition) {
+	        this.reset(state);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = WallTransition;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(76);
+	var Transitionable = __webpack_require__(81);
+	var EventHandler = __webpack_require__(85);
+	var Utilities = __webpack_require__(170);
+	var GenericSync = __webpack_require__(159);
+	var MouseSync = __webpack_require__(160);
+	var TouchSync = __webpack_require__(164);
+	GenericSync.register({
+	    'mouse': MouseSync,
+	    'touch': TouchSync
+	});
+	function Draggable(options) {
+	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this._positionState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._differential = [
+	        0,
+	        0
+	    ];
+	    this._active = true;
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], { scale: this.options.scale });
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.sync);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    _bindEvents.call(this);
+	}
+	var _direction = {
+	    x: 1,
+	    y: 2
+	};
+	Draggable.DIRECTION_X = _direction.x;
+	Draggable.DIRECTION_Y = _direction.y;
+	var _clamp = Utilities.clamp;
+	Draggable.DEFAULT_OPTIONS = {
+	    projection: _direction.x | _direction.y,
+	    scale: 1,
+	    xRange: null,
+	    yRange: null,
+	    snapX: 0,
+	    snapY: 0,
+	    transition: { duration: 0 }
+	};
+	function _mapDifferential(differential) {
+	    var opts = this.options;
+	    var projection = opts.projection;
+	    var snapX = opts.snapX;
+	    var snapY = opts.snapY;
+	    var tx = projection & _direction.x ? differential[0] : 0;
+	    var ty = projection & _direction.y ? differential[1] : 0;
+	    if (snapX > 0)
+	        tx -= tx % snapX;
+	    if (snapY > 0)
+	        ty -= ty % snapY;
+	    return [
+	        tx,
+	        ty
+	    ];
+	}
+	function _handleStart() {
+	    if (!this._active)
+	        return;
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this.eventOutput.emit('start', { position: this.getPosition() });
+	}
+	function _handleMove(event) {
+	    if (!this._active)
+	        return;
+	    var options = this.options;
+	    this._differential = event.position;
+	    var newDifferential = _mapDifferential.call(this, this._differential);
+	    this._differential[0] -= newDifferential[0];
+	    this._differential[1] -= newDifferential[1];
+	    var pos = this.getPosition();
+	    pos[0] += newDifferential[0];
+	    pos[1] += newDifferential[1];
+	    if (options.xRange) {
+	        var xRange = [
+	            options.xRange[0] + 0.5 * options.snapX,
+	            options.xRange[1] - 0.5 * options.snapX
+	        ];
+	        pos[0] = _clamp(pos[0], xRange);
+	    }
+	    if (options.yRange) {
+	        var yRange = [
+	            options.yRange[0] + 0.5 * options.snapY,
+	            options.yRange[1] - 0.5 * options.snapY
+	        ];
+	        pos[1] = _clamp(pos[1], yRange);
+	    }
+	    this.eventOutput.emit('update', { position: pos });
+	}
+	function _handleEnd() {
+	    if (!this._active)
+	        return;
+	    this.eventOutput.emit('end', { position: this.getPosition() });
+	}
+	function _bindEvents() {
+	    this.sync.on('start', _handleStart.bind(this));
+	    this.sync.on('update', _handleMove.bind(this));
+	    this.sync.on('end', _handleEnd.bind(this));
+	}
+	Draggable.prototype.setOptions = function setOptions(options) {
+	    var currentOptions = this.options;
+	    if (options.projection !== undefined) {
+	        var proj = options.projection;
+	        this.options.projection = 0;
+	        [
+	            'x',
+	            'y'
+	        ].forEach(function (val) {
+	            if (proj.indexOf(val) !== -1)
+	                currentOptions.projection |= _direction[val];
+	        });
+	    }
+	    if (options.scale !== undefined) {
+	        currentOptions.scale = options.scale;
+	        this.sync.setOptions({ scale: options.scale });
+	    }
+	    if (options.xRange !== undefined)
+	        currentOptions.xRange = options.xRange;
+	    if (options.yRange !== undefined)
+	        currentOptions.yRange = options.yRange;
+	    if (options.snapX !== undefined)
+	        currentOptions.snapX = options.snapX;
+	    if (options.snapY !== undefined)
+	        currentOptions.snapY = options.snapY;
+	};
+	Draggable.prototype.getPosition = function getPosition() {
+	    return this._positionState.get();
+	};
+	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
+	    var currPos = this.getPosition();
+	    var relativePosition = [
+	        currPos[0] + position[0],
+	        currPos[1] + position[1]
+	    ];
+	    this.setPosition(relativePosition, transition, callback);
+	};
+	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this._positionState.set(position, transition, callback);
+	};
+	Draggable.prototype.activate = function activate() {
+	    this._active = true;
+	};
+	Draggable.prototype.deactivate = function deactivate() {
+	    this._active = false;
+	};
+	Draggable.prototype.toggle = function toggle() {
+	    this._active = !this._active;
+	};
+	Draggable.prototype.modify = function modify(target) {
+	    var pos = this.getPosition();
+	    return {
+	        transform: Transform.translate(pos[0], pos[1]),
+	        target: target
+	    };
+	};
+	module.exports = Draggable;
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transitionable = __webpack_require__(81);
+	var OptionsManager = __webpack_require__(75);
+	function Fader(options, startState) {
+	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    if (!startState)
+	        startState = 0;
+	    this.transitionHelper = new Transitionable(startState);
+	}
+	Fader.DEFAULT_OPTIONS = {
+	    cull: false,
+	    transition: true,
+	    pulseInTransition: true,
+	    pulseOutTransition: true
+	};
+	Fader.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	Fader.prototype.show = function show(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(1, transition, callback);
+	};
+	Fader.prototype.hide = function hide(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(0, transition, callback);
+	};
+	Fader.prototype.set = function set(state, transition, callback) {
+	    this.halt();
+	    this.transitionHelper.set(state, transition, callback);
+	};
+	Fader.prototype.halt = function halt() {
+	    this.transitionHelper.halt();
+	};
+	Fader.prototype.isVisible = function isVisible() {
+	    return this.transitionHelper.get() > 0;
+	};
+	Fader.prototype.modify = function modify(target) {
+	    var currOpacity = this.transitionHelper.get();
+	    if (this.options.cull && !currOpacity)
+	        return undefined;
+	    else
+	        return {
+	            opacity: currOpacity,
+	            target: target
+	        };
+	};
+	module.exports = Fader;
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function ModifierChain() {
+	    this._chain = [];
+	    if (arguments.length)
+	        this.addModifier.apply(this, arguments);
+	}
+	ModifierChain.prototype.addModifier = function addModifier(varargs) {
+	    Array.prototype.push.apply(this._chain, arguments);
+	};
+	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
+	    var index = this._chain.indexOf(modifier);
+	    if (index < 0)
+	        return;
+	    this._chain.splice(index, 1);
+	};
+	ModifierChain.prototype.modify = function modify(input) {
+	    var chain = this._chain;
+	    var result = input;
+	    for (var i = 0; i < chain.length; i++) {
+	        result = chain[i].modify(result);
+	    }
+	    return result;
+	};
+	module.exports = ModifierChain;
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Modifier = __webpack_require__(172);
+	var Transform = __webpack_require__(76);
+	var Transitionable = __webpack_require__(81);
+	var TransitionableTransform = __webpack_require__(179);
+	function StateModifier(options) {
+	    this._transformState = new TransitionableTransform(Transform.identity);
+	    this._opacityState = new Transitionable(1);
+	    this._originState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._alignState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._sizeState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._proportionsState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._modifier = new Modifier({
+	        transform: this._transformState,
+	        opacity: this._opacityState,
+	        origin: null,
+	        align: null,
+	        size: null,
+	        proportions: null
+	    });
+	    this._hasOrigin = false;
+	    this._hasAlign = false;
+	    this._hasSize = false;
+	    this._hasProportions = false;
+	    if (options) {
+	        if (options.transform)
+	            this.setTransform(options.transform);
+	        if (options.opacity !== undefined)
+	            this.setOpacity(options.opacity);
+	        if (options.origin)
+	            this.setOrigin(options.origin);
+	        if (options.align)
+	            this.setAlign(options.align);
+	        if (options.size)
+	            this.setSize(options.size);
+	        if (options.proportions)
+	            this.setProportions(options.proportions);
+	    }
+	}
+	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
+	    this._transformState.set(transform, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
+	    this._opacityState.set(opacity, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
+	    if (origin === null) {
+	        if (this._hasOrigin) {
+	            this._modifier.originFrom(null);
+	            this._hasOrigin = false;
+	        }
+	        return this;
+	    } else if (!this._hasOrigin) {
+	        this._hasOrigin = true;
+	        this._modifier.originFrom(this._originState);
+	    }
+	    this._originState.set(origin, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
+	    if (align === null) {
+	        if (this._hasAlign) {
+	            this._modifier.alignFrom(null);
+	            this._hasAlign = false;
+	        }
+	        return this;
+	    } else if (!this._hasAlign) {
+	        this._hasAlign = true;
+	        this._modifier.alignFrom(this._alignState);
+	    }
+	    this._alignState.set(align, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
+	    if (size === null) {
+	        if (this._hasSize) {
+	            this._modifier.sizeFrom(null);
+	            this._hasSize = false;
+	        }
+	        return this;
+	    } else if (!this._hasSize) {
+	        this._hasSize = true;
+	        this._modifier.sizeFrom(this._sizeState);
+	    }
+	    this._sizeState.set(size, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
+	    if (proportions === null) {
+	        if (this._hasProportions) {
+	            this._modifier.proportionsFrom(null);
+	            this._hasProportions = false;
+	        }
+	        return this;
+	    } else if (!this._hasProportions) {
+	        this._hasProportions = true;
+	        this._modifier.proportionsFrom(this._proportionsState);
+	    }
+	    this._proportionsState.set(proportions, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.halt = function halt() {
+	    this._transformState.halt();
+	    this._opacityState.halt();
+	    this._originState.halt();
+	    this._alignState.halt();
+	    this._sizeState.halt();
+	    this._proportionsState.halt();
+	};
+	StateModifier.prototype.getTransform = function getTransform() {
+	    return this._transformState.get();
+	};
+	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
+	    return this._transformState.getFinal();
+	};
+	StateModifier.prototype.getOpacity = function getOpacity() {
+	    return this._opacityState.get();
+	};
+	StateModifier.prototype.getOrigin = function getOrigin() {
+	    return this._hasOrigin ? this._originState.get() : null;
+	};
+	StateModifier.prototype.getAlign = function getAlign() {
+	    return this._hasAlign ? this._alignState.get() : null;
+	};
+	StateModifier.prototype.getSize = function getSize() {
+	    return this._hasSize ? this._sizeState.get() : null;
+	};
+	StateModifier.prototype.getProportions = function getProportions() {
+	    return this._hasProportions ? this._proportionsState.get() : null;
+	};
+	StateModifier.prototype.modify = function modify(target) {
+	    return this._modifier.modify(target);
+	};
+	module.exports = StateModifier;
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(91);
+	function CanvasSurface(options) {
+	    if (options && options.canvasSize)
+	        this._canvasSize = options.canvasSize;
+	    Surface.apply(this, arguments);
+	    if (!this._canvasSize)
+	        this._canvasSize = this.getSize();
+	    this._backBuffer = document.createElement('canvas');
+	    if (this._canvasSize) {
+	        this._backBuffer.width = this._canvasSize[0];
+	        this._backBuffer.height = this._canvasSize[1];
+	    }
+	    this._contextId = undefined;
+	}
+	CanvasSurface.prototype = Object.create(Surface.prototype);
+	CanvasSurface.prototype.constructor = CanvasSurface;
+	CanvasSurface.prototype.elementType = 'canvas';
+	CanvasSurface.prototype.elementClass = 'famous-surface';
+	CanvasSurface.prototype.setContent = function setContent() {
+	};
+	CanvasSurface.prototype.deploy = function deploy(target) {
+	    if (this._canvasSize) {
+	        target.width = this._canvasSize[0];
+	        target.height = this._canvasSize[1];
+	    }
+	    if (this._contextId === '2d') {
+	        target.getContext(this._contextId).drawImage(this._backBuffer, 0, 0);
+	        this._backBuffer.width = 0;
+	        this._backBuffer.height = 0;
+	    }
+	};
+	CanvasSurface.prototype.recall = function recall(target) {
+	    var size = this.getSize();
+	    this._backBuffer.width = target.width;
+	    this._backBuffer.height = target.height;
+	    if (this._contextId === '2d') {
+	        this._backBuffer.getContext(this._contextId).drawImage(target, 0, 0);
+	        target.width = 0;
+	        target.height = 0;
+	    }
+	};
+	CanvasSurface.prototype.getContext = function getContext(contextId) {
+	    this._contextId = contextId;
+	    return this._currentTarget ? this._currentTarget.getContext(contextId) : this._backBuffer.getContext(contextId);
+	};
+	CanvasSurface.prototype.setSize = function setSize(size, canvasSize) {
+	    Surface.prototype.setSize.apply(this, arguments);
+	    if (canvasSize)
+	        this._canvasSize = [
+	            canvasSize[0],
+	            canvasSize[1]
+	        ];
+	    if (this._currentTarget) {
+	        this._currentTarget.width = this._canvasSize[0];
+	        this._currentTarget.height = this._canvasSize[1];
+	    }
+	};
+	module.exports = CanvasSurface;
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var ContainerSurface = __webpack_require__(86);
+	function FormContainerSurface(options) {
+	    if (options)
+	        this._method = options.method || '';
+	    ContainerSurface.apply(this, arguments);
+	}
+	FormContainerSurface.prototype = Object.create(ContainerSurface.prototype);
+	FormContainerSurface.prototype.constructor = FormContainerSurface;
+	FormContainerSurface.prototype.elementType = 'form';
+	FormContainerSurface.prototype.deploy = function deploy(target) {
+	    if (this._method)
+	        target.method = this._method;
+	    return ContainerSurface.prototype.deploy.apply(this, arguments);
+	};
+	module.exports = FormContainerSurface;
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(91);
+	function ImageSurface(options) {
+	    this._imageUrl = undefined;
+	    Surface.apply(this, arguments);
+	}
+	var urlCache = [];
+	var countCache = [];
+	var nodeCache = [];
+	var cacheEnabled = true;
+	ImageSurface.enableCache = function enableCache() {
+	    cacheEnabled = true;
+	};
+	ImageSurface.disableCache = function disableCache() {
+	    cacheEnabled = false;
+	};
+	ImageSurface.clearCache = function clearCache() {
+	    urlCache = [];
+	    countCache = [];
+	    nodeCache = [];
+	};
+	ImageSurface.getCache = function getCache() {
+	    return {
+	        urlCache: urlCache,
+	        countCache: countCache,
+	        nodeCache: nodeCache
+	    };
+	};
+	ImageSurface.prototype = Object.create(Surface.prototype);
+	ImageSurface.prototype.constructor = ImageSurface;
+	ImageSurface.prototype.elementType = 'img';
+	ImageSurface.prototype.elementClass = 'famous-surface';
+	ImageSurface.prototype.setContent = function setContent(imageUrl) {
+	    var urlIndex = urlCache.indexOf(this._imageUrl);
+	    if (urlIndex !== -1) {
+	        if (countCache[urlIndex] === 1) {
+	            urlCache.splice(urlIndex, 1);
+	            countCache.splice(urlIndex, 1);
+	            nodeCache.splice(urlIndex, 1);
+	        } else {
+	            countCache[urlIndex]--;
+	        }
+	    }
+	    urlIndex = urlCache.indexOf(imageUrl);
+	    if (urlIndex === -1) {
+	        urlCache.push(imageUrl);
+	        countCache.push(1);
+	    } else {
+	        countCache[urlIndex]++;
+	    }
+	    this._imageUrl = imageUrl;
+	    this._contentDirty = true;
+	};
+	ImageSurface.prototype.deploy = function deploy(target) {
+	    var urlIndex = urlCache.indexOf(this._imageUrl);
+	    if (nodeCache[urlIndex] === undefined && cacheEnabled) {
+	        var img = new Image();
+	        img.src = this._imageUrl || '';
+	        nodeCache[urlIndex] = img;
+	    }
+	    target.src = this._imageUrl || '';
+	};
+	ImageSurface.prototype.recall = function recall(target) {
+	    target.src = '';
+	};
+	module.exports = ImageSurface;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(91);
+	function InputSurface(options) {
+	    this._placeholder = options.placeholder || '';
+	    this._value = options.value || '';
+	    this._type = options.type || 'text';
+	    this._name = options.name || '';
+	    Surface.apply(this, arguments);
+	    this.on('click', this.focus.bind(this));
+	    window.addEventListener('click', function (event) {
+	        if (event.target !== this._currentTarget)
+	            this.blur();
+	    }.bind(this));
+	}
+	InputSurface.prototype = Object.create(Surface.prototype);
+	InputSurface.prototype.constructor = InputSurface;
+	InputSurface.prototype.elementType = 'input';
+	InputSurface.prototype.elementClass = 'famous-surface';
+	InputSurface.prototype.setPlaceholder = function setPlaceholder(str) {
+	    this._placeholder = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.focus = function focus() {
+	    if (this._currentTarget)
+	        this._currentTarget.focus();
+	    return this;
+	};
+	InputSurface.prototype.blur = function blur() {
+	    if (this._currentTarget)
+	        this._currentTarget.blur();
+	    return this;
+	};
+	InputSurface.prototype.setValue = function setValue(str) {
+	    this._value = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.setType = function setType(str) {
+	    this._type = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.getValue = function getValue() {
+	    if (this._currentTarget) {
+	        return this._currentTarget.value;
+	    } else {
+	        return this._value;
+	    }
+	};
+	InputSurface.prototype.setName = function setName(str) {
+	    this._name = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.getName = function getName() {
+	    return this._name;
+	};
+	InputSurface.prototype.deploy = function deploy(target) {
+	    if (this._placeholder !== '')
+	        target.placeholder = this._placeholder;
+	    target.value = this._value;
+	    target.type = this._type;
+	    target.name = this._name;
+	};
+	module.exports = InputSurface;
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var InputSurface = __webpack_require__(188);
+	function SubmitInputSurface(options) {
+	    InputSurface.apply(this, arguments);
+	    this._type = 'submit';
+	    if (options && options.onClick)
+	        this.setOnClick(options.onClick);
+	}
+	SubmitInputSurface.prototype = Object.create(InputSurface.prototype);
+	SubmitInputSurface.prototype.constructor = SubmitInputSurface;
+	SubmitInputSurface.prototype.setOnClick = function (onClick) {
+	    this.onClick = onClick;
+	};
+	SubmitInputSurface.prototype.deploy = function deploy(target) {
+	    if (this.onclick)
+	        target.onClick = this.onClick;
+	    InputSurface.prototype.deploy.apply(this, arguments);
+	};
+	module.exports = SubmitInputSurface;
+
+/***/ },
+/* 190 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(91);
+	function TextareaSurface(options) {
+	    this._placeholder = options.placeholder || '';
+	    this._value = options.value || '';
+	    this._name = options.name || '';
+	    this._wrap = options.wrap || '';
+	    this._cols = options.cols || '';
+	    this._rows = options.rows || '';
+	    Surface.apply(this, arguments);
+	    this.on('click', this.focus.bind(this));
+	}
+	TextareaSurface.prototype = Object.create(Surface.prototype);
+	TextareaSurface.prototype.constructor = TextareaSurface;
+	TextareaSurface.prototype.elementType = 'textarea';
+	TextareaSurface.prototype.elementClass = 'famous-surface';
+	TextareaSurface.prototype.setPlaceholder = function setPlaceholder(str) {
+	    this._placeholder = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.focus = function focus() {
+	    if (this._currentTarget)
+	        this._currentTarget.focus();
+	    return this;
+	};
+	TextareaSurface.prototype.blur = function blur() {
+	    if (this._currentTarget)
+	        this._currentTarget.blur();
+	    return this;
+	};
+	TextareaSurface.prototype.setValue = function setValue(str) {
+	    this._value = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.getValue = function getValue() {
+	    if (this._currentTarget) {
+	        return this._currentTarget.value;
+	    } else {
+	        return this._value;
+	    }
+	};
+	TextareaSurface.prototype.setName = function setName(str) {
+	    this._name = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.getName = function getName() {
+	    return this._name;
+	};
+	TextareaSurface.prototype.setWrap = function setWrap(str) {
+	    this._wrap = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.setColumns = function setColumns(num) {
+	    this._cols = num;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.setRows = function setRows(num) {
+	    this._rows = num;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.deploy = function deploy(target) {
+	    if (this._placeholder !== '')
+	        target.placeholder = this._placeholder;
+	    if (this._value !== '')
+	        target.value = this._value;
+	    if (this._name !== '')
+	        target.name = this._name;
+	    if (this._wrap !== '')
+	        target.wrap = this._wrap;
+	    if (this._cols !== '')
+	        target.cols = this._cols;
+	    if (this._rows !== '')
+	        target.rows = this._rows;
+	};
+	module.exports = TextareaSurface;
+
+/***/ },
+/* 191 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(91);
+	function VideoSurface(options) {
+	    Surface.apply(this, arguments);
+	    this._videoUrl = undefined;
+	    this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	}
+	VideoSurface.prototype = Object.create(Surface.prototype);
+	VideoSurface.prototype.constructor = VideoSurface;
+	VideoSurface.DEFAULT_OPTIONS = { autoplay: false };
+	VideoSurface.prototype.elementType = 'video';
+	VideoSurface.prototype.elementClass = 'famous-surface';
+	VideoSurface.prototype.setOptions = function setOptions(options) {
+	    if (options.size)
+	        this.setSize(options.size);
+	    if (options.classes)
+	        this.setClasses(options.classes);
+	    if (options.properties)
+	        this.setProperties(options.properties);
+	    if (options.autoplay)
+	        this.options.autoplay = options.autoplay;
+	    if (options.src) {
+	        this._videoUrl = options.src;
+	        this._contentDirty = true;
+	    }
+	};
+	VideoSurface.prototype.setContent = function setContent(videoUrl) {
+	    this._videoUrl = videoUrl;
+	    this._contentDirty = true;
+	};
+	VideoSurface.prototype.deploy = function deploy(target) {
+	    target.src = this._videoUrl;
+	    target.autoplay = this.options.autoplay;
+	};
+	VideoSurface.prototype.recall = function recall(target) {
+	    target.src = '';
+	};
+	module.exports = VideoSurface;
+
+/***/ },
+/* 192 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(83);
+	var Transform = __webpack_require__(76);
+	var EventHandler = __webpack_require__(85);
+	var OptionsManager = __webpack_require__(75);
+	function ContextualView(options) {
+	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS || ContextualView.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._id = Entity.register(this);
+	}
+	ContextualView.DEFAULT_OPTIONS = {};
+	ContextualView.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	ContextualView.prototype.getOptions = function getOptions(key) {
+	    return this._optionsManager.getOptions(key);
+	};
+	ContextualView.prototype.render = function render() {
+	    return this._id;
+	};
+	ContextualView.prototype.commit = function commit(context) {
+	};
+	module.exports = ContextualView;
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(76);
+	var OptionsManager = __webpack_require__(75);
+	var Transitionable = __webpack_require__(81);
+	var Utility = __webpack_require__(82);
+	var SequentialLayout = __webpack_require__(205);
+	function Deck(options) {
+	    SequentialLayout.apply(this, arguments);
+	    this.state = new Transitionable(0);
+	    this._isOpen = false;
+	    this.setOutputFunction(function (input, offset, index) {
+	        var state = _getState.call(this);
+	        var positionMatrix = this.options.direction === Utility.Direction.X ? Transform.translate(state * offset, 0, 0.001 * (state - 1) * offset) : Transform.translate(0, state * offset, 0.001 * (state - 1) * offset);
+	        var output = input.render();
+	        if (this.options.stackRotation) {
+	            var amount = this.options.stackRotation * index * (1 - state);
+	            output = {
+	                transform: Transform.rotateZ(amount),
+	                origin: [
+	                    0.5,
+	                    0.5
+	                ],
+	                target: output
+	            };
+	        }
+	        return {
+	            transform: positionMatrix,
+	            size: input.getSize(),
+	            target: output
+	        };
+	    });
+	}
+	Deck.prototype = Object.create(SequentialLayout.prototype);
+	Deck.prototype.constructor = Deck;
+	Deck.DEFAULT_OPTIONS = OptionsManager.patch(SequentialLayout.DEFAULT_OPTIONS, {
+	    transition: {
+	        curve: 'easeOutBounce',
+	        duration: 500
+	    },
+	    stackRotation: 0
+	});
+	Deck.prototype.getSize = function getSize() {
+	    var originalSize = SequentialLayout.prototype.getSize.apply(this, arguments);
+	    var firstSize = this._items ? this._items.get().getSize() : [
+	        0,
+	        0
+	    ];
+	    if (!firstSize)
+	        firstSize = [
+	            0,
+	            0
+	        ];
+	    var state = _getState.call(this);
+	    var invState = 1 - state;
+	    return [
+	        firstSize[0] * invState + originalSize[0] * state,
+	        firstSize[1] * invState + originalSize[1] * state
+	    ];
+	};
+	function _getState(returnFinal) {
+	    if (returnFinal)
+	        return this._isOpen ? 1 : 0;
+	    else
+	        return this.state.get();
+	}
+	function _setState(pos, transition, callback) {
+	    this.state.halt();
+	    this.state.set(pos, transition, callback);
+	}
+	Deck.prototype.isOpen = function isOpen() {
+	    return this._isOpen;
+	};
+	Deck.prototype.open = function open(callback) {
+	    this._isOpen = true;
+	    _setState.call(this, 1, this.options.transition, callback);
+	};
+	Deck.prototype.close = function close(callback) {
+	    this._isOpen = false;
+	    _setState.call(this, 0, this.options.transition, callback);
+	};
+	Deck.prototype.toggle = function toggle(callback) {
+	    if (this._isOpen)
+	        this.close(callback);
+	    else
+	        this.open(callback);
+	};
+	module.exports = Deck;
+
+/***/ },
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var RenderNode = __webpack_require__(151);
+	var Transform = __webpack_require__(76);
+	var OptionsManager = __webpack_require__(75);
+	var Transitionable = __webpack_require__(81);
+	var EventHandler = __webpack_require__(85);
+	function DrawerLayout(options) {
+	    this.options = Object.create(DrawerLayout.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._position = new Transitionable(0);
+	    this._direction = _getDirectionFromSide(this.options.side);
+	    this._orientation = _getOrientationFromSide(this.options.side);
+	    this._isOpen = false;
+	    this._cachedLength = 0;
+	    this.drawer = new RenderNode();
+	    this.content = new RenderNode();
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._eventInput.on('update', _handleUpdate.bind(this));
+	    this._eventInput.on('end', _handleEnd.bind(this));
+	}
+	var DIRECTION_X = 0;
+	var DIRECTION_Y = 1;
+	DrawerLayout.SIDES = {
+	    LEFT: 0,
+	    TOP: 1,
+	    RIGHT: 2,
+	    BOTTOM: 3
+	};
+	DrawerLayout.DEFAULT_OPTIONS = {
+	    side: DrawerLayout.SIDES.LEFT,
+	    drawerLength: 0,
+	    velocityThreshold: 0,
+	    positionThreshold: 0,
+	    transition: true
+	};
+	function _getDirectionFromSide(side) {
+	    var SIDES = DrawerLayout.SIDES;
+	    return side === SIDES.LEFT || side === SIDES.RIGHT ? DIRECTION_X : DIRECTION_Y;
+	}
+	function _getOrientationFromSide(side) {
+	    var SIDES = DrawerLayout.SIDES;
+	    return side === SIDES.LEFT || side === SIDES.TOP ? 1 : -1;
+	}
+	function _resolveNodeSize(node) {
+	    var options = this.options;
+	    var size;
+	    if (options.drawerLength)
+	        size = options.drawerLength;
+	    else {
+	        var nodeSize = node.getSize();
+	        size = nodeSize ? nodeSize[this._direction] : options.drawerLength;
+	    }
+	    return this._orientation * size;
+	}
+	function _handleUpdate(data) {
+	    var newPosition = this.getPosition() + data.delta;
+	    var MIN_LENGTH;
+	    var MAX_LENGTH;
+	    this._cachedLength = _resolveNodeSize.call(this, this.drawer);
+	    if (this._orientation === 1) {
+	        MIN_LENGTH = 0;
+	        MAX_LENGTH = this._cachedLength;
+	    } else {
+	        MIN_LENGTH = this._cachedLength;
+	        MAX_LENGTH = 0;
+	    }
+	    if (newPosition > MAX_LENGTH)
+	        newPosition = MAX_LENGTH;
+	    else if (newPosition < MIN_LENGTH)
+	        newPosition = MIN_LENGTH;
+	    this.setPosition(newPosition);
+	}
+	function _handleEnd(data) {
+	    var velocity = data.velocity;
+	    var position = this._orientation * this.getPosition();
+	    var options = this.options;
+	    var MAX_LENGTH = this._orientation * this._cachedLength;
+	    var positionThreshold = options.positionThreshold || MAX_LENGTH / 2;
+	    var velocityThreshold = options.velocityThreshold;
+	    if (options.transition instanceof Object)
+	        options.transition.velocity = data.velocity;
+	    if (position === 0) {
+	        this._isOpen = false;
+	        return;
+	    }
+	    if (position === MAX_LENGTH) {
+	        this._isOpen = true;
+	        return;
+	    }
+	    var shouldToggle = Math.abs(velocity) > velocityThreshold || !this._isOpen && position > positionThreshold || this._isOpen && position < positionThreshold;
+	    if (shouldToggle)
+	        this.toggle();
+	    else
+	        this.reset();
+	}
+	DrawerLayout.prototype.setOptions = function setOptions(options) {
+	    this._optionsManager.setOptions(options);
+	    if (options.side !== undefined) {
+	        this._direction = _getDirectionFromSide(options.side);
+	        this._orientation = _getOrientationFromSide(options.side);
+	    }
+	};
+	DrawerLayout.prototype.open = function open(transition, callback) {
+	    if (transition instanceof Function)
+	        callback = transition;
+	    if (transition === undefined)
+	        transition = this.options.transition;
+	    this._cachedLength = _resolveNodeSize.call(this, this.drawer);
+	    this.setPosition(this._cachedLength, transition, callback);
+	    if (!this._isOpen) {
+	        this._isOpen = true;
+	        this._eventOutput.emit('open');
+	    }
+	};
+	DrawerLayout.prototype.close = function close(transition, callback) {
+	    if (transition instanceof Function)
+	        callback = transition;
+	    if (transition === undefined)
+	        transition = this.options.transition;
+	    this.setPosition(0, transition, callback);
+	    if (this._isOpen) {
+	        this._isOpen = false;
+	        this._eventOutput.emit('close');
+	    }
+	};
+	DrawerLayout.prototype.setPosition = function setPosition(position, transition, callback) {
+	    if (this._position.isActive())
+	        this._position.halt();
+	    this._position.set(position, transition, callback);
+	};
+	DrawerLayout.prototype.getPosition = function getPosition() {
+	    return this._position.get();
+	};
+	DrawerLayout.prototype.setProgress = function setProgress(progress, transition, callback) {
+	    return this._position.set(progress * this._cachedLength, transition, callback);
+	};
+	DrawerLayout.prototype.getProgress = function getProgress() {
+	    return this._position.get() / this._cachedLength;
+	};
+	DrawerLayout.prototype.toggle = function toggle(transition) {
+	    if (this._isOpen)
+	        this.close(transition);
+	    else
+	        this.open(transition);
+	};
+	DrawerLayout.prototype.reset = function reset(transition) {
+	    if (this._isOpen)
+	        this.open(transition);
+	    else
+	        this.close(transition);
+	};
+	DrawerLayout.prototype.isOpen = function isOpen(transition) {
+	    return this._isOpen;
+	};
+	DrawerLayout.prototype.render = function render() {
+	    var position = this.getPosition();
+	    if (!this._isOpen && (position < 0 && this._orientation === 1) || position > 0 && this._orientation === -1) {
+	        position = 0;
+	        this.setPosition(position);
+	    }
+	    var contentTransform = this._direction === DIRECTION_X ? Transform.translate(position, 0, 0) : Transform.translate(0, position, 0);
+	    return [
+	        {
+	            transform: Transform.behind,
+	            target: this.drawer.render()
+	        },
+	        {
+	            transform: contentTransform,
+	            target: this.content.render()
+	        }
+	    ];
+	};
+	module.exports = DrawerLayout;
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var CachedMap = __webpack_require__(175);
+	var Entity = __webpack_require__(83);
+	var EventHandler = __webpack_require__(85);
+	var Transform = __webpack_require__(76);
+	var RenderController = __webpack_require__(201);
+	function EdgeSwapper(options) {
+	    this._currentTarget = null;
+	    this._size = [
+	        undefined,
+	        undefined
+	    ];
+	    this._controller = new RenderController(options);
+	    this._controller.inTransformFrom(CachedMap.create(_transformMap.bind(this, 0.0001)));
+	    this._controller.outTransformFrom(CachedMap.create(_transformMap.bind(this, -0.0001)));
+	    this._eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    this._entityId = Entity.register(this);
+	    if (options)
+	        this.setOptions(options);
+	}
+	function _transformMap(zMax, progress) {
+	    return Transform.translate(this._size[0] * (1 - progress), 0, zMax * (1 - progress));
+	}
+	EdgeSwapper.prototype.show = function show(content) {
+	    if (this._currentTarget)
+	        this._eventInput.unpipe(this._currentTarget);
+	    this._currentTarget = content;
+	    if (this._currentTarget && this._currentTarget.trigger)
+	        this._eventInput.pipe(this._currentTarget);
+	    this._controller.show.apply(this._controller, arguments);
+	};
+	EdgeSwapper.prototype.setOptions = function setOptions(options) {
+	    this._controller.setOptions(options);
+	};
+	EdgeSwapper.prototype.render = function render() {
+	    return this._entityId;
+	};
+	EdgeSwapper.prototype.commit = function commit(context) {
+	    this._size[0] = context.size[0];
+	    this._size[1] = context.size[1];
+	    return {
+	        transform: context.transform,
+	        opacity: context.opacity,
+	        origin: context.origin,
+	        size: context.size,
+	        target: this._controller.render()
+	    };
+	};
+	module.exports = EdgeSwapper;
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(83);
+	var Transform = __webpack_require__(76);
+	var OptionsManager = __webpack_require__(75);
+	var EventHandler = __webpack_require__(85);
+	var Transitionable = __webpack_require__(81);
+	function FlexibleLayout(options) {
+	    this.options = Object.create(FlexibleLayout.DEFAULT_OPTIONS);
+	    this.optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.id = Entity.register(this);
+	    this._ratios = new Transitionable(this.options.ratios);
+	    this._nodes = [];
+	    this._size = [
+	        0,
+	        0
+	    ];
+	    this._cachedDirection = null;
+	    this._cachedLengths = [];
+	    this._cachedTransforms = null;
+	    this._ratiosDirty = false;
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	}
+	FlexibleLayout.DIRECTION_X = 0;
+	FlexibleLayout.DIRECTION_Y = 1;
+	FlexibleLayout.DEFAULT_OPTIONS = {
+	    direction: FlexibleLayout.DIRECTION_X,
+	    transition: false,
+	    ratios: []
+	};
+	function _reflow(ratios, length, direction) {
+	    var currTransform;
+	    var translation = 0;
+	    var flexLength = length;
+	    var ratioSum = 0;
+	    var ratio;
+	    var node;
+	    var i;
+	    this._cachedLengths = [];
+	    this._cachedTransforms = [];
+	    for (i = 0; i < ratios.length; i++) {
+	        ratio = ratios[i];
+	        node = this._nodes[i];
+	        if (typeof ratio !== 'number')
+	            flexLength -= node.getSize()[direction] || 0;
+	        else
+	            ratioSum += ratio;
+	    }
+	    for (i = 0; i < ratios.length; i++) {
+	        node = this._nodes[i];
+	        ratio = ratios[i];
+	        length = typeof ratio === 'number' ? flexLength * ratio / ratioSum : node.getSize()[direction];
+	        currTransform = direction === FlexibleLayout.DIRECTION_X ? Transform.translate(translation, 0, 0) : Transform.translate(0, translation, 0);
+	        this._cachedTransforms.push(currTransform);
+	        this._cachedLengths.push(length);
+	        translation += length;
+	    }
+	}
+	function _trueSizedDirty(ratios, direction) {
+	    for (var i = 0; i < ratios.length; i++) {
+	        if (typeof ratios[i] !== 'number') {
+	            if (this._nodes[i].getSize()[direction] !== this._cachedLengths[i])
+	                return true;
+	        }
+	    }
+	    return false;
+	}
+	FlexibleLayout.prototype.render = function render() {
+	    return this.id;
+	};
+	FlexibleLayout.prototype.setOptions = function setOptions(options) {
+	    this.optionsManager.setOptions(options);
+	};
+	FlexibleLayout.prototype.sequenceFrom = function sequenceFrom(sequence) {
+	    this._nodes = sequence;
+	    if (this._ratios.get().length === 0) {
+	        var ratios = [];
+	        for (var i = 0; i < this._nodes.length; i++)
+	            ratios.push(1);
+	        this.setRatios(ratios);
+	    }
+	};
+	FlexibleLayout.prototype.setRatios = function setRatios(ratios, transition, callback) {
+	    if (transition === undefined)
+	        transition = this.options.transition;
+	    var currRatios = this._ratios;
+	    if (currRatios.get().length === 0)
+	        transition = undefined;
+	    if (currRatios.isActive())
+	        currRatios.halt();
+	    currRatios.set(ratios, transition, callback);
+	    this._ratiosDirty = true;
+	};
+	FlexibleLayout.prototype.getSize = function getSize() {
+	    return this._size;
+	};
+	FlexibleLayout.prototype.commit = function commit(context) {
+	    var parentSize = context.size;
+	    var parentTransform = context.transform;
+	    var parentOrigin = context.origin;
+	    var parentOpacity = context.opacity;
+	    var ratios = this._ratios.get();
+	    var direction = this.options.direction;
+	    var length = parentSize[direction];
+	    var size;
+	    if (length !== this._size[direction] || this._ratiosDirty || this._ratios.isActive() || direction !== this._cachedDirection || _trueSizedDirty.call(this, ratios, direction)) {
+	        _reflow.call(this, ratios, length, direction);
+	        if (length !== this._size[direction]) {
+	            this._size[0] = parentSize[0];
+	            this._size[1] = parentSize[1];
+	        }
+	        if (direction !== this._cachedDirection)
+	            this._cachedDirection = direction;
+	        if (this._ratiosDirty)
+	            this._ratiosDirty = false;
+	    }
+	    var result = [];
+	    for (var i = 0; i < ratios.length; i++) {
+	        size = [
+	            undefined,
+	            undefined
+	        ];
+	        length = this._cachedLengths[i];
+	        size[direction] = length;
+	        result.push({
+	            transform: this._cachedTransforms[i],
+	            size: size,
+	            target: this._nodes[i].render()
+	        });
+	    }
+	    if (parentSize && (parentOrigin[0] !== 0 && parentOrigin[1] !== 0))
+	        parentTransform = Transform.moveThen([
+	            -parentSize[0] * parentOrigin[0],
+	            -parentSize[1] * parentOrigin[1],
+	            0
+	        ], parentTransform);
+	    return {
+	        transform: parentTransform,
+	        size: parentSize,
+	        opacity: parentOpacity,
+	        target: result
+	    };
+	};
+	module.exports = FlexibleLayout;
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(76);
+	var Transitionable = __webpack_require__(81);
+	var RenderNode = __webpack_require__(151);
+	var OptionsManager = __webpack_require__(75);
+	function Flipper(options) {
+	    this.options = Object.create(Flipper.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.angle = new Transitionable(0);
+	    this.frontNode = undefined;
+	    this.backNode = undefined;
+	    this.flipped = false;
+	}
+	Flipper.DIRECTION_X = 0;
+	Flipper.DIRECTION_Y = 1;
+	var SEPERATION_LENGTH = 1;
+	Flipper.DEFAULT_OPTIONS = {
+	    transition: true,
+	    direction: Flipper.DIRECTION_X
+	};
+	Flipper.prototype.flip = function flip(transition, callback) {
+	    var angle = this.flipped ? 0 : Math.PI;
+	    this.setAngle(angle, transition, callback);
+	    this.flipped = !this.flipped;
+	};
+	Flipper.prototype.setAngle = function setAngle(angle, transition, callback) {
+	    if (transition === undefined)
+	        transition = this.options.transition;
+	    if (this.angle.isActive())
+	        this.angle.halt();
+	    this.angle.set(angle, transition, callback);
+	};
+	Flipper.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	Flipper.prototype.setFront = function setFront(node) {
+	    this.frontNode = node;
+	};
+	Flipper.prototype.setBack = function setBack(node) {
+	    this.backNode = node;
+	};
+	Flipper.prototype.render = function render() {
+	    var angle = this.angle.get();
+	    var frontTransform;
+	    var backTransform;
+	    if (this.options.direction === Flipper.DIRECTION_X) {
+	        frontTransform = Transform.rotateY(angle);
+	        backTransform = Transform.rotateY(angle + Math.PI);
+	    } else {
+	        frontTransform = Transform.rotateX(angle);
+	        backTransform = Transform.rotateX(angle + Math.PI);
+	    }
+	    var result = [];
+	    if (this.frontNode) {
+	        result.push({
+	            transform: frontTransform,
+	            target: this.frontNode.render()
+	        });
+	    }
+	    if (this.backNode) {
+	        result.push({
+	            transform: Transform.moveThen([
+	                0,
+	                0,
+	                SEPERATION_LENGTH
+	            ], backTransform),
+	            target: this.backNode.render()
+	        });
+	    }
+	    return result;
+	};
+	module.exports = Flipper;
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(83);
+	var RenderNode = __webpack_require__(151);
+	var Transform = __webpack_require__(76);
+	var ViewSequence = __webpack_require__(84);
+	var EventHandler = __webpack_require__(85);
+	var Modifier = __webpack_require__(172);
+	var OptionsManager = __webpack_require__(75);
+	var Transitionable = __webpack_require__(81);
+	var TransitionableTransform = __webpack_require__(179);
+	function GridLayout(options) {
+	    this.options = Object.create(GridLayout.DEFAULT_OPTIONS);
+	    this.optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.id = Entity.register(this);
+	    this._modifiers = [];
+	    this._states = [];
+	    this._contextSizeCache = [
+	        0,
+	        0
+	    ];
+	    this._dimensionsCache = [
+	        0,
+	        0
+	    ];
+	    this._activeCount = 0;
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	}
+	function _reflow(size, cols, rows) {
+	    var usableSize = [
+	        size[0],
+	        size[1]
+	    ];
+	    usableSize[0] -= this.options.gutterSize[0] * (cols - 1);
+	    usableSize[1] -= this.options.gutterSize[1] * (rows - 1);
+	    var rowSize = Math.round(usableSize[1] / rows);
+	    var colSize = Math.round(usableSize[0] / cols);
+	    var currY = 0;
+	    var currX;
+	    var currIndex = 0;
+	    for (var i = 0; i < rows; i++) {
+	        currX = 0;
+	        for (var j = 0; j < cols; j++) {
+	            if (this._modifiers[currIndex] === undefined) {
+	                _createModifier.call(this, currIndex, [
+	                    colSize,
+	                    rowSize
+	                ], [
+	                    currX,
+	                    currY,
+	                    0
+	                ], 1);
+	            } else {
+	                _animateModifier.call(this, currIndex, [
+	                    colSize,
+	                    rowSize
+	                ], [
+	                    currX,
+	                    currY,
+	                    0
+	                ], 1);
+	            }
+	            currIndex++;
+	            currX += colSize + this.options.gutterSize[0];
+	        }
+	        currY += rowSize + this.options.gutterSize[1];
+	    }
+	    this._dimensionsCache = [
+	        this.options.dimensions[0],
+	        this.options.dimensions[1]
+	    ];
+	    this._contextSizeCache = [
+	        size[0],
+	        size[1]
+	    ];
+	    this._activeCount = rows * cols;
+	    for (i = this._activeCount; i < this._modifiers.length; i++)
+	        _animateModifier.call(this, i, [
+	            Math.round(colSize),
+	            Math.round(rowSize)
+	        ], [
+	            0,
+	            0
+	        ], 0);
+	    this._eventOutput.emit('reflow');
+	}
+	function _createModifier(index, size, position, opacity) {
+	    var transitionItem = {
+	        transform: new TransitionableTransform(Transform.translate.apply(null, position)),
+	        opacity: new Transitionable(opacity),
+	        size: new Transitionable(size)
+	    };
+	    var modifier = new Modifier({
+	        transform: transitionItem.transform,
+	        opacity: transitionItem.opacity,
+	        size: transitionItem.size
+	    });
+	    this._states[index] = transitionItem;
+	    this._modifiers[index] = modifier;
+	}
+	function _animateModifier(index, size, position, opacity) {
+	    var currState = this._states[index];
+	    var currSize = currState.size;
+	    var currOpacity = currState.opacity;
+	    var currTransform = currState.transform;
+	    var transition = this.options.transition;
+	    currTransform.halt();
+	    currOpacity.halt();
+	    currSize.halt();
+	    currTransform.setTranslate(position, transition);
+	    currSize.set(size, transition);
+	    currOpacity.set(opacity, transition);
+	}
+	GridLayout.DEFAULT_OPTIONS = {
+	    dimensions: [
+	        1,
+	        1
+	    ],
+	    transition: false,
+	    gutterSize: [
+	        0,
+	        0
+	    ]
+	};
+	GridLayout.prototype.render = function render() {
+	    return this.id;
+	};
+	GridLayout.prototype.setOptions = function setOptions(options) {
+	    return this.optionsManager.setOptions(options);
+	};
+	GridLayout.prototype.sequenceFrom = function sequenceFrom(sequence) {
+	    if (sequence instanceof Array)
+	        sequence = new ViewSequence(sequence);
+	    this.sequence = sequence;
+	};
+	GridLayout.prototype.getSize = function getSize() {
+	    return this._contextSizeCache;
+	};
+	GridLayout.prototype.commit = function commit(context) {
+	    var transform = context.transform;
+	    var opacity = context.opacity;
+	    var origin = context.origin;
+	    var size = context.size;
+	    var cols = this.options.dimensions[0];
+	    var rows = this.options.dimensions[1];
+	    if (size[0] !== this._contextSizeCache[0] || size[1] !== this._contextSizeCache[1] || cols !== this._dimensionsCache[0] || rows !== this._dimensionsCache[1]) {
+	        _reflow.call(this, size, cols, rows);
+	    }
+	    var sequence = this.sequence;
+	    var result = [];
+	    var currIndex = 0;
+	    while (sequence && currIndex < this._modifiers.length) {
+	        var item = sequence.get();
+	        var modifier = this._modifiers[currIndex];
+	        if (currIndex >= this._activeCount && this._states[currIndex].opacity.isActive()) {
+	            this._modifiers.splice(currIndex, 1);
+	            this._states.splice(currIndex, 1);
+	        }
+	        if (item) {
+	            result.push(modifier.modify({
+	                origin: origin,
+	                target: item.render()
+	            }));
+	        }
+	        sequence = sequence.getNext();
+	        currIndex++;
+	    }
+	    if (size)
+	        transform = Transform.moveThen([
+	            -size[0] * origin[0],
+	            -size[1] * origin[1],
+	            0
+	        ], transform);
+	    return {
+	        transform: transform,
+	        opacity: opacity,
+	        size: size,
+	        target: result
+	    };
+	};
+	module.exports = GridLayout;
+
+/***/ },
+/* 199 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(83);
+	var RenderNode = __webpack_require__(151);
+	var Transform = __webpack_require__(76);
+	var OptionsManager = __webpack_require__(75);
+	function HeaderFooterLayout(options) {
+	    this.options = Object.create(HeaderFooterLayout.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._entityId = Entity.register(this);
+	    this.header = new RenderNode();
+	    this.footer = new RenderNode();
+	    this.content = new RenderNode();
+	}
+	HeaderFooterLayout.DIRECTION_X = 0;
+	HeaderFooterLayout.DIRECTION_Y = 1;
+	HeaderFooterLayout.DEFAULT_OPTIONS = {
+	    direction: HeaderFooterLayout.DIRECTION_Y,
+	    headerSize: undefined,
+	    footerSize: undefined,
+	    defaultHeaderSize: 0,
+	    defaultFooterSize: 0
+	};
+	HeaderFooterLayout.prototype.render = function render() {
+	    return this._entityId;
+	};
+	HeaderFooterLayout.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	function _resolveNodeSize(node, defaultSize) {
+	    var nodeSize = node.getSize();
+	    return nodeSize ? nodeSize[this.options.direction] : defaultSize;
+	}
+	function _outputTransform(offset) {
+	    if (this.options.direction === HeaderFooterLayout.DIRECTION_X)
+	        return Transform.translate(offset, 0, 0);
+	    else
+	        return Transform.translate(0, offset, 0);
+	}
+	function _finalSize(directionSize, size) {
+	    if (this.options.direction === HeaderFooterLayout.DIRECTION_X)
+	        return [
+	            directionSize,
+	            size[1]
+	        ];
+	    else
+	        return [
+	            size[0],
+	            directionSize
+	        ];
+	}
+	HeaderFooterLayout.prototype.commit = function commit(context) {
+	    var transform = context.transform;
+	    var origin = context.origin;
+	    var size = context.size;
+	    var opacity = context.opacity;
+	    var headerSize = this.options.headerSize !== undefined ? this.options.headerSize : _resolveNodeSize.call(this, this.header, this.options.defaultHeaderSize);
+	    var footerSize = this.options.footerSize !== undefined ? this.options.footerSize : _resolveNodeSize.call(this, this.footer, this.options.defaultFooterSize);
+	    var contentSize = size[this.options.direction] - headerSize - footerSize;
+	    if (size)
+	        transform = Transform.moveThen([
+	            -size[0] * origin[0],
+	            -size[1] * origin[1],
+	            0
+	        ], transform);
+	    var result = [
+	        {
+	            size: _finalSize.call(this, headerSize, size),
+	            target: this.header.render()
+	        },
+	        {
+	            transform: _outputTransform.call(this, headerSize),
+	            size: _finalSize.call(this, contentSize, size),
+	            target: this.content.render()
+	        },
+	        {
+	            transform: _outputTransform.call(this, headerSize + contentSize),
+	            size: _finalSize.call(this, footerSize, size),
+	            target: this.footer.render()
+	        }
+	    ];
+	    return {
+	        transform: transform,
+	        opacity: opacity,
+	        size: size,
+	        target: result
+	    };
+	};
+	module.exports = HeaderFooterLayout;
+
+/***/ },
+/* 200 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(76);
+	var Modifier = __webpack_require__(172);
+	var RenderNode = __webpack_require__(151);
+	var Utility = __webpack_require__(82);
+	var OptionsManager = __webpack_require__(75);
+	var Transitionable = __webpack_require__(81);
+	var TransitionableTransform = __webpack_require__(179);
+	function Lightbox(options) {
+	    this.options = Object.create(Lightbox.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._showing = false;
+	    this.nodes = [];
+	    this.transforms = [];
+	    this.states = [];
+	}
+	Lightbox.DEFAULT_OPTIONS = {
+	    inTransform: Transform.scale(0.001, 0.001, 0.001),
+	    inOpacity: 0,
+	    inOrigin: [
+	        0.5,
+	        0.5
+	    ],
+	    inAlign: [
+	        0.5,
+	        0.5
+	    ],
+	    outTransform: Transform.scale(0.001, 0.001, 0.001),
+	    outOpacity: 0,
+	    outOrigin: [
+	        0.5,
+	        0.5
+	    ],
+	    outAlign: [
+	        0.5,
+	        0.5
+	    ],
+	    showTransform: Transform.identity,
+	    showOpacity: 1,
+	    showOrigin: [
+	        0.5,
+	        0.5
+	    ],
+	    showAlign: [
+	        0.5,
+	        0.5
+	    ],
+	    inTransition: true,
+	    outTransition: true,
+	    overlap: false
+	};
+	Lightbox.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	Lightbox.prototype.show = function show(renderable, transition, callback) {
+	    if (!renderable) {
+	        return this.hide(callback);
+	    }
+	    if (transition instanceof Function) {
+	        callback = transition;
+	        transition = undefined;
+	    }
+	    if (this._showing) {
+	        if (this.options.overlap)
+	            this.hide();
+	        else {
+	            return this.hide(this.show.bind(this, renderable, transition, callback));
+	        }
+	    }
+	    this._showing = true;
+	    var stateItem = {
+	        transform: new TransitionableTransform(this.options.inTransform),
+	        origin: new Transitionable(this.options.inOrigin),
+	        align: new Transitionable(this.options.inAlign),
+	        opacity: new Transitionable(this.options.inOpacity)
+	    };
+	    var transform = new Modifier({
+	        transform: stateItem.transform,
+	        opacity: stateItem.opacity,
+	        origin: stateItem.origin,
+	        align: stateItem.align
+	    });
+	    var node = new RenderNode();
+	    node.add(transform).add(renderable);
+	    this.nodes.push(node);
+	    this.states.push(stateItem);
+	    this.transforms.push(transform);
+	    var _cb = callback ? Utility.after(3, callback) : undefined;
+	    if (!transition)
+	        transition = this.options.inTransition;
+	    stateItem.transform.set(this.options.showTransform, transition, _cb);
+	    stateItem.opacity.set(this.options.showOpacity, transition, _cb);
+	    stateItem.origin.set(this.options.showOrigin, transition, _cb);
+	    stateItem.align.set(this.options.showAlign, transition, _cb);
+	};
+	Lightbox.prototype.hide = function hide(transition, callback) {
+	    if (!this._showing)
+	        return;
+	    this._showing = false;
+	    if (transition instanceof Function) {
+	        callback = transition;
+	        transition = undefined;
+	    }
+	    var node = this.nodes[this.nodes.length - 1];
+	    var transform = this.transforms[this.transforms.length - 1];
+	    var stateItem = this.states[this.states.length - 1];
+	    var _cb = Utility.after(3, function () {
+	        this.nodes.splice(this.nodes.indexOf(node), 1);
+	        this.states.splice(this.states.indexOf(stateItem), 1);
+	        this.transforms.splice(this.transforms.indexOf(transform), 1);
+	        if (callback)
+	            callback.call(this);
+	    }.bind(this));
+	    if (!transition)
+	        transition = this.options.outTransition;
+	    stateItem.transform.set(this.options.outTransform, transition, _cb);
+	    stateItem.opacity.set(this.options.outOpacity, transition, _cb);
+	    stateItem.origin.set(this.options.outOrigin, transition, _cb);
+	    stateItem.align.set(this.options.outAlign, transition, _cb);
+	};
+	Lightbox.prototype.render = function render() {
+	    var result = [];
+	    for (var i = 0; i < this.nodes.length; i++) {
+	        result.push(this.nodes[i].render());
+	    }
+	    return result;
+	};
+	module.exports = Lightbox;
+
+/***/ },
+/* 201 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Modifier = __webpack_require__(172);
+	var RenderNode = __webpack_require__(151);
+	var Transform = __webpack_require__(76);
+	var Transitionable = __webpack_require__(81);
+	var View = __webpack_require__(90);
+	function RenderController(options) {
+	    View.apply(this, arguments);
+	    this._showing = -1;
+	    this._outgoingRenderables = [];
+	    this._nextRenderable = null;
+	    this._renderables = [];
+	    this._nodes = [];
+	    this._modifiers = [];
+	    this._states = [];
+	    this.inTransformMap = RenderController.DefaultMap.transform;
+	    this.inOpacityMap = RenderController.DefaultMap.opacity;
+	    this.inOriginMap = RenderController.DefaultMap.origin;
+	    this.inAlignMap = RenderController.DefaultMap.align;
+	    this.outTransformMap = RenderController.DefaultMap.transform;
+	    this.outOpacityMap = RenderController.DefaultMap.opacity;
+	    this.outOriginMap = RenderController.DefaultMap.origin;
+	    this.outAlignMap = RenderController.DefaultMap.align;
+	    this._output = [];
+	}
+	RenderController.prototype = Object.create(View.prototype);
+	RenderController.prototype.constructor = RenderController;
+	RenderController.DEFAULT_OPTIONS = {
+	    inTransition: true,
+	    outTransition: true,
+	    overlap: true
+	};
+	RenderController.DefaultMap = {
+	    transform: function () {
+	        return Transform.identity;
+	    },
+	    opacity: function (progress) {
+	        return progress;
+	    },
+	    origin: null,
+	    align: null
+	};
+	function _mappedState(map, state) {
+	    return map(state.get());
+	}
+	RenderController.prototype.inTransformFrom = function inTransformFrom(transform) {
+	    if (transform instanceof Function)
+	        this.inTransformMap = transform;
+	    else if (transform && transform.get)
+	        this.inTransformMap = transform.get.bind(transform);
+	    else
+	        throw new Error('inTransformFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.inOpacityFrom = function inOpacityFrom(opacity) {
+	    if (opacity instanceof Function)
+	        this.inOpacityMap = opacity;
+	    else if (opacity && opacity.get)
+	        this.inOpacityMap = opacity.get.bind(opacity);
+	    else
+	        throw new Error('inOpacityFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.inOriginFrom = function inOriginFrom(origin) {
+	    if (origin instanceof Function)
+	        this.inOriginMap = origin;
+	    else if (origin && origin.get)
+	        this.inOriginMap = origin.get.bind(origin);
+	    else
+	        throw new Error('inOriginFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.inAlignFrom = function inAlignFrom(align) {
+	    if (align instanceof Function)
+	        this.inAlignMap = align;
+	    else if (align && align.get)
+	        this.inAlignMap = align.get.bind(align);
+	    else
+	        throw new Error('inAlignFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.outTransformFrom = function outTransformFrom(transform) {
+	    if (transform instanceof Function)
+	        this.outTransformMap = transform;
+	    else if (transform && transform.get)
+	        this.outTransformMap = transform.get.bind(transform);
+	    else
+	        throw new Error('outTransformFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.outOpacityFrom = function outOpacityFrom(opacity) {
+	    if (opacity instanceof Function)
+	        this.outOpacityMap = opacity;
+	    else if (opacity && opacity.get)
+	        this.outOpacityMap = opacity.get.bind(opacity);
+	    else
+	        throw new Error('outOpacityFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.outOriginFrom = function outOriginFrom(origin) {
+	    if (origin instanceof Function)
+	        this.outOriginMap = origin;
+	    else if (origin && origin.get)
+	        this.outOriginMap = origin.get.bind(origin);
+	    else
+	        throw new Error('outOriginFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.outAlignFrom = function outAlignFrom(align) {
+	    if (align instanceof Function)
+	        this.outAlignMap = align;
+	    else if (align && align.get)
+	        this.outAlignMap = align.get.bind(align);
+	    else
+	        throw new Error('outAlignFrom takes only function or getter object');
+	    return this;
+	};
+	RenderController.prototype.show = function show(renderable, transition, callback) {
+	    if (!renderable) {
+	        return this.hide(callback);
+	    }
+	    if (transition instanceof Function) {
+	        callback = transition;
+	        transition = null;
+	    }
+	    if (this._showing >= 0) {
+	        if (this.options.overlap)
+	            this.hide();
+	        else {
+	            if (this._nextRenderable) {
+	                this._nextRenderable = renderable;
+	            } else {
+	                this._nextRenderable = renderable;
+	                this.hide(function () {
+	                    if (this._nextRenderable === renderable)
+	                        this.show(this._nextRenderable, callback);
+	                    this._nextRenderable = null;
+	                });
+	            }
+	            return undefined;
+	        }
+	    }
+	    var state = null;
+	    var renderableIndex = this._renderables.indexOf(renderable);
+	    if (renderableIndex >= 0) {
+	        this._showing = renderableIndex;
+	        state = this._states[renderableIndex];
+	        state.halt();
+	        var outgoingIndex = this._outgoingRenderables.indexOf(renderable);
+	        if (outgoingIndex >= 0)
+	            this._outgoingRenderables.splice(outgoingIndex, 1);
+	    } else {
+	        state = new Transitionable(0);
+	        var modifier = new Modifier({
+	            transform: this.inTransformMap ? _mappedState.bind(this, this.inTransformMap, state) : null,
+	            opacity: this.inOpacityMap ? _mappedState.bind(this, this.inOpacityMap, state) : null,
+	            origin: this.inOriginMap ? _mappedState.bind(this, this.inOriginMap, state) : null,
+	            align: this.inAlignMap ? _mappedState.bind(this, this.inAlignMap, state) : null
+	        });
+	        var node = new RenderNode();
+	        node.add(modifier).add(renderable);
+	        this._showing = this._nodes.length;
+	        this._nodes.push(node);
+	        this._modifiers.push(modifier);
+	        this._states.push(state);
+	        this._renderables.push(renderable);
+	    }
+	    if (!transition)
+	        transition = this.options.inTransition;
+	    state.set(1, transition, callback);
+	};
+	RenderController.prototype.hide = function hide(transition, callback) {
+	    if (this._showing < 0)
+	        return;
+	    var index = this._showing;
+	    this._showing = -1;
+	    if (transition instanceof Function) {
+	        callback = transition;
+	        transition = undefined;
+	    }
+	    var node = this._nodes[index];
+	    var modifier = this._modifiers[index];
+	    var state = this._states[index];
+	    var renderable = this._renderables[index];
+	    modifier.transformFrom(this.outTransformMap ? _mappedState.bind(this, this.outTransformMap, state) : null);
+	    modifier.opacityFrom(this.outOpacityMap ? _mappedState.bind(this, this.outOpacityMap, state) : null);
+	    modifier.originFrom(this.outOriginMap ? _mappedState.bind(this, this.outOriginMap, state) : null);
+	    modifier.alignFrom(this.outAlignMap ? _mappedState.bind(this, this.outAlignMap, state) : null);
+	    if (this._outgoingRenderables.indexOf(renderable) < 0)
+	        this._outgoingRenderables.push(renderable);
+	    if (!transition)
+	        transition = this.options.outTransition;
+	    state.halt();
+	    state.set(0, transition, function (node, modifier, state, renderable) {
+	        if (this._outgoingRenderables.indexOf(renderable) >= 0) {
+	            var index = this._nodes.indexOf(node);
+	            this._nodes.splice(index, 1);
+	            this._modifiers.splice(index, 1);
+	            this._states.splice(index, 1);
+	            this._renderables.splice(index, 1);
+	            this._outgoingRenderables.splice(this._outgoingRenderables.indexOf(renderable), 1);
+	            if (this._showing >= index)
+	                this._showing--;
+	        }
+	        if (callback)
+	            callback.call(this);
+	    }.bind(this, node, modifier, state, renderable));
+	};
+	RenderController.prototype.render = function render() {
+	    var result = this._output;
+	    if (result.length > this._nodes.length)
+	        result.splice(this._nodes.length);
+	    for (var i = 0; i < this._nodes.length; i++) {
+	        result[i] = this._nodes[i].render();
+	    }
+	    return result;
+	};
+	module.exports = RenderController;
+
+/***/ },
+/* 202 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var ContainerSurface = __webpack_require__(86);
+	var EventHandler = __webpack_require__(85);
+	var Scrollview = __webpack_require__(204);
+	var Utility = __webpack_require__(82);
+	var OptionsManager = __webpack_require__(75);
+	function ScrollContainer(options) {
+	    this.options = Object.create(ScrollContainer.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.container = new ContainerSurface(this.options.container);
+	    this.scrollview = new Scrollview(this.options.scrollview);
+	    this.container.add(this.scrollview);
+	    this._eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    this._eventInput.pipe(this.scrollview);
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.container.pipe(this._eventOutput);
+	    this.scrollview.pipe(this._eventOutput);
+	}
+	ScrollContainer.DEFAULT_OPTIONS = {
+	    container: { properties: { overflow: 'hidden' } },
+	    scrollview: {}
+	};
+	ScrollContainer.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	ScrollContainer.prototype.sequenceFrom = function sequenceFrom() {
+	    return this.scrollview.sequenceFrom.apply(this.scrollview, arguments);
+	};
+	ScrollContainer.prototype.getSize = function getSize() {
+	    return this.container.getSize.apply(this.container, arguments);
+	};
+	ScrollContainer.prototype.render = function render() {
+	    return this.container.render();
+	};
+	module.exports = ScrollContainer;
+
+/***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(83);
+	var Group = __webpack_require__(87);
+	var OptionsManager = __webpack_require__(75);
+	var Transform = __webpack_require__(76);
+	var Utility = __webpack_require__(82);
+	var ViewSequence = __webpack_require__(84);
+	var EventHandler = __webpack_require__(85);
+	function Scroller(options) {
+	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this._optionsManager.setOptions(options);
+	    this._node = null;
+	    this._position = 0;
+	    this._positionOffset = 0;
+	    this._positionGetter = null;
+	    this._outputFunction = null;
+	    this._masterOutputFunction = null;
+	    this.outputFrom();
+	    this._onEdge = 0;
+	    this.group = new Group();
+	    this.group.add({ render: _innerRender.bind(this) });
+	    this._entityId = Entity.register(this);
+	    this._size = [
+	        undefined,
+	        undefined
+	    ];
+	    this._contextSize = [
+	        undefined,
+	        undefined
+	    ];
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	}
+	Scroller.DEFAULT_OPTIONS = {
+	    direction: Utility.Direction.Y,
+	    margin: 0,
+	    clipSize: undefined,
+	    groupScroll: false
+	};
+	var EDGE_TOLERANCE = 0;
+	function _sizeForDir(size) {
+	    if (!size)
+	        size = this._contextSize;
+	    var dimension = this.options.direction;
+	    return size[dimension] === undefined ? this._contextSize[dimension] : size[dimension];
+	}
+	function _output(node, offset, target) {
+	    var size = node.getSize ? node.getSize() : this._contextSize;
+	    var transform = this._outputFunction(offset);
+	    target.push({
+	        transform: transform,
+	        target: node.render()
+	    });
+	    return _sizeForDir.call(this, size);
+	}
+	function _getClipSize() {
+	    if (this.options.clipSize !== undefined)
+	        return this.options.clipSize;
+	    if (this._contextSize[this.options.direction] > this.getCumulativeSize()[this.options.direction]) {
+	        return _sizeForDir.call(this, this.getCumulativeSize());
+	    } else {
+	        return _sizeForDir.call(this, this._contextSize);
+	    }
+	}
+	Scroller.prototype.getCumulativeSize = function (index) {
+	    if (index === undefined)
+	        index = this._node._.cumulativeSizes.length - 1;
+	    return this._node._.getSize(index);
+	};
+	Scroller.prototype.setOptions = function setOptions(options) {
+	    if (options.groupScroll !== this.options.groupScroll) {
+	        if (options.groupScroll)
+	            this.group.pipe(this._eventOutput);
+	        else
+	            this.group.unpipe(this._eventOutput);
+	    }
+	    this._optionsManager.setOptions(options);
+	};
+	Scroller.prototype.onEdge = function onEdge() {
+	    return this._onEdge;
+	};
+	Scroller.prototype.outputFrom = function outputFrom(fn, masterFn) {
+	    if (!fn) {
+	        fn = function (offset) {
+	            return this.options.direction === Utility.Direction.X ? Transform.translate(offset, 0) : Transform.translate(0, offset);
+	        }.bind(this);
+	        if (!masterFn)
+	            masterFn = fn;
+	    }
+	    this._outputFunction = fn;
+	    this._masterOutputFunction = masterFn ? masterFn : function (offset) {
+	        return Transform.inverse(fn(-offset));
+	    };
+	};
+	Scroller.prototype.positionFrom = function positionFrom(position) {
+	    if (position instanceof Function)
+	        this._positionGetter = position;
+	    else if (position && position.get)
+	        this._positionGetter = position.get.bind(position);
+	    else {
+	        this._positionGetter = null;
+	        this._position = position;
+	    }
+	    if (this._positionGetter)
+	        this._position = this._positionGetter.call(this);
+	};
+	Scroller.prototype.sequenceFrom = function sequenceFrom(node) {
+	    if (node instanceof Array)
+	        node = new ViewSequence({ array: node });
+	    this._node = node;
+	    this._positionOffset = 0;
+	};
+	Scroller.prototype.getSize = function getSize(actual) {
+	    return actual ? this._contextSize : this._size;
+	};
+	Scroller.prototype.render = function render() {
+	    if (!this._node)
+	        return null;
+	    if (this._positionGetter)
+	        this._position = this._positionGetter.call(this);
+	    return this._entityId;
+	};
+	Scroller.prototype.commit = function commit(context) {
+	    var transform = context.transform;
+	    var opacity = context.opacity;
+	    var origin = context.origin;
+	    var size = context.size;
+	    if (!this.options.clipSize && (size[0] !== this._contextSize[0] || size[1] !== this._contextSize[1])) {
+	        this._onEdge = 0;
+	        this._contextSize[0] = size[0];
+	        this._contextSize[1] = size[1];
+	        if (this.options.direction === Utility.Direction.X) {
+	            this._size[0] = _getClipSize.call(this);
+	            this._size[1] = undefined;
+	        } else {
+	            this._size[0] = undefined;
+	            this._size[1] = _getClipSize.call(this);
+	        }
+	    }
+	    var scrollTransform = this._masterOutputFunction(-this._position);
+	    return {
+	        transform: Transform.multiply(transform, scrollTransform),
+	        size: size,
+	        opacity: opacity,
+	        origin: origin,
+	        target: this.group.render()
+	    };
+	};
+	function _innerRender() {
+	    var size = null;
+	    var position = this._position;
+	    var result = [];
+	    var offset = -this._positionOffset;
+	    var clipSize = _getClipSize.call(this);
+	    var currNode = this._node;
+	    while (currNode && offset - position < clipSize + this.options.margin) {
+	        offset += _output.call(this, currNode, offset, result);
+	        currNode = currNode.getNext ? currNode.getNext() : null;
+	    }
+	    var sizeNode = this._node;
+	    var nodesSize = _sizeForDir.call(this, sizeNode.getSize());
+	    if (offset < clipSize) {
+	        while (sizeNode && nodesSize < clipSize) {
+	            sizeNode = sizeNode.getPrevious();
+	            if (sizeNode)
+	                nodesSize += _sizeForDir.call(this, sizeNode.getSize());
+	        }
+	        sizeNode = this._node;
+	        while (sizeNode && nodesSize < clipSize) {
+	            sizeNode = sizeNode.getNext();
+	            if (sizeNode)
+	                nodesSize += _sizeForDir.call(this, sizeNode.getSize());
+	        }
+	    }
+	    if (!currNode && offset - position < clipSize - EDGE_TOLERANCE) {
+	        if (this._onEdge !== 1) {
+	            this._onEdge = 1;
+	            this._eventOutput.emit('onEdge', { position: offset - clipSize });
+	        }
+	    } else if (!this._node.getPrevious() && position < -EDGE_TOLERANCE) {
+	        if (this._onEdge !== -1) {
+	            this._onEdge = -1;
+	            this._eventOutput.emit('onEdge', { position: 0 });
+	        }
+	    } else {
+	        if (this._onEdge !== 0) {
+	            this._onEdge = 0;
+	            this._eventOutput.emit('offEdge');
+	        }
+	    }
+	    currNode = this._node && this._node.getPrevious ? this._node.getPrevious() : null;
+	    offset = -this._positionOffset;
+	    if (currNode) {
+	        size = currNode.getSize ? currNode.getSize() : this._contextSize;
+	        offset -= _sizeForDir.call(this, size);
+	    }
+	    while (currNode && offset - position > -(clipSize + this.options.margin)) {
+	        _output.call(this, currNode, offset, result);
+	        currNode = currNode.getPrevious ? currNode.getPrevious() : null;
+	        if (currNode) {
+	            size = currNode.getSize ? currNode.getSize() : this._contextSize;
+	            offset -= _sizeForDir.call(this, size);
+	        }
+	    }
+	    return result;
+	}
+	module.exports = Scroller;
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var PhysicsEngine = __webpack_require__(80);
+	var Particle = __webpack_require__(78);
+	var Drag = __webpack_require__(88);
+	var Spring = __webpack_require__(79);
+	var EventHandler = __webpack_require__(85);
+	var OptionsManager = __webpack_require__(75);
+	var ViewSequence = __webpack_require__(84);
+	var Scroller = __webpack_require__(203);
+	var Utility = __webpack_require__(82);
+	var GenericSync = __webpack_require__(159);
+	var ScrollSync = __webpack_require__(89);
+	var TouchSync = __webpack_require__(164);
+	GenericSync.register({
+	    scroll: ScrollSync,
+	    touch: TouchSync
+	});
+	var TOLERANCE = 0.5;
+	var SpringStates = {
+	    NONE: 0,
+	    EDGE: 1,
+	    PAGE: 2
+	};
+	var EdgeStates = {
+	    TOP: -1,
+	    NONE: 0,
+	    BOTTOM: 1
+	};
+	function Scrollview(options) {
+	    this.options = Object.create(Scrollview.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    this._scroller = new Scroller(this.options);
+	    this.sync = new GenericSync([
+	        'scroll',
+	        'touch'
+	    ], {
+	        direction: this.options.direction,
+	        scale: this.options.syncScale,
+	        rails: this.options.rails,
+	        preventDefault: this.options.preventDefault !== undefined ? this.options.preventDefault : this.options.direction !== Utility.Direction.Y
+	    });
+	    this._physicsEngine = new PhysicsEngine();
+	    this._particle = new Particle();
+	    this._physicsEngine.addBody(this._particle);
+	    this.spring = new Spring({
+	        anchor: [
+	            0,
+	            0,
+	            0
+	        ],
+	        period: this.options.edgePeriod,
+	        dampingRatio: this.options.edgeDamp
+	    });
+	    this.drag = new Drag({
+	        forceFunction: Drag.FORCE_FUNCTIONS.QUADRATIC,
+	        strength: this.options.drag
+	    });
+	    this.friction = new Drag({
+	        forceFunction: Drag.FORCE_FUNCTIONS.LINEAR,
+	        strength: this.options.friction
+	    });
+	    this._node = null;
+	    this._touchCount = 0;
+	    this._springState = SpringStates.NONE;
+	    this._onEdge = EdgeStates.NONE;
+	    this._pageSpringPosition = 0;
+	    this._edgeSpringPosition = 0;
+	    this._touchVelocity = 0;
+	    this._earlyEnd = false;
+	    this._needsPaginationCheck = false;
+	    this._displacement = 0;
+	    this._totalShift = 0;
+	    this._cachedIndex = 0;
+	    this._scroller.positionFrom(this.getPosition.bind(this));
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    this._eventInput.pipe(this.sync);
+	    this.sync.pipe(this._eventInput);
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    _bindEvents.call(this);
+	    if (options)
+	        this.setOptions(options);
+	}
+	Scrollview.DEFAULT_OPTIONS = {
+	    direction: Utility.Direction.Y,
+	    rails: true,
+	    friction: 0.005,
+	    drag: 0.0001,
+	    edgeGrip: 0.2,
+	    edgePeriod: 300,
+	    edgeDamp: 1,
+	    margin: 1000,
+	    paginated: false,
+	    pagePeriod: 500,
+	    pageDamp: 0.8,
+	    pageStopSpeed: 10,
+	    pageSwitchSpeed: 0.5,
+	    speedLimit: 5,
+	    groupScroll: false,
+	    syncScale: 1
+	};
+	function _handleStart(event) {
+	    this._touchCount = event.count;
+	    if (event.count === undefined)
+	        this._touchCount = 1;
+	    _detachAgents.call(this);
+	    this.setVelocity(0);
+	    this._touchVelocity = 0;
+	    this._earlyEnd = false;
+	}
+	function _handleMove(event) {
+	    var velocity = -event.velocity;
+	    var delta = -event.delta;
+	    if (this._onEdge !== EdgeStates.NONE && event.slip) {
+	        if (velocity < 0 && this._onEdge === EdgeStates.TOP || velocity > 0 && this._onEdge === EdgeStates.BOTTOM) {
+	            if (!this._earlyEnd) {
+	                _handleEnd.call(this, event);
+	                this._earlyEnd = true;
+	            }
+	        } else if (this._earlyEnd && Math.abs(velocity) > Math.abs(this.getVelocity())) {
+	            _handleStart.call(this, event);
+	        }
+	    }
+	    if (this._earlyEnd)
+	        return;
+	    this._touchVelocity = velocity;
+	    if (event.slip) {
+	        var speedLimit = this.options.speedLimit;
+	        if (velocity < -speedLimit)
+	            velocity = -speedLimit;
+	        else if (velocity > speedLimit)
+	            velocity = speedLimit;
+	        this.setVelocity(velocity);
+	        var deltaLimit = speedLimit * 16;
+	        if (delta > deltaLimit)
+	            delta = deltaLimit;
+	        else if (delta < -deltaLimit)
+	            delta = -deltaLimit;
+	    }
+	    this.setPosition(this.getPosition() + delta);
+	    this._displacement += delta;
+	    if (this._springState === SpringStates.NONE)
+	        _normalizeState.call(this);
+	}
+	function _handleEnd(event) {
+	    this._touchCount = event.count || 0;
+	    if (!this._touchCount) {
+	        _detachAgents.call(this);
+	        if (this._onEdge !== EdgeStates.NONE)
+	            _setSpring.call(this, this._edgeSpringPosition, SpringStates.EDGE);
+	        _attachAgents.call(this);
+	        var velocity = -event.velocity;
+	        var speedLimit = this.options.speedLimit;
+	        if (event.slip)
+	            speedLimit *= this.options.edgeGrip;
+	        if (velocity < -speedLimit)
+	            velocity = -speedLimit;
+	        else if (velocity > speedLimit)
+	            velocity = speedLimit;
+	        this.setVelocity(velocity);
+	        this._touchVelocity = 0;
+	        this._needsPaginationCheck = true;
+	    }
+	}
+	function _bindEvents() {
+	    this._eventInput.bindThis(this);
+	    this._eventInput.on('start', _handleStart);
+	    this._eventInput.on('update', _handleMove);
+	    this._eventInput.on('end', _handleEnd);
+	    this._eventInput.on('resize', function () {
+	        this._node._.calculateSize();
+	    }.bind(this));
+	    this._scroller.on('onEdge', function (data) {
+	        this._edgeSpringPosition = data.position;
+	        _handleEdge.call(this, this._scroller.onEdge());
+	        this._eventOutput.emit('onEdge');
+	    }.bind(this));
+	    this._scroller.on('offEdge', function () {
+	        this.sync.setOptions({ scale: this.options.syncScale });
+	        this._onEdge = this._scroller.onEdge();
+	        this._eventOutput.emit('offEdge');
+	    }.bind(this));
+	    this._particle.on('update', function (particle) {
+	        if (this._springState === SpringStates.NONE)
+	            _normalizeState.call(this);
+	        this._displacement = particle.position.x - this._totalShift;
+	    }.bind(this));
+	    this._particle.on('end', function () {
+	        if (!this.options.paginated || this.options.paginated && this._springState !== SpringStates.NONE)
+	            this._eventOutput.emit('settle');
+	    }.bind(this));
+	}
+	function _attachAgents() {
+	    if (this._springState)
+	        this._physicsEngine.attach([this.spring], this._particle);
+	    else
+	        this._physicsEngine.attach([
+	            this.drag,
+	            this.friction
+	        ], this._particle);
+	}
+	function _detachAgents() {
+	    this._springState = SpringStates.NONE;
+	    this._physicsEngine.detachAll();
+	}
+	function _nodeSizeForDirection(node) {
+	    var direction = this.options.direction;
+	    var nodeSize = node.getSize();
+	    return !nodeSize ? this._scroller.getSize()[direction] : nodeSize[direction];
+	}
+	function _handleEdge(edge) {
+	    this.sync.setOptions({ scale: this.options.edgeGrip });
+	    this._onEdge = edge;
+	    if (!this._touchCount && this._springState !== SpringStates.EDGE) {
+	        _setSpring.call(this, this._edgeSpringPosition, SpringStates.EDGE);
+	    }
+	    if (this._springState && Math.abs(this.getVelocity()) < 0.001) {
+	        _detachAgents.call(this);
+	        _attachAgents.call(this);
+	    }
+	}
+	function _handlePagination() {
+	    if (this._touchCount)
+	        return;
+	    if (this._springState === SpringStates.EDGE)
+	        return;
+	    var velocity = this.getVelocity();
+	    if (Math.abs(velocity) >= this.options.pageStopSpeed)
+	        return;
+	    var position = this.getPosition();
+	    var velocitySwitch = Math.abs(velocity) > this.options.pageSwitchSpeed;
+	    var nodeSize = _nodeSizeForDirection.call(this, this._node);
+	    var positionNext = position > 0.5 * nodeSize;
+	    var positionPrev = position < 0.5 * nodeSize;
+	    var velocityNext = velocity > 0;
+	    var velocityPrev = velocity < 0;
+	    this._needsPaginationCheck = false;
+	    if (positionNext && !velocitySwitch || velocitySwitch && velocityNext) {
+	        this.goToNextPage();
+	    } else if (velocitySwitch && velocityPrev) {
+	        this.goToPreviousPage();
+	    } else
+	        _setSpring.call(this, 0, SpringStates.PAGE);
+	}
+	function _setSpring(position, springState) {
+	    var springOptions;
+	    if (springState === SpringStates.EDGE) {
+	        this._edgeSpringPosition = position;
+	        springOptions = {
+	            anchor: [
+	                this._edgeSpringPosition,
+	                0,
+	                0
+	            ],
+	            period: this.options.edgePeriod,
+	            dampingRatio: this.options.edgeDamp
+	        };
+	    } else if (springState === SpringStates.PAGE) {
+	        this._pageSpringPosition = position;
+	        springOptions = {
+	            anchor: [
+	                this._pageSpringPosition,
+	                0,
+	                0
+	            ],
+	            period: this.options.pagePeriod,
+	            dampingRatio: this.options.pageDamp
+	        };
+	    }
+	    this.spring.setOptions(springOptions);
+	    if (springState && !this._springState) {
+	        _detachAgents.call(this);
+	        this._springState = springState;
+	        _attachAgents.call(this);
+	    }
+	    this._springState = springState;
+	}
+	function _normalizeState() {
+	    var offset = 0;
+	    var position = this.getPosition();
+	    position += (position < 0 ? -0.5 : 0.5) >> 0;
+	    var nodeSize = _nodeSizeForDirection.call(this, this._node);
+	    var nextNode = this._node.getNext();
+	    while (offset + position >= nodeSize && nextNode) {
+	        offset -= nodeSize;
+	        this._scroller.sequenceFrom(nextNode);
+	        this._node = nextNode;
+	        nextNode = this._node.getNext();
+	        nodeSize = _nodeSizeForDirection.call(this, this._node);
+	    }
+	    var previousNode = this._node.getPrevious();
+	    var previousNodeSize;
+	    while (offset + position <= 0 && previousNode) {
+	        previousNodeSize = _nodeSizeForDirection.call(this, previousNode);
+	        this._scroller.sequenceFrom(previousNode);
+	        this._node = previousNode;
+	        offset += previousNodeSize;
+	        previousNode = this._node.getPrevious();
+	    }
+	    if (offset)
+	        _shiftOrigin.call(this, offset);
+	    if (this._node) {
+	        if (this._node.index !== this._cachedIndex) {
+	            if (this.getPosition() < 0.5 * nodeSize) {
+	                this._cachedIndex = this._node.index;
+	                this._eventOutput.emit('pageChange', {
+	                    direction: -1,
+	                    index: this._cachedIndex
+	                });
+	            }
+	        } else {
+	            if (this.getPosition() > 0.5 * nodeSize) {
+	                this._cachedIndex = this._node.index + 1;
+	                this._eventOutput.emit('pageChange', {
+	                    direction: 1,
+	                    index: this._cachedIndex
+	                });
+	            }
+	        }
+	    }
+	}
+	function _shiftOrigin(amount) {
+	    this._edgeSpringPosition += amount;
+	    this._pageSpringPosition += amount;
+	    this.setPosition(this.getPosition() + amount);
+	    this._totalShift += amount;
+	    if (this._springState === SpringStates.EDGE) {
+	        this.spring.setOptions({
+	            anchor: [
+	                this._edgeSpringPosition,
+	                0,
+	                0
+	            ]
+	        });
+	    } else if (this._springState === SpringStates.PAGE) {
+	        this.spring.setOptions({
+	            anchor: [
+	                this._pageSpringPosition,
+	                0,
+	                0
+	            ]
+	        });
+	    }
+	}
+	Scrollview.prototype.getCurrentIndex = function getCurrentIndex() {
+	    return this._node.index;
+	};
+	Scrollview.prototype.goToPreviousPage = function goToPreviousPage() {
+	    if (!this._node || this._onEdge === EdgeStates.TOP)
+	        return null;
+	    if (this.getPosition() > 1 && this._springState === SpringStates.NONE) {
+	        _setSpring.call(this, 0, SpringStates.PAGE);
+	        return this._node;
+	    }
+	    var previousNode = this._node.getPrevious();
+	    if (previousNode) {
+	        var previousNodeSize = _nodeSizeForDirection.call(this, previousNode);
+	        this._scroller.sequenceFrom(previousNode);
+	        this._node = previousNode;
+	        _shiftOrigin.call(this, previousNodeSize);
+	        _setSpring.call(this, 0, SpringStates.PAGE);
+	    }
+	    return previousNode;
+	};
+	Scrollview.prototype.goToNextPage = function goToNextPage() {
+	    if (!this._node || this._onEdge === EdgeStates.BOTTOM)
+	        return null;
+	    var nextNode = this._node.getNext();
+	    if (nextNode) {
+	        var currentNodeSize = _nodeSizeForDirection.call(this, this._node);
+	        this._scroller.sequenceFrom(nextNode);
+	        this._node = nextNode;
+	        _shiftOrigin.call(this, -currentNodeSize);
+	        _setSpring.call(this, 0, SpringStates.PAGE);
+	    }
+	    return nextNode;
+	};
+	Scrollview.prototype.goToPage = function goToPage(index) {
+	    var currentIndex = this.getCurrentIndex();
+	    var i;
+	    if (currentIndex > index) {
+	        for (i = 0; i < currentIndex - index; i++)
+	            this.goToPreviousPage();
+	    }
+	    if (currentIndex < index) {
+	        for (i = 0; i < index - currentIndex; i++)
+	            this.goToNextPage();
+	    }
+	};
+	Scrollview.prototype.outputFrom = function outputFrom() {
+	    return this._scroller.outputFrom.apply(this._scroller, arguments);
+	};
+	Scrollview.prototype.getPosition = function getPosition() {
+	    return this._particle.getPosition1D();
+	};
+	Scrollview.prototype.getAbsolutePosition = function getAbsolutePosition() {
+	    return this._scroller.getCumulativeSize(this.getCurrentIndex())[this.options.direction] + this.getPosition();
+	};
+	Scrollview.prototype.getOffset = Scrollview.prototype.getPosition;
+	Scrollview.prototype.setPosition = function setPosition(x) {
+	    this._particle.setPosition1D(x);
+	};
+	Scrollview.prototype.setOffset = Scrollview.prototype.setPosition;
+	Scrollview.prototype.getVelocity = function getVelocity() {
+	    return this._touchCount ? this._touchVelocity : this._particle.getVelocity1D();
+	};
+	Scrollview.prototype.setVelocity = function setVelocity(v) {
+	    this._particle.setVelocity1D(v);
+	};
+	Scrollview.prototype.setOptions = function setOptions(options) {
+	    if (options.direction !== undefined) {
+	        if (options.direction === 'x')
+	            options.direction = Utility.Direction.X;
+	        else if (options.direction === 'y')
+	            options.direction = Utility.Direction.Y;
+	    }
+	    if (options.groupScroll !== this.options.groupScroll) {
+	        if (options.groupScroll)
+	            this.subscribe(this._scroller);
+	        else
+	            this.unsubscribe(this._scroller);
+	    }
+	    this._optionsManager.setOptions(options);
+	    this._scroller.setOptions(options);
+	    if (options.drag !== undefined)
+	        this.drag.setOptions({ strength: this.options.drag });
+	    if (options.friction !== undefined)
+	        this.friction.setOptions({ strength: this.options.friction });
+	    if (options.edgePeriod !== undefined || options.edgeDamp !== undefined) {
+	        this.spring.setOptions({
+	            period: this.options.edgePeriod,
+	            dampingRatio: this.options.edgeDamp
+	        });
+	    }
+	    if (options.rails || options.direction !== undefined || options.syncScale !== undefined || options.preventDefault) {
+	        this.sync.setOptions({
+	            rails: this.options.rails,
+	            direction: this.options.direction === Utility.Direction.X ? GenericSync.DIRECTION_X : GenericSync.DIRECTION_Y,
+	            scale: this.options.syncScale,
+	            preventDefault: this.options.preventDefault
+	        });
+	    }
+	};
+	Scrollview.prototype.sequenceFrom = function sequenceFrom(node) {
+	    if (node instanceof Array)
+	        node = new ViewSequence({
+	            array: node,
+	            trackSize: true
+	        });
+	    this._node = node;
+	    return this._scroller.sequenceFrom(node);
+	};
+	Scrollview.prototype.getSize = function getSize() {
+	    return this._scroller.getSize.apply(this._scroller, arguments);
+	};
+	Scrollview.prototype.render = function render() {
+	    if (this.options.paginated && this._needsPaginationCheck)
+	        _handlePagination.call(this);
+	    return this._scroller.render();
+	};
+	module.exports = Scrollview;
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var OptionsManager = __webpack_require__(75);
+	var Entity = __webpack_require__(83);
+	var Transform = __webpack_require__(76);
+	var ViewSequence = __webpack_require__(84);
+	var Utility = __webpack_require__(82);
+	function SequentialLayout(options) {
+	    this._items = null;
+	    this._size = null;
+	    this._outputFunction = SequentialLayout.DEFAULT_OUTPUT_FUNCTION;
+	    this.options = Utility.clone(this.constructor.DEFAULT_OPTIONS || SequentialLayout.DEFAULT_OPTIONS);
+	    this.optionsManager = new OptionsManager(this.options);
+	    this.id = Entity.register(this);
+	    this.cachedSize = [
+	        undefined,
+	        undefined
+	    ];
+	    if (options)
+	        this.setOptions(options);
+	}
+	SequentialLayout.DEFAULT_OPTIONS = {
+	    direction: Utility.Direction.Y,
+	    itemSpacing: 0
+	};
+	SequentialLayout.DEFAULT_OUTPUT_FUNCTION = function DEFAULT_OUTPUT_FUNCTION(input, offset, index) {
+	    var transform = this.options.direction === Utility.Direction.X ? Transform.translate(offset, 0) : Transform.translate(0, offset);
+	    return {
+	        size: this.cachedSize,
+	        transform: transform,
+	        target: input.render()
+	    };
+	};
+	SequentialLayout.prototype.getSize = function getSize() {
+	    if (!this._size)
+	        this.render();
+	    return this._size;
+	};
+	SequentialLayout.prototype.sequenceFrom = function sequenceFrom(items) {
+	    if (items instanceof Array)
+	        items = new ViewSequence(items);
+	    this._items = items;
+	    return this;
+	};
+	SequentialLayout.prototype.setOptions = function setOptions(options) {
+	    this.optionsManager.setOptions.apply(this.optionsManager, arguments);
+	    return this;
+	};
+	SequentialLayout.prototype.setOutputFunction = function setOutputFunction(outputFunction) {
+	    this._outputFunction = outputFunction;
+	    return this;
+	};
+	SequentialLayout.prototype.render = function render() {
+	    return this.id;
+	};
+	SequentialLayout.prototype.commit = function commit(parentSpec) {
+	    var length = 0;
+	    var secondaryDirection = this.options.direction ^ 1;
+	    var currentNode = this._items;
+	    var item = null;
+	    var itemSize = [];
+	    var output = {};
+	    var result = [];
+	    var i = 0;
+	    this._size = [
+	        0,
+	        0
+	    ];
+	    this.cachedSize = parentSpec.size;
+	    while (currentNode) {
+	        item = currentNode.get();
+	        if (!item)
+	            break;
+	        if (item.getSize)
+	            itemSize = item.getSize();
+	        output = this._outputFunction.call(this, item, length, i++);
+	        result.push(output);
+	        if (itemSize) {
+	            if (itemSize[this.options.direction])
+	                length += itemSize[this.options.direction];
+	            if (itemSize[secondaryDirection] > this._size[secondaryDirection])
+	                this._size[secondaryDirection] = itemSize[secondaryDirection];
+	            if (itemSize[secondaryDirection] === 0)
+	                this._size[secondaryDirection] = undefined;
+	        }
+	        currentNode = currentNode.getNext();
+	        if (this.options.itemSpacing && currentNode)
+	            length += this.options.itemSpacing;
+	    }
+	    this._size[this.options.direction] = length;
+	    return {
+	        transform: parentSpec.transform,
+	        origin: parentSpec.origin,
+	        opacity: parentSpec.opacity,
+	        size: this.getSize(),
+	        target: result
+	    };
+	};
+	module.exports = SequentialLayout;
+
+/***/ },
+/* 206 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var View = __webpack_require__(90);
+	var Entity = __webpack_require__(83);
+	var Transform = __webpack_require__(76);
+	function SizeAwareView() {
+	    View.apply(this, arguments);
+	    this._id = Entity.register(this);
+	    this._parentSize = [];
+	}
+	SizeAwareView.prototype = Object.create(View.prototype);
+	SizeAwareView.prototype.constructor = SizeAwareView;
+	SizeAwareView.prototype.commit = function commit(context) {
+	    var transform = context.transform;
+	    var opacity = context.opacity;
+	    var origin = context.origin;
+	    if (!this._parentSize || this._parentSize[0] !== context.size[0] || this._parentSize[1] !== context.size[1]) {
+	        this._parentSize[0] = context.size[0];
+	        this._parentSize[1] = context.size[1];
+	        this._eventInput.emit('parentResize', this._parentSize);
+	        if (this.onResize)
+	            this.onResize(this._parentSize);
+	    }
+	    if (this._parentSize) {
+	        transform = Transform.moveThen([
+	            -this._parentSize[0] * origin[0],
+	            -this._parentSize[1] * origin[1],
+	            0
+	        ], transform);
+	    }
+	    return {
+	        transform: transform,
+	        opacity: opacity,
+	        size: this._parentSize,
+	        target: this._node.render()
+	    };
+	};
+	SizeAwareView.prototype.getParentSize = function getParentSize() {
+	    return this._parentSize;
+	};
+	SizeAwareView.prototype.render = function render() {
+	    return this._id;
+	};
+	module.exports = SizeAwareView;
+
+/***/ },
+/* 207 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Body: __webpack_require__(225),
+	  Circle: __webpack_require__(226),
+	  Particle: __webpack_require__(78),
+	  Rectangle: __webpack_require__(227)
+	};
+
+
+/***/ },
+/* 208 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Collision: __webpack_require__(228),
+	  Constraint: __webpack_require__(229),
+	  Curve: __webpack_require__(230),
+	  Distance: __webpack_require__(231),
+	  Snap: __webpack_require__(218),
+	  Surface: __webpack_require__(232),
+	  Wall: __webpack_require__(219),
+	  Walls: __webpack_require__(233)
+	};
+
+
+/***/ },
+/* 209 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Drag: __webpack_require__(88),
+	  Force: __webpack_require__(145),
+	  Repulsion: __webpack_require__(234),
+	  RotationalDrag: __webpack_require__(235),
+	  RotationalSpring: __webpack_require__(236),
+	  Spring: __webpack_require__(79),
+	  VectorField: __webpack_require__(237)
+	};
+
+
+/***/ },
+/* 210 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  SymplecticEuler: __webpack_require__(144)
+	};
+
+
+/***/ },
+/* 211 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Scene = __webpack_require__(173);
+	var Surface = __webpack_require__(91);
+	var Transform = __webpack_require__(76);
+	var View = __webpack_require__(90);
+	function NavigationBar(options) {
+	    View.apply(this, arguments);
+	    this.title = new Surface({
+	        classes: this.options.classes,
+	        content: this.options.content
+	    });
+	    this.back = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.backContent
+	    });
+	    this.back.on('click', function () {
+	        this._eventOutput.emit('back', {});
+	    }.bind(this));
+	    this.more = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.moreContent
+	    });
+	    this.more.on('click', function () {
+	        this._eventOutput.emit('more', {});
+	    }.bind(this));
+	    this.layout = new Scene({
+	        id: 'master',
+	        size: this.options.size,
+	        target: [
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    0,
+	                    0.5
+	                ],
+	                align: [
+	                    0,
+	                    0.5
+	                ],
+	                target: this.back
+	            },
+	            {
+	                origin: [
+	                    0.5,
+	                    0.5
+	                ],
+	                align: [
+	                    0.5,
+	                    0.5
+	                ],
+	                target: this.title
+	            },
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    1,
+	                    0.5
+	                ],
+	                align: [
+	                    1,
+	                    0.5
+	                ],
+	                target: this.more
+	            }
+	        ]
+	    });
+	    this._add(this.layout);
+	    this._optionsManager.on('change', function (event) {
+	        var key = event.id;
+	        var data = event.value;
+	        if (key === 'size') {
+	            this.layout.id.master.setSize(data);
+	            this.title.setSize(data);
+	            this.back.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	            this.more.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	        } else if (key === 'backClasses') {
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	        } else if (key === 'backContent') {
+	            this.back.setContent(this.options.backContent);
+	        } else if (key === 'classes') {
+	            this.title.setOptions({ classes: this.options.classes });
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'content') {
+	            this.setContent(this.options.content);
+	        } else if (key === 'moreClasses') {
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'moreContent') {
+	            this.more.setContent(this.options.content);
+	        }
+	    }.bind(this));
+	}
+	NavigationBar.prototype = Object.create(View.prototype);
+	NavigationBar.prototype.constructor = NavigationBar;
+	NavigationBar.DEFAULT_OPTIONS = {
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    backClasses: ['back'],
+	    backContent: '&#x25c0;',
+	    classes: ['navigation'],
+	    content: '',
+	    moreClasses: ['more'],
+	    moreContent: '&#x271a;'
+	};
+	NavigationBar.prototype.setContent = function setContent(content) {
+	    return this.title.setContent(content);
+	};
+	module.exports = NavigationBar;
+
+/***/ },
+/* 212 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(91);
+	var CanvasSurface = __webpack_require__(185);
+	var Transform = __webpack_require__(76);
+	var EventHandler = __webpack_require__(85);
+	var Utilities = __webpack_require__(170);
+	var OptionsManager = __webpack_require__(75);
+	var MouseSync = __webpack_require__(160);
+	var TouchSync = __webpack_require__(164);
+	var GenericSync = __webpack_require__(159);
+	GenericSync.register({
+	    mouse: MouseSync,
+	    touch: TouchSync
+	});
+	function Slider(options) {
+	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
+	    this.optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.indicator = new CanvasSurface({
+	        size: this.options.indicatorSize,
+	        classes: ['slider-back']
+	    });
+	    this.label = new Surface({
+	        size: this.options.labelSize,
+	        content: this.options.label,
+	        properties: { pointerEvents: 'none' },
+	        classes: ['slider-label']
+	    });
+	    this.eventOutput = new EventHandler();
+	    this.eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.eventInput);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], {
+	        scale: scale,
+	        direction: GenericSync.DIRECTION_X
+	    });
+	    this.indicator.pipe(this.sync);
+	    this.sync.pipe(this);
+	    this.eventInput.on('update', function (data) {
+	        this.set(data.position);
+	    }.bind(this));
+	    this._drawPos = 0;
+	    _updateLabel.call(this);
+	}
+	Slider.DEFAULT_OPTIONS = {
+	    size: [
+	        200,
+	        60
+	    ],
+	    indicatorSize: [
+	        200,
+	        30
+	    ],
+	    labelSize: [
+	        200,
+	        30
+	    ],
+	    range: [
+	        0,
+	        1
+	    ],
+	    precision: 2,
+	    value: 0,
+	    label: '',
+	    fillColor: 'rgba(170, 170, 170, 1)'
+	};
+	function _updateLabel() {
+	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
+	}
+	Slider.prototype.setOptions = function setOptions(options) {
+	    return this.optionsManager.setOptions(options);
+	};
+	Slider.prototype.get = function get() {
+	    return this.options.value;
+	};
+	Slider.prototype.set = function set(value) {
+	    if (value === this.options.value)
+	        return;
+	    this.options.value = Utilities.clamp(value, this.options.range);
+	    _updateLabel.call(this);
+	    this.eventOutput.emit('change', { value: value });
+	};
+	Slider.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	Slider.prototype.render = function render() {
+	    var range = this.options.range;
+	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
+	    if (fillSize < this._drawPos) {
+	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
+	    } else if (fillSize > this._drawPos) {
+	        var ctx = this.indicator.getContext('2d');
+	        ctx.fillStyle = this.options.fillColor;
+	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
+	    }
+	    this._drawPos = fillSize;
+	    return {
+	        size: this.options.size,
+	        target: [
+	            {
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.indicator.render()
+	            },
+	            {
+	                transform: Transform.translate(0, 0, 1),
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.label.render()
+	            }
+	        ]
+	    };
+	};
+	module.exports = Slider;
+
+/***/ },
+/* 213 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Utility = __webpack_require__(82);
+	var View = __webpack_require__(90);
+	var GridLayout = __webpack_require__(198);
+	var ToggleButton = __webpack_require__(214);
+	function TabBar(options) {
+	    View.apply(this, arguments);
+	    this.layout = new GridLayout();
+	    this.buttons = [];
+	    this._buttonIds = {};
+	    this._buttonCallbacks = {};
+	    this.layout.sequenceFrom(this.buttons);
+	    this._add(this.layout);
+	    this._optionsManager.on('change', _updateOptions.bind(this));
+	}
+	TabBar.prototype = Object.create(View.prototype);
+	TabBar.prototype.constructor = TabBar;
+	TabBar.DEFAULT_OPTIONS = {
+	    sections: [],
+	    widget: ToggleButton,
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    direction: Utility.Direction.X,
+	    buttons: { toggleMode: ToggleButton.ON }
+	};
+	function _updateOptions(data) {
+	    var id = data.id;
+	    var value = data.value;
+	    if (id === 'direction') {
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
+	    } else if (id === 'buttons') {
+	        for (var i in this.buttons) {
+	            this.buttons[i].setOptions(value);
+	        }
+	    } else if (id === 'sections') {
+	        for (var sectionId in this.options.sections) {
+	            this.defineSection(sectionId, this.options.sections[sectionId]);
+	        }
+	    }
+	}
+	function _resolveGridDimensions(count, direction) {
+	    if (direction === Utility.Direction.X)
+	        return [
+	            count,
+	            1
+	        ];
+	    else
+	        return [
+	            1,
+	            count
+	        ];
+	}
+	TabBar.prototype.defineSection = function defineSection(id, content) {
+	    var button;
+	    var i = this._buttonIds[id];
+	    if (i === undefined) {
+	        i = this.buttons.length;
+	        this._buttonIds[id] = i;
+	        var widget = this.options.widget;
+	        button = new widget();
+	        this.buttons[i] = button;
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
+	    } else {
+	        button = this.buttons[i];
+	        button.unbind('select', this._buttonCallbacks[id]);
+	    }
+	    if (this.options.buttons)
+	        button.setOptions(this.options.buttons);
+	    button.setOptions(content);
+	    this._buttonCallbacks[id] = this.select.bind(this, id);
+	    button.on('select', this._buttonCallbacks[id]);
+	};
+	TabBar.prototype.select = function select(id) {
+	    var btn = this._buttonIds[id];
+	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
+	        this._eventOutput.emit('select', { id: id });
+	    } else if (this.buttons[btn]) {
+	        this.buttons[btn].select();
+	    }
+	    for (var i = 0; i < this.buttons.length; i++) {
+	        if (i !== btn)
+	            this.buttons[i].deselect();
+	    }
+	};
+	module.exports = TabBar;
+
+/***/ },
+/* 214 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(91);
+	var EventHandler = __webpack_require__(85);
+	var RenderController = __webpack_require__(201);
+	function ToggleButton(options) {
+	    this.options = {
+	        content: [
+	            '',
+	            ''
+	        ],
+	        offClasses: ['off'],
+	        onClasses: ['on'],
+	        size: undefined,
+	        outTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        inTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        toggleMode: ToggleButton.TOGGLE,
+	        crossfade: true
+	    };
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.offSurface = new Surface();
+	    this.offSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.OFF)
+	            this.select();
+	    }.bind(this));
+	    this.offSurface.pipe(this._eventOutput);
+	    this.onSurface = new Surface();
+	    this.onSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.ON)
+	            this.deselect();
+	    }.bind(this));
+	    this.onSurface.pipe(this._eventOutput);
+	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
+	    this.deselect();
+	    if (options)
+	        this.setOptions(options);
+	}
+	ToggleButton.OFF = 0;
+	ToggleButton.ON = 1;
+	ToggleButton.TOGGLE = 2;
+	ToggleButton.prototype.select = function select(suppressEvent) {
+	    this.selected = true;
+	    this.arbiter.show(this.onSurface, this.options.inTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('select');
+	    }
+	};
+	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
+	    this.selected = false;
+	    this.arbiter.show(this.offSurface, this.options.outTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('deselect');
+	    }
+	};
+	ToggleButton.prototype.isSelected = function isSelected() {
+	    return this.selected;
+	};
+	ToggleButton.prototype.setOptions = function setOptions(options) {
+	    if (options.content !== undefined) {
+	        if (!(options.content instanceof Array))
+	            options.content = [
+	                options.content,
+	                options.content
+	            ];
+	        this.options.content = options.content;
+	        this.offSurface.setContent(this.options.content[0]);
+	        this.onSurface.setContent(this.options.content[1]);
+	    }
+	    if (options.offClasses) {
+	        this.options.offClasses = options.offClasses;
+	        this.offSurface.setClasses(this.options.offClasses);
+	    }
+	    if (options.onClasses) {
+	        this.options.onClasses = options.onClasses;
+	        this.onSurface.setClasses(this.options.onClasses);
+	    }
+	    if (options.size !== undefined) {
+	        this.options.size = options.size;
+	        this.onSurface.setSize(this.options.size);
+	        this.offSurface.setSize(this.options.size);
+	    }
+	    if (options.toggleMode !== undefined)
+	        this.options.toggleMode = options.toggleMode;
+	    if (options.outTransition !== undefined)
+	        this.options.outTransition = options.outTransition;
+	    if (options.inTransition !== undefined)
+	        this.options.inTransition = options.inTransition;
+	    if (options.crossfade !== undefined) {
+	        this.options.crossfade = options.crossfade;
+	        this.arbiter.setOptions({ overlap: this.options.crossfade });
+	    }
+	};
+	ToggleButton.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	ToggleButton.prototype.render = function render() {
+	    return this.arbiter.render();
+	};
+	module.exports = ToggleButton;
+
+/***/ },
+/* 215 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var KeyCodes = {
+	    0: 48,
+	    1: 49,
+	    2: 50,
+	    3: 51,
+	    4: 52,
+	    5: 53,
+	    6: 54,
+	    7: 55,
+	    8: 56,
+	    9: 57,
+	    a: 97,
+	    b: 98,
+	    c: 99,
+	    d: 100,
+	    e: 101,
+	    f: 102,
+	    g: 103,
+	    h: 104,
+	    i: 105,
+	    j: 106,
+	    k: 107,
+	    l: 108,
+	    m: 109,
+	    n: 110,
+	    o: 111,
+	    p: 112,
+	    q: 113,
+	    r: 114,
+	    s: 115,
+	    t: 116,
+	    u: 117,
+	    v: 118,
+	    w: 119,
+	    x: 120,
+	    y: 121,
+	    z: 122,
+	    A: 65,
+	    B: 66,
+	    C: 67,
+	    D: 68,
+	    E: 69,
+	    F: 70,
+	    G: 71,
+	    H: 72,
+	    I: 73,
+	    J: 74,
+	    K: 75,
+	    L: 76,
+	    M: 77,
+	    N: 78,
+	    O: 79,
+	    P: 80,
+	    Q: 81,
+	    R: 82,
+	    S: 83,
+	    T: 84,
+	    U: 85,
+	    V: 86,
+	    W: 87,
+	    X: 88,
+	    Y: 89,
+	    Z: 90,
+	    ENTER: 13,
+	    LEFT_ARROW: 37,
+	    RIGHT_ARROW: 39,
+	    UP_ARROW: 38,
+	    DOWN_ARROW: 40,
+	    SPACE: 32,
+	    SHIFT: 16,
+	    TAB: 9
+	};
+	module.exports = KeyCodes;
+
+/***/ },
+/* 216 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var FamousEngine = __webpack_require__(150);
+	var _event = 'prerender';
+	var getTime = window.performance && window.performance.now ? function () {
+	    return window.performance.now();
+	} : function () {
+	    return Date.now();
+	};
+	function addTimerFunction(fn) {
+	    FamousEngine.on(_event, fn);
+	    return fn;
+	}
+	function setTimeout(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            FamousEngine.removeListener(_event, callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function setInterval(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            t = getTime();
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function after(fn, numTicks) {
+	    if (numTicks === undefined)
+	        return undefined;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            clear(callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function every(fn, numTicks) {
+	    numTicks = numTicks || 1;
+	    var initial = numTicks;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            numTicks = initial;
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function clear(fn) {
+	    FamousEngine.removeListener(_event, fn);
+	}
+	function debounce(func, wait) {
+	    var timeout;
+	    var ctx;
+	    var timestamp;
+	    var result;
+	    var args;
+	    return function () {
+	        ctx = this;
+	        args = arguments;
+	        timestamp = getTime();
+	        var fn = function () {
+	            var last = getTime - timestamp;
+	            if (last < wait) {
+	                timeout = setTimeout(fn, wait - last);
+	            } else {
+	                timeout = null;
+	                result = func.apply(ctx, args);
+	            }
+	        };
+	        clear(timeout);
+	        timeout = setTimeout(fn, wait);
+	        return result;
+	    };
+	}
+	module.exports = {
+	    setTimeout: setTimeout,
+	    setInterval: setInterval,
+	    debounce: debounce,
+	    after: after,
+	    every: every,
+	    clear: clear
+	};
+
+/***/ },
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -56124,7770 +64122,9 @@
 
 
 /***/ },
-/* 61 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-	  Context: __webpack_require__(76),
-	  ElementAllocator: __webpack_require__(84),
-	  ElementOutput: __webpack_require__(79),
-	  Engine: __webpack_require__(80),
-	  Entity: __webpack_require__(51),
-	  EventEmitter: __webpack_require__(77),
-	  EventHandler: __webpack_require__(53),
-	  Group: __webpack_require__(55),
-	  Modifier: __webpack_require__(85),
-	  OptionsManager: __webpack_require__(43),
-	  RenderNode: __webpack_require__(78),
-	  Scene: __webpack_require__(86),
-	  SpecParser: __webpack_require__(87),
-	  Surface: __webpack_require__(59),
-	  Transform: __webpack_require__(44),
-	  View: __webpack_require__(58),
-	  ViewSequence: __webpack_require__(52)
-	};
-
-
-/***/ },
-/* 62 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  EventArbiter: __webpack_require__(81),
-	  EventFilter: __webpack_require__(82),
-	  EventMapper: __webpack_require__(83)
-	};
-
-
-/***/ },
-/* 63 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Accumulator: __webpack_require__(92),
-	  DesktopEmulationMode: __webpack_require__(93),
-	  FastClick: __webpack_require__(94),
-	  GenericSync: __webpack_require__(95),
-	  MouseSync: __webpack_require__(96),
-	  PinchSync: __webpack_require__(97),
-	  RotateSync: __webpack_require__(98),
-	  ScaleSync: __webpack_require__(99),
-	  ScrollSync: __webpack_require__(57),
-	  TouchSync: __webpack_require__(100),
-	  TouchTracker: __webpack_require__(101),
-	  TwoFingerSync: __webpack_require__(102)
-	};
-
-
-/***/ },
-/* 64 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Matrix: __webpack_require__(88),
-	  Quaternion: __webpack_require__(89),
-	  Random: __webpack_require__(90),
-	  Utilities: __webpack_require__(91),
-	  Vector: __webpack_require__(45)
-	};
-
-
-/***/ },
-/* 65 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Draggable: __webpack_require__(103),
-	  Fader: __webpack_require__(104),
-	  ModifierChain: __webpack_require__(105),
-	  StateModifier: __webpack_require__(106)
-	};
-
-
-/***/ },
-/* 66 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  PhysicsEngine: __webpack_require__(48),
-	  bodies: __webpack_require__(141),
-	  constraints: __webpack_require__(142),
-	  forces: __webpack_require__(143),
-	  integrators: __webpack_require__(144)
-	};
-
-
-/***/ },
-/* 67 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  CanvasSurface: __webpack_require__(107),
-	  ContainerSurface: __webpack_require__(54),
-	  FormContainerSurface: __webpack_require__(108),
-	  ImageSurface: __webpack_require__(109),
-	  InputSurface: __webpack_require__(110),
-	  SubmitInputSurface: __webpack_require__(111),
-	  TextareaSurface: __webpack_require__(112),
-	  VideoSurface: __webpack_require__(113)
-	};
-
-
-/***/ },
-/* 68 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  CachedMap: __webpack_require__(129),
-	  Easing: __webpack_require__(130),
-	  MultipleTransition: __webpack_require__(74),
-	  SnapTransition: __webpack_require__(131),
-	  SpringTransition: __webpack_require__(132),
-	  Transitionable: __webpack_require__(49),
-	  TransitionableTransform: __webpack_require__(133),
-	  TweenTransition: __webpack_require__(75),
-	  WallTransition: __webpack_require__(134)
-	};
-
-
-/***/ },
-/* 69 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  KeyCodes: __webpack_require__(135),
-	  Timer: __webpack_require__(136),
-	  Utility: __webpack_require__(50)
-	};
-
-
-/***/ },
-/* 70 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  ContextualView: __webpack_require__(114),
-	  Deck: __webpack_require__(115),
-	  DrawerLayout: __webpack_require__(116),
-	  EdgeSwapper: __webpack_require__(117),
-	  FlexibleLayout: __webpack_require__(118),
-	  Flipper: __webpack_require__(119),
-	  GridLayout: __webpack_require__(120),
-	  HeaderFooterLayout: __webpack_require__(121),
-	  Lightbox: __webpack_require__(122),
-	  RenderController: __webpack_require__(123),
-	  ScrollContainer: __webpack_require__(124),
-	  Scroller: __webpack_require__(125),
-	  Scrollview: __webpack_require__(126),
-	  SequentialLayout: __webpack_require__(127),
-	  SizeAwareView: __webpack_require__(128)
-	};
-
-
-/***/ },
-/* 71 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  NavigationBar: __webpack_require__(137),
-	  Slider: __webpack_require__(138),
-	  TabBar: __webpack_require__(139),
-	  ToggleButton: __webpack_require__(140)
-	};
-
-
-/***/ },
-/* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var SymplecticEuler = {};
-	SymplecticEuler.integrateVelocity = function integrateVelocity(body, dt) {
-	    var v = body.velocity;
-	    var w = body.inverseMass;
-	    var f = body.force;
-	    if (f.isZero())
-	        return;
-	    v.add(f.mult(dt * w)).put(v);
-	    f.clear();
-	};
-	SymplecticEuler.integratePosition = function integratePosition(body, dt) {
-	    var p = body.position;
-	    var v = body.velocity;
-	    p.add(v.mult(dt)).put(p);
-	};
-	SymplecticEuler.integrateAngularMomentum = function integrateAngularMomentum(body, dt) {
-	    var L = body.angularMomentum;
-	    var t = body.torque;
-	    if (t.isZero())
-	        return;
-	    L.add(t.mult(dt)).put(L);
-	    t.clear();
-	};
-	SymplecticEuler.integrateOrientation = function integrateOrientation(body, dt) {
-	    var q = body.orientation;
-	    var w = body.angularVelocity;
-	    if (w.isZero())
-	        return;
-	    q.add(q.multiply(w).scalarMultiply(0.5 * dt)).put(q);
-	};
-	module.exports = SymplecticEuler;
-
-/***/ },
-/* 73 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Vector = __webpack_require__(45);
-	var EventHandler = __webpack_require__(53);
-	function Force(force) {
-	    this.force = new Vector(force);
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	}
-	Force.prototype.setOptions = function setOptions(options) {
-	    this._eventOutput.emit('change', options);
-	};
-	Force.prototype.applyForce = function applyForce(targets) {
-	    var length = targets.length;
-	    while (length--) {
-	        targets[length].applyForce(this.force);
-	    }
-	};
-	Force.prototype.getEnergy = function getEnergy() {
-	    return 0;
-	};
-	module.exports = Force;
-
-/***/ },
-/* 74 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Utility = __webpack_require__(50);
-	function MultipleTransition(method) {
-	    this.method = method;
-	    this._instances = [];
-	    this.state = [];
-	}
-	MultipleTransition.SUPPORTS_MULTIPLE = true;
-	MultipleTransition.prototype.get = function get() {
-	    for (var i = 0; i < this._instances.length; i++) {
-	        this.state[i] = this._instances[i].get();
-	    }
-	    return this.state;
-	};
-	MultipleTransition.prototype.set = function set(endState, transition, callback) {
-	    var _allCallback = Utility.after(endState.length, callback);
-	    for (var i = 0; i < endState.length; i++) {
-	        if (!this._instances[i])
-	            this._instances[i] = new this.method();
-	        this._instances[i].set(endState[i], transition, _allCallback);
-	    }
-	};
-	MultipleTransition.prototype.reset = function reset(startState) {
-	    for (var i = 0; i < startState.length; i++) {
-	        if (!this._instances[i])
-	            this._instances[i] = new this.method();
-	        this._instances[i].reset(startState[i]);
-	    }
-	};
-	module.exports = MultipleTransition;
-
-/***/ },
-/* 75 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function TweenTransition(options) {
-	    this.options = Object.create(TweenTransition.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this._startTime = 0;
-	    this._startValue = 0;
-	    this._updateTime = 0;
-	    this._endValue = 0;
-	    this._curve = undefined;
-	    this._duration = 0;
-	    this._active = false;
-	    this._callback = undefined;
-	    this.state = 0;
-	    this.velocity = undefined;
-	}
-	TweenTransition.Curves = {
-	    linear: function (t) {
-	        return t;
-	    },
-	    easeIn: function (t) {
-	        return t * t;
-	    },
-	    easeOut: function (t) {
-	        return t * (2 - t);
-	    },
-	    easeInOut: function (t) {
-	        if (t <= 0.5)
-	            return 2 * t * t;
-	        else
-	            return -2 * t * t + 4 * t - 1;
-	    },
-	    easeOutBounce: function (t) {
-	        return t * (3 - 2 * t);
-	    },
-	    spring: function (t) {
-	        return (1 - t) * Math.sin(6 * Math.PI * t) + t;
-	    }
-	};
-	TweenTransition.SUPPORTS_MULTIPLE = true;
-	TweenTransition.DEFAULT_OPTIONS = {
-	    curve: TweenTransition.Curves.linear,
-	    duration: 500,
-	    speed: 0
-	};
-	var registeredCurves = {};
-	TweenTransition.registerCurve = function registerCurve(curveName, curve) {
-	    if (!registeredCurves[curveName]) {
-	        registeredCurves[curveName] = curve;
-	        return true;
-	    } else {
-	        return false;
-	    }
-	};
-	TweenTransition.unregisterCurve = function unregisterCurve(curveName) {
-	    if (registeredCurves[curveName]) {
-	        delete registeredCurves[curveName];
-	        return true;
-	    } else {
-	        return false;
-	    }
-	};
-	TweenTransition.getCurve = function getCurve(curveName) {
-	    var curve = registeredCurves[curveName];
-	    if (curve !== undefined)
-	        return curve;
-	    else
-	        throw new Error('curve not registered');
-	};
-	TweenTransition.getCurves = function getCurves() {
-	    return registeredCurves;
-	};
-	function _interpolate(a, b, t) {
-	    return (1 - t) * a + t * b;
-	}
-	function _clone(obj) {
-	    if (obj instanceof Object) {
-	        if (obj instanceof Array)
-	            return obj.slice(0);
-	        else
-	            return Object.create(obj);
-	    } else
-	        return obj;
-	}
-	function _normalize(transition, defaultTransition) {
-	    var result = { curve: defaultTransition.curve };
-	    if (defaultTransition.duration)
-	        result.duration = defaultTransition.duration;
-	    if (defaultTransition.speed)
-	        result.speed = defaultTransition.speed;
-	    if (transition instanceof Object) {
-	        if (transition.duration !== undefined)
-	            result.duration = transition.duration;
-	        if (transition.curve)
-	            result.curve = transition.curve;
-	        if (transition.speed)
-	            result.speed = transition.speed;
-	    }
-	    if (typeof result.curve === 'string')
-	        result.curve = TweenTransition.getCurve(result.curve);
-	    return result;
-	}
-	TweenTransition.prototype.setOptions = function setOptions(options) {
-	    if (options.curve !== undefined)
-	        this.options.curve = options.curve;
-	    if (options.duration !== undefined)
-	        this.options.duration = options.duration;
-	    if (options.speed !== undefined)
-	        this.options.speed = options.speed;
-	};
-	TweenTransition.prototype.set = function set(endValue, transition, callback) {
-	    if (!transition) {
-	        this.reset(endValue);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._startValue = _clone(this.get());
-	    transition = _normalize(transition, this.options);
-	    if (transition.speed) {
-	        var startValue = this._startValue;
-	        if (startValue instanceof Object) {
-	            var variance = 0;
-	            for (var i in startValue)
-	                variance += (endValue[i] - startValue[i]) * (endValue[i] - startValue[i]);
-	            transition.duration = Math.sqrt(variance) / transition.speed;
-	        } else {
-	            transition.duration = Math.abs(endValue - startValue) / transition.speed;
-	        }
-	    }
-	    this._startTime = Date.now();
-	    this._endValue = _clone(endValue);
-	    this._startVelocity = _clone(transition.velocity);
-	    this._duration = transition.duration;
-	    this._curve = transition.curve;
-	    this._active = true;
-	    this._callback = callback;
-	};
-	TweenTransition.prototype.reset = function reset(startValue, startVelocity) {
-	    if (this._callback) {
-	        var callback = this._callback;
-	        this._callback = undefined;
-	        callback();
-	    }
-	    this.state = _clone(startValue);
-	    this.velocity = _clone(startVelocity);
-	    this._startTime = 0;
-	    this._duration = 0;
-	    this._updateTime = 0;
-	    this._startValue = this.state;
-	    this._startVelocity = this.velocity;
-	    this._endValue = this.state;
-	    this._active = false;
-	};
-	TweenTransition.prototype.getVelocity = function getVelocity() {
-	    return this.velocity;
-	};
-	TweenTransition.prototype.get = function get(timestamp) {
-	    this.update(timestamp);
-	    return this.state;
-	};
-	function _calculateVelocity(current, start, curve, duration, t) {
-	    var velocity;
-	    var eps = 1e-7;
-	    var speed = (curve(t) - curve(t - eps)) / eps;
-	    if (current instanceof Array) {
-	        velocity = [];
-	        for (var i = 0; i < current.length; i++) {
-	            if (typeof current[i] === 'number')
-	                velocity[i] = speed * (current[i] - start[i]) / duration;
-	            else
-	                velocity[i] = 0;
-	        }
-	    } else
-	        velocity = speed * (current - start) / duration;
-	    return velocity;
-	}
-	function _calculateState(start, end, t) {
-	    var state;
-	    if (start instanceof Array) {
-	        state = [];
-	        for (var i = 0; i < start.length; i++) {
-	            if (typeof start[i] === 'number')
-	                state[i] = _interpolate(start[i], end[i], t);
-	            else
-	                state[i] = start[i];
-	        }
-	    } else
-	        state = _interpolate(start, end, t);
-	    return state;
-	}
-	TweenTransition.prototype.update = function update(timestamp) {
-	    if (!this._active) {
-	        if (this._callback) {
-	            var callback = this._callback;
-	            this._callback = undefined;
-	            callback();
-	        }
-	        return;
-	    }
-	    if (!timestamp)
-	        timestamp = Date.now();
-	    if (this._updateTime >= timestamp)
-	        return;
-	    this._updateTime = timestamp;
-	    var timeSinceStart = timestamp - this._startTime;
-	    if (timeSinceStart >= this._duration) {
-	        this.state = this._endValue;
-	        this.velocity = _calculateVelocity(this.state, this._startValue, this._curve, this._duration, 1);
-	        this._active = false;
-	    } else if (timeSinceStart < 0) {
-	        this.state = this._startValue;
-	        this.velocity = this._startVelocity;
-	    } else {
-	        var t = timeSinceStart / this._duration;
-	        this.state = _calculateState(this._startValue, this._endValue, this._curve(t));
-	        this.velocity = _calculateVelocity(this.state, this._startValue, this._curve, this._duration, t);
-	    }
-	};
-	TweenTransition.prototype.isActive = function isActive() {
-	    return this._active;
-	};
-	TweenTransition.prototype.halt = function halt() {
-	    this.reset(this.get());
-	};
-	TweenTransition.registerCurve('linear', TweenTransition.Curves.linear);
-	TweenTransition.registerCurve('easeIn', TweenTransition.Curves.easeIn);
-	TweenTransition.registerCurve('easeOut', TweenTransition.Curves.easeOut);
-	TweenTransition.registerCurve('easeInOut', TweenTransition.Curves.easeInOut);
-	TweenTransition.registerCurve('easeOutBounce', TweenTransition.Curves.easeOutBounce);
-	TweenTransition.registerCurve('spring', TweenTransition.Curves.spring);
-	TweenTransition.customCurve = function customCurve(v1, v2) {
-	    v1 = v1 || 0;
-	    v2 = v2 || 0;
-	    return function (t) {
-	        return v1 * t + (-2 * v1 - v2 + 3) * t * t + (v1 + v2 - 2) * t * t * t;
-	    };
-	};
-	module.exports = TweenTransition;
-
-/***/ },
-/* 76 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var RenderNode = __webpack_require__(78);
-	var EventHandler = __webpack_require__(53);
-	var ElementAllocator = __webpack_require__(84);
-	var Transform = __webpack_require__(44);
-	var Transitionable = __webpack_require__(49);
-	var _zeroZero = [
-	    0,
-	    0
-	];
-	var usePrefix = !('perspective' in document.documentElement.style);
-	function _getElementSize() {
-	    var element = this.container;
-	    return [
-	        element.clientWidth,
-	        element.clientHeight
-	    ];
-	}
-	var _setPerspective = usePrefix ? function (element, perspective) {
-	    element.style.webkitPerspective = perspective ? perspective.toFixed() + 'px' : '';
-	} : function (element, perspective) {
-	    element.style.perspective = perspective ? perspective.toFixed() + 'px' : '';
-	};
-	function Context(container) {
-	    this.container = container;
-	    this._allocator = new ElementAllocator(container);
-	    this._node = new RenderNode();
-	    this._eventOutput = new EventHandler();
-	    this._size = _getElementSize.call(this);
-	    this._perspectiveState = new Transitionable(0);
-	    this._perspective = undefined;
-	    this._nodeContext = {
-	        allocator: this._allocator,
-	        transform: Transform.identity,
-	        opacity: 1,
-	        origin: _zeroZero,
-	        align: _zeroZero,
-	        size: this._size
-	    };
-	    this._eventOutput.on('resize', function () {
-	        this.setSize(_getElementSize.call(this));
-	    }.bind(this));
-	}
-	Context.prototype.getAllocator = function getAllocator() {
-	    return this._allocator;
-	};
-	Context.prototype.add = function add(obj) {
-	    return this._node.add(obj);
-	};
-	Context.prototype.migrate = function migrate(container) {
-	    if (container === this.container)
-	        return;
-	    this.container = container;
-	    this._allocator.migrate(container);
-	};
-	Context.prototype.getSize = function getSize() {
-	    return this._size;
-	};
-	Context.prototype.setSize = function setSize(size) {
-	    if (!size)
-	        size = _getElementSize.call(this);
-	    this._size[0] = size[0];
-	    this._size[1] = size[1];
-	};
-	Context.prototype.update = function update(contextParameters) {
-	    if (contextParameters) {
-	        if (contextParameters.transform)
-	            this._nodeContext.transform = contextParameters.transform;
-	        if (contextParameters.opacity)
-	            this._nodeContext.opacity = contextParameters.opacity;
-	        if (contextParameters.origin)
-	            this._nodeContext.origin = contextParameters.origin;
-	        if (contextParameters.align)
-	            this._nodeContext.align = contextParameters.align;
-	        if (contextParameters.size)
-	            this._nodeContext.size = contextParameters.size;
-	    }
-	    var perspective = this._perspectiveState.get();
-	    if (perspective !== this._perspective) {
-	        _setPerspective(this.container, perspective);
-	        this._perspective = perspective;
-	    }
-	    this._node.commit(this._nodeContext);
-	};
-	Context.prototype.getPerspective = function getPerspective() {
-	    return this._perspectiveState.get();
-	};
-	Context.prototype.setPerspective = function setPerspective(perspective, transition, callback) {
-	    return this._perspectiveState.set(perspective, transition, callback);
-	};
-	Context.prototype.emit = function emit(type, event) {
-	    return this._eventOutput.emit(type, event);
-	};
-	Context.prototype.on = function on(type, handler) {
-	    return this._eventOutput.on(type, handler);
-	};
-	Context.prototype.removeListener = function removeListener(type, handler) {
-	    return this._eventOutput.removeListener(type, handler);
-	};
-	Context.prototype.pipe = function pipe(target) {
-	    return this._eventOutput.pipe(target);
-	};
-	Context.prototype.unpipe = function unpipe(target) {
-	    return this._eventOutput.unpipe(target);
-	};
-	module.exports = Context;
-
-/***/ },
-/* 77 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function EventEmitter() {
-	    this.listeners = {};
-	    this._owner = this;
-	}
-	EventEmitter.prototype.emit = function emit(type, event) {
-	    var handlers = this.listeners[type];
-	    if (handlers) {
-	        for (var i = 0; i < handlers.length; i++) {
-	            handlers[i].call(this._owner, event);
-	        }
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.on = function on(type, handler) {
-	    if (!(type in this.listeners))
-	        this.listeners[type] = [];
-	    var index = this.listeners[type].indexOf(handler);
-	    if (index < 0)
-	        this.listeners[type].push(handler);
-	    return this;
-	};
-	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
-	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
-	    var listener = this.listeners[type];
-	    if (listener !== undefined) {
-	        var index = listener.indexOf(handler);
-	        if (index >= 0)
-	            listener.splice(index, 1);
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.bindThis = function bindThis(owner) {
-	    this._owner = owner;
-	};
-	module.exports = EventEmitter;
-
-/***/ },
-/* 78 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(51);
-	var SpecParser = __webpack_require__(87);
-	function RenderNode(object) {
-	    this._object = null;
-	    this._child = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = false;
-	    this._isModifier = false;
-	    this._resultCache = {};
-	    this._prevResults = {};
-	    this._childResult = null;
-	    if (object)
-	        this.set(object);
-	}
-	RenderNode.prototype.add = function add(child) {
-	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
-	    if (this._child instanceof Array)
-	        this._child.push(childNode);
-	    else if (this._child) {
-	        this._child = [
-	            this._child,
-	            childNode
-	        ];
-	        this._hasMultipleChildren = true;
-	        this._childResult = [];
-	    } else
-	        this._child = childNode;
-	    return childNode;
-	};
-	RenderNode.prototype.get = function get() {
-	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
-	};
-	RenderNode.prototype.set = function set(child) {
-	    this._childResult = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = child.render ? true : false;
-	    this._isModifier = child.modify ? true : false;
-	    this._object = child;
-	    this._child = null;
-	    if (child instanceof RenderNode)
-	        return child;
-	    else
-	        return this;
-	};
-	RenderNode.prototype.getSize = function getSize() {
-	    var result = null;
-	    var target = this.get();
-	    if (target && target.getSize)
-	        result = target.getSize();
-	    if (!result && this._child && this._child.getSize)
-	        result = this._child.getSize();
-	    return result;
-	};
-	function _applyCommit(spec, context, cacheStorage) {
-	    var result = SpecParser.parse(spec, context);
-	    var keys = Object.keys(result);
-	    for (var i = 0; i < keys.length; i++) {
-	        var id = keys[i];
-	        var childNode = Entity.get(id);
-	        var commitParams = result[id];
-	        commitParams.allocator = context.allocator;
-	        var commitResult = childNode.commit(commitParams);
-	        if (commitResult)
-	            _applyCommit(commitResult, context, cacheStorage);
-	        else
-	            cacheStorage[id] = commitParams;
-	    }
-	}
-	RenderNode.prototype.commit = function commit(context) {
-	    var prevKeys = Object.keys(this._prevResults);
-	    for (var i = 0; i < prevKeys.length; i++) {
-	        var id = prevKeys[i];
-	        if (this._resultCache[id] === undefined) {
-	            var object = Entity.get(id);
-	            if (object.cleanup)
-	                object.cleanup(context.allocator);
-	        }
-	    }
-	    this._prevResults = this._resultCache;
-	    this._resultCache = {};
-	    _applyCommit(this.render(), context, this._resultCache);
-	};
-	RenderNode.prototype.render = function render() {
-	    if (this._isRenderable)
-	        return this._object.render();
-	    var result = null;
-	    if (this._hasMultipleChildren) {
-	        result = this._childResult;
-	        var children = this._child;
-	        for (var i = 0; i < children.length; i++) {
-	            result[i] = children[i].render();
-	        }
-	    } else if (this._child)
-	        result = this._child.render();
-	    return this._isModifier ? this._object.modify(result) : result;
-	};
-	module.exports = RenderNode;
-
-/***/ },
-/* 79 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(51);
-	var EventHandler = __webpack_require__(53);
-	var Transform = __webpack_require__(44);
-	var usePrefix = !('transform' in document.documentElement.style);
-	var devicePixelRatio = window.devicePixelRatio || 1;
-	function ElementOutput(element) {
-	    this._matrix = null;
-	    this._opacity = 1;
-	    this._origin = null;
-	    this._size = null;
-	    this._eventOutput = new EventHandler();
-	    this._eventOutput.bindThis(this);
-	    this.eventForwarder = function eventForwarder(event) {
-	        this._eventOutput.emit(event.type, event);
-	    }.bind(this);
-	    this.id = Entity.register(this);
-	    this._element = null;
-	    this._sizeDirty = false;
-	    this._originDirty = false;
-	    this._transformDirty = false;
-	    this._invisible = false;
-	    if (element)
-	        this.attach(element);
-	}
-	ElementOutput.prototype.on = function on(type, fn) {
-	    if (this._element)
-	        this._element.addEventListener(type, this.eventForwarder);
-	    this._eventOutput.on(type, fn);
-	};
-	ElementOutput.prototype.removeListener = function removeListener(type, fn) {
-	    this._eventOutput.removeListener(type, fn);
-	};
-	ElementOutput.prototype.emit = function emit(type, event) {
-	    if (event && !event.origin)
-	        event.origin = this;
-	    var handled = this._eventOutput.emit(type, event);
-	    if (handled && event && event.stopPropagation)
-	        event.stopPropagation();
-	    return handled;
-	};
-	ElementOutput.prototype.pipe = function pipe(target) {
-	    return this._eventOutput.pipe(target);
-	};
-	ElementOutput.prototype.unpipe = function unpipe(target) {
-	    return this._eventOutput.unpipe(target);
-	};
-	ElementOutput.prototype.render = function render() {
-	    return this.id;
-	};
-	function _addEventListeners(target) {
-	    for (var i in this._eventOutput.listeners) {
-	        target.addEventListener(i, this.eventForwarder);
-	    }
-	}
-	function _removeEventListeners(target) {
-	    for (var i in this._eventOutput.listeners) {
-	        target.removeEventListener(i, this.eventForwarder);
-	    }
-	}
-	function _formatCSSTransform(m) {
-	    m[12] = Math.round(m[12] * devicePixelRatio) / devicePixelRatio;
-	    m[13] = Math.round(m[13] * devicePixelRatio) / devicePixelRatio;
-	    var result = 'matrix3d(';
-	    for (var i = 0; i < 15; i++) {
-	        result += m[i] < 0.000001 && m[i] > -0.000001 ? '0,' : m[i] + ',';
-	    }
-	    result += m[15] + ')';
-	    return result;
-	}
-	var _setMatrix;
-	if (usePrefix) {
-	    _setMatrix = function (element, matrix) {
-	        element.style.webkitTransform = _formatCSSTransform(matrix);
-	    };
-	} else {
-	    _setMatrix = function (element, matrix) {
-	        element.style.transform = _formatCSSTransform(matrix);
-	    };
-	}
-	function _formatCSSOrigin(origin) {
-	    return 100 * origin[0] + '% ' + 100 * origin[1] + '%';
-	}
-	var _setOrigin = usePrefix ? function (element, origin) {
-	    element.style.webkitTransformOrigin = _formatCSSOrigin(origin);
-	} : function (element, origin) {
-	    element.style.transformOrigin = _formatCSSOrigin(origin);
-	};
-	var _setInvisible = usePrefix ? function (element) {
-	    element.style.webkitTransform = 'scale3d(0.0001,0.0001,0.0001)';
-	    element.style.opacity = 0;
-	} : function (element) {
-	    element.style.transform = 'scale3d(0.0001,0.0001,0.0001)';
-	    element.style.opacity = 0;
-	};
-	function _xyNotEquals(a, b) {
-	    return a && b ? a[0] !== b[0] || a[1] !== b[1] : a !== b;
-	}
-	ElementOutput.prototype.commit = function commit(context) {
-	    var target = this._element;
-	    if (!target)
-	        return;
-	    var matrix = context.transform;
-	    var opacity = context.opacity;
-	    var origin = context.origin;
-	    var size = context.size;
-	    if (!matrix && this._matrix) {
-	        this._matrix = null;
-	        this._opacity = 0;
-	        _setInvisible(target);
-	        return;
-	    }
-	    if (_xyNotEquals(this._origin, origin))
-	        this._originDirty = true;
-	    if (Transform.notEquals(this._matrix, matrix))
-	        this._transformDirty = true;
-	    if (this._invisible) {
-	        this._invisible = false;
-	        this._element.style.display = '';
-	    }
-	    if (this._opacity !== opacity) {
-	        this._opacity = opacity;
-	        target.style.opacity = opacity >= 1 ? '0.999999' : opacity;
-	    }
-	    if (this._transformDirty || this._originDirty || this._sizeDirty) {
-	        if (this._sizeDirty)
-	            this._sizeDirty = false;
-	        if (this._originDirty) {
-	            if (origin) {
-	                if (!this._origin)
-	                    this._origin = [
-	                        0,
-	                        0
-	                    ];
-	                this._origin[0] = origin[0];
-	                this._origin[1] = origin[1];
-	            } else
-	                this._origin = null;
-	            _setOrigin(target, this._origin);
-	            this._originDirty = false;
-	        }
-	        if (!matrix)
-	            matrix = Transform.identity;
-	        this._matrix = matrix;
-	        var aaMatrix = this._size ? Transform.thenMove(matrix, [
-	            -this._size[0] * origin[0],
-	            -this._size[1] * origin[1],
-	            0
-	        ]) : matrix;
-	        _setMatrix(target, aaMatrix);
-	        this._transformDirty = false;
-	    }
-	};
-	ElementOutput.prototype.cleanup = function cleanup() {
-	    if (this._element) {
-	        this._invisible = true;
-	        this._element.style.display = 'none';
-	    }
-	};
-	ElementOutput.prototype.attach = function attach(target) {
-	    this._element = target;
-	    _addEventListeners.call(this, target);
-	};
-	ElementOutput.prototype.detach = function detach() {
-	    var target = this._element;
-	    if (target) {
-	        _removeEventListeners.call(this, target);
-	        if (this._invisible) {
-	            this._invisible = false;
-	            this._element.style.display = '';
-	        }
-	    }
-	    this._element = null;
-	    return target;
-	};
-	module.exports = ElementOutput;
-
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Context = __webpack_require__(76);
-	var EventHandler = __webpack_require__(53);
-	var OptionsManager = __webpack_require__(43);
-	var Engine = {};
-	var contexts = [];
-	var nextTickQueue = [];
-	var currentFrame = 0;
-	var nextTickFrame = 0;
-	var deferQueue = [];
-	var lastTime = Date.now();
-	var frameTime;
-	var frameTimeLimit;
-	var loopEnabled = true;
-	var eventForwarders = {};
-	var eventHandler = new EventHandler();
-	var options = {
-	    containerType: 'div',
-	    containerClass: 'famous-container',
-	    fpsCap: undefined,
-	    runLoop: true,
-	    appMode: true
-	};
-	var optionsManager = new OptionsManager(options);
-	var MAX_DEFER_FRAME_TIME = 10;
-	Engine.step = function step() {
-	    currentFrame++;
-	    nextTickFrame = currentFrame;
-	    var currentTime = Date.now();
-	    if (frameTimeLimit && currentTime - lastTime < frameTimeLimit)
-	        return;
-	    var i = 0;
-	    frameTime = currentTime - lastTime;
-	    lastTime = currentTime;
-	    eventHandler.emit('prerender');
-	    var numFunctions = nextTickQueue.length;
-	    while (numFunctions--)
-	        nextTickQueue.shift()(currentFrame);
-	    while (deferQueue.length && Date.now() - currentTime < MAX_DEFER_FRAME_TIME) {
-	        deferQueue.shift().call(this);
-	    }
-	    for (i = 0; i < contexts.length; i++)
-	        contexts[i].update();
-	    eventHandler.emit('postrender');
-	};
-	function loop() {
-	    if (options.runLoop) {
-	        Engine.step();
-	        window.requestAnimationFrame(loop);
-	    } else
-	        loopEnabled = false;
-	}
-	window.requestAnimationFrame(loop);
-	function handleResize(event) {
-	    for (var i = 0; i < contexts.length; i++) {
-	        contexts[i].emit('resize');
-	    }
-	    eventHandler.emit('resize');
-	}
-	window.addEventListener('resize', handleResize, false);
-	handleResize();
-	function initialize() {
-	    window.addEventListener('touchmove', function (event) {
-	        event.preventDefault();
-	    }, true);
-	    addRootClasses();
-	}
-	var initialized = false;
-	function addRootClasses() {
-	    if (!document.body) {
-	        Engine.nextTick(addRootClasses);
-	        return;
-	    }
-	    document.body.classList.add('famous-root');
-	    document.documentElement.classList.add('famous-root');
-	}
-	Engine.pipe = function pipe(target) {
-	    if (target.subscribe instanceof Function)
-	        return target.subscribe(Engine);
-	    else
-	        return eventHandler.pipe(target);
-	};
-	Engine.unpipe = function unpipe(target) {
-	    if (target.unsubscribe instanceof Function)
-	        return target.unsubscribe(Engine);
-	    else
-	        return eventHandler.unpipe(target);
-	};
-	Engine.on = function on(type, handler) {
-	    if (!(type in eventForwarders)) {
-	        eventForwarders[type] = eventHandler.emit.bind(eventHandler, type);
-	        addEngineListener(type, eventForwarders[type]);
-	    }
-	    return eventHandler.on(type, handler);
-	};
-	function addEngineListener(type, forwarder) {
-	    if (!document.body) {
-	        Engine.nextTick(addEventListener.bind(this, type, forwarder));
-	        return;
-	    }
-	    document.body.addEventListener(type, forwarder);
-	}
-	Engine.emit = function emit(type, event) {
-	    return eventHandler.emit(type, event);
-	};
-	Engine.removeListener = function removeListener(type, handler) {
-	    return eventHandler.removeListener(type, handler);
-	};
-	Engine.getFPS = function getFPS() {
-	    return 1000 / frameTime;
-	};
-	Engine.setFPSCap = function setFPSCap(fps) {
-	    frameTimeLimit = Math.floor(1000 / fps);
-	};
-	Engine.getOptions = function getOptions(key) {
-	    return optionsManager.getOptions(key);
-	};
-	Engine.setOptions = function setOptions(options) {
-	    return optionsManager.setOptions.apply(optionsManager, arguments);
-	};
-	Engine.createContext = function createContext(el) {
-	    if (!initialized && options.appMode)
-	        Engine.nextTick(initialize);
-	    var needMountContainer = false;
-	    if (!el) {
-	        el = document.createElement(options.containerType);
-	        el.classList.add(options.containerClass);
-	        needMountContainer = true;
-	    }
-	    var context = new Context(el);
-	    Engine.registerContext(context);
-	    if (needMountContainer)
-	        mount(context, el);
-	    return context;
-	};
-	function mount(context, el) {
-	    if (!document.body) {
-	        Engine.nextTick(mount.bind(this, context, el));
-	        return;
-	    }
-	    document.body.appendChild(el);
-	    context.emit('resize');
-	}
-	Engine.registerContext = function registerContext(context) {
-	    contexts.push(context);
-	    return context;
-	};
-	Engine.getContexts = function getContexts() {
-	    return contexts;
-	};
-	Engine.deregisterContext = function deregisterContext(context) {
-	    var i = contexts.indexOf(context);
-	    if (i >= 0)
-	        contexts.splice(i, 1);
-	};
-	Engine.nextTick = function nextTick(fn) {
-	    nextTickQueue.push(fn);
-	};
-	Engine.defer = function defer(fn) {
-	    deferQueue.push(fn);
-	};
-	optionsManager.on('change', function (data) {
-	    if (data.id === 'fpsCap')
-	        Engine.setFPSCap(data.value);
-	    else if (data.id === 'runLoop') {
-	        if (!loopEnabled && data.value) {
-	            loopEnabled = true;
-	            window.requestAnimationFrame(loop);
-	        }
-	    }
-	});
-	module.exports = Engine;
-
-/***/ },
-/* 81 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	function EventArbiter(startMode) {
-	    this.dispatchers = {};
-	    this.currMode = undefined;
-	    this.setMode(startMode);
-	}
-	EventArbiter.prototype.setMode = function setMode(mode) {
-	    if (mode !== this.currMode) {
-	        var startMode = this.currMode;
-	        if (this.dispatchers[this.currMode])
-	            this.dispatchers[this.currMode].trigger('unpipe');
-	        this.currMode = mode;
-	        if (this.dispatchers[mode])
-	            this.dispatchers[mode].emit('pipe');
-	        this.emit('change', {
-	            from: startMode,
-	            to: mode
-	        });
-	    }
-	};
-	EventArbiter.prototype.forMode = function forMode(mode) {
-	    if (!this.dispatchers[mode])
-	        this.dispatchers[mode] = new EventHandler();
-	    return this.dispatchers[mode];
-	};
-	EventArbiter.prototype.emit = function emit(eventType, event) {
-	    if (this.currMode === undefined)
-	        return false;
-	    if (!event)
-	        event = {};
-	    var dispatcher = this.dispatchers[this.currMode];
-	    if (dispatcher)
-	        return dispatcher.trigger(eventType, event);
-	};
-	module.exports = EventArbiter;
-
-/***/ },
-/* 82 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	function EventFilter(condition) {
-	    EventHandler.call(this);
-	    this._condition = condition;
-	}
-	EventFilter.prototype = Object.create(EventHandler.prototype);
-	EventFilter.prototype.constructor = EventFilter;
-	EventFilter.prototype.emit = function emit(type, data) {
-	    if (this._condition(type, data))
-	        return EventHandler.prototype.emit.apply(this, arguments);
-	};
-	EventFilter.prototype.trigger = EventFilter.prototype.emit;
-	module.exports = EventFilter;
-
-/***/ },
-/* 83 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	function EventMapper(mappingFunction) {
-	    EventHandler.call(this);
-	    this._mappingFunction = mappingFunction;
-	}
-	EventMapper.prototype = Object.create(EventHandler.prototype);
-	EventMapper.prototype.constructor = EventMapper;
-	EventMapper.prototype.subscribe = null;
-	EventMapper.prototype.unsubscribe = null;
-	EventMapper.prototype.emit = function emit(type, data) {
-	    var target = this._mappingFunction.apply(this, arguments);
-	    if (target && target.emit instanceof Function)
-	        target.emit(type, data);
-	};
-	EventMapper.prototype.trigger = EventMapper.prototype.emit;
-	module.exports = EventMapper;
-
-/***/ },
-/* 84 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function ElementAllocator(container) {
-	    if (!container)
-	        container = document.createDocumentFragment();
-	    this.container = container;
-	    this.detachedNodes = {};
-	    this.nodeCount = 0;
-	}
-	ElementAllocator.prototype.migrate = function migrate(container) {
-	    var oldContainer = this.container;
-	    if (container === oldContainer)
-	        return;
-	    if (oldContainer instanceof DocumentFragment) {
-	        container.appendChild(oldContainer);
-	    } else {
-	        while (oldContainer.hasChildNodes()) {
-	            container.appendChild(oldContainer.firstChild);
-	        }
-	    }
-	    this.container = container;
-	};
-	ElementAllocator.prototype.allocate = function allocate(type) {
-	    type = type.toLowerCase();
-	    if (!(type in this.detachedNodes))
-	        this.detachedNodes[type] = [];
-	    var nodeStore = this.detachedNodes[type];
-	    var result;
-	    if (nodeStore.length > 0) {
-	        result = nodeStore.pop();
-	    } else {
-	        result = document.createElement(type);
-	        this.container.appendChild(result);
-	    }
-	    this.nodeCount++;
-	    return result;
-	};
-	ElementAllocator.prototype.deallocate = function deallocate(element) {
-	    var nodeType = element.nodeName.toLowerCase();
-	    var nodeStore = this.detachedNodes[nodeType];
-	    nodeStore.push(element);
-	    this.nodeCount--;
-	};
-	ElementAllocator.prototype.getNodeCount = function getNodeCount() {
-	    return this.nodeCount;
-	};
-	module.exports = ElementAllocator;
-
-/***/ },
-/* 85 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(44);
-	var Transitionable = __webpack_require__(49);
-	var TransitionableTransform = __webpack_require__(133);
-	function Modifier(options) {
-	    this._transformGetter = null;
-	    this._opacityGetter = null;
-	    this._originGetter = null;
-	    this._alignGetter = null;
-	    this._sizeGetter = null;
-	    this._proportionGetter = null;
-	    this._legacyStates = {};
-	    this._output = {
-	        transform: Transform.identity,
-	        opacity: 1,
-	        origin: null,
-	        align: null,
-	        size: null,
-	        proportions: null,
-	        target: null
-	    };
-	    if (options) {
-	        if (options.transform)
-	            this.transformFrom(options.transform);
-	        if (options.opacity !== undefined)
-	            this.opacityFrom(options.opacity);
-	        if (options.origin)
-	            this.originFrom(options.origin);
-	        if (options.align)
-	            this.alignFrom(options.align);
-	        if (options.size)
-	            this.sizeFrom(options.size);
-	        if (options.proportions)
-	            this.proportionsFrom(options.proportions);
-	    }
-	}
-	Modifier.prototype.transformFrom = function transformFrom(transform) {
-	    if (transform instanceof Function)
-	        this._transformGetter = transform;
-	    else if (transform instanceof Object && transform.get)
-	        this._transformGetter = transform.get.bind(transform);
-	    else {
-	        this._transformGetter = null;
-	        this._output.transform = transform;
-	    }
-	    return this;
-	};
-	Modifier.prototype.opacityFrom = function opacityFrom(opacity) {
-	    if (opacity instanceof Function)
-	        this._opacityGetter = opacity;
-	    else if (opacity instanceof Object && opacity.get)
-	        this._opacityGetter = opacity.get.bind(opacity);
-	    else {
-	        this._opacityGetter = null;
-	        this._output.opacity = opacity;
-	    }
-	    return this;
-	};
-	Modifier.prototype.originFrom = function originFrom(origin) {
-	    if (origin instanceof Function)
-	        this._originGetter = origin;
-	    else if (origin instanceof Object && origin.get)
-	        this._originGetter = origin.get.bind(origin);
-	    else {
-	        this._originGetter = null;
-	        this._output.origin = origin;
-	    }
-	    return this;
-	};
-	Modifier.prototype.alignFrom = function alignFrom(align) {
-	    if (align instanceof Function)
-	        this._alignGetter = align;
-	    else if (align instanceof Object && align.get)
-	        this._alignGetter = align.get.bind(align);
-	    else {
-	        this._alignGetter = null;
-	        this._output.align = align;
-	    }
-	    return this;
-	};
-	Modifier.prototype.sizeFrom = function sizeFrom(size) {
-	    if (size instanceof Function)
-	        this._sizeGetter = size;
-	    else if (size instanceof Object && size.get)
-	        this._sizeGetter = size.get.bind(size);
-	    else {
-	        this._sizeGetter = null;
-	        this._output.size = size;
-	    }
-	    return this;
-	};
-	Modifier.prototype.proportionsFrom = function proportionsFrom(proportions) {
-	    if (proportions instanceof Function)
-	        this._proportionGetter = proportions;
-	    else if (proportions instanceof Object && proportions.get)
-	        this._proportionGetter = proportions.get.bind(proportions);
-	    else {
-	        this._proportionGetter = null;
-	        this._output.proportions = proportions;
-	    }
-	    return this;
-	};
-	Modifier.prototype.setTransform = function setTransform(transform, transition, callback) {
-	    if (transition || this._legacyStates.transform) {
-	        if (!this._legacyStates.transform) {
-	            this._legacyStates.transform = new TransitionableTransform(this._output.transform);
-	        }
-	        if (!this._transformGetter)
-	            this.transformFrom(this._legacyStates.transform);
-	        this._legacyStates.transform.set(transform, transition, callback);
-	        return this;
-	    } else
-	        return this.transformFrom(transform);
-	};
-	Modifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
-	    if (transition || this._legacyStates.opacity) {
-	        if (!this._legacyStates.opacity) {
-	            this._legacyStates.opacity = new Transitionable(this._output.opacity);
-	        }
-	        if (!this._opacityGetter)
-	            this.opacityFrom(this._legacyStates.opacity);
-	        return this._legacyStates.opacity.set(opacity, transition, callback);
-	    } else
-	        return this.opacityFrom(opacity);
-	};
-	Modifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
-	    if (transition || this._legacyStates.origin) {
-	        if (!this._legacyStates.origin) {
-	            this._legacyStates.origin = new Transitionable(this._output.origin || [
-	                0,
-	                0
-	            ]);
-	        }
-	        if (!this._originGetter)
-	            this.originFrom(this._legacyStates.origin);
-	        this._legacyStates.origin.set(origin, transition, callback);
-	        return this;
-	    } else
-	        return this.originFrom(origin);
-	};
-	Modifier.prototype.setAlign = function setAlign(align, transition, callback) {
-	    if (transition || this._legacyStates.align) {
-	        if (!this._legacyStates.align) {
-	            this._legacyStates.align = new Transitionable(this._output.align || [
-	                0,
-	                0
-	            ]);
-	        }
-	        if (!this._alignGetter)
-	            this.alignFrom(this._legacyStates.align);
-	        this._legacyStates.align.set(align, transition, callback);
-	        return this;
-	    } else
-	        return this.alignFrom(align);
-	};
-	Modifier.prototype.setSize = function setSize(size, transition, callback) {
-	    if (size && (transition || this._legacyStates.size)) {
-	        if (!this._legacyStates.size) {
-	            this._legacyStates.size = new Transitionable(this._output.size || [
-	                0,
-	                0
-	            ]);
-	        }
-	        if (!this._sizeGetter)
-	            this.sizeFrom(this._legacyStates.size);
-	        this._legacyStates.size.set(size, transition, callback);
-	        return this;
-	    } else
-	        return this.sizeFrom(size);
-	};
-	Modifier.prototype.setProportions = function setProportions(proportions, transition, callback) {
-	    if (proportions && (transition || this._legacyStates.proportions)) {
-	        if (!this._legacyStates.proportions) {
-	            this._legacyStates.proportions = new Transitionable(this._output.proportions || [
-	                0,
-	                0
-	            ]);
-	        }
-	        if (!this._proportionGetter)
-	            this.proportionsFrom(this._legacyStates.proportions);
-	        this._legacyStates.proportions.set(proportions, transition, callback);
-	        return this;
-	    } else
-	        return this.proportionsFrom(proportions);
-	};
-	Modifier.prototype.halt = function halt() {
-	    if (this._legacyStates.transform)
-	        this._legacyStates.transform.halt();
-	    if (this._legacyStates.opacity)
-	        this._legacyStates.opacity.halt();
-	    if (this._legacyStates.origin)
-	        this._legacyStates.origin.halt();
-	    if (this._legacyStates.align)
-	        this._legacyStates.align.halt();
-	    if (this._legacyStates.size)
-	        this._legacyStates.size.halt();
-	    if (this._legacyStates.proportions)
-	        this._legacyStates.proportions.halt();
-	    this._transformGetter = null;
-	    this._opacityGetter = null;
-	    this._originGetter = null;
-	    this._alignGetter = null;
-	    this._sizeGetter = null;
-	    this._proportionGetter = null;
-	};
-	Modifier.prototype.getTransform = function getTransform() {
-	    return this._transformGetter();
-	};
-	Modifier.prototype.getFinalTransform = function getFinalTransform() {
-	    return this._legacyStates.transform ? this._legacyStates.transform.getFinal() : this._output.transform;
-	};
-	Modifier.prototype.getOpacity = function getOpacity() {
-	    return this._opacityGetter();
-	};
-	Modifier.prototype.getOrigin = function getOrigin() {
-	    return this._originGetter();
-	};
-	Modifier.prototype.getAlign = function getAlign() {
-	    return this._alignGetter();
-	};
-	Modifier.prototype.getSize = function getSize() {
-	    return this._sizeGetter ? this._sizeGetter() : this._output.size;
-	};
-	Modifier.prototype.getProportions = function getProportions() {
-	    return this._proportionGetter ? this._proportionGetter() : this._output.proportions;
-	};
-	function _update() {
-	    if (this._transformGetter)
-	        this._output.transform = this._transformGetter();
-	    if (this._opacityGetter)
-	        this._output.opacity = this._opacityGetter();
-	    if (this._originGetter)
-	        this._output.origin = this._originGetter();
-	    if (this._alignGetter)
-	        this._output.align = this._alignGetter();
-	    if (this._sizeGetter)
-	        this._output.size = this._sizeGetter();
-	    if (this._proportionGetter)
-	        this._output.proportions = this._proportionGetter();
-	}
-	Modifier.prototype.modify = function modify(target) {
-	    _update.call(this);
-	    this._output.target = target;
-	    return this._output;
-	};
-	module.exports = Modifier;
-
-/***/ },
-/* 86 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(44);
-	var Modifier = __webpack_require__(85);
-	var RenderNode = __webpack_require__(78);
-	function Scene(definition) {
-	    this.id = null;
-	    this._objects = null;
-	    this.node = new RenderNode();
-	    this._definition = null;
-	    if (definition)
-	        this.load(definition);
-	}
-	var _MATRIX_GENERATORS = {
-	    'translate': Transform.translate,
-	    'rotate': Transform.rotate,
-	    'rotateX': Transform.rotateX,
-	    'rotateY': Transform.rotateY,
-	    'rotateZ': Transform.rotateZ,
-	    'rotateAxis': Transform.rotateAxis,
-	    'scale': Transform.scale,
-	    'skew': Transform.skew,
-	    'matrix3d': function () {
-	        return arguments;
-	    }
-	};
-	Scene.prototype.create = function create() {
-	    return new Scene(this._definition);
-	};
-	function _resolveTransformMatrix(matrixDefinition) {
-	    for (var type in _MATRIX_GENERATORS) {
-	        if (type in matrixDefinition) {
-	            var args = matrixDefinition[type];
-	            if (!(args instanceof Array))
-	                args = [args];
-	            return _MATRIX_GENERATORS[type].apply(this, args);
-	        }
-	    }
-	}
-	function _parseTransform(definition) {
-	    var transformDefinition = definition.transform;
-	    var opacity = definition.opacity;
-	    var origin = definition.origin;
-	    var align = definition.align;
-	    var size = definition.size;
-	    var transform = Transform.identity;
-	    if (transformDefinition instanceof Array) {
-	        if (transformDefinition.length === 16 && typeof transformDefinition[0] === 'number') {
-	            transform = transformDefinition;
-	        } else {
-	            for (var i = 0; i < transformDefinition.length; i++) {
-	                transform = Transform.multiply(transform, _resolveTransformMatrix(transformDefinition[i]));
-	            }
-	        }
-	    } else if (transformDefinition instanceof Function) {
-	        transform = transformDefinition;
-	    } else if (transformDefinition instanceof Object) {
-	        transform = _resolveTransformMatrix(transformDefinition);
-	    }
-	    var result = new Modifier({
-	        transform: transform,
-	        opacity: opacity,
-	        origin: origin,
-	        align: align,
-	        size: size
-	    });
-	    return result;
-	}
-	function _parseArray(definition) {
-	    var result = new RenderNode();
-	    for (var i = 0; i < definition.length; i++) {
-	        var obj = _parse.call(this, definition[i]);
-	        if (obj)
-	            result.add(obj);
-	    }
-	    return result;
-	}
-	function _parse(definition) {
-	    var result;
-	    var id;
-	    if (definition instanceof Array) {
-	        result = _parseArray.call(this, definition);
-	    } else {
-	        id = this._objects.length;
-	        if (definition.render && definition.render instanceof Function) {
-	            result = definition;
-	        } else if (definition.target) {
-	            var targetObj = _parse.call(this, definition.target);
-	            var obj = _parseTransform.call(this, definition);
-	            result = new RenderNode(obj);
-	            result.add(targetObj);
-	            if (definition.id)
-	                this.id[definition.id] = obj;
-	        } else if (definition.id) {
-	            result = new RenderNode();
-	            this.id[definition.id] = result;
-	        }
-	    }
-	    this._objects[id] = result;
-	    return result;
-	}
-	Scene.prototype.load = function load(definition) {
-	    this._definition = definition;
-	    this.id = {};
-	    this._objects = [];
-	    this.node.set(_parse.call(this, definition));
-	};
-	Scene.prototype.add = function add() {
-	    return this.node.add.apply(this.node, arguments);
-	};
-	Scene.prototype.render = function render() {
-	    return this.node.render.apply(this.node, arguments);
-	};
-	module.exports = Scene;
-
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(44);
-	function SpecParser() {
-	    this.result = {};
-	}
-	SpecParser._instance = new SpecParser();
-	SpecParser.parse = function parse(spec, context) {
-	    return SpecParser._instance.parse(spec, context);
-	};
-	SpecParser.prototype.parse = function parse(spec, context) {
-	    this.reset();
-	    this._parseSpec(spec, context, Transform.identity);
-	    return this.result;
-	};
-	SpecParser.prototype.reset = function reset() {
-	    this.result = {};
-	};
-	function _vecInContext(v, m) {
-	    return [
-	        v[0] * m[0] + v[1] * m[4] + v[2] * m[8],
-	        v[0] * m[1] + v[1] * m[5] + v[2] * m[9],
-	        v[0] * m[2] + v[1] * m[6] + v[2] * m[10]
-	    ];
-	}
-	var _zeroZero = [
-	    0,
-	    0
-	];
-	SpecParser.prototype._parseSpec = function _parseSpec(spec, parentContext, sizeContext) {
-	    var id;
-	    var target;
-	    var transform;
-	    var opacity;
-	    var origin;
-	    var align;
-	    var size;
-	    if (typeof spec === 'number') {
-	        id = spec;
-	        transform = parentContext.transform;
-	        align = parentContext.align || _zeroZero;
-	        if (parentContext.size && align && (align[0] || align[1])) {
-	            var alignAdjust = [
-	                align[0] * parentContext.size[0],
-	                align[1] * parentContext.size[1],
-	                0
-	            ];
-	            transform = Transform.thenMove(transform, _vecInContext(alignAdjust, sizeContext));
-	        }
-	        this.result[id] = {
-	            transform: transform,
-	            opacity: parentContext.opacity,
-	            origin: parentContext.origin || _zeroZero,
-	            align: parentContext.align || _zeroZero,
-	            size: parentContext.size
-	        };
-	    } else if (!spec) {
-	        return;
-	    } else if (spec instanceof Array) {
-	        for (var i = 0; i < spec.length; i++) {
-	            this._parseSpec(spec[i], parentContext, sizeContext);
-	        }
-	    } else {
-	        target = spec.target;
-	        transform = parentContext.transform;
-	        opacity = parentContext.opacity;
-	        origin = parentContext.origin;
-	        align = parentContext.align;
-	        size = parentContext.size;
-	        var nextSizeContext = sizeContext;
-	        if (spec.opacity !== undefined)
-	            opacity = parentContext.opacity * spec.opacity;
-	        if (spec.transform)
-	            transform = Transform.multiply(parentContext.transform, spec.transform);
-	        if (spec.origin) {
-	            origin = spec.origin;
-	            nextSizeContext = parentContext.transform;
-	        }
-	        if (spec.align)
-	            align = spec.align;
-	        if (spec.size || spec.proportions) {
-	            var parentSize = size;
-	            size = [
-	                size[0],
-	                size[1]
-	            ];
-	            if (spec.size) {
-	                if (spec.size[0] !== undefined)
-	                    size[0] = spec.size[0];
-	                if (spec.size[1] !== undefined)
-	                    size[1] = spec.size[1];
-	            }
-	            if (spec.proportions) {
-	                if (spec.proportions[0] !== undefined)
-	                    size[0] = size[0] * spec.proportions[0];
-	                if (spec.proportions[1] !== undefined)
-	                    size[1] = size[1] * spec.proportions[1];
-	            }
-	            if (parentSize) {
-	                if (align && (align[0] || align[1]))
-	                    transform = Transform.thenMove(transform, _vecInContext([
-	                        align[0] * parentSize[0],
-	                        align[1] * parentSize[1],
-	                        0
-	                    ], sizeContext));
-	                if (origin && (origin[0] || origin[1]))
-	                    transform = Transform.moveThen([
-	                        -origin[0] * size[0],
-	                        -origin[1] * size[1],
-	                        0
-	                    ], transform);
-	            }
-	            nextSizeContext = parentContext.transform;
-	            origin = null;
-	            align = null;
-	        }
-	        this._parseSpec(target, {
-	            transform: transform,
-	            opacity: opacity,
-	            origin: origin,
-	            align: align,
-	            size: size
-	        }, nextSizeContext);
-	    }
-	};
-	module.exports = SpecParser;
-
-/***/ },
-/* 88 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Vector = __webpack_require__(45);
-	function Matrix(values) {
-	    this.values = values || [
-	        [
-	            1,
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            1,
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            1
-	        ]
-	    ];
-	    return this;
-	}
-	var _register = new Matrix();
-	var _vectorRegister = new Vector();
-	Matrix.prototype.get = function get() {
-	    return this.values;
-	};
-	Matrix.prototype.set = function set(values) {
-	    this.values = values;
-	};
-	Matrix.prototype.vectorMultiply = function vectorMultiply(v) {
-	    var M = this.get();
-	    var v0 = v.x;
-	    var v1 = v.y;
-	    var v2 = v.z;
-	    var M0 = M[0];
-	    var M1 = M[1];
-	    var M2 = M[2];
-	    var M00 = M0[0];
-	    var M01 = M0[1];
-	    var M02 = M0[2];
-	    var M10 = M1[0];
-	    var M11 = M1[1];
-	    var M12 = M1[2];
-	    var M20 = M2[0];
-	    var M21 = M2[1];
-	    var M22 = M2[2];
-	    return _vectorRegister.setXYZ(M00 * v0 + M01 * v1 + M02 * v2, M10 * v0 + M11 * v1 + M12 * v2, M20 * v0 + M21 * v1 + M22 * v2);
-	};
-	Matrix.prototype.multiply = function multiply(M2) {
-	    var M1 = this.get();
-	    var result = [[]];
-	    for (var i = 0; i < 3; i++) {
-	        result[i] = [];
-	        for (var j = 0; j < 3; j++) {
-	            var sum = 0;
-	            for (var k = 0; k < 3; k++) {
-	                sum += M1[i][k] * M2[k][j];
-	            }
-	            result[i][j] = sum;
-	        }
-	    }
-	    return _register.set(result);
-	};
-	Matrix.prototype.transpose = function transpose() {
-	    var result = [
-	        [],
-	        [],
-	        []
-	    ];
-	    var M = this.get();
-	    for (var row = 0; row < 3; row++) {
-	        for (var col = 0; col < 3; col++) {
-	            result[row][col] = M[col][row];
-	        }
-	    }
-	    return _register.set(result);
-	};
-	Matrix.prototype.clone = function clone() {
-	    var values = this.get();
-	    var M = [];
-	    for (var row = 0; row < 3; row++)
-	        M[row] = values[row].slice();
-	    return new Matrix(M);
-	};
-	module.exports = Matrix;
-
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Matrix = __webpack_require__(88);
-	function Quaternion(w, x, y, z) {
-	    if (arguments.length === 1)
-	        this.set(w);
-	    else {
-	        this.w = w !== undefined ? w : 1;
-	        this.x = x !== undefined ? x : 0;
-	        this.y = y !== undefined ? y : 0;
-	        this.z = z !== undefined ? z : 0;
-	    }
-	    return this;
-	}
-	var register = new Quaternion(1, 0, 0, 0);
-	Quaternion.prototype.add = function add(q) {
-	    return register.setWXYZ(this.w + q.w, this.x + q.x, this.y + q.y, this.z + q.z);
-	};
-	Quaternion.prototype.sub = function sub(q) {
-	    return register.setWXYZ(this.w - q.w, this.x - q.x, this.y - q.y, this.z - q.z);
-	};
-	Quaternion.prototype.scalarDivide = function scalarDivide(s) {
-	    return this.scalarMultiply(1 / s);
-	};
-	Quaternion.prototype.scalarMultiply = function scalarMultiply(s) {
-	    return register.setWXYZ(this.w * s, this.x * s, this.y * s, this.z * s);
-	};
-	Quaternion.prototype.multiply = function multiply(q) {
-	    var x1 = this.x;
-	    var y1 = this.y;
-	    var z1 = this.z;
-	    var w1 = this.w;
-	    var x2 = q.x;
-	    var y2 = q.y;
-	    var z2 = q.z;
-	    var w2 = q.w || 0;
-	    return register.setWXYZ(w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2, x1 * w2 + x2 * w1 + y2 * z1 - y1 * z2, y1 * w2 + y2 * w1 + x1 * z2 - x2 * z1, z1 * w2 + z2 * w1 + x2 * y1 - x1 * y2);
-	};
-	var conj = new Quaternion(1, 0, 0, 0);
-	Quaternion.prototype.rotateVector = function rotateVector(v) {
-	    conj.set(this.conj());
-	    return register.set(this.multiply(v).multiply(conj));
-	};
-	Quaternion.prototype.inverse = function inverse() {
-	    return register.set(this.conj().scalarDivide(this.normSquared()));
-	};
-	Quaternion.prototype.negate = function negate() {
-	    return this.scalarMultiply(-1);
-	};
-	Quaternion.prototype.conj = function conj() {
-	    return register.setWXYZ(this.w, -this.x, -this.y, -this.z);
-	};
-	Quaternion.prototype.normalize = function normalize(length) {
-	    length = length === undefined ? 1 : length;
-	    return this.scalarDivide(length * this.norm());
-	};
-	Quaternion.prototype.makeFromAngleAndAxis = function makeFromAngleAndAxis(angle, v) {
-	    var n = v.normalize();
-	    var ha = angle * 0.5;
-	    var s = -Math.sin(ha);
-	    this.x = s * n.x;
-	    this.y = s * n.y;
-	    this.z = s * n.z;
-	    this.w = Math.cos(ha);
-	    return this;
-	};
-	Quaternion.prototype.setWXYZ = function setWXYZ(w, x, y, z) {
-	    register.clear();
-	    this.w = w;
-	    this.x = x;
-	    this.y = y;
-	    this.z = z;
-	    return this;
-	};
-	Quaternion.prototype.set = function set(v) {
-	    if (v instanceof Array) {
-	        this.w = 0;
-	        this.x = v[0];
-	        this.y = v[1];
-	        this.z = v[2];
-	    } else {
-	        this.w = v.w;
-	        this.x = v.x;
-	        this.y = v.y;
-	        this.z = v.z;
-	    }
-	    if (this !== register)
-	        register.clear();
-	    return this;
-	};
-	Quaternion.prototype.put = function put(q) {
-	    q.set(register);
-	};
-	Quaternion.prototype.clone = function clone() {
-	    return new Quaternion(this);
-	};
-	Quaternion.prototype.clear = function clear() {
-	    this.w = 1;
-	    this.x = 0;
-	    this.y = 0;
-	    this.z = 0;
-	    return this;
-	};
-	Quaternion.prototype.isEqual = function isEqual(q) {
-	    return q.w === this.w && q.x === this.x && q.y === this.y && q.z === this.z;
-	};
-	Quaternion.prototype.dot = function dot(q) {
-	    return this.w * q.w + this.x * q.x + this.y * q.y + this.z * q.z;
-	};
-	Quaternion.prototype.normSquared = function normSquared() {
-	    return this.dot(this);
-	};
-	Quaternion.prototype.norm = function norm() {
-	    return Math.sqrt(this.normSquared());
-	};
-	Quaternion.prototype.isZero = function isZero() {
-	    return !(this.x || this.y || this.z);
-	};
-	Quaternion.prototype.getTransform = function getTransform() {
-	    var temp = this.normalize(1);
-	    var x = temp.x;
-	    var y = temp.y;
-	    var z = temp.z;
-	    var w = temp.w;
-	    return [
-	        1 - 2 * y * y - 2 * z * z,
-	        2 * x * y - 2 * z * w,
-	        2 * x * z + 2 * y * w,
-	        0,
-	        2 * x * y + 2 * z * w,
-	        1 - 2 * x * x - 2 * z * z,
-	        2 * y * z - 2 * x * w,
-	        0,
-	        2 * x * z - 2 * y * w,
-	        2 * y * z + 2 * x * w,
-	        1 - 2 * x * x - 2 * y * y,
-	        0,
-	        0,
-	        0,
-	        0,
-	        1
-	    ];
-	};
-	var matrixRegister = new Matrix();
-	Quaternion.prototype.getMatrix = function getMatrix() {
-	    var temp = this.normalize(1);
-	    var x = temp.x;
-	    var y = temp.y;
-	    var z = temp.z;
-	    var w = temp.w;
-	    return matrixRegister.set([
-	        [
-	            1 - 2 * y * y - 2 * z * z,
-	            2 * x * y + 2 * z * w,
-	            2 * x * z - 2 * y * w
-	        ],
-	        [
-	            2 * x * y - 2 * z * w,
-	            1 - 2 * x * x - 2 * z * z,
-	            2 * y * z + 2 * x * w
-	        ],
-	        [
-	            2 * x * z + 2 * y * w,
-	            2 * y * z - 2 * x * w,
-	            1 - 2 * x * x - 2 * y * y
-	        ]
-	    ]);
-	};
-	var epsilon = 0.00001;
-	Quaternion.prototype.slerp = function slerp(q, t) {
-	    var omega;
-	    var cosomega;
-	    var sinomega;
-	    var scaleFrom;
-	    var scaleTo;
-	    cosomega = this.dot(q);
-	    if (1 - cosomega > epsilon) {
-	        omega = Math.acos(cosomega);
-	        sinomega = Math.sin(omega);
-	        scaleFrom = Math.sin((1 - t) * omega) / sinomega;
-	        scaleTo = Math.sin(t * omega) / sinomega;
-	    } else {
-	        scaleFrom = 1 - t;
-	        scaleTo = t;
-	    }
-	    return register.set(this.scalarMultiply(scaleFrom / scaleTo).add(q).scalarMultiply(scaleTo));
-	};
-	module.exports = Quaternion;
-
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var RAND = Math.random;
-	function _randomFloat(min, max) {
-	    return min + RAND() * (max - min);
-	}
-	function _randomInteger(min, max) {
-	    return min + (RAND() * (max - min + 1) >> 0);
-	}
-	function _range(randomFunction, min, max, dim) {
-	    min = min !== undefined ? min : 0;
-	    max = max !== undefined ? max : 1;
-	    if (dim !== undefined) {
-	        var result = [];
-	        for (var i = 0; i < dim; i++)
-	            result.push(randomFunction(min, max));
-	        return result;
-	    } else
-	        return randomFunction(min, max);
-	}
-	var Random = {};
-	Random.integer = function integer(min, max, dim) {
-	    return _range(_randomInteger, min, max, dim);
-	};
-	Random.range = function range(min, max, dim) {
-	    return _range(_randomFloat, min, max, dim);
-	};
-	Random.sign = function sign(prob) {
-	    return Random.bool(prob) ? 1 : -1;
-	};
-	Random.bool = function bool(prob) {
-	    prob = prob !== undefined ? prob : 0.5;
-	    return RAND() < prob;
-	};
-	module.exports = Random;
-
-/***/ },
-/* 91 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Utilities = {};
-	Utilities.clamp = function clamp(value, range) {
-	    return Math.max(Math.min(value, range[1]), range[0]);
-	};
-	Utilities.length = function length(array) {
-	    var distanceSquared = 0;
-	    for (var i = 0; i < array.length; i++) {
-	        distanceSquared += array[i] * array[i];
-	    }
-	    return Math.sqrt(distanceSquared);
-	};
-	module.exports = Utilities;
-
-/***/ },
-/* 92 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	var Transitionable = __webpack_require__(49);
-	function Accumulator(value, eventName) {
-	    if (eventName === undefined)
-	        eventName = 'update';
-	    this._state = value && value.get && value.set ? value : new Transitionable(value || 0);
-	    this._eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    this._eventInput.on(eventName, _handleUpdate.bind(this));
-	}
-	function _handleUpdate(data) {
-	    var delta = data.delta;
-	    var state = this.get();
-	    if (delta.constructor === state.constructor) {
-	        var newState = delta instanceof Array ? [
-	            state[0] + delta[0],
-	            state[1] + delta[1]
-	        ] : state + delta;
-	        this.set(newState);
-	    }
-	}
-	Accumulator.prototype.get = function get() {
-	    return this._state.get();
-	};
-	Accumulator.prototype.set = function set(value) {
-	    this._state.set(value);
-	};
-	module.exports = Accumulator;
-
-/***/ },
-/* 93 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var hasTouch = 'ontouchstart' in window;
-	function kill(type) {
-	    window.addEventListener(type, function (event) {
-	        event.stopPropagation();
-	        return false;
-	    }, true);
-	}
-	if (hasTouch) {
-	    kill('mousedown');
-	    kill('mousemove');
-	    kill('mouseup');
-	    kill('mouseleave');
-	}
-
-/***/ },
-/* 94 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	(function () {
-	    if (!window.CustomEvent)
-	        return;
-	    var clickThreshold = 300;
-	    var clickWindow = 500;
-	    var potentialClicks = {};
-	    var recentlyDispatched = {};
-	    var _now = Date.now;
-	    window.addEventListener('touchstart', function (event) {
-	        var timestamp = _now();
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            potentialClicks[touch.identifier] = timestamp;
-	        }
-	    });
-	    window.addEventListener('touchmove', function (event) {
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            delete potentialClicks[touch.identifier];
-	        }
-	    });
-	    window.addEventListener('touchend', function (event) {
-	        var currTime = _now();
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            var startTime = potentialClicks[touch.identifier];
-	            if (startTime && currTime - startTime < clickThreshold) {
-	                var clickEvt = new window.CustomEvent('click', {
-	                    'bubbles': true,
-	                    'detail': touch
-	                });
-	                recentlyDispatched[currTime] = event;
-	                event.target.dispatchEvent(clickEvt);
-	            }
-	            delete potentialClicks[touch.identifier];
-	        }
-	    });
-	    window.addEventListener('click', function (event) {
-	        var currTime = _now();
-	        for (var i in recentlyDispatched) {
-	            var previousEvent = recentlyDispatched[i];
-	            if (currTime - i < clickWindow) {
-	                if (event instanceof window.MouseEvent && event.target === previousEvent.target)
-	                    event.stopPropagation();
-	            } else
-	                delete recentlyDispatched[i];
-	        }
-	    }, true);
-	}());
-
-/***/ },
-/* 95 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	function GenericSync(syncs, options) {
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._syncs = {};
-	    if (syncs)
-	        this.addSync(syncs);
-	    if (options)
-	        this.setOptions(options);
-	}
-	GenericSync.DIRECTION_X = 0;
-	GenericSync.DIRECTION_Y = 1;
-	GenericSync.DIRECTION_Z = 2;
-	var registry = {};
-	GenericSync.register = function register(syncObject) {
-	    for (var key in syncObject) {
-	        if (registry[key]) {
-	            if (registry[key] !== syncObject[key])
-	                throw new Error('Conflicting sync classes for key: ' + key);
-	        } else
-	            registry[key] = syncObject[key];
-	    }
-	};
-	GenericSync.prototype.setOptions = function (options) {
-	    for (var key in this._syncs) {
-	        this._syncs[key].setOptions(options);
-	    }
-	};
-	GenericSync.prototype.pipeSync = function pipeToSync(key) {
-	    var sync = this._syncs[key];
-	    this._eventInput.pipe(sync);
-	    sync.pipe(this._eventOutput);
-	};
-	GenericSync.prototype.unpipeSync = function unpipeFromSync(key) {
-	    var sync = this._syncs[key];
-	    this._eventInput.unpipe(sync);
-	    sync.unpipe(this._eventOutput);
-	};
-	function _addSingleSync(key, options) {
-	    if (!registry[key])
-	        return;
-	    this._syncs[key] = new registry[key](options);
-	    this.pipeSync(key);
-	}
-	GenericSync.prototype.addSync = function addSync(syncs) {
-	    if (syncs instanceof Array)
-	        for (var i = 0; i < syncs.length; i++)
-	            _addSingleSync.call(this, syncs[i]);
-	    else if (syncs instanceof Object)
-	        for (var key in syncs)
-	            _addSingleSync.call(this, key, syncs[key]);
-	};
-	module.exports = GenericSync;
-
-/***/ },
-/* 96 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	var OptionsManager = __webpack_require__(43);
-	function MouseSync(options) {
-	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._eventInput.on('mousedown', _handleStart.bind(this));
-	    this._eventInput.on('mousemove', _handleMove.bind(this));
-	    this._eventInput.on('mouseup', _handleEnd.bind(this));
-	    if (this.options.propogate)
-	        this._eventInput.on('mouseleave', _handleLeave.bind(this));
-	    else
-	        this._eventInput.on('mouseleave', _handleEnd.bind(this));
-	    if (this.options.clickThreshold) {
-	        window.addEventListener('click', function (event) {
-	            if (Math.sqrt(Math.pow(this._displacement[0], 2) + Math.pow(this._displacement[1], 2)) > this.options.clickThreshold) {
-	                event.stopPropagation();
-	            }
-	        }.bind(this), true);
-	    }
-	    this._payload = {
-	        delta: null,
-	        position: null,
-	        velocity: null,
-	        clientX: 0,
-	        clientY: 0,
-	        offsetX: 0,
-	        offsetY: 0
-	    };
-	    this._positionHistory = [];
-	    this._position = null;
-	    this._prevCoord = undefined;
-	    this._prevTime = undefined;
-	    this._down = false;
-	    this._moved = false;
-	    this._displacement = [
-	        0,
-	        0
-	    ];
-	    this._documentActive = false;
-	}
-	MouseSync.DEFAULT_OPTIONS = {
-	    clickThreshold: undefined,
-	    direction: undefined,
-	    rails: false,
-	    scale: 1,
-	    propogate: true,
-	    velocitySampleLength: 10,
-	    preventDefault: true
-	};
-	MouseSync.DIRECTION_X = 0;
-	MouseSync.DIRECTION_Y = 1;
-	var MINIMUM_TICK_TIME = 8;
-	function _handleStart(event) {
-	    var delta;
-	    var velocity;
-	    if (this.options.preventDefault)
-	        event.preventDefault();
-	    var x = event.clientX;
-	    var y = event.clientY;
-	    this._prevCoord = [
-	        x,
-	        y
-	    ];
-	    this._prevTime = Date.now();
-	    this._down = true;
-	    this._move = false;
-	    if (this.options.direction !== undefined) {
-	        this._position = 0;
-	        delta = 0;
-	        velocity = 0;
-	    } else {
-	        this._position = [
-	            0,
-	            0
-	        ];
-	        delta = [
-	            0,
-	            0
-	        ];
-	        velocity = [
-	            0,
-	            0
-	        ];
-	    }
-	    if (this.options.clickThreshold) {
-	        this._displacement = [
-	            0,
-	            0
-	        ];
-	    }
-	    var payload = this._payload;
-	    payload.delta = delta;
-	    payload.position = this._position;
-	    payload.velocity = velocity;
-	    payload.clientX = x;
-	    payload.clientY = y;
-	    payload.offsetX = event.offsetX;
-	    payload.offsetY = event.offsetY;
-	    this._positionHistory.push({
-	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
-	        time: this._prevTime
-	    });
-	    this._eventOutput.emit('start', payload);
-	    this._documentActive = false;
-	}
-	function _handleMove(event) {
-	    if (!this._prevCoord)
-	        return;
-	    var prevCoord = this._prevCoord;
-	    var prevTime = this._prevTime;
-	    var x = event.clientX;
-	    var y = event.clientY;
-	    var currTime = Date.now();
-	    var diffX = x - prevCoord[0];
-	    var diffY = y - prevCoord[1];
-	    if (this.options.rails) {
-	        if (Math.abs(diffX) > Math.abs(diffY))
-	            diffY = 0;
-	        else
-	            diffX = 0;
-	    }
-	    var diffTime = Math.max(currTime - this._positionHistory[0].time, MINIMUM_TICK_TIME);
-	    var scale = this.options.scale;
-	    var nextVel;
-	    var nextDelta;
-	    if (this.options.direction === MouseSync.DIRECTION_X) {
-	        nextDelta = scale * diffX;
-	        this._position += nextDelta;
-	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
-	    } else if (this.options.direction === MouseSync.DIRECTION_Y) {
-	        nextDelta = scale * diffY;
-	        this._position += nextDelta;
-	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
-	    } else {
-	        nextDelta = [
-	            scale * diffX,
-	            scale * diffY
-	        ];
-	        nextVel = [
-	            scale * (this._position[0] - this._positionHistory[0].position[0]) / diffTime,
-	            scale * (this._position[1] - this._positionHistory[0].position[1]) / diffTime
-	        ];
-	        this._position[0] += nextDelta[0];
-	        this._position[1] += nextDelta[1];
-	    }
-	    if (this.options.clickThreshold !== false) {
-	        this._displacement[0] += diffX;
-	        this._displacement[1] += diffY;
-	    }
-	    var payload = this._payload;
-	    payload.delta = nextDelta;
-	    payload.position = this._position;
-	    payload.velocity = nextVel;
-	    payload.clientX = x;
-	    payload.clientY = y;
-	    payload.offsetX = event.offsetX;
-	    payload.offsetY = event.offsetY;
-	    if (this._positionHistory.length === this.options.velocitySampleLength) {
-	        this._positionHistory.shift();
-	    }
-	    this._positionHistory.push({
-	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
-	        time: currTime
-	    });
-	    this._eventOutput.emit('update', payload);
-	    this._prevCoord = [
-	        x,
-	        y
-	    ];
-	    this._prevTime = currTime;
-	    this._move = true;
-	}
-	function _handleEnd(event) {
-	    if (!this._down)
-	        return;
-	    this._eventOutput.emit('end', this._payload);
-	    this._prevCoord = undefined;
-	    this._prevTime = undefined;
-	    this._down = false;
-	    this._move = false;
-	    this._positionHistory = [];
-	}
-	function _handleLeave(event) {
-	    if (!this._down || !this._move)
-	        return;
-	    if (!this._documentActive) {
-	        var boundMove = _handleMove.bind(this);
-	        var boundEnd = function (event) {
-	            _handleEnd.call(this, event);
-	            document.removeEventListener('mousemove', boundMove);
-	            document.removeEventListener('mouseup', boundEnd);
-	        }.bind(this, event);
-	        document.addEventListener('mousemove', boundMove);
-	        document.addEventListener('mouseup', boundEnd);
-	        this._documentActive = true;
-	    }
-	}
-	MouseSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	MouseSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = MouseSync;
-
-/***/ },
-/* 97 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(102);
-	var OptionsManager = __webpack_require__(43);
-	function PinchSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._displacement = 0;
-	    this._previousDistance = 0;
-	}
-	PinchSync.prototype = Object.create(TwoFingerSync.prototype);
-	PinchSync.prototype.constructor = PinchSync;
-	PinchSync.DEFAULT_OPTIONS = { scale: 1 };
-	PinchSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._previousDistance = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    this._displacement = 0;
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ],
-	        distance: this._dist,
-	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
-	    });
-	};
-	PinchSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var scale = this.options.scale;
-	    var delta = scale * (currDist - this._previousDistance);
-	    var velocity = delta / diffTime;
-	    this._previousDistance = currDist;
-	    this._displacement += delta;
-	    this._eventOutput.emit('update', {
-	        delta: delta,
-	        velocity: velocity,
-	        distance: currDist,
-	        displacement: this._displacement,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	};
-	PinchSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	PinchSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = PinchSync;
-
-/***/ },
-/* 98 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(102);
-	var OptionsManager = __webpack_require__(43);
-	function RotateSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._angle = 0;
-	    this._previousAngle = 0;
-	}
-	RotateSync.prototype = Object.create(TwoFingerSync.prototype);
-	RotateSync.prototype.constructor = RotateSync;
-	RotateSync.DEFAULT_OPTIONS = { scale: 1 };
-	RotateSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._angle = 0;
-	    this._previousAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        angle: this._angle,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	};
-	RotateSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var scale = this.options.scale;
-	    var currAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var diffTheta = scale * (currAngle - this._previousAngle);
-	    var velTheta = diffTheta / diffTime;
-	    this._angle += diffTheta;
-	    this._eventOutput.emit('update', {
-	        delta: diffTheta,
-	        velocity: velTheta,
-	        angle: this._angle,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	    this._previousAngle = currAngle;
-	};
-	RotateSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	RotateSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = RotateSync;
-
-/***/ },
-/* 99 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(102);
-	var OptionsManager = __webpack_require__(43);
-	function ScaleSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._scaleFactor = 1;
-	    this._startDist = 0;
-	    this._eventInput.on('pipe', _reset.bind(this));
-	}
-	ScaleSync.prototype = Object.create(TwoFingerSync.prototype);
-	ScaleSync.prototype.constructor = ScaleSync;
-	ScaleSync.DEFAULT_OPTIONS = { scale: 1 };
-	function _reset() {
-	    this.touchAId = undefined;
-	    this.touchBId = undefined;
-	}
-	ScaleSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._scaleFactor = 1;
-	    this._startDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ],
-	        distance: this._startDist,
-	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
-	    });
-	};
-	ScaleSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var scale = this.options.scale;
-	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var delta = (currDist - this._startDist) / this._startDist;
-	    var newScaleFactor = Math.max(1 + scale * delta, 0);
-	    var veloScale = (newScaleFactor - this._scaleFactor) / diffTime;
-	    this._eventOutput.emit('update', {
-	        delta: delta,
-	        scale: newScaleFactor,
-	        velocity: veloScale,
-	        distance: currDist,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	    this._scaleFactor = newScaleFactor;
-	};
-	ScaleSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	ScaleSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = ScaleSync;
-
-/***/ },
-/* 100 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TouchTracker = __webpack_require__(101);
-	var EventHandler = __webpack_require__(53);
-	var OptionsManager = __webpack_require__(43);
-	function TouchSync(options) {
-	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._eventOutput = new EventHandler();
-	    this._touchTracker = new TouchTracker({ touchLimit: this.options.touchLimit });
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    EventHandler.setInputHandler(this, this._touchTracker);
-	    this._touchTracker.on('trackstart', _handleStart.bind(this));
-	    this._touchTracker.on('trackmove', _handleMove.bind(this));
-	    this._touchTracker.on('trackend', _handleEnd.bind(this));
-	    this._payload = {
-	        delta: null,
-	        position: null,
-	        velocity: null,
-	        clientX: undefined,
-	        clientY: undefined,
-	        count: 0,
-	        touch: undefined
-	    };
-	    this._position = null;
-	}
-	TouchSync.DEFAULT_OPTIONS = {
-	    direction: undefined,
-	    rails: false,
-	    touchLimit: 1,
-	    velocitySampleLength: 10,
-	    scale: 1
-	};
-	TouchSync.DIRECTION_X = 0;
-	TouchSync.DIRECTION_Y = 1;
-	var MINIMUM_TICK_TIME = 8;
-	function _handleStart(data) {
-	    var velocity;
-	    var delta;
-	    if (this.options.direction !== undefined) {
-	        this._position = 0;
-	        velocity = 0;
-	        delta = 0;
-	    } else {
-	        this._position = [
-	            0,
-	            0
-	        ];
-	        velocity = [
-	            0,
-	            0
-	        ];
-	        delta = [
-	            0,
-	            0
-	        ];
-	    }
-	    var payload = this._payload;
-	    payload.delta = delta;
-	    payload.position = this._position;
-	    payload.velocity = velocity;
-	    payload.clientX = data.x;
-	    payload.clientY = data.y;
-	    payload.count = data.count;
-	    payload.touch = data.identifier;
-	    this._eventOutput.emit('start', payload);
-	}
-	function _handleMove(data) {
-	    var history = data.history;
-	    var currHistory = history[history.length - 1];
-	    var prevHistory = history[history.length - 2];
-	    var distantHistory = history[history.length - this.options.velocitySampleLength] ? history[history.length - this.options.velocitySampleLength] : history[history.length - 2];
-	    var distantTime = distantHistory.timestamp;
-	    var currTime = currHistory.timestamp;
-	    var diffX = currHistory.x - prevHistory.x;
-	    var diffY = currHistory.y - prevHistory.y;
-	    var velDiffX = currHistory.x - distantHistory.x;
-	    var velDiffY = currHistory.y - distantHistory.y;
-	    if (this.options.rails) {
-	        if (Math.abs(diffX) > Math.abs(diffY))
-	            diffY = 0;
-	        else
-	            diffX = 0;
-	        if (Math.abs(velDiffX) > Math.abs(velDiffY))
-	            velDiffY = 0;
-	        else
-	            velDiffX = 0;
-	    }
-	    var diffTime = Math.max(currTime - distantTime, MINIMUM_TICK_TIME);
-	    var velX = velDiffX / diffTime;
-	    var velY = velDiffY / diffTime;
-	    var scale = this.options.scale;
-	    var nextVel;
-	    var nextDelta;
-	    if (this.options.direction === TouchSync.DIRECTION_X) {
-	        nextDelta = scale * diffX;
-	        nextVel = scale * velX;
-	        this._position += nextDelta;
-	    } else if (this.options.direction === TouchSync.DIRECTION_Y) {
-	        nextDelta = scale * diffY;
-	        nextVel = scale * velY;
-	        this._position += nextDelta;
-	    } else {
-	        nextDelta = [
-	            scale * diffX,
-	            scale * diffY
-	        ];
-	        nextVel = [
-	            scale * velX,
-	            scale * velY
-	        ];
-	        this._position[0] += nextDelta[0];
-	        this._position[1] += nextDelta[1];
-	    }
-	    var payload = this._payload;
-	    payload.delta = nextDelta;
-	    payload.velocity = nextVel;
-	    payload.position = this._position;
-	    payload.clientX = data.x;
-	    payload.clientY = data.y;
-	    payload.count = data.count;
-	    payload.touch = data.identifier;
-	    this._eventOutput.emit('update', payload);
-	}
-	function _handleEnd(data) {
-	    this._payload.count = data.count;
-	    this._eventOutput.emit('end', this._payload);
-	}
-	TouchSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	TouchSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	module.exports = TouchSync;
-
-/***/ },
-/* 101 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	var _now = Date.now;
-	function _timestampTouch(touch, event, history) {
-	    return {
-	        x: touch.clientX,
-	        y: touch.clientY,
-	        identifier: touch.identifier,
-	        origin: event.origin,
-	        timestamp: _now(),
-	        count: event.touches.length,
-	        history: history
-	    };
-	}
-	function _handleStart(event) {
-	    if (event.touches.length > this.touchLimit)
-	        return;
-	    this.isTouched = true;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var data = _timestampTouch(touch, event, null);
-	        this.eventOutput.emit('trackstart', data);
-	        if (!this.selective && !this.touchHistory[touch.identifier])
-	            this.track(data);
-	    }
-	}
-	function _handleMove(event) {
-	    if (event.touches.length > this.touchLimit)
-	        return;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var history = this.touchHistory[touch.identifier];
-	        if (history) {
-	            var data = _timestampTouch(touch, event, history);
-	            this.touchHistory[touch.identifier].push(data);
-	            this.eventOutput.emit('trackmove', data);
-	        }
-	    }
-	}
-	function _handleEnd(event) {
-	    if (!this.isTouched)
-	        return;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var history = this.touchHistory[touch.identifier];
-	        if (history) {
-	            var data = _timestampTouch(touch, event, history);
-	            this.eventOutput.emit('trackend', data);
-	            delete this.touchHistory[touch.identifier];
-	        }
-	    }
-	    this.isTouched = false;
-	}
-	function _handleUnpipe() {
-	    for (var i in this.touchHistory) {
-	        var history = this.touchHistory[i];
-	        this.eventOutput.emit('trackend', {
-	            touch: history[history.length - 1].touch,
-	            timestamp: Date.now(),
-	            count: 0,
-	            history: history
-	        });
-	        delete this.touchHistory[i];
-	    }
-	}
-	function TouchTracker(options) {
-	    this.selective = options.selective;
-	    this.touchLimit = options.touchLimit || 1;
-	    this.touchHistory = {};
-	    this.eventInput = new EventHandler();
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.eventInput);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    this.eventInput.on('touchstart', _handleStart.bind(this));
-	    this.eventInput.on('touchmove', _handleMove.bind(this));
-	    this.eventInput.on('touchend', _handleEnd.bind(this));
-	    this.eventInput.on('touchcancel', _handleEnd.bind(this));
-	    this.eventInput.on('unpipe', _handleUnpipe.bind(this));
-	    this.isTouched = false;
-	}
-	TouchTracker.prototype.track = function track(data) {
-	    this.touchHistory[data.identifier] = [data];
-	};
-	module.exports = TouchTracker;
-
-/***/ },
-/* 102 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(53);
-	function TwoFingerSync() {
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.touchAEnabled = false;
-	    this.touchAId = 0;
-	    this.posA = null;
-	    this.timestampA = 0;
-	    this.touchBEnabled = false;
-	    this.touchBId = 0;
-	    this.posB = null;
-	    this.timestampB = 0;
-	    this._eventInput.on('touchstart', this.handleStart.bind(this));
-	    this._eventInput.on('touchmove', this.handleMove.bind(this));
-	    this._eventInput.on('touchend', this.handleEnd.bind(this));
-	    this._eventInput.on('touchcancel', this.handleEnd.bind(this));
-	}
-	TwoFingerSync.calculateAngle = function (posA, posB) {
-	    var diffX = posB[0] - posA[0];
-	    var diffY = posB[1] - posA[1];
-	    return Math.atan2(diffY, diffX);
-	};
-	TwoFingerSync.calculateDistance = function (posA, posB) {
-	    var diffX = posB[0] - posA[0];
-	    var diffY = posB[1] - posA[1];
-	    return Math.sqrt(diffX * diffX + diffY * diffY);
-	};
-	TwoFingerSync.calculateCenter = function (posA, posB) {
-	    return [
-	        (posA[0] + posB[0]) / 2,
-	        (posA[1] + posB[1]) / 2
-	    ];
-	};
-	var _now = Date.now;
-	TwoFingerSync.prototype.handleStart = function handleStart(event) {
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (!this.touchAEnabled) {
-	            this.touchAId = touch.identifier;
-	            this.touchAEnabled = true;
-	            this.posA = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampA = _now();
-	        } else if (!this.touchBEnabled) {
-	            this.touchBId = touch.identifier;
-	            this.touchBEnabled = true;
-	            this.posB = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampB = _now();
-	            this._startUpdate(event);
-	        }
-	    }
-	};
-	TwoFingerSync.prototype.handleMove = function handleMove(event) {
-	    if (!(this.touchAEnabled && this.touchBEnabled))
-	        return;
-	    var prevTimeA = this.timestampA;
-	    var prevTimeB = this.timestampB;
-	    var diffTime;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (touch.identifier === this.touchAId) {
-	            this.posA = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampA = _now();
-	            diffTime = this.timestampA - prevTimeA;
-	        } else if (touch.identifier === this.touchBId) {
-	            this.posB = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampB = _now();
-	            diffTime = this.timestampB - prevTimeB;
-	        }
-	    }
-	    if (diffTime)
-	        this._moveUpdate(diffTime);
-	};
-	TwoFingerSync.prototype.handleEnd = function handleEnd(event) {
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (touch.identifier === this.touchAId || touch.identifier === this.touchBId) {
-	            if (this.touchAEnabled && this.touchBEnabled) {
-	                this._eventOutput.emit('end', {
-	                    touches: [
-	                        this.touchAId,
-	                        this.touchBId
-	                    ],
-	                    angle: this._angle
-	                });
-	            }
-	            this.touchAEnabled = false;
-	            this.touchAId = 0;
-	            this.touchBEnabled = false;
-	            this.touchBId = 0;
-	        }
-	    }
-	};
-	module.exports = TwoFingerSync;
-
-/***/ },
-/* 103 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(44);
-	var Transitionable = __webpack_require__(49);
-	var EventHandler = __webpack_require__(53);
-	var Utilities = __webpack_require__(91);
-	var GenericSync = __webpack_require__(95);
-	var MouseSync = __webpack_require__(96);
-	var TouchSync = __webpack_require__(100);
-	GenericSync.register({
-	    'mouse': MouseSync,
-	    'touch': TouchSync
-	});
-	function Draggable(options) {
-	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this._positionState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._differential = [
-	        0,
-	        0
-	    ];
-	    this._active = true;
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], { scale: this.options.scale });
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.sync);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    _bindEvents.call(this);
-	}
-	var _direction = {
-	    x: 1,
-	    y: 2
-	};
-	Draggable.DIRECTION_X = _direction.x;
-	Draggable.DIRECTION_Y = _direction.y;
-	var _clamp = Utilities.clamp;
-	Draggable.DEFAULT_OPTIONS = {
-	    projection: _direction.x | _direction.y,
-	    scale: 1,
-	    xRange: null,
-	    yRange: null,
-	    snapX: 0,
-	    snapY: 0,
-	    transition: { duration: 0 }
-	};
-	function _mapDifferential(differential) {
-	    var opts = this.options;
-	    var projection = opts.projection;
-	    var snapX = opts.snapX;
-	    var snapY = opts.snapY;
-	    var tx = projection & _direction.x ? differential[0] : 0;
-	    var ty = projection & _direction.y ? differential[1] : 0;
-	    if (snapX > 0)
-	        tx -= tx % snapX;
-	    if (snapY > 0)
-	        ty -= ty % snapY;
-	    return [
-	        tx,
-	        ty
-	    ];
-	}
-	function _handleStart() {
-	    if (!this._active)
-	        return;
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this.eventOutput.emit('start', { position: this.getPosition() });
-	}
-	function _handleMove(event) {
-	    if (!this._active)
-	        return;
-	    var options = this.options;
-	    this._differential = event.position;
-	    var newDifferential = _mapDifferential.call(this, this._differential);
-	    this._differential[0] -= newDifferential[0];
-	    this._differential[1] -= newDifferential[1];
-	    var pos = this.getPosition();
-	    pos[0] += newDifferential[0];
-	    pos[1] += newDifferential[1];
-	    if (options.xRange) {
-	        var xRange = [
-	            options.xRange[0] + 0.5 * options.snapX,
-	            options.xRange[1] - 0.5 * options.snapX
-	        ];
-	        pos[0] = _clamp(pos[0], xRange);
-	    }
-	    if (options.yRange) {
-	        var yRange = [
-	            options.yRange[0] + 0.5 * options.snapY,
-	            options.yRange[1] - 0.5 * options.snapY
-	        ];
-	        pos[1] = _clamp(pos[1], yRange);
-	    }
-	    this.eventOutput.emit('update', { position: pos });
-	}
-	function _handleEnd() {
-	    if (!this._active)
-	        return;
-	    this.eventOutput.emit('end', { position: this.getPosition() });
-	}
-	function _bindEvents() {
-	    this.sync.on('start', _handleStart.bind(this));
-	    this.sync.on('update', _handleMove.bind(this));
-	    this.sync.on('end', _handleEnd.bind(this));
-	}
-	Draggable.prototype.setOptions = function setOptions(options) {
-	    var currentOptions = this.options;
-	    if (options.projection !== undefined) {
-	        var proj = options.projection;
-	        this.options.projection = 0;
-	        [
-	            'x',
-	            'y'
-	        ].forEach(function (val) {
-	            if (proj.indexOf(val) !== -1)
-	                currentOptions.projection |= _direction[val];
-	        });
-	    }
-	    if (options.scale !== undefined) {
-	        currentOptions.scale = options.scale;
-	        this.sync.setOptions({ scale: options.scale });
-	    }
-	    if (options.xRange !== undefined)
-	        currentOptions.xRange = options.xRange;
-	    if (options.yRange !== undefined)
-	        currentOptions.yRange = options.yRange;
-	    if (options.snapX !== undefined)
-	        currentOptions.snapX = options.snapX;
-	    if (options.snapY !== undefined)
-	        currentOptions.snapY = options.snapY;
-	};
-	Draggable.prototype.getPosition = function getPosition() {
-	    return this._positionState.get();
-	};
-	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
-	    var currPos = this.getPosition();
-	    var relativePosition = [
-	        currPos[0] + position[0],
-	        currPos[1] + position[1]
-	    ];
-	    this.setPosition(relativePosition, transition, callback);
-	};
-	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this._positionState.set(position, transition, callback);
-	};
-	Draggable.prototype.activate = function activate() {
-	    this._active = true;
-	};
-	Draggable.prototype.deactivate = function deactivate() {
-	    this._active = false;
-	};
-	Draggable.prototype.toggle = function toggle() {
-	    this._active = !this._active;
-	};
-	Draggable.prototype.modify = function modify(target) {
-	    var pos = this.getPosition();
-	    return {
-	        transform: Transform.translate(pos[0], pos[1]),
-	        target: target
-	    };
-	};
-	module.exports = Draggable;
-
-/***/ },
-/* 104 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transitionable = __webpack_require__(49);
-	var OptionsManager = __webpack_require__(43);
-	function Fader(options, startState) {
-	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    if (!startState)
-	        startState = 0;
-	    this.transitionHelper = new Transitionable(startState);
-	}
-	Fader.DEFAULT_OPTIONS = {
-	    cull: false,
-	    transition: true,
-	    pulseInTransition: true,
-	    pulseOutTransition: true
-	};
-	Fader.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	Fader.prototype.show = function show(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(1, transition, callback);
-	};
-	Fader.prototype.hide = function hide(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(0, transition, callback);
-	};
-	Fader.prototype.set = function set(state, transition, callback) {
-	    this.halt();
-	    this.transitionHelper.set(state, transition, callback);
-	};
-	Fader.prototype.halt = function halt() {
-	    this.transitionHelper.halt();
-	};
-	Fader.prototype.isVisible = function isVisible() {
-	    return this.transitionHelper.get() > 0;
-	};
-	Fader.prototype.modify = function modify(target) {
-	    var currOpacity = this.transitionHelper.get();
-	    if (this.options.cull && !currOpacity)
-	        return undefined;
-	    else
-	        return {
-	            opacity: currOpacity,
-	            target: target
-	        };
-	};
-	module.exports = Fader;
-
-/***/ },
-/* 105 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function ModifierChain() {
-	    this._chain = [];
-	    if (arguments.length)
-	        this.addModifier.apply(this, arguments);
-	}
-	ModifierChain.prototype.addModifier = function addModifier(varargs) {
-	    Array.prototype.push.apply(this._chain, arguments);
-	};
-	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
-	    var index = this._chain.indexOf(modifier);
-	    if (index < 0)
-	        return;
-	    this._chain.splice(index, 1);
-	};
-	ModifierChain.prototype.modify = function modify(input) {
-	    var chain = this._chain;
-	    var result = input;
-	    for (var i = 0; i < chain.length; i++) {
-	        result = chain[i].modify(result);
-	    }
-	    return result;
-	};
-	module.exports = ModifierChain;
-
-/***/ },
-/* 106 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Modifier = __webpack_require__(85);
-	var Transform = __webpack_require__(44);
-	var Transitionable = __webpack_require__(49);
-	var TransitionableTransform = __webpack_require__(133);
-	function StateModifier(options) {
-	    this._transformState = new TransitionableTransform(Transform.identity);
-	    this._opacityState = new Transitionable(1);
-	    this._originState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._alignState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._sizeState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._proportionsState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._modifier = new Modifier({
-	        transform: this._transformState,
-	        opacity: this._opacityState,
-	        origin: null,
-	        align: null,
-	        size: null,
-	        proportions: null
-	    });
-	    this._hasOrigin = false;
-	    this._hasAlign = false;
-	    this._hasSize = false;
-	    this._hasProportions = false;
-	    if (options) {
-	        if (options.transform)
-	            this.setTransform(options.transform);
-	        if (options.opacity !== undefined)
-	            this.setOpacity(options.opacity);
-	        if (options.origin)
-	            this.setOrigin(options.origin);
-	        if (options.align)
-	            this.setAlign(options.align);
-	        if (options.size)
-	            this.setSize(options.size);
-	        if (options.proportions)
-	            this.setProportions(options.proportions);
-	    }
-	}
-	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
-	    this._transformState.set(transform, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
-	    this._opacityState.set(opacity, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
-	    if (origin === null) {
-	        if (this._hasOrigin) {
-	            this._modifier.originFrom(null);
-	            this._hasOrigin = false;
-	        }
-	        return this;
-	    } else if (!this._hasOrigin) {
-	        this._hasOrigin = true;
-	        this._modifier.originFrom(this._originState);
-	    }
-	    this._originState.set(origin, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
-	    if (align === null) {
-	        if (this._hasAlign) {
-	            this._modifier.alignFrom(null);
-	            this._hasAlign = false;
-	        }
-	        return this;
-	    } else if (!this._hasAlign) {
-	        this._hasAlign = true;
-	        this._modifier.alignFrom(this._alignState);
-	    }
-	    this._alignState.set(align, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
-	    if (size === null) {
-	        if (this._hasSize) {
-	            this._modifier.sizeFrom(null);
-	            this._hasSize = false;
-	        }
-	        return this;
-	    } else if (!this._hasSize) {
-	        this._hasSize = true;
-	        this._modifier.sizeFrom(this._sizeState);
-	    }
-	    this._sizeState.set(size, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
-	    if (proportions === null) {
-	        if (this._hasProportions) {
-	            this._modifier.proportionsFrom(null);
-	            this._hasProportions = false;
-	        }
-	        return this;
-	    } else if (!this._hasProportions) {
-	        this._hasProportions = true;
-	        this._modifier.proportionsFrom(this._proportionsState);
-	    }
-	    this._proportionsState.set(proportions, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.halt = function halt() {
-	    this._transformState.halt();
-	    this._opacityState.halt();
-	    this._originState.halt();
-	    this._alignState.halt();
-	    this._sizeState.halt();
-	    this._proportionsState.halt();
-	};
-	StateModifier.prototype.getTransform = function getTransform() {
-	    return this._transformState.get();
-	};
-	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
-	    return this._transformState.getFinal();
-	};
-	StateModifier.prototype.getOpacity = function getOpacity() {
-	    return this._opacityState.get();
-	};
-	StateModifier.prototype.getOrigin = function getOrigin() {
-	    return this._hasOrigin ? this._originState.get() : null;
-	};
-	StateModifier.prototype.getAlign = function getAlign() {
-	    return this._hasAlign ? this._alignState.get() : null;
-	};
-	StateModifier.prototype.getSize = function getSize() {
-	    return this._hasSize ? this._sizeState.get() : null;
-	};
-	StateModifier.prototype.getProportions = function getProportions() {
-	    return this._hasProportions ? this._proportionsState.get() : null;
-	};
-	StateModifier.prototype.modify = function modify(target) {
-	    return this._modifier.modify(target);
-	};
-	module.exports = StateModifier;
-
-/***/ },
-/* 107 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	function CanvasSurface(options) {
-	    if (options && options.canvasSize)
-	        this._canvasSize = options.canvasSize;
-	    Surface.apply(this, arguments);
-	    if (!this._canvasSize)
-	        this._canvasSize = this.getSize();
-	    this._backBuffer = document.createElement('canvas');
-	    if (this._canvasSize) {
-	        this._backBuffer.width = this._canvasSize[0];
-	        this._backBuffer.height = this._canvasSize[1];
-	    }
-	    this._contextId = undefined;
-	}
-	CanvasSurface.prototype = Object.create(Surface.prototype);
-	CanvasSurface.prototype.constructor = CanvasSurface;
-	CanvasSurface.prototype.elementType = 'canvas';
-	CanvasSurface.prototype.elementClass = 'famous-surface';
-	CanvasSurface.prototype.setContent = function setContent() {
-	};
-	CanvasSurface.prototype.deploy = function deploy(target) {
-	    if (this._canvasSize) {
-	        target.width = this._canvasSize[0];
-	        target.height = this._canvasSize[1];
-	    }
-	    if (this._contextId === '2d') {
-	        target.getContext(this._contextId).drawImage(this._backBuffer, 0, 0);
-	        this._backBuffer.width = 0;
-	        this._backBuffer.height = 0;
-	    }
-	};
-	CanvasSurface.prototype.recall = function recall(target) {
-	    var size = this.getSize();
-	    this._backBuffer.width = target.width;
-	    this._backBuffer.height = target.height;
-	    if (this._contextId === '2d') {
-	        this._backBuffer.getContext(this._contextId).drawImage(target, 0, 0);
-	        target.width = 0;
-	        target.height = 0;
-	    }
-	};
-	CanvasSurface.prototype.getContext = function getContext(contextId) {
-	    this._contextId = contextId;
-	    return this._currentTarget ? this._currentTarget.getContext(contextId) : this._backBuffer.getContext(contextId);
-	};
-	CanvasSurface.prototype.setSize = function setSize(size, canvasSize) {
-	    Surface.prototype.setSize.apply(this, arguments);
-	    if (canvasSize)
-	        this._canvasSize = [
-	            canvasSize[0],
-	            canvasSize[1]
-	        ];
-	    if (this._currentTarget) {
-	        this._currentTarget.width = this._canvasSize[0];
-	        this._currentTarget.height = this._canvasSize[1];
-	    }
-	};
-	module.exports = CanvasSurface;
-
-/***/ },
-/* 108 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var ContainerSurface = __webpack_require__(54);
-	function FormContainerSurface(options) {
-	    if (options)
-	        this._method = options.method || '';
-	    ContainerSurface.apply(this, arguments);
-	}
-	FormContainerSurface.prototype = Object.create(ContainerSurface.prototype);
-	FormContainerSurface.prototype.constructor = FormContainerSurface;
-	FormContainerSurface.prototype.elementType = 'form';
-	FormContainerSurface.prototype.deploy = function deploy(target) {
-	    if (this._method)
-	        target.method = this._method;
-	    return ContainerSurface.prototype.deploy.apply(this, arguments);
-	};
-	module.exports = FormContainerSurface;
-
-/***/ },
-/* 109 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	function ImageSurface(options) {
-	    this._imageUrl = undefined;
-	    Surface.apply(this, arguments);
-	}
-	var urlCache = [];
-	var countCache = [];
-	var nodeCache = [];
-	var cacheEnabled = true;
-	ImageSurface.enableCache = function enableCache() {
-	    cacheEnabled = true;
-	};
-	ImageSurface.disableCache = function disableCache() {
-	    cacheEnabled = false;
-	};
-	ImageSurface.clearCache = function clearCache() {
-	    urlCache = [];
-	    countCache = [];
-	    nodeCache = [];
-	};
-	ImageSurface.getCache = function getCache() {
-	    return {
-	        urlCache: urlCache,
-	        countCache: countCache,
-	        nodeCache: nodeCache
-	    };
-	};
-	ImageSurface.prototype = Object.create(Surface.prototype);
-	ImageSurface.prototype.constructor = ImageSurface;
-	ImageSurface.prototype.elementType = 'img';
-	ImageSurface.prototype.elementClass = 'famous-surface';
-	ImageSurface.prototype.setContent = function setContent(imageUrl) {
-	    var urlIndex = urlCache.indexOf(this._imageUrl);
-	    if (urlIndex !== -1) {
-	        if (countCache[urlIndex] === 1) {
-	            urlCache.splice(urlIndex, 1);
-	            countCache.splice(urlIndex, 1);
-	            nodeCache.splice(urlIndex, 1);
-	        } else {
-	            countCache[urlIndex]--;
-	        }
-	    }
-	    urlIndex = urlCache.indexOf(imageUrl);
-	    if (urlIndex === -1) {
-	        urlCache.push(imageUrl);
-	        countCache.push(1);
-	    } else {
-	        countCache[urlIndex]++;
-	    }
-	    this._imageUrl = imageUrl;
-	    this._contentDirty = true;
-	};
-	ImageSurface.prototype.deploy = function deploy(target) {
-	    var urlIndex = urlCache.indexOf(this._imageUrl);
-	    if (nodeCache[urlIndex] === undefined && cacheEnabled) {
-	        var img = new Image();
-	        img.src = this._imageUrl || '';
-	        nodeCache[urlIndex] = img;
-	    }
-	    target.src = this._imageUrl || '';
-	};
-	ImageSurface.prototype.recall = function recall(target) {
-	    target.src = '';
-	};
-	module.exports = ImageSurface;
-
-/***/ },
-/* 110 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	function InputSurface(options) {
-	    this._placeholder = options.placeholder || '';
-	    this._value = options.value || '';
-	    this._type = options.type || 'text';
-	    this._name = options.name || '';
-	    Surface.apply(this, arguments);
-	    this.on('click', this.focus.bind(this));
-	    window.addEventListener('click', function (event) {
-	        if (event.target !== this._currentTarget)
-	            this.blur();
-	    }.bind(this));
-	}
-	InputSurface.prototype = Object.create(Surface.prototype);
-	InputSurface.prototype.constructor = InputSurface;
-	InputSurface.prototype.elementType = 'input';
-	InputSurface.prototype.elementClass = 'famous-surface';
-	InputSurface.prototype.setPlaceholder = function setPlaceholder(str) {
-	    this._placeholder = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.focus = function focus() {
-	    if (this._currentTarget)
-	        this._currentTarget.focus();
-	    return this;
-	};
-	InputSurface.prototype.blur = function blur() {
-	    if (this._currentTarget)
-	        this._currentTarget.blur();
-	    return this;
-	};
-	InputSurface.prototype.setValue = function setValue(str) {
-	    this._value = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.setType = function setType(str) {
-	    this._type = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.getValue = function getValue() {
-	    if (this._currentTarget) {
-	        return this._currentTarget.value;
-	    } else {
-	        return this._value;
-	    }
-	};
-	InputSurface.prototype.setName = function setName(str) {
-	    this._name = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.getName = function getName() {
-	    return this._name;
-	};
-	InputSurface.prototype.deploy = function deploy(target) {
-	    if (this._placeholder !== '')
-	        target.placeholder = this._placeholder;
-	    target.value = this._value;
-	    target.type = this._type;
-	    target.name = this._name;
-	};
-	module.exports = InputSurface;
-
-/***/ },
-/* 111 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var InputSurface = __webpack_require__(110);
-	function SubmitInputSurface(options) {
-	    InputSurface.apply(this, arguments);
-	    this._type = 'submit';
-	    if (options && options.onClick)
-	        this.setOnClick(options.onClick);
-	}
-	SubmitInputSurface.prototype = Object.create(InputSurface.prototype);
-	SubmitInputSurface.prototype.constructor = SubmitInputSurface;
-	SubmitInputSurface.prototype.setOnClick = function (onClick) {
-	    this.onClick = onClick;
-	};
-	SubmitInputSurface.prototype.deploy = function deploy(target) {
-	    if (this.onclick)
-	        target.onClick = this.onClick;
-	    InputSurface.prototype.deploy.apply(this, arguments);
-	};
-	module.exports = SubmitInputSurface;
-
-/***/ },
-/* 112 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	function TextareaSurface(options) {
-	    this._placeholder = options.placeholder || '';
-	    this._value = options.value || '';
-	    this._name = options.name || '';
-	    this._wrap = options.wrap || '';
-	    this._cols = options.cols || '';
-	    this._rows = options.rows || '';
-	    Surface.apply(this, arguments);
-	    this.on('click', this.focus.bind(this));
-	}
-	TextareaSurface.prototype = Object.create(Surface.prototype);
-	TextareaSurface.prototype.constructor = TextareaSurface;
-	TextareaSurface.prototype.elementType = 'textarea';
-	TextareaSurface.prototype.elementClass = 'famous-surface';
-	TextareaSurface.prototype.setPlaceholder = function setPlaceholder(str) {
-	    this._placeholder = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.focus = function focus() {
-	    if (this._currentTarget)
-	        this._currentTarget.focus();
-	    return this;
-	};
-	TextareaSurface.prototype.blur = function blur() {
-	    if (this._currentTarget)
-	        this._currentTarget.blur();
-	    return this;
-	};
-	TextareaSurface.prototype.setValue = function setValue(str) {
-	    this._value = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.getValue = function getValue() {
-	    if (this._currentTarget) {
-	        return this._currentTarget.value;
-	    } else {
-	        return this._value;
-	    }
-	};
-	TextareaSurface.prototype.setName = function setName(str) {
-	    this._name = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.getName = function getName() {
-	    return this._name;
-	};
-	TextareaSurface.prototype.setWrap = function setWrap(str) {
-	    this._wrap = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.setColumns = function setColumns(num) {
-	    this._cols = num;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.setRows = function setRows(num) {
-	    this._rows = num;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.deploy = function deploy(target) {
-	    if (this._placeholder !== '')
-	        target.placeholder = this._placeholder;
-	    if (this._value !== '')
-	        target.value = this._value;
-	    if (this._name !== '')
-	        target.name = this._name;
-	    if (this._wrap !== '')
-	        target.wrap = this._wrap;
-	    if (this._cols !== '')
-	        target.cols = this._cols;
-	    if (this._rows !== '')
-	        target.rows = this._rows;
-	};
-	module.exports = TextareaSurface;
-
-/***/ },
-/* 113 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	function VideoSurface(options) {
-	    Surface.apply(this, arguments);
-	    this._videoUrl = undefined;
-	    this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	}
-	VideoSurface.prototype = Object.create(Surface.prototype);
-	VideoSurface.prototype.constructor = VideoSurface;
-	VideoSurface.DEFAULT_OPTIONS = { autoplay: false };
-	VideoSurface.prototype.elementType = 'video';
-	VideoSurface.prototype.elementClass = 'famous-surface';
-	VideoSurface.prototype.setOptions = function setOptions(options) {
-	    if (options.size)
-	        this.setSize(options.size);
-	    if (options.classes)
-	        this.setClasses(options.classes);
-	    if (options.properties)
-	        this.setProperties(options.properties);
-	    if (options.autoplay)
-	        this.options.autoplay = options.autoplay;
-	    if (options.src) {
-	        this._videoUrl = options.src;
-	        this._contentDirty = true;
-	    }
-	};
-	VideoSurface.prototype.setContent = function setContent(videoUrl) {
-	    this._videoUrl = videoUrl;
-	    this._contentDirty = true;
-	};
-	VideoSurface.prototype.deploy = function deploy(target) {
-	    target.src = this._videoUrl;
-	    target.autoplay = this.options.autoplay;
-	};
-	VideoSurface.prototype.recall = function recall(target) {
-	    target.src = '';
-	};
-	module.exports = VideoSurface;
-
-/***/ },
-/* 114 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(51);
-	var Transform = __webpack_require__(44);
-	var EventHandler = __webpack_require__(53);
-	var OptionsManager = __webpack_require__(43);
-	function ContextualView(options) {
-	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS || ContextualView.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._id = Entity.register(this);
-	}
-	ContextualView.DEFAULT_OPTIONS = {};
-	ContextualView.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	ContextualView.prototype.getOptions = function getOptions(key) {
-	    return this._optionsManager.getOptions(key);
-	};
-	ContextualView.prototype.render = function render() {
-	    return this._id;
-	};
-	ContextualView.prototype.commit = function commit(context) {
-	};
-	module.exports = ContextualView;
-
-/***/ },
-/* 115 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(44);
-	var OptionsManager = __webpack_require__(43);
-	var Transitionable = __webpack_require__(49);
-	var Utility = __webpack_require__(50);
-	var SequentialLayout = __webpack_require__(127);
-	function Deck(options) {
-	    SequentialLayout.apply(this, arguments);
-	    this.state = new Transitionable(0);
-	    this._isOpen = false;
-	    this.setOutputFunction(function (input, offset, index) {
-	        var state = _getState.call(this);
-	        var positionMatrix = this.options.direction === Utility.Direction.X ? Transform.translate(state * offset, 0, 0.001 * (state - 1) * offset) : Transform.translate(0, state * offset, 0.001 * (state - 1) * offset);
-	        var output = input.render();
-	        if (this.options.stackRotation) {
-	            var amount = this.options.stackRotation * index * (1 - state);
-	            output = {
-	                transform: Transform.rotateZ(amount),
-	                origin: [
-	                    0.5,
-	                    0.5
-	                ],
-	                target: output
-	            };
-	        }
-	        return {
-	            transform: positionMatrix,
-	            size: input.getSize(),
-	            target: output
-	        };
-	    });
-	}
-	Deck.prototype = Object.create(SequentialLayout.prototype);
-	Deck.prototype.constructor = Deck;
-	Deck.DEFAULT_OPTIONS = OptionsManager.patch(SequentialLayout.DEFAULT_OPTIONS, {
-	    transition: {
-	        curve: 'easeOutBounce',
-	        duration: 500
-	    },
-	    stackRotation: 0
-	});
-	Deck.prototype.getSize = function getSize() {
-	    var originalSize = SequentialLayout.prototype.getSize.apply(this, arguments);
-	    var firstSize = this._items ? this._items.get().getSize() : [
-	        0,
-	        0
-	    ];
-	    if (!firstSize)
-	        firstSize = [
-	            0,
-	            0
-	        ];
-	    var state = _getState.call(this);
-	    var invState = 1 - state;
-	    return [
-	        firstSize[0] * invState + originalSize[0] * state,
-	        firstSize[1] * invState + originalSize[1] * state
-	    ];
-	};
-	function _getState(returnFinal) {
-	    if (returnFinal)
-	        return this._isOpen ? 1 : 0;
-	    else
-	        return this.state.get();
-	}
-	function _setState(pos, transition, callback) {
-	    this.state.halt();
-	    this.state.set(pos, transition, callback);
-	}
-	Deck.prototype.isOpen = function isOpen() {
-	    return this._isOpen;
-	};
-	Deck.prototype.open = function open(callback) {
-	    this._isOpen = true;
-	    _setState.call(this, 1, this.options.transition, callback);
-	};
-	Deck.prototype.close = function close(callback) {
-	    this._isOpen = false;
-	    _setState.call(this, 0, this.options.transition, callback);
-	};
-	Deck.prototype.toggle = function toggle(callback) {
-	    if (this._isOpen)
-	        this.close(callback);
-	    else
-	        this.open(callback);
-	};
-	module.exports = Deck;
-
-/***/ },
-/* 116 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(44);
-	var OptionsManager = __webpack_require__(43);
-	var Transitionable = __webpack_require__(49);
-	var EventHandler = __webpack_require__(53);
-	function DrawerLayout(options) {
-	    this.options = Object.create(DrawerLayout.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._position = new Transitionable(0);
-	    this._direction = _getDirectionFromSide(this.options.side);
-	    this._orientation = _getOrientationFromSide(this.options.side);
-	    this._isOpen = false;
-	    this._cachedLength = 0;
-	    this.drawer = new RenderNode();
-	    this.content = new RenderNode();
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._eventInput.on('update', _handleUpdate.bind(this));
-	    this._eventInput.on('end', _handleEnd.bind(this));
-	}
-	var DIRECTION_X = 0;
-	var DIRECTION_Y = 1;
-	DrawerLayout.SIDES = {
-	    LEFT: 0,
-	    TOP: 1,
-	    RIGHT: 2,
-	    BOTTOM: 3
-	};
-	DrawerLayout.DEFAULT_OPTIONS = {
-	    side: DrawerLayout.SIDES.LEFT,
-	    drawerLength: 0,
-	    velocityThreshold: 0,
-	    positionThreshold: 0,
-	    transition: true
-	};
-	function _getDirectionFromSide(side) {
-	    var SIDES = DrawerLayout.SIDES;
-	    return side === SIDES.LEFT || side === SIDES.RIGHT ? DIRECTION_X : DIRECTION_Y;
-	}
-	function _getOrientationFromSide(side) {
-	    var SIDES = DrawerLayout.SIDES;
-	    return side === SIDES.LEFT || side === SIDES.TOP ? 1 : -1;
-	}
-	function _resolveNodeSize(node) {
-	    var options = this.options;
-	    var size;
-	    if (options.drawerLength)
-	        size = options.drawerLength;
-	    else {
-	        var nodeSize = node.getSize();
-	        size = nodeSize ? nodeSize[this._direction] : options.drawerLength;
-	    }
-	    return this._orientation * size;
-	}
-	function _handleUpdate(data) {
-	    var newPosition = this.getPosition() + data.delta;
-	    var MIN_LENGTH;
-	    var MAX_LENGTH;
-	    this._cachedLength = _resolveNodeSize.call(this, this.drawer);
-	    if (this._orientation === 1) {
-	        MIN_LENGTH = 0;
-	        MAX_LENGTH = this._cachedLength;
-	    } else {
-	        MIN_LENGTH = this._cachedLength;
-	        MAX_LENGTH = 0;
-	    }
-	    if (newPosition > MAX_LENGTH)
-	        newPosition = MAX_LENGTH;
-	    else if (newPosition < MIN_LENGTH)
-	        newPosition = MIN_LENGTH;
-	    this.setPosition(newPosition);
-	}
-	function _handleEnd(data) {
-	    var velocity = data.velocity;
-	    var position = this._orientation * this.getPosition();
-	    var options = this.options;
-	    var MAX_LENGTH = this._orientation * this._cachedLength;
-	    var positionThreshold = options.positionThreshold || MAX_LENGTH / 2;
-	    var velocityThreshold = options.velocityThreshold;
-	    if (options.transition instanceof Object)
-	        options.transition.velocity = data.velocity;
-	    if (position === 0) {
-	        this._isOpen = false;
-	        return;
-	    }
-	    if (position === MAX_LENGTH) {
-	        this._isOpen = true;
-	        return;
-	    }
-	    var shouldToggle = Math.abs(velocity) > velocityThreshold || !this._isOpen && position > positionThreshold || this._isOpen && position < positionThreshold;
-	    if (shouldToggle)
-	        this.toggle();
-	    else
-	        this.reset();
-	}
-	DrawerLayout.prototype.setOptions = function setOptions(options) {
-	    this._optionsManager.setOptions(options);
-	    if (options.side !== undefined) {
-	        this._direction = _getDirectionFromSide(options.side);
-	        this._orientation = _getOrientationFromSide(options.side);
-	    }
-	};
-	DrawerLayout.prototype.open = function open(transition, callback) {
-	    if (transition instanceof Function)
-	        callback = transition;
-	    if (transition === undefined)
-	        transition = this.options.transition;
-	    this._cachedLength = _resolveNodeSize.call(this, this.drawer);
-	    this.setPosition(this._cachedLength, transition, callback);
-	    if (!this._isOpen) {
-	        this._isOpen = true;
-	        this._eventOutput.emit('open');
-	    }
-	};
-	DrawerLayout.prototype.close = function close(transition, callback) {
-	    if (transition instanceof Function)
-	        callback = transition;
-	    if (transition === undefined)
-	        transition = this.options.transition;
-	    this.setPosition(0, transition, callback);
-	    if (this._isOpen) {
-	        this._isOpen = false;
-	        this._eventOutput.emit('close');
-	    }
-	};
-	DrawerLayout.prototype.setPosition = function setPosition(position, transition, callback) {
-	    if (this._position.isActive())
-	        this._position.halt();
-	    this._position.set(position, transition, callback);
-	};
-	DrawerLayout.prototype.getPosition = function getPosition() {
-	    return this._position.get();
-	};
-	DrawerLayout.prototype.setProgress = function setProgress(progress, transition, callback) {
-	    return this._position.set(progress * this._cachedLength, transition, callback);
-	};
-	DrawerLayout.prototype.getProgress = function getProgress() {
-	    return this._position.get() / this._cachedLength;
-	};
-	DrawerLayout.prototype.toggle = function toggle(transition) {
-	    if (this._isOpen)
-	        this.close(transition);
-	    else
-	        this.open(transition);
-	};
-	DrawerLayout.prototype.reset = function reset(transition) {
-	    if (this._isOpen)
-	        this.open(transition);
-	    else
-	        this.close(transition);
-	};
-	DrawerLayout.prototype.isOpen = function isOpen(transition) {
-	    return this._isOpen;
-	};
-	DrawerLayout.prototype.render = function render() {
-	    var position = this.getPosition();
-	    if (!this._isOpen && (position < 0 && this._orientation === 1) || position > 0 && this._orientation === -1) {
-	        position = 0;
-	        this.setPosition(position);
-	    }
-	    var contentTransform = this._direction === DIRECTION_X ? Transform.translate(position, 0, 0) : Transform.translate(0, position, 0);
-	    return [
-	        {
-	            transform: Transform.behind,
-	            target: this.drawer.render()
-	        },
-	        {
-	            transform: contentTransform,
-	            target: this.content.render()
-	        }
-	    ];
-	};
-	module.exports = DrawerLayout;
-
-/***/ },
-/* 117 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var CachedMap = __webpack_require__(129);
-	var Entity = __webpack_require__(51);
-	var EventHandler = __webpack_require__(53);
-	var Transform = __webpack_require__(44);
-	var RenderController = __webpack_require__(123);
-	function EdgeSwapper(options) {
-	    this._currentTarget = null;
-	    this._size = [
-	        undefined,
-	        undefined
-	    ];
-	    this._controller = new RenderController(options);
-	    this._controller.inTransformFrom(CachedMap.create(_transformMap.bind(this, 0.0001)));
-	    this._controller.outTransformFrom(CachedMap.create(_transformMap.bind(this, -0.0001)));
-	    this._eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    this._entityId = Entity.register(this);
-	    if (options)
-	        this.setOptions(options);
-	}
-	function _transformMap(zMax, progress) {
-	    return Transform.translate(this._size[0] * (1 - progress), 0, zMax * (1 - progress));
-	}
-	EdgeSwapper.prototype.show = function show(content) {
-	    if (this._currentTarget)
-	        this._eventInput.unpipe(this._currentTarget);
-	    this._currentTarget = content;
-	    if (this._currentTarget && this._currentTarget.trigger)
-	        this._eventInput.pipe(this._currentTarget);
-	    this._controller.show.apply(this._controller, arguments);
-	};
-	EdgeSwapper.prototype.setOptions = function setOptions(options) {
-	    this._controller.setOptions(options);
-	};
-	EdgeSwapper.prototype.render = function render() {
-	    return this._entityId;
-	};
-	EdgeSwapper.prototype.commit = function commit(context) {
-	    this._size[0] = context.size[0];
-	    this._size[1] = context.size[1];
-	    return {
-	        transform: context.transform,
-	        opacity: context.opacity,
-	        origin: context.origin,
-	        size: context.size,
-	        target: this._controller.render()
-	    };
-	};
-	module.exports = EdgeSwapper;
-
-/***/ },
-/* 118 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(51);
-	var Transform = __webpack_require__(44);
-	var OptionsManager = __webpack_require__(43);
-	var EventHandler = __webpack_require__(53);
-	var Transitionable = __webpack_require__(49);
-	function FlexibleLayout(options) {
-	    this.options = Object.create(FlexibleLayout.DEFAULT_OPTIONS);
-	    this.optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.id = Entity.register(this);
-	    this._ratios = new Transitionable(this.options.ratios);
-	    this._nodes = [];
-	    this._size = [
-	        0,
-	        0
-	    ];
-	    this._cachedDirection = null;
-	    this._cachedLengths = [];
-	    this._cachedTransforms = null;
-	    this._ratiosDirty = false;
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	}
-	FlexibleLayout.DIRECTION_X = 0;
-	FlexibleLayout.DIRECTION_Y = 1;
-	FlexibleLayout.DEFAULT_OPTIONS = {
-	    direction: FlexibleLayout.DIRECTION_X,
-	    transition: false,
-	    ratios: []
-	};
-	function _reflow(ratios, length, direction) {
-	    var currTransform;
-	    var translation = 0;
-	    var flexLength = length;
-	    var ratioSum = 0;
-	    var ratio;
-	    var node;
-	    var i;
-	    this._cachedLengths = [];
-	    this._cachedTransforms = [];
-	    for (i = 0; i < ratios.length; i++) {
-	        ratio = ratios[i];
-	        node = this._nodes[i];
-	        if (typeof ratio !== 'number')
-	            flexLength -= node.getSize()[direction] || 0;
-	        else
-	            ratioSum += ratio;
-	    }
-	    for (i = 0; i < ratios.length; i++) {
-	        node = this._nodes[i];
-	        ratio = ratios[i];
-	        length = typeof ratio === 'number' ? flexLength * ratio / ratioSum : node.getSize()[direction];
-	        currTransform = direction === FlexibleLayout.DIRECTION_X ? Transform.translate(translation, 0, 0) : Transform.translate(0, translation, 0);
-	        this._cachedTransforms.push(currTransform);
-	        this._cachedLengths.push(length);
-	        translation += length;
-	    }
-	}
-	function _trueSizedDirty(ratios, direction) {
-	    for (var i = 0; i < ratios.length; i++) {
-	        if (typeof ratios[i] !== 'number') {
-	            if (this._nodes[i].getSize()[direction] !== this._cachedLengths[i])
-	                return true;
-	        }
-	    }
-	    return false;
-	}
-	FlexibleLayout.prototype.render = function render() {
-	    return this.id;
-	};
-	FlexibleLayout.prototype.setOptions = function setOptions(options) {
-	    this.optionsManager.setOptions(options);
-	};
-	FlexibleLayout.prototype.sequenceFrom = function sequenceFrom(sequence) {
-	    this._nodes = sequence;
-	    if (this._ratios.get().length === 0) {
-	        var ratios = [];
-	        for (var i = 0; i < this._nodes.length; i++)
-	            ratios.push(1);
-	        this.setRatios(ratios);
-	    }
-	};
-	FlexibleLayout.prototype.setRatios = function setRatios(ratios, transition, callback) {
-	    if (transition === undefined)
-	        transition = this.options.transition;
-	    var currRatios = this._ratios;
-	    if (currRatios.get().length === 0)
-	        transition = undefined;
-	    if (currRatios.isActive())
-	        currRatios.halt();
-	    currRatios.set(ratios, transition, callback);
-	    this._ratiosDirty = true;
-	};
-	FlexibleLayout.prototype.getSize = function getSize() {
-	    return this._size;
-	};
-	FlexibleLayout.prototype.commit = function commit(context) {
-	    var parentSize = context.size;
-	    var parentTransform = context.transform;
-	    var parentOrigin = context.origin;
-	    var parentOpacity = context.opacity;
-	    var ratios = this._ratios.get();
-	    var direction = this.options.direction;
-	    var length = parentSize[direction];
-	    var size;
-	    if (length !== this._size[direction] || this._ratiosDirty || this._ratios.isActive() || direction !== this._cachedDirection || _trueSizedDirty.call(this, ratios, direction)) {
-	        _reflow.call(this, ratios, length, direction);
-	        if (length !== this._size[direction]) {
-	            this._size[0] = parentSize[0];
-	            this._size[1] = parentSize[1];
-	        }
-	        if (direction !== this._cachedDirection)
-	            this._cachedDirection = direction;
-	        if (this._ratiosDirty)
-	            this._ratiosDirty = false;
-	    }
-	    var result = [];
-	    for (var i = 0; i < ratios.length; i++) {
-	        size = [
-	            undefined,
-	            undefined
-	        ];
-	        length = this._cachedLengths[i];
-	        size[direction] = length;
-	        result.push({
-	            transform: this._cachedTransforms[i],
-	            size: size,
-	            target: this._nodes[i].render()
-	        });
-	    }
-	    if (parentSize && (parentOrigin[0] !== 0 && parentOrigin[1] !== 0))
-	        parentTransform = Transform.moveThen([
-	            -parentSize[0] * parentOrigin[0],
-	            -parentSize[1] * parentOrigin[1],
-	            0
-	        ], parentTransform);
-	    return {
-	        transform: parentTransform,
-	        size: parentSize,
-	        opacity: parentOpacity,
-	        target: result
-	    };
-	};
-	module.exports = FlexibleLayout;
-
-/***/ },
-/* 119 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(44);
-	var Transitionable = __webpack_require__(49);
-	var RenderNode = __webpack_require__(78);
-	var OptionsManager = __webpack_require__(43);
-	function Flipper(options) {
-	    this.options = Object.create(Flipper.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.angle = new Transitionable(0);
-	    this.frontNode = undefined;
-	    this.backNode = undefined;
-	    this.flipped = false;
-	}
-	Flipper.DIRECTION_X = 0;
-	Flipper.DIRECTION_Y = 1;
-	var SEPERATION_LENGTH = 1;
-	Flipper.DEFAULT_OPTIONS = {
-	    transition: true,
-	    direction: Flipper.DIRECTION_X
-	};
-	Flipper.prototype.flip = function flip(transition, callback) {
-	    var angle = this.flipped ? 0 : Math.PI;
-	    this.setAngle(angle, transition, callback);
-	    this.flipped = !this.flipped;
-	};
-	Flipper.prototype.setAngle = function setAngle(angle, transition, callback) {
-	    if (transition === undefined)
-	        transition = this.options.transition;
-	    if (this.angle.isActive())
-	        this.angle.halt();
-	    this.angle.set(angle, transition, callback);
-	};
-	Flipper.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	Flipper.prototype.setFront = function setFront(node) {
-	    this.frontNode = node;
-	};
-	Flipper.prototype.setBack = function setBack(node) {
-	    this.backNode = node;
-	};
-	Flipper.prototype.render = function render() {
-	    var angle = this.angle.get();
-	    var frontTransform;
-	    var backTransform;
-	    if (this.options.direction === Flipper.DIRECTION_X) {
-	        frontTransform = Transform.rotateY(angle);
-	        backTransform = Transform.rotateY(angle + Math.PI);
-	    } else {
-	        frontTransform = Transform.rotateX(angle);
-	        backTransform = Transform.rotateX(angle + Math.PI);
-	    }
-	    var result = [];
-	    if (this.frontNode) {
-	        result.push({
-	            transform: frontTransform,
-	            target: this.frontNode.render()
-	        });
-	    }
-	    if (this.backNode) {
-	        result.push({
-	            transform: Transform.moveThen([
-	                0,
-	                0,
-	                SEPERATION_LENGTH
-	            ], backTransform),
-	            target: this.backNode.render()
-	        });
-	    }
-	    return result;
-	};
-	module.exports = Flipper;
-
-/***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(51);
-	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(44);
-	var ViewSequence = __webpack_require__(52);
-	var EventHandler = __webpack_require__(53);
-	var Modifier = __webpack_require__(85);
-	var OptionsManager = __webpack_require__(43);
-	var Transitionable = __webpack_require__(49);
-	var TransitionableTransform = __webpack_require__(133);
-	function GridLayout(options) {
-	    this.options = Object.create(GridLayout.DEFAULT_OPTIONS);
-	    this.optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.id = Entity.register(this);
-	    this._modifiers = [];
-	    this._states = [];
-	    this._contextSizeCache = [
-	        0,
-	        0
-	    ];
-	    this._dimensionsCache = [
-	        0,
-	        0
-	    ];
-	    this._activeCount = 0;
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	}
-	function _reflow(size, cols, rows) {
-	    var usableSize = [
-	        size[0],
-	        size[1]
-	    ];
-	    usableSize[0] -= this.options.gutterSize[0] * (cols - 1);
-	    usableSize[1] -= this.options.gutterSize[1] * (rows - 1);
-	    var rowSize = Math.round(usableSize[1] / rows);
-	    var colSize = Math.round(usableSize[0] / cols);
-	    var currY = 0;
-	    var currX;
-	    var currIndex = 0;
-	    for (var i = 0; i < rows; i++) {
-	        currX = 0;
-	        for (var j = 0; j < cols; j++) {
-	            if (this._modifiers[currIndex] === undefined) {
-	                _createModifier.call(this, currIndex, [
-	                    colSize,
-	                    rowSize
-	                ], [
-	                    currX,
-	                    currY,
-	                    0
-	                ], 1);
-	            } else {
-	                _animateModifier.call(this, currIndex, [
-	                    colSize,
-	                    rowSize
-	                ], [
-	                    currX,
-	                    currY,
-	                    0
-	                ], 1);
-	            }
-	            currIndex++;
-	            currX += colSize + this.options.gutterSize[0];
-	        }
-	        currY += rowSize + this.options.gutterSize[1];
-	    }
-	    this._dimensionsCache = [
-	        this.options.dimensions[0],
-	        this.options.dimensions[1]
-	    ];
-	    this._contextSizeCache = [
-	        size[0],
-	        size[1]
-	    ];
-	    this._activeCount = rows * cols;
-	    for (i = this._activeCount; i < this._modifiers.length; i++)
-	        _animateModifier.call(this, i, [
-	            Math.round(colSize),
-	            Math.round(rowSize)
-	        ], [
-	            0,
-	            0
-	        ], 0);
-	    this._eventOutput.emit('reflow');
-	}
-	function _createModifier(index, size, position, opacity) {
-	    var transitionItem = {
-	        transform: new TransitionableTransform(Transform.translate.apply(null, position)),
-	        opacity: new Transitionable(opacity),
-	        size: new Transitionable(size)
-	    };
-	    var modifier = new Modifier({
-	        transform: transitionItem.transform,
-	        opacity: transitionItem.opacity,
-	        size: transitionItem.size
-	    });
-	    this._states[index] = transitionItem;
-	    this._modifiers[index] = modifier;
-	}
-	function _animateModifier(index, size, position, opacity) {
-	    var currState = this._states[index];
-	    var currSize = currState.size;
-	    var currOpacity = currState.opacity;
-	    var currTransform = currState.transform;
-	    var transition = this.options.transition;
-	    currTransform.halt();
-	    currOpacity.halt();
-	    currSize.halt();
-	    currTransform.setTranslate(position, transition);
-	    currSize.set(size, transition);
-	    currOpacity.set(opacity, transition);
-	}
-	GridLayout.DEFAULT_OPTIONS = {
-	    dimensions: [
-	        1,
-	        1
-	    ],
-	    transition: false,
-	    gutterSize: [
-	        0,
-	        0
-	    ]
-	};
-	GridLayout.prototype.render = function render() {
-	    return this.id;
-	};
-	GridLayout.prototype.setOptions = function setOptions(options) {
-	    return this.optionsManager.setOptions(options);
-	};
-	GridLayout.prototype.sequenceFrom = function sequenceFrom(sequence) {
-	    if (sequence instanceof Array)
-	        sequence = new ViewSequence(sequence);
-	    this.sequence = sequence;
-	};
-	GridLayout.prototype.getSize = function getSize() {
-	    return this._contextSizeCache;
-	};
-	GridLayout.prototype.commit = function commit(context) {
-	    var transform = context.transform;
-	    var opacity = context.opacity;
-	    var origin = context.origin;
-	    var size = context.size;
-	    var cols = this.options.dimensions[0];
-	    var rows = this.options.dimensions[1];
-	    if (size[0] !== this._contextSizeCache[0] || size[1] !== this._contextSizeCache[1] || cols !== this._dimensionsCache[0] || rows !== this._dimensionsCache[1]) {
-	        _reflow.call(this, size, cols, rows);
-	    }
-	    var sequence = this.sequence;
-	    var result = [];
-	    var currIndex = 0;
-	    while (sequence && currIndex < this._modifiers.length) {
-	        var item = sequence.get();
-	        var modifier = this._modifiers[currIndex];
-	        if (currIndex >= this._activeCount && this._states[currIndex].opacity.isActive()) {
-	            this._modifiers.splice(currIndex, 1);
-	            this._states.splice(currIndex, 1);
-	        }
-	        if (item) {
-	            result.push(modifier.modify({
-	                origin: origin,
-	                target: item.render()
-	            }));
-	        }
-	        sequence = sequence.getNext();
-	        currIndex++;
-	    }
-	    if (size)
-	        transform = Transform.moveThen([
-	            -size[0] * origin[0],
-	            -size[1] * origin[1],
-	            0
-	        ], transform);
-	    return {
-	        transform: transform,
-	        opacity: opacity,
-	        size: size,
-	        target: result
-	    };
-	};
-	module.exports = GridLayout;
-
-/***/ },
-/* 121 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(51);
-	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(44);
-	var OptionsManager = __webpack_require__(43);
-	function HeaderFooterLayout(options) {
-	    this.options = Object.create(HeaderFooterLayout.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._entityId = Entity.register(this);
-	    this.header = new RenderNode();
-	    this.footer = new RenderNode();
-	    this.content = new RenderNode();
-	}
-	HeaderFooterLayout.DIRECTION_X = 0;
-	HeaderFooterLayout.DIRECTION_Y = 1;
-	HeaderFooterLayout.DEFAULT_OPTIONS = {
-	    direction: HeaderFooterLayout.DIRECTION_Y,
-	    headerSize: undefined,
-	    footerSize: undefined,
-	    defaultHeaderSize: 0,
-	    defaultFooterSize: 0
-	};
-	HeaderFooterLayout.prototype.render = function render() {
-	    return this._entityId;
-	};
-	HeaderFooterLayout.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	function _resolveNodeSize(node, defaultSize) {
-	    var nodeSize = node.getSize();
-	    return nodeSize ? nodeSize[this.options.direction] : defaultSize;
-	}
-	function _outputTransform(offset) {
-	    if (this.options.direction === HeaderFooterLayout.DIRECTION_X)
-	        return Transform.translate(offset, 0, 0);
-	    else
-	        return Transform.translate(0, offset, 0);
-	}
-	function _finalSize(directionSize, size) {
-	    if (this.options.direction === HeaderFooterLayout.DIRECTION_X)
-	        return [
-	            directionSize,
-	            size[1]
-	        ];
-	    else
-	        return [
-	            size[0],
-	            directionSize
-	        ];
-	}
-	HeaderFooterLayout.prototype.commit = function commit(context) {
-	    var transform = context.transform;
-	    var origin = context.origin;
-	    var size = context.size;
-	    var opacity = context.opacity;
-	    var headerSize = this.options.headerSize !== undefined ? this.options.headerSize : _resolveNodeSize.call(this, this.header, this.options.defaultHeaderSize);
-	    var footerSize = this.options.footerSize !== undefined ? this.options.footerSize : _resolveNodeSize.call(this, this.footer, this.options.defaultFooterSize);
-	    var contentSize = size[this.options.direction] - headerSize - footerSize;
-	    if (size)
-	        transform = Transform.moveThen([
-	            -size[0] * origin[0],
-	            -size[1] * origin[1],
-	            0
-	        ], transform);
-	    var result = [
-	        {
-	            size: _finalSize.call(this, headerSize, size),
-	            target: this.header.render()
-	        },
-	        {
-	            transform: _outputTransform.call(this, headerSize),
-	            size: _finalSize.call(this, contentSize, size),
-	            target: this.content.render()
-	        },
-	        {
-	            transform: _outputTransform.call(this, headerSize + contentSize),
-	            size: _finalSize.call(this, footerSize, size),
-	            target: this.footer.render()
-	        }
-	    ];
-	    return {
-	        transform: transform,
-	        opacity: opacity,
-	        size: size,
-	        target: result
-	    };
-	};
-	module.exports = HeaderFooterLayout;
-
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(44);
-	var Modifier = __webpack_require__(85);
-	var RenderNode = __webpack_require__(78);
-	var Utility = __webpack_require__(50);
-	var OptionsManager = __webpack_require__(43);
-	var Transitionable = __webpack_require__(49);
-	var TransitionableTransform = __webpack_require__(133);
-	function Lightbox(options) {
-	    this.options = Object.create(Lightbox.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._showing = false;
-	    this.nodes = [];
-	    this.transforms = [];
-	    this.states = [];
-	}
-	Lightbox.DEFAULT_OPTIONS = {
-	    inTransform: Transform.scale(0.001, 0.001, 0.001),
-	    inOpacity: 0,
-	    inOrigin: [
-	        0.5,
-	        0.5
-	    ],
-	    inAlign: [
-	        0.5,
-	        0.5
-	    ],
-	    outTransform: Transform.scale(0.001, 0.001, 0.001),
-	    outOpacity: 0,
-	    outOrigin: [
-	        0.5,
-	        0.5
-	    ],
-	    outAlign: [
-	        0.5,
-	        0.5
-	    ],
-	    showTransform: Transform.identity,
-	    showOpacity: 1,
-	    showOrigin: [
-	        0.5,
-	        0.5
-	    ],
-	    showAlign: [
-	        0.5,
-	        0.5
-	    ],
-	    inTransition: true,
-	    outTransition: true,
-	    overlap: false
-	};
-	Lightbox.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	Lightbox.prototype.show = function show(renderable, transition, callback) {
-	    if (!renderable) {
-	        return this.hide(callback);
-	    }
-	    if (transition instanceof Function) {
-	        callback = transition;
-	        transition = undefined;
-	    }
-	    if (this._showing) {
-	        if (this.options.overlap)
-	            this.hide();
-	        else {
-	            return this.hide(this.show.bind(this, renderable, transition, callback));
-	        }
-	    }
-	    this._showing = true;
-	    var stateItem = {
-	        transform: new TransitionableTransform(this.options.inTransform),
-	        origin: new Transitionable(this.options.inOrigin),
-	        align: new Transitionable(this.options.inAlign),
-	        opacity: new Transitionable(this.options.inOpacity)
-	    };
-	    var transform = new Modifier({
-	        transform: stateItem.transform,
-	        opacity: stateItem.opacity,
-	        origin: stateItem.origin,
-	        align: stateItem.align
-	    });
-	    var node = new RenderNode();
-	    node.add(transform).add(renderable);
-	    this.nodes.push(node);
-	    this.states.push(stateItem);
-	    this.transforms.push(transform);
-	    var _cb = callback ? Utility.after(3, callback) : undefined;
-	    if (!transition)
-	        transition = this.options.inTransition;
-	    stateItem.transform.set(this.options.showTransform, transition, _cb);
-	    stateItem.opacity.set(this.options.showOpacity, transition, _cb);
-	    stateItem.origin.set(this.options.showOrigin, transition, _cb);
-	    stateItem.align.set(this.options.showAlign, transition, _cb);
-	};
-	Lightbox.prototype.hide = function hide(transition, callback) {
-	    if (!this._showing)
-	        return;
-	    this._showing = false;
-	    if (transition instanceof Function) {
-	        callback = transition;
-	        transition = undefined;
-	    }
-	    var node = this.nodes[this.nodes.length - 1];
-	    var transform = this.transforms[this.transforms.length - 1];
-	    var stateItem = this.states[this.states.length - 1];
-	    var _cb = Utility.after(3, function () {
-	        this.nodes.splice(this.nodes.indexOf(node), 1);
-	        this.states.splice(this.states.indexOf(stateItem), 1);
-	        this.transforms.splice(this.transforms.indexOf(transform), 1);
-	        if (callback)
-	            callback.call(this);
-	    }.bind(this));
-	    if (!transition)
-	        transition = this.options.outTransition;
-	    stateItem.transform.set(this.options.outTransform, transition, _cb);
-	    stateItem.opacity.set(this.options.outOpacity, transition, _cb);
-	    stateItem.origin.set(this.options.outOrigin, transition, _cb);
-	    stateItem.align.set(this.options.outAlign, transition, _cb);
-	};
-	Lightbox.prototype.render = function render() {
-	    var result = [];
-	    for (var i = 0; i < this.nodes.length; i++) {
-	        result.push(this.nodes[i].render());
-	    }
-	    return result;
-	};
-	module.exports = Lightbox;
-
-/***/ },
-/* 123 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Modifier = __webpack_require__(85);
-	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(44);
-	var Transitionable = __webpack_require__(49);
-	var View = __webpack_require__(58);
-	function RenderController(options) {
-	    View.apply(this, arguments);
-	    this._showing = -1;
-	    this._outgoingRenderables = [];
-	    this._nextRenderable = null;
-	    this._renderables = [];
-	    this._nodes = [];
-	    this._modifiers = [];
-	    this._states = [];
-	    this.inTransformMap = RenderController.DefaultMap.transform;
-	    this.inOpacityMap = RenderController.DefaultMap.opacity;
-	    this.inOriginMap = RenderController.DefaultMap.origin;
-	    this.inAlignMap = RenderController.DefaultMap.align;
-	    this.outTransformMap = RenderController.DefaultMap.transform;
-	    this.outOpacityMap = RenderController.DefaultMap.opacity;
-	    this.outOriginMap = RenderController.DefaultMap.origin;
-	    this.outAlignMap = RenderController.DefaultMap.align;
-	    this._output = [];
-	}
-	RenderController.prototype = Object.create(View.prototype);
-	RenderController.prototype.constructor = RenderController;
-	RenderController.DEFAULT_OPTIONS = {
-	    inTransition: true,
-	    outTransition: true,
-	    overlap: true
-	};
-	RenderController.DefaultMap = {
-	    transform: function () {
-	        return Transform.identity;
-	    },
-	    opacity: function (progress) {
-	        return progress;
-	    },
-	    origin: null,
-	    align: null
-	};
-	function _mappedState(map, state) {
-	    return map(state.get());
-	}
-	RenderController.prototype.inTransformFrom = function inTransformFrom(transform) {
-	    if (transform instanceof Function)
-	        this.inTransformMap = transform;
-	    else if (transform && transform.get)
-	        this.inTransformMap = transform.get.bind(transform);
-	    else
-	        throw new Error('inTransformFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.inOpacityFrom = function inOpacityFrom(opacity) {
-	    if (opacity instanceof Function)
-	        this.inOpacityMap = opacity;
-	    else if (opacity && opacity.get)
-	        this.inOpacityMap = opacity.get.bind(opacity);
-	    else
-	        throw new Error('inOpacityFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.inOriginFrom = function inOriginFrom(origin) {
-	    if (origin instanceof Function)
-	        this.inOriginMap = origin;
-	    else if (origin && origin.get)
-	        this.inOriginMap = origin.get.bind(origin);
-	    else
-	        throw new Error('inOriginFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.inAlignFrom = function inAlignFrom(align) {
-	    if (align instanceof Function)
-	        this.inAlignMap = align;
-	    else if (align && align.get)
-	        this.inAlignMap = align.get.bind(align);
-	    else
-	        throw new Error('inAlignFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.outTransformFrom = function outTransformFrom(transform) {
-	    if (transform instanceof Function)
-	        this.outTransformMap = transform;
-	    else if (transform && transform.get)
-	        this.outTransformMap = transform.get.bind(transform);
-	    else
-	        throw new Error('outTransformFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.outOpacityFrom = function outOpacityFrom(opacity) {
-	    if (opacity instanceof Function)
-	        this.outOpacityMap = opacity;
-	    else if (opacity && opacity.get)
-	        this.outOpacityMap = opacity.get.bind(opacity);
-	    else
-	        throw new Error('outOpacityFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.outOriginFrom = function outOriginFrom(origin) {
-	    if (origin instanceof Function)
-	        this.outOriginMap = origin;
-	    else if (origin && origin.get)
-	        this.outOriginMap = origin.get.bind(origin);
-	    else
-	        throw new Error('outOriginFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.outAlignFrom = function outAlignFrom(align) {
-	    if (align instanceof Function)
-	        this.outAlignMap = align;
-	    else if (align && align.get)
-	        this.outAlignMap = align.get.bind(align);
-	    else
-	        throw new Error('outAlignFrom takes only function or getter object');
-	    return this;
-	};
-	RenderController.prototype.show = function show(renderable, transition, callback) {
-	    if (!renderable) {
-	        return this.hide(callback);
-	    }
-	    if (transition instanceof Function) {
-	        callback = transition;
-	        transition = null;
-	    }
-	    if (this._showing >= 0) {
-	        if (this.options.overlap)
-	            this.hide();
-	        else {
-	            if (this._nextRenderable) {
-	                this._nextRenderable = renderable;
-	            } else {
-	                this._nextRenderable = renderable;
-	                this.hide(function () {
-	                    if (this._nextRenderable === renderable)
-	                        this.show(this._nextRenderable, callback);
-	                    this._nextRenderable = null;
-	                });
-	            }
-	            return undefined;
-	        }
-	    }
-	    var state = null;
-	    var renderableIndex = this._renderables.indexOf(renderable);
-	    if (renderableIndex >= 0) {
-	        this._showing = renderableIndex;
-	        state = this._states[renderableIndex];
-	        state.halt();
-	        var outgoingIndex = this._outgoingRenderables.indexOf(renderable);
-	        if (outgoingIndex >= 0)
-	            this._outgoingRenderables.splice(outgoingIndex, 1);
-	    } else {
-	        state = new Transitionable(0);
-	        var modifier = new Modifier({
-	            transform: this.inTransformMap ? _mappedState.bind(this, this.inTransformMap, state) : null,
-	            opacity: this.inOpacityMap ? _mappedState.bind(this, this.inOpacityMap, state) : null,
-	            origin: this.inOriginMap ? _mappedState.bind(this, this.inOriginMap, state) : null,
-	            align: this.inAlignMap ? _mappedState.bind(this, this.inAlignMap, state) : null
-	        });
-	        var node = new RenderNode();
-	        node.add(modifier).add(renderable);
-	        this._showing = this._nodes.length;
-	        this._nodes.push(node);
-	        this._modifiers.push(modifier);
-	        this._states.push(state);
-	        this._renderables.push(renderable);
-	    }
-	    if (!transition)
-	        transition = this.options.inTransition;
-	    state.set(1, transition, callback);
-	};
-	RenderController.prototype.hide = function hide(transition, callback) {
-	    if (this._showing < 0)
-	        return;
-	    var index = this._showing;
-	    this._showing = -1;
-	    if (transition instanceof Function) {
-	        callback = transition;
-	        transition = undefined;
-	    }
-	    var node = this._nodes[index];
-	    var modifier = this._modifiers[index];
-	    var state = this._states[index];
-	    var renderable = this._renderables[index];
-	    modifier.transformFrom(this.outTransformMap ? _mappedState.bind(this, this.outTransformMap, state) : null);
-	    modifier.opacityFrom(this.outOpacityMap ? _mappedState.bind(this, this.outOpacityMap, state) : null);
-	    modifier.originFrom(this.outOriginMap ? _mappedState.bind(this, this.outOriginMap, state) : null);
-	    modifier.alignFrom(this.outAlignMap ? _mappedState.bind(this, this.outAlignMap, state) : null);
-	    if (this._outgoingRenderables.indexOf(renderable) < 0)
-	        this._outgoingRenderables.push(renderable);
-	    if (!transition)
-	        transition = this.options.outTransition;
-	    state.halt();
-	    state.set(0, transition, function (node, modifier, state, renderable) {
-	        if (this._outgoingRenderables.indexOf(renderable) >= 0) {
-	            var index = this._nodes.indexOf(node);
-	            this._nodes.splice(index, 1);
-	            this._modifiers.splice(index, 1);
-	            this._states.splice(index, 1);
-	            this._renderables.splice(index, 1);
-	            this._outgoingRenderables.splice(this._outgoingRenderables.indexOf(renderable), 1);
-	            if (this._showing >= index)
-	                this._showing--;
-	        }
-	        if (callback)
-	            callback.call(this);
-	    }.bind(this, node, modifier, state, renderable));
-	};
-	RenderController.prototype.render = function render() {
-	    var result = this._output;
-	    if (result.length > this._nodes.length)
-	        result.splice(this._nodes.length);
-	    for (var i = 0; i < this._nodes.length; i++) {
-	        result[i] = this._nodes[i].render();
-	    }
-	    return result;
-	};
-	module.exports = RenderController;
-
-/***/ },
-/* 124 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var ContainerSurface = __webpack_require__(54);
-	var EventHandler = __webpack_require__(53);
-	var Scrollview = __webpack_require__(126);
-	var Utility = __webpack_require__(50);
-	var OptionsManager = __webpack_require__(43);
-	function ScrollContainer(options) {
-	    this.options = Object.create(ScrollContainer.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.container = new ContainerSurface(this.options.container);
-	    this.scrollview = new Scrollview(this.options.scrollview);
-	    this.container.add(this.scrollview);
-	    this._eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    this._eventInput.pipe(this.scrollview);
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.container.pipe(this._eventOutput);
-	    this.scrollview.pipe(this._eventOutput);
-	}
-	ScrollContainer.DEFAULT_OPTIONS = {
-	    container: { properties: { overflow: 'hidden' } },
-	    scrollview: {}
-	};
-	ScrollContainer.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	ScrollContainer.prototype.sequenceFrom = function sequenceFrom() {
-	    return this.scrollview.sequenceFrom.apply(this.scrollview, arguments);
-	};
-	ScrollContainer.prototype.getSize = function getSize() {
-	    return this.container.getSize.apply(this.container, arguments);
-	};
-	ScrollContainer.prototype.render = function render() {
-	    return this.container.render();
-	};
-	module.exports = ScrollContainer;
-
-/***/ },
-/* 125 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(51);
-	var Group = __webpack_require__(55);
-	var OptionsManager = __webpack_require__(43);
-	var Transform = __webpack_require__(44);
-	var Utility = __webpack_require__(50);
-	var ViewSequence = __webpack_require__(52);
-	var EventHandler = __webpack_require__(53);
-	function Scroller(options) {
-	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this._optionsManager.setOptions(options);
-	    this._node = null;
-	    this._position = 0;
-	    this._positionOffset = 0;
-	    this._positionGetter = null;
-	    this._outputFunction = null;
-	    this._masterOutputFunction = null;
-	    this.outputFrom();
-	    this._onEdge = 0;
-	    this.group = new Group();
-	    this.group.add({ render: _innerRender.bind(this) });
-	    this._entityId = Entity.register(this);
-	    this._size = [
-	        undefined,
-	        undefined
-	    ];
-	    this._contextSize = [
-	        undefined,
-	        undefined
-	    ];
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	}
-	Scroller.DEFAULT_OPTIONS = {
-	    direction: Utility.Direction.Y,
-	    margin: 0,
-	    clipSize: undefined,
-	    groupScroll: false
-	};
-	var EDGE_TOLERANCE = 0;
-	function _sizeForDir(size) {
-	    if (!size)
-	        size = this._contextSize;
-	    var dimension = this.options.direction;
-	    return size[dimension] === undefined ? this._contextSize[dimension] : size[dimension];
-	}
-	function _output(node, offset, target) {
-	    var size = node.getSize ? node.getSize() : this._contextSize;
-	    var transform = this._outputFunction(offset);
-	    target.push({
-	        transform: transform,
-	        target: node.render()
-	    });
-	    return _sizeForDir.call(this, size);
-	}
-	function _getClipSize() {
-	    if (this.options.clipSize !== undefined)
-	        return this.options.clipSize;
-	    if (this._contextSize[this.options.direction] > this.getCumulativeSize()[this.options.direction]) {
-	        return _sizeForDir.call(this, this.getCumulativeSize());
-	    } else {
-	        return _sizeForDir.call(this, this._contextSize);
-	    }
-	}
-	Scroller.prototype.getCumulativeSize = function (index) {
-	    if (index === undefined)
-	        index = this._node._.cumulativeSizes.length - 1;
-	    return this._node._.getSize(index);
-	};
-	Scroller.prototype.setOptions = function setOptions(options) {
-	    if (options.groupScroll !== this.options.groupScroll) {
-	        if (options.groupScroll)
-	            this.group.pipe(this._eventOutput);
-	        else
-	            this.group.unpipe(this._eventOutput);
-	    }
-	    this._optionsManager.setOptions(options);
-	};
-	Scroller.prototype.onEdge = function onEdge() {
-	    return this._onEdge;
-	};
-	Scroller.prototype.outputFrom = function outputFrom(fn, masterFn) {
-	    if (!fn) {
-	        fn = function (offset) {
-	            return this.options.direction === Utility.Direction.X ? Transform.translate(offset, 0) : Transform.translate(0, offset);
-	        }.bind(this);
-	        if (!masterFn)
-	            masterFn = fn;
-	    }
-	    this._outputFunction = fn;
-	    this._masterOutputFunction = masterFn ? masterFn : function (offset) {
-	        return Transform.inverse(fn(-offset));
-	    };
-	};
-	Scroller.prototype.positionFrom = function positionFrom(position) {
-	    if (position instanceof Function)
-	        this._positionGetter = position;
-	    else if (position && position.get)
-	        this._positionGetter = position.get.bind(position);
-	    else {
-	        this._positionGetter = null;
-	        this._position = position;
-	    }
-	    if (this._positionGetter)
-	        this._position = this._positionGetter.call(this);
-	};
-	Scroller.prototype.sequenceFrom = function sequenceFrom(node) {
-	    if (node instanceof Array)
-	        node = new ViewSequence({ array: node });
-	    this._node = node;
-	    this._positionOffset = 0;
-	};
-	Scroller.prototype.getSize = function getSize(actual) {
-	    return actual ? this._contextSize : this._size;
-	};
-	Scroller.prototype.render = function render() {
-	    if (!this._node)
-	        return null;
-	    if (this._positionGetter)
-	        this._position = this._positionGetter.call(this);
-	    return this._entityId;
-	};
-	Scroller.prototype.commit = function commit(context) {
-	    var transform = context.transform;
-	    var opacity = context.opacity;
-	    var origin = context.origin;
-	    var size = context.size;
-	    if (!this.options.clipSize && (size[0] !== this._contextSize[0] || size[1] !== this._contextSize[1])) {
-	        this._onEdge = 0;
-	        this._contextSize[0] = size[0];
-	        this._contextSize[1] = size[1];
-	        if (this.options.direction === Utility.Direction.X) {
-	            this._size[0] = _getClipSize.call(this);
-	            this._size[1] = undefined;
-	        } else {
-	            this._size[0] = undefined;
-	            this._size[1] = _getClipSize.call(this);
-	        }
-	    }
-	    var scrollTransform = this._masterOutputFunction(-this._position);
-	    return {
-	        transform: Transform.multiply(transform, scrollTransform),
-	        size: size,
-	        opacity: opacity,
-	        origin: origin,
-	        target: this.group.render()
-	    };
-	};
-	function _innerRender() {
-	    var size = null;
-	    var position = this._position;
-	    var result = [];
-	    var offset = -this._positionOffset;
-	    var clipSize = _getClipSize.call(this);
-	    var currNode = this._node;
-	    while (currNode && offset - position < clipSize + this.options.margin) {
-	        offset += _output.call(this, currNode, offset, result);
-	        currNode = currNode.getNext ? currNode.getNext() : null;
-	    }
-	    var sizeNode = this._node;
-	    var nodesSize = _sizeForDir.call(this, sizeNode.getSize());
-	    if (offset < clipSize) {
-	        while (sizeNode && nodesSize < clipSize) {
-	            sizeNode = sizeNode.getPrevious();
-	            if (sizeNode)
-	                nodesSize += _sizeForDir.call(this, sizeNode.getSize());
-	        }
-	        sizeNode = this._node;
-	        while (sizeNode && nodesSize < clipSize) {
-	            sizeNode = sizeNode.getNext();
-	            if (sizeNode)
-	                nodesSize += _sizeForDir.call(this, sizeNode.getSize());
-	        }
-	    }
-	    if (!currNode && offset - position < clipSize - EDGE_TOLERANCE) {
-	        if (this._onEdge !== 1) {
-	            this._onEdge = 1;
-	            this._eventOutput.emit('onEdge', { position: offset - clipSize });
-	        }
-	    } else if (!this._node.getPrevious() && position < -EDGE_TOLERANCE) {
-	        if (this._onEdge !== -1) {
-	            this._onEdge = -1;
-	            this._eventOutput.emit('onEdge', { position: 0 });
-	        }
-	    } else {
-	        if (this._onEdge !== 0) {
-	            this._onEdge = 0;
-	            this._eventOutput.emit('offEdge');
-	        }
-	    }
-	    currNode = this._node && this._node.getPrevious ? this._node.getPrevious() : null;
-	    offset = -this._positionOffset;
-	    if (currNode) {
-	        size = currNode.getSize ? currNode.getSize() : this._contextSize;
-	        offset -= _sizeForDir.call(this, size);
-	    }
-	    while (currNode && offset - position > -(clipSize + this.options.margin)) {
-	        _output.call(this, currNode, offset, result);
-	        currNode = currNode.getPrevious ? currNode.getPrevious() : null;
-	        if (currNode) {
-	            size = currNode.getSize ? currNode.getSize() : this._contextSize;
-	            offset -= _sizeForDir.call(this, size);
-	        }
-	    }
-	    return result;
-	}
-	module.exports = Scroller;
-
-/***/ },
-/* 126 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var PhysicsEngine = __webpack_require__(48);
-	var Particle = __webpack_require__(46);
-	var Drag = __webpack_require__(56);
-	var Spring = __webpack_require__(47);
-	var EventHandler = __webpack_require__(53);
-	var OptionsManager = __webpack_require__(43);
-	var ViewSequence = __webpack_require__(52);
-	var Scroller = __webpack_require__(125);
-	var Utility = __webpack_require__(50);
-	var GenericSync = __webpack_require__(95);
-	var ScrollSync = __webpack_require__(57);
-	var TouchSync = __webpack_require__(100);
-	GenericSync.register({
-	    scroll: ScrollSync,
-	    touch: TouchSync
-	});
-	var TOLERANCE = 0.5;
-	var SpringStates = {
-	    NONE: 0,
-	    EDGE: 1,
-	    PAGE: 2
-	};
-	var EdgeStates = {
-	    TOP: -1,
-	    NONE: 0,
-	    BOTTOM: 1
-	};
-	function Scrollview(options) {
-	    this.options = Object.create(Scrollview.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    this._scroller = new Scroller(this.options);
-	    this.sync = new GenericSync([
-	        'scroll',
-	        'touch'
-	    ], {
-	        direction: this.options.direction,
-	        scale: this.options.syncScale,
-	        rails: this.options.rails,
-	        preventDefault: this.options.preventDefault !== undefined ? this.options.preventDefault : this.options.direction !== Utility.Direction.Y
-	    });
-	    this._physicsEngine = new PhysicsEngine();
-	    this._particle = new Particle();
-	    this._physicsEngine.addBody(this._particle);
-	    this.spring = new Spring({
-	        anchor: [
-	            0,
-	            0,
-	            0
-	        ],
-	        period: this.options.edgePeriod,
-	        dampingRatio: this.options.edgeDamp
-	    });
-	    this.drag = new Drag({
-	        forceFunction: Drag.FORCE_FUNCTIONS.QUADRATIC,
-	        strength: this.options.drag
-	    });
-	    this.friction = new Drag({
-	        forceFunction: Drag.FORCE_FUNCTIONS.LINEAR,
-	        strength: this.options.friction
-	    });
-	    this._node = null;
-	    this._touchCount = 0;
-	    this._springState = SpringStates.NONE;
-	    this._onEdge = EdgeStates.NONE;
-	    this._pageSpringPosition = 0;
-	    this._edgeSpringPosition = 0;
-	    this._touchVelocity = 0;
-	    this._earlyEnd = false;
-	    this._needsPaginationCheck = false;
-	    this._displacement = 0;
-	    this._totalShift = 0;
-	    this._cachedIndex = 0;
-	    this._scroller.positionFrom(this.getPosition.bind(this));
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    this._eventInput.pipe(this.sync);
-	    this.sync.pipe(this._eventInput);
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    _bindEvents.call(this);
-	    if (options)
-	        this.setOptions(options);
-	}
-	Scrollview.DEFAULT_OPTIONS = {
-	    direction: Utility.Direction.Y,
-	    rails: true,
-	    friction: 0.005,
-	    drag: 0.0001,
-	    edgeGrip: 0.2,
-	    edgePeriod: 300,
-	    edgeDamp: 1,
-	    margin: 1000,
-	    paginated: false,
-	    pagePeriod: 500,
-	    pageDamp: 0.8,
-	    pageStopSpeed: 10,
-	    pageSwitchSpeed: 0.5,
-	    speedLimit: 5,
-	    groupScroll: false,
-	    syncScale: 1
-	};
-	function _handleStart(event) {
-	    this._touchCount = event.count;
-	    if (event.count === undefined)
-	        this._touchCount = 1;
-	    _detachAgents.call(this);
-	    this.setVelocity(0);
-	    this._touchVelocity = 0;
-	    this._earlyEnd = false;
-	}
-	function _handleMove(event) {
-	    var velocity = -event.velocity;
-	    var delta = -event.delta;
-	    if (this._onEdge !== EdgeStates.NONE && event.slip) {
-	        if (velocity < 0 && this._onEdge === EdgeStates.TOP || velocity > 0 && this._onEdge === EdgeStates.BOTTOM) {
-	            if (!this._earlyEnd) {
-	                _handleEnd.call(this, event);
-	                this._earlyEnd = true;
-	            }
-	        } else if (this._earlyEnd && Math.abs(velocity) > Math.abs(this.getVelocity())) {
-	            _handleStart.call(this, event);
-	        }
-	    }
-	    if (this._earlyEnd)
-	        return;
-	    this._touchVelocity = velocity;
-	    if (event.slip) {
-	        var speedLimit = this.options.speedLimit;
-	        if (velocity < -speedLimit)
-	            velocity = -speedLimit;
-	        else if (velocity > speedLimit)
-	            velocity = speedLimit;
-	        this.setVelocity(velocity);
-	        var deltaLimit = speedLimit * 16;
-	        if (delta > deltaLimit)
-	            delta = deltaLimit;
-	        else if (delta < -deltaLimit)
-	            delta = -deltaLimit;
-	    }
-	    this.setPosition(this.getPosition() + delta);
-	    this._displacement += delta;
-	    if (this._springState === SpringStates.NONE)
-	        _normalizeState.call(this);
-	}
-	function _handleEnd(event) {
-	    this._touchCount = event.count || 0;
-	    if (!this._touchCount) {
-	        _detachAgents.call(this);
-	        if (this._onEdge !== EdgeStates.NONE)
-	            _setSpring.call(this, this._edgeSpringPosition, SpringStates.EDGE);
-	        _attachAgents.call(this);
-	        var velocity = -event.velocity;
-	        var speedLimit = this.options.speedLimit;
-	        if (event.slip)
-	            speedLimit *= this.options.edgeGrip;
-	        if (velocity < -speedLimit)
-	            velocity = -speedLimit;
-	        else if (velocity > speedLimit)
-	            velocity = speedLimit;
-	        this.setVelocity(velocity);
-	        this._touchVelocity = 0;
-	        this._needsPaginationCheck = true;
-	    }
-	}
-	function _bindEvents() {
-	    this._eventInput.bindThis(this);
-	    this._eventInput.on('start', _handleStart);
-	    this._eventInput.on('update', _handleMove);
-	    this._eventInput.on('end', _handleEnd);
-	    this._eventInput.on('resize', function () {
-	        this._node._.calculateSize();
-	    }.bind(this));
-	    this._scroller.on('onEdge', function (data) {
-	        this._edgeSpringPosition = data.position;
-	        _handleEdge.call(this, this._scroller.onEdge());
-	        this._eventOutput.emit('onEdge');
-	    }.bind(this));
-	    this._scroller.on('offEdge', function () {
-	        this.sync.setOptions({ scale: this.options.syncScale });
-	        this._onEdge = this._scroller.onEdge();
-	        this._eventOutput.emit('offEdge');
-	    }.bind(this));
-	    this._particle.on('update', function (particle) {
-	        if (this._springState === SpringStates.NONE)
-	            _normalizeState.call(this);
-	        this._displacement = particle.position.x - this._totalShift;
-	    }.bind(this));
-	    this._particle.on('end', function () {
-	        if (!this.options.paginated || this.options.paginated && this._springState !== SpringStates.NONE)
-	            this._eventOutput.emit('settle');
-	    }.bind(this));
-	}
-	function _attachAgents() {
-	    if (this._springState)
-	        this._physicsEngine.attach([this.spring], this._particle);
-	    else
-	        this._physicsEngine.attach([
-	            this.drag,
-	            this.friction
-	        ], this._particle);
-	}
-	function _detachAgents() {
-	    this._springState = SpringStates.NONE;
-	    this._physicsEngine.detachAll();
-	}
-	function _nodeSizeForDirection(node) {
-	    var direction = this.options.direction;
-	    var nodeSize = node.getSize();
-	    return !nodeSize ? this._scroller.getSize()[direction] : nodeSize[direction];
-	}
-	function _handleEdge(edge) {
-	    this.sync.setOptions({ scale: this.options.edgeGrip });
-	    this._onEdge = edge;
-	    if (!this._touchCount && this._springState !== SpringStates.EDGE) {
-	        _setSpring.call(this, this._edgeSpringPosition, SpringStates.EDGE);
-	    }
-	    if (this._springState && Math.abs(this.getVelocity()) < 0.001) {
-	        _detachAgents.call(this);
-	        _attachAgents.call(this);
-	    }
-	}
-	function _handlePagination() {
-	    if (this._touchCount)
-	        return;
-	    if (this._springState === SpringStates.EDGE)
-	        return;
-	    var velocity = this.getVelocity();
-	    if (Math.abs(velocity) >= this.options.pageStopSpeed)
-	        return;
-	    var position = this.getPosition();
-	    var velocitySwitch = Math.abs(velocity) > this.options.pageSwitchSpeed;
-	    var nodeSize = _nodeSizeForDirection.call(this, this._node);
-	    var positionNext = position > 0.5 * nodeSize;
-	    var positionPrev = position < 0.5 * nodeSize;
-	    var velocityNext = velocity > 0;
-	    var velocityPrev = velocity < 0;
-	    this._needsPaginationCheck = false;
-	    if (positionNext && !velocitySwitch || velocitySwitch && velocityNext) {
-	        this.goToNextPage();
-	    } else if (velocitySwitch && velocityPrev) {
-	        this.goToPreviousPage();
-	    } else
-	        _setSpring.call(this, 0, SpringStates.PAGE);
-	}
-	function _setSpring(position, springState) {
-	    var springOptions;
-	    if (springState === SpringStates.EDGE) {
-	        this._edgeSpringPosition = position;
-	        springOptions = {
-	            anchor: [
-	                this._edgeSpringPosition,
-	                0,
-	                0
-	            ],
-	            period: this.options.edgePeriod,
-	            dampingRatio: this.options.edgeDamp
-	        };
-	    } else if (springState === SpringStates.PAGE) {
-	        this._pageSpringPosition = position;
-	        springOptions = {
-	            anchor: [
-	                this._pageSpringPosition,
-	                0,
-	                0
-	            ],
-	            period: this.options.pagePeriod,
-	            dampingRatio: this.options.pageDamp
-	        };
-	    }
-	    this.spring.setOptions(springOptions);
-	    if (springState && !this._springState) {
-	        _detachAgents.call(this);
-	        this._springState = springState;
-	        _attachAgents.call(this);
-	    }
-	    this._springState = springState;
-	}
-	function _normalizeState() {
-	    var offset = 0;
-	    var position = this.getPosition();
-	    position += (position < 0 ? -0.5 : 0.5) >> 0;
-	    var nodeSize = _nodeSizeForDirection.call(this, this._node);
-	    var nextNode = this._node.getNext();
-	    while (offset + position >= nodeSize && nextNode) {
-	        offset -= nodeSize;
-	        this._scroller.sequenceFrom(nextNode);
-	        this._node = nextNode;
-	        nextNode = this._node.getNext();
-	        nodeSize = _nodeSizeForDirection.call(this, this._node);
-	    }
-	    var previousNode = this._node.getPrevious();
-	    var previousNodeSize;
-	    while (offset + position <= 0 && previousNode) {
-	        previousNodeSize = _nodeSizeForDirection.call(this, previousNode);
-	        this._scroller.sequenceFrom(previousNode);
-	        this._node = previousNode;
-	        offset += previousNodeSize;
-	        previousNode = this._node.getPrevious();
-	    }
-	    if (offset)
-	        _shiftOrigin.call(this, offset);
-	    if (this._node) {
-	        if (this._node.index !== this._cachedIndex) {
-	            if (this.getPosition() < 0.5 * nodeSize) {
-	                this._cachedIndex = this._node.index;
-	                this._eventOutput.emit('pageChange', {
-	                    direction: -1,
-	                    index: this._cachedIndex
-	                });
-	            }
-	        } else {
-	            if (this.getPosition() > 0.5 * nodeSize) {
-	                this._cachedIndex = this._node.index + 1;
-	                this._eventOutput.emit('pageChange', {
-	                    direction: 1,
-	                    index: this._cachedIndex
-	                });
-	            }
-	        }
-	    }
-	}
-	function _shiftOrigin(amount) {
-	    this._edgeSpringPosition += amount;
-	    this._pageSpringPosition += amount;
-	    this.setPosition(this.getPosition() + amount);
-	    this._totalShift += amount;
-	    if (this._springState === SpringStates.EDGE) {
-	        this.spring.setOptions({
-	            anchor: [
-	                this._edgeSpringPosition,
-	                0,
-	                0
-	            ]
-	        });
-	    } else if (this._springState === SpringStates.PAGE) {
-	        this.spring.setOptions({
-	            anchor: [
-	                this._pageSpringPosition,
-	                0,
-	                0
-	            ]
-	        });
-	    }
-	}
-	Scrollview.prototype.getCurrentIndex = function getCurrentIndex() {
-	    return this._node.index;
-	};
-	Scrollview.prototype.goToPreviousPage = function goToPreviousPage() {
-	    if (!this._node || this._onEdge === EdgeStates.TOP)
-	        return null;
-	    if (this.getPosition() > 1 && this._springState === SpringStates.NONE) {
-	        _setSpring.call(this, 0, SpringStates.PAGE);
-	        return this._node;
-	    }
-	    var previousNode = this._node.getPrevious();
-	    if (previousNode) {
-	        var previousNodeSize = _nodeSizeForDirection.call(this, previousNode);
-	        this._scroller.sequenceFrom(previousNode);
-	        this._node = previousNode;
-	        _shiftOrigin.call(this, previousNodeSize);
-	        _setSpring.call(this, 0, SpringStates.PAGE);
-	    }
-	    return previousNode;
-	};
-	Scrollview.prototype.goToNextPage = function goToNextPage() {
-	    if (!this._node || this._onEdge === EdgeStates.BOTTOM)
-	        return null;
-	    var nextNode = this._node.getNext();
-	    if (nextNode) {
-	        var currentNodeSize = _nodeSizeForDirection.call(this, this._node);
-	        this._scroller.sequenceFrom(nextNode);
-	        this._node = nextNode;
-	        _shiftOrigin.call(this, -currentNodeSize);
-	        _setSpring.call(this, 0, SpringStates.PAGE);
-	    }
-	    return nextNode;
-	};
-	Scrollview.prototype.goToPage = function goToPage(index) {
-	    var currentIndex = this.getCurrentIndex();
-	    var i;
-	    if (currentIndex > index) {
-	        for (i = 0; i < currentIndex - index; i++)
-	            this.goToPreviousPage();
-	    }
-	    if (currentIndex < index) {
-	        for (i = 0; i < index - currentIndex; i++)
-	            this.goToNextPage();
-	    }
-	};
-	Scrollview.prototype.outputFrom = function outputFrom() {
-	    return this._scroller.outputFrom.apply(this._scroller, arguments);
-	};
-	Scrollview.prototype.getPosition = function getPosition() {
-	    return this._particle.getPosition1D();
-	};
-	Scrollview.prototype.getAbsolutePosition = function getAbsolutePosition() {
-	    return this._scroller.getCumulativeSize(this.getCurrentIndex())[this.options.direction] + this.getPosition();
-	};
-	Scrollview.prototype.getOffset = Scrollview.prototype.getPosition;
-	Scrollview.prototype.setPosition = function setPosition(x) {
-	    this._particle.setPosition1D(x);
-	};
-	Scrollview.prototype.setOffset = Scrollview.prototype.setPosition;
-	Scrollview.prototype.getVelocity = function getVelocity() {
-	    return this._touchCount ? this._touchVelocity : this._particle.getVelocity1D();
-	};
-	Scrollview.prototype.setVelocity = function setVelocity(v) {
-	    this._particle.setVelocity1D(v);
-	};
-	Scrollview.prototype.setOptions = function setOptions(options) {
-	    if (options.direction !== undefined) {
-	        if (options.direction === 'x')
-	            options.direction = Utility.Direction.X;
-	        else if (options.direction === 'y')
-	            options.direction = Utility.Direction.Y;
-	    }
-	    if (options.groupScroll !== this.options.groupScroll) {
-	        if (options.groupScroll)
-	            this.subscribe(this._scroller);
-	        else
-	            this.unsubscribe(this._scroller);
-	    }
-	    this._optionsManager.setOptions(options);
-	    this._scroller.setOptions(options);
-	    if (options.drag !== undefined)
-	        this.drag.setOptions({ strength: this.options.drag });
-	    if (options.friction !== undefined)
-	        this.friction.setOptions({ strength: this.options.friction });
-	    if (options.edgePeriod !== undefined || options.edgeDamp !== undefined) {
-	        this.spring.setOptions({
-	            period: this.options.edgePeriod,
-	            dampingRatio: this.options.edgeDamp
-	        });
-	    }
-	    if (options.rails || options.direction !== undefined || options.syncScale !== undefined || options.preventDefault) {
-	        this.sync.setOptions({
-	            rails: this.options.rails,
-	            direction: this.options.direction === Utility.Direction.X ? GenericSync.DIRECTION_X : GenericSync.DIRECTION_Y,
-	            scale: this.options.syncScale,
-	            preventDefault: this.options.preventDefault
-	        });
-	    }
-	};
-	Scrollview.prototype.sequenceFrom = function sequenceFrom(node) {
-	    if (node instanceof Array)
-	        node = new ViewSequence({
-	            array: node,
-	            trackSize: true
-	        });
-	    this._node = node;
-	    return this._scroller.sequenceFrom(node);
-	};
-	Scrollview.prototype.getSize = function getSize() {
-	    return this._scroller.getSize.apply(this._scroller, arguments);
-	};
-	Scrollview.prototype.render = function render() {
-	    if (this.options.paginated && this._needsPaginationCheck)
-	        _handlePagination.call(this);
-	    return this._scroller.render();
-	};
-	module.exports = Scrollview;
-
-/***/ },
-/* 127 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var OptionsManager = __webpack_require__(43);
-	var Entity = __webpack_require__(51);
-	var Transform = __webpack_require__(44);
-	var ViewSequence = __webpack_require__(52);
-	var Utility = __webpack_require__(50);
-	function SequentialLayout(options) {
-	    this._items = null;
-	    this._size = null;
-	    this._outputFunction = SequentialLayout.DEFAULT_OUTPUT_FUNCTION;
-	    this.options = Utility.clone(this.constructor.DEFAULT_OPTIONS || SequentialLayout.DEFAULT_OPTIONS);
-	    this.optionsManager = new OptionsManager(this.options);
-	    this.id = Entity.register(this);
-	    this.cachedSize = [
-	        undefined,
-	        undefined
-	    ];
-	    if (options)
-	        this.setOptions(options);
-	}
-	SequentialLayout.DEFAULT_OPTIONS = {
-	    direction: Utility.Direction.Y,
-	    itemSpacing: 0
-	};
-	SequentialLayout.DEFAULT_OUTPUT_FUNCTION = function DEFAULT_OUTPUT_FUNCTION(input, offset, index) {
-	    var transform = this.options.direction === Utility.Direction.X ? Transform.translate(offset, 0) : Transform.translate(0, offset);
-	    return {
-	        size: this.cachedSize,
-	        transform: transform,
-	        target: input.render()
-	    };
-	};
-	SequentialLayout.prototype.getSize = function getSize() {
-	    if (!this._size)
-	        this.render();
-	    return this._size;
-	};
-	SequentialLayout.prototype.sequenceFrom = function sequenceFrom(items) {
-	    if (items instanceof Array)
-	        items = new ViewSequence(items);
-	    this._items = items;
-	    return this;
-	};
-	SequentialLayout.prototype.setOptions = function setOptions(options) {
-	    this.optionsManager.setOptions.apply(this.optionsManager, arguments);
-	    return this;
-	};
-	SequentialLayout.prototype.setOutputFunction = function setOutputFunction(outputFunction) {
-	    this._outputFunction = outputFunction;
-	    return this;
-	};
-	SequentialLayout.prototype.render = function render() {
-	    return this.id;
-	};
-	SequentialLayout.prototype.commit = function commit(parentSpec) {
-	    var length = 0;
-	    var secondaryDirection = this.options.direction ^ 1;
-	    var currentNode = this._items;
-	    var item = null;
-	    var itemSize = [];
-	    var output = {};
-	    var result = [];
-	    var i = 0;
-	    this._size = [
-	        0,
-	        0
-	    ];
-	    this.cachedSize = parentSpec.size;
-	    while (currentNode) {
-	        item = currentNode.get();
-	        if (!item)
-	            break;
-	        if (item.getSize)
-	            itemSize = item.getSize();
-	        output = this._outputFunction.call(this, item, length, i++);
-	        result.push(output);
-	        if (itemSize) {
-	            if (itemSize[this.options.direction])
-	                length += itemSize[this.options.direction];
-	            if (itemSize[secondaryDirection] > this._size[secondaryDirection])
-	                this._size[secondaryDirection] = itemSize[secondaryDirection];
-	            if (itemSize[secondaryDirection] === 0)
-	                this._size[secondaryDirection] = undefined;
-	        }
-	        currentNode = currentNode.getNext();
-	        if (this.options.itemSpacing && currentNode)
-	            length += this.options.itemSpacing;
-	    }
-	    this._size[this.options.direction] = length;
-	    return {
-	        transform: parentSpec.transform,
-	        origin: parentSpec.origin,
-	        opacity: parentSpec.opacity,
-	        size: this.getSize(),
-	        target: result
-	    };
-	};
-	module.exports = SequentialLayout;
-
-/***/ },
-/* 128 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var View = __webpack_require__(58);
-	var Entity = __webpack_require__(51);
-	var Transform = __webpack_require__(44);
-	function SizeAwareView() {
-	    View.apply(this, arguments);
-	    this._id = Entity.register(this);
-	    this._parentSize = [];
-	}
-	SizeAwareView.prototype = Object.create(View.prototype);
-	SizeAwareView.prototype.constructor = SizeAwareView;
-	SizeAwareView.prototype.commit = function commit(context) {
-	    var transform = context.transform;
-	    var opacity = context.opacity;
-	    var origin = context.origin;
-	    if (!this._parentSize || this._parentSize[0] !== context.size[0] || this._parentSize[1] !== context.size[1]) {
-	        this._parentSize[0] = context.size[0];
-	        this._parentSize[1] = context.size[1];
-	        this._eventInput.emit('parentResize', this._parentSize);
-	        if (this.onResize)
-	            this.onResize(this._parentSize);
-	    }
-	    if (this._parentSize) {
-	        transform = Transform.moveThen([
-	            -this._parentSize[0] * origin[0],
-	            -this._parentSize[1] * origin[1],
-	            0
-	        ], transform);
-	    }
-	    return {
-	        transform: transform,
-	        opacity: opacity,
-	        size: this._parentSize,
-	        target: this._node.render()
-	    };
-	};
-	SizeAwareView.prototype.getParentSize = function getParentSize() {
-	    return this._parentSize;
-	};
-	SizeAwareView.prototype.render = function render() {
-	    return this._id;
-	};
-	module.exports = SizeAwareView;
-
-/***/ },
-/* 129 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function CachedMap(mappingFunction) {
-	    this._map = mappingFunction || null;
-	    this._cachedOutput = null;
-	    this._cachedInput = Number.NaN;
-	}
-	CachedMap.create = function create(mappingFunction) {
-	    var instance = new CachedMap(mappingFunction);
-	    return instance.get.bind(instance);
-	};
-	CachedMap.prototype.get = function get(input) {
-	    if (input !== this._cachedInput) {
-	        this._cachedInput = input;
-	        this._cachedOutput = this._map(input);
-	    }
-	    return this._cachedOutput;
-	};
-	module.exports = CachedMap;
-
-/***/ },
-/* 130 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Easing = {
-	    inQuad: function (t) {
-	        return t * t;
-	    },
-	    outQuad: function (t) {
-	        return -(t -= 1) * t + 1;
-	    },
-	    inOutQuad: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t;
-	        return -0.5 * (--t * (t - 2) - 1);
-	    },
-	    inCubic: function (t) {
-	        return t * t * t;
-	    },
-	    outCubic: function (t) {
-	        return --t * t * t + 1;
-	    },
-	    inOutCubic: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t;
-	        return 0.5 * ((t -= 2) * t * t + 2);
-	    },
-	    inQuart: function (t) {
-	        return t * t * t * t;
-	    },
-	    outQuart: function (t) {
-	        return -(--t * t * t * t - 1);
-	    },
-	    inOutQuart: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t * t;
-	        return -0.5 * ((t -= 2) * t * t * t - 2);
-	    },
-	    inQuint: function (t) {
-	        return t * t * t * t * t;
-	    },
-	    outQuint: function (t) {
-	        return --t * t * t * t * t + 1;
-	    },
-	    inOutQuint: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t * t * t;
-	        return 0.5 * ((t -= 2) * t * t * t * t + 2);
-	    },
-	    inSine: function (t) {
-	        return -1 * Math.cos(t * (Math.PI / 2)) + 1;
-	    },
-	    outSine: function (t) {
-	        return Math.sin(t * (Math.PI / 2));
-	    },
-	    inOutSine: function (t) {
-	        return -0.5 * (Math.cos(Math.PI * t) - 1);
-	    },
-	    inExpo: function (t) {
-	        return t === 0 ? 0 : Math.pow(2, 10 * (t - 1));
-	    },
-	    outExpo: function (t) {
-	        return t === 1 ? 1 : -Math.pow(2, -10 * t) + 1;
-	    },
-	    inOutExpo: function (t) {
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * Math.pow(2, 10 * (t - 1));
-	        return 0.5 * (-Math.pow(2, -10 * --t) + 2);
-	    },
-	    inCirc: function (t) {
-	        return -(Math.sqrt(1 - t * t) - 1);
-	    },
-	    outCirc: function (t) {
-	        return Math.sqrt(1 - --t * t);
-	    },
-	    inOutCirc: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return -0.5 * (Math.sqrt(1 - t * t) - 1);
-	        return 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1);
-	    },
-	    inElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if (!p)
-	            p = 0.3;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
-	    },
-	    outElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if (!p)
-	            p = 0.3;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
-	    },
-	    inOutElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if ((t /= 0.5) === 2)
-	            return 1;
-	        if (!p)
-	            p = 0.3 * 1.5;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        if (t < 1)
-	            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
-	        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p) * 0.5 + 1;
-	    },
-	    inBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        return t * t * ((s + 1) * t - s);
-	    },
-	    outBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        return --t * t * ((s + 1) * t + s) + 1;
-	    },
-	    inOutBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * (t * t * (((s *= 1.525) + 1) * t - s));
-	        return 0.5 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2);
-	    },
-	    inBounce: function (t) {
-	        return 1 - Easing.outBounce(1 - t);
-	    },
-	    outBounce: function (t) {
-	        if (t < 1 / 2.75) {
-	            return 7.5625 * t * t;
-	        } else if (t < 2 / 2.75) {
-	            return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
-	        } else if (t < 2.5 / 2.75) {
-	            return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
-	        } else {
-	            return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
-	        }
-	    },
-	    inOutBounce: function (t) {
-	        if (t < 0.5)
-	            return Easing.inBounce(t * 2) * 0.5;
-	        return Easing.outBounce(t * 2 - 1) * 0.5 + 0.5;
-	    }
-	};
-	module.exports = Easing;
-
-/***/ },
-/* 131 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var PE = __webpack_require__(48);
-	var Particle = __webpack_require__(46);
-	var Spring = __webpack_require__(145);
-	var Vector = __webpack_require__(45);
-	function SnapTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this._dimensions = 1;
-	    this._restTolerance = 1e-10;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.particle = new Particle();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.PE.addBody(this.particle);
-	    this.PE.attach(this.spring, this.particle);
-	}
-	SnapTransition.SUPPORTS_MULTIPLE = 3;
-	SnapTransition.DEFAULT_OPTIONS = {
-	    period: 100,
-	    dampingRatio: 0.2,
-	    velocity: 0
-	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _setParticlePosition(p) {
-	    this.particle.position.set(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.velocity.set(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _setupDefinition(definition) {
-	    var defaults = SnapTransition.DEFAULT_OPTIONS;
-	    if (definition.period === undefined)
-	        definition.period = defaults.period;
-	    if (definition.dampingRatio === undefined)
-	        definition.dampingRatio = defaults.dampingRatio;
-	    if (definition.velocity === undefined)
-	        definition.velocity = defaults.velocity;
-	    this.spring.setOptions({
-	        period: definition.period,
-	        dampingRatio: definition.dampingRatio
-	    });
-	    _setParticleVelocity.call(this, definition.velocity);
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
-	    }
-	    if (_getEnergy.call(this) < this._absRestTolerance) {
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	        _sleep.call(this);
-	    }
-	}
-	SnapTransition.prototype.reset = function reset(state, velocity) {
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    this.initState.set(state);
-	    _setParticlePosition.call(this, state);
-	    _setTarget.call(this, state);
-	    if (velocity)
-	        _setParticleVelocity.call(this, velocity);
-	    _setCallback.call(this, undefined);
-	};
-	SnapTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
-	};
-	SnapTransition.prototype.setVelocity = function setVelocity(velocity) {
-	    this.call(this, _setParticleVelocity(velocity));
-	};
-	SnapTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
-	};
-	SnapTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	SnapTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	SnapTransition.prototype.set = function set(state, definition, callback) {
-	    if (!definition) {
-	        this.reset(state);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, callback);
-	};
-	module.exports = SnapTransition;
-
-/***/ },
-/* 132 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var PE = __webpack_require__(48);
-	var Particle = __webpack_require__(46);
-	var Spring = __webpack_require__(47);
-	var Vector = __webpack_require__(45);
-	function SpringTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this._dimensions = undefined;
-	    this._restTolerance = 1e-10;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.particle = new Particle();
-	    this.PE.addBody(this.particle);
-	    this.PE.attach(this.spring, this.particle);
-	}
-	SpringTransition.SUPPORTS_MULTIPLE = 3;
-	SpringTransition.DEFAULT_OPTIONS = {
-	    period: 300,
-	    dampingRatio: 0.5,
-	    velocity: 0
-	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setParticlePosition(p) {
-	    this.particle.setPosition(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.setVelocity(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
-	    }
-	    if (_getEnergy.call(this) < this._absRestTolerance) {
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	        _sleep.call(this);
-	    }
-	}
-	function _setupDefinition(definition) {
-	    var defaults = SpringTransition.DEFAULT_OPTIONS;
-	    if (definition.period === undefined)
-	        definition.period = defaults.period;
-	    if (definition.dampingRatio === undefined)
-	        definition.dampingRatio = defaults.dampingRatio;
-	    if (definition.velocity === undefined)
-	        definition.velocity = defaults.velocity;
-	    if (definition.period < 150) {
-	        definition.period = 150;
-	        console.warn('The period of a SpringTransition is capped at 150 ms. Use a SnapTransition for faster transitions');
-	    }
-	    this.spring.setOptions({
-	        period: definition.period,
-	        dampingRatio: definition.dampingRatio
-	    });
-	    _setParticleVelocity.call(this, definition.velocity);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	SpringTransition.prototype.reset = function reset(pos, vel) {
-	    this._dimensions = pos instanceof Array ? pos.length : 0;
-	    this.initState.set(pos);
-	    _setParticlePosition.call(this, pos);
-	    _setTarget.call(this, pos);
-	    if (vel)
-	        _setParticleVelocity.call(this, vel);
-	    _setCallback.call(this, undefined);
-	};
-	SpringTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
-	};
-	SpringTransition.prototype.setVelocity = function setVelocity(v) {
-	    this.call(this, _setParticleVelocity(v));
-	};
-	SpringTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
-	};
-	SpringTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	SpringTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	SpringTransition.prototype.set = function set(endState, definition, callback) {
-	    if (!definition) {
-	        this.reset(endState);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = endState instanceof Array ? endState.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, endState);
-	    _setCallback.call(this, callback);
-	};
-	module.exports = SpringTransition;
-
-/***/ },
-/* 133 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transitionable = __webpack_require__(49);
-	var Transform = __webpack_require__(44);
-	var Utility = __webpack_require__(50);
-	function TransitionableTransform(transform) {
-	    this._final = Transform.identity.slice();
-	    this._finalTranslate = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalRotate = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalSkew = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalScale = [
-	        1,
-	        1,
-	        1
-	    ];
-	    this.translate = new Transitionable(this._finalTranslate);
-	    this.rotate = new Transitionable(this._finalRotate);
-	    this.skew = new Transitionable(this._finalSkew);
-	    this.scale = new Transitionable(this._finalScale);
-	    if (transform)
-	        this.set(transform);
-	}
-	function _build() {
-	    return Transform.build({
-	        translate: this.translate.get(),
-	        rotate: this.rotate.get(),
-	        skew: this.skew.get(),
-	        scale: this.scale.get()
-	    });
-	}
-	function _buildFinal() {
-	    return Transform.build({
-	        translate: this._finalTranslate,
-	        rotate: this._finalRotate,
-	        skew: this._finalSkew,
-	        scale: this._finalScale
-	    });
-	}
-	TransitionableTransform.prototype.setTranslate = function setTranslate(translate, transition, callback) {
-	    this._finalTranslate = translate;
-	    this._final = _buildFinal.call(this);
-	    this.translate.set(translate, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setScale = function setScale(scale, transition, callback) {
-	    this._finalScale = scale;
-	    this._final = _buildFinal.call(this);
-	    this.scale.set(scale, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setRotate = function setRotate(eulerAngles, transition, callback) {
-	    this._finalRotate = eulerAngles;
-	    this._final = _buildFinal.call(this);
-	    this.rotate.set(eulerAngles, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setSkew = function setSkew(skewAngles, transition, callback) {
-	    this._finalSkew = skewAngles;
-	    this._final = _buildFinal.call(this);
-	    this.skew.set(skewAngles, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.set = function set(transform, transition, callback) {
-	    var components = Transform.interpret(transform);
-	    this._finalTranslate = components.translate;
-	    this._finalRotate = components.rotate;
-	    this._finalSkew = components.skew;
-	    this._finalScale = components.scale;
-	    this._final = transform;
-	    var _callback = callback ? Utility.after(4, callback) : null;
-	    this.translate.set(components.translate, transition, _callback);
-	    this.rotate.set(components.rotate, transition, _callback);
-	    this.skew.set(components.skew, transition, _callback);
-	    this.scale.set(components.scale, transition, _callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setDefaultTransition = function setDefaultTransition(transition) {
-	    this.translate.setDefault(transition);
-	    this.rotate.setDefault(transition);
-	    this.skew.setDefault(transition);
-	    this.scale.setDefault(transition);
-	};
-	TransitionableTransform.prototype.get = function get() {
-	    if (this.isActive()) {
-	        return _build.call(this);
-	    } else
-	        return this._final;
-	};
-	TransitionableTransform.prototype.getFinal = function getFinal() {
-	    return this._final;
-	};
-	TransitionableTransform.prototype.isActive = function isActive() {
-	    return this.translate.isActive() || this.rotate.isActive() || this.scale.isActive() || this.skew.isActive();
-	};
-	TransitionableTransform.prototype.halt = function halt() {
-	    this.translate.halt();
-	    this.rotate.halt();
-	    this.skew.halt();
-	    this.scale.halt();
-	    this._final = this.get();
-	    this._finalTranslate = this.translate.get();
-	    this._finalRotate = this.rotate.get();
-	    this._finalSkew = this.skew.get();
-	    this._finalScale = this.scale.get();
-	    return this;
-	};
-	module.exports = TransitionableTransform;
-
-/***/ },
-/* 134 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var PE = __webpack_require__(48);
-	var Particle = __webpack_require__(46);
-	var Spring = __webpack_require__(47);
-	var Wall = __webpack_require__(146);
-	var Vector = __webpack_require__(45);
-	function WallTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.wall = new Wall();
-	    this._restTolerance = 1e-10;
-	    this._dimensions = 1;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.particle = new Particle();
-	    this.PE.addBody(this.particle);
-	    this.PE.attach([
-	        this.wall,
-	        this.spring
-	    ], this.particle);
-	}
-	WallTransition.SUPPORTS_MULTIPLE = 3;
-	WallTransition.DEFAULT_OPTIONS = {
-	    period: 300,
-	    dampingRatio: 0.5,
-	    velocity: 0,
-	    restitution: 0.5
-	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    var dist = this.endState.sub(this.initState).norm();
-	    this.wall.setOptions({
-	        distance: this.endState.norm(),
-	        normal: dist === 0 ? this.particle.velocity.normalize(-1) : this.endState.sub(this.initState).normalize(-1)
-	    });
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	function _setParticlePosition(p) {
-	    this.particle.position.set(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.velocity.set(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
-	    }
-	    var energy = _getEnergy.call(this);
-	    if (energy < this._absRestTolerance) {
-	        _sleep.call(this);
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	    }
-	}
-	function _setupDefinition(def) {
-	    var defaults = WallTransition.DEFAULT_OPTIONS;
-	    if (def.period === undefined)
-	        def.period = defaults.period;
-	    if (def.dampingRatio === undefined)
-	        def.dampingRatio = defaults.dampingRatio;
-	    if (def.velocity === undefined)
-	        def.velocity = defaults.velocity;
-	    if (def.restitution === undefined)
-	        def.restitution = defaults.restitution;
-	    if (def.drift === undefined)
-	        def.drift = Wall.DEFAULT_OPTIONS.drift;
-	    if (def.slop === undefined)
-	        def.slop = Wall.DEFAULT_OPTIONS.slop;
-	    this.spring.setOptions({
-	        period: def.period,
-	        dampingRatio: def.dampingRatio
-	    });
-	    this.wall.setOptions({
-	        restitution: def.restitution,
-	        drift: def.drift,
-	        slop: def.slop
-	    });
-	    _setParticleVelocity.call(this, def.velocity);
-	}
-	WallTransition.prototype.reset = function reset(state, velocity) {
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    this.initState.set(state);
-	    _setParticlePosition.call(this, state);
-	    if (velocity)
-	        _setParticleVelocity.call(this, velocity);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, undefined);
-	};
-	WallTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
-	};
-	WallTransition.prototype.setVelocity = function setVelocity(velocity) {
-	    this.call(this, _setParticleVelocity(velocity));
-	};
-	WallTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
-	};
-	WallTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	WallTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	WallTransition.prototype.set = function set(state, definition, callback) {
-	    if (!definition) {
-	        this.reset(state);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, callback);
-	};
-	module.exports = WallTransition;
-
-/***/ },
-/* 135 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var KeyCodes = {
-	    0: 48,
-	    1: 49,
-	    2: 50,
-	    3: 51,
-	    4: 52,
-	    5: 53,
-	    6: 54,
-	    7: 55,
-	    8: 56,
-	    9: 57,
-	    a: 97,
-	    b: 98,
-	    c: 99,
-	    d: 100,
-	    e: 101,
-	    f: 102,
-	    g: 103,
-	    h: 104,
-	    i: 105,
-	    j: 106,
-	    k: 107,
-	    l: 108,
-	    m: 109,
-	    n: 110,
-	    o: 111,
-	    p: 112,
-	    q: 113,
-	    r: 114,
-	    s: 115,
-	    t: 116,
-	    u: 117,
-	    v: 118,
-	    w: 119,
-	    x: 120,
-	    y: 121,
-	    z: 122,
-	    A: 65,
-	    B: 66,
-	    C: 67,
-	    D: 68,
-	    E: 69,
-	    F: 70,
-	    G: 71,
-	    H: 72,
-	    I: 73,
-	    J: 74,
-	    K: 75,
-	    L: 76,
-	    M: 77,
-	    N: 78,
-	    O: 79,
-	    P: 80,
-	    Q: 81,
-	    R: 82,
-	    S: 83,
-	    T: 84,
-	    U: 85,
-	    V: 86,
-	    W: 87,
-	    X: 88,
-	    Y: 89,
-	    Z: 90,
-	    ENTER: 13,
-	    LEFT_ARROW: 37,
-	    RIGHT_ARROW: 39,
-	    UP_ARROW: 38,
-	    DOWN_ARROW: 40,
-	    SPACE: 32,
-	    SHIFT: 16,
-	    TAB: 9
-	};
-	module.exports = KeyCodes;
-
-/***/ },
-/* 136 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var FamousEngine = __webpack_require__(80);
-	var _event = 'prerender';
-	var getTime = window.performance && window.performance.now ? function () {
-	    return window.performance.now();
-	} : function () {
-	    return Date.now();
-	};
-	function addTimerFunction(fn) {
-	    FamousEngine.on(_event, fn);
-	    return fn;
-	}
-	function setTimeout(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            FamousEngine.removeListener(_event, callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function setInterval(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            t = getTime();
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function after(fn, numTicks) {
-	    if (numTicks === undefined)
-	        return undefined;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            clear(callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function every(fn, numTicks) {
-	    numTicks = numTicks || 1;
-	    var initial = numTicks;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            numTicks = initial;
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function clear(fn) {
-	    FamousEngine.removeListener(_event, fn);
-	}
-	function debounce(func, wait) {
-	    var timeout;
-	    var ctx;
-	    var timestamp;
-	    var result;
-	    var args;
-	    return function () {
-	        ctx = this;
-	        args = arguments;
-	        timestamp = getTime();
-	        var fn = function () {
-	            var last = getTime - timestamp;
-	            if (last < wait) {
-	                timeout = setTimeout(fn, wait - last);
-	            } else {
-	                timeout = null;
-	                result = func.apply(ctx, args);
-	            }
-	        };
-	        clear(timeout);
-	        timeout = setTimeout(fn, wait);
-	        return result;
-	    };
-	}
-	module.exports = {
-	    setTimeout: setTimeout,
-	    setInterval: setInterval,
-	    debounce: debounce,
-	    after: after,
-	    every: every,
-	    clear: clear
-	};
-
-/***/ },
-/* 137 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Scene = __webpack_require__(86);
-	var Surface = __webpack_require__(59);
-	var Transform = __webpack_require__(44);
-	var View = __webpack_require__(58);
-	function NavigationBar(options) {
-	    View.apply(this, arguments);
-	    this.title = new Surface({
-	        classes: this.options.classes,
-	        content: this.options.content
-	    });
-	    this.back = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.backContent
-	    });
-	    this.back.on('click', function () {
-	        this._eventOutput.emit('back', {});
-	    }.bind(this));
-	    this.more = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.moreContent
-	    });
-	    this.more.on('click', function () {
-	        this._eventOutput.emit('more', {});
-	    }.bind(this));
-	    this.layout = new Scene({
-	        id: 'master',
-	        size: this.options.size,
-	        target: [
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    0,
-	                    0.5
-	                ],
-	                align: [
-	                    0,
-	                    0.5
-	                ],
-	                target: this.back
-	            },
-	            {
-	                origin: [
-	                    0.5,
-	                    0.5
-	                ],
-	                align: [
-	                    0.5,
-	                    0.5
-	                ],
-	                target: this.title
-	            },
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    1,
-	                    0.5
-	                ],
-	                align: [
-	                    1,
-	                    0.5
-	                ],
-	                target: this.more
-	            }
-	        ]
-	    });
-	    this._add(this.layout);
-	    this._optionsManager.on('change', function (event) {
-	        var key = event.id;
-	        var data = event.value;
-	        if (key === 'size') {
-	            this.layout.id.master.setSize(data);
-	            this.title.setSize(data);
-	            this.back.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	            this.more.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	        } else if (key === 'backClasses') {
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	        } else if (key === 'backContent') {
-	            this.back.setContent(this.options.backContent);
-	        } else if (key === 'classes') {
-	            this.title.setOptions({ classes: this.options.classes });
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'content') {
-	            this.setContent(this.options.content);
-	        } else if (key === 'moreClasses') {
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'moreContent') {
-	            this.more.setContent(this.options.content);
-	        }
-	    }.bind(this));
-	}
-	NavigationBar.prototype = Object.create(View.prototype);
-	NavigationBar.prototype.constructor = NavigationBar;
-	NavigationBar.DEFAULT_OPTIONS = {
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    backClasses: ['back'],
-	    backContent: '&#x25c0;',
-	    classes: ['navigation'],
-	    content: '',
-	    moreClasses: ['more'],
-	    moreContent: '&#x271a;'
-	};
-	NavigationBar.prototype.setContent = function setContent(content) {
-	    return this.title.setContent(content);
-	};
-	module.exports = NavigationBar;
-
-/***/ },
-/* 138 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	var CanvasSurface = __webpack_require__(107);
-	var Transform = __webpack_require__(44);
-	var EventHandler = __webpack_require__(53);
-	var Utilities = __webpack_require__(91);
-	var OptionsManager = __webpack_require__(43);
-	var MouseSync = __webpack_require__(96);
-	var TouchSync = __webpack_require__(100);
-	var GenericSync = __webpack_require__(95);
-	GenericSync.register({
-	    mouse: MouseSync,
-	    touch: TouchSync
-	});
-	function Slider(options) {
-	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
-	    this.optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.indicator = new CanvasSurface({
-	        size: this.options.indicatorSize,
-	        classes: ['slider-back']
-	    });
-	    this.label = new Surface({
-	        size: this.options.labelSize,
-	        content: this.options.label,
-	        properties: { pointerEvents: 'none' },
-	        classes: ['slider-label']
-	    });
-	    this.eventOutput = new EventHandler();
-	    this.eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.eventInput);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], {
-	        scale: scale,
-	        direction: GenericSync.DIRECTION_X
-	    });
-	    this.indicator.pipe(this.sync);
-	    this.sync.pipe(this);
-	    this.eventInput.on('update', function (data) {
-	        this.set(data.position);
-	    }.bind(this));
-	    this._drawPos = 0;
-	    _updateLabel.call(this);
-	}
-	Slider.DEFAULT_OPTIONS = {
-	    size: [
-	        200,
-	        60
-	    ],
-	    indicatorSize: [
-	        200,
-	        30
-	    ],
-	    labelSize: [
-	        200,
-	        30
-	    ],
-	    range: [
-	        0,
-	        1
-	    ],
-	    precision: 2,
-	    value: 0,
-	    label: '',
-	    fillColor: 'rgba(170, 170, 170, 1)'
-	};
-	function _updateLabel() {
-	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
-	}
-	Slider.prototype.setOptions = function setOptions(options) {
-	    return this.optionsManager.setOptions(options);
-	};
-	Slider.prototype.get = function get() {
-	    return this.options.value;
-	};
-	Slider.prototype.set = function set(value) {
-	    if (value === this.options.value)
-	        return;
-	    this.options.value = Utilities.clamp(value, this.options.range);
-	    _updateLabel.call(this);
-	    this.eventOutput.emit('change', { value: value });
-	};
-	Slider.prototype.getSize = function getSize() {
-	    return this.options.size;
-	};
-	Slider.prototype.render = function render() {
-	    var range = this.options.range;
-	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
-	    if (fillSize < this._drawPos) {
-	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
-	    } else if (fillSize > this._drawPos) {
-	        var ctx = this.indicator.getContext('2d');
-	        ctx.fillStyle = this.options.fillColor;
-	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
-	    }
-	    this._drawPos = fillSize;
-	    return {
-	        size: this.options.size,
-	        target: [
-	            {
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.indicator.render()
-	            },
-	            {
-	                transform: Transform.translate(0, 0, 1),
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.label.render()
-	            }
-	        ]
-	    };
-	};
-	module.exports = Slider;
-
-/***/ },
-/* 139 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Utility = __webpack_require__(50);
-	var View = __webpack_require__(58);
-	var GridLayout = __webpack_require__(120);
-	var ToggleButton = __webpack_require__(140);
-	function TabBar(options) {
-	    View.apply(this, arguments);
-	    this.layout = new GridLayout();
-	    this.buttons = [];
-	    this._buttonIds = {};
-	    this._buttonCallbacks = {};
-	    this.layout.sequenceFrom(this.buttons);
-	    this._add(this.layout);
-	    this._optionsManager.on('change', _updateOptions.bind(this));
-	}
-	TabBar.prototype = Object.create(View.prototype);
-	TabBar.prototype.constructor = TabBar;
-	TabBar.DEFAULT_OPTIONS = {
-	    sections: [],
-	    widget: ToggleButton,
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    direction: Utility.Direction.X,
-	    buttons: { toggleMode: ToggleButton.ON }
-	};
-	function _updateOptions(data) {
-	    var id = data.id;
-	    var value = data.value;
-	    if (id === 'direction') {
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
-	    } else if (id === 'buttons') {
-	        for (var i in this.buttons) {
-	            this.buttons[i].setOptions(value);
-	        }
-	    } else if (id === 'sections') {
-	        for (var sectionId in this.options.sections) {
-	            this.defineSection(sectionId, this.options.sections[sectionId]);
-	        }
-	    }
-	}
-	function _resolveGridDimensions(count, direction) {
-	    if (direction === Utility.Direction.X)
-	        return [
-	            count,
-	            1
-	        ];
-	    else
-	        return [
-	            1,
-	            count
-	        ];
-	}
-	TabBar.prototype.defineSection = function defineSection(id, content) {
-	    var button;
-	    var i = this._buttonIds[id];
-	    if (i === undefined) {
-	        i = this.buttons.length;
-	        this._buttonIds[id] = i;
-	        var widget = this.options.widget;
-	        button = new widget();
-	        this.buttons[i] = button;
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
-	    } else {
-	        button = this.buttons[i];
-	        button.unbind('select', this._buttonCallbacks[id]);
-	    }
-	    if (this.options.buttons)
-	        button.setOptions(this.options.buttons);
-	    button.setOptions(content);
-	    this._buttonCallbacks[id] = this.select.bind(this, id);
-	    button.on('select', this._buttonCallbacks[id]);
-	};
-	TabBar.prototype.select = function select(id) {
-	    var btn = this._buttonIds[id];
-	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
-	        this._eventOutput.emit('select', { id: id });
-	    } else if (this.buttons[btn]) {
-	        this.buttons[btn].select();
-	    }
-	    for (var i = 0; i < this.buttons.length; i++) {
-	        if (i !== btn)
-	            this.buttons[i].deselect();
-	    }
-	};
-	module.exports = TabBar;
-
-/***/ },
-/* 140 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	var EventHandler = __webpack_require__(53);
-	var RenderController = __webpack_require__(123);
-	function ToggleButton(options) {
-	    this.options = {
-	        content: [
-	            '',
-	            ''
-	        ],
-	        offClasses: ['off'],
-	        onClasses: ['on'],
-	        size: undefined,
-	        outTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        inTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        toggleMode: ToggleButton.TOGGLE,
-	        crossfade: true
-	    };
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.offSurface = new Surface();
-	    this.offSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.OFF)
-	            this.select();
-	    }.bind(this));
-	    this.offSurface.pipe(this._eventOutput);
-	    this.onSurface = new Surface();
-	    this.onSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.ON)
-	            this.deselect();
-	    }.bind(this));
-	    this.onSurface.pipe(this._eventOutput);
-	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
-	    this.deselect();
-	    if (options)
-	        this.setOptions(options);
-	}
-	ToggleButton.OFF = 0;
-	ToggleButton.ON = 1;
-	ToggleButton.TOGGLE = 2;
-	ToggleButton.prototype.select = function select(suppressEvent) {
-	    this.selected = true;
-	    this.arbiter.show(this.onSurface, this.options.inTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('select');
-	    }
-	};
-	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
-	    this.selected = false;
-	    this.arbiter.show(this.offSurface, this.options.outTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('deselect');
-	    }
-	};
-	ToggleButton.prototype.isSelected = function isSelected() {
-	    return this.selected;
-	};
-	ToggleButton.prototype.setOptions = function setOptions(options) {
-	    if (options.content !== undefined) {
-	        if (!(options.content instanceof Array))
-	            options.content = [
-	                options.content,
-	                options.content
-	            ];
-	        this.options.content = options.content;
-	        this.offSurface.setContent(this.options.content[0]);
-	        this.onSurface.setContent(this.options.content[1]);
-	    }
-	    if (options.offClasses) {
-	        this.options.offClasses = options.offClasses;
-	        this.offSurface.setClasses(this.options.offClasses);
-	    }
-	    if (options.onClasses) {
-	        this.options.onClasses = options.onClasses;
-	        this.onSurface.setClasses(this.options.onClasses);
-	    }
-	    if (options.size !== undefined) {
-	        this.options.size = options.size;
-	        this.onSurface.setSize(this.options.size);
-	        this.offSurface.setSize(this.options.size);
-	    }
-	    if (options.toggleMode !== undefined)
-	        this.options.toggleMode = options.toggleMode;
-	    if (options.outTransition !== undefined)
-	        this.options.outTransition = options.outTransition;
-	    if (options.inTransition !== undefined)
-	        this.options.inTransition = options.inTransition;
-	    if (options.crossfade !== undefined) {
-	        this.options.crossfade = options.crossfade;
-	        this.arbiter.setOptions({ overlap: this.options.crossfade });
-	    }
-	};
-	ToggleButton.prototype.getSize = function getSize() {
-	    return this.options.size;
-	};
-	ToggleButton.prototype.render = function render() {
-	    return this.arbiter.render();
-	};
-	module.exports = ToggleButton;
-
-/***/ },
-/* 141 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Body: __webpack_require__(147),
-	  Circle: __webpack_require__(148),
-	  Particle: __webpack_require__(46),
-	  Rectangle: __webpack_require__(149)
-	};
-
-
-/***/ },
-/* 142 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Collision: __webpack_require__(150),
-	  Constraint: __webpack_require__(151),
-	  Curve: __webpack_require__(152),
-	  Distance: __webpack_require__(153),
-	  Snap: __webpack_require__(145),
-	  Surface: __webpack_require__(154),
-	  Wall: __webpack_require__(146),
-	  Walls: __webpack_require__(155)
-	};
-
-
-/***/ },
-/* 143 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Drag: __webpack_require__(56),
-	  Force: __webpack_require__(73),
-	  Repulsion: __webpack_require__(156),
-	  RotationalDrag: __webpack_require__(157),
-	  RotationalSpring: __webpack_require__(158),
-	  Spring: __webpack_require__(47),
-	  VectorField: __webpack_require__(159)
-	};
-
-
-/***/ },
-/* 144 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  SymplecticEuler: __webpack_require__(72)
-	};
-
-
-/***/ },
-/* 145 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -63895,8 +64132,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(151);
-	var Vector = __webpack_require__(45);
+	var Constraint = __webpack_require__(229);
+	var Vector = __webpack_require__(77);
 	function Snap(options) {
 	    Constraint.call(this);
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -63997,7 +64234,7 @@
 	module.exports = Snap;
 
 /***/ },
-/* 146 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64007,8 +64244,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(151);
-	var Vector = __webpack_require__(45);
+	var Constraint = __webpack_require__(229);
+	var Vector = __webpack_require__(77);
 	function Wall(options) {
 	    this.options = Object.create(Wall.DEFAULT_OPTIONS);
 	    if (options)
@@ -64121,7 +64358,37 @@
 	module.exports = Wall;
 
 /***/ },
-/* 147 */
+/* 220 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "f4769f9bdb7466be65088239c12046d1.eot"
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "448c34a56d699c29117adc64c43affeb.woff2"
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "fa2772327f55d8198301fdb8bcfc8158.woff"
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "e18bbf611f2a2e43afc071aa2f4e1512.ttf"
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "89889688147bd7575d6327160d64e760.svg"
+
+/***/ },
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64131,12 +64398,12 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Particle = __webpack_require__(46);
-	var Transform = __webpack_require__(44);
-	var Vector = __webpack_require__(45);
-	var Quaternion = __webpack_require__(89);
-	var Matrix = __webpack_require__(88);
-	var Integrator = __webpack_require__(72);
+	var Particle = __webpack_require__(78);
+	var Transform = __webpack_require__(76);
+	var Vector = __webpack_require__(77);
+	var Quaternion = __webpack_require__(168);
+	var Matrix = __webpack_require__(167);
+	var Integrator = __webpack_require__(144);
 	function Body(options) {
 	    Particle.call(this, options);
 	    options = options || {};
@@ -64241,7 +64508,7 @@
 	module.exports = Body;
 
 /***/ },
-/* 148 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64251,8 +64518,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(147);
-	var Matrix = __webpack_require__(88);
+	var Body = __webpack_require__(225);
+	var Matrix = __webpack_require__(167);
 	function Circle(options) {
 	    options = options || {};
 	    this.setRadius(options.radius || 0);
@@ -64309,7 +64576,7 @@
 	module.exports = Circle;
 
 /***/ },
-/* 149 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64319,8 +64586,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(147);
-	var Matrix = __webpack_require__(88);
+	var Body = __webpack_require__(225);
+	var Matrix = __webpack_require__(167);
 	function Rectangle(options) {
 	    options = options || {};
 	    this.size = options.size || [
@@ -64377,7 +64644,7 @@
 	module.exports = Rectangle;
 
 /***/ },
-/* 150 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64387,8 +64654,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(151);
-	var Vector = __webpack_require__(45);
+	var Constraint = __webpack_require__(229);
+	var Vector = __webpack_require__(77);
 	function Collision(options) {
 	    this.options = Object.create(Collision.DEFAULT_OPTIONS);
 	    if (options)
@@ -64469,7 +64736,7 @@
 	module.exports = Collision;
 
 /***/ },
-/* 151 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64479,7 +64746,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(53);
+	var EventHandler = __webpack_require__(85);
 	function Constraint() {
 	    this.options = this.options || {};
 	    this._eventOutput = new EventHandler();
@@ -64496,7 +64763,7 @@
 	module.exports = Constraint;
 
 /***/ },
-/* 152 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64506,8 +64773,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(151);
-	var Vector = __webpack_require__(45);
+	var Constraint = __webpack_require__(229);
+	var Vector = __webpack_require__(77);
 	function Curve(options) {
 	    this.options = Object.create(Curve.DEFAULT_OPTIONS);
 	    if (options)
@@ -64579,7 +64846,7 @@
 	module.exports = Curve;
 
 /***/ },
-/* 153 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64589,8 +64856,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(151);
-	var Vector = __webpack_require__(45);
+	var Constraint = __webpack_require__(229);
+	var Vector = __webpack_require__(77);
 	function Distance(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -64694,7 +64961,7 @@
 	module.exports = Distance;
 
 /***/ },
-/* 154 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64704,8 +64971,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(151);
-	var Vector = __webpack_require__(45);
+	var Constraint = __webpack_require__(229);
+	var Vector = __webpack_require__(77);
 	function Surface(options) {
 	    this.options = Object.create(Surface.DEFAULT_OPTIONS);
 	    if (options)
@@ -64767,7 +65034,7 @@
 	module.exports = Surface;
 
 /***/ },
-/* 155 */
+/* 233 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64777,9 +65044,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(151);
-	var Wall = __webpack_require__(146);
-	var Vector = __webpack_require__(45);
+	var Constraint = __webpack_require__(229);
+	var Wall = __webpack_require__(219);
+	var Vector = __webpack_require__(77);
 	function Walls(options) {
 	    this.options = Object.create(Walls.DEFAULT_OPTIONS);
 	    if (options)
@@ -64948,7 +65215,7 @@
 	module.exports = Walls;
 
 /***/ },
-/* 156 */
+/* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64958,8 +65225,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(73);
-	var Vector = __webpack_require__(45);
+	var Force = __webpack_require__(145);
+	var Vector = __webpack_require__(77);
 	function Repulsion(options) {
 	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
 	    if (options)
@@ -65042,7 +65309,7 @@
 	module.exports = Repulsion;
 
 /***/ },
-/* 157 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65052,7 +65319,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Drag = __webpack_require__(56);
+	var Drag = __webpack_require__(88);
 	function RotationalDrag(options) {
 	    Drag.call(this, options);
 	}
@@ -65087,7 +65354,7 @@
 	module.exports = RotationalDrag;
 
 /***/ },
-/* 158 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65097,9 +65364,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(73);
-	var Spring = __webpack_require__(47);
-	var Quaternion = __webpack_require__(89);
+	var Force = __webpack_require__(145);
+	var Spring = __webpack_require__(79);
+	var Quaternion = __webpack_require__(168);
 	function RotationalSpring(options) {
 	    Spring.call(this, options);
 	}
@@ -65186,7 +65453,7 @@
 	module.exports = RotationalSpring;
 
 /***/ },
-/* 159 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65196,8 +65463,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(73);
-	var Vector = __webpack_require__(45);
+	var Force = __webpack_require__(145);
+	var Vector = __webpack_require__(77);
 	function VectorField(options) {
 	    Force.call(this);
 	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);

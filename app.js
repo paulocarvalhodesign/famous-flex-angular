@@ -5,7 +5,8 @@
 //var GridLayout = require('famous-flex/layouts/GridLayout');
 //var NavBarLayout = require('famous-flex/layouts/NavBarLayout');
 //require('famous-angular');
-require('bootstrap.min.css');
+//require('bootstrap.min.css');
+require('bootstrap-webpack');
 
 angular.module('app',['famousFlexAngular'])
 .controller('GridCtrl', ['$scope', '$famous', function($scope,$famous) {
