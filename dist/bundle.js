@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(1);
+	__webpack_require__(2);
 	/* WEBPACK VAR INJECTION */(function(angular) {//var LayoutController = require('famous-flex/LayoutController');
 	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
 	//var ListLayout = require('famous-flex/layouts/ListLayout');
@@ -79,224 +79,10 @@
 
 	}]);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
 /* 1 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(16);
-	/* WEBPACK VAR INJECTION */(function(angular) {var ffa = (module.exports['famousFlexAngular'] = angular.module('famousFlexAngular',['famous.angular']));
-
-	ffa.config(function($famousProvider) {
-	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(17));
-	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(18));
-	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(19));
-	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(20));
-	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(21));
-	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(22));
-	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(23));
-	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(24));
-	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(25));
-	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(26));
-	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(27));
-	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(28));
-	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(29));
-	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(30));
-	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(31));
-	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(32));
-	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(33));
-	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(34));
-	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(35));
-	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(36));
-	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(37));
-	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(38));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(39));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(40));
-	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(41));
-	  //console.log($famousProvider.$get());
-	});
-
-	//var LayoutController = require('famous-flex/LayoutController');
-	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
-	//var ListLayout = require('famous-flex/layouts/ListLayout');
-	//var WheelLayout = require('famous-flex/layouts/WheelLayout');
-	//var GridLayout = require('famous-flex/layouts/GridLayout');
-	//var NavBarLayout = require('famous-flex/layouts/NavBarLayout');
-	//require('bootstrap.min.css');
-
-	angular.module('famousFlexAngular')
-	.directive('faDumb', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
-	  return {
-		template: '<div></div>',
-		restrict: 'E',
-		transclude: true,
-		scope: true,
-		compile: function(tElem, tAttrs, transclude) {
-		  var mySelection = 1;
-
-		  return {
-		    pre: function(scope, element, attrs) {
-	            	var isolate = $famousDecorator.ensureIsolate(scope);
-	            	var options = scope.$eval(attrs.faOptions) || {};
-
-			var LayoutController = $famous['famous-flex/LayoutController'];
-		 	isolate.renderNode = new LayoutController(options);
-
-		    		var _children = [];
-
-	            		var updateLayout = function () {
-	              			scope.$$postDigest(function(){
-	                			_children.sort(function (a, b) {
-	                  			return a.index - b.index;
-	                			});
-		        			isolate.renderNode.setDataSource(function(_children) {
-	                	  			var _ch = [];
-	                  				angular.forEach(_children, function(c, i) {
-	                    					_ch[i] = c.renderGate;//._object._child._object;
-	                  				});
-	                  				return _ch;
-	                			}(_children));
-	              			});
-					console.log(isolate.renderNode);
-	            		};
-
-	                       $famousDecorator.sequenceWith(
-	                                scope,
-	                                function(data) {
-	                                        _children.push(data);
-	                                        updateLayout();
-	                                },
-	                                function(childScopeId) {
-	                                        _children = function(_children) {
-	                                                var _ch = [];
-	                                                angular.forEach(_children, function(c) {
-	                                                        if (c.id !== childScopeId) {
-	                                                                _ch.push(c);
-	                                                        }
-	                                                });
-	                                                return _ch;
-	                                        }(_children);
-	                                        updateLayout();
-	                                },
-	                                updateLayout
-	                        );
-
-
-	            	$famousDecorator.addRole('renderable',isolate);
-	            	isolate.show();
-			console.log(isolate);
-
-		    	},
-		    post: function(scope,element,attrs) {
-		       		var isolate = $famousDecorator.ensureIsolate(scope);
-	            	    	transclude(scope, function(clone) {
-	              			element.find('div').append(clone);
-	            		});
-	            	    	$famousDecorator.registerChild(scope, element, isolate);
-		    }
-		  }
-		}
-	  }
-	}])
-	.directive('faNavbar', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
-		return {
-			restrict: 'AE',
-			transclude: true,
-			compile: function(tElem,tAttrs,transclude) {
-				
-				var Surface = $famous['famous/core/Surface'];
-				var LayoutController = $famous['famous-flex/LayoutController'];
-				var NavBarLayout = $famous['famous-flex/NavBarLayout'];
-		
-				var _createLayoutController = function(options) {
-					var layoutController = new LayoutController({
-						layout: NavBarLayout,
-						layoutOptions: {
-							margins: [8],
-							itemSpacer: 5
-						}
-					});
-					return layoutController;
-				};
-
-				var _createBackground = function() {
-					var background = new Surface({classes: ['navbar', 'navbar-inverse']});
-					return background;
-				};
-
-				var _createTitle = function(myTitle) {
-					var title = new Surface({content: myTitle || 'famous-flex', classes: ['title']});
-					return title;
-				};
-
-	   			var _createButton = function(content) {
-	        			return new Surface({
-	            				size: [50, undefined],
-	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
-	        			});
-	    			};
-
-				var rightItems = [];
-
-				return {
-					pre: function(scope,elem,attrs) {
-	                			var isolate = $famousDecorator.ensureIsolate(scope);
-	                			var options = scope.$eval(attrs.faOptions) || {};
-	                			isolate.renderNode = _createLayoutController(options);
-
-				                $famousDecorator.addRole('renderable',isolate);
-	                			isolate.show();
-	                			console.log(isolate);
-					},
-					post: function(scope,element,attrs) {
-	                			var isolate = $famousDecorator.ensureIsolate(scope);
-		
-						transclude(scope, function(clone) {
-							var title = clone.find('div.title');
-							var buttons = clone.find('button.left');
-							var rightItems = [];
-							console.log(title);
-							angular.forEach(buttons, function(button) {
-								rightItems.push(_createButton('hello'));//button);
-							});
-	                				var isolate = $famousDecorator.ensureIsolate(scope);
-							console.log(rightItems);
-							isolate.renderNode.setDataSource({
-								background: _createBackground(),
-								title: _createTitle(),
-								rightItems: rightItems
-							});
-						});
-
-
-						$famousDecorator.registerChild(scope, element, isolate);
-					}
-				};
-			}
-		};
-	}]);
-				
-
-	angular.module('famousFlexAngular')
-	.directive('resizable', function($window) {
-	        return function($scope) {
-	          $scope.initializeWindowSize = function() {
-	            $scope.windowHeight = $window.innerHeight;
-	            $scope.windowWidth = $window.innerWidth;
-	          };
-	        
-	          angular.element($window).bind('resize', function() {
-	            $scope.initializeWindowSize();
-	            $scope.$apply();
-	          });
-	        }
-	});
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ },
-/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(angular) {/**
@@ -26432,7 +26218,296 @@
 
 	/*** EXPORTS FROM exports-loader ***/
 	module.exports = window.angular
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ },
+/* 2 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(16);
+	/* WEBPACK VAR INJECTION */(function(angular) {var ffa = (module.exports['famousFlexAngular'] = angular.module('famousFlexAngular',['famous.angular']));
+
+	ffa.config(function($famousProvider) {
+	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(17));
+	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(18));
+	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(19));
+	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(20));
+	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(21));
+	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(22));
+	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(23));
+	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(24));
+	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(25));
+	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(26));
+	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(27));
+	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(28));
+	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(29));
+	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(30));
+	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(31));
+	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(32));
+	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(33));
+	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(34));
+	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(35));
+	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(36));
+	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(37));
+	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(38));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(39));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(40));
+	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(41));
+	  //console.log($famousProvider.$get());
+	});
+
+	//var LayoutController = require('famous-flex/LayoutController');
+	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
+	//var ListLayout = require('famous-flex/layouts/ListLayout');
+	//var WheelLayout = require('famous-flex/layouts/WheelLayout');
+	//var GridLayout = require('famous-flex/layouts/GridLayout');
+	//var NavBarLayout = require('famous-flex/layouts/NavBarLayout');
+	//require('bootstrap.min.css');
+
+	angular.module('famousFlexAngular')
+	.directive('faDumb', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+	  return {
+		template: '<div></div>',
+		restrict: 'E',
+		transclude: true,
+		scope: true,
+		compile: function(tElem, tAttrs, transclude) {
+		  var mySelection = 1;
+
+		  return {
+		    pre: function(scope, element, attrs) {
+	            	var isolate = $famousDecorator.ensureIsolate(scope);
+	            	var options = scope.$eval(attrs.faOptions) || {};
+
+			var LayoutController = $famous['famous-flex/LayoutController'];
+		 	isolate.renderNode = new LayoutController(options);
+
+		    		var _children = [];
+
+	            		var updateLayout = function () {
+	              			scope.$$postDigest(function(){
+	                			_children.sort(function (a, b) {
+	                  			return a.index - b.index;
+	                			});
+		        			isolate.renderNode.setDataSource(function(_children) {
+	                	  			var _ch = [];
+	                  				angular.forEach(_children, function(c, i) {
+	                    					_ch[i] = c.renderGate;//._object._child._object;
+	                  				});
+	                  				return _ch;
+	                			}(_children));
+	              			});
+					console.log(isolate.renderNode);
+	            		};
+
+	                       $famousDecorator.sequenceWith(
+	                                scope,
+	                                function(data) {
+	                                        _children.push(data);
+	                                        updateLayout();
+	                                },
+	                                function(childScopeId) {
+	                                        _children = function(_children) {
+	                                                var _ch = [];
+	                                                angular.forEach(_children, function(c) {
+	                                                        if (c.id !== childScopeId) {
+	                                                                _ch.push(c);
+	                                                        }
+	                                                });
+	                                                return _ch;
+	                                        }(_children);
+	                                        updateLayout();
+	                                },
+	                                updateLayout
+	                        );
+
+
+	            	$famousDecorator.addRole('renderable',isolate);
+	            	isolate.show();
+			console.log(isolate);
+
+		    	},
+		    post: function(scope,element,attrs) {
+		       		var isolate = $famousDecorator.ensureIsolate(scope);
+	            	    	transclude(scope, function(clone) {
+	              			element.find('div').append(clone);
+	            		});
+	            	    	$famousDecorator.registerChild(scope, element, isolate);
+		    }
+		  }
+		}
+	  }
+	}])
+	.directive('faNavbar', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+		return {
+			restrict: 'AE',
+			transclude: true,
+			compile: function(tElem,tAttrs,transclude) {
+				
+				var Surface = $famous['famous/core/Surface'];
+				var LayoutController = $famous['famous-flex/LayoutController'];
+				var NavBarLayout = $famous['famous-flex/NavBarLayout'];
+		
+				var _createLayoutController = function(options) {
+					var layoutController = new LayoutController({
+						layout: NavBarLayout,
+						layoutOptions: {
+							margins: [8],
+							itemSpacer: 5
+						}
+					});
+					return layoutController;
+				};
+
+				var _createBackground = function() {
+					var background = new Surface({classes: ['navbar', 'navbar-inverse']});
+					return background;
+				};
+
+				var _createTitle = function(myTitle) {
+					var title = new Surface({content: myTitle || 'famous-flex', classes: ['title']});
+					return title;
+				};
+
+	   			var _createButton = function(content) {
+	        			return new Surface({
+	            				size: [50, undefined],
+	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
+	        			});
+	    			};
+
+				var rightItems = [];
+
+				return {
+					pre: function(scope,elem,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+	                			var options = scope.$eval(attrs.faOptions) || {};
+	                			isolate.renderNode = _createLayoutController(options);
+
+				                $famousDecorator.addRole('renderable',isolate);
+	                			isolate.show();
+	                			console.log(isolate);
+					},
+					post: function(scope,element,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+		
+						transclude(scope, function(clone) {
+							var title = clone.find('div.title');
+							var buttons = clone.find('button.left');
+							var rightItems = [];
+							console.log(title);
+							angular.forEach(buttons, function(button) {
+								rightItems.push(_createButton('hello'));//button);
+							});
+	                				var isolate = $famousDecorator.ensureIsolate(scope);
+							console.log(rightItems);
+							isolate.renderNode.setDataSource({
+								background: _createBackground(),
+								title: _createTitle(),
+								rightItems: rightItems
+							});
+						});
+
+
+						$famousDecorator.registerChild(scope, element, isolate);
+					}
+				};
+			}
+		};
+	}]);
+				
+
+	angular.module('famousFlexAngular')
+	.directive('ffaLayoutController', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+	  return {
+		template: '<div></div>',
+		restrict: 'E',
+		transclude: true,
+		scope: true,
+		compile: function(tElem, tAttrs, transclude) {
+		  var mySelection = 1;
+
+		  return {
+		    pre: function(scope, element, attrs) {
+	            	var isolate = $famousDecorator.ensureIsolate(scope);
+	            	var options = scope.$eval(attrs.faOptions) || {};
+
+			var LayoutController = $famous['famous-flex/LayoutController'];
+		 	isolate.renderNode = new LayoutController(options);
+
+		    		var _children = [];
+
+	            		var updateLayout = function () {
+	              			scope.$$postDigest(function(){
+	                			_children.sort(function (a, b) {
+	                  			return a.index - b.index;
+	                			});
+		        			isolate.renderNode.setDataSource(function(_children) {
+	                	  			var _ch = [];
+	                  				angular.forEach(_children, function(c, i) {
+	                    					_ch[i] = c.renderGate;//._object._child._object;
+	                  				});
+	                  				return _ch;
+	                			}(_children));
+	              			});
+					console.log(isolate.renderNode);
+	            		};
+
+	                       $famousDecorator.sequenceWith(
+	                                scope,
+	                                function(data) {
+	                                        _children.push(data);
+	                                        updateLayout();
+	                                },
+	                                function(childScopeId) {
+	                                        _children = function(_children) {
+	                                                var _ch = [];
+	                                                angular.forEach(_children, function(c) {
+	                                                        if (c.id !== childScopeId) {
+	                                                                _ch.push(c);
+	                                                        }
+	                                                });
+	                                                return _ch;
+	                                        }(_children);
+	                                        updateLayout();
+	                                },
+	                                updateLayout
+	                        );
+
+
+	            	$famousDecorator.addRole('renderable',isolate);
+	            	isolate.show();
+			console.log(isolate);
+
+		    	},
+		    post: function(scope,element,attrs) {
+		       		var isolate = $famousDecorator.ensureIsolate(scope);
+	            	    	transclude(scope, function(clone) {
+	              			element.find('div').append(clone);
+	            		});
+	            	    	$famousDecorator.registerChild(scope, element, isolate);
+		    }
+		  }
+		}
+	  }
+	}]);
+
+	angular.module('famousFlexAngular')
+	.directive('resizable', function($window) {
+	        return function($scope) {
+	          $scope.initializeWindowSize = function() {
+	            $scope.windowHeight = $window.innerHeight;
+	            $scope.windowWidth = $window.innerWidth;
+	          };
+	        
+	          angular.element($window).bind('resize', function() {
+	            $scope.initializeWindowSize();
+	            $scope.$apply();
+	          });
+	        }
+	});
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ },
 /* 3 */
@@ -35357,7 +35432,7 @@
 	    };
 	  }]);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2), __webpack_require__(42)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(42)))
 
 /***/ },
 /* 17 */
@@ -35985,14 +36060,14 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var OptionsManager = __webpack_require__(46);
-	    var Transform = __webpack_require__(48);
-	    var Vector = __webpack_require__(49);
-	    var Particle = __webpack_require__(50);
-	    var Spring = __webpack_require__(51);
-	    var PhysicsEngine = __webpack_require__(52);
+	    var OptionsManager = __webpack_require__(43);
+	    var Transform = __webpack_require__(44);
+	    var Vector = __webpack_require__(45);
+	    var Particle = __webpack_require__(46);
+	    var Spring = __webpack_require__(47);
+	    var PhysicsEngine = __webpack_require__(48);
 	    var LayoutNode = __webpack_require__(21);
-	    var Transitionable = __webpack_require__(53);
+	    var Transitionable = __webpack_require__(49);
 
 	    /**
 	     * @class
@@ -36767,16 +36842,16 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
-	    var Entity = __webpack_require__(44);
-	    var ViewSequence = __webpack_require__(45);
-	    var OptionsManager = __webpack_require__(46);
-	    var EventHandler = __webpack_require__(47);
+	    var Utility = __webpack_require__(50);
+	    var Entity = __webpack_require__(51);
+	    var ViewSequence = __webpack_require__(52);
+	    var OptionsManager = __webpack_require__(43);
+	    var EventHandler = __webpack_require__(53);
 	    var LayoutUtility = __webpack_require__(23);
 	    var LayoutNodeManager = __webpack_require__(22);
 	    var LayoutNode = __webpack_require__(21);
 	    var FlowLayoutNode = __webpack_require__(18);
-	    var Transform = __webpack_require__(48);
+	    var Transform = __webpack_require__(44);
 	    __webpack_require__(27);
 
 	    /**
@@ -37582,7 +37657,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Transform = __webpack_require__(48);
+	    var Transform = __webpack_require__(44);
 	    var LayoutUtility = __webpack_require__(23);
 
 	    /**
@@ -38520,7 +38595,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 
 	    /**
 	     * @class
@@ -38835,16 +38910,16 @@
 	    var FlowLayoutNode = __webpack_require__(18);
 	    var LayoutNodeManager = __webpack_require__(22);
 	    var ContainerSurface = __webpack_require__(54);
-	    var Transform = __webpack_require__(48);
-	    var EventHandler = __webpack_require__(47);
+	    var Transform = __webpack_require__(44);
+	    var EventHandler = __webpack_require__(53);
 	    var Group = __webpack_require__(55);
-	    var Vector = __webpack_require__(49);
-	    var PhysicsEngine = __webpack_require__(52);
-	    var Particle = __webpack_require__(50);
+	    var Vector = __webpack_require__(45);
+	    var PhysicsEngine = __webpack_require__(48);
+	    var Particle = __webpack_require__(46);
 	    var Drag = __webpack_require__(56);
-	    var Spring = __webpack_require__(51);
+	    var Spring = __webpack_require__(47);
 	    var ScrollSync = __webpack_require__(57);
-	    var ViewSequence = __webpack_require__(45);
+	    var ViewSequence = __webpack_require__(52);
 
 	    /**
 	     * Boudary reached detection
@@ -40776,7 +40851,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var EventHandler = __webpack_require__(47);
+	    var EventHandler = __webpack_require__(53);
 
 	    /**
 	     * @class
@@ -41305,7 +41380,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 	    var LayoutUtility = __webpack_require__(23);
 
 	    // Define capabilities of this layout function
@@ -41569,7 +41644,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -41805,7 +41880,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 	    var LayoutUtility = __webpack_require__(23);
 
 	    // Define capabilities of this layout function
@@ -41995,7 +42070,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 	    var LayoutUtility = __webpack_require__(23);
 
 	    // Define capabilities of this layout function
@@ -42378,7 +42453,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -42511,7 +42586,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 	    var LayoutUtility = __webpack_require__(23);
 
 	    // Define capabilities of this layout function
@@ -42730,7 +42805,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -42908,7 +42983,7 @@
 	    // import dependencies
 	    var View = __webpack_require__(58);
 	    var Surface = __webpack_require__(59);
-	    var Utility = __webpack_require__(43);
+	    var Utility = __webpack_require__(50);
 	    var ContainerSurface = __webpack_require__(54);
 	    var LayoutController = __webpack_require__(20);
 	    var ScrollController = __webpack_require__(24);
@@ -43326,7 +43401,7 @@
 
 	    // import dependencies
 	    var Surface = __webpack_require__(59);
-	    var EventHandler = __webpack_require__(47);
+	    var EventHandler = __webpack_require__(53);
 
 	    /**
 	     * Helper functions for formatting values with X decimal places.
@@ -43982,362 +44057,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Utility = {};
-	Utility.Direction = {
-	    X: 0,
-	    Y: 1,
-	    Z: 2
-	};
-	Utility.after = function after(count, callback) {
-	    var counter = count;
-	    return function () {
-	        counter--;
-	        if (counter === 0)
-	            callback.apply(this, arguments);
-	    };
-	};
-	Utility.loadURL = function loadURL(url, callback) {
-	    var xhr = new XMLHttpRequest();
-	    xhr.onreadystatechange = function onreadystatechange() {
-	        if (this.readyState === 4) {
-	            if (callback)
-	                callback(this.responseText);
-	        }
-	    };
-	    xhr.open('GET', url);
-	    xhr.send();
-	};
-	Utility.createDocumentFragmentFromHTML = function createDocumentFragmentFromHTML(html) {
-	    var element = document.createElement('div');
-	    element.innerHTML = html;
-	    var result = document.createDocumentFragment();
-	    while (element.hasChildNodes())
-	        result.appendChild(element.firstChild);
-	    return result;
-	};
-	Utility.clone = function clone(b) {
-	    var a;
-	    if (typeof b === 'object') {
-	        a = b instanceof Array ? [] : {};
-	        for (var key in b) {
-	            if (typeof b[key] === 'object' && b[key] !== null) {
-	                if (b[key] instanceof Array) {
-	                    a[key] = new Array(b[key].length);
-	                    for (var i = 0; i < b[key].length; i++) {
-	                        a[key][i] = Utility.clone(b[key][i]);
-	                    }
-	                } else {
-	                    a[key] = Utility.clone(b[key]);
-	                }
-	            } else {
-	                a[key] = b[key];
-	            }
-	        }
-	    } else {
-	        a = b;
-	    }
-	    return a;
-	};
-	module.exports = Utility;
-
-/***/ },
-/* 44 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var entities = [];
-	function get(id) {
-	    return entities[id];
-	}
-	function set(id, entity) {
-	    entities[id] = entity;
-	}
-	function register(entity) {
-	    var id = entities.length;
-	    set(id, entity);
-	    return id;
-	}
-	function unregister(id) {
-	    set(id, null);
-	}
-	module.exports = {
-	    register: register,
-	    unregister: unregister,
-	    get: get,
-	    set: set
-	};
-
-/***/ },
-/* 45 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function ViewSequence(options) {
-	    if (!options)
-	        options = [];
-	    if (options instanceof Array)
-	        options = { array: options };
-	    this._ = null;
-	    this.index = options.index || 0;
-	    if (options.array)
-	        this._ = new this.constructor.Backing(options.array);
-	    else if (options._)
-	        this._ = options._;
-	    if (this.index === this._.firstIndex)
-	        this._.firstNode = this;
-	    if (this.index === this._.firstIndex + this._.array.length - 1)
-	        this._.lastNode = this;
-	    if (options.loop !== undefined)
-	        this._.loop = options.loop;
-	    if (options.trackSize !== undefined)
-	        this._.trackSize = options.trackSize;
-	    this._previousNode = null;
-	    this._nextNode = null;
-	}
-	ViewSequence.Backing = function Backing(array) {
-	    this.array = array;
-	    this.firstIndex = 0;
-	    this.loop = false;
-	    this.firstNode = null;
-	    this.lastNode = null;
-	    this.cumulativeSizes = [[
-	            0,
-	            0
-	        ]];
-	    this.sizeDirty = true;
-	    this.trackSize = false;
-	};
-	ViewSequence.Backing.prototype.getValue = function getValue(i) {
-	    var _i = i - this.firstIndex;
-	    if (_i < 0 || _i >= this.array.length)
-	        return null;
-	    return this.array[_i];
-	};
-	ViewSequence.Backing.prototype.setValue = function setValue(i, value) {
-	    this.array[i - this.firstIndex] = value;
-	};
-	ViewSequence.Backing.prototype.getSize = function getSize(index) {
-	    return this.cumulativeSizes[index];
-	};
-	ViewSequence.Backing.prototype.calculateSize = function calculateSize(index) {
-	    index = index || this.array.length;
-	    var size = [
-	        0,
-	        0
-	    ];
-	    for (var i = 0; i < index; i++) {
-	        var nodeSize = this.array[i].getSize();
-	        if (!nodeSize)
-	            return undefined;
-	        if (size[0] !== undefined) {
-	            if (nodeSize[0] === undefined)
-	                size[0] = undefined;
-	            else
-	                size[0] += nodeSize[0];
-	        }
-	        if (size[1] !== undefined) {
-	            if (nodeSize[1] === undefined)
-	                size[1] = undefined;
-	            else
-	                size[1] += nodeSize[1];
-	        }
-	        this.cumulativeSizes[i + 1] = size.slice();
-	    }
-	    this.sizeDirty = false;
-	    return size;
-	};
-	ViewSequence.Backing.prototype.reindex = function reindex(start, removeCount, insertCount) {
-	    if (!this.array[0])
-	        return;
-	    var i = 0;
-	    var index = this.firstIndex;
-	    var indexShiftAmount = insertCount - removeCount;
-	    var node = this.firstNode;
-	    while (index < start - 1) {
-	        node = node.getNext();
-	        index++;
-	    }
-	    var spliceStartNode = node;
-	    for (i = 0; i < removeCount; i++) {
-	        node = node.getNext();
-	        if (node)
-	            node._previousNode = spliceStartNode;
-	    }
-	    var spliceResumeNode = node ? node.getNext() : null;
-	    spliceStartNode._nextNode = null;
-	    node = spliceStartNode;
-	    for (i = 0; i < insertCount; i++)
-	        node = node.getNext();
-	    index += insertCount;
-	    if (node !== spliceResumeNode) {
-	        node._nextNode = spliceResumeNode;
-	        if (spliceResumeNode)
-	            spliceResumeNode._previousNode = node;
-	    }
-	    if (spliceResumeNode) {
-	        node = spliceResumeNode;
-	        index++;
-	        while (node && index < this.array.length + this.firstIndex) {
-	            if (node._nextNode)
-	                node.index += indexShiftAmount;
-	            else
-	                node.index = index;
-	            node = node.getNext();
-	            index++;
-	        }
-	    }
-	    if (this.trackSize)
-	        this.sizeDirty = true;
-	};
-	ViewSequence.prototype.getPrevious = function getPrevious() {
-	    var len = this._.array.length;
-	    if (!len) {
-	        this._previousNode = null;
-	    } else if (this.index === this._.firstIndex) {
-	        if (this._.loop) {
-	            this._previousNode = this._.lastNode || new this.constructor({
-	                _: this._,
-	                index: this._.firstIndex + len - 1
-	            });
-	            this._previousNode._nextNode = this;
-	        } else {
-	            this._previousNode = null;
-	        }
-	    } else if (!this._previousNode) {
-	        this._previousNode = new this.constructor({
-	            _: this._,
-	            index: this.index - 1
-	        });
-	        this._previousNode._nextNode = this;
-	    }
-	    return this._previousNode;
-	};
-	ViewSequence.prototype.getNext = function getNext() {
-	    var len = this._.array.length;
-	    if (!len) {
-	        this._nextNode = null;
-	    } else if (this.index === this._.firstIndex + len - 1) {
-	        if (this._.loop) {
-	            this._nextNode = this._.firstNode || new this.constructor({
-	                _: this._,
-	                index: this._.firstIndex
-	            });
-	            this._nextNode._previousNode = this;
-	        } else {
-	            this._nextNode = null;
-	        }
-	    } else if (!this._nextNode) {
-	        this._nextNode = new this.constructor({
-	            _: this._,
-	            index: this.index + 1
-	        });
-	        this._nextNode._previousNode = this;
-	    }
-	    return this._nextNode;
-	};
-	ViewSequence.prototype.indexOf = function indexOf(item) {
-	    return this._.array.indexOf(item);
-	};
-	ViewSequence.prototype.getIndex = function getIndex() {
-	    return this.index;
-	};
-	ViewSequence.prototype.toString = function toString() {
-	    return '' + this.index;
-	};
-	ViewSequence.prototype.unshift = function unshift(value) {
-	    this._.array.unshift.apply(this._.array, arguments);
-	    this._.firstIndex -= arguments.length;
-	    if (this._.trackSize)
-	        this._.sizeDirty = true;
-	};
-	ViewSequence.prototype.push = function push(value) {
-	    this._.array.push.apply(this._.array, arguments);
-	    if (this._.trackSize)
-	        this._.sizeDirty = true;
-	};
-	ViewSequence.prototype.splice = function splice(index, howMany) {
-	    var values = Array.prototype.slice.call(arguments, 2);
-	    this._.array.splice.apply(this._.array, [
-	        index - this._.firstIndex,
-	        howMany
-	    ].concat(values));
-	    this._.reindex(index, howMany, values.length);
-	};
-	ViewSequence.prototype.swap = function swap(other) {
-	    var otherValue = other.get();
-	    var myValue = this.get();
-	    this._.setValue(this.index, otherValue);
-	    this._.setValue(other.index, myValue);
-	    var myPrevious = this._previousNode;
-	    var myNext = this._nextNode;
-	    var myIndex = this.index;
-	    var otherPrevious = other._previousNode;
-	    var otherNext = other._nextNode;
-	    var otherIndex = other.index;
-	    this.index = otherIndex;
-	    this._previousNode = otherPrevious === this ? other : otherPrevious;
-	    if (this._previousNode)
-	        this._previousNode._nextNode = this;
-	    this._nextNode = otherNext === this ? other : otherNext;
-	    if (this._nextNode)
-	        this._nextNode._previousNode = this;
-	    other.index = myIndex;
-	    other._previousNode = myPrevious === other ? this : myPrevious;
-	    if (other._previousNode)
-	        other._previousNode._nextNode = other;
-	    other._nextNode = myNext === other ? this : myNext;
-	    if (other._nextNode)
-	        other._nextNode._previousNode = other;
-	    if (this.index === this._.firstIndex)
-	        this._.firstNode = this;
-	    else if (this.index === this._.firstIndex + this._.array.length - 1)
-	        this._.lastNode = this;
-	    if (other.index === this._.firstIndex)
-	        this._.firstNode = other;
-	    else if (other.index === this._.firstIndex + this._.array.length - 1)
-	        this._.lastNode = other;
-	    if (this._.trackSize)
-	        this._.sizeDirty = true;
-	};
-	ViewSequence.prototype.get = function get() {
-	    return this._.getValue(this.index);
-	};
-	ViewSequence.prototype.getSize = function getSize() {
-	    var target = this.get();
-	    return target ? target.getSize() : null;
-	};
-	ViewSequence.prototype.render = function render() {
-	    if (this._.trackSize && this._.sizeDirty)
-	        this._.calculateSize();
-	    var target = this.get();
-	    return target ? target.render.apply(target, arguments) : null;
-	};
-	module.exports = ViewSequence;
-
-/***/ },
-/* 46 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(47);
+	var EventHandler = __webpack_require__(53);
 	function OptionsManager(value) {
 	    this._value = value;
 	    this.eventOutput = null;
@@ -44413,119 +44133,7 @@
 	module.exports = OptionsManager;
 
 /***/ },
-/* 47 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventEmitter = __webpack_require__(72);
-	function EventHandler() {
-	    EventEmitter.apply(this, arguments);
-	    this.downstream = [];
-	    this.downstreamFn = [];
-	    this.upstream = [];
-	    this.upstreamListeners = {};
-	}
-	EventHandler.prototype = Object.create(EventEmitter.prototype);
-	EventHandler.prototype.constructor = EventHandler;
-	EventHandler.setInputHandler = function setInputHandler(object, handler) {
-	    object.trigger = handler.trigger.bind(handler);
-	    if (handler.subscribe && handler.unsubscribe) {
-	        object.subscribe = handler.subscribe.bind(handler);
-	        object.unsubscribe = handler.unsubscribe.bind(handler);
-	    }
-	};
-	EventHandler.setOutputHandler = function setOutputHandler(object, handler) {
-	    if (handler instanceof EventHandler)
-	        handler.bindThis(object);
-	    object.pipe = handler.pipe.bind(handler);
-	    object.unpipe = handler.unpipe.bind(handler);
-	    object.on = handler.on.bind(handler);
-	    object.addListener = object.on;
-	    object.removeListener = handler.removeListener.bind(handler);
-	};
-	EventHandler.prototype.emit = function emit(type, event) {
-	    EventEmitter.prototype.emit.apply(this, arguments);
-	    var i = 0;
-	    for (i = 0; i < this.downstream.length; i++) {
-	        if (this.downstream[i].trigger)
-	            this.downstream[i].trigger(type, event);
-	    }
-	    for (i = 0; i < this.downstreamFn.length; i++) {
-	        this.downstreamFn[i](type, event);
-	    }
-	    return this;
-	};
-	EventHandler.prototype.trigger = EventHandler.prototype.emit;
-	EventHandler.prototype.pipe = function pipe(target) {
-	    if (target.subscribe instanceof Function)
-	        return target.subscribe(this);
-	    var downstreamCtx = target instanceof Function ? this.downstreamFn : this.downstream;
-	    var index = downstreamCtx.indexOf(target);
-	    if (index < 0)
-	        downstreamCtx.push(target);
-	    if (target instanceof Function)
-	        target('pipe', null);
-	    else if (target.trigger)
-	        target.trigger('pipe', null);
-	    return target;
-	};
-	EventHandler.prototype.unpipe = function unpipe(target) {
-	    if (target.unsubscribe instanceof Function)
-	        return target.unsubscribe(this);
-	    var downstreamCtx = target instanceof Function ? this.downstreamFn : this.downstream;
-	    var index = downstreamCtx.indexOf(target);
-	    if (index >= 0) {
-	        downstreamCtx.splice(index, 1);
-	        if (target instanceof Function)
-	            target('unpipe', null);
-	        else if (target.trigger)
-	            target.trigger('unpipe', null);
-	        return target;
-	    } else
-	        return false;
-	};
-	EventHandler.prototype.on = function on(type, handler) {
-	    EventEmitter.prototype.on.apply(this, arguments);
-	    if (!(type in this.upstreamListeners)) {
-	        var upstreamListener = this.trigger.bind(this, type);
-	        this.upstreamListeners[type] = upstreamListener;
-	        for (var i = 0; i < this.upstream.length; i++) {
-	            this.upstream[i].on(type, upstreamListener);
-	        }
-	    }
-	    return this;
-	};
-	EventHandler.prototype.addListener = EventHandler.prototype.on;
-	EventHandler.prototype.subscribe = function subscribe(source) {
-	    var index = this.upstream.indexOf(source);
-	    if (index < 0) {
-	        this.upstream.push(source);
-	        for (var type in this.upstreamListeners) {
-	            source.on(type, this.upstreamListeners[type]);
-	        }
-	    }
-	    return this;
-	};
-	EventHandler.prototype.unsubscribe = function unsubscribe(source) {
-	    var index = this.upstream.indexOf(source);
-	    if (index >= 0) {
-	        this.upstream.splice(index, 1);
-	        for (var type in this.upstreamListeners) {
-	            source.removeListener(type, this.upstreamListeners[type]);
-	        }
-	    }
-	    return this;
-	};
-	module.exports = EventHandler;
-
-/***/ },
-/* 48 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45234,7 +44842,7 @@
 	module.exports = Transform;
 
 /***/ },
-/* 49 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45393,7 +45001,7 @@
 	module.exports = Vector;
 
 /***/ },
-/* 50 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45403,10 +45011,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Vector = __webpack_require__(49);
-	var Transform = __webpack_require__(48);
-	var EventHandler = __webpack_require__(47);
-	var Integrator = __webpack_require__(73);
+	var Vector = __webpack_require__(45);
+	var Transform = __webpack_require__(44);
+	var EventHandler = __webpack_require__(53);
+	var Integrator = __webpack_require__(72);
 	function Particle(options) {
 	    options = options || {};
 	    var defaults = Particle.DEFAULT_OPTIONS;
@@ -45601,7 +45209,7 @@
 	module.exports = Particle;
 
 /***/ },
-/* 51 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45611,8 +45219,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(74);
-	var Vector = __webpack_require__(49);
+	var Force = __webpack_require__(73);
+	var Vector = __webpack_require__(45);
 	function Spring(options) {
 	    Force.call(this);
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -45736,7 +45344,7 @@
 	module.exports = Spring;
 
 /***/ },
-/* 52 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -45746,7 +45354,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
+	var EventHandler = __webpack_require__(53);
 	function PhysicsEngine(options) {
 	    this.options = Object.create(PhysicsEngine.DEFAULT_OPTIONS);
 	    if (options)
@@ -46015,7 +45623,7 @@
 	module.exports = PhysicsEngine;
 
 /***/ },
-/* 53 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -46025,8 +45633,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var MultipleTransition = __webpack_require__(75);
-	var TweenTransition = __webpack_require__(76);
+	var MultipleTransition = __webpack_require__(74);
+	var TweenTransition = __webpack_require__(75);
 	function Transitionable(start) {
 	    this.currentAction = null;
 	    this.actionQueue = [];
@@ -46155,6 +45763,473 @@
 	module.exports = Transitionable;
 
 /***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Utility = {};
+	Utility.Direction = {
+	    X: 0,
+	    Y: 1,
+	    Z: 2
+	};
+	Utility.after = function after(count, callback) {
+	    var counter = count;
+	    return function () {
+	        counter--;
+	        if (counter === 0)
+	            callback.apply(this, arguments);
+	    };
+	};
+	Utility.loadURL = function loadURL(url, callback) {
+	    var xhr = new XMLHttpRequest();
+	    xhr.onreadystatechange = function onreadystatechange() {
+	        if (this.readyState === 4) {
+	            if (callback)
+	                callback(this.responseText);
+	        }
+	    };
+	    xhr.open('GET', url);
+	    xhr.send();
+	};
+	Utility.createDocumentFragmentFromHTML = function createDocumentFragmentFromHTML(html) {
+	    var element = document.createElement('div');
+	    element.innerHTML = html;
+	    var result = document.createDocumentFragment();
+	    while (element.hasChildNodes())
+	        result.appendChild(element.firstChild);
+	    return result;
+	};
+	Utility.clone = function clone(b) {
+	    var a;
+	    if (typeof b === 'object') {
+	        a = b instanceof Array ? [] : {};
+	        for (var key in b) {
+	            if (typeof b[key] === 'object' && b[key] !== null) {
+	                if (b[key] instanceof Array) {
+	                    a[key] = new Array(b[key].length);
+	                    for (var i = 0; i < b[key].length; i++) {
+	                        a[key][i] = Utility.clone(b[key][i]);
+	                    }
+	                } else {
+	                    a[key] = Utility.clone(b[key]);
+	                }
+	            } else {
+	                a[key] = b[key];
+	            }
+	        }
+	    } else {
+	        a = b;
+	    }
+	    return a;
+	};
+	module.exports = Utility;
+
+/***/ },
+/* 51 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var entities = [];
+	function get(id) {
+	    return entities[id];
+	}
+	function set(id, entity) {
+	    entities[id] = entity;
+	}
+	function register(entity) {
+	    var id = entities.length;
+	    set(id, entity);
+	    return id;
+	}
+	function unregister(id) {
+	    set(id, null);
+	}
+	module.exports = {
+	    register: register,
+	    unregister: unregister,
+	    get: get,
+	    set: set
+	};
+
+/***/ },
+/* 52 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function ViewSequence(options) {
+	    if (!options)
+	        options = [];
+	    if (options instanceof Array)
+	        options = { array: options };
+	    this._ = null;
+	    this.index = options.index || 0;
+	    if (options.array)
+	        this._ = new this.constructor.Backing(options.array);
+	    else if (options._)
+	        this._ = options._;
+	    if (this.index === this._.firstIndex)
+	        this._.firstNode = this;
+	    if (this.index === this._.firstIndex + this._.array.length - 1)
+	        this._.lastNode = this;
+	    if (options.loop !== undefined)
+	        this._.loop = options.loop;
+	    if (options.trackSize !== undefined)
+	        this._.trackSize = options.trackSize;
+	    this._previousNode = null;
+	    this._nextNode = null;
+	}
+	ViewSequence.Backing = function Backing(array) {
+	    this.array = array;
+	    this.firstIndex = 0;
+	    this.loop = false;
+	    this.firstNode = null;
+	    this.lastNode = null;
+	    this.cumulativeSizes = [[
+	            0,
+	            0
+	        ]];
+	    this.sizeDirty = true;
+	    this.trackSize = false;
+	};
+	ViewSequence.Backing.prototype.getValue = function getValue(i) {
+	    var _i = i - this.firstIndex;
+	    if (_i < 0 || _i >= this.array.length)
+	        return null;
+	    return this.array[_i];
+	};
+	ViewSequence.Backing.prototype.setValue = function setValue(i, value) {
+	    this.array[i - this.firstIndex] = value;
+	};
+	ViewSequence.Backing.prototype.getSize = function getSize(index) {
+	    return this.cumulativeSizes[index];
+	};
+	ViewSequence.Backing.prototype.calculateSize = function calculateSize(index) {
+	    index = index || this.array.length;
+	    var size = [
+	        0,
+	        0
+	    ];
+	    for (var i = 0; i < index; i++) {
+	        var nodeSize = this.array[i].getSize();
+	        if (!nodeSize)
+	            return undefined;
+	        if (size[0] !== undefined) {
+	            if (nodeSize[0] === undefined)
+	                size[0] = undefined;
+	            else
+	                size[0] += nodeSize[0];
+	        }
+	        if (size[1] !== undefined) {
+	            if (nodeSize[1] === undefined)
+	                size[1] = undefined;
+	            else
+	                size[1] += nodeSize[1];
+	        }
+	        this.cumulativeSizes[i + 1] = size.slice();
+	    }
+	    this.sizeDirty = false;
+	    return size;
+	};
+	ViewSequence.Backing.prototype.reindex = function reindex(start, removeCount, insertCount) {
+	    if (!this.array[0])
+	        return;
+	    var i = 0;
+	    var index = this.firstIndex;
+	    var indexShiftAmount = insertCount - removeCount;
+	    var node = this.firstNode;
+	    while (index < start - 1) {
+	        node = node.getNext();
+	        index++;
+	    }
+	    var spliceStartNode = node;
+	    for (i = 0; i < removeCount; i++) {
+	        node = node.getNext();
+	        if (node)
+	            node._previousNode = spliceStartNode;
+	    }
+	    var spliceResumeNode = node ? node.getNext() : null;
+	    spliceStartNode._nextNode = null;
+	    node = spliceStartNode;
+	    for (i = 0; i < insertCount; i++)
+	        node = node.getNext();
+	    index += insertCount;
+	    if (node !== spliceResumeNode) {
+	        node._nextNode = spliceResumeNode;
+	        if (spliceResumeNode)
+	            spliceResumeNode._previousNode = node;
+	    }
+	    if (spliceResumeNode) {
+	        node = spliceResumeNode;
+	        index++;
+	        while (node && index < this.array.length + this.firstIndex) {
+	            if (node._nextNode)
+	                node.index += indexShiftAmount;
+	            else
+	                node.index = index;
+	            node = node.getNext();
+	            index++;
+	        }
+	    }
+	    if (this.trackSize)
+	        this.sizeDirty = true;
+	};
+	ViewSequence.prototype.getPrevious = function getPrevious() {
+	    var len = this._.array.length;
+	    if (!len) {
+	        this._previousNode = null;
+	    } else if (this.index === this._.firstIndex) {
+	        if (this._.loop) {
+	            this._previousNode = this._.lastNode || new this.constructor({
+	                _: this._,
+	                index: this._.firstIndex + len - 1
+	            });
+	            this._previousNode._nextNode = this;
+	        } else {
+	            this._previousNode = null;
+	        }
+	    } else if (!this._previousNode) {
+	        this._previousNode = new this.constructor({
+	            _: this._,
+	            index: this.index - 1
+	        });
+	        this._previousNode._nextNode = this;
+	    }
+	    return this._previousNode;
+	};
+	ViewSequence.prototype.getNext = function getNext() {
+	    var len = this._.array.length;
+	    if (!len) {
+	        this._nextNode = null;
+	    } else if (this.index === this._.firstIndex + len - 1) {
+	        if (this._.loop) {
+	            this._nextNode = this._.firstNode || new this.constructor({
+	                _: this._,
+	                index: this._.firstIndex
+	            });
+	            this._nextNode._previousNode = this;
+	        } else {
+	            this._nextNode = null;
+	        }
+	    } else if (!this._nextNode) {
+	        this._nextNode = new this.constructor({
+	            _: this._,
+	            index: this.index + 1
+	        });
+	        this._nextNode._previousNode = this;
+	    }
+	    return this._nextNode;
+	};
+	ViewSequence.prototype.indexOf = function indexOf(item) {
+	    return this._.array.indexOf(item);
+	};
+	ViewSequence.prototype.getIndex = function getIndex() {
+	    return this.index;
+	};
+	ViewSequence.prototype.toString = function toString() {
+	    return '' + this.index;
+	};
+	ViewSequence.prototype.unshift = function unshift(value) {
+	    this._.array.unshift.apply(this._.array, arguments);
+	    this._.firstIndex -= arguments.length;
+	    if (this._.trackSize)
+	        this._.sizeDirty = true;
+	};
+	ViewSequence.prototype.push = function push(value) {
+	    this._.array.push.apply(this._.array, arguments);
+	    if (this._.trackSize)
+	        this._.sizeDirty = true;
+	};
+	ViewSequence.prototype.splice = function splice(index, howMany) {
+	    var values = Array.prototype.slice.call(arguments, 2);
+	    this._.array.splice.apply(this._.array, [
+	        index - this._.firstIndex,
+	        howMany
+	    ].concat(values));
+	    this._.reindex(index, howMany, values.length);
+	};
+	ViewSequence.prototype.swap = function swap(other) {
+	    var otherValue = other.get();
+	    var myValue = this.get();
+	    this._.setValue(this.index, otherValue);
+	    this._.setValue(other.index, myValue);
+	    var myPrevious = this._previousNode;
+	    var myNext = this._nextNode;
+	    var myIndex = this.index;
+	    var otherPrevious = other._previousNode;
+	    var otherNext = other._nextNode;
+	    var otherIndex = other.index;
+	    this.index = otherIndex;
+	    this._previousNode = otherPrevious === this ? other : otherPrevious;
+	    if (this._previousNode)
+	        this._previousNode._nextNode = this;
+	    this._nextNode = otherNext === this ? other : otherNext;
+	    if (this._nextNode)
+	        this._nextNode._previousNode = this;
+	    other.index = myIndex;
+	    other._previousNode = myPrevious === other ? this : myPrevious;
+	    if (other._previousNode)
+	        other._previousNode._nextNode = other;
+	    other._nextNode = myNext === other ? this : myNext;
+	    if (other._nextNode)
+	        other._nextNode._previousNode = other;
+	    if (this.index === this._.firstIndex)
+	        this._.firstNode = this;
+	    else if (this.index === this._.firstIndex + this._.array.length - 1)
+	        this._.lastNode = this;
+	    if (other.index === this._.firstIndex)
+	        this._.firstNode = other;
+	    else if (other.index === this._.firstIndex + this._.array.length - 1)
+	        this._.lastNode = other;
+	    if (this._.trackSize)
+	        this._.sizeDirty = true;
+	};
+	ViewSequence.prototype.get = function get() {
+	    return this._.getValue(this.index);
+	};
+	ViewSequence.prototype.getSize = function getSize() {
+	    var target = this.get();
+	    return target ? target.getSize() : null;
+	};
+	ViewSequence.prototype.render = function render() {
+	    if (this._.trackSize && this._.sizeDirty)
+	        this._.calculateSize();
+	    var target = this.get();
+	    return target ? target.render.apply(target, arguments) : null;
+	};
+	module.exports = ViewSequence;
+
+/***/ },
+/* 53 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventEmitter = __webpack_require__(77);
+	function EventHandler() {
+	    EventEmitter.apply(this, arguments);
+	    this.downstream = [];
+	    this.downstreamFn = [];
+	    this.upstream = [];
+	    this.upstreamListeners = {};
+	}
+	EventHandler.prototype = Object.create(EventEmitter.prototype);
+	EventHandler.prototype.constructor = EventHandler;
+	EventHandler.setInputHandler = function setInputHandler(object, handler) {
+	    object.trigger = handler.trigger.bind(handler);
+	    if (handler.subscribe && handler.unsubscribe) {
+	        object.subscribe = handler.subscribe.bind(handler);
+	        object.unsubscribe = handler.unsubscribe.bind(handler);
+	    }
+	};
+	EventHandler.setOutputHandler = function setOutputHandler(object, handler) {
+	    if (handler instanceof EventHandler)
+	        handler.bindThis(object);
+	    object.pipe = handler.pipe.bind(handler);
+	    object.unpipe = handler.unpipe.bind(handler);
+	    object.on = handler.on.bind(handler);
+	    object.addListener = object.on;
+	    object.removeListener = handler.removeListener.bind(handler);
+	};
+	EventHandler.prototype.emit = function emit(type, event) {
+	    EventEmitter.prototype.emit.apply(this, arguments);
+	    var i = 0;
+	    for (i = 0; i < this.downstream.length; i++) {
+	        if (this.downstream[i].trigger)
+	            this.downstream[i].trigger(type, event);
+	    }
+	    for (i = 0; i < this.downstreamFn.length; i++) {
+	        this.downstreamFn[i](type, event);
+	    }
+	    return this;
+	};
+	EventHandler.prototype.trigger = EventHandler.prototype.emit;
+	EventHandler.prototype.pipe = function pipe(target) {
+	    if (target.subscribe instanceof Function)
+	        return target.subscribe(this);
+	    var downstreamCtx = target instanceof Function ? this.downstreamFn : this.downstream;
+	    var index = downstreamCtx.indexOf(target);
+	    if (index < 0)
+	        downstreamCtx.push(target);
+	    if (target instanceof Function)
+	        target('pipe', null);
+	    else if (target.trigger)
+	        target.trigger('pipe', null);
+	    return target;
+	};
+	EventHandler.prototype.unpipe = function unpipe(target) {
+	    if (target.unsubscribe instanceof Function)
+	        return target.unsubscribe(this);
+	    var downstreamCtx = target instanceof Function ? this.downstreamFn : this.downstream;
+	    var index = downstreamCtx.indexOf(target);
+	    if (index >= 0) {
+	        downstreamCtx.splice(index, 1);
+	        if (target instanceof Function)
+	            target('unpipe', null);
+	        else if (target.trigger)
+	            target.trigger('unpipe', null);
+	        return target;
+	    } else
+	        return false;
+	};
+	EventHandler.prototype.on = function on(type, handler) {
+	    EventEmitter.prototype.on.apply(this, arguments);
+	    if (!(type in this.upstreamListeners)) {
+	        var upstreamListener = this.trigger.bind(this, type);
+	        this.upstreamListeners[type] = upstreamListener;
+	        for (var i = 0; i < this.upstream.length; i++) {
+	            this.upstream[i].on(type, upstreamListener);
+	        }
+	    }
+	    return this;
+	};
+	EventHandler.prototype.addListener = EventHandler.prototype.on;
+	EventHandler.prototype.subscribe = function subscribe(source) {
+	    var index = this.upstream.indexOf(source);
+	    if (index < 0) {
+	        this.upstream.push(source);
+	        for (var type in this.upstreamListeners) {
+	            source.on(type, this.upstreamListeners[type]);
+	        }
+	    }
+	    return this;
+	};
+	EventHandler.prototype.unsubscribe = function unsubscribe(source) {
+	    var index = this.upstream.indexOf(source);
+	    if (index >= 0) {
+	        this.upstream.splice(index, 1);
+	        for (var type in this.upstreamListeners) {
+	            source.removeListener(type, this.upstreamListeners[type]);
+	        }
+	    }
+	    return this;
+	};
+	module.exports = EventHandler;
+
+/***/ },
 /* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -46166,7 +46241,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Surface = __webpack_require__(59);
-	var Context = __webpack_require__(77);
+	var Context = __webpack_require__(76);
 	function ContainerSurface(options) {
 	    Surface.call(this, options);
 	    this._container = document.createElement('div');
@@ -46218,8 +46293,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(77);
-	var Transform = __webpack_require__(48);
+	var Context = __webpack_require__(76);
+	var Transform = __webpack_require__(44);
 	var Surface = __webpack_require__(59);
 	function Group(options) {
 	    Surface.call(this, options);
@@ -46293,7 +46368,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(74);
+	var Force = __webpack_require__(73);
 	function Drag(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -46343,9 +46418,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
-	var Engine = __webpack_require__(79);
-	var OptionsManager = __webpack_require__(46);
+	var EventHandler = __webpack_require__(53);
+	var Engine = __webpack_require__(80);
+	var OptionsManager = __webpack_require__(43);
 	function ScrollSync(options) {
 	    this.options = Object.create(ScrollSync.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -46486,10 +46561,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
-	var OptionsManager = __webpack_require__(46);
+	var EventHandler = __webpack_require__(53);
+	var OptionsManager = __webpack_require__(43);
 	var RenderNode = __webpack_require__(78);
-	var Utility = __webpack_require__(43);
+	var Utility = __webpack_require__(50);
 	function View(options) {
 	    this._node = new RenderNode();
 	    this._eventInput = new EventHandler();
@@ -46534,7 +46609,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var ElementOutput = __webpack_require__(80);
+	var ElementOutput = __webpack_require__(79);
 	function Surface(options) {
 	    ElementOutput.call(this);
 	    this.options = {};
@@ -56053,23 +56128,23 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Context: __webpack_require__(77),
-	  ElementAllocator: __webpack_require__(81),
-	  ElementOutput: __webpack_require__(80),
-	  Engine: __webpack_require__(79),
-	  Entity: __webpack_require__(44),
-	  EventEmitter: __webpack_require__(72),
-	  EventHandler: __webpack_require__(47),
+	  Context: __webpack_require__(76),
+	  ElementAllocator: __webpack_require__(84),
+	  ElementOutput: __webpack_require__(79),
+	  Engine: __webpack_require__(80),
+	  Entity: __webpack_require__(51),
+	  EventEmitter: __webpack_require__(77),
+	  EventHandler: __webpack_require__(53),
 	  Group: __webpack_require__(55),
-	  Modifier: __webpack_require__(82),
-	  OptionsManager: __webpack_require__(46),
+	  Modifier: __webpack_require__(85),
+	  OptionsManager: __webpack_require__(43),
 	  RenderNode: __webpack_require__(78),
-	  Scene: __webpack_require__(83),
-	  SpecParser: __webpack_require__(84),
+	  Scene: __webpack_require__(86),
+	  SpecParser: __webpack_require__(87),
 	  Surface: __webpack_require__(59),
-	  Transform: __webpack_require__(48),
+	  Transform: __webpack_require__(44),
 	  View: __webpack_require__(58),
-	  ViewSequence: __webpack_require__(45)
+	  ViewSequence: __webpack_require__(52)
 	};
 
 
@@ -56078,9 +56153,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  EventArbiter: __webpack_require__(89),
-	  EventFilter: __webpack_require__(90),
-	  EventMapper: __webpack_require__(91)
+	  EventArbiter: __webpack_require__(81),
+	  EventFilter: __webpack_require__(82),
+	  EventMapper: __webpack_require__(83)
 	};
 
 
@@ -56089,18 +56164,18 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Accumulator: __webpack_require__(96),
-	  DesktopEmulationMode: __webpack_require__(97),
-	  FastClick: __webpack_require__(98),
-	  GenericSync: __webpack_require__(99),
-	  MouseSync: __webpack_require__(100),
-	  PinchSync: __webpack_require__(101),
-	  RotateSync: __webpack_require__(102),
-	  ScaleSync: __webpack_require__(103),
+	  Accumulator: __webpack_require__(92),
+	  DesktopEmulationMode: __webpack_require__(93),
+	  FastClick: __webpack_require__(94),
+	  GenericSync: __webpack_require__(95),
+	  MouseSync: __webpack_require__(96),
+	  PinchSync: __webpack_require__(97),
+	  RotateSync: __webpack_require__(98),
+	  ScaleSync: __webpack_require__(99),
 	  ScrollSync: __webpack_require__(57),
-	  TouchSync: __webpack_require__(104),
-	  TouchTracker: __webpack_require__(105),
-	  TwoFingerSync: __webpack_require__(106)
+	  TouchSync: __webpack_require__(100),
+	  TouchTracker: __webpack_require__(101),
+	  TwoFingerSync: __webpack_require__(102)
 	};
 
 
@@ -56109,11 +56184,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Matrix: __webpack_require__(92),
-	  Quaternion: __webpack_require__(93),
-	  Random: __webpack_require__(94),
-	  Utilities: __webpack_require__(95),
-	  Vector: __webpack_require__(49)
+	  Matrix: __webpack_require__(88),
+	  Quaternion: __webpack_require__(89),
+	  Random: __webpack_require__(90),
+	  Utilities: __webpack_require__(91),
+	  Vector: __webpack_require__(45)
 	};
 
 
@@ -56122,10 +56197,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Draggable: __webpack_require__(85),
-	  Fader: __webpack_require__(86),
-	  ModifierChain: __webpack_require__(87),
-	  StateModifier: __webpack_require__(88)
+	  Draggable: __webpack_require__(103),
+	  Fader: __webpack_require__(104),
+	  ModifierChain: __webpack_require__(105),
+	  StateModifier: __webpack_require__(106)
 	};
 
 
@@ -56134,7 +56209,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  PhysicsEngine: __webpack_require__(52),
+	  PhysicsEngine: __webpack_require__(48),
 	  bodies: __webpack_require__(141),
 	  constraints: __webpack_require__(142),
 	  forces: __webpack_require__(143),
@@ -56147,14 +56222,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  CanvasSurface: __webpack_require__(128),
+	  CanvasSurface: __webpack_require__(107),
 	  ContainerSurface: __webpack_require__(54),
-	  FormContainerSurface: __webpack_require__(129),
-	  ImageSurface: __webpack_require__(130),
-	  InputSurface: __webpack_require__(131),
-	  SubmitInputSurface: __webpack_require__(132),
-	  TextareaSurface: __webpack_require__(133),
-	  VideoSurface: __webpack_require__(134)
+	  FormContainerSurface: __webpack_require__(108),
+	  ImageSurface: __webpack_require__(109),
+	  InputSurface: __webpack_require__(110),
+	  SubmitInputSurface: __webpack_require__(111),
+	  TextareaSurface: __webpack_require__(112),
+	  VideoSurface: __webpack_require__(113)
 	};
 
 
@@ -56163,15 +56238,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  CachedMap: __webpack_require__(107),
-	  Easing: __webpack_require__(108),
-	  MultipleTransition: __webpack_require__(75),
-	  SnapTransition: __webpack_require__(109),
-	  SpringTransition: __webpack_require__(110),
-	  Transitionable: __webpack_require__(53),
-	  TransitionableTransform: __webpack_require__(111),
-	  TweenTransition: __webpack_require__(76),
-	  WallTransition: __webpack_require__(112)
+	  CachedMap: __webpack_require__(129),
+	  Easing: __webpack_require__(130),
+	  MultipleTransition: __webpack_require__(74),
+	  SnapTransition: __webpack_require__(131),
+	  SpringTransition: __webpack_require__(132),
+	  Transitionable: __webpack_require__(49),
+	  TransitionableTransform: __webpack_require__(133),
+	  TweenTransition: __webpack_require__(75),
+	  WallTransition: __webpack_require__(134)
 	};
 
 
@@ -56180,9 +56255,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  KeyCodes: __webpack_require__(139),
-	  Timer: __webpack_require__(140),
-	  Utility: __webpack_require__(43)
+	  KeyCodes: __webpack_require__(135),
+	  Timer: __webpack_require__(136),
+	  Utility: __webpack_require__(50)
 	};
 
 
@@ -56191,21 +56266,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  ContextualView: __webpack_require__(113),
-	  Deck: __webpack_require__(114),
-	  DrawerLayout: __webpack_require__(115),
-	  EdgeSwapper: __webpack_require__(116),
-	  FlexibleLayout: __webpack_require__(117),
-	  Flipper: __webpack_require__(118),
-	  GridLayout: __webpack_require__(119),
-	  HeaderFooterLayout: __webpack_require__(120),
-	  Lightbox: __webpack_require__(121),
-	  RenderController: __webpack_require__(122),
-	  ScrollContainer: __webpack_require__(123),
-	  Scroller: __webpack_require__(124),
-	  Scrollview: __webpack_require__(125),
-	  SequentialLayout: __webpack_require__(126),
-	  SizeAwareView: __webpack_require__(127)
+	  ContextualView: __webpack_require__(114),
+	  Deck: __webpack_require__(115),
+	  DrawerLayout: __webpack_require__(116),
+	  EdgeSwapper: __webpack_require__(117),
+	  FlexibleLayout: __webpack_require__(118),
+	  Flipper: __webpack_require__(119),
+	  GridLayout: __webpack_require__(120),
+	  HeaderFooterLayout: __webpack_require__(121),
+	  Lightbox: __webpack_require__(122),
+	  RenderController: __webpack_require__(123),
+	  ScrollContainer: __webpack_require__(124),
+	  Scroller: __webpack_require__(125),
+	  Scrollview: __webpack_require__(126),
+	  SequentialLayout: __webpack_require__(127),
+	  SizeAwareView: __webpack_require__(128)
 	};
 
 
@@ -56214,62 +56289,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  NavigationBar: __webpack_require__(135),
-	  Slider: __webpack_require__(136),
-	  TabBar: __webpack_require__(137),
-	  ToggleButton: __webpack_require__(138)
+	  NavigationBar: __webpack_require__(137),
+	  Slider: __webpack_require__(138),
+	  TabBar: __webpack_require__(139),
+	  ToggleButton: __webpack_require__(140)
 	};
 
 
 /***/ },
 /* 72 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function EventEmitter() {
-	    this.listeners = {};
-	    this._owner = this;
-	}
-	EventEmitter.prototype.emit = function emit(type, event) {
-	    var handlers = this.listeners[type];
-	    if (handlers) {
-	        for (var i = 0; i < handlers.length; i++) {
-	            handlers[i].call(this._owner, event);
-	        }
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.on = function on(type, handler) {
-	    if (!(type in this.listeners))
-	        this.listeners[type] = [];
-	    var index = this.listeners[type].indexOf(handler);
-	    if (index < 0)
-	        this.listeners[type].push(handler);
-	    return this;
-	};
-	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
-	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
-	    var listener = this.listeners[type];
-	    if (listener !== undefined) {
-	        var index = listener.indexOf(handler);
-	        if (index >= 0)
-	            listener.splice(index, 1);
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.bindThis = function bindThis(owner) {
-	    this._owner = owner;
-	};
-	module.exports = EventEmitter;
-
-/***/ },
-/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -56312,7 +56340,7 @@
 	module.exports = SymplecticEuler;
 
 /***/ },
-/* 74 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -56322,8 +56350,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Vector = __webpack_require__(49);
-	var EventHandler = __webpack_require__(47);
+	var Vector = __webpack_require__(45);
+	var EventHandler = __webpack_require__(53);
 	function Force(force) {
 	    this.force = new Vector(force);
 	    this._eventOutput = new EventHandler();
@@ -56344,7 +56372,7 @@
 	module.exports = Force;
 
 /***/ },
-/* 75 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -56354,7 +56382,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Utility = __webpack_require__(43);
+	var Utility = __webpack_require__(50);
 	function MultipleTransition(method) {
 	    this.method = method;
 	    this._instances = [];
@@ -56385,7 +56413,7 @@
 	module.exports = MultipleTransition;
 
 /***/ },
-/* 76 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -56635,7 +56663,7 @@
 	module.exports = TweenTransition;
 
 /***/ },
-/* 77 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -56646,10 +56674,10 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var RenderNode = __webpack_require__(78);
-	var EventHandler = __webpack_require__(47);
-	var ElementAllocator = __webpack_require__(81);
-	var Transform = __webpack_require__(48);
-	var Transitionable = __webpack_require__(53);
+	var EventHandler = __webpack_require__(53);
+	var ElementAllocator = __webpack_require__(84);
+	var Transform = __webpack_require__(44);
+	var Transitionable = __webpack_require__(49);
 	var _zeroZero = [
 	    0,
 	    0
@@ -56752,6 +56780,53 @@
 	module.exports = Context;
 
 /***/ },
+/* 77 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function EventEmitter() {
+	    this.listeners = {};
+	    this._owner = this;
+	}
+	EventEmitter.prototype.emit = function emit(type, event) {
+	    var handlers = this.listeners[type];
+	    if (handlers) {
+	        for (var i = 0; i < handlers.length; i++) {
+	            handlers[i].call(this._owner, event);
+	        }
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.on = function on(type, handler) {
+	    if (!(type in this.listeners))
+	        this.listeners[type] = [];
+	    var index = this.listeners[type].indexOf(handler);
+	    if (index < 0)
+	        this.listeners[type].push(handler);
+	    return this;
+	};
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
+	    var listener = this.listeners[type];
+	    if (listener !== undefined) {
+	        var index = listener.indexOf(handler);
+	        if (index >= 0)
+	            listener.splice(index, 1);
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.bindThis = function bindThis(owner) {
+	    this._owner = owner;
+	};
+	module.exports = EventEmitter;
+
+/***/ },
 /* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -56762,8 +56837,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(44);
-	var SpecParser = __webpack_require__(84);
+	var Entity = __webpack_require__(51);
+	var SpecParser = __webpack_require__(87);
 	function RenderNode(object) {
 	    this._object = null;
 	    this._child = null;
@@ -56871,192 +56946,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(77);
-	var EventHandler = __webpack_require__(47);
-	var OptionsManager = __webpack_require__(46);
-	var Engine = {};
-	var contexts = [];
-	var nextTickQueue = [];
-	var currentFrame = 0;
-	var nextTickFrame = 0;
-	var deferQueue = [];
-	var lastTime = Date.now();
-	var frameTime;
-	var frameTimeLimit;
-	var loopEnabled = true;
-	var eventForwarders = {};
-	var eventHandler = new EventHandler();
-	var options = {
-	    containerType: 'div',
-	    containerClass: 'famous-container',
-	    fpsCap: undefined,
-	    runLoop: true,
-	    appMode: true
-	};
-	var optionsManager = new OptionsManager(options);
-	var MAX_DEFER_FRAME_TIME = 10;
-	Engine.step = function step() {
-	    currentFrame++;
-	    nextTickFrame = currentFrame;
-	    var currentTime = Date.now();
-	    if (frameTimeLimit && currentTime - lastTime < frameTimeLimit)
-	        return;
-	    var i = 0;
-	    frameTime = currentTime - lastTime;
-	    lastTime = currentTime;
-	    eventHandler.emit('prerender');
-	    var numFunctions = nextTickQueue.length;
-	    while (numFunctions--)
-	        nextTickQueue.shift()(currentFrame);
-	    while (deferQueue.length && Date.now() - currentTime < MAX_DEFER_FRAME_TIME) {
-	        deferQueue.shift().call(this);
-	    }
-	    for (i = 0; i < contexts.length; i++)
-	        contexts[i].update();
-	    eventHandler.emit('postrender');
-	};
-	function loop() {
-	    if (options.runLoop) {
-	        Engine.step();
-	        window.requestAnimationFrame(loop);
-	    } else
-	        loopEnabled = false;
-	}
-	window.requestAnimationFrame(loop);
-	function handleResize(event) {
-	    for (var i = 0; i < contexts.length; i++) {
-	        contexts[i].emit('resize');
-	    }
-	    eventHandler.emit('resize');
-	}
-	window.addEventListener('resize', handleResize, false);
-	handleResize();
-	function initialize() {
-	    window.addEventListener('touchmove', function (event) {
-	        event.preventDefault();
-	    }, true);
-	    addRootClasses();
-	}
-	var initialized = false;
-	function addRootClasses() {
-	    if (!document.body) {
-	        Engine.nextTick(addRootClasses);
-	        return;
-	    }
-	    document.body.classList.add('famous-root');
-	    document.documentElement.classList.add('famous-root');
-	}
-	Engine.pipe = function pipe(target) {
-	    if (target.subscribe instanceof Function)
-	        return target.subscribe(Engine);
-	    else
-	        return eventHandler.pipe(target);
-	};
-	Engine.unpipe = function unpipe(target) {
-	    if (target.unsubscribe instanceof Function)
-	        return target.unsubscribe(Engine);
-	    else
-	        return eventHandler.unpipe(target);
-	};
-	Engine.on = function on(type, handler) {
-	    if (!(type in eventForwarders)) {
-	        eventForwarders[type] = eventHandler.emit.bind(eventHandler, type);
-	        addEngineListener(type, eventForwarders[type]);
-	    }
-	    return eventHandler.on(type, handler);
-	};
-	function addEngineListener(type, forwarder) {
-	    if (!document.body) {
-	        Engine.nextTick(addEventListener.bind(this, type, forwarder));
-	        return;
-	    }
-	    document.body.addEventListener(type, forwarder);
-	}
-	Engine.emit = function emit(type, event) {
-	    return eventHandler.emit(type, event);
-	};
-	Engine.removeListener = function removeListener(type, handler) {
-	    return eventHandler.removeListener(type, handler);
-	};
-	Engine.getFPS = function getFPS() {
-	    return 1000 / frameTime;
-	};
-	Engine.setFPSCap = function setFPSCap(fps) {
-	    frameTimeLimit = Math.floor(1000 / fps);
-	};
-	Engine.getOptions = function getOptions(key) {
-	    return optionsManager.getOptions(key);
-	};
-	Engine.setOptions = function setOptions(options) {
-	    return optionsManager.setOptions.apply(optionsManager, arguments);
-	};
-	Engine.createContext = function createContext(el) {
-	    if (!initialized && options.appMode)
-	        Engine.nextTick(initialize);
-	    var needMountContainer = false;
-	    if (!el) {
-	        el = document.createElement(options.containerType);
-	        el.classList.add(options.containerClass);
-	        needMountContainer = true;
-	    }
-	    var context = new Context(el);
-	    Engine.registerContext(context);
-	    if (needMountContainer)
-	        mount(context, el);
-	    return context;
-	};
-	function mount(context, el) {
-	    if (!document.body) {
-	        Engine.nextTick(mount.bind(this, context, el));
-	        return;
-	    }
-	    document.body.appendChild(el);
-	    context.emit('resize');
-	}
-	Engine.registerContext = function registerContext(context) {
-	    contexts.push(context);
-	    return context;
-	};
-	Engine.getContexts = function getContexts() {
-	    return contexts;
-	};
-	Engine.deregisterContext = function deregisterContext(context) {
-	    var i = contexts.indexOf(context);
-	    if (i >= 0)
-	        contexts.splice(i, 1);
-	};
-	Engine.nextTick = function nextTick(fn) {
-	    nextTickQueue.push(fn);
-	};
-	Engine.defer = function defer(fn) {
-	    deferQueue.push(fn);
-	};
-	optionsManager.on('change', function (data) {
-	    if (data.id === 'fpsCap')
-	        Engine.setFPSCap(data.value);
-	    else if (data.id === 'runLoop') {
-	        if (!loopEnabled && data.value) {
-	            loopEnabled = true;
-	            window.requestAnimationFrame(loop);
-	        }
-	    }
-	});
-	module.exports = Engine;
-
-/***/ },
-/* 80 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(44);
-	var EventHandler = __webpack_require__(47);
-	var Transform = __webpack_require__(48);
+	var Entity = __webpack_require__(51);
+	var EventHandler = __webpack_require__(53);
+	var Transform = __webpack_require__(44);
 	var usePrefix = !('transform' in document.documentElement.style);
 	var devicePixelRatio = window.devicePixelRatio || 1;
 	function ElementOutput(element) {
@@ -57231,7 +57123,290 @@
 	module.exports = ElementOutput;
 
 /***/ },
+/* 80 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Context = __webpack_require__(76);
+	var EventHandler = __webpack_require__(53);
+	var OptionsManager = __webpack_require__(43);
+	var Engine = {};
+	var contexts = [];
+	var nextTickQueue = [];
+	var currentFrame = 0;
+	var nextTickFrame = 0;
+	var deferQueue = [];
+	var lastTime = Date.now();
+	var frameTime;
+	var frameTimeLimit;
+	var loopEnabled = true;
+	var eventForwarders = {};
+	var eventHandler = new EventHandler();
+	var options = {
+	    containerType: 'div',
+	    containerClass: 'famous-container',
+	    fpsCap: undefined,
+	    runLoop: true,
+	    appMode: true
+	};
+	var optionsManager = new OptionsManager(options);
+	var MAX_DEFER_FRAME_TIME = 10;
+	Engine.step = function step() {
+	    currentFrame++;
+	    nextTickFrame = currentFrame;
+	    var currentTime = Date.now();
+	    if (frameTimeLimit && currentTime - lastTime < frameTimeLimit)
+	        return;
+	    var i = 0;
+	    frameTime = currentTime - lastTime;
+	    lastTime = currentTime;
+	    eventHandler.emit('prerender');
+	    var numFunctions = nextTickQueue.length;
+	    while (numFunctions--)
+	        nextTickQueue.shift()(currentFrame);
+	    while (deferQueue.length && Date.now() - currentTime < MAX_DEFER_FRAME_TIME) {
+	        deferQueue.shift().call(this);
+	    }
+	    for (i = 0; i < contexts.length; i++)
+	        contexts[i].update();
+	    eventHandler.emit('postrender');
+	};
+	function loop() {
+	    if (options.runLoop) {
+	        Engine.step();
+	        window.requestAnimationFrame(loop);
+	    } else
+	        loopEnabled = false;
+	}
+	window.requestAnimationFrame(loop);
+	function handleResize(event) {
+	    for (var i = 0; i < contexts.length; i++) {
+	        contexts[i].emit('resize');
+	    }
+	    eventHandler.emit('resize');
+	}
+	window.addEventListener('resize', handleResize, false);
+	handleResize();
+	function initialize() {
+	    window.addEventListener('touchmove', function (event) {
+	        event.preventDefault();
+	    }, true);
+	    addRootClasses();
+	}
+	var initialized = false;
+	function addRootClasses() {
+	    if (!document.body) {
+	        Engine.nextTick(addRootClasses);
+	        return;
+	    }
+	    document.body.classList.add('famous-root');
+	    document.documentElement.classList.add('famous-root');
+	}
+	Engine.pipe = function pipe(target) {
+	    if (target.subscribe instanceof Function)
+	        return target.subscribe(Engine);
+	    else
+	        return eventHandler.pipe(target);
+	};
+	Engine.unpipe = function unpipe(target) {
+	    if (target.unsubscribe instanceof Function)
+	        return target.unsubscribe(Engine);
+	    else
+	        return eventHandler.unpipe(target);
+	};
+	Engine.on = function on(type, handler) {
+	    if (!(type in eventForwarders)) {
+	        eventForwarders[type] = eventHandler.emit.bind(eventHandler, type);
+	        addEngineListener(type, eventForwarders[type]);
+	    }
+	    return eventHandler.on(type, handler);
+	};
+	function addEngineListener(type, forwarder) {
+	    if (!document.body) {
+	        Engine.nextTick(addEventListener.bind(this, type, forwarder));
+	        return;
+	    }
+	    document.body.addEventListener(type, forwarder);
+	}
+	Engine.emit = function emit(type, event) {
+	    return eventHandler.emit(type, event);
+	};
+	Engine.removeListener = function removeListener(type, handler) {
+	    return eventHandler.removeListener(type, handler);
+	};
+	Engine.getFPS = function getFPS() {
+	    return 1000 / frameTime;
+	};
+	Engine.setFPSCap = function setFPSCap(fps) {
+	    frameTimeLimit = Math.floor(1000 / fps);
+	};
+	Engine.getOptions = function getOptions(key) {
+	    return optionsManager.getOptions(key);
+	};
+	Engine.setOptions = function setOptions(options) {
+	    return optionsManager.setOptions.apply(optionsManager, arguments);
+	};
+	Engine.createContext = function createContext(el) {
+	    if (!initialized && options.appMode)
+	        Engine.nextTick(initialize);
+	    var needMountContainer = false;
+	    if (!el) {
+	        el = document.createElement(options.containerType);
+	        el.classList.add(options.containerClass);
+	        needMountContainer = true;
+	    }
+	    var context = new Context(el);
+	    Engine.registerContext(context);
+	    if (needMountContainer)
+	        mount(context, el);
+	    return context;
+	};
+	function mount(context, el) {
+	    if (!document.body) {
+	        Engine.nextTick(mount.bind(this, context, el));
+	        return;
+	    }
+	    document.body.appendChild(el);
+	    context.emit('resize');
+	}
+	Engine.registerContext = function registerContext(context) {
+	    contexts.push(context);
+	    return context;
+	};
+	Engine.getContexts = function getContexts() {
+	    return contexts;
+	};
+	Engine.deregisterContext = function deregisterContext(context) {
+	    var i = contexts.indexOf(context);
+	    if (i >= 0)
+	        contexts.splice(i, 1);
+	};
+	Engine.nextTick = function nextTick(fn) {
+	    nextTickQueue.push(fn);
+	};
+	Engine.defer = function defer(fn) {
+	    deferQueue.push(fn);
+	};
+	optionsManager.on('change', function (data) {
+	    if (data.id === 'fpsCap')
+	        Engine.setFPSCap(data.value);
+	    else if (data.id === 'runLoop') {
+	        if (!loopEnabled && data.value) {
+	            loopEnabled = true;
+	            window.requestAnimationFrame(loop);
+	        }
+	    }
+	});
+	module.exports = Engine;
+
+/***/ },
 /* 81 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(53);
+	function EventArbiter(startMode) {
+	    this.dispatchers = {};
+	    this.currMode = undefined;
+	    this.setMode(startMode);
+	}
+	EventArbiter.prototype.setMode = function setMode(mode) {
+	    if (mode !== this.currMode) {
+	        var startMode = this.currMode;
+	        if (this.dispatchers[this.currMode])
+	            this.dispatchers[this.currMode].trigger('unpipe');
+	        this.currMode = mode;
+	        if (this.dispatchers[mode])
+	            this.dispatchers[mode].emit('pipe');
+	        this.emit('change', {
+	            from: startMode,
+	            to: mode
+	        });
+	    }
+	};
+	EventArbiter.prototype.forMode = function forMode(mode) {
+	    if (!this.dispatchers[mode])
+	        this.dispatchers[mode] = new EventHandler();
+	    return this.dispatchers[mode];
+	};
+	EventArbiter.prototype.emit = function emit(eventType, event) {
+	    if (this.currMode === undefined)
+	        return false;
+	    if (!event)
+	        event = {};
+	    var dispatcher = this.dispatchers[this.currMode];
+	    if (dispatcher)
+	        return dispatcher.trigger(eventType, event);
+	};
+	module.exports = EventArbiter;
+
+/***/ },
+/* 82 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(53);
+	function EventFilter(condition) {
+	    EventHandler.call(this);
+	    this._condition = condition;
+	}
+	EventFilter.prototype = Object.create(EventHandler.prototype);
+	EventFilter.prototype.constructor = EventFilter;
+	EventFilter.prototype.emit = function emit(type, data) {
+	    if (this._condition(type, data))
+	        return EventHandler.prototype.emit.apply(this, arguments);
+	};
+	EventFilter.prototype.trigger = EventFilter.prototype.emit;
+	module.exports = EventFilter;
+
+/***/ },
+/* 83 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(53);
+	function EventMapper(mappingFunction) {
+	    EventHandler.call(this);
+	    this._mappingFunction = mappingFunction;
+	}
+	EventMapper.prototype = Object.create(EventHandler.prototype);
+	EventMapper.prototype.constructor = EventMapper;
+	EventMapper.prototype.subscribe = null;
+	EventMapper.prototype.unsubscribe = null;
+	EventMapper.prototype.emit = function emit(type, data) {
+	    var target = this._mappingFunction.apply(this, arguments);
+	    if (target && target.emit instanceof Function)
+	        target.emit(type, data);
+	};
+	EventMapper.prototype.trigger = EventMapper.prototype.emit;
+	module.exports = EventMapper;
+
+/***/ },
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -57288,7 +57463,7 @@
 	module.exports = ElementAllocator;
 
 /***/ },
-/* 82 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -57298,9 +57473,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(48);
-	var Transitionable = __webpack_require__(53);
-	var TransitionableTransform = __webpack_require__(111);
+	var Transform = __webpack_require__(44);
+	var Transitionable = __webpack_require__(49);
+	var TransitionableTransform = __webpack_require__(133);
 	function Modifier(options) {
 	    this._transformGetter = null;
 	    this._opacityGetter = null;
@@ -57545,7 +57720,7 @@
 	module.exports = Modifier;
 
 /***/ },
-/* 83 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -57555,8 +57730,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(48);
-	var Modifier = __webpack_require__(82);
+	var Transform = __webpack_require__(44);
+	var Modifier = __webpack_require__(85);
 	var RenderNode = __webpack_require__(78);
 	function Scene(definition) {
 	    this.id = null;
@@ -57669,7 +57844,7 @@
 	module.exports = Scene;
 
 /***/ },
-/* 84 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -57679,7 +57854,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(48);
+	var Transform = __webpack_require__(44);
 	function SpecParser() {
 	    this.result = {};
 	}
@@ -57805,282 +57980,6 @@
 	module.exports = SpecParser;
 
 /***/ },
-/* 85 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(48);
-	var Transitionable = __webpack_require__(53);
-	var EventHandler = __webpack_require__(47);
-	var Utilities = __webpack_require__(95);
-	var GenericSync = __webpack_require__(99);
-	var MouseSync = __webpack_require__(100);
-	var TouchSync = __webpack_require__(104);
-	GenericSync.register({
-	    'mouse': MouseSync,
-	    'touch': TouchSync
-	});
-	function Draggable(options) {
-	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this._positionState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._differential = [
-	        0,
-	        0
-	    ];
-	    this._active = true;
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], { scale: this.options.scale });
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.sync);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    _bindEvents.call(this);
-	}
-	var _direction = {
-	    x: 1,
-	    y: 2
-	};
-	Draggable.DIRECTION_X = _direction.x;
-	Draggable.DIRECTION_Y = _direction.y;
-	var _clamp = Utilities.clamp;
-	Draggable.DEFAULT_OPTIONS = {
-	    projection: _direction.x | _direction.y,
-	    scale: 1,
-	    xRange: null,
-	    yRange: null,
-	    snapX: 0,
-	    snapY: 0,
-	    transition: { duration: 0 }
-	};
-	function _mapDifferential(differential) {
-	    var opts = this.options;
-	    var projection = opts.projection;
-	    var snapX = opts.snapX;
-	    var snapY = opts.snapY;
-	    var tx = projection & _direction.x ? differential[0] : 0;
-	    var ty = projection & _direction.y ? differential[1] : 0;
-	    if (snapX > 0)
-	        tx -= tx % snapX;
-	    if (snapY > 0)
-	        ty -= ty % snapY;
-	    return [
-	        tx,
-	        ty
-	    ];
-	}
-	function _handleStart() {
-	    if (!this._active)
-	        return;
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this.eventOutput.emit('start', { position: this.getPosition() });
-	}
-	function _handleMove(event) {
-	    if (!this._active)
-	        return;
-	    var options = this.options;
-	    this._differential = event.position;
-	    var newDifferential = _mapDifferential.call(this, this._differential);
-	    this._differential[0] -= newDifferential[0];
-	    this._differential[1] -= newDifferential[1];
-	    var pos = this.getPosition();
-	    pos[0] += newDifferential[0];
-	    pos[1] += newDifferential[1];
-	    if (options.xRange) {
-	        var xRange = [
-	            options.xRange[0] + 0.5 * options.snapX,
-	            options.xRange[1] - 0.5 * options.snapX
-	        ];
-	        pos[0] = _clamp(pos[0], xRange);
-	    }
-	    if (options.yRange) {
-	        var yRange = [
-	            options.yRange[0] + 0.5 * options.snapY,
-	            options.yRange[1] - 0.5 * options.snapY
-	        ];
-	        pos[1] = _clamp(pos[1], yRange);
-	    }
-	    this.eventOutput.emit('update', { position: pos });
-	}
-	function _handleEnd() {
-	    if (!this._active)
-	        return;
-	    this.eventOutput.emit('end', { position: this.getPosition() });
-	}
-	function _bindEvents() {
-	    this.sync.on('start', _handleStart.bind(this));
-	    this.sync.on('update', _handleMove.bind(this));
-	    this.sync.on('end', _handleEnd.bind(this));
-	}
-	Draggable.prototype.setOptions = function setOptions(options) {
-	    var currentOptions = this.options;
-	    if (options.projection !== undefined) {
-	        var proj = options.projection;
-	        this.options.projection = 0;
-	        [
-	            'x',
-	            'y'
-	        ].forEach(function (val) {
-	            if (proj.indexOf(val) !== -1)
-	                currentOptions.projection |= _direction[val];
-	        });
-	    }
-	    if (options.scale !== undefined) {
-	        currentOptions.scale = options.scale;
-	        this.sync.setOptions({ scale: options.scale });
-	    }
-	    if (options.xRange !== undefined)
-	        currentOptions.xRange = options.xRange;
-	    if (options.yRange !== undefined)
-	        currentOptions.yRange = options.yRange;
-	    if (options.snapX !== undefined)
-	        currentOptions.snapX = options.snapX;
-	    if (options.snapY !== undefined)
-	        currentOptions.snapY = options.snapY;
-	};
-	Draggable.prototype.getPosition = function getPosition() {
-	    return this._positionState.get();
-	};
-	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
-	    var currPos = this.getPosition();
-	    var relativePosition = [
-	        currPos[0] + position[0],
-	        currPos[1] + position[1]
-	    ];
-	    this.setPosition(relativePosition, transition, callback);
-	};
-	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this._positionState.set(position, transition, callback);
-	};
-	Draggable.prototype.activate = function activate() {
-	    this._active = true;
-	};
-	Draggable.prototype.deactivate = function deactivate() {
-	    this._active = false;
-	};
-	Draggable.prototype.toggle = function toggle() {
-	    this._active = !this._active;
-	};
-	Draggable.prototype.modify = function modify(target) {
-	    var pos = this.getPosition();
-	    return {
-	        transform: Transform.translate(pos[0], pos[1]),
-	        target: target
-	    };
-	};
-	module.exports = Draggable;
-
-/***/ },
-/* 86 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transitionable = __webpack_require__(53);
-	var OptionsManager = __webpack_require__(46);
-	function Fader(options, startState) {
-	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    if (!startState)
-	        startState = 0;
-	    this.transitionHelper = new Transitionable(startState);
-	}
-	Fader.DEFAULT_OPTIONS = {
-	    cull: false,
-	    transition: true,
-	    pulseInTransition: true,
-	    pulseOutTransition: true
-	};
-	Fader.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	Fader.prototype.show = function show(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(1, transition, callback);
-	};
-	Fader.prototype.hide = function hide(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(0, transition, callback);
-	};
-	Fader.prototype.set = function set(state, transition, callback) {
-	    this.halt();
-	    this.transitionHelper.set(state, transition, callback);
-	};
-	Fader.prototype.halt = function halt() {
-	    this.transitionHelper.halt();
-	};
-	Fader.prototype.isVisible = function isVisible() {
-	    return this.transitionHelper.get() > 0;
-	};
-	Fader.prototype.modify = function modify(target) {
-	    var currOpacity = this.transitionHelper.get();
-	    if (this.options.cull && !currOpacity)
-	        return undefined;
-	    else
-	        return {
-	            opacity: currOpacity,
-	            target: target
-	        };
-	};
-	module.exports = Fader;
-
-/***/ },
-/* 87 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function ModifierChain() {
-	    this._chain = [];
-	    if (arguments.length)
-	        this.addModifier.apply(this, arguments);
-	}
-	ModifierChain.prototype.addModifier = function addModifier(varargs) {
-	    Array.prototype.push.apply(this._chain, arguments);
-	};
-	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
-	    var index = this._chain.indexOf(modifier);
-	    if (index < 0)
-	        return;
-	    this._chain.splice(index, 1);
-	};
-	ModifierChain.prototype.modify = function modify(input) {
-	    var chain = this._chain;
-	    var result = input;
-	    for (var i = 0; i < chain.length; i++) {
-	        result = chain[i].modify(result);
-	    }
-	    return result;
-	};
-	module.exports = ModifierChain;
-
-/***/ },
 /* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -58091,266 +57990,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Modifier = __webpack_require__(82);
-	var Transform = __webpack_require__(48);
-	var Transitionable = __webpack_require__(53);
-	var TransitionableTransform = __webpack_require__(111);
-	function StateModifier(options) {
-	    this._transformState = new TransitionableTransform(Transform.identity);
-	    this._opacityState = new Transitionable(1);
-	    this._originState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._alignState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._sizeState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._proportionsState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._modifier = new Modifier({
-	        transform: this._transformState,
-	        opacity: this._opacityState,
-	        origin: null,
-	        align: null,
-	        size: null,
-	        proportions: null
-	    });
-	    this._hasOrigin = false;
-	    this._hasAlign = false;
-	    this._hasSize = false;
-	    this._hasProportions = false;
-	    if (options) {
-	        if (options.transform)
-	            this.setTransform(options.transform);
-	        if (options.opacity !== undefined)
-	            this.setOpacity(options.opacity);
-	        if (options.origin)
-	            this.setOrigin(options.origin);
-	        if (options.align)
-	            this.setAlign(options.align);
-	        if (options.size)
-	            this.setSize(options.size);
-	        if (options.proportions)
-	            this.setProportions(options.proportions);
-	    }
-	}
-	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
-	    this._transformState.set(transform, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
-	    this._opacityState.set(opacity, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
-	    if (origin === null) {
-	        if (this._hasOrigin) {
-	            this._modifier.originFrom(null);
-	            this._hasOrigin = false;
-	        }
-	        return this;
-	    } else if (!this._hasOrigin) {
-	        this._hasOrigin = true;
-	        this._modifier.originFrom(this._originState);
-	    }
-	    this._originState.set(origin, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
-	    if (align === null) {
-	        if (this._hasAlign) {
-	            this._modifier.alignFrom(null);
-	            this._hasAlign = false;
-	        }
-	        return this;
-	    } else if (!this._hasAlign) {
-	        this._hasAlign = true;
-	        this._modifier.alignFrom(this._alignState);
-	    }
-	    this._alignState.set(align, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
-	    if (size === null) {
-	        if (this._hasSize) {
-	            this._modifier.sizeFrom(null);
-	            this._hasSize = false;
-	        }
-	        return this;
-	    } else if (!this._hasSize) {
-	        this._hasSize = true;
-	        this._modifier.sizeFrom(this._sizeState);
-	    }
-	    this._sizeState.set(size, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
-	    if (proportions === null) {
-	        if (this._hasProportions) {
-	            this._modifier.proportionsFrom(null);
-	            this._hasProportions = false;
-	        }
-	        return this;
-	    } else if (!this._hasProportions) {
-	        this._hasProportions = true;
-	        this._modifier.proportionsFrom(this._proportionsState);
-	    }
-	    this._proportionsState.set(proportions, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.halt = function halt() {
-	    this._transformState.halt();
-	    this._opacityState.halt();
-	    this._originState.halt();
-	    this._alignState.halt();
-	    this._sizeState.halt();
-	    this._proportionsState.halt();
-	};
-	StateModifier.prototype.getTransform = function getTransform() {
-	    return this._transformState.get();
-	};
-	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
-	    return this._transformState.getFinal();
-	};
-	StateModifier.prototype.getOpacity = function getOpacity() {
-	    return this._opacityState.get();
-	};
-	StateModifier.prototype.getOrigin = function getOrigin() {
-	    return this._hasOrigin ? this._originState.get() : null;
-	};
-	StateModifier.prototype.getAlign = function getAlign() {
-	    return this._hasAlign ? this._alignState.get() : null;
-	};
-	StateModifier.prototype.getSize = function getSize() {
-	    return this._hasSize ? this._sizeState.get() : null;
-	};
-	StateModifier.prototype.getProportions = function getProportions() {
-	    return this._hasProportions ? this._proportionsState.get() : null;
-	};
-	StateModifier.prototype.modify = function modify(target) {
-	    return this._modifier.modify(target);
-	};
-	module.exports = StateModifier;
-
-/***/ },
-/* 89 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(47);
-	function EventArbiter(startMode) {
-	    this.dispatchers = {};
-	    this.currMode = undefined;
-	    this.setMode(startMode);
-	}
-	EventArbiter.prototype.setMode = function setMode(mode) {
-	    if (mode !== this.currMode) {
-	        var startMode = this.currMode;
-	        if (this.dispatchers[this.currMode])
-	            this.dispatchers[this.currMode].trigger('unpipe');
-	        this.currMode = mode;
-	        if (this.dispatchers[mode])
-	            this.dispatchers[mode].emit('pipe');
-	        this.emit('change', {
-	            from: startMode,
-	            to: mode
-	        });
-	    }
-	};
-	EventArbiter.prototype.forMode = function forMode(mode) {
-	    if (!this.dispatchers[mode])
-	        this.dispatchers[mode] = new EventHandler();
-	    return this.dispatchers[mode];
-	};
-	EventArbiter.prototype.emit = function emit(eventType, event) {
-	    if (this.currMode === undefined)
-	        return false;
-	    if (!event)
-	        event = {};
-	    var dispatcher = this.dispatchers[this.currMode];
-	    if (dispatcher)
-	        return dispatcher.trigger(eventType, event);
-	};
-	module.exports = EventArbiter;
-
-/***/ },
-/* 90 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(47);
-	function EventFilter(condition) {
-	    EventHandler.call(this);
-	    this._condition = condition;
-	}
-	EventFilter.prototype = Object.create(EventHandler.prototype);
-	EventFilter.prototype.constructor = EventFilter;
-	EventFilter.prototype.emit = function emit(type, data) {
-	    if (this._condition(type, data))
-	        return EventHandler.prototype.emit.apply(this, arguments);
-	};
-	EventFilter.prototype.trigger = EventFilter.prototype.emit;
-	module.exports = EventFilter;
-
-/***/ },
-/* 91 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(47);
-	function EventMapper(mappingFunction) {
-	    EventHandler.call(this);
-	    this._mappingFunction = mappingFunction;
-	}
-	EventMapper.prototype = Object.create(EventHandler.prototype);
-	EventMapper.prototype.constructor = EventMapper;
-	EventMapper.prototype.subscribe = null;
-	EventMapper.prototype.unsubscribe = null;
-	EventMapper.prototype.emit = function emit(type, data) {
-	    var target = this._mappingFunction.apply(this, arguments);
-	    if (target && target.emit instanceof Function)
-	        target.emit(type, data);
-	};
-	EventMapper.prototype.trigger = EventMapper.prototype.emit;
-	module.exports = EventMapper;
-
-/***/ },
-/* 92 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Vector = __webpack_require__(49);
+	var Vector = __webpack_require__(45);
 	function Matrix(values) {
 	    this.values = values || [
 	        [
@@ -58437,7 +58077,7 @@
 	module.exports = Matrix;
 
 /***/ },
-/* 93 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58447,7 +58087,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Matrix = __webpack_require__(92);
+	var Matrix = __webpack_require__(88);
 	function Quaternion(w, x, y, z) {
 	    if (arguments.length === 1)
 	        this.set(w);
@@ -58635,7 +58275,7 @@
 	module.exports = Quaternion;
 
 /***/ },
-/* 94 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58680,7 +58320,7 @@
 	module.exports = Random;
 
 /***/ },
-/* 95 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58704,7 +58344,7 @@
 	module.exports = Utilities;
 
 /***/ },
-/* 96 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58714,8 +58354,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
-	var Transitionable = __webpack_require__(53);
+	var EventHandler = __webpack_require__(53);
+	var Transitionable = __webpack_require__(49);
 	function Accumulator(value, eventName) {
 	    if (eventName === undefined)
 	        eventName = 'update';
@@ -58744,7 +58384,7 @@
 	module.exports = Accumulator;
 
 /***/ },
-/* 97 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58769,7 +58409,7 @@
 	}
 
 /***/ },
-/* 98 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58830,7 +58470,7 @@
 	}());
 
 /***/ },
-/* 99 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58840,7 +58480,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
+	var EventHandler = __webpack_require__(53);
 	function GenericSync(syncs, options) {
 	    this._eventInput = new EventHandler();
 	    this._eventOutput = new EventHandler();
@@ -58897,7 +58537,7 @@
 	module.exports = GenericSync;
 
 /***/ },
-/* 100 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -58907,8 +58547,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
-	var OptionsManager = __webpack_require__(46);
+	var EventHandler = __webpack_require__(53);
+	var OptionsManager = __webpack_require__(43);
 	function MouseSync(options) {
 	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -59119,7 +58759,7 @@
 	module.exports = MouseSync;
 
 /***/ },
-/* 101 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -59129,8 +58769,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TwoFingerSync = __webpack_require__(106);
-	var OptionsManager = __webpack_require__(46);
+	var TwoFingerSync = __webpack_require__(102);
+	var OptionsManager = __webpack_require__(43);
 	function PinchSync(options) {
 	    TwoFingerSync.call(this);
 	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
@@ -59185,7 +58825,7 @@
 	module.exports = PinchSync;
 
 /***/ },
-/* 102 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -59195,8 +58835,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TwoFingerSync = __webpack_require__(106);
-	var OptionsManager = __webpack_require__(46);
+	var TwoFingerSync = __webpack_require__(102);
+	var OptionsManager = __webpack_require__(43);
 	function RotateSync(options) {
 	    TwoFingerSync.call(this);
 	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
@@ -59251,7 +58891,7 @@
 	module.exports = RotateSync;
 
 /***/ },
-/* 103 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -59261,8 +58901,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TwoFingerSync = __webpack_require__(106);
-	var OptionsManager = __webpack_require__(46);
+	var TwoFingerSync = __webpack_require__(102);
+	var OptionsManager = __webpack_require__(43);
 	function ScaleSync(options) {
 	    TwoFingerSync.call(this);
 	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
@@ -59322,7 +58962,7 @@
 	module.exports = ScaleSync;
 
 /***/ },
-/* 104 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -59332,9 +58972,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TouchTracker = __webpack_require__(105);
-	var EventHandler = __webpack_require__(47);
-	var OptionsManager = __webpack_require__(46);
+	var TouchTracker = __webpack_require__(101);
+	var EventHandler = __webpack_require__(53);
+	var OptionsManager = __webpack_require__(43);
 	function TouchSync(options) {
 	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -59469,7 +59109,7 @@
 	module.exports = TouchSync;
 
 /***/ },
-/* 105 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -59479,7 +59119,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
+	var EventHandler = __webpack_require__(53);
 	var _now = Date.now;
 	function _timestampTouch(touch, event, history) {
 	    return {
@@ -59564,7 +59204,7 @@
 	module.exports = TouchTracker;
 
 /***/ },
-/* 106 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -59574,7 +59214,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
+	var EventHandler = __webpack_require__(53);
 	function TwoFingerSync() {
 	    this._eventInput = new EventHandler();
 	    this._eventOutput = new EventHandler();
@@ -59683,6 +59323,441 @@
 	module.exports = TwoFingerSync;
 
 /***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(44);
+	var Transitionable = __webpack_require__(49);
+	var EventHandler = __webpack_require__(53);
+	var Utilities = __webpack_require__(91);
+	var GenericSync = __webpack_require__(95);
+	var MouseSync = __webpack_require__(96);
+	var TouchSync = __webpack_require__(100);
+	GenericSync.register({
+	    'mouse': MouseSync,
+	    'touch': TouchSync
+	});
+	function Draggable(options) {
+	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this._positionState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._differential = [
+	        0,
+	        0
+	    ];
+	    this._active = true;
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], { scale: this.options.scale });
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.sync);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    _bindEvents.call(this);
+	}
+	var _direction = {
+	    x: 1,
+	    y: 2
+	};
+	Draggable.DIRECTION_X = _direction.x;
+	Draggable.DIRECTION_Y = _direction.y;
+	var _clamp = Utilities.clamp;
+	Draggable.DEFAULT_OPTIONS = {
+	    projection: _direction.x | _direction.y,
+	    scale: 1,
+	    xRange: null,
+	    yRange: null,
+	    snapX: 0,
+	    snapY: 0,
+	    transition: { duration: 0 }
+	};
+	function _mapDifferential(differential) {
+	    var opts = this.options;
+	    var projection = opts.projection;
+	    var snapX = opts.snapX;
+	    var snapY = opts.snapY;
+	    var tx = projection & _direction.x ? differential[0] : 0;
+	    var ty = projection & _direction.y ? differential[1] : 0;
+	    if (snapX > 0)
+	        tx -= tx % snapX;
+	    if (snapY > 0)
+	        ty -= ty % snapY;
+	    return [
+	        tx,
+	        ty
+	    ];
+	}
+	function _handleStart() {
+	    if (!this._active)
+	        return;
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this.eventOutput.emit('start', { position: this.getPosition() });
+	}
+	function _handleMove(event) {
+	    if (!this._active)
+	        return;
+	    var options = this.options;
+	    this._differential = event.position;
+	    var newDifferential = _mapDifferential.call(this, this._differential);
+	    this._differential[0] -= newDifferential[0];
+	    this._differential[1] -= newDifferential[1];
+	    var pos = this.getPosition();
+	    pos[0] += newDifferential[0];
+	    pos[1] += newDifferential[1];
+	    if (options.xRange) {
+	        var xRange = [
+	            options.xRange[0] + 0.5 * options.snapX,
+	            options.xRange[1] - 0.5 * options.snapX
+	        ];
+	        pos[0] = _clamp(pos[0], xRange);
+	    }
+	    if (options.yRange) {
+	        var yRange = [
+	            options.yRange[0] + 0.5 * options.snapY,
+	            options.yRange[1] - 0.5 * options.snapY
+	        ];
+	        pos[1] = _clamp(pos[1], yRange);
+	    }
+	    this.eventOutput.emit('update', { position: pos });
+	}
+	function _handleEnd() {
+	    if (!this._active)
+	        return;
+	    this.eventOutput.emit('end', { position: this.getPosition() });
+	}
+	function _bindEvents() {
+	    this.sync.on('start', _handleStart.bind(this));
+	    this.sync.on('update', _handleMove.bind(this));
+	    this.sync.on('end', _handleEnd.bind(this));
+	}
+	Draggable.prototype.setOptions = function setOptions(options) {
+	    var currentOptions = this.options;
+	    if (options.projection !== undefined) {
+	        var proj = options.projection;
+	        this.options.projection = 0;
+	        [
+	            'x',
+	            'y'
+	        ].forEach(function (val) {
+	            if (proj.indexOf(val) !== -1)
+	                currentOptions.projection |= _direction[val];
+	        });
+	    }
+	    if (options.scale !== undefined) {
+	        currentOptions.scale = options.scale;
+	        this.sync.setOptions({ scale: options.scale });
+	    }
+	    if (options.xRange !== undefined)
+	        currentOptions.xRange = options.xRange;
+	    if (options.yRange !== undefined)
+	        currentOptions.yRange = options.yRange;
+	    if (options.snapX !== undefined)
+	        currentOptions.snapX = options.snapX;
+	    if (options.snapY !== undefined)
+	        currentOptions.snapY = options.snapY;
+	};
+	Draggable.prototype.getPosition = function getPosition() {
+	    return this._positionState.get();
+	};
+	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
+	    var currPos = this.getPosition();
+	    var relativePosition = [
+	        currPos[0] + position[0],
+	        currPos[1] + position[1]
+	    ];
+	    this.setPosition(relativePosition, transition, callback);
+	};
+	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this._positionState.set(position, transition, callback);
+	};
+	Draggable.prototype.activate = function activate() {
+	    this._active = true;
+	};
+	Draggable.prototype.deactivate = function deactivate() {
+	    this._active = false;
+	};
+	Draggable.prototype.toggle = function toggle() {
+	    this._active = !this._active;
+	};
+	Draggable.prototype.modify = function modify(target) {
+	    var pos = this.getPosition();
+	    return {
+	        transform: Transform.translate(pos[0], pos[1]),
+	        target: target
+	    };
+	};
+	module.exports = Draggable;
+
+/***/ },
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transitionable = __webpack_require__(49);
+	var OptionsManager = __webpack_require__(43);
+	function Fader(options, startState) {
+	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    if (!startState)
+	        startState = 0;
+	    this.transitionHelper = new Transitionable(startState);
+	}
+	Fader.DEFAULT_OPTIONS = {
+	    cull: false,
+	    transition: true,
+	    pulseInTransition: true,
+	    pulseOutTransition: true
+	};
+	Fader.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	Fader.prototype.show = function show(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(1, transition, callback);
+	};
+	Fader.prototype.hide = function hide(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(0, transition, callback);
+	};
+	Fader.prototype.set = function set(state, transition, callback) {
+	    this.halt();
+	    this.transitionHelper.set(state, transition, callback);
+	};
+	Fader.prototype.halt = function halt() {
+	    this.transitionHelper.halt();
+	};
+	Fader.prototype.isVisible = function isVisible() {
+	    return this.transitionHelper.get() > 0;
+	};
+	Fader.prototype.modify = function modify(target) {
+	    var currOpacity = this.transitionHelper.get();
+	    if (this.options.cull && !currOpacity)
+	        return undefined;
+	    else
+	        return {
+	            opacity: currOpacity,
+	            target: target
+	        };
+	};
+	module.exports = Fader;
+
+/***/ },
+/* 105 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function ModifierChain() {
+	    this._chain = [];
+	    if (arguments.length)
+	        this.addModifier.apply(this, arguments);
+	}
+	ModifierChain.prototype.addModifier = function addModifier(varargs) {
+	    Array.prototype.push.apply(this._chain, arguments);
+	};
+	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
+	    var index = this._chain.indexOf(modifier);
+	    if (index < 0)
+	        return;
+	    this._chain.splice(index, 1);
+	};
+	ModifierChain.prototype.modify = function modify(input) {
+	    var chain = this._chain;
+	    var result = input;
+	    for (var i = 0; i < chain.length; i++) {
+	        result = chain[i].modify(result);
+	    }
+	    return result;
+	};
+	module.exports = ModifierChain;
+
+/***/ },
+/* 106 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Modifier = __webpack_require__(85);
+	var Transform = __webpack_require__(44);
+	var Transitionable = __webpack_require__(49);
+	var TransitionableTransform = __webpack_require__(133);
+	function StateModifier(options) {
+	    this._transformState = new TransitionableTransform(Transform.identity);
+	    this._opacityState = new Transitionable(1);
+	    this._originState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._alignState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._sizeState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._proportionsState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._modifier = new Modifier({
+	        transform: this._transformState,
+	        opacity: this._opacityState,
+	        origin: null,
+	        align: null,
+	        size: null,
+	        proportions: null
+	    });
+	    this._hasOrigin = false;
+	    this._hasAlign = false;
+	    this._hasSize = false;
+	    this._hasProportions = false;
+	    if (options) {
+	        if (options.transform)
+	            this.setTransform(options.transform);
+	        if (options.opacity !== undefined)
+	            this.setOpacity(options.opacity);
+	        if (options.origin)
+	            this.setOrigin(options.origin);
+	        if (options.align)
+	            this.setAlign(options.align);
+	        if (options.size)
+	            this.setSize(options.size);
+	        if (options.proportions)
+	            this.setProportions(options.proportions);
+	    }
+	}
+	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
+	    this._transformState.set(transform, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
+	    this._opacityState.set(opacity, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
+	    if (origin === null) {
+	        if (this._hasOrigin) {
+	            this._modifier.originFrom(null);
+	            this._hasOrigin = false;
+	        }
+	        return this;
+	    } else if (!this._hasOrigin) {
+	        this._hasOrigin = true;
+	        this._modifier.originFrom(this._originState);
+	    }
+	    this._originState.set(origin, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
+	    if (align === null) {
+	        if (this._hasAlign) {
+	            this._modifier.alignFrom(null);
+	            this._hasAlign = false;
+	        }
+	        return this;
+	    } else if (!this._hasAlign) {
+	        this._hasAlign = true;
+	        this._modifier.alignFrom(this._alignState);
+	    }
+	    this._alignState.set(align, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
+	    if (size === null) {
+	        if (this._hasSize) {
+	            this._modifier.sizeFrom(null);
+	            this._hasSize = false;
+	        }
+	        return this;
+	    } else if (!this._hasSize) {
+	        this._hasSize = true;
+	        this._modifier.sizeFrom(this._sizeState);
+	    }
+	    this._sizeState.set(size, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
+	    if (proportions === null) {
+	        if (this._hasProportions) {
+	            this._modifier.proportionsFrom(null);
+	            this._hasProportions = false;
+	        }
+	        return this;
+	    } else if (!this._hasProportions) {
+	        this._hasProportions = true;
+	        this._modifier.proportionsFrom(this._proportionsState);
+	    }
+	    this._proportionsState.set(proportions, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.halt = function halt() {
+	    this._transformState.halt();
+	    this._opacityState.halt();
+	    this._originState.halt();
+	    this._alignState.halt();
+	    this._sizeState.halt();
+	    this._proportionsState.halt();
+	};
+	StateModifier.prototype.getTransform = function getTransform() {
+	    return this._transformState.get();
+	};
+	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
+	    return this._transformState.getFinal();
+	};
+	StateModifier.prototype.getOpacity = function getOpacity() {
+	    return this._opacityState.get();
+	};
+	StateModifier.prototype.getOrigin = function getOrigin() {
+	    return this._hasOrigin ? this._originState.get() : null;
+	};
+	StateModifier.prototype.getAlign = function getAlign() {
+	    return this._hasAlign ? this._alignState.get() : null;
+	};
+	StateModifier.prototype.getSize = function getSize() {
+	    return this._hasSize ? this._sizeState.get() : null;
+	};
+	StateModifier.prototype.getProportions = function getProportions() {
+	    return this._hasProportions ? this._proportionsState.get() : null;
+	};
+	StateModifier.prototype.modify = function modify(target) {
+	    return this._modifier.modify(target);
+	};
+	module.exports = StateModifier;
+
+/***/ },
 /* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -59693,23 +59768,64 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	function CachedMap(mappingFunction) {
-	    this._map = mappingFunction || null;
-	    this._cachedOutput = null;
-	    this._cachedInput = Number.NaN;
-	}
-	CachedMap.create = function create(mappingFunction) {
-	    var instance = new CachedMap(mappingFunction);
-	    return instance.get.bind(instance);
-	};
-	CachedMap.prototype.get = function get(input) {
-	    if (input !== this._cachedInput) {
-	        this._cachedInput = input;
-	        this._cachedOutput = this._map(input);
+	var Surface = __webpack_require__(59);
+	function CanvasSurface(options) {
+	    if (options && options.canvasSize)
+	        this._canvasSize = options.canvasSize;
+	    Surface.apply(this, arguments);
+	    if (!this._canvasSize)
+	        this._canvasSize = this.getSize();
+	    this._backBuffer = document.createElement('canvas');
+	    if (this._canvasSize) {
+	        this._backBuffer.width = this._canvasSize[0];
+	        this._backBuffer.height = this._canvasSize[1];
 	    }
-	    return this._cachedOutput;
+	    this._contextId = undefined;
+	}
+	CanvasSurface.prototype = Object.create(Surface.prototype);
+	CanvasSurface.prototype.constructor = CanvasSurface;
+	CanvasSurface.prototype.elementType = 'canvas';
+	CanvasSurface.prototype.elementClass = 'famous-surface';
+	CanvasSurface.prototype.setContent = function setContent() {
 	};
-	module.exports = CachedMap;
+	CanvasSurface.prototype.deploy = function deploy(target) {
+	    if (this._canvasSize) {
+	        target.width = this._canvasSize[0];
+	        target.height = this._canvasSize[1];
+	    }
+	    if (this._contextId === '2d') {
+	        target.getContext(this._contextId).drawImage(this._backBuffer, 0, 0);
+	        this._backBuffer.width = 0;
+	        this._backBuffer.height = 0;
+	    }
+	};
+	CanvasSurface.prototype.recall = function recall(target) {
+	    var size = this.getSize();
+	    this._backBuffer.width = target.width;
+	    this._backBuffer.height = target.height;
+	    if (this._contextId === '2d') {
+	        this._backBuffer.getContext(this._contextId).drawImage(target, 0, 0);
+	        target.width = 0;
+	        target.height = 0;
+	    }
+	};
+	CanvasSurface.prototype.getContext = function getContext(contextId) {
+	    this._contextId = contextId;
+	    return this._currentTarget ? this._currentTarget.getContext(contextId) : this._backBuffer.getContext(contextId);
+	};
+	CanvasSurface.prototype.setSize = function setSize(size, canvasSize) {
+	    Surface.prototype.setSize.apply(this, arguments);
+	    if (canvasSize)
+	        this._canvasSize = [
+	            canvasSize[0],
+	            canvasSize[1]
+	        ];
+	    if (this._currentTarget) {
+	        this._currentTarget.width = this._canvasSize[0];
+	        this._currentTarget.height = this._canvasSize[1];
+	    }
+	};
+	module.exports = CanvasSurface;
 
 /***/ },
 /* 108 */
@@ -59722,165 +59838,21 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Easing = {
-	    inQuad: function (t) {
-	        return t * t;
-	    },
-	    outQuad: function (t) {
-	        return -(t -= 1) * t + 1;
-	    },
-	    inOutQuad: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t;
-	        return -0.5 * (--t * (t - 2) - 1);
-	    },
-	    inCubic: function (t) {
-	        return t * t * t;
-	    },
-	    outCubic: function (t) {
-	        return --t * t * t + 1;
-	    },
-	    inOutCubic: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t;
-	        return 0.5 * ((t -= 2) * t * t + 2);
-	    },
-	    inQuart: function (t) {
-	        return t * t * t * t;
-	    },
-	    outQuart: function (t) {
-	        return -(--t * t * t * t - 1);
-	    },
-	    inOutQuart: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t * t;
-	        return -0.5 * ((t -= 2) * t * t * t - 2);
-	    },
-	    inQuint: function (t) {
-	        return t * t * t * t * t;
-	    },
-	    outQuint: function (t) {
-	        return --t * t * t * t * t + 1;
-	    },
-	    inOutQuint: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t * t * t;
-	        return 0.5 * ((t -= 2) * t * t * t * t + 2);
-	    },
-	    inSine: function (t) {
-	        return -1 * Math.cos(t * (Math.PI / 2)) + 1;
-	    },
-	    outSine: function (t) {
-	        return Math.sin(t * (Math.PI / 2));
-	    },
-	    inOutSine: function (t) {
-	        return -0.5 * (Math.cos(Math.PI * t) - 1);
-	    },
-	    inExpo: function (t) {
-	        return t === 0 ? 0 : Math.pow(2, 10 * (t - 1));
-	    },
-	    outExpo: function (t) {
-	        return t === 1 ? 1 : -Math.pow(2, -10 * t) + 1;
-	    },
-	    inOutExpo: function (t) {
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * Math.pow(2, 10 * (t - 1));
-	        return 0.5 * (-Math.pow(2, -10 * --t) + 2);
-	    },
-	    inCirc: function (t) {
-	        return -(Math.sqrt(1 - t * t) - 1);
-	    },
-	    outCirc: function (t) {
-	        return Math.sqrt(1 - --t * t);
-	    },
-	    inOutCirc: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return -0.5 * (Math.sqrt(1 - t * t) - 1);
-	        return 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1);
-	    },
-	    inElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if (!p)
-	            p = 0.3;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
-	    },
-	    outElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if (!p)
-	            p = 0.3;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
-	    },
-	    inOutElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if ((t /= 0.5) === 2)
-	            return 1;
-	        if (!p)
-	            p = 0.3 * 1.5;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        if (t < 1)
-	            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
-	        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p) * 0.5 + 1;
-	    },
-	    inBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        return t * t * ((s + 1) * t - s);
-	    },
-	    outBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        return --t * t * ((s + 1) * t + s) + 1;
-	    },
-	    inOutBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * (t * t * (((s *= 1.525) + 1) * t - s));
-	        return 0.5 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2);
-	    },
-	    inBounce: function (t) {
-	        return 1 - Easing.outBounce(1 - t);
-	    },
-	    outBounce: function (t) {
-	        if (t < 1 / 2.75) {
-	            return 7.5625 * t * t;
-	        } else if (t < 2 / 2.75) {
-	            return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
-	        } else if (t < 2.5 / 2.75) {
-	            return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
-	        } else {
-	            return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
-	        }
-	    },
-	    inOutBounce: function (t) {
-	        if (t < 0.5)
-	            return Easing.inBounce(t * 2) * 0.5;
-	        return Easing.outBounce(t * 2 - 1) * 0.5 + 0.5;
-	    }
+	var ContainerSurface = __webpack_require__(54);
+	function FormContainerSurface(options) {
+	    if (options)
+	        this._method = options.method || '';
+	    ContainerSurface.apply(this, arguments);
+	}
+	FormContainerSurface.prototype = Object.create(ContainerSurface.prototype);
+	FormContainerSurface.prototype.constructor = FormContainerSurface;
+	FormContainerSurface.prototype.elementType = 'form';
+	FormContainerSurface.prototype.deploy = function deploy(target) {
+	    if (this._method)
+	        target.method = this._method;
+	    return ContainerSurface.prototype.deploy.apply(this, arguments);
 	};
-	module.exports = Easing;
+	module.exports = FormContainerSurface;
 
 /***/ },
 /* 109 */
@@ -59893,134 +59865,71 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(52);
-	var Particle = __webpack_require__(50);
-	var Spring = __webpack_require__(145);
-	var Vector = __webpack_require__(49);
-	function SnapTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this._dimensions = 1;
-	    this._restTolerance = 1e-10;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.particle = new Particle();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.PE.addBody(this.particle);
-	    this.PE.attach(this.spring, this.particle);
+	var Surface = __webpack_require__(59);
+	function ImageSurface(options) {
+	    this._imageUrl = undefined;
+	    Surface.apply(this, arguments);
 	}
-	SnapTransition.SUPPORTS_MULTIPLE = 3;
-	SnapTransition.DEFAULT_OPTIONS = {
-	    period: 100,
-	    dampingRatio: 0.2,
-	    velocity: 0
+	var urlCache = [];
+	var countCache = [];
+	var nodeCache = [];
+	var cacheEnabled = true;
+	ImageSurface.enableCache = function enableCache() {
+	    cacheEnabled = true;
 	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _setParticlePosition(p) {
-	    this.particle.position.set(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.velocity.set(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _setupDefinition(definition) {
-	    var defaults = SnapTransition.DEFAULT_OPTIONS;
-	    if (definition.period === undefined)
-	        definition.period = defaults.period;
-	    if (definition.dampingRatio === undefined)
-	        definition.dampingRatio = defaults.dampingRatio;
-	    if (definition.velocity === undefined)
-	        definition.velocity = defaults.velocity;
-	    this.spring.setOptions({
-	        period: definition.period,
-	        dampingRatio: definition.dampingRatio
-	    });
-	    _setParticleVelocity.call(this, definition.velocity);
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
+	ImageSurface.disableCache = function disableCache() {
+	    cacheEnabled = false;
+	};
+	ImageSurface.clearCache = function clearCache() {
+	    urlCache = [];
+	    countCache = [];
+	    nodeCache = [];
+	};
+	ImageSurface.getCache = function getCache() {
+	    return {
+	        urlCache: urlCache,
+	        countCache: countCache,
+	        nodeCache: nodeCache
+	    };
+	};
+	ImageSurface.prototype = Object.create(Surface.prototype);
+	ImageSurface.prototype.constructor = ImageSurface;
+	ImageSurface.prototype.elementType = 'img';
+	ImageSurface.prototype.elementClass = 'famous-surface';
+	ImageSurface.prototype.setContent = function setContent(imageUrl) {
+	    var urlIndex = urlCache.indexOf(this._imageUrl);
+	    if (urlIndex !== -1) {
+	        if (countCache[urlIndex] === 1) {
+	            urlCache.splice(urlIndex, 1);
+	            countCache.splice(urlIndex, 1);
+	            nodeCache.splice(urlIndex, 1);
+	        } else {
+	            countCache[urlIndex]--;
 	        }
-	        return;
 	    }
-	    if (_getEnergy.call(this) < this._absRestTolerance) {
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	        _sleep.call(this);
+	    urlIndex = urlCache.indexOf(imageUrl);
+	    if (urlIndex === -1) {
+	        urlCache.push(imageUrl);
+	        countCache.push(1);
+	    } else {
+	        countCache[urlIndex]++;
 	    }
-	}
-	SnapTransition.prototype.reset = function reset(state, velocity) {
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    this.initState.set(state);
-	    _setParticlePosition.call(this, state);
-	    _setTarget.call(this, state);
-	    if (velocity)
-	        _setParticleVelocity.call(this, velocity);
-	    _setCallback.call(this, undefined);
+	    this._imageUrl = imageUrl;
+	    this._contentDirty = true;
 	};
-	SnapTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
-	};
-	SnapTransition.prototype.setVelocity = function setVelocity(velocity) {
-	    this.call(this, _setParticleVelocity(velocity));
-	};
-	SnapTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
-	};
-	SnapTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	SnapTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	SnapTransition.prototype.set = function set(state, definition, callback) {
-	    if (!definition) {
-	        this.reset(state);
-	        if (callback)
-	            callback();
-	        return;
+	ImageSurface.prototype.deploy = function deploy(target) {
+	    var urlIndex = urlCache.indexOf(this._imageUrl);
+	    if (nodeCache[urlIndex] === undefined && cacheEnabled) {
+	        var img = new Image();
+	        img.src = this._imageUrl || '';
+	        nodeCache[urlIndex] = img;
 	    }
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, callback);
+	    target.src = this._imageUrl || '';
 	};
-	module.exports = SnapTransition;
+	ImageSurface.prototype.recall = function recall(target) {
+	    target.src = '';
+	};
+	module.exports = ImageSurface;
 
 /***/ },
 /* 110 */
@@ -60033,138 +59942,71 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(52);
-	var Particle = __webpack_require__(50);
-	var Spring = __webpack_require__(51);
-	var Vector = __webpack_require__(49);
-	function SpringTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this._dimensions = undefined;
-	    this._restTolerance = 1e-10;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.particle = new Particle();
-	    this.PE.addBody(this.particle);
-	    this.PE.attach(this.spring, this.particle);
+	var Surface = __webpack_require__(59);
+	function InputSurface(options) {
+	    this._placeholder = options.placeholder || '';
+	    this._value = options.value || '';
+	    this._type = options.type || 'text';
+	    this._name = options.name || '';
+	    Surface.apply(this, arguments);
+	    this.on('click', this.focus.bind(this));
+	    window.addEventListener('click', function (event) {
+	        if (event.target !== this._currentTarget)
+	            this.blur();
+	    }.bind(this));
 	}
-	SpringTransition.SUPPORTS_MULTIPLE = 3;
-	SpringTransition.DEFAULT_OPTIONS = {
-	    period: 300,
-	    dampingRatio: 0.5,
-	    velocity: 0
+	InputSurface.prototype = Object.create(Surface.prototype);
+	InputSurface.prototype.constructor = InputSurface;
+	InputSurface.prototype.elementType = 'input';
+	InputSurface.prototype.elementClass = 'famous-surface';
+	InputSurface.prototype.setPlaceholder = function setPlaceholder(str) {
+	    this._placeholder = str;
+	    this._contentDirty = true;
+	    return this;
 	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setParticlePosition(p) {
-	    this.particle.setPosition(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.setVelocity(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
+	InputSurface.prototype.focus = function focus() {
+	    if (this._currentTarget)
+	        this._currentTarget.focus();
+	    return this;
+	};
+	InputSurface.prototype.blur = function blur() {
+	    if (this._currentTarget)
+	        this._currentTarget.blur();
+	    return this;
+	};
+	InputSurface.prototype.setValue = function setValue(str) {
+	    this._value = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.setType = function setType(str) {
+	    this._type = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.getValue = function getValue() {
+	    if (this._currentTarget) {
+	        return this._currentTarget.value;
+	    } else {
+	        return this._value;
 	    }
-	    if (_getEnergy.call(this) < this._absRestTolerance) {
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	        _sleep.call(this);
-	    }
-	}
-	function _setupDefinition(definition) {
-	    var defaults = SpringTransition.DEFAULT_OPTIONS;
-	    if (definition.period === undefined)
-	        definition.period = defaults.period;
-	    if (definition.dampingRatio === undefined)
-	        definition.dampingRatio = defaults.dampingRatio;
-	    if (definition.velocity === undefined)
-	        definition.velocity = defaults.velocity;
-	    if (definition.period < 150) {
-	        definition.period = 150;
-	        console.warn('The period of a SpringTransition is capped at 150 ms. Use a SnapTransition for faster transitions');
-	    }
-	    this.spring.setOptions({
-	        period: definition.period,
-	        dampingRatio: definition.dampingRatio
-	    });
-	    _setParticleVelocity.call(this, definition.velocity);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	SpringTransition.prototype.reset = function reset(pos, vel) {
-	    this._dimensions = pos instanceof Array ? pos.length : 0;
-	    this.initState.set(pos);
-	    _setParticlePosition.call(this, pos);
-	    _setTarget.call(this, pos);
-	    if (vel)
-	        _setParticleVelocity.call(this, vel);
-	    _setCallback.call(this, undefined);
 	};
-	SpringTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
+	InputSurface.prototype.setName = function setName(str) {
+	    this._name = str;
+	    this._contentDirty = true;
+	    return this;
 	};
-	SpringTransition.prototype.setVelocity = function setVelocity(v) {
-	    this.call(this, _setParticleVelocity(v));
+	InputSurface.prototype.getName = function getName() {
+	    return this._name;
 	};
-	SpringTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
+	InputSurface.prototype.deploy = function deploy(target) {
+	    if (this._placeholder !== '')
+	        target.placeholder = this._placeholder;
+	    target.value = this._value;
+	    target.type = this._type;
+	    target.name = this._name;
 	};
-	SpringTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	SpringTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	SpringTransition.prototype.set = function set(endState, definition, callback) {
-	    if (!definition) {
-	        this.reset(endState);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = endState instanceof Array ? endState.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, endState);
-	    _setCallback.call(this, callback);
-	};
-	module.exports = SpringTransition;
+	module.exports = InputSurface;
 
 /***/ },
 /* 111 */
@@ -60177,123 +60019,24 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transitionable = __webpack_require__(53);
-	var Transform = __webpack_require__(48);
-	var Utility = __webpack_require__(43);
-	function TransitionableTransform(transform) {
-	    this._final = Transform.identity.slice();
-	    this._finalTranslate = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalRotate = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalSkew = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalScale = [
-	        1,
-	        1,
-	        1
-	    ];
-	    this.translate = new Transitionable(this._finalTranslate);
-	    this.rotate = new Transitionable(this._finalRotate);
-	    this.skew = new Transitionable(this._finalSkew);
-	    this.scale = new Transitionable(this._finalScale);
-	    if (transform)
-	        this.set(transform);
+	var InputSurface = __webpack_require__(110);
+	function SubmitInputSurface(options) {
+	    InputSurface.apply(this, arguments);
+	    this._type = 'submit';
+	    if (options && options.onClick)
+	        this.setOnClick(options.onClick);
 	}
-	function _build() {
-	    return Transform.build({
-	        translate: this.translate.get(),
-	        rotate: this.rotate.get(),
-	        skew: this.skew.get(),
-	        scale: this.scale.get()
-	    });
-	}
-	function _buildFinal() {
-	    return Transform.build({
-	        translate: this._finalTranslate,
-	        rotate: this._finalRotate,
-	        skew: this._finalSkew,
-	        scale: this._finalScale
-	    });
-	}
-	TransitionableTransform.prototype.setTranslate = function setTranslate(translate, transition, callback) {
-	    this._finalTranslate = translate;
-	    this._final = _buildFinal.call(this);
-	    this.translate.set(translate, transition, callback);
-	    return this;
+	SubmitInputSurface.prototype = Object.create(InputSurface.prototype);
+	SubmitInputSurface.prototype.constructor = SubmitInputSurface;
+	SubmitInputSurface.prototype.setOnClick = function (onClick) {
+	    this.onClick = onClick;
 	};
-	TransitionableTransform.prototype.setScale = function setScale(scale, transition, callback) {
-	    this._finalScale = scale;
-	    this._final = _buildFinal.call(this);
-	    this.scale.set(scale, transition, callback);
-	    return this;
+	SubmitInputSurface.prototype.deploy = function deploy(target) {
+	    if (this.onclick)
+	        target.onClick = this.onClick;
+	    InputSurface.prototype.deploy.apply(this, arguments);
 	};
-	TransitionableTransform.prototype.setRotate = function setRotate(eulerAngles, transition, callback) {
-	    this._finalRotate = eulerAngles;
-	    this._final = _buildFinal.call(this);
-	    this.rotate.set(eulerAngles, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setSkew = function setSkew(skewAngles, transition, callback) {
-	    this._finalSkew = skewAngles;
-	    this._final = _buildFinal.call(this);
-	    this.skew.set(skewAngles, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.set = function set(transform, transition, callback) {
-	    var components = Transform.interpret(transform);
-	    this._finalTranslate = components.translate;
-	    this._finalRotate = components.rotate;
-	    this._finalSkew = components.skew;
-	    this._finalScale = components.scale;
-	    this._final = transform;
-	    var _callback = callback ? Utility.after(4, callback) : null;
-	    this.translate.set(components.translate, transition, _callback);
-	    this.rotate.set(components.rotate, transition, _callback);
-	    this.skew.set(components.skew, transition, _callback);
-	    this.scale.set(components.scale, transition, _callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setDefaultTransition = function setDefaultTransition(transition) {
-	    this.translate.setDefault(transition);
-	    this.rotate.setDefault(transition);
-	    this.skew.setDefault(transition);
-	    this.scale.setDefault(transition);
-	};
-	TransitionableTransform.prototype.get = function get() {
-	    if (this.isActive()) {
-	        return _build.call(this);
-	    } else
-	        return this._final;
-	};
-	TransitionableTransform.prototype.getFinal = function getFinal() {
-	    return this._final;
-	};
-	TransitionableTransform.prototype.isActive = function isActive() {
-	    return this.translate.isActive() || this.rotate.isActive() || this.scale.isActive() || this.skew.isActive();
-	};
-	TransitionableTransform.prototype.halt = function halt() {
-	    this.translate.halt();
-	    this.rotate.halt();
-	    this.skew.halt();
-	    this.scale.halt();
-	    this._final = this.get();
-	    this._finalTranslate = this.translate.get();
-	    this._finalRotate = this.rotate.get();
-	    this._finalSkew = this.skew.get();
-	    this._finalScale = this.scale.get();
-	    return this;
-	};
-	module.exports = TransitionableTransform;
+	module.exports = SubmitInputSurface;
 
 /***/ },
 /* 112 */
@@ -60306,157 +60049,86 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(52);
-	var Particle = __webpack_require__(50);
-	var Spring = __webpack_require__(51);
-	var Wall = __webpack_require__(146);
-	var Vector = __webpack_require__(49);
-	function WallTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.wall = new Wall();
-	    this._restTolerance = 1e-10;
-	    this._dimensions = 1;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.particle = new Particle();
-	    this.PE.addBody(this.particle);
-	    this.PE.attach([
-	        this.wall,
-	        this.spring
-	    ], this.particle);
+	var Surface = __webpack_require__(59);
+	function TextareaSurface(options) {
+	    this._placeholder = options.placeholder || '';
+	    this._value = options.value || '';
+	    this._name = options.name || '';
+	    this._wrap = options.wrap || '';
+	    this._cols = options.cols || '';
+	    this._rows = options.rows || '';
+	    Surface.apply(this, arguments);
+	    this.on('click', this.focus.bind(this));
 	}
-	WallTransition.SUPPORTS_MULTIPLE = 3;
-	WallTransition.DEFAULT_OPTIONS = {
-	    period: 300,
-	    dampingRatio: 0.5,
-	    velocity: 0,
-	    restitution: 0.5
+	TextareaSurface.prototype = Object.create(Surface.prototype);
+	TextareaSurface.prototype.constructor = TextareaSurface;
+	TextareaSurface.prototype.elementType = 'textarea';
+	TextareaSurface.prototype.elementClass = 'famous-surface';
+	TextareaSurface.prototype.setPlaceholder = function setPlaceholder(str) {
+	    this._placeholder = str;
+	    this._contentDirty = true;
+	    return this;
 	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    var dist = this.endState.sub(this.initState).norm();
-	    this.wall.setOptions({
-	        distance: this.endState.norm(),
-	        normal: dist === 0 ? this.particle.velocity.normalize(-1) : this.endState.sub(this.initState).normalize(-1)
-	    });
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	function _setParticlePosition(p) {
-	    this.particle.position.set(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.velocity.set(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
+	TextareaSurface.prototype.focus = function focus() {
+	    if (this._currentTarget)
+	        this._currentTarget.focus();
+	    return this;
+	};
+	TextareaSurface.prototype.blur = function blur() {
+	    if (this._currentTarget)
+	        this._currentTarget.blur();
+	    return this;
+	};
+	TextareaSurface.prototype.setValue = function setValue(str) {
+	    this._value = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.getValue = function getValue() {
+	    if (this._currentTarget) {
+	        return this._currentTarget.value;
+	    } else {
+	        return this._value;
 	    }
-	    var energy = _getEnergy.call(this);
-	    if (energy < this._absRestTolerance) {
-	        _sleep.call(this);
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	    }
-	}
-	function _setupDefinition(def) {
-	    var defaults = WallTransition.DEFAULT_OPTIONS;
-	    if (def.period === undefined)
-	        def.period = defaults.period;
-	    if (def.dampingRatio === undefined)
-	        def.dampingRatio = defaults.dampingRatio;
-	    if (def.velocity === undefined)
-	        def.velocity = defaults.velocity;
-	    if (def.restitution === undefined)
-	        def.restitution = defaults.restitution;
-	    if (def.drift === undefined)
-	        def.drift = Wall.DEFAULT_OPTIONS.drift;
-	    if (def.slop === undefined)
-	        def.slop = Wall.DEFAULT_OPTIONS.slop;
-	    this.spring.setOptions({
-	        period: def.period,
-	        dampingRatio: def.dampingRatio
-	    });
-	    this.wall.setOptions({
-	        restitution: def.restitution,
-	        drift: def.drift,
-	        slop: def.slop
-	    });
-	    _setParticleVelocity.call(this, def.velocity);
-	}
-	WallTransition.prototype.reset = function reset(state, velocity) {
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    this.initState.set(state);
-	    _setParticlePosition.call(this, state);
-	    if (velocity)
-	        _setParticleVelocity.call(this, velocity);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, undefined);
 	};
-	WallTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
+	TextareaSurface.prototype.setName = function setName(str) {
+	    this._name = str;
+	    this._contentDirty = true;
+	    return this;
 	};
-	WallTransition.prototype.setVelocity = function setVelocity(velocity) {
-	    this.call(this, _setParticleVelocity(velocity));
+	TextareaSurface.prototype.getName = function getName() {
+	    return this._name;
 	};
-	WallTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
+	TextareaSurface.prototype.setWrap = function setWrap(str) {
+	    this._wrap = str;
+	    this._contentDirty = true;
+	    return this;
 	};
-	WallTransition.prototype.halt = function halt() {
-	    this.set(this.get());
+	TextareaSurface.prototype.setColumns = function setColumns(num) {
+	    this._cols = num;
+	    this._contentDirty = true;
+	    return this;
 	};
-	WallTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
+	TextareaSurface.prototype.setRows = function setRows(num) {
+	    this._rows = num;
+	    this._contentDirty = true;
+	    return this;
 	};
-	WallTransition.prototype.set = function set(state, definition, callback) {
-	    if (!definition) {
-	        this.reset(state);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, callback);
+	TextareaSurface.prototype.deploy = function deploy(target) {
+	    if (this._placeholder !== '')
+	        target.placeholder = this._placeholder;
+	    if (this._value !== '')
+	        target.value = this._value;
+	    if (this._name !== '')
+	        target.name = this._name;
+	    if (this._wrap !== '')
+	        target.wrap = this._wrap;
+	    if (this._cols !== '')
+	        target.cols = this._cols;
+	    if (this._rows !== '')
+	        target.rows = this._rows;
 	};
-	module.exports = WallTransition;
+	module.exports = TextareaSurface;
 
 /***/ },
 /* 113 */
@@ -60469,10 +60141,61 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(44);
-	var Transform = __webpack_require__(48);
-	var EventHandler = __webpack_require__(47);
-	var OptionsManager = __webpack_require__(46);
+	var Surface = __webpack_require__(59);
+	function VideoSurface(options) {
+	    Surface.apply(this, arguments);
+	    this._videoUrl = undefined;
+	    this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	}
+	VideoSurface.prototype = Object.create(Surface.prototype);
+	VideoSurface.prototype.constructor = VideoSurface;
+	VideoSurface.DEFAULT_OPTIONS = { autoplay: false };
+	VideoSurface.prototype.elementType = 'video';
+	VideoSurface.prototype.elementClass = 'famous-surface';
+	VideoSurface.prototype.setOptions = function setOptions(options) {
+	    if (options.size)
+	        this.setSize(options.size);
+	    if (options.classes)
+	        this.setClasses(options.classes);
+	    if (options.properties)
+	        this.setProperties(options.properties);
+	    if (options.autoplay)
+	        this.options.autoplay = options.autoplay;
+	    if (options.src) {
+	        this._videoUrl = options.src;
+	        this._contentDirty = true;
+	    }
+	};
+	VideoSurface.prototype.setContent = function setContent(videoUrl) {
+	    this._videoUrl = videoUrl;
+	    this._contentDirty = true;
+	};
+	VideoSurface.prototype.deploy = function deploy(target) {
+	    target.src = this._videoUrl;
+	    target.autoplay = this.options.autoplay;
+	};
+	VideoSurface.prototype.recall = function recall(target) {
+	    target.src = '';
+	};
+	module.exports = VideoSurface;
+
+/***/ },
+/* 114 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(51);
+	var Transform = __webpack_require__(44);
+	var EventHandler = __webpack_require__(53);
+	var OptionsManager = __webpack_require__(43);
 	function ContextualView(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS || ContextualView.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -60499,7 +60222,7 @@
 	module.exports = ContextualView;
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -60509,11 +60232,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(48);
-	var OptionsManager = __webpack_require__(46);
-	var Transitionable = __webpack_require__(53);
-	var Utility = __webpack_require__(43);
-	var SequentialLayout = __webpack_require__(126);
+	var Transform = __webpack_require__(44);
+	var OptionsManager = __webpack_require__(43);
+	var Transitionable = __webpack_require__(49);
+	var Utility = __webpack_require__(50);
+	var SequentialLayout = __webpack_require__(127);
 	function Deck(options) {
 	    SequentialLayout.apply(this, arguments);
 	    this.state = new Transitionable(0);
@@ -60597,7 +60320,7 @@
 	module.exports = Deck;
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -60608,10 +60331,10 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(48);
-	var OptionsManager = __webpack_require__(46);
-	var Transitionable = __webpack_require__(53);
-	var EventHandler = __webpack_require__(47);
+	var Transform = __webpack_require__(44);
+	var OptionsManager = __webpack_require__(43);
+	var Transitionable = __webpack_require__(49);
+	var EventHandler = __webpack_require__(53);
 	function DrawerLayout(options) {
 	    this.options = Object.create(DrawerLayout.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -60786,7 +60509,7 @@
 	module.exports = DrawerLayout;
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -60796,11 +60519,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var CachedMap = __webpack_require__(107);
-	var Entity = __webpack_require__(44);
-	var EventHandler = __webpack_require__(47);
-	var Transform = __webpack_require__(48);
-	var RenderController = __webpack_require__(122);
+	var CachedMap = __webpack_require__(129);
+	var Entity = __webpack_require__(51);
+	var EventHandler = __webpack_require__(53);
+	var Transform = __webpack_require__(44);
+	var RenderController = __webpack_require__(123);
 	function EdgeSwapper(options) {
 	    this._currentTarget = null;
 	    this._size = [
@@ -60847,7 +60570,7 @@
 	module.exports = EdgeSwapper;
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -60857,11 +60580,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(44);
-	var Transform = __webpack_require__(48);
-	var OptionsManager = __webpack_require__(46);
-	var EventHandler = __webpack_require__(47);
-	var Transitionable = __webpack_require__(53);
+	var Entity = __webpack_require__(51);
+	var Transform = __webpack_require__(44);
+	var OptionsManager = __webpack_require__(43);
+	var EventHandler = __webpack_require__(53);
+	var Transitionable = __webpack_require__(49);
 	function FlexibleLayout(options) {
 	    this.options = Object.create(FlexibleLayout.DEFAULT_OPTIONS);
 	    this.optionsManager = new OptionsManager(this.options);
@@ -61004,7 +60727,7 @@
 	module.exports = FlexibleLayout;
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -61014,10 +60737,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(48);
-	var Transitionable = __webpack_require__(53);
+	var Transform = __webpack_require__(44);
+	var Transitionable = __webpack_require__(49);
 	var RenderNode = __webpack_require__(78);
-	var OptionsManager = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(43);
 	function Flipper(options) {
 	    this.options = Object.create(Flipper.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -61089,7 +60812,7 @@
 	module.exports = Flipper;
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -61099,15 +60822,15 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(44);
+	var Entity = __webpack_require__(51);
 	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(48);
-	var ViewSequence = __webpack_require__(45);
-	var EventHandler = __webpack_require__(47);
-	var Modifier = __webpack_require__(82);
-	var OptionsManager = __webpack_require__(46);
-	var Transitionable = __webpack_require__(53);
-	var TransitionableTransform = __webpack_require__(111);
+	var Transform = __webpack_require__(44);
+	var ViewSequence = __webpack_require__(52);
+	var EventHandler = __webpack_require__(53);
+	var Modifier = __webpack_require__(85);
+	var OptionsManager = __webpack_require__(43);
+	var Transitionable = __webpack_require__(49);
+	var TransitionableTransform = __webpack_require__(133);
 	function GridLayout(options) {
 	    this.options = Object.create(GridLayout.DEFAULT_OPTIONS);
 	    this.optionsManager = new OptionsManager(this.options);
@@ -61283,7 +61006,7 @@
 	module.exports = GridLayout;
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -61293,10 +61016,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(44);
+	var Entity = __webpack_require__(51);
 	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(48);
-	var OptionsManager = __webpack_require__(46);
+	var Transform = __webpack_require__(44);
+	var OptionsManager = __webpack_require__(43);
 	function HeaderFooterLayout(options) {
 	    this.options = Object.create(HeaderFooterLayout.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -61384,7 +61107,7 @@
 	module.exports = HeaderFooterLayout;
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -61394,13 +61117,13 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(48);
-	var Modifier = __webpack_require__(82);
+	var Transform = __webpack_require__(44);
+	var Modifier = __webpack_require__(85);
 	var RenderNode = __webpack_require__(78);
-	var Utility = __webpack_require__(43);
-	var OptionsManager = __webpack_require__(46);
-	var Transitionable = __webpack_require__(53);
-	var TransitionableTransform = __webpack_require__(111);
+	var Utility = __webpack_require__(50);
+	var OptionsManager = __webpack_require__(43);
+	var Transitionable = __webpack_require__(49);
+	var TransitionableTransform = __webpack_require__(133);
 	function Lightbox(options) {
 	    this.options = Object.create(Lightbox.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -61525,7 +61248,7 @@
 	module.exports = Lightbox;
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -61535,10 +61258,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Modifier = __webpack_require__(82);
+	var Modifier = __webpack_require__(85);
 	var RenderNode = __webpack_require__(78);
-	var Transform = __webpack_require__(48);
-	var Transitionable = __webpack_require__(53);
+	var Transform = __webpack_require__(44);
+	var Transitionable = __webpack_require__(49);
 	var View = __webpack_require__(58);
 	function RenderController(options) {
 	    View.apply(this, arguments);
@@ -61754,7 +61477,7 @@
 	module.exports = RenderController;
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -61765,10 +61488,10 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var ContainerSurface = __webpack_require__(54);
-	var EventHandler = __webpack_require__(47);
-	var Scrollview = __webpack_require__(125);
-	var Utility = __webpack_require__(43);
-	var OptionsManager = __webpack_require__(46);
+	var EventHandler = __webpack_require__(53);
+	var Scrollview = __webpack_require__(126);
+	var Utility = __webpack_require__(50);
+	var OptionsManager = __webpack_require__(43);
 	function ScrollContainer(options) {
 	    this.options = Object.create(ScrollContainer.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -61804,7 +61527,7 @@
 	module.exports = ScrollContainer;
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -61814,13 +61537,13 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(44);
+	var Entity = __webpack_require__(51);
 	var Group = __webpack_require__(55);
-	var OptionsManager = __webpack_require__(46);
-	var Transform = __webpack_require__(48);
-	var Utility = __webpack_require__(43);
-	var ViewSequence = __webpack_require__(45);
-	var EventHandler = __webpack_require__(47);
+	var OptionsManager = __webpack_require__(43);
+	var Transform = __webpack_require__(44);
+	var Utility = __webpack_require__(50);
+	var ViewSequence = __webpack_require__(52);
+	var EventHandler = __webpack_require__(53);
 	function Scroller(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -62026,7 +61749,7 @@
 	module.exports = Scroller;
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -62036,18 +61759,18 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PhysicsEngine = __webpack_require__(52);
-	var Particle = __webpack_require__(50);
+	var PhysicsEngine = __webpack_require__(48);
+	var Particle = __webpack_require__(46);
 	var Drag = __webpack_require__(56);
-	var Spring = __webpack_require__(51);
-	var EventHandler = __webpack_require__(47);
-	var OptionsManager = __webpack_require__(46);
-	var ViewSequence = __webpack_require__(45);
-	var Scroller = __webpack_require__(124);
-	var Utility = __webpack_require__(43);
-	var GenericSync = __webpack_require__(99);
+	var Spring = __webpack_require__(47);
+	var EventHandler = __webpack_require__(53);
+	var OptionsManager = __webpack_require__(43);
+	var ViewSequence = __webpack_require__(52);
+	var Scroller = __webpack_require__(125);
+	var Utility = __webpack_require__(50);
+	var GenericSync = __webpack_require__(95);
 	var ScrollSync = __webpack_require__(57);
-	var TouchSync = __webpack_require__(104);
+	var TouchSync = __webpack_require__(100);
 	GenericSync.register({
 	    scroll: ScrollSync,
 	    touch: TouchSync
@@ -62499,7 +62222,7 @@
 	module.exports = Scrollview;
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -62509,11 +62232,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var OptionsManager = __webpack_require__(46);
-	var Entity = __webpack_require__(44);
-	var Transform = __webpack_require__(48);
-	var ViewSequence = __webpack_require__(45);
-	var Utility = __webpack_require__(43);
+	var OptionsManager = __webpack_require__(43);
+	var Entity = __webpack_require__(51);
+	var Transform = __webpack_require__(44);
+	var ViewSequence = __webpack_require__(52);
+	var Utility = __webpack_require__(50);
 	function SequentialLayout(options) {
 	    this._items = null;
 	    this._size = null;
@@ -62608,7 +62331,7 @@
 	module.exports = SequentialLayout;
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -62619,8 +62342,8 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var View = __webpack_require__(58);
-	var Entity = __webpack_require__(44);
-	var Transform = __webpack_require__(48);
+	var Entity = __webpack_require__(51);
+	var Transform = __webpack_require__(44);
 	function SizeAwareView() {
 	    View.apply(this, arguments);
 	    this._id = Entity.register(this);
@@ -62662,76 +62385,6 @@
 	module.exports = SizeAwareView;
 
 /***/ },
-/* 128 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(59);
-	function CanvasSurface(options) {
-	    if (options && options.canvasSize)
-	        this._canvasSize = options.canvasSize;
-	    Surface.apply(this, arguments);
-	    if (!this._canvasSize)
-	        this._canvasSize = this.getSize();
-	    this._backBuffer = document.createElement('canvas');
-	    if (this._canvasSize) {
-	        this._backBuffer.width = this._canvasSize[0];
-	        this._backBuffer.height = this._canvasSize[1];
-	    }
-	    this._contextId = undefined;
-	}
-	CanvasSurface.prototype = Object.create(Surface.prototype);
-	CanvasSurface.prototype.constructor = CanvasSurface;
-	CanvasSurface.prototype.elementType = 'canvas';
-	CanvasSurface.prototype.elementClass = 'famous-surface';
-	CanvasSurface.prototype.setContent = function setContent() {
-	};
-	CanvasSurface.prototype.deploy = function deploy(target) {
-	    if (this._canvasSize) {
-	        target.width = this._canvasSize[0];
-	        target.height = this._canvasSize[1];
-	    }
-	    if (this._contextId === '2d') {
-	        target.getContext(this._contextId).drawImage(this._backBuffer, 0, 0);
-	        this._backBuffer.width = 0;
-	        this._backBuffer.height = 0;
-	    }
-	};
-	CanvasSurface.prototype.recall = function recall(target) {
-	    var size = this.getSize();
-	    this._backBuffer.width = target.width;
-	    this._backBuffer.height = target.height;
-	    if (this._contextId === '2d') {
-	        this._backBuffer.getContext(this._contextId).drawImage(target, 0, 0);
-	        target.width = 0;
-	        target.height = 0;
-	    }
-	};
-	CanvasSurface.prototype.getContext = function getContext(contextId) {
-	    this._contextId = contextId;
-	    return this._currentTarget ? this._currentTarget.getContext(contextId) : this._backBuffer.getContext(contextId);
-	};
-	CanvasSurface.prototype.setSize = function setSize(size, canvasSize) {
-	    Surface.prototype.setSize.apply(this, arguments);
-	    if (canvasSize)
-	        this._canvasSize = [
-	            canvasSize[0],
-	            canvasSize[1]
-	        ];
-	    if (this._currentTarget) {
-	        this._currentTarget.width = this._canvasSize[0];
-	        this._currentTarget.height = this._canvasSize[1];
-	    }
-	};
-	module.exports = CanvasSurface;
-
-/***/ },
 /* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -62742,21 +62395,23 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var ContainerSurface = __webpack_require__(54);
-	function FormContainerSurface(options) {
-	    if (options)
-	        this._method = options.method || '';
-	    ContainerSurface.apply(this, arguments);
+	function CachedMap(mappingFunction) {
+	    this._map = mappingFunction || null;
+	    this._cachedOutput = null;
+	    this._cachedInput = Number.NaN;
 	}
-	FormContainerSurface.prototype = Object.create(ContainerSurface.prototype);
-	FormContainerSurface.prototype.constructor = FormContainerSurface;
-	FormContainerSurface.prototype.elementType = 'form';
-	FormContainerSurface.prototype.deploy = function deploy(target) {
-	    if (this._method)
-	        target.method = this._method;
-	    return ContainerSurface.prototype.deploy.apply(this, arguments);
+	CachedMap.create = function create(mappingFunction) {
+	    var instance = new CachedMap(mappingFunction);
+	    return instance.get.bind(instance);
 	};
-	module.exports = FormContainerSurface;
+	CachedMap.prototype.get = function get(input) {
+	    if (input !== this._cachedInput) {
+	        this._cachedInput = input;
+	        this._cachedOutput = this._map(input);
+	    }
+	    return this._cachedOutput;
+	};
+	module.exports = CachedMap;
 
 /***/ },
 /* 130 */
@@ -62769,71 +62424,165 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(59);
-	function ImageSurface(options) {
-	    this._imageUrl = undefined;
-	    Surface.apply(this, arguments);
-	}
-	var urlCache = [];
-	var countCache = [];
-	var nodeCache = [];
-	var cacheEnabled = true;
-	ImageSurface.enableCache = function enableCache() {
-	    cacheEnabled = true;
-	};
-	ImageSurface.disableCache = function disableCache() {
-	    cacheEnabled = false;
-	};
-	ImageSurface.clearCache = function clearCache() {
-	    urlCache = [];
-	    countCache = [];
-	    nodeCache = [];
-	};
-	ImageSurface.getCache = function getCache() {
-	    return {
-	        urlCache: urlCache,
-	        countCache: countCache,
-	        nodeCache: nodeCache
-	    };
-	};
-	ImageSurface.prototype = Object.create(Surface.prototype);
-	ImageSurface.prototype.constructor = ImageSurface;
-	ImageSurface.prototype.elementType = 'img';
-	ImageSurface.prototype.elementClass = 'famous-surface';
-	ImageSurface.prototype.setContent = function setContent(imageUrl) {
-	    var urlIndex = urlCache.indexOf(this._imageUrl);
-	    if (urlIndex !== -1) {
-	        if (countCache[urlIndex] === 1) {
-	            urlCache.splice(urlIndex, 1);
-	            countCache.splice(urlIndex, 1);
-	            nodeCache.splice(urlIndex, 1);
+	var Easing = {
+	    inQuad: function (t) {
+	        return t * t;
+	    },
+	    outQuad: function (t) {
+	        return -(t -= 1) * t + 1;
+	    },
+	    inOutQuad: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t;
+	        return -0.5 * (--t * (t - 2) - 1);
+	    },
+	    inCubic: function (t) {
+	        return t * t * t;
+	    },
+	    outCubic: function (t) {
+	        return --t * t * t + 1;
+	    },
+	    inOutCubic: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t;
+	        return 0.5 * ((t -= 2) * t * t + 2);
+	    },
+	    inQuart: function (t) {
+	        return t * t * t * t;
+	    },
+	    outQuart: function (t) {
+	        return -(--t * t * t * t - 1);
+	    },
+	    inOutQuart: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t * t;
+	        return -0.5 * ((t -= 2) * t * t * t - 2);
+	    },
+	    inQuint: function (t) {
+	        return t * t * t * t * t;
+	    },
+	    outQuint: function (t) {
+	        return --t * t * t * t * t + 1;
+	    },
+	    inOutQuint: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t * t * t;
+	        return 0.5 * ((t -= 2) * t * t * t * t + 2);
+	    },
+	    inSine: function (t) {
+	        return -1 * Math.cos(t * (Math.PI / 2)) + 1;
+	    },
+	    outSine: function (t) {
+	        return Math.sin(t * (Math.PI / 2));
+	    },
+	    inOutSine: function (t) {
+	        return -0.5 * (Math.cos(Math.PI * t) - 1);
+	    },
+	    inExpo: function (t) {
+	        return t === 0 ? 0 : Math.pow(2, 10 * (t - 1));
+	    },
+	    outExpo: function (t) {
+	        return t === 1 ? 1 : -Math.pow(2, -10 * t) + 1;
+	    },
+	    inOutExpo: function (t) {
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * Math.pow(2, 10 * (t - 1));
+	        return 0.5 * (-Math.pow(2, -10 * --t) + 2);
+	    },
+	    inCirc: function (t) {
+	        return -(Math.sqrt(1 - t * t) - 1);
+	    },
+	    outCirc: function (t) {
+	        return Math.sqrt(1 - --t * t);
+	    },
+	    inOutCirc: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return -0.5 * (Math.sqrt(1 - t * t) - 1);
+	        return 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+	    },
+	    inElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if (!p)
+	            p = 0.3;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+	    },
+	    outElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if (!p)
+	            p = 0.3;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
+	    },
+	    inOutElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if ((t /= 0.5) === 2)
+	            return 1;
+	        if (!p)
+	            p = 0.3 * 1.5;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        if (t < 1)
+	            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+	        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p) * 0.5 + 1;
+	    },
+	    inBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        return t * t * ((s + 1) * t - s);
+	    },
+	    outBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        return --t * t * ((s + 1) * t + s) + 1;
+	    },
+	    inOutBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * (t * t * (((s *= 1.525) + 1) * t - s));
+	        return 0.5 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2);
+	    },
+	    inBounce: function (t) {
+	        return 1 - Easing.outBounce(1 - t);
+	    },
+	    outBounce: function (t) {
+	        if (t < 1 / 2.75) {
+	            return 7.5625 * t * t;
+	        } else if (t < 2 / 2.75) {
+	            return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
+	        } else if (t < 2.5 / 2.75) {
+	            return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
 	        } else {
-	            countCache[urlIndex]--;
+	            return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
 	        }
+	    },
+	    inOutBounce: function (t) {
+	        if (t < 0.5)
+	            return Easing.inBounce(t * 2) * 0.5;
+	        return Easing.outBounce(t * 2 - 1) * 0.5 + 0.5;
 	    }
-	    urlIndex = urlCache.indexOf(imageUrl);
-	    if (urlIndex === -1) {
-	        urlCache.push(imageUrl);
-	        countCache.push(1);
-	    } else {
-	        countCache[urlIndex]++;
-	    }
-	    this._imageUrl = imageUrl;
-	    this._contentDirty = true;
 	};
-	ImageSurface.prototype.deploy = function deploy(target) {
-	    var urlIndex = urlCache.indexOf(this._imageUrl);
-	    if (nodeCache[urlIndex] === undefined && cacheEnabled) {
-	        var img = new Image();
-	        img.src = this._imageUrl || '';
-	        nodeCache[urlIndex] = img;
-	    }
-	    target.src = this._imageUrl || '';
-	};
-	ImageSurface.prototype.recall = function recall(target) {
-	    target.src = '';
-	};
-	module.exports = ImageSurface;
+	module.exports = Easing;
 
 /***/ },
 /* 131 */
@@ -62846,71 +62595,134 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(59);
-	function InputSurface(options) {
-	    this._placeholder = options.placeholder || '';
-	    this._value = options.value || '';
-	    this._type = options.type || 'text';
-	    this._name = options.name || '';
-	    Surface.apply(this, arguments);
-	    this.on('click', this.focus.bind(this));
-	    window.addEventListener('click', function (event) {
-	        if (event.target !== this._currentTarget)
-	            this.blur();
-	    }.bind(this));
+	var PE = __webpack_require__(48);
+	var Particle = __webpack_require__(46);
+	var Spring = __webpack_require__(145);
+	var Vector = __webpack_require__(45);
+	function SnapTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this._dimensions = 1;
+	    this._restTolerance = 1e-10;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.particle = new Particle();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.PE.addBody(this.particle);
+	    this.PE.attach(this.spring, this.particle);
 	}
-	InputSurface.prototype = Object.create(Surface.prototype);
-	InputSurface.prototype.constructor = InputSurface;
-	InputSurface.prototype.elementType = 'input';
-	InputSurface.prototype.elementClass = 'famous-surface';
-	InputSurface.prototype.setPlaceholder = function setPlaceholder(str) {
-	    this._placeholder = str;
-	    this._contentDirty = true;
-	    return this;
+	SnapTransition.SUPPORTS_MULTIPLE = 3;
+	SnapTransition.DEFAULT_OPTIONS = {
+	    period: 100,
+	    dampingRatio: 0.2,
+	    velocity: 0
 	};
-	InputSurface.prototype.focus = function focus() {
-	    if (this._currentTarget)
-	        this._currentTarget.focus();
-	    return this;
-	};
-	InputSurface.prototype.blur = function blur() {
-	    if (this._currentTarget)
-	        this._currentTarget.blur();
-	    return this;
-	};
-	InputSurface.prototype.setValue = function setValue(str) {
-	    this._value = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.setType = function setType(str) {
-	    this._type = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.getValue = function getValue() {
-	    if (this._currentTarget) {
-	        return this._currentTarget.value;
-	    } else {
-	        return this._value;
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _setParticlePosition(p) {
+	    this.particle.position.set(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.velocity.set(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _setupDefinition(definition) {
+	    var defaults = SnapTransition.DEFAULT_OPTIONS;
+	    if (definition.period === undefined)
+	        definition.period = defaults.period;
+	    if (definition.dampingRatio === undefined)
+	        definition.dampingRatio = defaults.dampingRatio;
+	    if (definition.velocity === undefined)
+	        definition.velocity = defaults.velocity;
+	    this.spring.setOptions({
+	        period: definition.period,
+	        dampingRatio: definition.dampingRatio
+	    });
+	    _setParticleVelocity.call(this, definition.velocity);
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
 	    }
+	    if (_getEnergy.call(this) < this._absRestTolerance) {
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	        _sleep.call(this);
+	    }
+	}
+	SnapTransition.prototype.reset = function reset(state, velocity) {
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    this.initState.set(state);
+	    _setParticlePosition.call(this, state);
+	    _setTarget.call(this, state);
+	    if (velocity)
+	        _setParticleVelocity.call(this, velocity);
+	    _setCallback.call(this, undefined);
 	};
-	InputSurface.prototype.setName = function setName(str) {
-	    this._name = str;
-	    this._contentDirty = true;
-	    return this;
+	SnapTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
 	};
-	InputSurface.prototype.getName = function getName() {
-	    return this._name;
+	SnapTransition.prototype.setVelocity = function setVelocity(velocity) {
+	    this.call(this, _setParticleVelocity(velocity));
 	};
-	InputSurface.prototype.deploy = function deploy(target) {
-	    if (this._placeholder !== '')
-	        target.placeholder = this._placeholder;
-	    target.value = this._value;
-	    target.type = this._type;
-	    target.name = this._name;
+	SnapTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
 	};
-	module.exports = InputSurface;
+	SnapTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	SnapTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	SnapTransition.prototype.set = function set(state, definition, callback) {
+	    if (!definition) {
+	        this.reset(state);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = SnapTransition;
 
 /***/ },
 /* 132 */
@@ -62923,24 +62735,138 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var InputSurface = __webpack_require__(131);
-	function SubmitInputSurface(options) {
-	    InputSurface.apply(this, arguments);
-	    this._type = 'submit';
-	    if (options && options.onClick)
-	        this.setOnClick(options.onClick);
+	var PE = __webpack_require__(48);
+	var Particle = __webpack_require__(46);
+	var Spring = __webpack_require__(47);
+	var Vector = __webpack_require__(45);
+	function SpringTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this._dimensions = undefined;
+	    this._restTolerance = 1e-10;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.particle = new Particle();
+	    this.PE.addBody(this.particle);
+	    this.PE.attach(this.spring, this.particle);
 	}
-	SubmitInputSurface.prototype = Object.create(InputSurface.prototype);
-	SubmitInputSurface.prototype.constructor = SubmitInputSurface;
-	SubmitInputSurface.prototype.setOnClick = function (onClick) {
-	    this.onClick = onClick;
+	SpringTransition.SUPPORTS_MULTIPLE = 3;
+	SpringTransition.DEFAULT_OPTIONS = {
+	    period: 300,
+	    dampingRatio: 0.5,
+	    velocity: 0
 	};
-	SubmitInputSurface.prototype.deploy = function deploy(target) {
-	    if (this.onclick)
-	        target.onClick = this.onClick;
-	    InputSurface.prototype.deploy.apply(this, arguments);
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setParticlePosition(p) {
+	    this.particle.setPosition(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.setVelocity(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
+	    }
+	    if (_getEnergy.call(this) < this._absRestTolerance) {
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	        _sleep.call(this);
+	    }
+	}
+	function _setupDefinition(definition) {
+	    var defaults = SpringTransition.DEFAULT_OPTIONS;
+	    if (definition.period === undefined)
+	        definition.period = defaults.period;
+	    if (definition.dampingRatio === undefined)
+	        definition.dampingRatio = defaults.dampingRatio;
+	    if (definition.velocity === undefined)
+	        definition.velocity = defaults.velocity;
+	    if (definition.period < 150) {
+	        definition.period = 150;
+	        console.warn('The period of a SpringTransition is capped at 150 ms. Use a SnapTransition for faster transitions');
+	    }
+	    this.spring.setOptions({
+	        period: definition.period,
+	        dampingRatio: definition.dampingRatio
+	    });
+	    _setParticleVelocity.call(this, definition.velocity);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	SpringTransition.prototype.reset = function reset(pos, vel) {
+	    this._dimensions = pos instanceof Array ? pos.length : 0;
+	    this.initState.set(pos);
+	    _setParticlePosition.call(this, pos);
+	    _setTarget.call(this, pos);
+	    if (vel)
+	        _setParticleVelocity.call(this, vel);
+	    _setCallback.call(this, undefined);
 	};
-	module.exports = SubmitInputSurface;
+	SpringTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
+	};
+	SpringTransition.prototype.setVelocity = function setVelocity(v) {
+	    this.call(this, _setParticleVelocity(v));
+	};
+	SpringTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
+	};
+	SpringTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	SpringTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	SpringTransition.prototype.set = function set(endState, definition, callback) {
+	    if (!definition) {
+	        this.reset(endState);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = endState instanceof Array ? endState.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, endState);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = SpringTransition;
 
 /***/ },
 /* 133 */
@@ -62953,86 +62879,123 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(59);
-	function TextareaSurface(options) {
-	    this._placeholder = options.placeholder || '';
-	    this._value = options.value || '';
-	    this._name = options.name || '';
-	    this._wrap = options.wrap || '';
-	    this._cols = options.cols || '';
-	    this._rows = options.rows || '';
-	    Surface.apply(this, arguments);
-	    this.on('click', this.focus.bind(this));
+	var Transitionable = __webpack_require__(49);
+	var Transform = __webpack_require__(44);
+	var Utility = __webpack_require__(50);
+	function TransitionableTransform(transform) {
+	    this._final = Transform.identity.slice();
+	    this._finalTranslate = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalRotate = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalSkew = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalScale = [
+	        1,
+	        1,
+	        1
+	    ];
+	    this.translate = new Transitionable(this._finalTranslate);
+	    this.rotate = new Transitionable(this._finalRotate);
+	    this.skew = new Transitionable(this._finalSkew);
+	    this.scale = new Transitionable(this._finalScale);
+	    if (transform)
+	        this.set(transform);
 	}
-	TextareaSurface.prototype = Object.create(Surface.prototype);
-	TextareaSurface.prototype.constructor = TextareaSurface;
-	TextareaSurface.prototype.elementType = 'textarea';
-	TextareaSurface.prototype.elementClass = 'famous-surface';
-	TextareaSurface.prototype.setPlaceholder = function setPlaceholder(str) {
-	    this._placeholder = str;
-	    this._contentDirty = true;
+	function _build() {
+	    return Transform.build({
+	        translate: this.translate.get(),
+	        rotate: this.rotate.get(),
+	        skew: this.skew.get(),
+	        scale: this.scale.get()
+	    });
+	}
+	function _buildFinal() {
+	    return Transform.build({
+	        translate: this._finalTranslate,
+	        rotate: this._finalRotate,
+	        skew: this._finalSkew,
+	        scale: this._finalScale
+	    });
+	}
+	TransitionableTransform.prototype.setTranslate = function setTranslate(translate, transition, callback) {
+	    this._finalTranslate = translate;
+	    this._final = _buildFinal.call(this);
+	    this.translate.set(translate, transition, callback);
 	    return this;
 	};
-	TextareaSurface.prototype.focus = function focus() {
-	    if (this._currentTarget)
-	        this._currentTarget.focus();
+	TransitionableTransform.prototype.setScale = function setScale(scale, transition, callback) {
+	    this._finalScale = scale;
+	    this._final = _buildFinal.call(this);
+	    this.scale.set(scale, transition, callback);
 	    return this;
 	};
-	TextareaSurface.prototype.blur = function blur() {
-	    if (this._currentTarget)
-	        this._currentTarget.blur();
+	TransitionableTransform.prototype.setRotate = function setRotate(eulerAngles, transition, callback) {
+	    this._finalRotate = eulerAngles;
+	    this._final = _buildFinal.call(this);
+	    this.rotate.set(eulerAngles, transition, callback);
 	    return this;
 	};
-	TextareaSurface.prototype.setValue = function setValue(str) {
-	    this._value = str;
-	    this._contentDirty = true;
+	TransitionableTransform.prototype.setSkew = function setSkew(skewAngles, transition, callback) {
+	    this._finalSkew = skewAngles;
+	    this._final = _buildFinal.call(this);
+	    this.skew.set(skewAngles, transition, callback);
 	    return this;
 	};
-	TextareaSurface.prototype.getValue = function getValue() {
-	    if (this._currentTarget) {
-	        return this._currentTarget.value;
-	    } else {
-	        return this._value;
-	    }
-	};
-	TextareaSurface.prototype.setName = function setName(str) {
-	    this._name = str;
-	    this._contentDirty = true;
+	TransitionableTransform.prototype.set = function set(transform, transition, callback) {
+	    var components = Transform.interpret(transform);
+	    this._finalTranslate = components.translate;
+	    this._finalRotate = components.rotate;
+	    this._finalSkew = components.skew;
+	    this._finalScale = components.scale;
+	    this._final = transform;
+	    var _callback = callback ? Utility.after(4, callback) : null;
+	    this.translate.set(components.translate, transition, _callback);
+	    this.rotate.set(components.rotate, transition, _callback);
+	    this.skew.set(components.skew, transition, _callback);
+	    this.scale.set(components.scale, transition, _callback);
 	    return this;
 	};
-	TextareaSurface.prototype.getName = function getName() {
-	    return this._name;
+	TransitionableTransform.prototype.setDefaultTransition = function setDefaultTransition(transition) {
+	    this.translate.setDefault(transition);
+	    this.rotate.setDefault(transition);
+	    this.skew.setDefault(transition);
+	    this.scale.setDefault(transition);
 	};
-	TextareaSurface.prototype.setWrap = function setWrap(str) {
-	    this._wrap = str;
-	    this._contentDirty = true;
+	TransitionableTransform.prototype.get = function get() {
+	    if (this.isActive()) {
+	        return _build.call(this);
+	    } else
+	        return this._final;
+	};
+	TransitionableTransform.prototype.getFinal = function getFinal() {
+	    return this._final;
+	};
+	TransitionableTransform.prototype.isActive = function isActive() {
+	    return this.translate.isActive() || this.rotate.isActive() || this.scale.isActive() || this.skew.isActive();
+	};
+	TransitionableTransform.prototype.halt = function halt() {
+	    this.translate.halt();
+	    this.rotate.halt();
+	    this.skew.halt();
+	    this.scale.halt();
+	    this._final = this.get();
+	    this._finalTranslate = this.translate.get();
+	    this._finalRotate = this.rotate.get();
+	    this._finalSkew = this.skew.get();
+	    this._finalScale = this.scale.get();
 	    return this;
 	};
-	TextareaSurface.prototype.setColumns = function setColumns(num) {
-	    this._cols = num;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.setRows = function setRows(num) {
-	    this._rows = num;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.deploy = function deploy(target) {
-	    if (this._placeholder !== '')
-	        target.placeholder = this._placeholder;
-	    if (this._value !== '')
-	        target.value = this._value;
-	    if (this._name !== '')
-	        target.name = this._name;
-	    if (this._wrap !== '')
-	        target.wrap = this._wrap;
-	    if (this._cols !== '')
-	        target.cols = this._cols;
-	    if (this._rows !== '')
-	        target.rows = this._rows;
-	};
-	module.exports = TextareaSurface;
+	module.exports = TransitionableTransform;
 
 /***/ },
 /* 134 */
@@ -63045,45 +63008,157 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(59);
-	function VideoSurface(options) {
-	    Surface.apply(this, arguments);
-	    this._videoUrl = undefined;
-	    this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
+	var PE = __webpack_require__(48);
+	var Particle = __webpack_require__(46);
+	var Spring = __webpack_require__(47);
+	var Wall = __webpack_require__(146);
+	var Vector = __webpack_require__(45);
+	function WallTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.wall = new Wall();
+	    this._restTolerance = 1e-10;
+	    this._dimensions = 1;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.particle = new Particle();
+	    this.PE.addBody(this.particle);
+	    this.PE.attach([
+	        this.wall,
+	        this.spring
+	    ], this.particle);
 	}
-	VideoSurface.prototype = Object.create(Surface.prototype);
-	VideoSurface.prototype.constructor = VideoSurface;
-	VideoSurface.DEFAULT_OPTIONS = { autoplay: false };
-	VideoSurface.prototype.elementType = 'video';
-	VideoSurface.prototype.elementClass = 'famous-surface';
-	VideoSurface.prototype.setOptions = function setOptions(options) {
-	    if (options.size)
-	        this.setSize(options.size);
-	    if (options.classes)
-	        this.setClasses(options.classes);
-	    if (options.properties)
-	        this.setProperties(options.properties);
-	    if (options.autoplay)
-	        this.options.autoplay = options.autoplay;
-	    if (options.src) {
-	        this._videoUrl = options.src;
-	        this._contentDirty = true;
+	WallTransition.SUPPORTS_MULTIPLE = 3;
+	WallTransition.DEFAULT_OPTIONS = {
+	    period: 300,
+	    dampingRatio: 0.5,
+	    velocity: 0,
+	    restitution: 0.5
+	};
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    var dist = this.endState.sub(this.initState).norm();
+	    this.wall.setOptions({
+	        distance: this.endState.norm(),
+	        normal: dist === 0 ? this.particle.velocity.normalize(-1) : this.endState.sub(this.initState).normalize(-1)
+	    });
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	function _setParticlePosition(p) {
+	    this.particle.position.set(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.velocity.set(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
 	    }
+	    var energy = _getEnergy.call(this);
+	    if (energy < this._absRestTolerance) {
+	        _sleep.call(this);
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	    }
+	}
+	function _setupDefinition(def) {
+	    var defaults = WallTransition.DEFAULT_OPTIONS;
+	    if (def.period === undefined)
+	        def.period = defaults.period;
+	    if (def.dampingRatio === undefined)
+	        def.dampingRatio = defaults.dampingRatio;
+	    if (def.velocity === undefined)
+	        def.velocity = defaults.velocity;
+	    if (def.restitution === undefined)
+	        def.restitution = defaults.restitution;
+	    if (def.drift === undefined)
+	        def.drift = Wall.DEFAULT_OPTIONS.drift;
+	    if (def.slop === undefined)
+	        def.slop = Wall.DEFAULT_OPTIONS.slop;
+	    this.spring.setOptions({
+	        period: def.period,
+	        dampingRatio: def.dampingRatio
+	    });
+	    this.wall.setOptions({
+	        restitution: def.restitution,
+	        drift: def.drift,
+	        slop: def.slop
+	    });
+	    _setParticleVelocity.call(this, def.velocity);
+	}
+	WallTransition.prototype.reset = function reset(state, velocity) {
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    this.initState.set(state);
+	    _setParticlePosition.call(this, state);
+	    if (velocity)
+	        _setParticleVelocity.call(this, velocity);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, undefined);
 	};
-	VideoSurface.prototype.setContent = function setContent(videoUrl) {
-	    this._videoUrl = videoUrl;
-	    this._contentDirty = true;
+	WallTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
 	};
-	VideoSurface.prototype.deploy = function deploy(target) {
-	    target.src = this._videoUrl;
-	    target.autoplay = this.options.autoplay;
+	WallTransition.prototype.setVelocity = function setVelocity(velocity) {
+	    this.call(this, _setParticleVelocity(velocity));
 	};
-	VideoSurface.prototype.recall = function recall(target) {
-	    target.src = '';
+	WallTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
 	};
-	module.exports = VideoSurface;
+	WallTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	WallTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	WallTransition.prototype.set = function set(state, definition, callback) {
+	    if (!definition) {
+	        this.reset(state);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = WallTransition;
 
 /***/ },
 /* 135 */
@@ -63096,9 +63171,198 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Scene = __webpack_require__(83);
+	var KeyCodes = {
+	    0: 48,
+	    1: 49,
+	    2: 50,
+	    3: 51,
+	    4: 52,
+	    5: 53,
+	    6: 54,
+	    7: 55,
+	    8: 56,
+	    9: 57,
+	    a: 97,
+	    b: 98,
+	    c: 99,
+	    d: 100,
+	    e: 101,
+	    f: 102,
+	    g: 103,
+	    h: 104,
+	    i: 105,
+	    j: 106,
+	    k: 107,
+	    l: 108,
+	    m: 109,
+	    n: 110,
+	    o: 111,
+	    p: 112,
+	    q: 113,
+	    r: 114,
+	    s: 115,
+	    t: 116,
+	    u: 117,
+	    v: 118,
+	    w: 119,
+	    x: 120,
+	    y: 121,
+	    z: 122,
+	    A: 65,
+	    B: 66,
+	    C: 67,
+	    D: 68,
+	    E: 69,
+	    F: 70,
+	    G: 71,
+	    H: 72,
+	    I: 73,
+	    J: 74,
+	    K: 75,
+	    L: 76,
+	    M: 77,
+	    N: 78,
+	    O: 79,
+	    P: 80,
+	    Q: 81,
+	    R: 82,
+	    S: 83,
+	    T: 84,
+	    U: 85,
+	    V: 86,
+	    W: 87,
+	    X: 88,
+	    Y: 89,
+	    Z: 90,
+	    ENTER: 13,
+	    LEFT_ARROW: 37,
+	    RIGHT_ARROW: 39,
+	    UP_ARROW: 38,
+	    DOWN_ARROW: 40,
+	    SPACE: 32,
+	    SHIFT: 16,
+	    TAB: 9
+	};
+	module.exports = KeyCodes;
+
+/***/ },
+/* 136 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var FamousEngine = __webpack_require__(80);
+	var _event = 'prerender';
+	var getTime = window.performance && window.performance.now ? function () {
+	    return window.performance.now();
+	} : function () {
+	    return Date.now();
+	};
+	function addTimerFunction(fn) {
+	    FamousEngine.on(_event, fn);
+	    return fn;
+	}
+	function setTimeout(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            FamousEngine.removeListener(_event, callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function setInterval(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            t = getTime();
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function after(fn, numTicks) {
+	    if (numTicks === undefined)
+	        return undefined;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            clear(callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function every(fn, numTicks) {
+	    numTicks = numTicks || 1;
+	    var initial = numTicks;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            numTicks = initial;
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function clear(fn) {
+	    FamousEngine.removeListener(_event, fn);
+	}
+	function debounce(func, wait) {
+	    var timeout;
+	    var ctx;
+	    var timestamp;
+	    var result;
+	    var args;
+	    return function () {
+	        ctx = this;
+	        args = arguments;
+	        timestamp = getTime();
+	        var fn = function () {
+	            var last = getTime - timestamp;
+	            if (last < wait) {
+	                timeout = setTimeout(fn, wait - last);
+	            } else {
+	                timeout = null;
+	                result = func.apply(ctx, args);
+	            }
+	        };
+	        clear(timeout);
+	        timeout = setTimeout(fn, wait);
+	        return result;
+	    };
+	}
+	module.exports = {
+	    setTimeout: setTimeout,
+	    setInterval: setInterval,
+	    debounce: debounce,
+	    after: after,
+	    every: every,
+	    clear: clear
+	};
+
+/***/ },
+/* 137 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Scene = __webpack_require__(86);
 	var Surface = __webpack_require__(59);
-	var Transform = __webpack_require__(48);
+	var Transform = __webpack_require__(44);
 	var View = __webpack_require__(58);
 	function NavigationBar(options) {
 	    View.apply(this, arguments);
@@ -63221,7 +63485,7 @@
 	module.exports = NavigationBar;
 
 /***/ },
-/* 136 */
+/* 138 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -63232,14 +63496,14 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Surface = __webpack_require__(59);
-	var CanvasSurface = __webpack_require__(128);
-	var Transform = __webpack_require__(48);
-	var EventHandler = __webpack_require__(47);
-	var Utilities = __webpack_require__(95);
-	var OptionsManager = __webpack_require__(46);
-	var MouseSync = __webpack_require__(100);
-	var TouchSync = __webpack_require__(104);
-	var GenericSync = __webpack_require__(99);
+	var CanvasSurface = __webpack_require__(107);
+	var Transform = __webpack_require__(44);
+	var EventHandler = __webpack_require__(53);
+	var Utilities = __webpack_require__(91);
+	var OptionsManager = __webpack_require__(43);
+	var MouseSync = __webpack_require__(96);
+	var TouchSync = __webpack_require__(100);
+	var GenericSync = __webpack_require__(95);
 	GenericSync.register({
 	    mouse: MouseSync,
 	    touch: TouchSync
@@ -63355,7 +63619,7 @@
 	module.exports = Slider;
 
 /***/ },
-/* 137 */
+/* 139 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -63365,10 +63629,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Utility = __webpack_require__(43);
+	var Utility = __webpack_require__(50);
 	var View = __webpack_require__(58);
-	var GridLayout = __webpack_require__(119);
-	var ToggleButton = __webpack_require__(138);
+	var GridLayout = __webpack_require__(120);
+	var ToggleButton = __webpack_require__(140);
 	function TabBar(options) {
 	    View.apply(this, arguments);
 	    this.layout = new GridLayout();
@@ -63453,7 +63717,7 @@
 	module.exports = TabBar;
 
 /***/ },
-/* 138 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -63464,8 +63728,8 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Surface = __webpack_require__(59);
-	var EventHandler = __webpack_require__(47);
-	var RenderController = __webpack_require__(122);
+	var EventHandler = __webpack_require__(53);
+	var RenderController = __webpack_require__(123);
 	function ToggleButton(options) {
 	    this.options = {
 	        content: [
@@ -63569,203 +63833,14 @@
 	module.exports = ToggleButton;
 
 /***/ },
-/* 139 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var KeyCodes = {
-	    0: 48,
-	    1: 49,
-	    2: 50,
-	    3: 51,
-	    4: 52,
-	    5: 53,
-	    6: 54,
-	    7: 55,
-	    8: 56,
-	    9: 57,
-	    a: 97,
-	    b: 98,
-	    c: 99,
-	    d: 100,
-	    e: 101,
-	    f: 102,
-	    g: 103,
-	    h: 104,
-	    i: 105,
-	    j: 106,
-	    k: 107,
-	    l: 108,
-	    m: 109,
-	    n: 110,
-	    o: 111,
-	    p: 112,
-	    q: 113,
-	    r: 114,
-	    s: 115,
-	    t: 116,
-	    u: 117,
-	    v: 118,
-	    w: 119,
-	    x: 120,
-	    y: 121,
-	    z: 122,
-	    A: 65,
-	    B: 66,
-	    C: 67,
-	    D: 68,
-	    E: 69,
-	    F: 70,
-	    G: 71,
-	    H: 72,
-	    I: 73,
-	    J: 74,
-	    K: 75,
-	    L: 76,
-	    M: 77,
-	    N: 78,
-	    O: 79,
-	    P: 80,
-	    Q: 81,
-	    R: 82,
-	    S: 83,
-	    T: 84,
-	    U: 85,
-	    V: 86,
-	    W: 87,
-	    X: 88,
-	    Y: 89,
-	    Z: 90,
-	    ENTER: 13,
-	    LEFT_ARROW: 37,
-	    RIGHT_ARROW: 39,
-	    UP_ARROW: 38,
-	    DOWN_ARROW: 40,
-	    SPACE: 32,
-	    SHIFT: 16,
-	    TAB: 9
-	};
-	module.exports = KeyCodes;
-
-/***/ },
-/* 140 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var FamousEngine = __webpack_require__(79);
-	var _event = 'prerender';
-	var getTime = window.performance && window.performance.now ? function () {
-	    return window.performance.now();
-	} : function () {
-	    return Date.now();
-	};
-	function addTimerFunction(fn) {
-	    FamousEngine.on(_event, fn);
-	    return fn;
-	}
-	function setTimeout(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            FamousEngine.removeListener(_event, callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function setInterval(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            t = getTime();
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function after(fn, numTicks) {
-	    if (numTicks === undefined)
-	        return undefined;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            clear(callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function every(fn, numTicks) {
-	    numTicks = numTicks || 1;
-	    var initial = numTicks;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            numTicks = initial;
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function clear(fn) {
-	    FamousEngine.removeListener(_event, fn);
-	}
-	function debounce(func, wait) {
-	    var timeout;
-	    var ctx;
-	    var timestamp;
-	    var result;
-	    var args;
-	    return function () {
-	        ctx = this;
-	        args = arguments;
-	        timestamp = getTime();
-	        var fn = function () {
-	            var last = getTime - timestamp;
-	            if (last < wait) {
-	                timeout = setTimeout(fn, wait - last);
-	            } else {
-	                timeout = null;
-	                result = func.apply(ctx, args);
-	            }
-	        };
-	        clear(timeout);
-	        timeout = setTimeout(fn, wait);
-	        return result;
-	    };
-	}
-	module.exports = {
-	    setTimeout: setTimeout,
-	    setInterval: setInterval,
-	    debounce: debounce,
-	    after: after,
-	    every: every,
-	    clear: clear
-	};
-
-/***/ },
 /* 141 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Body: __webpack_require__(151),
-	  Circle: __webpack_require__(152),
-	  Particle: __webpack_require__(50),
-	  Rectangle: __webpack_require__(153)
+	  Body: __webpack_require__(147),
+	  Circle: __webpack_require__(148),
+	  Particle: __webpack_require__(46),
+	  Rectangle: __webpack_require__(149)
 	};
 
 
@@ -63774,14 +63849,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Collision: __webpack_require__(154),
-	  Constraint: __webpack_require__(155),
-	  Curve: __webpack_require__(156),
-	  Distance: __webpack_require__(157),
+	  Collision: __webpack_require__(150),
+	  Constraint: __webpack_require__(151),
+	  Curve: __webpack_require__(152),
+	  Distance: __webpack_require__(153),
 	  Snap: __webpack_require__(145),
-	  Surface: __webpack_require__(158),
+	  Surface: __webpack_require__(154),
 	  Wall: __webpack_require__(146),
-	  Walls: __webpack_require__(159)
+	  Walls: __webpack_require__(155)
 	};
 
 
@@ -63791,12 +63866,12 @@
 
 	module.exports = {
 	  Drag: __webpack_require__(56),
-	  Force: __webpack_require__(74),
-	  Repulsion: __webpack_require__(147),
-	  RotationalDrag: __webpack_require__(148),
-	  RotationalSpring: __webpack_require__(149),
-	  Spring: __webpack_require__(51),
-	  VectorField: __webpack_require__(150)
+	  Force: __webpack_require__(73),
+	  Repulsion: __webpack_require__(156),
+	  RotationalDrag: __webpack_require__(157),
+	  RotationalSpring: __webpack_require__(158),
+	  Spring: __webpack_require__(47),
+	  VectorField: __webpack_require__(159)
 	};
 
 
@@ -63805,7 +63880,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  SymplecticEuler: __webpack_require__(73)
+	  SymplecticEuler: __webpack_require__(72)
 	};
 
 
@@ -63820,8 +63895,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(155);
-	var Vector = __webpack_require__(49);
+	var Constraint = __webpack_require__(151);
+	var Vector = __webpack_require__(45);
 	function Snap(options) {
 	    Constraint.call(this);
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -63932,8 +64007,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(155);
-	var Vector = __webpack_require__(49);
+	var Constraint = __webpack_require__(151);
+	var Vector = __webpack_require__(45);
 	function Wall(options) {
 	    this.options = Object.create(Wall.DEFAULT_OPTIONS);
 	    if (options)
@@ -64056,358 +64131,12 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(74);
-	var Vector = __webpack_require__(49);
-	function Repulsion(options) {
-	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.disp = new Vector();
-	    Force.call(this);
-	}
-	Repulsion.prototype = Object.create(Force.prototype);
-	Repulsion.prototype.constructor = Repulsion;
-	Repulsion.DECAY_FUNCTIONS = {
-	    LINEAR: function (r, cutoff) {
-	        return Math.max(1 - 1 / cutoff * r, 0);
-	    },
-	    MORSE: function (r, cutoff) {
-	        var r0 = cutoff === 0 ? 100 : cutoff;
-	        var rShifted = r + r0 * (1 - Math.log(2));
-	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
-	    },
-	    INVERSE: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r);
-	    },
-	    GRAVITY: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r * r);
-	    }
-	};
-	Repulsion.DEFAULT_OPTIONS = {
-	    strength: 1,
-	    anchor: undefined,
-	    range: [
-	        0,
-	        Infinity
-	    ],
-	    cutoff: 0,
-	    cap: Infinity,
-	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
-	};
-	Repulsion.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor.position instanceof Vector)
-	            this.options.anchor = options.anchor.position;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Vector(options.anchor);
-	        delete options.anchor;
-	    }
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	Repulsion.prototype.applyForce = function applyForce(targets, source) {
-	    var options = this.options;
-	    var force = this.force;
-	    var disp = this.disp;
-	    var strength = options.strength;
-	    var anchor = options.anchor || source.position;
-	    var cap = options.cap;
-	    var cutoff = options.cutoff;
-	    var rMin = options.range[0];
-	    var rMax = options.range[1];
-	    var decayFn = options.decayFunction;
-	    if (strength === 0)
-	        return;
-	    var length = targets.length;
-	    var particle;
-	    var m1;
-	    var p1;
-	    var r;
-	    while (length--) {
-	        particle = targets[length];
-	        if (particle === source)
-	            continue;
-	        m1 = particle.mass;
-	        p1 = particle.position;
-	        disp.set(p1.sub(anchor));
-	        r = disp.norm();
-	        if (r < rMax && r > rMin) {
-	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
-	            particle.applyForce(force);
-	        }
-	    }
-	};
-	module.exports = Repulsion;
-
-/***/ },
-/* 148 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Drag = __webpack_require__(56);
-	function RotationalDrag(options) {
-	    Drag.call(this, options);
-	}
-	RotationalDrag.prototype = Object.create(Drag.prototype);
-	RotationalDrag.prototype.constructor = RotationalDrag;
-	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = {
-	    LINEAR: function (angularVelocity) {
-	        return angularVelocity;
-	    },
-	    QUADRATIC: function (angularVelocity) {
-	        return angularVelocity.mult(angularVelocity.norm());
-	    }
-	};
-	RotationalDrag.prototype.applyForce = function applyForce(targets) {
-	    var strength = this.options.strength;
-	    var forceFunction = this.options.forceFunction;
-	    var force = this.force;
-	    var index;
-	    var particle;
-	    for (index = 0; index < targets.length; index++) {
-	        particle = targets[index];
-	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
-	        particle.applyTorque(force);
-	    }
-	};
-	RotationalDrag.prototype.setOptions = function setOptions(options) {
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	module.exports = RotationalDrag;
-
-/***/ },
-/* 149 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(74);
-	var Spring = __webpack_require__(51);
-	var Quaternion = __webpack_require__(93);
-	function RotationalSpring(options) {
-	    Spring.call(this, options);
-	}
-	RotationalSpring.prototype = Object.create(Spring.prototype);
-	RotationalSpring.prototype.constructor = RotationalSpring;
-	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
-	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
-	var pi = Math.PI;
-	function _calcStiffness() {
-	    var options = this.options;
-	    options.stiffness = Math.pow(2 * pi / options.period, 2);
-	}
-	function _calcDamping() {
-	    var options = this.options;
-	    options.damping = 4 * pi * options.dampingRatio / options.period;
-	}
-	function _init() {
-	    _calcStiffness.call(this);
-	    _calcDamping.call(this);
-	}
-	RotationalSpring.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor instanceof Quaternion)
-	            this.options.anchor = options.anchor;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Quaternion(options.anchor);
-	    }
-	    if (options.period !== undefined) {
-	        this.options.period = options.period;
-	    }
-	    if (options.dampingRatio !== undefined)
-	        this.options.dampingRatio = options.dampingRatio;
-	    if (options.length !== undefined)
-	        this.options.length = options.length;
-	    if (options.forceFunction !== undefined)
-	        this.options.forceFunction = options.forceFunction;
-	    if (options.maxLength !== undefined)
-	        this.options.maxLength = options.maxLength;
-	    _init.call(this);
-	    Force.prototype.setOptions.call(this, options);
-	};
-	RotationalSpring.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var options = this.options;
-	    var disp = this.disp;
-	    var stiffness = options.stiffness;
-	    var damping = options.damping;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var forceFunction = options.forceFunction;
-	    var maxLength = options.maxLength;
-	    var i;
-	    var target;
-	    var dist;
-	    var m;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        disp.set(anchor.sub(target.orientation));
-	        dist = disp.norm() - restLength;
-	        if (dist === 0)
-	            return;
-	        m = target.mass;
-	        stiffness *= m;
-	        damping *= m;
-	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
-	        if (damping)
-	            force.add(target.angularVelocity.mult(-damping)).put(force);
-	        target.applyTorque(force);
-	    }
-	};
-	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
-	    var options = this.options;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var strength = options.stiffness;
-	    var energy = 0;
-	    for (var i = 0; i < targets.length; i++) {
-	        var target = targets[i];
-	        var dist = anchor.sub(target.orientation).norm() - restLength;
-	        energy += 0.5 * strength * dist * dist;
-	    }
-	    return energy;
-	};
-	module.exports = RotationalSpring;
-
-/***/ },
-/* 150 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(74);
-	var Vector = __webpack_require__(49);
-	function VectorField(options) {
-	    Force.call(this);
-	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.evaluation = new Vector();
-	}
-	VectorField.prototype = Object.create(Force.prototype);
-	VectorField.prototype.constructor = VectorField;
-	VectorField.FIELDS = {
-	    CONSTANT: function (v, options) {
-	        options.direction.put(this.evaluation);
-	    },
-	    LINEAR: function (v) {
-	        v.put(this.evaluation);
-	    },
-	    RADIAL: function (v) {
-	        v.mult(-1).put(this.evaluation);
-	    },
-	    POINT_ATTRACTOR: function (v, options) {
-	        options.position.sub(v).put(this.evaluation);
-	    }
-	};
-	VectorField.DEFAULT_OPTIONS = {
-	    strength: 0.01,
-	    field: VectorField.FIELDS.CONSTANT
-	};
-	VectorField.prototype.setOptions = function setOptions(options) {
-	    if (options.strength !== undefined)
-	        this.options.strength = options.strength;
-	    if (options.direction !== undefined)
-	        this.options.direction = options.direction;
-	    if (options.field !== undefined) {
-	        this.options.field = options.field;
-	        _setFieldOptions.call(this, this.options.field);
-	    }
-	};
-	function _setFieldOptions(field) {
-	    var FIELDS = VectorField.FIELDS;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        if (!this.options.direction)
-	            this.options.direction = new Vector(0, 1, 0);
-	        else if (this.options.direction instanceof Array)
-	            this.options.direction = new Vector(this.options.direction);
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        if (!this.options.position)
-	            this.options.position = new Vector(0, 0, 0);
-	        else if (this.options.position instanceof Array)
-	            this.options.position = new Vector(this.options.position);
-	        break;
-	    }
-	}
-	VectorField.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var strength = this.options.strength;
-	    var field = this.options.field;
-	    var i;
-	    var target;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        field.call(this, target.position, this.options);
-	        this.evaluation.mult(target.mass * strength).put(force);
-	        target.applyForce(force);
-	    }
-	};
-	VectorField.prototype.getEnergy = function getEnergy(targets) {
-	    var field = this.options.field;
-	    var FIELDS = VectorField.FIELDS;
-	    var energy = 0;
-	    var i;
-	    var target;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        energy = targets.length * this.options.direction.norm();
-	        break;
-	    case FIELDS.RADIAL:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.norm();
-	        }
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.sub(this.options.position).norm();
-	        }
-	        break;
-	    }
-	    energy *= this.options.strength;
-	    return energy;
-	};
-	module.exports = VectorField;
-
-/***/ },
-/* 151 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Particle = __webpack_require__(50);
-	var Transform = __webpack_require__(48);
-	var Vector = __webpack_require__(49);
-	var Quaternion = __webpack_require__(93);
-	var Matrix = __webpack_require__(92);
-	var Integrator = __webpack_require__(73);
+	var Particle = __webpack_require__(46);
+	var Transform = __webpack_require__(44);
+	var Vector = __webpack_require__(45);
+	var Quaternion = __webpack_require__(89);
+	var Matrix = __webpack_require__(88);
+	var Integrator = __webpack_require__(72);
 	function Body(options) {
 	    Particle.call(this, options);
 	    options = options || {};
@@ -64512,7 +64241,7 @@
 	module.exports = Body;
 
 /***/ },
-/* 152 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64522,8 +64251,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(151);
-	var Matrix = __webpack_require__(92);
+	var Body = __webpack_require__(147);
+	var Matrix = __webpack_require__(88);
 	function Circle(options) {
 	    options = options || {};
 	    this.setRadius(options.radius || 0);
@@ -64580,7 +64309,7 @@
 	module.exports = Circle;
 
 /***/ },
-/* 153 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64590,8 +64319,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(151);
-	var Matrix = __webpack_require__(92);
+	var Body = __webpack_require__(147);
+	var Matrix = __webpack_require__(88);
 	function Rectangle(options) {
 	    options = options || {};
 	    this.size = options.size || [
@@ -64648,7 +64377,7 @@
 	module.exports = Rectangle;
 
 /***/ },
-/* 154 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64658,8 +64387,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(155);
-	var Vector = __webpack_require__(49);
+	var Constraint = __webpack_require__(151);
+	var Vector = __webpack_require__(45);
 	function Collision(options) {
 	    this.options = Object.create(Collision.DEFAULT_OPTIONS);
 	    if (options)
@@ -64740,7 +64469,7 @@
 	module.exports = Collision;
 
 /***/ },
-/* 155 */
+/* 151 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64750,7 +64479,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(47);
+	var EventHandler = __webpack_require__(53);
 	function Constraint() {
 	    this.options = this.options || {};
 	    this._eventOutput = new EventHandler();
@@ -64767,7 +64496,7 @@
 	module.exports = Constraint;
 
 /***/ },
-/* 156 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64777,8 +64506,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(155);
-	var Vector = __webpack_require__(49);
+	var Constraint = __webpack_require__(151);
+	var Vector = __webpack_require__(45);
 	function Curve(options) {
 	    this.options = Object.create(Curve.DEFAULT_OPTIONS);
 	    if (options)
@@ -64850,7 +64579,7 @@
 	module.exports = Curve;
 
 /***/ },
-/* 157 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64860,8 +64589,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(155);
-	var Vector = __webpack_require__(49);
+	var Constraint = __webpack_require__(151);
+	var Vector = __webpack_require__(45);
 	function Distance(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -64965,7 +64694,7 @@
 	module.exports = Distance;
 
 /***/ },
-/* 158 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64975,8 +64704,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(155);
-	var Vector = __webpack_require__(49);
+	var Constraint = __webpack_require__(151);
+	var Vector = __webpack_require__(45);
 	function Surface(options) {
 	    this.options = Object.create(Surface.DEFAULT_OPTIONS);
 	    if (options)
@@ -65038,7 +64767,7 @@
 	module.exports = Surface;
 
 /***/ },
-/* 159 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65048,9 +64777,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(155);
+	var Constraint = __webpack_require__(151);
 	var Wall = __webpack_require__(146);
-	var Vector = __webpack_require__(49);
+	var Vector = __webpack_require__(45);
 	function Walls(options) {
 	    this.options = Object.create(Walls.DEFAULT_OPTIONS);
 	    if (options)
@@ -65217,6 +64946,352 @@
 	    }
 	};
 	module.exports = Walls;
+
+/***/ },
+/* 156 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(73);
+	var Vector = __webpack_require__(45);
+	function Repulsion(options) {
+	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.disp = new Vector();
+	    Force.call(this);
+	}
+	Repulsion.prototype = Object.create(Force.prototype);
+	Repulsion.prototype.constructor = Repulsion;
+	Repulsion.DECAY_FUNCTIONS = {
+	    LINEAR: function (r, cutoff) {
+	        return Math.max(1 - 1 / cutoff * r, 0);
+	    },
+	    MORSE: function (r, cutoff) {
+	        var r0 = cutoff === 0 ? 100 : cutoff;
+	        var rShifted = r + r0 * (1 - Math.log(2));
+	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
+	    },
+	    INVERSE: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r);
+	    },
+	    GRAVITY: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r * r);
+	    }
+	};
+	Repulsion.DEFAULT_OPTIONS = {
+	    strength: 1,
+	    anchor: undefined,
+	    range: [
+	        0,
+	        Infinity
+	    ],
+	    cutoff: 0,
+	    cap: Infinity,
+	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
+	};
+	Repulsion.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor.position instanceof Vector)
+	            this.options.anchor = options.anchor.position;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Vector(options.anchor);
+	        delete options.anchor;
+	    }
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	Repulsion.prototype.applyForce = function applyForce(targets, source) {
+	    var options = this.options;
+	    var force = this.force;
+	    var disp = this.disp;
+	    var strength = options.strength;
+	    var anchor = options.anchor || source.position;
+	    var cap = options.cap;
+	    var cutoff = options.cutoff;
+	    var rMin = options.range[0];
+	    var rMax = options.range[1];
+	    var decayFn = options.decayFunction;
+	    if (strength === 0)
+	        return;
+	    var length = targets.length;
+	    var particle;
+	    var m1;
+	    var p1;
+	    var r;
+	    while (length--) {
+	        particle = targets[length];
+	        if (particle === source)
+	            continue;
+	        m1 = particle.mass;
+	        p1 = particle.position;
+	        disp.set(p1.sub(anchor));
+	        r = disp.norm();
+	        if (r < rMax && r > rMin) {
+	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
+	            particle.applyForce(force);
+	        }
+	    }
+	};
+	module.exports = Repulsion;
+
+/***/ },
+/* 157 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Drag = __webpack_require__(56);
+	function RotationalDrag(options) {
+	    Drag.call(this, options);
+	}
+	RotationalDrag.prototype = Object.create(Drag.prototype);
+	RotationalDrag.prototype.constructor = RotationalDrag;
+	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = {
+	    LINEAR: function (angularVelocity) {
+	        return angularVelocity;
+	    },
+	    QUADRATIC: function (angularVelocity) {
+	        return angularVelocity.mult(angularVelocity.norm());
+	    }
+	};
+	RotationalDrag.prototype.applyForce = function applyForce(targets) {
+	    var strength = this.options.strength;
+	    var forceFunction = this.options.forceFunction;
+	    var force = this.force;
+	    var index;
+	    var particle;
+	    for (index = 0; index < targets.length; index++) {
+	        particle = targets[index];
+	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
+	        particle.applyTorque(force);
+	    }
+	};
+	RotationalDrag.prototype.setOptions = function setOptions(options) {
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	module.exports = RotationalDrag;
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(73);
+	var Spring = __webpack_require__(47);
+	var Quaternion = __webpack_require__(89);
+	function RotationalSpring(options) {
+	    Spring.call(this, options);
+	}
+	RotationalSpring.prototype = Object.create(Spring.prototype);
+	RotationalSpring.prototype.constructor = RotationalSpring;
+	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
+	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
+	var pi = Math.PI;
+	function _calcStiffness() {
+	    var options = this.options;
+	    options.stiffness = Math.pow(2 * pi / options.period, 2);
+	}
+	function _calcDamping() {
+	    var options = this.options;
+	    options.damping = 4 * pi * options.dampingRatio / options.period;
+	}
+	function _init() {
+	    _calcStiffness.call(this);
+	    _calcDamping.call(this);
+	}
+	RotationalSpring.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor instanceof Quaternion)
+	            this.options.anchor = options.anchor;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Quaternion(options.anchor);
+	    }
+	    if (options.period !== undefined) {
+	        this.options.period = options.period;
+	    }
+	    if (options.dampingRatio !== undefined)
+	        this.options.dampingRatio = options.dampingRatio;
+	    if (options.length !== undefined)
+	        this.options.length = options.length;
+	    if (options.forceFunction !== undefined)
+	        this.options.forceFunction = options.forceFunction;
+	    if (options.maxLength !== undefined)
+	        this.options.maxLength = options.maxLength;
+	    _init.call(this);
+	    Force.prototype.setOptions.call(this, options);
+	};
+	RotationalSpring.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var options = this.options;
+	    var disp = this.disp;
+	    var stiffness = options.stiffness;
+	    var damping = options.damping;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var forceFunction = options.forceFunction;
+	    var maxLength = options.maxLength;
+	    var i;
+	    var target;
+	    var dist;
+	    var m;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        disp.set(anchor.sub(target.orientation));
+	        dist = disp.norm() - restLength;
+	        if (dist === 0)
+	            return;
+	        m = target.mass;
+	        stiffness *= m;
+	        damping *= m;
+	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
+	        if (damping)
+	            force.add(target.angularVelocity.mult(-damping)).put(force);
+	        target.applyTorque(force);
+	    }
+	};
+	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
+	    var options = this.options;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var strength = options.stiffness;
+	    var energy = 0;
+	    for (var i = 0; i < targets.length; i++) {
+	        var target = targets[i];
+	        var dist = anchor.sub(target.orientation).norm() - restLength;
+	        energy += 0.5 * strength * dist * dist;
+	    }
+	    return energy;
+	};
+	module.exports = RotationalSpring;
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(73);
+	var Vector = __webpack_require__(45);
+	function VectorField(options) {
+	    Force.call(this);
+	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.evaluation = new Vector();
+	}
+	VectorField.prototype = Object.create(Force.prototype);
+	VectorField.prototype.constructor = VectorField;
+	VectorField.FIELDS = {
+	    CONSTANT: function (v, options) {
+	        options.direction.put(this.evaluation);
+	    },
+	    LINEAR: function (v) {
+	        v.put(this.evaluation);
+	    },
+	    RADIAL: function (v) {
+	        v.mult(-1).put(this.evaluation);
+	    },
+	    POINT_ATTRACTOR: function (v, options) {
+	        options.position.sub(v).put(this.evaluation);
+	    }
+	};
+	VectorField.DEFAULT_OPTIONS = {
+	    strength: 0.01,
+	    field: VectorField.FIELDS.CONSTANT
+	};
+	VectorField.prototype.setOptions = function setOptions(options) {
+	    if (options.strength !== undefined)
+	        this.options.strength = options.strength;
+	    if (options.direction !== undefined)
+	        this.options.direction = options.direction;
+	    if (options.field !== undefined) {
+	        this.options.field = options.field;
+	        _setFieldOptions.call(this, this.options.field);
+	    }
+	};
+	function _setFieldOptions(field) {
+	    var FIELDS = VectorField.FIELDS;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        if (!this.options.direction)
+	            this.options.direction = new Vector(0, 1, 0);
+	        else if (this.options.direction instanceof Array)
+	            this.options.direction = new Vector(this.options.direction);
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        if (!this.options.position)
+	            this.options.position = new Vector(0, 0, 0);
+	        else if (this.options.position instanceof Array)
+	            this.options.position = new Vector(this.options.position);
+	        break;
+	    }
+	}
+	VectorField.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var strength = this.options.strength;
+	    var field = this.options.field;
+	    var i;
+	    var target;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        field.call(this, target.position, this.options);
+	        this.evaluation.mult(target.mass * strength).put(force);
+	        target.applyForce(force);
+	    }
+	};
+	VectorField.prototype.getEnergy = function getEnergy(targets) {
+	    var field = this.options.field;
+	    var FIELDS = VectorField.FIELDS;
+	    var energy = 0;
+	    var i;
+	    var target;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        energy = targets.length * this.options.direction.norm();
+	        break;
+	    case FIELDS.RADIAL:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.norm();
+	        }
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.sub(this.options.position).norm();
+	        }
+	        break;
+	    }
+	    energy *= this.options.strength;
+	    return energy;
+	};
+	module.exports = VectorField;
 
 /***/ }
 /******/ ])

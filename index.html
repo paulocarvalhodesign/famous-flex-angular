@@ -16,11 +16,11 @@
 <div ng-controller="GridCtrl">
 <button ng-click="changeDirection()">Change Direction</button>{{direction}}
 <fa-app resizable ng-style="{height: windowHeight + 'px', top: '10px'}">
-  <fa-dumb fa-options="myGridLayoutOptions">
+  <ffa-layout-controller fa-options="myGridLayoutOptions">
     <fa-modifier ng-repeat="grid in grids" fa-size="[100,100]">
       <fa-surface fa-background-color="grid.bgColor">{{windowHeight}}</fa-surface>
     </fa-modifier>
-  </fa-dumb>
+  </ffa-layout-controller>
   <fa-navbar style="height:100px;width:1000px">
     <div>
       <div class="title">My Title</div>
