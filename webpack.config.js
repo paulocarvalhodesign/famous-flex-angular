@@ -4,6 +4,7 @@ var path = require('path');
 var globule = require('globule');
 
 var node_dir = __dirname + '/node_modules';
+var bower_components = __dirname + '/bower_components';
 
 String.prototype.hypthenatedToCamelCase = function() {
   return this.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
@@ -11,14 +12,14 @@ String.prototype.hypthenatedToCamelCase = function() {
 
 // modules/dist/hypthenated-name.js is aliased with camelcase(hypthenated-name)
 var AddModuleAliases = function(aliases) {
-  return globule.find('modules/*/dist/*.js').reduce(function(obj,x) {obj[x.split('/').pop().split('.js').shift().hypthenatedToCamelCase()] = x; return obj;},aliases || {});
+  return globule.find(__dirname + '/modules/*/dist/*.js').reduce(function(obj,x) {obj[x.split('/').pop().split('.js').shift().hypthenatedToCamelCase()] = x; return obj;},aliases || {});
 };
 
 var aliases = {
 	'bootstrap-webpack': node_dir + '/bootstrap-webpack',
         'famous': node_dir + '/famous',
-        'famous-angular': node_dir + '/famous-angular/dist/famous-angular.js',
         'famous.angular': 'famous-angular',
+        'famous-angular': node_dir + '/famous-angular/dist/famous-angular.js',
         'famous-flex': node_dir + '/famous-flex/src'
 }
 
@@ -30,7 +31,8 @@ module.exports = {
   },
   resolve: {
     root: [
-	path.resolve('.')
+	//path.resolve('.'),
+	path.resolve(bower_components)
     ],
     alias: AddModuleAliases(aliases)
   },

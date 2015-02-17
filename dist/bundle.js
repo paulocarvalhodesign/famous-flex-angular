@@ -51,7 +51,7 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(3);
+	__webpack_require__(2);
 	/* WEBPACK VAR INJECTION */(function(angular) {//var LayoutController = require('famous-flex/LayoutController');
 	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
 	//var ListLayout = require('famous-flex/layouts/ListLayout');
@@ -60,7 +60,7 @@
 	//var NavBarLayout = require('famous-flex/layouts/NavBarLayout');
 	//require('famous-angular');
 	//require('bootstrap.min.css');
-	__webpack_require__(2);
+	__webpack_require__(3);
 
 	(module.exports['app'] = angular.module('app',['famousFlexAngular']))
 	.controller('GridCtrl', ['$scope', '$famous', function($scope,$famous) {
@@ -94,42 +94,34 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	__webpack_require__(6);
-	__webpack_require__(5);
-
-
-/***/ },
-/* 3 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(8);
 	/* WEBPACK VAR INJECTION */(function(angular) {var ffa = (module.exports['famousFlexAngular'] = angular.module('famousFlexAngular',['famous.angular']));
 
 	ffa.config(function($famousProvider) {
-	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(9));
-	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(10));
-	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(11));
-	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(12));
-	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(13));
-	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(14));
-	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(15));
-	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(16));
-	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(17));
-	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(18));
-	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(19));
-	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(20));
-	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(21));
-	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(22));
-	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(23));
-	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(24));
-	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(25));
-	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(26));
-	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(27));
-	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(28));
-	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(29));
-	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(30));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(31));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(32));
-	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(33));
+	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(7));
+	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(8));
+	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(9));
+	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(10));
+	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(11));
+	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(12));
+	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(13));
+	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(14));
+	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(15));
+	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(16));
+	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(17));
+	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(18));
+	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(19));
+	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(20));
+	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(21));
+	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(22));
+	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(23));
+	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(24));
+	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(25));
+	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(26));
+	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(27));
+	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(28));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(29));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(30));
+	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(31));
 	  //console.log($famousProvider.$get());
 	});
 
@@ -607,11 +599,19 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
+/* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(32);
+	__webpack_require__(5);
+
+
+/***/ },
 /* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(angular) {/**
-	 * @license AngularJS v1.3.13
+	 * @license AngularJS v1.3.8
 	 * (c) 2010-2014 Google, Inc. http://angularjs.org
 	 * License: MIT
 	 */
@@ -666,7 +666,7 @@
 	      return match;
 	    });
 
-	    message = message + '\nhttp://errors.angularjs.org/1.3.13/' +
+	    message = message + '\nhttp://errors.angularjs.org/1.3.8/' +
 	      (module ? module + '/' : '') + code;
 	    for (i = 2; i < arguments.length; i++) {
 	      message = message + (i == 2 ? '?' : '&') + 'p' + (i - 2) + '=' +
@@ -993,7 +993,8 @@
 	function setHashKey(obj, h) {
 	  if (h) {
 	    obj.$$hashKey = h;
-	  } else {
+	  }
+	  else {
 	    delete obj.$$hashKey;
 	  }
 	}
@@ -1302,7 +1303,7 @@
 	function makeMap(str) {
 	  var obj = {}, items = str.split(","), i;
 	  for (i = 0; i < items.length; i++)
-	    obj[items[i]] = true;
+	    obj[ items[i] ] = true;
 	  return obj;
 	}
 
@@ -2013,7 +2014,7 @@
 	 * @param {DOMElement} element DOM element which is the root of angular application.
 	 * @param {Array<String|Function|Array>=} modules an array of modules to load into the application.
 	 *     Each item in the array should be the name of a predefined module or a (DI annotated)
-	 *     function that will be invoked by the injector as a `config` block.
+	 *     function that will be invoked by the injector as a run block.
 	 *     See: {@link angular.module modules}
 	 * @param {Object=} config an object for defining configuration options for the application. The
 	 *     following keys are supported:
@@ -2083,12 +2084,8 @@
 	    forEach(extraModules, function(module) {
 	      modules.push(module);
 	    });
-	    return doBootstrap();
+	    doBootstrap();
 	  };
-
-	  if (isFunction(angular.resumeDeferredBootstrap)) {
-	    angular.resumeDeferredBootstrap();
-	  }
 	}
 
 	/**
@@ -2733,11 +2730,11 @@
 	 * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
 	 */
 	var version = {
-	  full: '1.3.13',    // all of these placeholder strings will be replaced by grunt's
+	  full: '1.3.8',    // all of these placeholder strings will be replaced by grunt's
 	  major: 1,    // package task
 	  minor: 3,
-	  dot: 13,
-	  codeName: 'meticulous-riffleshuffle'
+	  dot: 8,
+	  codeName: 'prophetic-narwhal'
 	};
 
 
@@ -4772,7 +4769,7 @@
 	      }
 
 	      var args = [],
-	          $inject = createInjector.$$annotate(fn, strictDi, serviceName),
+	          $inject = annotate(fn, strictDi, serviceName),
 	          length, i,
 	          key;
 
@@ -4801,7 +4798,7 @@
 	      // Check if Type is annotated and use just the given function at n-1 as parameter
 	      // e.g. someModule.factory('greeter', ['$window', function(renamed$window) {}]);
 	      // Object creation: http://jsperf.com/create-constructor/2
-	      var instance = Object.create((isArray(Type) ? Type[Type.length - 1] : Type).prototype || null);
+	      var instance = Object.create((isArray(Type) ? Type[Type.length - 1] : Type).prototype);
 	      var returnedValue = invoke(Type, instance, locals, serviceName);
 
 	      return isObject(returnedValue) || isFunction(returnedValue) ? returnedValue : instance;
@@ -4811,7 +4808,7 @@
 	      invoke: invoke,
 	      instantiate: instantiate,
 	      get: getService,
-	      annotate: createInjector.$$annotate,
+	      annotate: annotate,
 	      has: function(name) {
 	        return providerCache.hasOwnProperty(name + providerSuffix) || cache.hasOwnProperty(name);
 	      }
@@ -7780,10 +7777,6 @@
 
 	          // use class as directive
 	          className = node.className;
-	          if (isObject(className)) {
-	              // Maybe SVGAnimatedString
-	              className = className.animVal;
-	          }
 	          if (isString(className) && className !== '') {
 	            while (match = CLASS_DIRECTIVE_REGEXP.exec(className)) {
 	              nName = directiveNormalize(match[2]);
@@ -8485,7 +8478,8 @@
 	          afterTemplateChildLinkFn,
 	          beforeTemplateCompileNode = $compileNode[0],
 	          origAsyncDirective = directives.shift(),
-	          derivedSyncDirective = inherit(origAsyncDirective, {
+	          // The fact that we have to copy and patch the directive seems wrong!
+	          derivedSyncDirective = extend({}, origAsyncDirective, {
 	            templateUrl: null, transclude: null, replace: null, $$originalDirective: origAsyncDirective
 	          }),
 	          templateUrl = (isFunction(origAsyncDirective.templateUrl))
@@ -8938,8 +8932,6 @@
 	  return jqNodes;
 	}
 
-	var $controllerMinErr = minErr('$controller');
-
 	/**
 	 * @ngdoc provider
 	 * @name $controllerProvider
@@ -9027,12 +9019,7 @@
 	      }
 
 	      if (isString(expression)) {
-	        match = expression.match(CNTRL_REG);
-	        if (!match) {
-	          throw $controllerMinErr('ctrlfmt',
-	            "Badly formed controller string '{0}'. " +
-	            "Must match `__name__ as __id__` or `__name__`.", expression);
-	        }
+	        match = expression.match(CNTRL_REG),
 	        constructor = match[1],
 	        identifier = identifier || match[3];
 	        expression = controllers.hasOwnProperty(constructor)
@@ -9056,7 +9043,7 @@
 	        // Object creation: http://jsperf.com/create-constructor/2
 	        var controllerPrototype = (isArray(expression) ?
 	          expression[expression.length - 1] : expression).prototype;
-	        instance = Object.create(controllerPrototype || null);
+	        instance = Object.create(controllerPrototype);
 
 	        if (identifier) {
 	          addIdentifier(locals, identifier, instance, constructor || expression.name);
@@ -9552,7 +9539,7 @@
 	     *
 	     * Both requests and responses can be transformed using transformation functions: `transformRequest`
 	     * and `transformResponse`. These properties can be a single function that returns
-	     * the transformed value (`function(data, headersGetter, status)`) or an array of such transformation functions,
+	     * the transformed value (`{function(data, headersGetter, status)`) or an array of such transformation functions,
 	     * which allows you to `push` or `unshift` a new transformation function into the transformation chain.
 	     *
 	     * ### Default Transformations
@@ -11941,7 +11928,7 @@
 	      // TODO(vojta): rewrite link when opening in new tab/window (in legacy browser)
 	      // currently we open nice url link and redirect then
 
-	      if (!html5Mode.rewriteLinks || event.ctrlKey || event.metaKey || event.shiftKey || event.which == 2 || event.button == 2) return;
+	      if (!html5Mode.rewriteLinks || event.ctrlKey || event.metaKey || event.which == 2) return;
 
 	      var elm = jqLite(event.target);
 
@@ -11983,7 +11970,7 @@
 
 
 	    // rewrite hashbang url <> html5 url
-	    if (trimEmptyHash($location.absUrl()) != trimEmptyHash(initialUrl)) {
+	    if ($location.absUrl() != initialUrl) {
 	      $browser.url($location.absUrl(), true);
 	    }
 
@@ -12893,7 +12880,7 @@
 	    }, {
 	      assign: function(scope, value, locals) {
 	        var o = object(scope, locals);
-	        if (!o) object.assign(scope, o = {}, locals);
+	        if (!o) object.assign(scope, o = {});
 	        return getter.assign(o, value);
 	      }
 	    });
@@ -12919,7 +12906,7 @@
 	        var key = ensureSafeMemberName(indexFn(self, locals), expression);
 	        // prevent overwriting of Function.constructor which would break ensureSafeObject check
 	        var o = ensureSafeObject(obj(self, locals), expression);
-	        if (!o) obj.assign(self, o = {}, locals);
+	        if (!o) obj.assign(self, o = {});
 	        return o[key] = value;
 	      }
 	    });
@@ -12956,11 +12943,6 @@
 	      var v = fn.apply
 	            ? fn.apply(context, args)
 	            : fn(args[0], args[1], args[2], args[3], args[4]);
-
-	      if (args) {
-	        // Free-up the memory (arguments of the last function call).
-	        args.length = 0;
-	      }
 
 	      return ensureSafeObject(v, expressionText);
 	      };
@@ -13034,19 +13016,18 @@
 	// Parser helper functions
 	//////////////////////////////////////////////////
 
-	function setter(obj, locals, path, setValue, fullExp) {
+	function setter(obj, path, setValue, fullExp) {
 	  ensureSafeObject(obj, fullExp);
-	  ensureSafeObject(locals, fullExp);
 
 	  var element = path.split('.'), key;
 	  for (var i = 0; element.length > 1; i++) {
 	    key = ensureSafeMemberName(element.shift(), fullExp);
-	    var propertyObj = (i === 0 && locals && locals[key]) || obj[key];
+	    var propertyObj = ensureSafeObject(obj[key], fullExp);
 	    if (!propertyObj) {
 	      propertyObj = {};
 	      obj[key] = propertyObj;
 	    }
-	    obj = ensureSafeObject(propertyObj, fullExp);
+	    obj = propertyObj;
 	  }
 	  key = ensureSafeMemberName(element.shift(), fullExp);
 	  ensureSafeObject(obj[key], fullExp);
@@ -13173,8 +13154,8 @@
 	  }
 
 	  fn.sharedGetter = true;
-	  fn.assign = function(self, value, locals) {
-	    return setter(self, locals, path, value, path);
+	  fn.assign = function(self, value) {
+	    return setter(self, path, value, path);
 	  };
 	  getterFnCache[path] = fn;
 	  return fn;
@@ -13833,7 +13814,8 @@
 	          'qcycle',
 	          "Expected promise to be resolved with value other than itself '{0}'",
 	          val));
-	      } else {
+	      }
+	      else {
 	        this.$$resolve(val);
 	      }
 
@@ -15129,7 +15111,7 @@
 	       * @kind function
 	       *
 	       * @description
-	       * Schedule the invocation of $apply to occur at a later time. The actual time difference
+	       * Schedule the invokation of $apply to occur at a later time. The actual time difference
 	       * varies across browsers, but is typically around ~10 milliseconds.
 	       *
 	       * This can be used to queue up multiple expressions which need to be evaluated in the same
@@ -16639,7 +16621,8 @@
 	function $TemplateRequestProvider() {
 	  this.$get = ['$templateCache', '$http', '$q', function($templateCache, $http, $q) {
 	    function handleRequestFn(tpl, ignoreRequestError) {
-	      handleRequestFn.totalPendingRequests++;
+	      var self = handleRequestFn;
+	      self.totalPendingRequests++;
 
 	      var transformResponse = $http.defaults && $http.defaults.transformResponse;
 
@@ -16657,14 +16640,13 @@
 	      };
 
 	      return $http.get(tpl, httpOptions)
-	        .finally(function() {
-	          handleRequestFn.totalPendingRequests--;
-	        })
 	        .then(function(response) {
+	          self.totalPendingRequests--;
 	          return response.data;
 	        }, handleError);
 
 	      function handleError(resp) {
+	        self.totalPendingRequests--;
 	        if (!ignoreRequestError) {
 	          throw $compileMinErr('tpload', 'Failed to load template: {0}', tpl);
 	        }
@@ -17358,7 +17340,7 @@
 
 	  if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
 	    return !deepCompare(actual, expected.substring(1), comparator, matchAgainstAnyProp);
-	  } else if (isArray(actual)) {
+	  } else if (actualType === 'array') {
 	    // In case `actual` is an array, consider it a match
 	    // if ANY of it's items matches `expected`
 	    return actual.some(function(item) {
@@ -17754,7 +17736,7 @@
 	 *   * `'m'`: Minute in hour (0-59)
 	 *   * `'ss'`: Second in minute, padded (00-59)
 	 *   * `'s'`: Second in minute (0-59)
-	 *   * `'sss'`: Millisecond in second, padded (000-999)
+	 *   * `'.sss' or ',sss'`: Millisecond in second, padded (000-999)
 	 *   * `'a'`: AM/PM marker
 	 *   * `'Z'`: 4 digit (+sign) representation of the timezone offset (-1200-+1200)
 	 *   * `'ww'`: Week of year, padded (00-53). Week 01 is the week with the first Thursday of the year
@@ -18049,12 +18031,35 @@
 	      limit = int(limit);
 	    }
 
-	    //NaN check on limit
-	    if (limit) {
-	      return limit > 0 ? input.slice(0, limit) : input.slice(limit);
-	    } else {
-	      return isString(input) ? "" : [];
+	    if (isString(input)) {
+	      //NaN check on limit
+	      if (limit) {
+	        return limit >= 0 ? input.slice(0, limit) : input.slice(limit, input.length);
+	      } else {
+	        return "";
+	      }
 	    }
+
+	    var i, n;
+
+	    // if abs(limit) exceeds maximum length, trim it
+	    if (limit > input.length)
+	      limit = input.length;
+	    else if (limit < -input.length)
+	      limit = -input.length;
+
+	    if (limit > 0) {
+	      i = 0;
+	      n = limit;
+	    } else {
+	      // zero and NaN check on limit - return empty array
+	      if (!limit) return [];
+
+	      i = input.length + limit;
+	      n = input.length;
+	    }
+
+	    return input.slice(i, n);
 	  };
 	}
 
@@ -18290,9 +18295,6 @@
 	  compile: function(element, attr) {
 	    if (!attr.href && !attr.xlinkHref && !attr.name) {
 	      return function(scope, element) {
-	        // If the linked element is not an anchor tag anymore, do nothing
-	        if (element[0].nodeName.toLowerCase() !== 'a') return;
-
 	        // SVGAElement does not use the href attribute, but rather the 'xlinkHref' attribute.
 	        var href = toString.call(element.prop('href')) === '[object SVGAnimatedString]' ?
 	                   'xlink:href' : 'href';
@@ -18893,9 +18895,6 @@
 	    forEach(form.$error, function(value, name) {
 	      form.$setValidity(name, null, control);
 	    });
-	    forEach(form.$$success, function(value, name) {
-	      form.$setValidity(name, null, control);
-	    });
 
 	    arrayRemove(controls, control);
 	  };
@@ -18913,23 +18912,23 @@
 	  addSetValidityMethod({
 	    ctrl: this,
 	    $element: element,
-	    set: function(object, property, controller) {
+	    set: function(object, property, control) {
 	      var list = object[property];
 	      if (!list) {
-	        object[property] = [controller];
+	        object[property] = [control];
 	      } else {
-	        var index = list.indexOf(controller);
+	        var index = list.indexOf(control);
 	        if (index === -1) {
-	          list.push(controller);
+	          list.push(control);
 	        }
 	      }
 	    },
-	    unset: function(object, property, controller) {
+	    unset: function(object, property, control) {
 	      var list = object[property];
 	      if (!list) {
 	        return;
 	      }
-	      arrayRemove(list, controller);
+	      arrayRemove(list, control);
 	      if (list.length === 0) {
 	        delete object[property];
 	      }
@@ -19222,19 +19221,19 @@
 	                alias = controller.$name;
 
 	            if (alias) {
-	              setter(scope, null, alias, controller, alias);
+	              setter(scope, alias, controller, alias);
 	              attr.$observe(attr.name ? 'name' : 'ngForm', function(newValue) {
 	                if (alias === newValue) return;
-	                setter(scope, null, alias, undefined, alias);
+	                setter(scope, alias, undefined, alias);
 	                alias = newValue;
-	                setter(scope, null, alias, controller, alias);
+	                setter(scope, alias, controller, alias);
 	                parentFormCtrl.$$renameControl(controller, alias);
 	              });
 	            }
 	            formElement.on('$destroy', function() {
 	              parentFormCtrl.$removeControl(controller);
 	              if (alias) {
-	                setter(scope, null, alias, undefined, alias);
+	                setter(scope, alias, undefined, alias);
 	              }
 	              extend(controller, nullFormCtrl); //stop propagating child destruction handlers upwards
 	            });
@@ -19250,13 +19249,12 @@
 	var formDirective = formDirectiveFactory();
 	var ngFormDirective = formDirectiveFactory(true);
 
-	/* global VALID_CLASS: false,
-	  INVALID_CLASS: false,
-	  PRISTINE_CLASS: false,
-	  DIRTY_CLASS: false,
-	  UNTOUCHED_CLASS: false,
-	  TOUCHED_CLASS: false,
-	  $ngModelMinErr: false,
+	/* global VALID_CLASS: true,
+	  INVALID_CLASS: true,
+	  PRISTINE_CLASS: true,
+	  DIRTY_CLASS: true,
+	  UNTOUCHED_CLASS: true,
+	  TOUCHED_CLASS: true,
 	*/
 
 	// Regex code is obtained from SO: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime#answer-3143231
@@ -19269,6 +19267,9 @@
 	var WEEK_REGEXP = /^(\d{4})-W(\d\d)$/;
 	var MONTH_REGEXP = /^(\d{4})-(\d\d)$/;
 	var TIME_REGEXP = /^(\d\d):(\d\d)(?::(\d\d)(\.\d{1,3})?)?$/;
+	var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
+
+	var $ngModelMinErr = new minErr('ngModel');
 
 	var inputType = {
 
@@ -19311,21 +19312,19 @@
 	         <script>
 	           angular.module('textInputExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.example = {
-	                 text: 'guest',
-	                 word: /^\s*\w*\s*$/
-	               };
+	               $scope.text = 'guest';
+	               $scope.word = /^\s*\w*\s*$/;
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           Single word: <input type="text" name="input" ng-model="example.text"
-	                               ng-pattern="example.word" required ng-trim="false">
+	           Single word: <input type="text" name="input" ng-model="text"
+	                               ng-pattern="word" required ng-trim="false">
 	           <span class="error" ng-show="myForm.input.$error.required">
 	             Required!</span>
 	           <span class="error" ng-show="myForm.input.$error.pattern">
 	             Single word only!</span>
 
-	           <tt>text = {{example.text}}</tt><br/>
+	           <tt>text = {{text}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19333,9 +19332,9 @@
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
-	          var text = element(by.binding('example.text'));
+	          var text = element(by.binding('text'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('example.text'));
+	          var input = element(by.model('text'));
 
 	          it('should initialize to model', function() {
 	            expect(text.getText()).toContain('guest');
@@ -19397,20 +19396,18 @@
 	       <script>
 	          angular.module('dateInputExample', [])
 	            .controller('DateController', ['$scope', function($scope) {
-	              $scope.example = {
-	                value: new Date(2013, 9, 22)
-	              };
+	              $scope.value = new Date(2013, 9, 22);
 	            }]);
 	       </script>
 	       <form name="myForm" ng-controller="DateController as dateCtrl">
 	          Pick a date in 2013:
-	          <input type="date" id="exampleInput" name="input" ng-model="example.value"
+	          <input type="date" id="exampleInput" name="input" ng-model="value"
 	              placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />
 	          <span class="error" ng-show="myForm.input.$error.required">
 	              Required!</span>
 	          <span class="error" ng-show="myForm.input.$error.date">
 	              Not a valid date!</span>
-	           <tt>value = {{example.value | date: "yyyy-MM-dd"}}</tt><br/>
+	           <tt>value = {{value | date: "yyyy-MM-dd"}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19418,9 +19415,9 @@
 	       </form>
 	     </file>
 	     <file name="protractor.js" type="protractor">
-	        var value = element(by.binding('example.value | date: "yyyy-MM-dd"'));
+	        var value = element(by.binding('value | date: "yyyy-MM-dd"'));
 	        var valid = element(by.binding('myForm.input.$valid'));
-	        var input = element(by.model('example.value'));
+	        var input = element(by.model('value'));
 
 	        // currently protractor/webdriver does not support
 	        // sending keys to all known HTML5 input controls
@@ -19490,20 +19487,18 @@
 	      <script>
 	        angular.module('dateExample', [])
 	          .controller('DateController', ['$scope', function($scope) {
-	            $scope.example = {
-	              value: new Date(2010, 11, 28, 14, 57)
-	            };
+	            $scope.value = new Date(2010, 11, 28, 14, 57);
 	          }]);
 	      </script>
 	      <form name="myForm" ng-controller="DateController as dateCtrl">
 	        Pick a date between in 2013:
-	        <input type="datetime-local" id="exampleInput" name="input" ng-model="example.value"
+	        <input type="datetime-local" id="exampleInput" name="input" ng-model="value"
 	            placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2013-12-31T00:00:00" required />
 	        <span class="error" ng-show="myForm.input.$error.required">
 	            Required!</span>
 	        <span class="error" ng-show="myForm.input.$error.datetimelocal">
 	            Not a valid date!</span>
-	        <tt>value = {{example.value | date: "yyyy-MM-ddTHH:mm:ss"}}</tt><br/>
+	        <tt>value = {{value | date: "yyyy-MM-ddTHH:mm:ss"}}</tt><br/>
 	        <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	        <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19511,9 +19506,9 @@
 	      </form>
 	    </file>
 	    <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('example.value | date: "yyyy-MM-ddTHH:mm:ss"'));
+	      var value = element(by.binding('value | date: "yyyy-MM-ddTHH:mm:ss"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('example.value'));
+	      var input = element(by.model('value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19584,20 +19579,18 @@
 	     <script>
 	      angular.module('timeExample', [])
 	        .controller('DateController', ['$scope', function($scope) {
-	          $scope.example = {
-	            value: new Date(1970, 0, 1, 14, 57, 0)
-	          };
+	          $scope.value = new Date(1970, 0, 1, 14, 57, 0);
 	        }]);
 	     </script>
 	     <form name="myForm" ng-controller="DateController as dateCtrl">
 	        Pick a between 8am and 5pm:
-	        <input type="time" id="exampleInput" name="input" ng-model="example.value"
+	        <input type="time" id="exampleInput" name="input" ng-model="value"
 	            placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
 	        <span class="error" ng-show="myForm.input.$error.required">
 	            Required!</span>
 	        <span class="error" ng-show="myForm.input.$error.time">
 	            Not a valid date!</span>
-	        <tt>value = {{example.value | date: "HH:mm:ss"}}</tt><br/>
+	        <tt>value = {{value | date: "HH:mm:ss"}}</tt><br/>
 	        <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	        <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19605,9 +19598,9 @@
 	     </form>
 	   </file>
 	   <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('example.value | date: "HH:mm:ss"'));
+	      var value = element(by.binding('value | date: "HH:mm:ss"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('example.value'));
+	      var input = element(by.model('value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19677,20 +19670,18 @@
 	      <script>
 	      angular.module('weekExample', [])
 	        .controller('DateController', ['$scope', function($scope) {
-	          $scope.example = {
-	            value: new Date(2013, 0, 3)
-	          };
+	          $scope.value = new Date(2013, 0, 3);
 	        }]);
 	      </script>
 	      <form name="myForm" ng-controller="DateController as dateCtrl">
 	        Pick a date between in 2013:
-	        <input id="exampleInput" type="week" name="input" ng-model="example.value"
+	        <input id="exampleInput" type="week" name="input" ng-model="value"
 	            placeholder="YYYY-W##" min="2012-W32" max="2013-W52" required />
 	        <span class="error" ng-show="myForm.input.$error.required">
 	            Required!</span>
 	        <span class="error" ng-show="myForm.input.$error.week">
 	            Not a valid date!</span>
-	        <tt>value = {{example.value | date: "yyyy-Www"}}</tt><br/>
+	        <tt>value = {{value | date: "yyyy-Www"}}</tt><br/>
 	        <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	        <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19698,9 +19689,9 @@
 	      </form>
 	    </file>
 	    <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('example.value | date: "yyyy-Www"'));
+	      var value = element(by.binding('value | date: "yyyy-Www"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('example.value'));
+	      var input = element(by.model('value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19770,20 +19761,18 @@
 	     <script>
 	      angular.module('monthExample', [])
 	        .controller('DateController', ['$scope', function($scope) {
-	          $scope.example = {
-	            value: new Date(2013, 9, 1)
-	          };
+	          $scope.value = new Date(2013, 9, 1);
 	        }]);
 	     </script>
 	     <form name="myForm" ng-controller="DateController as dateCtrl">
-	       Pick a month in 2013:
-	       <input id="exampleInput" type="month" name="input" ng-model="example.value"
+	       Pick a month int 2013:
+	       <input id="exampleInput" type="month" name="input" ng-model="value"
 	          placeholder="yyyy-MM" min="2013-01" max="2013-12" required />
 	       <span class="error" ng-show="myForm.input.$error.required">
 	          Required!</span>
 	       <span class="error" ng-show="myForm.input.$error.month">
 	          Not a valid month!</span>
-	       <tt>value = {{example.value | date: "yyyy-MM"}}</tt><br/>
+	       <tt>value = {{value | date: "yyyy-MM"}}</tt><br/>
 	       <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	       <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	       <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19791,9 +19780,9 @@
 	     </form>
 	   </file>
 	   <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('example.value | date: "yyyy-MM"'));
+	      var value = element(by.binding('value | date: "yyyy-MM"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('example.value'));
+	      var input = element(by.model('value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19869,19 +19858,17 @@
 	         <script>
 	           angular.module('numberExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.example = {
-	                 value: 12
-	               };
+	               $scope.value = 12;
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           Number: <input type="number" name="input" ng-model="example.value"
+	           Number: <input type="number" name="input" ng-model="value"
 	                          min="0" max="99" required>
 	           <span class="error" ng-show="myForm.input.$error.required">
 	             Required!</span>
 	           <span class="error" ng-show="myForm.input.$error.number">
 	             Not valid number!</span>
-	           <tt>value = {{example.value}}</tt><br/>
+	           <tt>value = {{value}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19889,9 +19876,9 @@
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
-	          var value = element(by.binding('example.value'));
+	          var value = element(by.binding('value'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('example.value'));
+	          var input = element(by.model('value'));
 
 	          it('should initialize to model', function() {
 	            expect(value.getText()).toContain('12');
@@ -19959,18 +19946,16 @@
 	         <script>
 	           angular.module('urlExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.url = {
-	                 text: 'http://google.com'
-	               };
+	               $scope.text = 'http://google.com';
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           URL: <input type="url" name="input" ng-model="url.text" required>
+	           URL: <input type="url" name="input" ng-model="text" required>
 	           <span class="error" ng-show="myForm.input.$error.required">
 	             Required!</span>
 	           <span class="error" ng-show="myForm.input.$error.url">
 	             Not valid url!</span>
-	           <tt>text = {{url.text}}</tt><br/>
+	           <tt>text = {{text}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19979,9 +19964,9 @@
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
-	          var text = element(by.binding('url.text'));
+	          var text = element(by.binding('text'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('url.text'));
+	          var input = element(by.model('text'));
 
 	          it('should initialize to model', function() {
 	            expect(text.getText()).toContain('http://google.com');
@@ -20050,18 +20035,16 @@
 	         <script>
 	           angular.module('emailExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.email = {
-	                 text: 'me@example.com'
-	               };
+	               $scope.text = 'me@example.com';
 	             }]);
 	         </script>
 	           <form name="myForm" ng-controller="ExampleController">
-	             Email: <input type="email" name="input" ng-model="email.text" required>
+	             Email: <input type="email" name="input" ng-model="text" required>
 	             <span class="error" ng-show="myForm.input.$error.required">
 	               Required!</span>
 	             <span class="error" ng-show="myForm.input.$error.email">
 	               Not valid email!</span>
-	             <tt>text = {{email.text}}</tt><br/>
+	             <tt>text = {{text}}</tt><br/>
 	             <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	             <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	             <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -20070,9 +20053,9 @@
 	           </form>
 	         </file>
 	        <file name="protractor.js" type="protractor">
-	          var text = element(by.binding('email.text'));
+	          var text = element(by.binding('text'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('email.text'));
+	          var input = element(by.model('text'));
 
 	          it('should initialize to model', function() {
 	            expect(text.getText()).toContain('me@example.com');
@@ -20119,9 +20102,7 @@
 	         <script>
 	           angular.module('radioExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.color = {
-	                 name: 'blue'
-	               };
+	               $scope.color = 'blue';
 	               $scope.specialValue = {
 	                 "id": "12345",
 	                 "value": "green"
@@ -20129,20 +20110,20 @@
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           <input type="radio" ng-model="color.name" value="red">  Red <br/>
-	           <input type="radio" ng-model="color.name" ng-value="specialValue"> Green <br/>
-	           <input type="radio" ng-model="color.name" value="blue"> Blue <br/>
-	           <tt>color = {{color.name | json}}</tt><br/>
+	           <input type="radio" ng-model="color" value="red">  Red <br/>
+	           <input type="radio" ng-model="color" ng-value="specialValue"> Green <br/>
+	           <input type="radio" ng-model="color" value="blue"> Blue <br/>
+	           <tt>color = {{color | json}}</tt><br/>
 	          </form>
 	          Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
 	        </file>
 	        <file name="protractor.js" type="protractor">
 	          it('should change state', function() {
-	            var color = element(by.binding('color.name'));
+	            var color = element(by.binding('color'));
 
 	            expect(color.getText()).toContain('blue');
 
-	            element.all(by.model('color.name')).get(0).click();
+	            element.all(by.model('color')).get(0).click();
 
 	            expect(color.getText()).toContain('red');
 	          });
@@ -20172,30 +20153,28 @@
 	         <script>
 	           angular.module('checkboxExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.checkboxModel = {
-	                value1 : true,
-	                value2 : 'YES'
-	              };
+	               $scope.value1 = true;
+	               $scope.value2 = 'YES'
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           Value1: <input type="checkbox" ng-model="checkboxModel.value1"> <br/>
-	           Value2: <input type="checkbox" ng-model="checkboxModel.value2"
+	           Value1: <input type="checkbox" ng-model="value1"> <br/>
+	           Value2: <input type="checkbox" ng-model="value2"
 	                          ng-true-value="'YES'" ng-false-value="'NO'"> <br/>
-	           <tt>value1 = {{checkboxModel.value1}}</tt><br/>
-	           <tt>value2 = {{checkboxModel.value2}}</tt><br/>
+	           <tt>value1 = {{value1}}</tt><br/>
+	           <tt>value2 = {{value2}}</tt><br/>
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
 	          it('should change state', function() {
-	            var value1 = element(by.binding('checkboxModel.value1'));
-	            var value2 = element(by.binding('checkboxModel.value2'));
+	            var value1 = element(by.binding('value1'));
+	            var value2 = element(by.binding('value2'));
 
 	            expect(value1.getText()).toContain('true');
 	            expect(value2.getText()).toContain('YES');
 
-	            element(by.model('checkboxModel.value1')).click();
-	            element(by.model('checkboxModel.value2')).click();
+	            element(by.model('value1')).click();
+	            element(by.model('value2')).click();
 
 	            expect(value1.getText()).toContain('false');
 	            expect(value2.getText()).toContain('NO');
@@ -20792,6 +20771,1344 @@
 	  };
 	}];
 
+	var VALID_CLASS = 'ng-valid',
+	    INVALID_CLASS = 'ng-invalid',
+	    PRISTINE_CLASS = 'ng-pristine',
+	    DIRTY_CLASS = 'ng-dirty',
+	    UNTOUCHED_CLASS = 'ng-untouched',
+	    TOUCHED_CLASS = 'ng-touched',
+	    PENDING_CLASS = 'ng-pending';
+
+	/**
+	 * @ngdoc type
+	 * @name ngModel.NgModelController
+	 *
+	 * @property {string} $viewValue Actual string value in the view.
+	 * @property {*} $modelValue The value in the model that the control is bound to.
+	 * @property {Array.<Function>} $parsers Array of functions to execute, as a pipeline, whenever
+	       the control reads value from the DOM. The functions are called in array order, each passing
+	       its return value through to the next. The last return value is forwarded to the
+	       {@link ngModel.NgModelController#$validators `$validators`} collection.
+
+	Parsers are used to sanitize / convert the {@link ngModel.NgModelController#$viewValue
+	`$viewValue`}.
+
+	Returning `undefined` from a parser means a parse error occurred. In that case,
+	no {@link ngModel.NgModelController#$validators `$validators`} will run and the `ngModel`
+	will be set to `undefined` unless {@link ngModelOptions `ngModelOptions.allowInvalid`}
+	is set to `true`. The parse error is stored in `ngModel.$error.parse`.
+
+	 *
+	 * @property {Array.<Function>} $formatters Array of functions to execute, as a pipeline, whenever
+	       the model value changes. The functions are called in reverse array order, each passing the value through to the
+	       next. The last return value is used as the actual DOM value.
+	       Used to format / convert values for display in the control.
+	 * ```js
+	 * function formatter(value) {
+	 *   if (value) {
+	 *     return value.toUpperCase();
+	 *   }
+	 * }
+	 * ngModel.$formatters.push(formatter);
+	 * ```
+	 *
+	 * @property {Object.<string, function>} $validators A collection of validators that are applied
+	 *      whenever the model value changes. The key value within the object refers to the name of the
+	 *      validator while the function refers to the validation operation. The validation operation is
+	 *      provided with the model value as an argument and must return a true or false value depending
+	 *      on the response of that validation.
+	 *
+	 * ```js
+	 * ngModel.$validators.validCharacters = function(modelValue, viewValue) {
+	 *   var value = modelValue || viewValue;
+	 *   return /[0-9]+/.test(value) &&
+	 *          /[a-z]+/.test(value) &&
+	 *          /[A-Z]+/.test(value) &&
+	 *          /\W+/.test(value);
+	 * };
+	 * ```
+	 *
+	 * @property {Object.<string, function>} $asyncValidators A collection of validations that are expected to
+	 *      perform an asynchronous validation (e.g. a HTTP request). The validation function that is provided
+	 *      is expected to return a promise when it is run during the model validation process. Once the promise
+	 *      is delivered then the validation status will be set to true when fulfilled and false when rejected.
+	 *      When the asynchronous validators are triggered, each of the validators will run in parallel and the model
+	 *      value will only be updated once all validators have been fulfilled. As long as an asynchronous validator
+	 *      is unfulfilled, its key will be added to the controllers `$pending` property. Also, all asynchronous validators
+	 *      will only run once all synchronous validators have passed.
+	 *
+	 * Please note that if $http is used then it is important that the server returns a success HTTP response code
+	 * in order to fulfill the validation and a status level of `4xx` in order to reject the validation.
+	 *
+	 * ```js
+	 * ngModel.$asyncValidators.uniqueUsername = function(modelValue, viewValue) {
+	 *   var value = modelValue || viewValue;
+	 *
+	 *   // Lookup user by username
+	 *   return $http.get('/api/users/' + value).
+	 *      then(function resolved() {
+	 *        //username exists, this means validation fails
+	 *        return $q.reject('exists');
+	 *      }, function rejected() {
+	 *        //username does not exist, therefore this validation passes
+	 *        return true;
+	 *      });
+	 * };
+	 * ```
+	 *
+	 * @property {Array.<Function>} $viewChangeListeners Array of functions to execute whenever the
+	 *     view value has changed. It is called with no arguments, and its return value is ignored.
+	 *     This can be used in place of additional $watches against the model value.
+	 *
+	 * @property {Object} $error An object hash with all failing validator ids as keys.
+	 * @property {Object} $pending An object hash with all pending validator ids as keys.
+	 *
+	 * @property {boolean} $untouched True if control has not lost focus yet.
+	 * @property {boolean} $touched True if control has lost focus.
+	 * @property {boolean} $pristine True if user has not interacted with the control yet.
+	 * @property {boolean} $dirty True if user has already interacted with the control.
+	 * @property {boolean} $valid True if there is no error.
+	 * @property {boolean} $invalid True if at least one error on the control.
+	 * @property {string} $name The name attribute of the control.
+	 *
+	 * @description
+	 *
+	 * `NgModelController` provides API for the {@link ngModel `ngModel`} directive.
+	 * The controller contains services for data-binding, validation, CSS updates, and value formatting
+	 * and parsing. It purposefully does not contain any logic which deals with DOM rendering or
+	 * listening to DOM events.
+	 * Such DOM related logic should be provided by other directives which make use of
+	 * `NgModelController` for data-binding to control elements.
+	 * Angular provides this DOM logic for most {@link input `input`} elements.
+	 * At the end of this page you can find a {@link ngModel.NgModelController#custom-control-example
+	 * custom control example} that uses `ngModelController` to bind to `contenteditable` elements.
+	 *
+	 * @example
+	 * ### Custom Control Example
+	 * This example shows how to use `NgModelController` with a custom control to achieve
+	 * data-binding. Notice how different directives (`contenteditable`, `ng-model`, and `required`)
+	 * collaborate together to achieve the desired result.
+	 *
+	 * Note that `contenteditable` is an HTML5 attribute, which tells the browser to let the element
+	 * contents be edited in place by the user.  This will not work on older browsers.
+	 *
+	 * We are using the {@link ng.service:$sce $sce} service here and include the {@link ngSanitize $sanitize}
+	 * module to automatically remove "bad" content like inline event listener (e.g. `<span onclick="...">`).
+	 * However, as we are using `$sce` the model can still decide to provide unsafe content if it marks
+	 * that content using the `$sce` service.
+	 *
+	 * <example name="NgModelController" module="customControl" deps="angular-sanitize.js">
+	    <file name="style.css">
+	      [contenteditable] {
+	        border: 1px solid black;
+	        background-color: white;
+	        min-height: 20px;
+	      }
+
+	      .ng-invalid {
+	        border: 1px solid red;
+	      }
+
+	    </file>
+	    <file name="script.js">
+	      angular.module('customControl', ['ngSanitize']).
+	        directive('contenteditable', ['$sce', function($sce) {
+	          return {
+	            restrict: 'A', // only activate on element attribute
+	            require: '?ngModel', // get a hold of NgModelController
+	            link: function(scope, element, attrs, ngModel) {
+	              if (!ngModel) return; // do nothing if no ng-model
+
+	              // Specify how UI should be updated
+	              ngModel.$render = function() {
+	                element.html($sce.getTrustedHtml(ngModel.$viewValue || ''));
+	              };
+
+	              // Listen for change events to enable binding
+	              element.on('blur keyup change', function() {
+	                scope.$evalAsync(read);
+	              });
+	              read(); // initialize
+
+	              // Write data to the model
+	              function read() {
+	                var html = element.html();
+	                // When we clear the content editable the browser leaves a <br> behind
+	                // If strip-br attribute is provided then we strip this out
+	                if ( attrs.stripBr && html == '<br>' ) {
+	                  html = '';
+	                }
+	                ngModel.$setViewValue(html);
+	              }
+	            }
+	          };
+	        }]);
+	    </file>
+	    <file name="index.html">
+	      <form name="myForm">
+	       <div contenteditable
+	            name="myWidget" ng-model="userContent"
+	            strip-br="true"
+	            required>Change me!</div>
+	        <span ng-show="myForm.myWidget.$error.required">Required!</span>
+	       <hr>
+	       <textarea ng-model="userContent"></textarea>
+	      </form>
+	    </file>
+	    <file name="protractor.js" type="protractor">
+	    it('should data-bind and become invalid', function() {
+	      if (browser.params.browser == 'safari' || browser.params.browser == 'firefox') {
+	        // SafariDriver can't handle contenteditable
+	        // and Firefox driver can't clear contenteditables very well
+	        return;
+	      }
+	      var contentEditable = element(by.css('[contenteditable]'));
+	      var content = 'Change me!';
+
+	      expect(contentEditable.getText()).toEqual(content);
+
+	      contentEditable.clear();
+	      contentEditable.sendKeys(protractor.Key.BACK_SPACE);
+	      expect(contentEditable.getText()).toEqual('');
+	      expect(contentEditable.getAttribute('class')).toMatch(/ng-invalid-required/);
+	    });
+	    </file>
+	 * </example>
+	 *
+	 *
+	 */
+	var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$parse', '$animate', '$timeout', '$rootScope', '$q', '$interpolate',
+	    function($scope, $exceptionHandler, $attr, $element, $parse, $animate, $timeout, $rootScope, $q, $interpolate) {
+	  this.$viewValue = Number.NaN;
+	  this.$modelValue = Number.NaN;
+	  this.$$rawModelValue = undefined; // stores the parsed modelValue / model set from scope regardless of validity.
+	  this.$validators = {};
+	  this.$asyncValidators = {};
+	  this.$parsers = [];
+	  this.$formatters = [];
+	  this.$viewChangeListeners = [];
+	  this.$untouched = true;
+	  this.$touched = false;
+	  this.$pristine = true;
+	  this.$dirty = false;
+	  this.$valid = true;
+	  this.$invalid = false;
+	  this.$error = {}; // keep invalid keys here
+	  this.$$success = {}; // keep valid keys here
+	  this.$pending = undefined; // keep pending keys here
+	  this.$name = $interpolate($attr.name || '', false)($scope);
+
+
+	  var parsedNgModel = $parse($attr.ngModel),
+	      parsedNgModelAssign = parsedNgModel.assign,
+	      ngModelGet = parsedNgModel,
+	      ngModelSet = parsedNgModelAssign,
+	      pendingDebounce = null,
+	      ctrl = this;
+
+	  this.$$setOptions = function(options) {
+	    ctrl.$options = options;
+	    if (options && options.getterSetter) {
+	      var invokeModelGetter = $parse($attr.ngModel + '()'),
+	          invokeModelSetter = $parse($attr.ngModel + '($$$p)');
+
+	      ngModelGet = function($scope) {
+	        var modelValue = parsedNgModel($scope);
+	        if (isFunction(modelValue)) {
+	          modelValue = invokeModelGetter($scope);
+	        }
+	        return modelValue;
+	      };
+	      ngModelSet = function($scope, newValue) {
+	        if (isFunction(parsedNgModel($scope))) {
+	          invokeModelSetter($scope, {$$$p: ctrl.$modelValue});
+	        } else {
+	          parsedNgModelAssign($scope, ctrl.$modelValue);
+	        }
+	      };
+	    } else if (!parsedNgModel.assign) {
+	      throw $ngModelMinErr('nonassign', "Expression '{0}' is non-assignable. Element: {1}",
+	          $attr.ngModel, startingTag($element));
+	    }
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$render
+	   *
+	   * @description
+	   * Called when the view needs to be updated. It is expected that the user of the ng-model
+	   * directive will implement this method.
+	   *
+	   * The `$render()` method is invoked in the following situations:
+	   *
+	   * * `$rollbackViewValue()` is called.  If we are rolling back the view value to the last
+	   *   committed value then `$render()` is called to update the input control.
+	   * * The value referenced by `ng-model` is changed programmatically and both the `$modelValue` and
+	   *   the `$viewValue` are different to last time.
+	   *
+	   * Since `ng-model` does not do a deep watch, `$render()` is only invoked if the values of
+	   * `$modelValue` and `$viewValue` are actually different to their previous value. If `$modelValue`
+	   * or `$viewValue` are objects (rather than a string or number) then `$render()` will not be
+	   * invoked if you only change a property on the objects.
+	   */
+	  this.$render = noop;
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$isEmpty
+	   *
+	   * @description
+	   * This is called when we need to determine if the value of an input is empty.
+	   *
+	   * For instance, the required directive does this to work out if the input has data or not.
+	   *
+	   * The default `$isEmpty` function checks whether the value is `undefined`, `''`, `null` or `NaN`.
+	   *
+	   * You can override this for input directives whose concept of being empty is different to the
+	   * default. The `checkboxInputType` directive does this because in its case a value of `false`
+	   * implies empty.
+	   *
+	   * @param {*} value The value of the input to check for emptiness.
+	   * @returns {boolean} True if `value` is "empty".
+	   */
+	  this.$isEmpty = function(value) {
+	    return isUndefined(value) || value === '' || value === null || value !== value;
+	  };
+
+	  var parentForm = $element.inheritedData('$formController') || nullFormCtrl,
+	      currentValidationRunId = 0;
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setValidity
+	   *
+	   * @description
+	   * Change the validity state, and notify the form.
+	   *
+	   * This method can be called within $parsers/$formatters or a custom validation implementation.
+	   * However, in most cases it should be sufficient to use the `ngModel.$validators` and
+	   * `ngModel.$asyncValidators` collections which will call `$setValidity` automatically.
+	   *
+	   * @param {string} validationErrorKey Name of the validator. The `validationErrorKey` will be assigned
+	   *        to either `$error[validationErrorKey]` or `$pending[validationErrorKey]`
+	   *        (for unfulfilled `$asyncValidators`), so that it is available for data-binding.
+	   *        The `validationErrorKey` should be in camelCase and will get converted into dash-case
+	   *        for class name. Example: `myError` will result in `ng-valid-my-error` and `ng-invalid-my-error`
+	   *        class and can be bound to as  `{{someForm.someControl.$error.myError}}` .
+	   * @param {boolean} isValid Whether the current state is valid (true), invalid (false), pending (undefined),
+	   *                          or skipped (null). Pending is used for unfulfilled `$asyncValidators`.
+	   *                          Skipped is used by Angular when validators do not run because of parse errors and
+	   *                          when `$asyncValidators` do not run because any of the `$validators` failed.
+	   */
+	  addSetValidityMethod({
+	    ctrl: this,
+	    $element: $element,
+	    set: function(object, property) {
+	      object[property] = true;
+	    },
+	    unset: function(object, property) {
+	      delete object[property];
+	    },
+	    parentForm: parentForm,
+	    $animate: $animate
+	  });
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setPristine
+	   *
+	   * @description
+	   * Sets the control to its pristine state.
+	   *
+	   * This method can be called to remove the `ng-dirty` class and set the control to its pristine
+	   * state (`ng-pristine` class). A model is considered to be pristine when the control
+	   * has not been changed from when first compiled.
+	   */
+	  this.$setPristine = function() {
+	    ctrl.$dirty = false;
+	    ctrl.$pristine = true;
+	    $animate.removeClass($element, DIRTY_CLASS);
+	    $animate.addClass($element, PRISTINE_CLASS);
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setDirty
+	   *
+	   * @description
+	   * Sets the control to its dirty state.
+	   *
+	   * This method can be called to remove the `ng-pristine` class and set the control to its dirty
+	   * state (`ng-dirty` class). A model is considered to be dirty when the control has been changed
+	   * from when first compiled.
+	   */
+	  this.$setDirty = function() {
+	    ctrl.$dirty = true;
+	    ctrl.$pristine = false;
+	    $animate.removeClass($element, PRISTINE_CLASS);
+	    $animate.addClass($element, DIRTY_CLASS);
+	    parentForm.$setDirty();
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setUntouched
+	   *
+	   * @description
+	   * Sets the control to its untouched state.
+	   *
+	   * This method can be called to remove the `ng-touched` class and set the control to its
+	   * untouched state (`ng-untouched` class). Upon compilation, a model is set as untouched
+	   * by default, however this function can be used to restore that state if the model has
+	   * already been touched by the user.
+	   */
+	  this.$setUntouched = function() {
+	    ctrl.$touched = false;
+	    ctrl.$untouched = true;
+	    $animate.setClass($element, UNTOUCHED_CLASS, TOUCHED_CLASS);
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setTouched
+	   *
+	   * @description
+	   * Sets the control to its touched state.
+	   *
+	   * This method can be called to remove the `ng-untouched` class and set the control to its
+	   * touched state (`ng-touched` class). A model is considered to be touched when the user has
+	   * first focused the control element and then shifted focus away from the control (blur event).
+	   */
+	  this.$setTouched = function() {
+	    ctrl.$touched = true;
+	    ctrl.$untouched = false;
+	    $animate.setClass($element, TOUCHED_CLASS, UNTOUCHED_CLASS);
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$rollbackViewValue
+	   *
+	   * @description
+	   * Cancel an update and reset the input element's value to prevent an update to the `$modelValue`,
+	   * which may be caused by a pending debounced event or because the input is waiting for a some
+	   * future event.
+	   *
+	   * If you have an input that uses `ng-model-options` to set up debounced events or events such
+	   * as blur you can have a situation where there is a period when the `$viewValue`
+	   * is out of synch with the ngModel's `$modelValue`.
+	   *
+	   * In this case, you can run into difficulties if you try to update the ngModel's `$modelValue`
+	   * programmatically before these debounced/future events have resolved/occurred, because Angular's
+	   * dirty checking mechanism is not able to tell whether the model has actually changed or not.
+	   *
+	   * The `$rollbackViewValue()` method should be called before programmatically changing the model of an
+	   * input which may have such events pending. This is important in order to make sure that the
+	   * input field will be updated with the new model value and any pending operations are cancelled.
+	   *
+	   * <example name="ng-model-cancel-update" module="cancel-update-example">
+	   *   <file name="app.js">
+	   *     angular.module('cancel-update-example', [])
+	   *
+	   *     .controller('CancelUpdateController', ['$scope', function($scope) {
+	   *       $scope.resetWithCancel = function(e) {
+	   *         if (e.keyCode == 27) {
+	   *           $scope.myForm.myInput1.$rollbackViewValue();
+	   *           $scope.myValue = '';
+	   *         }
+	   *       };
+	   *       $scope.resetWithoutCancel = function(e) {
+	   *         if (e.keyCode == 27) {
+	   *           $scope.myValue = '';
+	   *         }
+	   *       };
+	   *     }]);
+	   *   </file>
+	   *   <file name="index.html">
+	   *     <div ng-controller="CancelUpdateController">
+	   *       <p>Try typing something in each input.  See that the model only updates when you
+	   *          blur off the input.
+	   *        </p>
+	   *        <p>Now see what happens if you start typing then press the Escape key</p>
+	   *
+	   *       <form name="myForm" ng-model-options="{ updateOn: 'blur' }">
+	   *         <p>With $rollbackViewValue()</p>
+	   *         <input name="myInput1" ng-model="myValue" ng-keydown="resetWithCancel($event)"><br/>
+	   *         myValue: "{{ myValue }}"
+	   *
+	   *         <p>Without $rollbackViewValue()</p>
+	   *         <input name="myInput2" ng-model="myValue" ng-keydown="resetWithoutCancel($event)"><br/>
+	   *         myValue: "{{ myValue }}"
+	   *       </form>
+	   *     </div>
+	   *   </file>
+	   * </example>
+	   */
+	  this.$rollbackViewValue = function() {
+	    $timeout.cancel(pendingDebounce);
+	    ctrl.$viewValue = ctrl.$$lastCommittedViewValue;
+	    ctrl.$render();
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$validate
+	   *
+	   * @description
+	   * Runs each of the registered validators (first synchronous validators and then
+	   * asynchronous validators).
+	   * If the validity changes to invalid, the model will be set to `undefined`,
+	   * unless {@link ngModelOptions `ngModelOptions.allowInvalid`} is `true`.
+	   * If the validity changes to valid, it will set the model to the last available valid
+	   * modelValue, i.e. either the last parsed value or the last value set from the scope.
+	   */
+	  this.$validate = function() {
+	    // ignore $validate before model is initialized
+	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
+	      return;
+	    }
+
+	    var viewValue = ctrl.$$lastCommittedViewValue;
+	    // Note: we use the $$rawModelValue as $modelValue might have been
+	    // set to undefined during a view -> model update that found validation
+	    // errors. We can't parse the view here, since that could change
+	    // the model although neither viewValue nor the model on the scope changed
+	    var modelValue = ctrl.$$rawModelValue;
+
+	    // Check if the there's a parse error, so we don't unset it accidentially
+	    var parserName = ctrl.$$parserName || 'parse';
+	    var parserValid = ctrl.$error[parserName] ? false : undefined;
+
+	    var prevValid = ctrl.$valid;
+	    var prevModelValue = ctrl.$modelValue;
+
+	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
+
+	    ctrl.$$runValidators(parserValid, modelValue, viewValue, function(allValid) {
+	      // If there was no change in validity, don't update the model
+	      // This prevents changing an invalid modelValue to undefined
+	      if (!allowInvalid && prevValid !== allValid) {
+	        // Note: Don't check ctrl.$valid here, as we could have
+	        // external validators (e.g. calculated on the server),
+	        // that just call $setValidity and need the model value
+	        // to calculate their validity.
+	        ctrl.$modelValue = allValid ? modelValue : undefined;
+
+	        if (ctrl.$modelValue !== prevModelValue) {
+	          ctrl.$$writeModelToScope();
+	        }
+	      }
+	    });
+
+	  };
+
+	  this.$$runValidators = function(parseValid, modelValue, viewValue, doneCallback) {
+	    currentValidationRunId++;
+	    var localValidationRunId = currentValidationRunId;
+
+	    // check parser error
+	    if (!processParseErrors(parseValid)) {
+	      validationDone(false);
+	      return;
+	    }
+	    if (!processSyncValidators()) {
+	      validationDone(false);
+	      return;
+	    }
+	    processAsyncValidators();
+
+	    function processParseErrors(parseValid) {
+	      var errorKey = ctrl.$$parserName || 'parse';
+	      if (parseValid === undefined) {
+	        setValidity(errorKey, null);
+	      } else {
+	        setValidity(errorKey, parseValid);
+	        if (!parseValid) {
+	          forEach(ctrl.$validators, function(v, name) {
+	            setValidity(name, null);
+	          });
+	          forEach(ctrl.$asyncValidators, function(v, name) {
+	            setValidity(name, null);
+	          });
+	          return false;
+	        }
+	      }
+	      return true;
+	    }
+
+	    function processSyncValidators() {
+	      var syncValidatorsValid = true;
+	      forEach(ctrl.$validators, function(validator, name) {
+	        var result = validator(modelValue, viewValue);
+	        syncValidatorsValid = syncValidatorsValid && result;
+	        setValidity(name, result);
+	      });
+	      if (!syncValidatorsValid) {
+	        forEach(ctrl.$asyncValidators, function(v, name) {
+	          setValidity(name, null);
+	        });
+	        return false;
+	      }
+	      return true;
+	    }
+
+	    function processAsyncValidators() {
+	      var validatorPromises = [];
+	      var allValid = true;
+	      forEach(ctrl.$asyncValidators, function(validator, name) {
+	        var promise = validator(modelValue, viewValue);
+	        if (!isPromiseLike(promise)) {
+	          throw $ngModelMinErr("$asyncValidators",
+	            "Expected asynchronous validator to return a promise but got '{0}' instead.", promise);
+	        }
+	        setValidity(name, undefined);
+	        validatorPromises.push(promise.then(function() {
+	          setValidity(name, true);
+	        }, function(error) {
+	          allValid = false;
+	          setValidity(name, false);
+	        }));
+	      });
+	      if (!validatorPromises.length) {
+	        validationDone(true);
+	      } else {
+	        $q.all(validatorPromises).then(function() {
+	          validationDone(allValid);
+	        }, noop);
+	      }
+	    }
+
+	    function setValidity(name, isValid) {
+	      if (localValidationRunId === currentValidationRunId) {
+	        ctrl.$setValidity(name, isValid);
+	      }
+	    }
+
+	    function validationDone(allValid) {
+	      if (localValidationRunId === currentValidationRunId) {
+
+	        doneCallback(allValid);
+	      }
+	    }
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$commitViewValue
+	   *
+	   * @description
+	   * Commit a pending update to the `$modelValue`.
+	   *
+	   * Updates may be pending by a debounced event or because the input is waiting for a some future
+	   * event defined in `ng-model-options`. this method is rarely needed as `NgModelController`
+	   * usually handles calling this in response to input events.
+	   */
+	  this.$commitViewValue = function() {
+	    var viewValue = ctrl.$viewValue;
+
+	    $timeout.cancel(pendingDebounce);
+
+	    // If the view value has not changed then we should just exit, except in the case where there is
+	    // a native validator on the element. In this case the validation state may have changed even though
+	    // the viewValue has stayed empty.
+	    if (ctrl.$$lastCommittedViewValue === viewValue && (viewValue !== '' || !ctrl.$$hasNativeValidators)) {
+	      return;
+	    }
+	    ctrl.$$lastCommittedViewValue = viewValue;
+
+	    // change to dirty
+	    if (ctrl.$pristine) {
+	      this.$setDirty();
+	    }
+	    this.$$parseAndValidate();
+	  };
+
+	  this.$$parseAndValidate = function() {
+	    var viewValue = ctrl.$$lastCommittedViewValue;
+	    var modelValue = viewValue;
+	    var parserValid = isUndefined(modelValue) ? undefined : true;
+
+	    if (parserValid) {
+	      for (var i = 0; i < ctrl.$parsers.length; i++) {
+	        modelValue = ctrl.$parsers[i](modelValue);
+	        if (isUndefined(modelValue)) {
+	          parserValid = false;
+	          break;
+	        }
+	      }
+	    }
+	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
+	      // ctrl.$modelValue has not been touched yet...
+	      ctrl.$modelValue = ngModelGet($scope);
+	    }
+	    var prevModelValue = ctrl.$modelValue;
+	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
+	    ctrl.$$rawModelValue = modelValue;
+
+	    if (allowInvalid) {
+	      ctrl.$modelValue = modelValue;
+	      writeToModelIfNeeded();
+	    }
+
+	    // Pass the $$lastCommittedViewValue here, because the cached viewValue might be out of date.
+	    // This can happen if e.g. $setViewValue is called from inside a parser
+	    ctrl.$$runValidators(parserValid, modelValue, ctrl.$$lastCommittedViewValue, function(allValid) {
+	      if (!allowInvalid) {
+	        // Note: Don't check ctrl.$valid here, as we could have
+	        // external validators (e.g. calculated on the server),
+	        // that just call $setValidity and need the model value
+	        // to calculate their validity.
+	        ctrl.$modelValue = allValid ? modelValue : undefined;
+	        writeToModelIfNeeded();
+	      }
+	    });
+
+	    function writeToModelIfNeeded() {
+	      if (ctrl.$modelValue !== prevModelValue) {
+	        ctrl.$$writeModelToScope();
+	      }
+	    }
+	  };
+
+	  this.$$writeModelToScope = function() {
+	    ngModelSet($scope, ctrl.$modelValue);
+	    forEach(ctrl.$viewChangeListeners, function(listener) {
+	      try {
+	        listener();
+	      } catch (e) {
+	        $exceptionHandler(e);
+	      }
+	    });
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setViewValue
+	   *
+	   * @description
+	   * Update the view value.
+	   *
+	   * This method should be called when an input directive want to change the view value; typically,
+	   * this is done from within a DOM event handler.
+	   *
+	   * For example {@link ng.directive:input input} calls it when the value of the input changes and
+	   * {@link ng.directive:select select} calls it when an option is selected.
+	   *
+	   * If the new `value` is an object (rather than a string or a number), we should make a copy of the
+	   * object before passing it to `$setViewValue`.  This is because `ngModel` does not perform a deep
+	   * watch of objects, it only looks for a change of identity. If you only change the property of
+	   * the object then ngModel will not realise that the object has changed and will not invoke the
+	   * `$parsers` and `$validators` pipelines.
+	   *
+	   * For this reason, you should not change properties of the copy once it has been passed to
+	   * `$setViewValue`. Otherwise you may cause the model value on the scope to change incorrectly.
+	   *
+	   * When this method is called, the new `value` will be staged for committing through the `$parsers`
+	   * and `$validators` pipelines. If there are no special {@link ngModelOptions} specified then the staged
+	   * value sent directly for processing, finally to be applied to `$modelValue` and then the
+	   * **expression** specified in the `ng-model` attribute.
+	   *
+	   * Lastly, all the registered change listeners, in the `$viewChangeListeners` list, are called.
+	   *
+	   * In case the {@link ng.directive:ngModelOptions ngModelOptions} directive is used with `updateOn`
+	   * and the `default` trigger is not listed, all those actions will remain pending until one of the
+	   * `updateOn` events is triggered on the DOM element.
+	   * All these actions will be debounced if the {@link ng.directive:ngModelOptions ngModelOptions}
+	   * directive is used with a custom debounce for this particular event.
+	   *
+	   * Note that calling this function does not trigger a `$digest`.
+	   *
+	   * @param {string} value Value from the view.
+	   * @param {string} trigger Event that triggered the update.
+	   */
+	  this.$setViewValue = function(value, trigger) {
+	    ctrl.$viewValue = value;
+	    if (!ctrl.$options || ctrl.$options.updateOnDefault) {
+	      ctrl.$$debounceViewValueCommit(trigger);
+	    }
+	  };
+
+	  this.$$debounceViewValueCommit = function(trigger) {
+	    var debounceDelay = 0,
+	        options = ctrl.$options,
+	        debounce;
+
+	    if (options && isDefined(options.debounce)) {
+	      debounce = options.debounce;
+	      if (isNumber(debounce)) {
+	        debounceDelay = debounce;
+	      } else if (isNumber(debounce[trigger])) {
+	        debounceDelay = debounce[trigger];
+	      } else if (isNumber(debounce['default'])) {
+	        debounceDelay = debounce['default'];
+	      }
+	    }
+
+	    $timeout.cancel(pendingDebounce);
+	    if (debounceDelay) {
+	      pendingDebounce = $timeout(function() {
+	        ctrl.$commitViewValue();
+	      }, debounceDelay);
+	    } else if ($rootScope.$$phase) {
+	      ctrl.$commitViewValue();
+	    } else {
+	      $scope.$apply(function() {
+	        ctrl.$commitViewValue();
+	      });
+	    }
+	  };
+
+	  // model -> value
+	  // Note: we cannot use a normal scope.$watch as we want to detect the following:
+	  // 1. scope value is 'a'
+	  // 2. user enters 'b'
+	  // 3. ng-change kicks in and reverts scope value to 'a'
+	  //    -> scope value did not change since the last digest as
+	  //       ng-change executes in apply phase
+	  // 4. view should be changed back to 'a'
+	  $scope.$watch(function ngModelWatch() {
+	    var modelValue = ngModelGet($scope);
+
+	    // if scope model value and ngModel value are out of sync
+	    // TODO(perf): why not move this to the action fn?
+	    if (modelValue !== ctrl.$modelValue) {
+	      ctrl.$modelValue = ctrl.$$rawModelValue = modelValue;
+
+	      var formatters = ctrl.$formatters,
+	          idx = formatters.length;
+
+	      var viewValue = modelValue;
+	      while (idx--) {
+	        viewValue = formatters[idx](viewValue);
+	      }
+	      if (ctrl.$viewValue !== viewValue) {
+	        ctrl.$viewValue = ctrl.$$lastCommittedViewValue = viewValue;
+	        ctrl.$render();
+
+	        ctrl.$$runValidators(undefined, modelValue, viewValue, noop);
+	      }
+	    }
+
+	    return modelValue;
+	  });
+	}];
+
+
+	/**
+	 * @ngdoc directive
+	 * @name ngModel
+	 *
+	 * @element input
+	 * @priority 1
+	 *
+	 * @description
+	 * The `ngModel` directive binds an `input`,`select`, `textarea` (or custom form control) to a
+	 * property on the scope using {@link ngModel.NgModelController NgModelController},
+	 * which is created and exposed by this directive.
+	 *
+	 * `ngModel` is responsible for:
+	 *
+	 * - Binding the view into the model, which other directives such as `input`, `textarea` or `select`
+	 *   require.
+	 * - Providing validation behavior (i.e. required, number, email, url).
+	 * - Keeping the state of the control (valid/invalid, dirty/pristine, touched/untouched, validation errors).
+	 * - Setting related css classes on the element (`ng-valid`, `ng-invalid`, `ng-dirty`, `ng-pristine`, `ng-touched`, `ng-untouched`) including animations.
+	 * - Registering the control with its parent {@link ng.directive:form form}.
+	 *
+	 * Note: `ngModel` will try to bind to the property given by evaluating the expression on the
+	 * current scope. If the property doesn't already exist on this scope, it will be created
+	 * implicitly and added to the scope.
+	 *
+	 * For best practices on using `ngModel`, see:
+	 *
+	 *  - [Understanding Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
+	 *
+	 * For basic examples, how to use `ngModel`, see:
+	 *
+	 *  - {@link ng.directive:input input}
+	 *    - {@link input[text] text}
+	 *    - {@link input[checkbox] checkbox}
+	 *    - {@link input[radio] radio}
+	 *    - {@link input[number] number}
+	 *    - {@link input[email] email}
+	 *    - {@link input[url] url}
+	 *    - {@link input[date] date}
+	 *    - {@link input[datetime-local] datetime-local}
+	 *    - {@link input[time] time}
+	 *    - {@link input[month] month}
+	 *    - {@link input[week] week}
+	 *  - {@link ng.directive:select select}
+	 *  - {@link ng.directive:textarea textarea}
+	 *
+	 * # CSS classes
+	 * The following CSS classes are added and removed on the associated input/select/textarea element
+	 * depending on the validity of the model.
+	 *
+	 *  - `ng-valid`: the model is valid
+	 *  - `ng-invalid`: the model is invalid
+	 *  - `ng-valid-[key]`: for each valid key added by `$setValidity`
+	 *  - `ng-invalid-[key]`: for each invalid key added by `$setValidity`
+	 *  - `ng-pristine`: the control hasn't been interacted with yet
+	 *  - `ng-dirty`: the control has been interacted with
+	 *  - `ng-touched`: the control has been blurred
+	 *  - `ng-untouched`: the control hasn't been blurred
+	 *  - `ng-pending`: any `$asyncValidators` are unfulfilled
+	 *
+	 * Keep in mind that ngAnimate can detect each of these classes when added and removed.
+	 *
+	 * ## Animation Hooks
+	 *
+	 * Animations within models are triggered when any of the associated CSS classes are added and removed
+	 * on the input element which is attached to the model. These classes are: `.ng-pristine`, `.ng-dirty`,
+	 * `.ng-invalid` and `.ng-valid` as well as any other validations that are performed on the model itself.
+	 * The animations that are triggered within ngModel are similar to how they work in ngClass and
+	 * animations can be hooked into using CSS transitions, keyframes as well as JS animations.
+	 *
+	 * The following example shows a simple way to utilize CSS transitions to style an input element
+	 * that has been rendered as invalid after it has been validated:
+	 *
+	 * <pre>
+	 * //be sure to include ngAnimate as a module to hook into more
+	 * //advanced animations
+	 * .my-input {
+	 *   transition:0.5s linear all;
+	 *   background: white;
+	 * }
+	 * .my-input.ng-invalid {
+	 *   background: red;
+	 *   color:white;
+	 * }
+	 * </pre>
+	 *
+	 * @example
+	 * <example deps="angular-animate.js" animations="true" fixBase="true" module="inputExample">
+	     <file name="index.html">
+	       <script>
+	        angular.module('inputExample', [])
+	          .controller('ExampleController', ['$scope', function($scope) {
+	            $scope.val = '1';
+	          }]);
+	       </script>
+	       <style>
+	         .my-input {
+	           -webkit-transition:all linear 0.5s;
+	           transition:all linear 0.5s;
+	           background: transparent;
+	         }
+	         .my-input.ng-invalid {
+	           color:white;
+	           background: red;
+	         }
+	       </style>
+	       Update input to see transitions when valid/invalid.
+	       Integer is a valid value.
+	       <form name="testForm" ng-controller="ExampleController">
+	         <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input" />
+	       </form>
+	     </file>
+	 * </example>
+	 *
+	 * ## Binding to a getter/setter
+	 *
+	 * Sometimes it's helpful to bind `ngModel` to a getter/setter function.  A getter/setter is a
+	 * function that returns a representation of the model when called with zero arguments, and sets
+	 * the internal state of a model when called with an argument. It's sometimes useful to use this
+	 * for models that have an internal representation that's different than what the model exposes
+	 * to the view.
+	 *
+	 * <div class="alert alert-success">
+	 * **Best Practice:** It's best to keep getters fast because Angular is likely to call them more
+	 * frequently than other parts of your code.
+	 * </div>
+	 *
+	 * You use this behavior by adding `ng-model-options="{ getterSetter: true }"` to an element that
+	 * has `ng-model` attached to it. You can also add `ng-model-options="{ getterSetter: true }"` to
+	 * a `<form>`, which will enable this behavior for all `<input>`s within it. See
+	 * {@link ng.directive:ngModelOptions `ngModelOptions`} for more.
+	 *
+	 * The following example shows how to use `ngModel` with a getter/setter:
+	 *
+	 * @example
+	 * <example name="ngModel-getter-setter" module="getterSetterExample">
+	     <file name="index.html">
+	       <div ng-controller="ExampleController">
+	         <form name="userForm">
+	           Name:
+	           <input type="text" name="userName"
+	                  ng-model="user.name"
+	                  ng-model-options="{ getterSetter: true }" />
+	         </form>
+	         <pre>user.name = <span ng-bind="user.name()"></span></pre>
+	       </div>
+	     </file>
+	     <file name="app.js">
+	       angular.module('getterSetterExample', [])
+	         .controller('ExampleController', ['$scope', function($scope) {
+	           var _name = 'Brian';
+	           $scope.user = {
+	             name: function(newName) {
+	               if (angular.isDefined(newName)) {
+	                 _name = newName;
+	               }
+	               return _name;
+	             }
+	           };
+	         }]);
+	     </file>
+	 * </example>
+	 */
+	var ngModelDirective = ['$rootScope', function($rootScope) {
+	  return {
+	    restrict: 'A',
+	    require: ['ngModel', '^?form', '^?ngModelOptions'],
+	    controller: NgModelController,
+	    // Prelink needs to run before any input directive
+	    // so that we can set the NgModelOptions in NgModelController
+	    // before anyone else uses it.
+	    priority: 1,
+	    compile: function ngModelCompile(element) {
+	      // Setup initial state of the control
+	      element.addClass(PRISTINE_CLASS).addClass(UNTOUCHED_CLASS).addClass(VALID_CLASS);
+
+	      return {
+	        pre: function ngModelPreLink(scope, element, attr, ctrls) {
+	          var modelCtrl = ctrls[0],
+	              formCtrl = ctrls[1] || nullFormCtrl;
+
+	          modelCtrl.$$setOptions(ctrls[2] && ctrls[2].$options);
+
+	          // notify others, especially parent forms
+	          formCtrl.$addControl(modelCtrl);
+
+	          attr.$observe('name', function(newValue) {
+	            if (modelCtrl.$name !== newValue) {
+	              formCtrl.$$renameControl(modelCtrl, newValue);
+	            }
+	          });
+
+	          scope.$on('$destroy', function() {
+	            formCtrl.$removeControl(modelCtrl);
+	          });
+	        },
+	        post: function ngModelPostLink(scope, element, attr, ctrls) {
+	          var modelCtrl = ctrls[0];
+	          if (modelCtrl.$options && modelCtrl.$options.updateOn) {
+	            element.on(modelCtrl.$options.updateOn, function(ev) {
+	              modelCtrl.$$debounceViewValueCommit(ev && ev.type);
+	            });
+	          }
+
+	          element.on('blur', function(ev) {
+	            if (modelCtrl.$touched) return;
+
+	            if ($rootScope.$$phase) {
+	              scope.$evalAsync(modelCtrl.$setTouched);
+	            } else {
+	              scope.$apply(modelCtrl.$setTouched);
+	            }
+	          });
+	        }
+	      };
+	    }
+	  };
+	}];
+
+
+	/**
+	 * @ngdoc directive
+	 * @name ngChange
+	 *
+	 * @description
+	 * Evaluate the given expression when the user changes the input.
+	 * The expression is evaluated immediately, unlike the JavaScript onchange event
+	 * which only triggers at the end of a change (usually, when the user leaves the
+	 * form element or presses the return key).
+	 *
+	 * The `ngChange` expression is only evaluated when a change in the input value causes
+	 * a new value to be committed to the model.
+	 *
+	 * It will not be evaluated:
+	 * * if the value returned from the `$parsers` transformation pipeline has not changed
+	 * * if the input has continued to be invalid since the model will stay `null`
+	 * * if the model is changed programmatically and not by a change to the input value
+	 *
+	 *
+	 * Note, this directive requires `ngModel` to be present.
+	 *
+	 * @element input
+	 * @param {expression} ngChange {@link guide/expression Expression} to evaluate upon change
+	 * in input value.
+	 *
+	 * @example
+	 * <example name="ngChange-directive" module="changeExample">
+	 *   <file name="index.html">
+	 *     <script>
+	 *       angular.module('changeExample', [])
+	 *         .controller('ExampleController', ['$scope', function($scope) {
+	 *           $scope.counter = 0;
+	 *           $scope.change = function() {
+	 *             $scope.counter++;
+	 *           };
+	 *         }]);
+	 *     </script>
+	 *     <div ng-controller="ExampleController">
+	 *       <input type="checkbox" ng-model="confirmed" ng-change="change()" id="ng-change-example1" />
+	 *       <input type="checkbox" ng-model="confirmed" id="ng-change-example2" />
+	 *       <label for="ng-change-example2">Confirmed</label><br />
+	 *       <tt>debug = {{confirmed}}</tt><br/>
+	 *       <tt>counter = {{counter}}</tt><br/>
+	 *     </div>
+	 *   </file>
+	 *   <file name="protractor.js" type="protractor">
+	 *     var counter = element(by.binding('counter'));
+	 *     var debug = element(by.binding('confirmed'));
+	 *
+	 *     it('should evaluate the expression if changing from view', function() {
+	 *       expect(counter.getText()).toContain('0');
+	 *
+	 *       element(by.id('ng-change-example1')).click();
+	 *
+	 *       expect(counter.getText()).toContain('1');
+	 *       expect(debug.getText()).toContain('true');
+	 *     });
+	 *
+	 *     it('should not evaluate the expression if changing from model', function() {
+	 *       element(by.id('ng-change-example2')).click();
+
+	 *       expect(counter.getText()).toContain('0');
+	 *       expect(debug.getText()).toContain('true');
+	 *     });
+	 *   </file>
+	 * </example>
+	 */
+	var ngChangeDirective = valueFn({
+	  restrict: 'A',
+	  require: 'ngModel',
+	  link: function(scope, element, attr, ctrl) {
+	    ctrl.$viewChangeListeners.push(function() {
+	      scope.$eval(attr.ngChange);
+	    });
+	  }
+	});
+
+
+	var requiredDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+	      attr.required = true; // force truthy in case we are on non input element
+
+	      ctrl.$validators.required = function(modelValue, viewValue) {
+	        return !attr.required || !ctrl.$isEmpty(viewValue);
+	      };
+
+	      attr.$observe('required', function() {
+	        ctrl.$validate();
+	      });
+	    }
+	  };
+	};
+
+
+	var patternDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+
+	      var regexp, patternExp = attr.ngPattern || attr.pattern;
+	      attr.$observe('pattern', function(regex) {
+	        if (isString(regex) && regex.length > 0) {
+	          regex = new RegExp('^' + regex + '$');
+	        }
+
+	        if (regex && !regex.test) {
+	          throw minErr('ngPattern')('noregexp',
+	            'Expected {0} to be a RegExp but was {1}. Element: {2}', patternExp,
+	            regex, startingTag(elm));
+	        }
+
+	        regexp = regex || undefined;
+	        ctrl.$validate();
+	      });
+
+	      ctrl.$validators.pattern = function(value) {
+	        return ctrl.$isEmpty(value) || isUndefined(regexp) || regexp.test(value);
+	      };
+	    }
+	  };
+	};
+
+
+	var maxlengthDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+
+	      var maxlength = -1;
+	      attr.$observe('maxlength', function(value) {
+	        var intVal = int(value);
+	        maxlength = isNaN(intVal) ? -1 : intVal;
+	        ctrl.$validate();
+	      });
+	      ctrl.$validators.maxlength = function(modelValue, viewValue) {
+	        return (maxlength < 0) || ctrl.$isEmpty(modelValue) || (viewValue.length <= maxlength);
+	      };
+	    }
+	  };
+	};
+
+	var minlengthDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+
+	      var minlength = 0;
+	      attr.$observe('minlength', function(value) {
+	        minlength = int(value) || 0;
+	        ctrl.$validate();
+	      });
+	      ctrl.$validators.minlength = function(modelValue, viewValue) {
+	        return ctrl.$isEmpty(viewValue) || viewValue.length >= minlength;
+	      };
+	    }
+	  };
+	};
+
+
+	/**
+	 * @ngdoc directive
+	 * @name ngList
+	 *
+	 * @description
+	 * Text input that converts between a delimited string and an array of strings. The default
+	 * delimiter is a comma followed by a space - equivalent to `ng-list=", "`. You can specify a custom
+	 * delimiter as the value of the `ngList` attribute - for example, `ng-list=" | "`.
+	 *
+	 * The behaviour of the directive is affected by the use of the `ngTrim` attribute.
+	 * * If `ngTrim` is set to `"false"` then whitespace around both the separator and each
+	 *   list item is respected. This implies that the user of the directive is responsible for
+	 *   dealing with whitespace but also allows you to use whitespace as a delimiter, such as a
+	 *   tab or newline character.
+	 * * Otherwise whitespace around the delimiter is ignored when splitting (although it is respected
+	 *   when joining the list items back together) and whitespace around each list item is stripped
+	 *   before it is added to the model.
+	 *
+	 * ### Example with Validation
+	 *
+	 * <example name="ngList-directive" module="listExample">
+	 *   <file name="app.js">
+	 *      angular.module('listExample', [])
+	 *        .controller('ExampleController', ['$scope', function($scope) {
+	 *          $scope.names = ['morpheus', 'neo', 'trinity'];
+	 *        }]);
+	 *   </file>
+	 *   <file name="index.html">
+	 *    <form name="myForm" ng-controller="ExampleController">
+	 *      List: <input name="namesInput" ng-model="names" ng-list required>
+	 *      <span class="error" ng-show="myForm.namesInput.$error.required">
+	 *        Required!</span>
+	 *      <br>
+	 *      <tt>names = {{names}}</tt><br/>
+	 *      <tt>myForm.namesInput.$valid = {{myForm.namesInput.$valid}}</tt><br/>
+	 *      <tt>myForm.namesInput.$error = {{myForm.namesInput.$error}}</tt><br/>
+	 *      <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+	 *      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+	 *     </form>
+	 *   </file>
+	 *   <file name="protractor.js" type="protractor">
+	 *     var listInput = element(by.model('names'));
+	 *     var names = element(by.exactBinding('names'));
+	 *     var valid = element(by.binding('myForm.namesInput.$valid'));
+	 *     var error = element(by.css('span.error'));
+	 *
+	 *     it('should initialize to model', function() {
+	 *       expect(names.getText()).toContain('["morpheus","neo","trinity"]');
+	 *       expect(valid.getText()).toContain('true');
+	 *       expect(error.getCssValue('display')).toBe('none');
+	 *     });
+	 *
+	 *     it('should be invalid if empty', function() {
+	 *       listInput.clear();
+	 *       listInput.sendKeys('');
+	 *
+	 *       expect(names.getText()).toContain('');
+	 *       expect(valid.getText()).toContain('false');
+	 *       expect(error.getCssValue('display')).not.toBe('none');
+	 *     });
+	 *   </file>
+	 * </example>
+	 *
+	 * ### Example - splitting on whitespace
+	 * <example name="ngList-directive-newlines">
+	 *   <file name="index.html">
+	 *    <textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
+	 *    <pre>{{ list | json }}</pre>
+	 *   </file>
+	 *   <file name="protractor.js" type="protractor">
+	 *     it("should split the text by newlines", function() {
+	 *       var listInput = element(by.model('list'));
+	 *       var output = element(by.binding('list | json'));
+	 *       listInput.sendKeys('abc\ndef\nghi');
+	 *       expect(output.getText()).toContain('[\n  "abc",\n  "def",\n  "ghi"\n]');
+	 *     });
+	 *   </file>
+	 * </example>
+	 *
+	 * @element input
+	 * @param {string=} ngList optional delimiter that should be used to split the value.
+	 */
+	var ngListDirective = function() {
+	  return {
+	    restrict: 'A',
+	    priority: 100,
+	    require: 'ngModel',
+	    link: function(scope, element, attr, ctrl) {
+	      // We want to control whitespace trimming so we use this convoluted approach
+	      // to access the ngList attribute, which doesn't pre-trim the attribute
+	      var ngList = element.attr(attr.$attr.ngList) || ', ';
+	      var trimValues = attr.ngTrim !== 'false';
+	      var separator = trimValues ? trim(ngList) : ngList;
+
+	      var parse = function(viewValue) {
+	        // If the viewValue is invalid (say required but empty) it will be `undefined`
+	        if (isUndefined(viewValue)) return;
+
+	        var list = [];
+
+	        if (viewValue) {
+	          forEach(viewValue.split(separator), function(value) {
+	            if (value) list.push(trimValues ? trim(value) : value);
+	          });
+	        }
+
+	        return list;
+	      };
+
+	      ctrl.$parsers.push(parse);
+	      ctrl.$formatters.push(function(value) {
+	        if (isArray(value)) {
+	          return value.join(ngList);
+	        }
+
+	        return undefined;
+	      });
+
+	      // Override the standard $isEmpty because an empty array means the input is empty.
+	      ctrl.$isEmpty = function(value) {
+	        return !value || !value.length;
+	      };
+	    }
+	  };
+	};
 
 
 	var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
@@ -20871,6 +22188,281 @@
 	    }
 	  };
 	};
+
+	/**
+	 * @ngdoc directive
+	 * @name ngModelOptions
+	 *
+	 * @description
+	 * Allows tuning how model updates are done. Using `ngModelOptions` you can specify a custom list of
+	 * events that will trigger a model update and/or a debouncing delay so that the actual update only
+	 * takes place when a timer expires; this timer will be reset after another change takes place.
+	 *
+	 * Given the nature of `ngModelOptions`, the value displayed inside input fields in the view might
+	 * be different than the value in the actual model. This means that if you update the model you
+	 * should also invoke {@link ngModel.NgModelController `$rollbackViewValue`} on the relevant input field in
+	 * order to make sure it is synchronized with the model and that any debounced action is canceled.
+	 *
+	 * The easiest way to reference the control's {@link ngModel.NgModelController `$rollbackViewValue`}
+	 * method is by making sure the input is placed inside a form that has a `name` attribute. This is
+	 * important because `form` controllers are published to the related scope under the name in their
+	 * `name` attribute.
+	 *
+	 * Any pending changes will take place immediately when an enclosing form is submitted via the
+	 * `submit` event. Note that `ngClick` events will occur before the model is updated. Use `ngSubmit`
+	 * to have access to the updated model.
+	 *
+	 * `ngModelOptions` has an effect on the element it's declared on and its descendants.
+	 *
+	 * @param {Object} ngModelOptions options to apply to the current model. Valid keys are:
+	 *   - `updateOn`: string specifying which event should the input be bound to. You can set several
+	 *     events using an space delimited list. There is a special event called `default` that
+	 *     matches the default events belonging of the control.
+	 *   - `debounce`: integer value which contains the debounce model update value in milliseconds. A
+	 *     value of 0 triggers an immediate update. If an object is supplied instead, you can specify a
+	 *     custom value for each event. For example:
+	 *     `ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"`
+	 *   - `allowInvalid`: boolean value which indicates that the model can be set with values that did
+	 *     not validate correctly instead of the default behavior of setting the model to undefined.
+	 *   - `getterSetter`: boolean value which determines whether or not to treat functions bound to
+	       `ngModel` as getters/setters.
+	 *   - `timezone`: Defines the timezone to be used to read/write the `Date` instance in the model for
+	 *     `<input type="date">`, `<input type="time">`, ... . Right now, the only supported value is `'UTC'`,
+	 *     otherwise the default timezone of the browser will be used.
+	 *
+	 * @example
+
+	  The following example shows how to override immediate updates. Changes on the inputs within the
+	  form will update the model only when the control loses focus (blur event). If `escape` key is
+	  pressed while the input field is focused, the value is reset to the value in the current model.
+
+	  <example name="ngModelOptions-directive-blur" module="optionsExample">
+	    <file name="index.html">
+	      <div ng-controller="ExampleController">
+	        <form name="userForm">
+	          Name:
+	          <input type="text" name="userName"
+	                 ng-model="user.name"
+	                 ng-model-options="{ updateOn: 'blur' }"
+	                 ng-keyup="cancel($event)" /><br />
+
+	          Other data:
+	          <input type="text" ng-model="user.data" /><br />
+	        </form>
+	        <pre>user.name = <span ng-bind="user.name"></span></pre>
+	      </div>
+	    </file>
+	    <file name="app.js">
+	      angular.module('optionsExample', [])
+	        .controller('ExampleController', ['$scope', function($scope) {
+	          $scope.user = { name: 'say', data: '' };
+
+	          $scope.cancel = function(e) {
+	            if (e.keyCode == 27) {
+	              $scope.userForm.userName.$rollbackViewValue();
+	            }
+	          };
+	        }]);
+	    </file>
+	    <file name="protractor.js" type="protractor">
+	      var model = element(by.binding('user.name'));
+	      var input = element(by.model('user.name'));
+	      var other = element(by.model('user.data'));
+
+	      it('should allow custom events', function() {
+	        input.sendKeys(' hello');
+	        input.click();
+	        expect(model.getText()).toEqual('say');
+	        other.click();
+	        expect(model.getText()).toEqual('say hello');
+	      });
+
+	      it('should $rollbackViewValue when model changes', function() {
+	        input.sendKeys(' hello');
+	        expect(input.getAttribute('value')).toEqual('say hello');
+	        input.sendKeys(protractor.Key.ESCAPE);
+	        expect(input.getAttribute('value')).toEqual('say');
+	        other.click();
+	        expect(model.getText()).toEqual('say');
+	      });
+	    </file>
+	  </example>
+
+	  This one shows how to debounce model changes. Model will be updated only 1 sec after last change.
+	  If the `Clear` button is pressed, any debounced action is canceled and the value becomes empty.
+
+	  <example name="ngModelOptions-directive-debounce" module="optionsExample">
+	    <file name="index.html">
+	      <div ng-controller="ExampleController">
+	        <form name="userForm">
+	          Name:
+	          <input type="text" name="userName"
+	                 ng-model="user.name"
+	                 ng-model-options="{ debounce: 1000 }" />
+	          <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button><br />
+	        </form>
+	        <pre>user.name = <span ng-bind="user.name"></span></pre>
+	      </div>
+	    </file>
+	    <file name="app.js">
+	      angular.module('optionsExample', [])
+	        .controller('ExampleController', ['$scope', function($scope) {
+	          $scope.user = { name: 'say' };
+	        }]);
+	    </file>
+	  </example>
+
+	  This one shows how to bind to getter/setters:
+
+	  <example name="ngModelOptions-directive-getter-setter" module="getterSetterExample">
+	    <file name="index.html">
+	      <div ng-controller="ExampleController">
+	        <form name="userForm">
+	          Name:
+	          <input type="text" name="userName"
+	                 ng-model="user.name"
+	                 ng-model-options="{ getterSetter: true }" />
+	        </form>
+	        <pre>user.name = <span ng-bind="user.name()"></span></pre>
+	      </div>
+	    </file>
+	    <file name="app.js">
+	      angular.module('getterSetterExample', [])
+	        .controller('ExampleController', ['$scope', function($scope) {
+	          var _name = 'Brian';
+	          $scope.user = {
+	            name: function(newName) {
+	              return angular.isDefined(newName) ? (_name = newName) : _name;
+	            }
+	          };
+	        }]);
+	    </file>
+	  </example>
+	 */
+	var ngModelOptionsDirective = function() {
+	  return {
+	    restrict: 'A',
+	    controller: ['$scope', '$attrs', function($scope, $attrs) {
+	      var that = this;
+	      this.$options = $scope.$eval($attrs.ngModelOptions);
+	      // Allow adding/overriding bound events
+	      if (this.$options.updateOn !== undefined) {
+	        this.$options.updateOnDefault = false;
+	        // extract "default" pseudo-event from list of events that can trigger a model update
+	        this.$options.updateOn = trim(this.$options.updateOn.replace(DEFAULT_REGEXP, function() {
+	          that.$options.updateOnDefault = true;
+	          return ' ';
+	        }));
+	      } else {
+	        this.$options.updateOnDefault = true;
+	      }
+	    }]
+	  };
+	};
+
+	// helper methods
+	function addSetValidityMethod(context) {
+	  var ctrl = context.ctrl,
+	      $element = context.$element,
+	      classCache = {},
+	      set = context.set,
+	      unset = context.unset,
+	      parentForm = context.parentForm,
+	      $animate = context.$animate;
+
+	  classCache[INVALID_CLASS] = !(classCache[VALID_CLASS] = $element.hasClass(VALID_CLASS));
+
+	  ctrl.$setValidity = setValidity;
+
+	  function setValidity(validationErrorKey, state, options) {
+	    if (state === undefined) {
+	      createAndSet('$pending', validationErrorKey, options);
+	    } else {
+	      unsetAndCleanup('$pending', validationErrorKey, options);
+	    }
+	    if (!isBoolean(state)) {
+	      unset(ctrl.$error, validationErrorKey, options);
+	      unset(ctrl.$$success, validationErrorKey, options);
+	    } else {
+	      if (state) {
+	        unset(ctrl.$error, validationErrorKey, options);
+	        set(ctrl.$$success, validationErrorKey, options);
+	      } else {
+	        set(ctrl.$error, validationErrorKey, options);
+	        unset(ctrl.$$success, validationErrorKey, options);
+	      }
+	    }
+	    if (ctrl.$pending) {
+	      cachedToggleClass(PENDING_CLASS, true);
+	      ctrl.$valid = ctrl.$invalid = undefined;
+	      toggleValidationCss('', null);
+	    } else {
+	      cachedToggleClass(PENDING_CLASS, false);
+	      ctrl.$valid = isObjectEmpty(ctrl.$error);
+	      ctrl.$invalid = !ctrl.$valid;
+	      toggleValidationCss('', ctrl.$valid);
+	    }
+
+	    // re-read the state as the set/unset methods could have
+	    // combined state in ctrl.$error[validationError] (used for forms),
+	    // where setting/unsetting only increments/decrements the value,
+	    // and does not replace it.
+	    var combinedState;
+	    if (ctrl.$pending && ctrl.$pending[validationErrorKey]) {
+	      combinedState = undefined;
+	    } else if (ctrl.$error[validationErrorKey]) {
+	      combinedState = false;
+	    } else if (ctrl.$$success[validationErrorKey]) {
+	      combinedState = true;
+	    } else {
+	      combinedState = null;
+	    }
+	    toggleValidationCss(validationErrorKey, combinedState);
+	    parentForm.$setValidity(validationErrorKey, combinedState, ctrl);
+	  }
+
+	  function createAndSet(name, value, options) {
+	    if (!ctrl[name]) {
+	      ctrl[name] = {};
+	    }
+	    set(ctrl[name], value, options);
+	  }
+
+	  function unsetAndCleanup(name, value, options) {
+	    if (ctrl[name]) {
+	      unset(ctrl[name], value, options);
+	    }
+	    if (isObjectEmpty(ctrl[name])) {
+	      ctrl[name] = undefined;
+	    }
+	  }
+
+	  function cachedToggleClass(className, switchValue) {
+	    if (switchValue && !classCache[className]) {
+	      $animate.addClass($element, className);
+	      classCache[className] = true;
+	    } else if (!switchValue && classCache[className]) {
+	      $animate.removeClass($element, className);
+	      classCache[className] = false;
+	    }
+	  }
+
+	  function toggleValidationCss(validationErrorKey, isValid) {
+	    validationErrorKey = validationErrorKey ? '-' + snake_case(validationErrorKey, '-') : '';
+
+	    cachedToggleClass(VALID_CLASS + validationErrorKey, isValid === true);
+	    cachedToggleClass(INVALID_CLASS + validationErrorKey, isValid === false);
+	  }
+	}
+
+	function isObjectEmpty(obj) {
+	  if (obj) {
+	    for (var prop in obj) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
 
 	/**
 	 * @ngdoc directive
@@ -21078,83 +22670,6 @@
 	  };
 	}];
 
-	/**
-	 * @ngdoc directive
-	 * @name ngChange
-	 *
-	 * @description
-	 * Evaluate the given expression when the user changes the input.
-	 * The expression is evaluated immediately, unlike the JavaScript onchange event
-	 * which only triggers at the end of a change (usually, when the user leaves the
-	 * form element or presses the return key).
-	 *
-	 * The `ngChange` expression is only evaluated when a change in the input value causes
-	 * a new value to be committed to the model.
-	 *
-	 * It will not be evaluated:
-	 * * if the value returned from the `$parsers` transformation pipeline has not changed
-	 * * if the input has continued to be invalid since the model will stay `null`
-	 * * if the model is changed programmatically and not by a change to the input value
-	 *
-	 *
-	 * Note, this directive requires `ngModel` to be present.
-	 *
-	 * @element input
-	 * @param {expression} ngChange {@link guide/expression Expression} to evaluate upon change
-	 * in input value.
-	 *
-	 * @example
-	 * <example name="ngChange-directive" module="changeExample">
-	 *   <file name="index.html">
-	 *     <script>
-	 *       angular.module('changeExample', [])
-	 *         .controller('ExampleController', ['$scope', function($scope) {
-	 *           $scope.counter = 0;
-	 *           $scope.change = function() {
-	 *             $scope.counter++;
-	 *           };
-	 *         }]);
-	 *     </script>
-	 *     <div ng-controller="ExampleController">
-	 *       <input type="checkbox" ng-model="confirmed" ng-change="change()" id="ng-change-example1" />
-	 *       <input type="checkbox" ng-model="confirmed" id="ng-change-example2" />
-	 *       <label for="ng-change-example2">Confirmed</label><br />
-	 *       <tt>debug = {{confirmed}}</tt><br/>
-	 *       <tt>counter = {{counter}}</tt><br/>
-	 *     </div>
-	 *   </file>
-	 *   <file name="protractor.js" type="protractor">
-	 *     var counter = element(by.binding('counter'));
-	 *     var debug = element(by.binding('confirmed'));
-	 *
-	 *     it('should evaluate the expression if changing from view', function() {
-	 *       expect(counter.getText()).toContain('0');
-	 *
-	 *       element(by.id('ng-change-example1')).click();
-	 *
-	 *       expect(counter.getText()).toContain('1');
-	 *       expect(debug.getText()).toContain('true');
-	 *     });
-	 *
-	 *     it('should not evaluate the expression if changing from model', function() {
-	 *       element(by.id('ng-change-example2')).click();
-
-	 *       expect(counter.getText()).toContain('0');
-	 *       expect(debug.getText()).toContain('true');
-	 *     });
-	 *   </file>
-	 * </example>
-	 */
-	var ngChangeDirective = valueFn({
-	  restrict: 'A',
-	  require: 'ngModel',
-	  link: function(scope, element, attr, ctrl) {
-	    ctrl.$viewChangeListeners.push(function() {
-	      scope.$eval(attr.ngChange);
-	    });
-	  }
-	});
-
 	function classDirective(name, selector) {
 	  name = 'ngClass' + name;
 	  return ['$animate', function($animate) {
@@ -21296,9 +22811,8 @@
 	 * new classes are added.
 	 *
 	 * @animations
-	 * **add** - happens just before the class is applied to the elements
-	 *
-	 * **remove** - happens just before the class is removed from the element
+	 * add - happens just before the class is applied to the element
+	 * remove - happens just before the class is removed from the element
 	 *
 	 * @element ANY
 	 * @param {expression} ngClass {@link guide/expression Expression} to eval. The result
@@ -22640,7 +24154,7 @@
 	       <select ng-model="template" ng-options="t.name for t in templates">
 	        <option value="">(blank)</option>
 	       </select>
-	       url of the template: <code>{{template.url}}</code>
+	       url of the template: <tt>{{template.url}}</tt>
 	       <hr/>
 	       <div class="slide-animate-container">
 	         <div class="slide-animate" ng-include="template.url"></div>
@@ -22764,7 +24278,7 @@
 	 * @name ngInclude#$includeContentError
 	 * @eventType emit on the scope ngInclude was declared in
 	 * @description
-	 * Emitted when a template HTTP request yields an erroneous response (status < 200 || status > 299)
+	 * Emitted when a template HTTP request yields an erronous response (status < 200 || status > 299)
 	 *
 	 * @param {Object} angularEvent Synthetic event object.
 	 * @param {String} src URL of content to load.
@@ -22904,7 +24418,7 @@
 	 * **Note**: If you have assignment in `ngInit` along with {@link ng.$filter `$filter`}, make
 	 * sure you have parenthesis for correct precedence:
 	 * <pre class="prettyprint">
-	 * `<div ng-init="test1 = (data | orderBy:'name')"></div>`
+	 *   <div ng-init="test1 = (data | orderBy:'name')"></div>
 	 * </pre>
 	 * </div>
 	 *
@@ -22951,1466 +24465,6 @@
 	    };
 	  }
 	});
-
-	/**
-	 * @ngdoc directive
-	 * @name ngList
-	 *
-	 * @description
-	 * Text input that converts between a delimited string and an array of strings. The default
-	 * delimiter is a comma followed by a space - equivalent to `ng-list=", "`. You can specify a custom
-	 * delimiter as the value of the `ngList` attribute - for example, `ng-list=" | "`.
-	 *
-	 * The behaviour of the directive is affected by the use of the `ngTrim` attribute.
-	 * * If `ngTrim` is set to `"false"` then whitespace around both the separator and each
-	 *   list item is respected. This implies that the user of the directive is responsible for
-	 *   dealing with whitespace but also allows you to use whitespace as a delimiter, such as a
-	 *   tab or newline character.
-	 * * Otherwise whitespace around the delimiter is ignored when splitting (although it is respected
-	 *   when joining the list items back together) and whitespace around each list item is stripped
-	 *   before it is added to the model.
-	 *
-	 * ### Example with Validation
-	 *
-	 * <example name="ngList-directive" module="listExample">
-	 *   <file name="app.js">
-	 *      angular.module('listExample', [])
-	 *        .controller('ExampleController', ['$scope', function($scope) {
-	 *          $scope.names = ['morpheus', 'neo', 'trinity'];
-	 *        }]);
-	 *   </file>
-	 *   <file name="index.html">
-	 *    <form name="myForm" ng-controller="ExampleController">
-	 *      List: <input name="namesInput" ng-model="names" ng-list required>
-	 *      <span class="error" ng-show="myForm.namesInput.$error.required">
-	 *        Required!</span>
-	 *      <br>
-	 *      <tt>names = {{names}}</tt><br/>
-	 *      <tt>myForm.namesInput.$valid = {{myForm.namesInput.$valid}}</tt><br/>
-	 *      <tt>myForm.namesInput.$error = {{myForm.namesInput.$error}}</tt><br/>
-	 *      <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
-	 *      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-	 *     </form>
-	 *   </file>
-	 *   <file name="protractor.js" type="protractor">
-	 *     var listInput = element(by.model('names'));
-	 *     var names = element(by.exactBinding('names'));
-	 *     var valid = element(by.binding('myForm.namesInput.$valid'));
-	 *     var error = element(by.css('span.error'));
-	 *
-	 *     it('should initialize to model', function() {
-	 *       expect(names.getText()).toContain('["morpheus","neo","trinity"]');
-	 *       expect(valid.getText()).toContain('true');
-	 *       expect(error.getCssValue('display')).toBe('none');
-	 *     });
-	 *
-	 *     it('should be invalid if empty', function() {
-	 *       listInput.clear();
-	 *       listInput.sendKeys('');
-	 *
-	 *       expect(names.getText()).toContain('');
-	 *       expect(valid.getText()).toContain('false');
-	 *       expect(error.getCssValue('display')).not.toBe('none');
-	 *     });
-	 *   </file>
-	 * </example>
-	 *
-	 * ### Example - splitting on whitespace
-	 * <example name="ngList-directive-newlines">
-	 *   <file name="index.html">
-	 *    <textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
-	 *    <pre>{{ list | json }}</pre>
-	 *   </file>
-	 *   <file name="protractor.js" type="protractor">
-	 *     it("should split the text by newlines", function() {
-	 *       var listInput = element(by.model('list'));
-	 *       var output = element(by.binding('list | json'));
-	 *       listInput.sendKeys('abc\ndef\nghi');
-	 *       expect(output.getText()).toContain('[\n  "abc",\n  "def",\n  "ghi"\n]');
-	 *     });
-	 *   </file>
-	 * </example>
-	 *
-	 * @element input
-	 * @param {string=} ngList optional delimiter that should be used to split the value.
-	 */
-	var ngListDirective = function() {
-	  return {
-	    restrict: 'A',
-	    priority: 100,
-	    require: 'ngModel',
-	    link: function(scope, element, attr, ctrl) {
-	      // We want to control whitespace trimming so we use this convoluted approach
-	      // to access the ngList attribute, which doesn't pre-trim the attribute
-	      var ngList = element.attr(attr.$attr.ngList) || ', ';
-	      var trimValues = attr.ngTrim !== 'false';
-	      var separator = trimValues ? trim(ngList) : ngList;
-
-	      var parse = function(viewValue) {
-	        // If the viewValue is invalid (say required but empty) it will be `undefined`
-	        if (isUndefined(viewValue)) return;
-
-	        var list = [];
-
-	        if (viewValue) {
-	          forEach(viewValue.split(separator), function(value) {
-	            if (value) list.push(trimValues ? trim(value) : value);
-	          });
-	        }
-
-	        return list;
-	      };
-
-	      ctrl.$parsers.push(parse);
-	      ctrl.$formatters.push(function(value) {
-	        if (isArray(value)) {
-	          return value.join(ngList);
-	        }
-
-	        return undefined;
-	      });
-
-	      // Override the standard $isEmpty because an empty array means the input is empty.
-	      ctrl.$isEmpty = function(value) {
-	        return !value || !value.length;
-	      };
-	    }
-	  };
-	};
-
-	/* global VALID_CLASS: true,
-	  INVALID_CLASS: true,
-	  PRISTINE_CLASS: true,
-	  DIRTY_CLASS: true,
-	  UNTOUCHED_CLASS: true,
-	  TOUCHED_CLASS: true,
-	*/
-
-	var VALID_CLASS = 'ng-valid',
-	    INVALID_CLASS = 'ng-invalid',
-	    PRISTINE_CLASS = 'ng-pristine',
-	    DIRTY_CLASS = 'ng-dirty',
-	    UNTOUCHED_CLASS = 'ng-untouched',
-	    TOUCHED_CLASS = 'ng-touched',
-	    PENDING_CLASS = 'ng-pending';
-
-
-	var $ngModelMinErr = new minErr('ngModel');
-
-	/**
-	 * @ngdoc type
-	 * @name ngModel.NgModelController
-	 *
-	 * @property {string} $viewValue Actual string value in the view.
-	 * @property {*} $modelValue The value in the model that the control is bound to.
-	 * @property {Array.<Function>} $parsers Array of functions to execute, as a pipeline, whenever
-	       the control reads value from the DOM. The functions are called in array order, each passing
-	       its return value through to the next. The last return value is forwarded to the
-	       {@link ngModel.NgModelController#$validators `$validators`} collection.
-
-	Parsers are used to sanitize / convert the {@link ngModel.NgModelController#$viewValue
-	`$viewValue`}.
-
-	Returning `undefined` from a parser means a parse error occurred. In that case,
-	no {@link ngModel.NgModelController#$validators `$validators`} will run and the `ngModel`
-	will be set to `undefined` unless {@link ngModelOptions `ngModelOptions.allowInvalid`}
-	is set to `true`. The parse error is stored in `ngModel.$error.parse`.
-
-	 *
-	 * @property {Array.<Function>} $formatters Array of functions to execute, as a pipeline, whenever
-	       the model value changes. The functions are called in reverse array order, each passing the value through to the
-	       next. The last return value is used as the actual DOM value.
-	       Used to format / convert values for display in the control.
-	 * ```js
-	 * function formatter(value) {
-	 *   if (value) {
-	 *     return value.toUpperCase();
-	 *   }
-	 * }
-	 * ngModel.$formatters.push(formatter);
-	 * ```
-	 *
-	 * @property {Object.<string, function>} $validators A collection of validators that are applied
-	 *      whenever the model value changes. The key value within the object refers to the name of the
-	 *      validator while the function refers to the validation operation. The validation operation is
-	 *      provided with the model value as an argument and must return a true or false value depending
-	 *      on the response of that validation.
-	 *
-	 * ```js
-	 * ngModel.$validators.validCharacters = function(modelValue, viewValue) {
-	 *   var value = modelValue || viewValue;
-	 *   return /[0-9]+/.test(value) &&
-	 *          /[a-z]+/.test(value) &&
-	 *          /[A-Z]+/.test(value) &&
-	 *          /\W+/.test(value);
-	 * };
-	 * ```
-	 *
-	 * @property {Object.<string, function>} $asyncValidators A collection of validations that are expected to
-	 *      perform an asynchronous validation (e.g. a HTTP request). The validation function that is provided
-	 *      is expected to return a promise when it is run during the model validation process. Once the promise
-	 *      is delivered then the validation status will be set to true when fulfilled and false when rejected.
-	 *      When the asynchronous validators are triggered, each of the validators will run in parallel and the model
-	 *      value will only be updated once all validators have been fulfilled. As long as an asynchronous validator
-	 *      is unfulfilled, its key will be added to the controllers `$pending` property. Also, all asynchronous validators
-	 *      will only run once all synchronous validators have passed.
-	 *
-	 * Please note that if $http is used then it is important that the server returns a success HTTP response code
-	 * in order to fulfill the validation and a status level of `4xx` in order to reject the validation.
-	 *
-	 * ```js
-	 * ngModel.$asyncValidators.uniqueUsername = function(modelValue, viewValue) {
-	 *   var value = modelValue || viewValue;
-	 *
-	 *   // Lookup user by username
-	 *   return $http.get('/api/users/' + value).
-	 *      then(function resolved() {
-	 *        //username exists, this means validation fails
-	 *        return $q.reject('exists');
-	 *      }, function rejected() {
-	 *        //username does not exist, therefore this validation passes
-	 *        return true;
-	 *      });
-	 * };
-	 * ```
-	 *
-	 * @property {Array.<Function>} $viewChangeListeners Array of functions to execute whenever the
-	 *     view value has changed. It is called with no arguments, and its return value is ignored.
-	 *     This can be used in place of additional $watches against the model value.
-	 *
-	 * @property {Object} $error An object hash with all failing validator ids as keys.
-	 * @property {Object} $pending An object hash with all pending validator ids as keys.
-	 *
-	 * @property {boolean} $untouched True if control has not lost focus yet.
-	 * @property {boolean} $touched True if control has lost focus.
-	 * @property {boolean} $pristine True if user has not interacted with the control yet.
-	 * @property {boolean} $dirty True if user has already interacted with the control.
-	 * @property {boolean} $valid True if there is no error.
-	 * @property {boolean} $invalid True if at least one error on the control.
-	 * @property {string} $name The name attribute of the control.
-	 *
-	 * @description
-	 *
-	 * `NgModelController` provides API for the {@link ngModel `ngModel`} directive.
-	 * The controller contains services for data-binding, validation, CSS updates, and value formatting
-	 * and parsing. It purposefully does not contain any logic which deals with DOM rendering or
-	 * listening to DOM events.
-	 * Such DOM related logic should be provided by other directives which make use of
-	 * `NgModelController` for data-binding to control elements.
-	 * Angular provides this DOM logic for most {@link input `input`} elements.
-	 * At the end of this page you can find a {@link ngModel.NgModelController#custom-control-example
-	 * custom control example} that uses `ngModelController` to bind to `contenteditable` elements.
-	 *
-	 * @example
-	 * ### Custom Control Example
-	 * This example shows how to use `NgModelController` with a custom control to achieve
-	 * data-binding. Notice how different directives (`contenteditable`, `ng-model`, and `required`)
-	 * collaborate together to achieve the desired result.
-	 *
-	 * Note that `contenteditable` is an HTML5 attribute, which tells the browser to let the element
-	 * contents be edited in place by the user.  This will not work on older browsers.
-	 *
-	 * We are using the {@link ng.service:$sce $sce} service here and include the {@link ngSanitize $sanitize}
-	 * module to automatically remove "bad" content like inline event listener (e.g. `<span onclick="...">`).
-	 * However, as we are using `$sce` the model can still decide to provide unsafe content if it marks
-	 * that content using the `$sce` service.
-	 *
-	 * <example name="NgModelController" module="customControl" deps="angular-sanitize.js">
-	    <file name="style.css">
-	      [contenteditable] {
-	        border: 1px solid black;
-	        background-color: white;
-	        min-height: 20px;
-	      }
-
-	      .ng-invalid {
-	        border: 1px solid red;
-	      }
-
-	    </file>
-	    <file name="script.js">
-	      angular.module('customControl', ['ngSanitize']).
-	        directive('contenteditable', ['$sce', function($sce) {
-	          return {
-	            restrict: 'A', // only activate on element attribute
-	            require: '?ngModel', // get a hold of NgModelController
-	            link: function(scope, element, attrs, ngModel) {
-	              if (!ngModel) return; // do nothing if no ng-model
-
-	              // Specify how UI should be updated
-	              ngModel.$render = function() {
-	                element.html($sce.getTrustedHtml(ngModel.$viewValue || ''));
-	              };
-
-	              // Listen for change events to enable binding
-	              element.on('blur keyup change', function() {
-	                scope.$evalAsync(read);
-	              });
-	              read(); // initialize
-
-	              // Write data to the model
-	              function read() {
-	                var html = element.html();
-	                // When we clear the content editable the browser leaves a <br> behind
-	                // If strip-br attribute is provided then we strip this out
-	                if ( attrs.stripBr && html == '<br>' ) {
-	                  html = '';
-	                }
-	                ngModel.$setViewValue(html);
-	              }
-	            }
-	          };
-	        }]);
-	    </file>
-	    <file name="index.html">
-	      <form name="myForm">
-	       <div contenteditable
-	            name="myWidget" ng-model="userContent"
-	            strip-br="true"
-	            required>Change me!</div>
-	        <span ng-show="myForm.myWidget.$error.required">Required!</span>
-	       <hr>
-	       <textarea ng-model="userContent"></textarea>
-	      </form>
-	    </file>
-	    <file name="protractor.js" type="protractor">
-	    it('should data-bind and become invalid', function() {
-	      if (browser.params.browser == 'safari' || browser.params.browser == 'firefox') {
-	        // SafariDriver can't handle contenteditable
-	        // and Firefox driver can't clear contenteditables very well
-	        return;
-	      }
-	      var contentEditable = element(by.css('[contenteditable]'));
-	      var content = 'Change me!';
-
-	      expect(contentEditable.getText()).toEqual(content);
-
-	      contentEditable.clear();
-	      contentEditable.sendKeys(protractor.Key.BACK_SPACE);
-	      expect(contentEditable.getText()).toEqual('');
-	      expect(contentEditable.getAttribute('class')).toMatch(/ng-invalid-required/);
-	    });
-	    </file>
-	 * </example>
-	 *
-	 *
-	 */
-	var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$parse', '$animate', '$timeout', '$rootScope', '$q', '$interpolate',
-	    function($scope, $exceptionHandler, $attr, $element, $parse, $animate, $timeout, $rootScope, $q, $interpolate) {
-	  this.$viewValue = Number.NaN;
-	  this.$modelValue = Number.NaN;
-	  this.$$rawModelValue = undefined; // stores the parsed modelValue / model set from scope regardless of validity.
-	  this.$validators = {};
-	  this.$asyncValidators = {};
-	  this.$parsers = [];
-	  this.$formatters = [];
-	  this.$viewChangeListeners = [];
-	  this.$untouched = true;
-	  this.$touched = false;
-	  this.$pristine = true;
-	  this.$dirty = false;
-	  this.$valid = true;
-	  this.$invalid = false;
-	  this.$error = {}; // keep invalid keys here
-	  this.$$success = {}; // keep valid keys here
-	  this.$pending = undefined; // keep pending keys here
-	  this.$name = $interpolate($attr.name || '', false)($scope);
-
-
-	  var parsedNgModel = $parse($attr.ngModel),
-	      parsedNgModelAssign = parsedNgModel.assign,
-	      ngModelGet = parsedNgModel,
-	      ngModelSet = parsedNgModelAssign,
-	      pendingDebounce = null,
-	      ctrl = this;
-
-	  this.$$setOptions = function(options) {
-	    ctrl.$options = options;
-	    if (options && options.getterSetter) {
-	      var invokeModelGetter = $parse($attr.ngModel + '()'),
-	          invokeModelSetter = $parse($attr.ngModel + '($$$p)');
-
-	      ngModelGet = function($scope) {
-	        var modelValue = parsedNgModel($scope);
-	        if (isFunction(modelValue)) {
-	          modelValue = invokeModelGetter($scope);
-	        }
-	        return modelValue;
-	      };
-	      ngModelSet = function($scope, newValue) {
-	        if (isFunction(parsedNgModel($scope))) {
-	          invokeModelSetter($scope, {$$$p: ctrl.$modelValue});
-	        } else {
-	          parsedNgModelAssign($scope, ctrl.$modelValue);
-	        }
-	      };
-	    } else if (!parsedNgModel.assign) {
-	      throw $ngModelMinErr('nonassign', "Expression '{0}' is non-assignable. Element: {1}",
-	          $attr.ngModel, startingTag($element));
-	    }
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$render
-	   *
-	   * @description
-	   * Called when the view needs to be updated. It is expected that the user of the ng-model
-	   * directive will implement this method.
-	   *
-	   * The `$render()` method is invoked in the following situations:
-	   *
-	   * * `$rollbackViewValue()` is called.  If we are rolling back the view value to the last
-	   *   committed value then `$render()` is called to update the input control.
-	   * * The value referenced by `ng-model` is changed programmatically and both the `$modelValue` and
-	   *   the `$viewValue` are different to last time.
-	   *
-	   * Since `ng-model` does not do a deep watch, `$render()` is only invoked if the values of
-	   * `$modelValue` and `$viewValue` are actually different to their previous value. If `$modelValue`
-	   * or `$viewValue` are objects (rather than a string or number) then `$render()` will not be
-	   * invoked if you only change a property on the objects.
-	   */
-	  this.$render = noop;
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$isEmpty
-	   *
-	   * @description
-	   * This is called when we need to determine if the value of an input is empty.
-	   *
-	   * For instance, the required directive does this to work out if the input has data or not.
-	   *
-	   * The default `$isEmpty` function checks whether the value is `undefined`, `''`, `null` or `NaN`.
-	   *
-	   * You can override this for input directives whose concept of being empty is different to the
-	   * default. The `checkboxInputType` directive does this because in its case a value of `false`
-	   * implies empty.
-	   *
-	   * @param {*} value The value of the input to check for emptiness.
-	   * @returns {boolean} True if `value` is "empty".
-	   */
-	  this.$isEmpty = function(value) {
-	    return isUndefined(value) || value === '' || value === null || value !== value;
-	  };
-
-	  var parentForm = $element.inheritedData('$formController') || nullFormCtrl,
-	      currentValidationRunId = 0;
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setValidity
-	   *
-	   * @description
-	   * Change the validity state, and notify the form.
-	   *
-	   * This method can be called within $parsers/$formatters or a custom validation implementation.
-	   * However, in most cases it should be sufficient to use the `ngModel.$validators` and
-	   * `ngModel.$asyncValidators` collections which will call `$setValidity` automatically.
-	   *
-	   * @param {string} validationErrorKey Name of the validator. The `validationErrorKey` will be assigned
-	   *        to either `$error[validationErrorKey]` or `$pending[validationErrorKey]`
-	   *        (for unfulfilled `$asyncValidators`), so that it is available for data-binding.
-	   *        The `validationErrorKey` should be in camelCase and will get converted into dash-case
-	   *        for class name. Example: `myError` will result in `ng-valid-my-error` and `ng-invalid-my-error`
-	   *        class and can be bound to as  `{{someForm.someControl.$error.myError}}` .
-	   * @param {boolean} isValid Whether the current state is valid (true), invalid (false), pending (undefined),
-	   *                          or skipped (null). Pending is used for unfulfilled `$asyncValidators`.
-	   *                          Skipped is used by Angular when validators do not run because of parse errors and
-	   *                          when `$asyncValidators` do not run because any of the `$validators` failed.
-	   */
-	  addSetValidityMethod({
-	    ctrl: this,
-	    $element: $element,
-	    set: function(object, property) {
-	      object[property] = true;
-	    },
-	    unset: function(object, property) {
-	      delete object[property];
-	    },
-	    parentForm: parentForm,
-	    $animate: $animate
-	  });
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setPristine
-	   *
-	   * @description
-	   * Sets the control to its pristine state.
-	   *
-	   * This method can be called to remove the `ng-dirty` class and set the control to its pristine
-	   * state (`ng-pristine` class). A model is considered to be pristine when the control
-	   * has not been changed from when first compiled.
-	   */
-	  this.$setPristine = function() {
-	    ctrl.$dirty = false;
-	    ctrl.$pristine = true;
-	    $animate.removeClass($element, DIRTY_CLASS);
-	    $animate.addClass($element, PRISTINE_CLASS);
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setDirty
-	   *
-	   * @description
-	   * Sets the control to its dirty state.
-	   *
-	   * This method can be called to remove the `ng-pristine` class and set the control to its dirty
-	   * state (`ng-dirty` class). A model is considered to be dirty when the control has been changed
-	   * from when first compiled.
-	   */
-	  this.$setDirty = function() {
-	    ctrl.$dirty = true;
-	    ctrl.$pristine = false;
-	    $animate.removeClass($element, PRISTINE_CLASS);
-	    $animate.addClass($element, DIRTY_CLASS);
-	    parentForm.$setDirty();
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setUntouched
-	   *
-	   * @description
-	   * Sets the control to its untouched state.
-	   *
-	   * This method can be called to remove the `ng-touched` class and set the control to its
-	   * untouched state (`ng-untouched` class). Upon compilation, a model is set as untouched
-	   * by default, however this function can be used to restore that state if the model has
-	   * already been touched by the user.
-	   */
-	  this.$setUntouched = function() {
-	    ctrl.$touched = false;
-	    ctrl.$untouched = true;
-	    $animate.setClass($element, UNTOUCHED_CLASS, TOUCHED_CLASS);
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setTouched
-	   *
-	   * @description
-	   * Sets the control to its touched state.
-	   *
-	   * This method can be called to remove the `ng-untouched` class and set the control to its
-	   * touched state (`ng-touched` class). A model is considered to be touched when the user has
-	   * first focused the control element and then shifted focus away from the control (blur event).
-	   */
-	  this.$setTouched = function() {
-	    ctrl.$touched = true;
-	    ctrl.$untouched = false;
-	    $animate.setClass($element, TOUCHED_CLASS, UNTOUCHED_CLASS);
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$rollbackViewValue
-	   *
-	   * @description
-	   * Cancel an update and reset the input element's value to prevent an update to the `$modelValue`,
-	   * which may be caused by a pending debounced event or because the input is waiting for a some
-	   * future event.
-	   *
-	   * If you have an input that uses `ng-model-options` to set up debounced events or events such
-	   * as blur you can have a situation where there is a period when the `$viewValue`
-	   * is out of synch with the ngModel's `$modelValue`.
-	   *
-	   * In this case, you can run into difficulties if you try to update the ngModel's `$modelValue`
-	   * programmatically before these debounced/future events have resolved/occurred, because Angular's
-	   * dirty checking mechanism is not able to tell whether the model has actually changed or not.
-	   *
-	   * The `$rollbackViewValue()` method should be called before programmatically changing the model of an
-	   * input which may have such events pending. This is important in order to make sure that the
-	   * input field will be updated with the new model value and any pending operations are cancelled.
-	   *
-	   * <example name="ng-model-cancel-update" module="cancel-update-example">
-	   *   <file name="app.js">
-	   *     angular.module('cancel-update-example', [])
-	   *
-	   *     .controller('CancelUpdateController', ['$scope', function($scope) {
-	   *       $scope.resetWithCancel = function(e) {
-	   *         if (e.keyCode == 27) {
-	   *           $scope.myForm.myInput1.$rollbackViewValue();
-	   *           $scope.myValue = '';
-	   *         }
-	   *       };
-	   *       $scope.resetWithoutCancel = function(e) {
-	   *         if (e.keyCode == 27) {
-	   *           $scope.myValue = '';
-	   *         }
-	   *       };
-	   *     }]);
-	   *   </file>
-	   *   <file name="index.html">
-	   *     <div ng-controller="CancelUpdateController">
-	   *       <p>Try typing something in each input.  See that the model only updates when you
-	   *          blur off the input.
-	   *        </p>
-	   *        <p>Now see what happens if you start typing then press the Escape key</p>
-	   *
-	   *       <form name="myForm" ng-model-options="{ updateOn: 'blur' }">
-	   *         <p>With $rollbackViewValue()</p>
-	   *         <input name="myInput1" ng-model="myValue" ng-keydown="resetWithCancel($event)"><br/>
-	   *         myValue: "{{ myValue }}"
-	   *
-	   *         <p>Without $rollbackViewValue()</p>
-	   *         <input name="myInput2" ng-model="myValue" ng-keydown="resetWithoutCancel($event)"><br/>
-	   *         myValue: "{{ myValue }}"
-	   *       </form>
-	   *     </div>
-	   *   </file>
-	   * </example>
-	   */
-	  this.$rollbackViewValue = function() {
-	    $timeout.cancel(pendingDebounce);
-	    ctrl.$viewValue = ctrl.$$lastCommittedViewValue;
-	    ctrl.$render();
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$validate
-	   *
-	   * @description
-	   * Runs each of the registered validators (first synchronous validators and then
-	   * asynchronous validators).
-	   * If the validity changes to invalid, the model will be set to `undefined`,
-	   * unless {@link ngModelOptions `ngModelOptions.allowInvalid`} is `true`.
-	   * If the validity changes to valid, it will set the model to the last available valid
-	   * modelValue, i.e. either the last parsed value or the last value set from the scope.
-	   */
-	  this.$validate = function() {
-	    // ignore $validate before model is initialized
-	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
-	      return;
-	    }
-
-	    var viewValue = ctrl.$$lastCommittedViewValue;
-	    // Note: we use the $$rawModelValue as $modelValue might have been
-	    // set to undefined during a view -> model update that found validation
-	    // errors. We can't parse the view here, since that could change
-	    // the model although neither viewValue nor the model on the scope changed
-	    var modelValue = ctrl.$$rawModelValue;
-
-	    // Check if the there's a parse error, so we don't unset it accidentially
-	    var parserName = ctrl.$$parserName || 'parse';
-	    var parserValid = ctrl.$error[parserName] ? false : undefined;
-
-	    var prevValid = ctrl.$valid;
-	    var prevModelValue = ctrl.$modelValue;
-
-	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
-
-	    ctrl.$$runValidators(parserValid, modelValue, viewValue, function(allValid) {
-	      // If there was no change in validity, don't update the model
-	      // This prevents changing an invalid modelValue to undefined
-	      if (!allowInvalid && prevValid !== allValid) {
-	        // Note: Don't check ctrl.$valid here, as we could have
-	        // external validators (e.g. calculated on the server),
-	        // that just call $setValidity and need the model value
-	        // to calculate their validity.
-	        ctrl.$modelValue = allValid ? modelValue : undefined;
-
-	        if (ctrl.$modelValue !== prevModelValue) {
-	          ctrl.$$writeModelToScope();
-	        }
-	      }
-	    });
-
-	  };
-
-	  this.$$runValidators = function(parseValid, modelValue, viewValue, doneCallback) {
-	    currentValidationRunId++;
-	    var localValidationRunId = currentValidationRunId;
-
-	    // check parser error
-	    if (!processParseErrors(parseValid)) {
-	      validationDone(false);
-	      return;
-	    }
-	    if (!processSyncValidators()) {
-	      validationDone(false);
-	      return;
-	    }
-	    processAsyncValidators();
-
-	    function processParseErrors(parseValid) {
-	      var errorKey = ctrl.$$parserName || 'parse';
-	      if (parseValid === undefined) {
-	        setValidity(errorKey, null);
-	      } else {
-	        setValidity(errorKey, parseValid);
-	        if (!parseValid) {
-	          forEach(ctrl.$validators, function(v, name) {
-	            setValidity(name, null);
-	          });
-	          forEach(ctrl.$asyncValidators, function(v, name) {
-	            setValidity(name, null);
-	          });
-	          return false;
-	        }
-	      }
-	      return true;
-	    }
-
-	    function processSyncValidators() {
-	      var syncValidatorsValid = true;
-	      forEach(ctrl.$validators, function(validator, name) {
-	        var result = validator(modelValue, viewValue);
-	        syncValidatorsValid = syncValidatorsValid && result;
-	        setValidity(name, result);
-	      });
-	      if (!syncValidatorsValid) {
-	        forEach(ctrl.$asyncValidators, function(v, name) {
-	          setValidity(name, null);
-	        });
-	        return false;
-	      }
-	      return true;
-	    }
-
-	    function processAsyncValidators() {
-	      var validatorPromises = [];
-	      var allValid = true;
-	      forEach(ctrl.$asyncValidators, function(validator, name) {
-	        var promise = validator(modelValue, viewValue);
-	        if (!isPromiseLike(promise)) {
-	          throw $ngModelMinErr("$asyncValidators",
-	            "Expected asynchronous validator to return a promise but got '{0}' instead.", promise);
-	        }
-	        setValidity(name, undefined);
-	        validatorPromises.push(promise.then(function() {
-	          setValidity(name, true);
-	        }, function(error) {
-	          allValid = false;
-	          setValidity(name, false);
-	        }));
-	      });
-	      if (!validatorPromises.length) {
-	        validationDone(true);
-	      } else {
-	        $q.all(validatorPromises).then(function() {
-	          validationDone(allValid);
-	        }, noop);
-	      }
-	    }
-
-	    function setValidity(name, isValid) {
-	      if (localValidationRunId === currentValidationRunId) {
-	        ctrl.$setValidity(name, isValid);
-	      }
-	    }
-
-	    function validationDone(allValid) {
-	      if (localValidationRunId === currentValidationRunId) {
-
-	        doneCallback(allValid);
-	      }
-	    }
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$commitViewValue
-	   *
-	   * @description
-	   * Commit a pending update to the `$modelValue`.
-	   *
-	   * Updates may be pending by a debounced event or because the input is waiting for a some future
-	   * event defined in `ng-model-options`. this method is rarely needed as `NgModelController`
-	   * usually handles calling this in response to input events.
-	   */
-	  this.$commitViewValue = function() {
-	    var viewValue = ctrl.$viewValue;
-
-	    $timeout.cancel(pendingDebounce);
-
-	    // If the view value has not changed then we should just exit, except in the case where there is
-	    // a native validator on the element. In this case the validation state may have changed even though
-	    // the viewValue has stayed empty.
-	    if (ctrl.$$lastCommittedViewValue === viewValue && (viewValue !== '' || !ctrl.$$hasNativeValidators)) {
-	      return;
-	    }
-	    ctrl.$$lastCommittedViewValue = viewValue;
-
-	    // change to dirty
-	    if (ctrl.$pristine) {
-	      this.$setDirty();
-	    }
-	    this.$$parseAndValidate();
-	  };
-
-	  this.$$parseAndValidate = function() {
-	    var viewValue = ctrl.$$lastCommittedViewValue;
-	    var modelValue = viewValue;
-	    var parserValid = isUndefined(modelValue) ? undefined : true;
-
-	    if (parserValid) {
-	      for (var i = 0; i < ctrl.$parsers.length; i++) {
-	        modelValue = ctrl.$parsers[i](modelValue);
-	        if (isUndefined(modelValue)) {
-	          parserValid = false;
-	          break;
-	        }
-	      }
-	    }
-	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
-	      // ctrl.$modelValue has not been touched yet...
-	      ctrl.$modelValue = ngModelGet($scope);
-	    }
-	    var prevModelValue = ctrl.$modelValue;
-	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
-	    ctrl.$$rawModelValue = modelValue;
-
-	    if (allowInvalid) {
-	      ctrl.$modelValue = modelValue;
-	      writeToModelIfNeeded();
-	    }
-
-	    // Pass the $$lastCommittedViewValue here, because the cached viewValue might be out of date.
-	    // This can happen if e.g. $setViewValue is called from inside a parser
-	    ctrl.$$runValidators(parserValid, modelValue, ctrl.$$lastCommittedViewValue, function(allValid) {
-	      if (!allowInvalid) {
-	        // Note: Don't check ctrl.$valid here, as we could have
-	        // external validators (e.g. calculated on the server),
-	        // that just call $setValidity and need the model value
-	        // to calculate their validity.
-	        ctrl.$modelValue = allValid ? modelValue : undefined;
-	        writeToModelIfNeeded();
-	      }
-	    });
-
-	    function writeToModelIfNeeded() {
-	      if (ctrl.$modelValue !== prevModelValue) {
-	        ctrl.$$writeModelToScope();
-	      }
-	    }
-	  };
-
-	  this.$$writeModelToScope = function() {
-	    ngModelSet($scope, ctrl.$modelValue);
-	    forEach(ctrl.$viewChangeListeners, function(listener) {
-	      try {
-	        listener();
-	      } catch (e) {
-	        $exceptionHandler(e);
-	      }
-	    });
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setViewValue
-	   *
-	   * @description
-	   * Update the view value.
-	   *
-	   * This method should be called when an input directive want to change the view value; typically,
-	   * this is done from within a DOM event handler.
-	   *
-	   * For example {@link ng.directive:input input} calls it when the value of the input changes and
-	   * {@link ng.directive:select select} calls it when an option is selected.
-	   *
-	   * If the new `value` is an object (rather than a string or a number), we should make a copy of the
-	   * object before passing it to `$setViewValue`.  This is because `ngModel` does not perform a deep
-	   * watch of objects, it only looks for a change of identity. If you only change the property of
-	   * the object then ngModel will not realise that the object has changed and will not invoke the
-	   * `$parsers` and `$validators` pipelines.
-	   *
-	   * For this reason, you should not change properties of the copy once it has been passed to
-	   * `$setViewValue`. Otherwise you may cause the model value on the scope to change incorrectly.
-	   *
-	   * When this method is called, the new `value` will be staged for committing through the `$parsers`
-	   * and `$validators` pipelines. If there are no special {@link ngModelOptions} specified then the staged
-	   * value sent directly for processing, finally to be applied to `$modelValue` and then the
-	   * **expression** specified in the `ng-model` attribute.
-	   *
-	   * Lastly, all the registered change listeners, in the `$viewChangeListeners` list, are called.
-	   *
-	   * In case the {@link ng.directive:ngModelOptions ngModelOptions} directive is used with `updateOn`
-	   * and the `default` trigger is not listed, all those actions will remain pending until one of the
-	   * `updateOn` events is triggered on the DOM element.
-	   * All these actions will be debounced if the {@link ng.directive:ngModelOptions ngModelOptions}
-	   * directive is used with a custom debounce for this particular event.
-	   *
-	   * Note that calling this function does not trigger a `$digest`.
-	   *
-	   * @param {string} value Value from the view.
-	   * @param {string} trigger Event that triggered the update.
-	   */
-	  this.$setViewValue = function(value, trigger) {
-	    ctrl.$viewValue = value;
-	    if (!ctrl.$options || ctrl.$options.updateOnDefault) {
-	      ctrl.$$debounceViewValueCommit(trigger);
-	    }
-	  };
-
-	  this.$$debounceViewValueCommit = function(trigger) {
-	    var debounceDelay = 0,
-	        options = ctrl.$options,
-	        debounce;
-
-	    if (options && isDefined(options.debounce)) {
-	      debounce = options.debounce;
-	      if (isNumber(debounce)) {
-	        debounceDelay = debounce;
-	      } else if (isNumber(debounce[trigger])) {
-	        debounceDelay = debounce[trigger];
-	      } else if (isNumber(debounce['default'])) {
-	        debounceDelay = debounce['default'];
-	      }
-	    }
-
-	    $timeout.cancel(pendingDebounce);
-	    if (debounceDelay) {
-	      pendingDebounce = $timeout(function() {
-	        ctrl.$commitViewValue();
-	      }, debounceDelay);
-	    } else if ($rootScope.$$phase) {
-	      ctrl.$commitViewValue();
-	    } else {
-	      $scope.$apply(function() {
-	        ctrl.$commitViewValue();
-	      });
-	    }
-	  };
-
-	  // model -> value
-	  // Note: we cannot use a normal scope.$watch as we want to detect the following:
-	  // 1. scope value is 'a'
-	  // 2. user enters 'b'
-	  // 3. ng-change kicks in and reverts scope value to 'a'
-	  //    -> scope value did not change since the last digest as
-	  //       ng-change executes in apply phase
-	  // 4. view should be changed back to 'a'
-	  $scope.$watch(function ngModelWatch() {
-	    var modelValue = ngModelGet($scope);
-
-	    // if scope model value and ngModel value are out of sync
-	    // TODO(perf): why not move this to the action fn?
-	    if (modelValue !== ctrl.$modelValue) {
-	      ctrl.$modelValue = ctrl.$$rawModelValue = modelValue;
-
-	      var formatters = ctrl.$formatters,
-	          idx = formatters.length;
-
-	      var viewValue = modelValue;
-	      while (idx--) {
-	        viewValue = formatters[idx](viewValue);
-	      }
-	      if (ctrl.$viewValue !== viewValue) {
-	        ctrl.$viewValue = ctrl.$$lastCommittedViewValue = viewValue;
-	        ctrl.$render();
-
-	        ctrl.$$runValidators(undefined, modelValue, viewValue, noop);
-	      }
-	    }
-
-	    return modelValue;
-	  });
-	}];
-
-
-	/**
-	 * @ngdoc directive
-	 * @name ngModel
-	 *
-	 * @element input
-	 * @priority 1
-	 *
-	 * @description
-	 * The `ngModel` directive binds an `input`,`select`, `textarea` (or custom form control) to a
-	 * property on the scope using {@link ngModel.NgModelController NgModelController},
-	 * which is created and exposed by this directive.
-	 *
-	 * `ngModel` is responsible for:
-	 *
-	 * - Binding the view into the model, which other directives such as `input`, `textarea` or `select`
-	 *   require.
-	 * - Providing validation behavior (i.e. required, number, email, url).
-	 * - Keeping the state of the control (valid/invalid, dirty/pristine, touched/untouched, validation errors).
-	 * - Setting related css classes on the element (`ng-valid`, `ng-invalid`, `ng-dirty`, `ng-pristine`, `ng-touched`, `ng-untouched`) including animations.
-	 * - Registering the control with its parent {@link ng.directive:form form}.
-	 *
-	 * Note: `ngModel` will try to bind to the property given by evaluating the expression on the
-	 * current scope. If the property doesn't already exist on this scope, it will be created
-	 * implicitly and added to the scope.
-	 *
-	 * For best practices on using `ngModel`, see:
-	 *
-	 *  - [Understanding Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
-	 *
-	 * For basic examples, how to use `ngModel`, see:
-	 *
-	 *  - {@link ng.directive:input input}
-	 *    - {@link input[text] text}
-	 *    - {@link input[checkbox] checkbox}
-	 *    - {@link input[radio] radio}
-	 *    - {@link input[number] number}
-	 *    - {@link input[email] email}
-	 *    - {@link input[url] url}
-	 *    - {@link input[date] date}
-	 *    - {@link input[datetime-local] datetime-local}
-	 *    - {@link input[time] time}
-	 *    - {@link input[month] month}
-	 *    - {@link input[week] week}
-	 *  - {@link ng.directive:select select}
-	 *  - {@link ng.directive:textarea textarea}
-	 *
-	 * # CSS classes
-	 * The following CSS classes are added and removed on the associated input/select/textarea element
-	 * depending on the validity of the model.
-	 *
-	 *  - `ng-valid`: the model is valid
-	 *  - `ng-invalid`: the model is invalid
-	 *  - `ng-valid-[key]`: for each valid key added by `$setValidity`
-	 *  - `ng-invalid-[key]`: for each invalid key added by `$setValidity`
-	 *  - `ng-pristine`: the control hasn't been interacted with yet
-	 *  - `ng-dirty`: the control has been interacted with
-	 *  - `ng-touched`: the control has been blurred
-	 *  - `ng-untouched`: the control hasn't been blurred
-	 *  - `ng-pending`: any `$asyncValidators` are unfulfilled
-	 *
-	 * Keep in mind that ngAnimate can detect each of these classes when added and removed.
-	 *
-	 * ## Animation Hooks
-	 *
-	 * Animations within models are triggered when any of the associated CSS classes are added and removed
-	 * on the input element which is attached to the model. These classes are: `.ng-pristine`, `.ng-dirty`,
-	 * `.ng-invalid` and `.ng-valid` as well as any other validations that are performed on the model itself.
-	 * The animations that are triggered within ngModel are similar to how they work in ngClass and
-	 * animations can be hooked into using CSS transitions, keyframes as well as JS animations.
-	 *
-	 * The following example shows a simple way to utilize CSS transitions to style an input element
-	 * that has been rendered as invalid after it has been validated:
-	 *
-	 * <pre>
-	 * //be sure to include ngAnimate as a module to hook into more
-	 * //advanced animations
-	 * .my-input {
-	 *   transition:0.5s linear all;
-	 *   background: white;
-	 * }
-	 * .my-input.ng-invalid {
-	 *   background: red;
-	 *   color:white;
-	 * }
-	 * </pre>
-	 *
-	 * @example
-	 * <example deps="angular-animate.js" animations="true" fixBase="true" module="inputExample">
-	     <file name="index.html">
-	       <script>
-	        angular.module('inputExample', [])
-	          .controller('ExampleController', ['$scope', function($scope) {
-	            $scope.val = '1';
-	          }]);
-	       </script>
-	       <style>
-	         .my-input {
-	           -webkit-transition:all linear 0.5s;
-	           transition:all linear 0.5s;
-	           background: transparent;
-	         }
-	         .my-input.ng-invalid {
-	           color:white;
-	           background: red;
-	         }
-	       </style>
-	       Update input to see transitions when valid/invalid.
-	       Integer is a valid value.
-	       <form name="testForm" ng-controller="ExampleController">
-	         <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input" />
-	       </form>
-	     </file>
-	 * </example>
-	 *
-	 * ## Binding to a getter/setter
-	 *
-	 * Sometimes it's helpful to bind `ngModel` to a getter/setter function.  A getter/setter is a
-	 * function that returns a representation of the model when called with zero arguments, and sets
-	 * the internal state of a model when called with an argument. It's sometimes useful to use this
-	 * for models that have an internal representation that's different than what the model exposes
-	 * to the view.
-	 *
-	 * <div class="alert alert-success">
-	 * **Best Practice:** It's best to keep getters fast because Angular is likely to call them more
-	 * frequently than other parts of your code.
-	 * </div>
-	 *
-	 * You use this behavior by adding `ng-model-options="{ getterSetter: true }"` to an element that
-	 * has `ng-model` attached to it. You can also add `ng-model-options="{ getterSetter: true }"` to
-	 * a `<form>`, which will enable this behavior for all `<input>`s within it. See
-	 * {@link ng.directive:ngModelOptions `ngModelOptions`} for more.
-	 *
-	 * The following example shows how to use `ngModel` with a getter/setter:
-	 *
-	 * @example
-	 * <example name="ngModel-getter-setter" module="getterSetterExample">
-	     <file name="index.html">
-	       <div ng-controller="ExampleController">
-	         <form name="userForm">
-	           Name:
-	           <input type="text" name="userName"
-	                  ng-model="user.name"
-	                  ng-model-options="{ getterSetter: true }" />
-	         </form>
-	         <pre>user.name = <span ng-bind="user.name()"></span></pre>
-	       </div>
-	     </file>
-	     <file name="app.js">
-	       angular.module('getterSetterExample', [])
-	         .controller('ExampleController', ['$scope', function($scope) {
-	           var _name = 'Brian';
-	           $scope.user = {
-	             name: function(newName) {
-	               if (angular.isDefined(newName)) {
-	                 _name = newName;
-	               }
-	               return _name;
-	             }
-	           };
-	         }]);
-	     </file>
-	 * </example>
-	 */
-	var ngModelDirective = ['$rootScope', function($rootScope) {
-	  return {
-	    restrict: 'A',
-	    require: ['ngModel', '^?form', '^?ngModelOptions'],
-	    controller: NgModelController,
-	    // Prelink needs to run before any input directive
-	    // so that we can set the NgModelOptions in NgModelController
-	    // before anyone else uses it.
-	    priority: 1,
-	    compile: function ngModelCompile(element) {
-	      // Setup initial state of the control
-	      element.addClass(PRISTINE_CLASS).addClass(UNTOUCHED_CLASS).addClass(VALID_CLASS);
-
-	      return {
-	        pre: function ngModelPreLink(scope, element, attr, ctrls) {
-	          var modelCtrl = ctrls[0],
-	              formCtrl = ctrls[1] || nullFormCtrl;
-
-	          modelCtrl.$$setOptions(ctrls[2] && ctrls[2].$options);
-
-	          // notify others, especially parent forms
-	          formCtrl.$addControl(modelCtrl);
-
-	          attr.$observe('name', function(newValue) {
-	            if (modelCtrl.$name !== newValue) {
-	              formCtrl.$$renameControl(modelCtrl, newValue);
-	            }
-	          });
-
-	          scope.$on('$destroy', function() {
-	            formCtrl.$removeControl(modelCtrl);
-	          });
-	        },
-	        post: function ngModelPostLink(scope, element, attr, ctrls) {
-	          var modelCtrl = ctrls[0];
-	          if (modelCtrl.$options && modelCtrl.$options.updateOn) {
-	            element.on(modelCtrl.$options.updateOn, function(ev) {
-	              modelCtrl.$$debounceViewValueCommit(ev && ev.type);
-	            });
-	          }
-
-	          element.on('blur', function(ev) {
-	            if (modelCtrl.$touched) return;
-
-	            if ($rootScope.$$phase) {
-	              scope.$evalAsync(modelCtrl.$setTouched);
-	            } else {
-	              scope.$apply(modelCtrl.$setTouched);
-	            }
-	          });
-	        }
-	      };
-	    }
-	  };
-	}];
-
-	var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
-
-	/**
-	 * @ngdoc directive
-	 * @name ngModelOptions
-	 *
-	 * @description
-	 * Allows tuning how model updates are done. Using `ngModelOptions` you can specify a custom list of
-	 * events that will trigger a model update and/or a debouncing delay so that the actual update only
-	 * takes place when a timer expires; this timer will be reset after another change takes place.
-	 *
-	 * Given the nature of `ngModelOptions`, the value displayed inside input fields in the view might
-	 * be different than the value in the actual model. This means that if you update the model you
-	 * should also invoke {@link ngModel.NgModelController `$rollbackViewValue`} on the relevant input field in
-	 * order to make sure it is synchronized with the model and that any debounced action is canceled.
-	 *
-	 * The easiest way to reference the control's {@link ngModel.NgModelController `$rollbackViewValue`}
-	 * method is by making sure the input is placed inside a form that has a `name` attribute. This is
-	 * important because `form` controllers are published to the related scope under the name in their
-	 * `name` attribute.
-	 *
-	 * Any pending changes will take place immediately when an enclosing form is submitted via the
-	 * `submit` event. Note that `ngClick` events will occur before the model is updated. Use `ngSubmit`
-	 * to have access to the updated model.
-	 *
-	 * `ngModelOptions` has an effect on the element it's declared on and its descendants.
-	 *
-	 * @param {Object} ngModelOptions options to apply to the current model. Valid keys are:
-	 *   - `updateOn`: string specifying which event should the input be bound to. You can set several
-	 *     events using an space delimited list. There is a special event called `default` that
-	 *     matches the default events belonging of the control.
-	 *   - `debounce`: integer value which contains the debounce model update value in milliseconds. A
-	 *     value of 0 triggers an immediate update. If an object is supplied instead, you can specify a
-	 *     custom value for each event. For example:
-	 *     `ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"`
-	 *   - `allowInvalid`: boolean value which indicates that the model can be set with values that did
-	 *     not validate correctly instead of the default behavior of setting the model to undefined.
-	 *   - `getterSetter`: boolean value which determines whether or not to treat functions bound to
-	       `ngModel` as getters/setters.
-	 *   - `timezone`: Defines the timezone to be used to read/write the `Date` instance in the model for
-	 *     `<input type="date">`, `<input type="time">`, ... . Right now, the only supported value is `'UTC'`,
-	 *     otherwise the default timezone of the browser will be used.
-	 *
-	 * @example
-
-	  The following example shows how to override immediate updates. Changes on the inputs within the
-	  form will update the model only when the control loses focus (blur event). If `escape` key is
-	  pressed while the input field is focused, the value is reset to the value in the current model.
-
-	  <example name="ngModelOptions-directive-blur" module="optionsExample">
-	    <file name="index.html">
-	      <div ng-controller="ExampleController">
-	        <form name="userForm">
-	          Name:
-	          <input type="text" name="userName"
-	                 ng-model="user.name"
-	                 ng-model-options="{ updateOn: 'blur' }"
-	                 ng-keyup="cancel($event)" /><br />
-
-	          Other data:
-	          <input type="text" ng-model="user.data" /><br />
-	        </form>
-	        <pre>user.name = <span ng-bind="user.name"></span></pre>
-	      </div>
-	    </file>
-	    <file name="app.js">
-	      angular.module('optionsExample', [])
-	        .controller('ExampleController', ['$scope', function($scope) {
-	          $scope.user = { name: 'say', data: '' };
-
-	          $scope.cancel = function(e) {
-	            if (e.keyCode == 27) {
-	              $scope.userForm.userName.$rollbackViewValue();
-	            }
-	          };
-	        }]);
-	    </file>
-	    <file name="protractor.js" type="protractor">
-	      var model = element(by.binding('user.name'));
-	      var input = element(by.model('user.name'));
-	      var other = element(by.model('user.data'));
-
-	      it('should allow custom events', function() {
-	        input.sendKeys(' hello');
-	        input.click();
-	        expect(model.getText()).toEqual('say');
-	        other.click();
-	        expect(model.getText()).toEqual('say hello');
-	      });
-
-	      it('should $rollbackViewValue when model changes', function() {
-	        input.sendKeys(' hello');
-	        expect(input.getAttribute('value')).toEqual('say hello');
-	        input.sendKeys(protractor.Key.ESCAPE);
-	        expect(input.getAttribute('value')).toEqual('say');
-	        other.click();
-	        expect(model.getText()).toEqual('say');
-	      });
-	    </file>
-	  </example>
-
-	  This one shows how to debounce model changes. Model will be updated only 1 sec after last change.
-	  If the `Clear` button is pressed, any debounced action is canceled and the value becomes empty.
-
-	  <example name="ngModelOptions-directive-debounce" module="optionsExample">
-	    <file name="index.html">
-	      <div ng-controller="ExampleController">
-	        <form name="userForm">
-	          Name:
-	          <input type="text" name="userName"
-	                 ng-model="user.name"
-	                 ng-model-options="{ debounce: 1000 }" />
-	          <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button><br />
-	        </form>
-	        <pre>user.name = <span ng-bind="user.name"></span></pre>
-	      </div>
-	    </file>
-	    <file name="app.js">
-	      angular.module('optionsExample', [])
-	        .controller('ExampleController', ['$scope', function($scope) {
-	          $scope.user = { name: 'say' };
-	        }]);
-	    </file>
-	  </example>
-
-	  This one shows how to bind to getter/setters:
-
-	  <example name="ngModelOptions-directive-getter-setter" module="getterSetterExample">
-	    <file name="index.html">
-	      <div ng-controller="ExampleController">
-	        <form name="userForm">
-	          Name:
-	          <input type="text" name="userName"
-	                 ng-model="user.name"
-	                 ng-model-options="{ getterSetter: true }" />
-	        </form>
-	        <pre>user.name = <span ng-bind="user.name()"></span></pre>
-	      </div>
-	    </file>
-	    <file name="app.js">
-	      angular.module('getterSetterExample', [])
-	        .controller('ExampleController', ['$scope', function($scope) {
-	          var _name = 'Brian';
-	          $scope.user = {
-	            name: function(newName) {
-	              return angular.isDefined(newName) ? (_name = newName) : _name;
-	            }
-	          };
-	        }]);
-	    </file>
-	  </example>
-	 */
-	var ngModelOptionsDirective = function() {
-	  return {
-	    restrict: 'A',
-	    controller: ['$scope', '$attrs', function($scope, $attrs) {
-	      var that = this;
-	      this.$options = $scope.$eval($attrs.ngModelOptions);
-	      // Allow adding/overriding bound events
-	      if (this.$options.updateOn !== undefined) {
-	        this.$options.updateOnDefault = false;
-	        // extract "default" pseudo-event from list of events that can trigger a model update
-	        this.$options.updateOn = trim(this.$options.updateOn.replace(DEFAULT_REGEXP, function() {
-	          that.$options.updateOnDefault = true;
-	          return ' ';
-	        }));
-	      } else {
-	        this.$options.updateOnDefault = true;
-	      }
-	    }]
-	  };
-	};
-
-
-
-	// helper methods
-	function addSetValidityMethod(context) {
-	  var ctrl = context.ctrl,
-	      $element = context.$element,
-	      classCache = {},
-	      set = context.set,
-	      unset = context.unset,
-	      parentForm = context.parentForm,
-	      $animate = context.$animate;
-
-	  classCache[INVALID_CLASS] = !(classCache[VALID_CLASS] = $element.hasClass(VALID_CLASS));
-
-	  ctrl.$setValidity = setValidity;
-
-	  function setValidity(validationErrorKey, state, controller) {
-	    if (state === undefined) {
-	      createAndSet('$pending', validationErrorKey, controller);
-	    } else {
-	      unsetAndCleanup('$pending', validationErrorKey, controller);
-	    }
-	    if (!isBoolean(state)) {
-	      unset(ctrl.$error, validationErrorKey, controller);
-	      unset(ctrl.$$success, validationErrorKey, controller);
-	    } else {
-	      if (state) {
-	        unset(ctrl.$error, validationErrorKey, controller);
-	        set(ctrl.$$success, validationErrorKey, controller);
-	      } else {
-	        set(ctrl.$error, validationErrorKey, controller);
-	        unset(ctrl.$$success, validationErrorKey, controller);
-	      }
-	    }
-	    if (ctrl.$pending) {
-	      cachedToggleClass(PENDING_CLASS, true);
-	      ctrl.$valid = ctrl.$invalid = undefined;
-	      toggleValidationCss('', null);
-	    } else {
-	      cachedToggleClass(PENDING_CLASS, false);
-	      ctrl.$valid = isObjectEmpty(ctrl.$error);
-	      ctrl.$invalid = !ctrl.$valid;
-	      toggleValidationCss('', ctrl.$valid);
-	    }
-
-	    // re-read the state as the set/unset methods could have
-	    // combined state in ctrl.$error[validationError] (used for forms),
-	    // where setting/unsetting only increments/decrements the value,
-	    // and does not replace it.
-	    var combinedState;
-	    if (ctrl.$pending && ctrl.$pending[validationErrorKey]) {
-	      combinedState = undefined;
-	    } else if (ctrl.$error[validationErrorKey]) {
-	      combinedState = false;
-	    } else if (ctrl.$$success[validationErrorKey]) {
-	      combinedState = true;
-	    } else {
-	      combinedState = null;
-	    }
-
-	    toggleValidationCss(validationErrorKey, combinedState);
-	    parentForm.$setValidity(validationErrorKey, combinedState, ctrl);
-	  }
-
-	  function createAndSet(name, value, controller) {
-	    if (!ctrl[name]) {
-	      ctrl[name] = {};
-	    }
-	    set(ctrl[name], value, controller);
-	  }
-
-	  function unsetAndCleanup(name, value, controller) {
-	    if (ctrl[name]) {
-	      unset(ctrl[name], value, controller);
-	    }
-	    if (isObjectEmpty(ctrl[name])) {
-	      ctrl[name] = undefined;
-	    }
-	  }
-
-	  function cachedToggleClass(className, switchValue) {
-	    if (switchValue && !classCache[className]) {
-	      $animate.addClass($element, className);
-	      classCache[className] = true;
-	    } else if (!switchValue && classCache[className]) {
-	      $animate.removeClass($element, className);
-	      classCache[className] = false;
-	    }
-	  }
-
-	  function toggleValidationCss(validationErrorKey, isValid) {
-	    validationErrorKey = validationErrorKey ? '-' + snake_case(validationErrorKey, '-') : '';
-
-	    cachedToggleClass(VALID_CLASS + validationErrorKey, isValid === true);
-	    cachedToggleClass(INVALID_CLASS + validationErrorKey, isValid === false);
-	  }
-	}
-
-	function isObjectEmpty(obj) {
-	  if (obj) {
-	    for (var prop in obj) {
-	      return false;
-	    }
-	  }
-	  return true;
-	}
 
 	/**
 	 * @ngdoc directive
@@ -24697,29 +24751,6 @@
 	 * Creating aliases for these properties is possible with {@link ng.directive:ngInit `ngInit`}.
 	 * This may be useful when, for instance, nesting ngRepeats.
 	 *
-	 * # Iterating over object properties
-	 *
-	 * It is possible to get `ngRepeat` to iterate over the properties of an object using the following
-	 * syntax:
-	 *
-	 * ```js
-	 * <div ng-repeat="(key, value) in myObj"> ... </div>
-	 * ```
-	 *
-	 * You need to be aware that the JavaScript specification does not define what order
-	 * it will return the keys for an object. In order to have a guaranteed deterministic order
-	 * for the keys, Angular versions up to and including 1.3 **sort the keys alphabetically**.
-	 *
-	 * If this is not desired, the recommended workaround is to convert your object into an array
-	 * that is sorted into the order that you prefer before providing it to `ngRepeat`.  You could
-	 * do this with a filter such as [toArrayFilter](http://ngmodules.org/modules/angular-toArrayFilter)
-	 * or implement a `$watch` on the object yourself.
-	 *
-	 * In version 1.4 we will remove the sorting, since it seems that browsers generally follow the
-	 * strategy of providing keys in the order in which they were defined, although there are exceptions
-	 * when keys are deleted and reinstated.
-	 *
-	 *
 	 * # Special repeat start and end points
 	 * To repeat a series of elements instead of just one parent element, ngRepeat (as well as other ng directives) supports extending
 	 * the range of the repeater by defining explicit start and end points by using **ng-repeat-start** and **ng-repeat-end** respectively.
@@ -24964,7 +24995,7 @@
 	      var keyIdentifier = match[2];
 
 	      if (aliasAs && (!/^[$a-zA-Z_][$a-zA-Z0-9_]*$/.test(aliasAs) ||
-	          /^(null|undefined|this|\$index|\$first|\$middle|\$last|\$even|\$odd|\$parent|\$root|\$id)$/.test(aliasAs))) {
+	          /^(null|undefined|this|\$index|\$first|\$middle|\$last|\$even|\$odd|\$parent)$/.test(aliasAs))) {
 	        throw ngRepeatMinErr('badident', "alias '{0}' is invalid --- must be a valid JS identifier which is not a reserved name.",
 	          aliasAs);
 	      }
@@ -25176,11 +25207,10 @@
 	 *
 	 * By default, the `.ng-hide` class will style the element with `display: none!important`. If you wish to change
 	 * the hide behavior with ngShow/ngHide then this can be achieved by restating the styles for the `.ng-hide`
-	 * class CSS. Note that the selector that needs to be used is actually `.ng-hide:not(.ng-hide-animate)` to cope
-	 * with extra animation classes that can be added.
+	 * class in CSS:
 	 *
 	 * ```css
-	 * .ng-hide:not(.ng-hide-animate) {
+	 * .ng-hide {
 	 *   /&#42; this is just another form of hiding an element &#42;/
 	 *   display: block!important;
 	 *   position: absolute;
@@ -25518,12 +25548,12 @@
 	   </example>
 	 */
 	var ngStyleDirective = ngDirective(function(scope, element, attr) {
-	  scope.$watchCollection(attr.ngStyle, function ngStyleWatchAction(newStyles, oldStyles) {
+	  scope.$watch(attr.ngStyle, function ngStyleWatchAction(newStyles, oldStyles) {
 	    if (oldStyles && (newStyles !== oldStyles)) {
 	      forEach(oldStyles, function(val, style) { element.css(style, '');});
 	    }
 	    if (newStyles) element.css(newStyles);
-	  });
+	  }, true);
 	});
 
 	/**
@@ -26631,96 +26661,6 @@
 	  terminal: false
 	});
 
-	var requiredDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-	      attr.required = true; // force truthy in case we are on non input element
-
-	      ctrl.$validators.required = function(modelValue, viewValue) {
-	        return !attr.required || !ctrl.$isEmpty(viewValue);
-	      };
-
-	      attr.$observe('required', function() {
-	        ctrl.$validate();
-	      });
-	    }
-	  };
-	};
-
-
-	var patternDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-
-	      var regexp, patternExp = attr.ngPattern || attr.pattern;
-	      attr.$observe('pattern', function(regex) {
-	        if (isString(regex) && regex.length > 0) {
-	          regex = new RegExp('^' + regex + '$');
-	        }
-
-	        if (regex && !regex.test) {
-	          throw minErr('ngPattern')('noregexp',
-	            'Expected {0} to be a RegExp but was {1}. Element: {2}', patternExp,
-	            regex, startingTag(elm));
-	        }
-
-	        regexp = regex || undefined;
-	        ctrl.$validate();
-	      });
-
-	      ctrl.$validators.pattern = function(value) {
-	        return ctrl.$isEmpty(value) || isUndefined(regexp) || regexp.test(value);
-	      };
-	    }
-	  };
-	};
-
-
-	var maxlengthDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-
-	      var maxlength = -1;
-	      attr.$observe('maxlength', function(value) {
-	        var intVal = int(value);
-	        maxlength = isNaN(intVal) ? -1 : intVal;
-	        ctrl.$validate();
-	      });
-	      ctrl.$validators.maxlength = function(modelValue, viewValue) {
-	        return (maxlength < 0) || ctrl.$isEmpty(viewValue) || (viewValue.length <= maxlength);
-	      };
-	    }
-	  };
-	};
-
-	var minlengthDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-
-	      var minlength = 0;
-	      attr.$observe('minlength', function(value) {
-	        minlength = int(value) || 0;
-	        ctrl.$validate();
-	      });
-	      ctrl.$validators.minlength = function(modelValue, viewValue) {
-	        return ctrl.$isEmpty(viewValue) || viewValue.length >= minlength;
-	      };
-	    }
-	  };
-	};
-
 	  if (window.angular.bootstrap) {
 	    //AngularJS is already loaded, so we can return here...
 	    console.log('WARNING: Tried to load angular more than once.');
@@ -26764,27 +26704,6 @@
 
 /***/ },
 /* 6 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-	var dispose = __webpack_require__(34)
-		// The css code:
-		(__webpack_require__(7));
-	// Hot Module Replacement
-	if(false) {
-		module.hot.accept();
-		module.hot.dispose(dispose);
-	}
-
-/***/ },
-/* 7 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports =
-		"/*! normalize.css v3.0.2 | MIT License | git.io/normalize */\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n}\nbody {\n  margin: 0;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  vertical-align: baseline;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n[hidden],\ntemplate {\n  display: none;\n}\na {\n  background-color: transparent;\n}\na:active,\na:hover {\n  outline: 0;\n}\nabbr[title] {\n  border-bottom: 1px dotted;\n}\nb,\nstrong {\n  font-weight: bold;\n}\ndfn {\n  font-style: italic;\n}\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\nmark {\n  background: #ff0;\n  color: #000;\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsup {\n  top: -0.5em;\n}\nsub {\n  bottom: -0.25em;\n}\nimg {\n  border: 0;\n}\nsvg:not(:root) {\n  overflow: hidden;\n}\nfigure {\n  margin: 1em 40px;\n}\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0;\n}\npre {\n  overflow: auto;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  font: inherit;\n  margin: 0;\n}\nbutton {\n  overflow: visible;\n}\nbutton,\nselect {\n  text-transform: none;\n}\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default;\n}\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\ninput {\n  line-height: normal;\n}\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0;\n}\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\nlegend {\n  border: 0;\n  padding: 0;\n}\ntextarea {\n  overflow: auto;\n}\noptgroup {\n  font-weight: bold;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\ntd,\nth {\n  padding: 0;\n}\n/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */\n@media print {\n  *,\n  *:before,\n  *:after {\n    background: transparent !important;\n    color: #000 !important;\n    box-shadow: none !important;\n    text-shadow: none !important;\n  }\n  a,\n  a:visited {\n    text-decoration: underline;\n  }\n  a[href]:after {\n    content: \" (\" attr(href) \")\";\n  }\n  abbr[title]:after {\n    content: \" (\" attr(title) \")\";\n  }\n  a[href^=\"#\"]:after,\n  a[href^=\"javascript:\"]:after {\n    content: \"\";\n  }\n  pre,\n  blockquote {\n    border: 1px solid #999;\n    page-break-inside: avoid;\n  }\n  thead {\n    display: table-header-group;\n  }\n  tr,\n  img {\n    page-break-inside: avoid;\n  }\n  img {\n    max-width: 100% !important;\n  }\n  p,\n  h2,\n  h3 {\n    orphans: 3;\n    widows: 3;\n  }\n  h2,\n  h3 {\n    page-break-after: avoid;\n  }\n  select {\n    background: #fff !important;\n  }\n  .navbar {\n    display: none;\n  }\n  .btn > .caret,\n  .dropup > .btn > .caret {\n    border-top-color: #000 !important;\n  }\n  .label {\n    border: 1px solid #000;\n  }\n  .table {\n    border-collapse: collapse !important;\n  }\n  .table td,\n  .table th {\n    background-color: #fff !important;\n  }\n  .table-bordered th,\n  .table-bordered td {\n    border: 1px solid #ddd !important;\n  }\n}\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\nhtml {\n  font-size: 10px;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nbody {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #333333;\n  background-color: #ffffff;\n}\ninput,\nbutton,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\na {\n  color: #337ab7;\n  text-decoration: none;\n}\na:hover,\na:focus {\n  color: #23527c;\n  text-decoration: underline;\n}\na:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\nfigure {\n  margin: 0;\n}\nimg {\n  vertical-align: middle;\n}\n.img-responsive,\n.thumbnail > img,\n.thumbnail a > img,\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  display: block;\n  max-width: 100%;\n  height: auto;\n}\n.img-rounded {\n  border-radius: 6px;\n}\n.img-thumbnail {\n  padding: 4px;\n  line-height: 1.428571429;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 4px;\n  -webkit-transition: all 0.2s ease-in-out;\n  -o-transition: all 0.2s ease-in-out;\n  transition: all 0.2s ease-in-out;\n  display: inline-block;\n  max-width: 100%;\n  height: auto;\n}\n.img-circle {\n  border-radius: 50%;\n}\nhr {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  border: 0;\n  border-top: 1px solid #eeeeee;\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-only-focusable:active,\n.sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\n.h1,\n.h2,\n.h3,\n.h4,\n.h5,\n.h6 {\n  font-family: inherit;\n  font-weight: 500;\n  line-height: 1.1;\n  color: inherit;\n}\nh1 small,\nh2 small,\nh3 small,\nh4 small,\nh5 small,\nh6 small,\n.h1 small,\n.h2 small,\n.h3 small,\n.h4 small,\n.h5 small,\n.h6 small,\nh1 .small,\nh2 .small,\nh3 .small,\nh4 .small,\nh5 .small,\nh6 .small,\n.h1 .small,\n.h2 .small,\n.h3 .small,\n.h4 .small,\n.h5 .small,\n.h6 .small {\n  font-weight: normal;\n  line-height: 1;\n  color: #777777;\n}\nh1,\n.h1,\nh2,\n.h2,\nh3,\n.h3 {\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\nh1 small,\n.h1 small,\nh2 small,\n.h2 small,\nh3 small,\n.h3 small,\nh1 .small,\n.h1 .small,\nh2 .small,\n.h2 .small,\nh3 .small,\n.h3 .small {\n  font-size: 65%;\n}\nh4,\n.h4,\nh5,\n.h5,\nh6,\n.h6 {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\nh4 small,\n.h4 small,\nh5 small,\n.h5 small,\nh6 small,\n.h6 small,\nh4 .small,\n.h4 .small,\nh5 .small,\n.h5 .small,\nh6 .small,\n.h6 .small {\n  font-size: 75%;\n}\nh1,\n.h1 {\n  font-size: 36px;\n}\nh2,\n.h2 {\n  font-size: 30px;\n}\nh3,\n.h3 {\n  font-size: 24px;\n}\nh4,\n.h4 {\n  font-size: 18px;\n}\nh5,\n.h5 {\n  font-size: 14px;\n}\nh6,\n.h6 {\n  font-size: 12px;\n}\np {\n  margin: 0 0 10px;\n}\n.lead {\n  margin-bottom: 20px;\n  font-size: 16px;\n  font-weight: 300;\n  line-height: 1.4;\n}\n@media (min-width: 768px) {\n  .lead {\n    font-size: 21px;\n  }\n}\nsmall,\n.small {\n  font-size: 85%;\n}\nmark,\n.mark {\n  background-color: #fcf8e3;\n  padding: .2em;\n}\n.text-left {\n  text-align: left;\n}\n.text-right {\n  text-align: right;\n}\n.text-center {\n  text-align: center;\n}\n.text-justify {\n  text-align: justify;\n}\n.text-nowrap {\n  white-space: nowrap;\n}\n.text-lowercase {\n  text-transform: lowercase;\n}\n.text-uppercase {\n  text-transform: uppercase;\n}\n.text-capitalize {\n  text-transform: capitalize;\n}\n.text-muted {\n  color: #777777;\n}\n.text-primary {\n  color: #337ab7;\n}\na.text-primary:hover {\n  color: #286090;\n}\n.text-success {\n  color: #3c763d;\n}\na.text-success:hover {\n  color: #2b542c;\n}\n.text-info {\n  color: #31708f;\n}\na.text-info:hover {\n  color: #245269;\n}\n.text-warning {\n  color: #8a6d3b;\n}\na.text-warning:hover {\n  color: #66512c;\n}\n.text-danger {\n  color: #a94442;\n}\na.text-danger:hover {\n  color: #843534;\n}\n.bg-primary {\n  color: #fff;\n  background-color: #337ab7;\n}\na.bg-primary:hover {\n  background-color: #286090;\n}\n.bg-success {\n  background-color: #dff0d8;\n}\na.bg-success:hover {\n  background-color: #c1e2b3;\n}\n.bg-info {\n  background-color: #d9edf7;\n}\na.bg-info:hover {\n  background-color: #afd9ee;\n}\n.bg-warning {\n  background-color: #fcf8e3;\n}\na.bg-warning:hover {\n  background-color: #f7ecb5;\n}\n.bg-danger {\n  background-color: #f2dede;\n}\na.bg-danger:hover {\n  background-color: #e4b9b9;\n}\n.page-header {\n  padding-bottom: 9px;\n  margin: 40px 0 20px;\n  border-bottom: 1px solid #eeeeee;\n}\nul,\nol {\n  margin-top: 0;\n  margin-bottom: 10px;\n}\nul ul,\nol ul,\nul ol,\nol ol {\n  margin-bottom: 0;\n}\n.list-unstyled {\n  padding-left: 0;\n  list-style: none;\n}\n.list-inline {\n  padding-left: 0;\n  list-style: none;\n  margin-left: -5px;\n}\n.list-inline > li {\n  display: inline-block;\n  padding-left: 5px;\n  padding-right: 5px;\n}\ndl {\n  margin-top: 0;\n  margin-bottom: 20px;\n}\ndt,\ndd {\n  line-height: 1.428571429;\n}\ndt {\n  font-weight: bold;\n}\ndd {\n  margin-left: 0;\n}\n@media (min-width: 768px) {\n  .dl-horizontal dt {\n    float: left;\n    width: 160px;\n    clear: left;\n    text-align: right;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n  }\n  .dl-horizontal dd {\n    margin-left: 180px;\n  }\n}\nabbr[title],\nabbr[data-original-title] {\n  cursor: help;\n  border-bottom: 1px dotted #777777;\n}\n.initialism {\n  font-size: 90%;\n  text-transform: uppercase;\n}\nblockquote {\n  padding: 10px 20px;\n  margin: 0 0 20px;\n  font-size: 17.5px;\n  border-left: 5px solid #eeeeee;\n}\nblockquote p:last-child,\nblockquote ul:last-child,\nblockquote ol:last-child {\n  margin-bottom: 0;\n}\nblockquote footer,\nblockquote small,\nblockquote .small {\n  display: block;\n  font-size: 80%;\n  line-height: 1.428571429;\n  color: #777777;\n}\nblockquote footer:before,\nblockquote small:before,\nblockquote .small:before {\n  content: '\\2014 \\00A0';\n}\n.blockquote-reverse,\nblockquote.pull-right {\n  padding-right: 15px;\n  padding-left: 0;\n  border-right: 5px solid #eeeeee;\n  border-left: 0;\n  text-align: right;\n}\n.blockquote-reverse footer:before,\nblockquote.pull-right footer:before,\n.blockquote-reverse small:before,\nblockquote.pull-right small:before,\n.blockquote-reverse .small:before,\nblockquote.pull-right .small:before {\n  content: '';\n}\n.blockquote-reverse footer:after,\nblockquote.pull-right footer:after,\n.blockquote-reverse small:after,\nblockquote.pull-right small:after,\n.blockquote-reverse .small:after,\nblockquote.pull-right .small:after {\n  content: '\\00A0 \\2014';\n}\naddress {\n  margin-bottom: 20px;\n  font-style: normal;\n  line-height: 1.428571429;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: Menlo, Monaco, Consolas, \"Courier New\", monospace;\n}\ncode {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px;\n}\nkbd {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #ffffff;\n  background-color: #333333;\n  border-radius: 3px;\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);\n}\nkbd kbd {\n  padding: 0;\n  font-size: 100%;\n  font-weight: bold;\n  box-shadow: none;\n}\npre {\n  display: block;\n  padding: 9.5px;\n  margin: 0 0 10px;\n  font-size: 13px;\n  line-height: 1.428571429;\n  word-break: break-all;\n  word-wrap: break-word;\n  color: #333333;\n  background-color: #f5f5f5;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\npre code {\n  padding: 0;\n  font-size: inherit;\n  color: inherit;\n  white-space: pre-wrap;\n  background-color: transparent;\n  border-radius: 0;\n}\n.pre-scrollable {\n  max-height: 340px;\n  overflow-y: scroll;\n}\n.container {\n  margin-right: auto;\n  margin-left: auto;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n@media (min-width: 768px) {\n  .container {\n    width: 750px;\n  }\n}\n@media (min-width: 992px) {\n  .container {\n    width: 970px;\n  }\n}\n@media (min-width: 1200px) {\n  .container {\n    width: 1170px;\n  }\n}\n.container-fluid {\n  margin-right: auto;\n  margin-left: auto;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.row {\n  margin-left: -15px;\n  margin-right: -15px;\n}\n.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {\n  position: relative;\n  min-height: 1px;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {\n  float: left;\n}\n.col-xs-12 {\n  width: 100%;\n}\n.col-xs-11 {\n  width: 91.66666666666666%;\n}\n.col-xs-10 {\n  width: 83.33333333333334%;\n}\n.col-xs-9 {\n  width: 75%;\n}\n.col-xs-8 {\n  width: 66.66666666666666%;\n}\n.col-xs-7 {\n  width: 58.333333333333336%;\n}\n.col-xs-6 {\n  width: 50%;\n}\n.col-xs-5 {\n  width: 41.66666666666667%;\n}\n.col-xs-4 {\n  width: 33.33333333333333%;\n}\n.col-xs-3 {\n  width: 25%;\n}\n.col-xs-2 {\n  width: 16.666666666666664%;\n}\n.col-xs-1 {\n  width: 8.333333333333332%;\n}\n.col-xs-pull-12 {\n  right: 100%;\n}\n.col-xs-pull-11 {\n  right: 91.66666666666666%;\n}\n.col-xs-pull-10 {\n  right: 83.33333333333334%;\n}\n.col-xs-pull-9 {\n  right: 75%;\n}\n.col-xs-pull-8 {\n  right: 66.66666666666666%;\n}\n.col-xs-pull-7 {\n  right: 58.333333333333336%;\n}\n.col-xs-pull-6 {\n  right: 50%;\n}\n.col-xs-pull-5 {\n  right: 41.66666666666667%;\n}\n.col-xs-pull-4 {\n  right: 33.33333333333333%;\n}\n.col-xs-pull-3 {\n  right: 25%;\n}\n.col-xs-pull-2 {\n  right: 16.666666666666664%;\n}\n.col-xs-pull-1 {\n  right: 8.333333333333332%;\n}\n.col-xs-pull-0 {\n  right: auto;\n}\n.col-xs-push-12 {\n  left: 100%;\n}\n.col-xs-push-11 {\n  left: 91.66666666666666%;\n}\n.col-xs-push-10 {\n  left: 83.33333333333334%;\n}\n.col-xs-push-9 {\n  left: 75%;\n}\n.col-xs-push-8 {\n  left: 66.66666666666666%;\n}\n.col-xs-push-7 {\n  left: 58.333333333333336%;\n}\n.col-xs-push-6 {\n  left: 50%;\n}\n.col-xs-push-5 {\n  left: 41.66666666666667%;\n}\n.col-xs-push-4 {\n  left: 33.33333333333333%;\n}\n.col-xs-push-3 {\n  left: 25%;\n}\n.col-xs-push-2 {\n  left: 16.666666666666664%;\n}\n.col-xs-push-1 {\n  left: 8.333333333333332%;\n}\n.col-xs-push-0 {\n  left: auto;\n}\n.col-xs-offset-12 {\n  margin-left: 100%;\n}\n.col-xs-offset-11 {\n  margin-left: 91.66666666666666%;\n}\n.col-xs-offset-10 {\n  margin-left: 83.33333333333334%;\n}\n.col-xs-offset-9 {\n  margin-left: 75%;\n}\n.col-xs-offset-8 {\n  margin-left: 66.66666666666666%;\n}\n.col-xs-offset-7 {\n  margin-left: 58.333333333333336%;\n}\n.col-xs-offset-6 {\n  margin-left: 50%;\n}\n.col-xs-offset-5 {\n  margin-left: 41.66666666666667%;\n}\n.col-xs-offset-4 {\n  margin-left: 33.33333333333333%;\n}\n.col-xs-offset-3 {\n  margin-left: 25%;\n}\n.col-xs-offset-2 {\n  margin-left: 16.666666666666664%;\n}\n.col-xs-offset-1 {\n  margin-left: 8.333333333333332%;\n}\n.col-xs-offset-0 {\n  margin-left: 0%;\n}\n@media (min-width: 768px) {\n  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {\n    float: left;\n  }\n  .col-sm-12 {\n    width: 100%;\n  }\n  .col-sm-11 {\n    width: 91.66666666666666%;\n  }\n  .col-sm-10 {\n    width: 83.33333333333334%;\n  }\n  .col-sm-9 {\n    width: 75%;\n  }\n  .col-sm-8 {\n    width: 66.66666666666666%;\n  }\n  .col-sm-7 {\n    width: 58.333333333333336%;\n  }\n  .col-sm-6 {\n    width: 50%;\n  }\n  .col-sm-5 {\n    width: 41.66666666666667%;\n  }\n  .col-sm-4 {\n    width: 33.33333333333333%;\n  }\n  .col-sm-3 {\n    width: 25%;\n  }\n  .col-sm-2 {\n    width: 16.666666666666664%;\n  }\n  .col-sm-1 {\n    width: 8.333333333333332%;\n  }\n  .col-sm-pull-12 {\n    right: 100%;\n  }\n  .col-sm-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-sm-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-sm-pull-9 {\n    right: 75%;\n  }\n  .col-sm-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-sm-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-sm-pull-6 {\n    right: 50%;\n  }\n  .col-sm-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-sm-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-sm-pull-3 {\n    right: 25%;\n  }\n  .col-sm-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-sm-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-sm-pull-0 {\n    right: auto;\n  }\n  .col-sm-push-12 {\n    left: 100%;\n  }\n  .col-sm-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-sm-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-sm-push-9 {\n    left: 75%;\n  }\n  .col-sm-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-sm-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-sm-push-6 {\n    left: 50%;\n  }\n  .col-sm-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-sm-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-sm-push-3 {\n    left: 25%;\n  }\n  .col-sm-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-sm-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-sm-push-0 {\n    left: auto;\n  }\n  .col-sm-offset-12 {\n    margin-left: 100%;\n  }\n  .col-sm-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-sm-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-sm-offset-9 {\n    margin-left: 75%;\n  }\n  .col-sm-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-sm-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-sm-offset-6 {\n    margin-left: 50%;\n  }\n  .col-sm-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-sm-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-sm-offset-3 {\n    margin-left: 25%;\n  }\n  .col-sm-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-sm-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-sm-offset-0 {\n    margin-left: 0%;\n  }\n}\n@media (min-width: 992px) {\n  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {\n    float: left;\n  }\n  .col-md-12 {\n    width: 100%;\n  }\n  .col-md-11 {\n    width: 91.66666666666666%;\n  }\n  .col-md-10 {\n    width: 83.33333333333334%;\n  }\n  .col-md-9 {\n    width: 75%;\n  }\n  .col-md-8 {\n    width: 66.66666666666666%;\n  }\n  .col-md-7 {\n    width: 58.333333333333336%;\n  }\n  .col-md-6 {\n    width: 50%;\n  }\n  .col-md-5 {\n    width: 41.66666666666667%;\n  }\n  .col-md-4 {\n    width: 33.33333333333333%;\n  }\n  .col-md-3 {\n    width: 25%;\n  }\n  .col-md-2 {\n    width: 16.666666666666664%;\n  }\n  .col-md-1 {\n    width: 8.333333333333332%;\n  }\n  .col-md-pull-12 {\n    right: 100%;\n  }\n  .col-md-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-md-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-md-pull-9 {\n    right: 75%;\n  }\n  .col-md-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-md-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-md-pull-6 {\n    right: 50%;\n  }\n  .col-md-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-md-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-md-pull-3 {\n    right: 25%;\n  }\n  .col-md-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-md-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-md-pull-0 {\n    right: auto;\n  }\n  .col-md-push-12 {\n    left: 100%;\n  }\n  .col-md-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-md-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-md-push-9 {\n    left: 75%;\n  }\n  .col-md-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-md-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-md-push-6 {\n    left: 50%;\n  }\n  .col-md-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-md-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-md-push-3 {\n    left: 25%;\n  }\n  .col-md-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-md-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-md-push-0 {\n    left: auto;\n  }\n  .col-md-offset-12 {\n    margin-left: 100%;\n  }\n  .col-md-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-md-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-md-offset-9 {\n    margin-left: 75%;\n  }\n  .col-md-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-md-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-md-offset-6 {\n    margin-left: 50%;\n  }\n  .col-md-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-md-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-md-offset-3 {\n    margin-left: 25%;\n  }\n  .col-md-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-md-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-md-offset-0 {\n    margin-left: 0%;\n  }\n}\n@media (min-width: 1200px) {\n  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {\n    float: left;\n  }\n  .col-lg-12 {\n    width: 100%;\n  }\n  .col-lg-11 {\n    width: 91.66666666666666%;\n  }\n  .col-lg-10 {\n    width: 83.33333333333334%;\n  }\n  .col-lg-9 {\n    width: 75%;\n  }\n  .col-lg-8 {\n    width: 66.66666666666666%;\n  }\n  .col-lg-7 {\n    width: 58.333333333333336%;\n  }\n  .col-lg-6 {\n    width: 50%;\n  }\n  .col-lg-5 {\n    width: 41.66666666666667%;\n  }\n  .col-lg-4 {\n    width: 33.33333333333333%;\n  }\n  .col-lg-3 {\n    width: 25%;\n  }\n  .col-lg-2 {\n    width: 16.666666666666664%;\n  }\n  .col-lg-1 {\n    width: 8.333333333333332%;\n  }\n  .col-lg-pull-12 {\n    right: 100%;\n  }\n  .col-lg-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-lg-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-lg-pull-9 {\n    right: 75%;\n  }\n  .col-lg-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-lg-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-lg-pull-6 {\n    right: 50%;\n  }\n  .col-lg-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-lg-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-lg-pull-3 {\n    right: 25%;\n  }\n  .col-lg-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-lg-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-lg-pull-0 {\n    right: auto;\n  }\n  .col-lg-push-12 {\n    left: 100%;\n  }\n  .col-lg-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-lg-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-lg-push-9 {\n    left: 75%;\n  }\n  .col-lg-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-lg-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-lg-push-6 {\n    left: 50%;\n  }\n  .col-lg-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-lg-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-lg-push-3 {\n    left: 25%;\n  }\n  .col-lg-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-lg-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-lg-push-0 {\n    left: auto;\n  }\n  .col-lg-offset-12 {\n    margin-left: 100%;\n  }\n  .col-lg-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-lg-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-lg-offset-9 {\n    margin-left: 75%;\n  }\n  .col-lg-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-lg-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-lg-offset-6 {\n    margin-left: 50%;\n  }\n  .col-lg-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-lg-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-lg-offset-3 {\n    margin-left: 25%;\n  }\n  .col-lg-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-lg-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-lg-offset-0 {\n    margin-left: 0%;\n  }\n}\ntable {\n  background-color: transparent;\n}\ncaption {\n  padding-top: 8px;\n  padding-bottom: 8px;\n  color: #777777;\n  text-align: left;\n}\nth {\n  text-align: left;\n}\n.table {\n  width: 100%;\n  max-width: 100%;\n  margin-bottom: 20px;\n}\n.table > thead > tr > th,\n.table > tbody > tr > th,\n.table > tfoot > tr > th,\n.table > thead > tr > td,\n.table > tbody > tr > td,\n.table > tfoot > tr > td {\n  padding: 8px;\n  line-height: 1.428571429;\n  vertical-align: top;\n  border-top: 1px solid #dddddd;\n}\n.table > thead > tr > th {\n  vertical-align: bottom;\n  border-bottom: 2px solid #dddddd;\n}\n.table > caption + thead > tr:first-child > th,\n.table > colgroup + thead > tr:first-child > th,\n.table > thead:first-child > tr:first-child > th,\n.table > caption + thead > tr:first-child > td,\n.table > colgroup + thead > tr:first-child > td,\n.table > thead:first-child > tr:first-child > td {\n  border-top: 0;\n}\n.table > tbody + tbody {\n  border-top: 2px solid #dddddd;\n}\n.table .table {\n  background-color: #ffffff;\n}\n.table-condensed > thead > tr > th,\n.table-condensed > tbody > tr > th,\n.table-condensed > tfoot > tr > th,\n.table-condensed > thead > tr > td,\n.table-condensed > tbody > tr > td,\n.table-condensed > tfoot > tr > td {\n  padding: 5px;\n}\n.table-bordered {\n  border: 1px solid #dddddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > tbody > tr > th,\n.table-bordered > tfoot > tr > th,\n.table-bordered > thead > tr > td,\n.table-bordered > tbody > tr > td,\n.table-bordered > tfoot > tr > td {\n  border: 1px solid #dddddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > thead > tr > td {\n  border-bottom-width: 2px;\n}\n.table-striped > tbody > tr:nth-of-type(odd) {\n  background-color: #f9f9f9;\n}\n.table-hover > tbody > tr:hover {\n  background-color: #f5f5f5;\n}\ntable col[class*=\"col-\"] {\n  position: static;\n  float: none;\n  display: table-column;\n}\ntable td[class*=\"col-\"],\ntable th[class*=\"col-\"] {\n  position: static;\n  float: none;\n  display: table-cell;\n}\n.table > thead > tr > td.active,\n.table > tbody > tr > td.active,\n.table > tfoot > tr > td.active,\n.table > thead > tr > th.active,\n.table > tbody > tr > th.active,\n.table > tfoot > tr > th.active,\n.table > thead > tr.active > td,\n.table > tbody > tr.active > td,\n.table > tfoot > tr.active > td,\n.table > thead > tr.active > th,\n.table > tbody > tr.active > th,\n.table > tfoot > tr.active > th {\n  background-color: #f5f5f5;\n}\n.table-hover > tbody > tr > td.active:hover,\n.table-hover > tbody > tr > th.active:hover,\n.table-hover > tbody > tr.active:hover > td,\n.table-hover > tbody > tr:hover > .active,\n.table-hover > tbody > tr.active:hover > th {\n  background-color: #e8e8e8;\n}\n.table > thead > tr > td.success,\n.table > tbody > tr > td.success,\n.table > tfoot > tr > td.success,\n.table > thead > tr > th.success,\n.table > tbody > tr > th.success,\n.table > tfoot > tr > th.success,\n.table > thead > tr.success > td,\n.table > tbody > tr.success > td,\n.table > tfoot > tr.success > td,\n.table > thead > tr.success > th,\n.table > tbody > tr.success > th,\n.table > tfoot > tr.success > th {\n  background-color: #dff0d8;\n}\n.table-hover > tbody > tr > td.success:hover,\n.table-hover > tbody > tr > th.success:hover,\n.table-hover > tbody > tr.success:hover > td,\n.table-hover > tbody > tr:hover > .success,\n.table-hover > tbody > tr.success:hover > th {\n  background-color: #d0e9c6;\n}\n.table > thead > tr > td.info,\n.table > tbody > tr > td.info,\n.table > tfoot > tr > td.info,\n.table > thead > tr > th.info,\n.table > tbody > tr > th.info,\n.table > tfoot > tr > th.info,\n.table > thead > tr.info > td,\n.table > tbody > tr.info > td,\n.table > tfoot > tr.info > td,\n.table > thead > tr.info > th,\n.table > tbody > tr.info > th,\n.table > tfoot > tr.info > th {\n  background-color: #d9edf7;\n}\n.table-hover > tbody > tr > td.info:hover,\n.table-hover > tbody > tr > th.info:hover,\n.table-hover > tbody > tr.info:hover > td,\n.table-hover > tbody > tr:hover > .info,\n.table-hover > tbody > tr.info:hover > th {\n  background-color: #c4e3f3;\n}\n.table > thead > tr > td.warning,\n.table > tbody > tr > td.warning,\n.table > tfoot > tr > td.warning,\n.table > thead > tr > th.warning,\n.table > tbody > tr > th.warning,\n.table > tfoot > tr > th.warning,\n.table > thead > tr.warning > td,\n.table > tbody > tr.warning > td,\n.table > tfoot > tr.warning > td,\n.table > thead > tr.warning > th,\n.table > tbody > tr.warning > th,\n.table > tfoot > tr.warning > th {\n  background-color: #fcf8e3;\n}\n.table-hover > tbody > tr > td.warning:hover,\n.table-hover > tbody > tr > th.warning:hover,\n.table-hover > tbody > tr.warning:hover > td,\n.table-hover > tbody > tr:hover > .warning,\n.table-hover > tbody > tr.warning:hover > th {\n  background-color: #faf2cc;\n}\n.table > thead > tr > td.danger,\n.table > tbody > tr > td.danger,\n.table > tfoot > tr > td.danger,\n.table > thead > tr > th.danger,\n.table > tbody > tr > th.danger,\n.table > tfoot > tr > th.danger,\n.table > thead > tr.danger > td,\n.table > tbody > tr.danger > td,\n.table > tfoot > tr.danger > td,\n.table > thead > tr.danger > th,\n.table > tbody > tr.danger > th,\n.table > tfoot > tr.danger > th {\n  background-color: #f2dede;\n}\n.table-hover > tbody > tr > td.danger:hover,\n.table-hover > tbody > tr > th.danger:hover,\n.table-hover > tbody > tr.danger:hover > td,\n.table-hover > tbody > tr:hover > .danger,\n.table-hover > tbody > tr.danger:hover > th {\n  background-color: #ebcccc;\n}\n.table-responsive {\n  overflow-x: auto;\n  min-height: 0.01%;\n}\n@media screen and (max-width: 767px) {\n  .table-responsive {\n    width: 100%;\n    margin-bottom: 15px;\n    overflow-y: hidden;\n    -ms-overflow-style: -ms-autohiding-scrollbar;\n    border: 1px solid #dddddd;\n  }\n  .table-responsive > .table {\n    margin-bottom: 0;\n  }\n  .table-responsive > .table > thead > tr > th,\n  .table-responsive > .table > tbody > tr > th,\n  .table-responsive > .table > tfoot > tr > th,\n  .table-responsive > .table > thead > tr > td,\n  .table-responsive > .table > tbody > tr > td,\n  .table-responsive > .table > tfoot > tr > td {\n    white-space: nowrap;\n  }\n  .table-responsive > .table-bordered {\n    border: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:first-child,\n  .table-responsive > .table-bordered > tbody > tr > th:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n  .table-responsive > .table-bordered > thead > tr > td:first-child,\n  .table-responsive > .table-bordered > tbody > tr > td:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n    border-left: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:last-child,\n  .table-responsive > .table-bordered > tbody > tr > th:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n  .table-responsive > .table-bordered > thead > tr > td:last-child,\n  .table-responsive > .table-bordered > tbody > tr > td:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n    border-right: 0;\n  }\n  .table-responsive > .table-bordered > tbody > tr:last-child > th,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > th,\n  .table-responsive > .table-bordered > tbody > tr:last-child > td,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > td {\n    border-bottom: 0;\n  }\n}\nfieldset {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  min-width: 0;\n}\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 20px;\n  font-size: 21px;\n  line-height: inherit;\n  color: #333333;\n  border: 0;\n  border-bottom: 1px solid #e5e5e5;\n}\nlabel {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 5px;\n  font-weight: bold;\n}\ninput[type=\"search\"] {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\ninput[type=\"radio\"],\ninput[type=\"checkbox\"] {\n  margin: 4px 0 0;\n  margin-top: 1px \\9;\n  line-height: normal;\n}\ninput[type=\"file\"] {\n  display: block;\n}\ninput[type=\"range\"] {\n  display: block;\n  width: 100%;\n}\nselect[multiple],\nselect[size] {\n  height: auto;\n}\ninput[type=\"file\"]:focus,\ninput[type=\"radio\"]:focus,\ninput[type=\"checkbox\"]:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\noutput {\n  display: block;\n  padding-top: 7px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #555555;\n}\n.form-control {\n  display: block;\n  width: 100%;\n  height: 34px;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #555555;\n  background-color: #ffffff;\n  background-image: none;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n}\n.form-control:focus {\n  border-color: #66afe9;\n  outline: 0;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);\n}\n.form-control::-moz-placeholder {\n  color: #999999;\n  opacity: 1;\n}\n.form-control:-ms-input-placeholder {\n  color: #999999;\n}\n.form-control::-webkit-input-placeholder {\n  color: #999999;\n}\n.form-control[disabled],\n.form-control[readonly],\nfieldset[disabled] .form-control {\n  cursor: not-allowed;\n  background-color: #eeeeee;\n  opacity: 1;\n}\ntextarea.form-control {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: none;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 0) {\n  input[type=\"date\"],\n  input[type=\"time\"],\n  input[type=\"datetime-local\"],\n  input[type=\"month\"] {\n    line-height: 34px;\n  }\n  input[type=\"date\"].input-sm,\n  input[type=\"time\"].input-sm,\n  input[type=\"datetime-local\"].input-sm,\n  input[type=\"month\"].input-sm,\n  .input-group-sm input[type=\"date\"],\n  .input-group-sm input[type=\"time\"],\n  .input-group-sm input[type=\"datetime-local\"],\n  .input-group-sm input[type=\"month\"] {\n    line-height: 30px;\n  }\n  input[type=\"date\"].input-lg,\n  input[type=\"time\"].input-lg,\n  input[type=\"datetime-local\"].input-lg,\n  input[type=\"month\"].input-lg,\n  .input-group-lg input[type=\"date\"],\n  .input-group-lg input[type=\"time\"],\n  .input-group-lg input[type=\"datetime-local\"],\n  .input-group-lg input[type=\"month\"] {\n    line-height: 46px;\n  }\n}\n.form-group {\n  margin-bottom: 15px;\n}\n.radio,\n.checkbox {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.radio label,\n.checkbox label {\n  min-height: 20px;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: normal;\n  cursor: pointer;\n}\n.radio input[type=\"radio\"],\n.radio-inline input[type=\"radio\"],\n.checkbox input[type=\"checkbox\"],\n.checkbox-inline input[type=\"checkbox\"] {\n  position: absolute;\n  margin-left: -20px;\n  margin-top: 4px \\9;\n}\n.radio + .radio,\n.checkbox + .checkbox {\n  margin-top: -5px;\n}\n.radio-inline,\n.checkbox-inline {\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  vertical-align: middle;\n  font-weight: normal;\n  cursor: pointer;\n}\n.radio-inline + .radio-inline,\n.checkbox-inline + .checkbox-inline {\n  margin-top: 0;\n  margin-left: 10px;\n}\ninput[type=\"radio\"][disabled],\ninput[type=\"checkbox\"][disabled],\ninput[type=\"radio\"].disabled,\ninput[type=\"checkbox\"].disabled,\nfieldset[disabled] input[type=\"radio\"],\nfieldset[disabled] input[type=\"checkbox\"] {\n  cursor: not-allowed;\n}\n.radio-inline.disabled,\n.checkbox-inline.disabled,\nfieldset[disabled] .radio-inline,\nfieldset[disabled] .checkbox-inline {\n  cursor: not-allowed;\n}\n.radio.disabled label,\n.checkbox.disabled label,\nfieldset[disabled] .radio label,\nfieldset[disabled] .checkbox label {\n  cursor: not-allowed;\n}\n.form-control-static {\n  padding-top: 7px;\n  padding-bottom: 7px;\n  margin-bottom: 0;\n}\n.form-control-static.input-lg,\n.form-control-static.input-sm {\n  padding-left: 0;\n  padding-right: 0;\n}\n.input-sm {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-sm {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-sm,\nselect[multiple].input-sm {\n  height: auto;\n}\n.form-group-sm .form-control {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.form-group-sm .form-control {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.form-group-sm .form-control,\nselect[multiple].form-group-sm .form-control {\n  height: auto;\n}\n.form-group-sm .form-control-static {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n}\n.input-lg {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-lg {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-lg,\nselect[multiple].input-lg {\n  height: auto;\n}\n.form-group-lg .form-control {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.form-group-lg .form-control {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.form-group-lg .form-control,\nselect[multiple].form-group-lg .form-control {\n  height: auto;\n}\n.form-group-lg .form-control-static {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n}\n.has-feedback {\n  position: relative;\n}\n.has-feedback .form-control {\n  padding-right: 42.5px;\n}\n.form-control-feedback {\n  position: absolute;\n  top: 0;\n  right: 0;\n  z-index: 2;\n  display: block;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  text-align: center;\n  pointer-events: none;\n}\n.input-lg + .form-control-feedback {\n  width: 46px;\n  height: 46px;\n  line-height: 46px;\n}\n.input-sm + .form-control-feedback {\n  width: 30px;\n  height: 30px;\n  line-height: 30px;\n}\n.has-success .help-block,\n.has-success .control-label,\n.has-success .radio,\n.has-success .checkbox,\n.has-success .radio-inline,\n.has-success .checkbox-inline,\n.has-success.radio label,\n.has-success.checkbox label,\n.has-success.radio-inline label,\n.has-success.checkbox-inline label {\n  color: #3c763d;\n}\n.has-success .form-control {\n  border-color: #3c763d;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-success .form-control:focus {\n  border-color: #2b542c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n}\n.has-success .input-group-addon {\n  color: #3c763d;\n  border-color: #3c763d;\n  background-color: #dff0d8;\n}\n.has-success .form-control-feedback {\n  color: #3c763d;\n}\n.has-warning .help-block,\n.has-warning .control-label,\n.has-warning .radio,\n.has-warning .checkbox,\n.has-warning .radio-inline,\n.has-warning .checkbox-inline,\n.has-warning.radio label,\n.has-warning.checkbox label,\n.has-warning.radio-inline label,\n.has-warning.checkbox-inline label {\n  color: #8a6d3b;\n}\n.has-warning .form-control {\n  border-color: #8a6d3b;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-warning .form-control:focus {\n  border-color: #66512c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n}\n.has-warning .input-group-addon {\n  color: #8a6d3b;\n  border-color: #8a6d3b;\n  background-color: #fcf8e3;\n}\n.has-warning .form-control-feedback {\n  color: #8a6d3b;\n}\n.has-error .help-block,\n.has-error .control-label,\n.has-error .radio,\n.has-error .checkbox,\n.has-error .radio-inline,\n.has-error .checkbox-inline,\n.has-error.radio label,\n.has-error.checkbox label,\n.has-error.radio-inline label,\n.has-error.checkbox-inline label {\n  color: #a94442;\n}\n.has-error .form-control {\n  border-color: #a94442;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-error .form-control:focus {\n  border-color: #843534;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n}\n.has-error .input-group-addon {\n  color: #a94442;\n  border-color: #a94442;\n  background-color: #f2dede;\n}\n.has-error .form-control-feedback {\n  color: #a94442;\n}\n.has-feedback label ~ .form-control-feedback {\n  top: 25px;\n}\n.has-feedback label.sr-only ~ .form-control-feedback {\n  top: 0;\n}\n.help-block {\n  display: block;\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #737373;\n}\n@media (min-width: 768px) {\n  .form-inline .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .form-inline .form-control-static {\n    display: inline-block;\n  }\n  .form-inline .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .form-inline .input-group .input-group-addon,\n  .form-inline .input-group .input-group-btn,\n  .form-inline .input-group .form-control {\n    width: auto;\n  }\n  .form-inline .input-group > .form-control {\n    width: 100%;\n  }\n  .form-inline .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio,\n  .form-inline .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio label,\n  .form-inline .checkbox label {\n    padding-left: 0;\n  }\n  .form-inline .radio input[type=\"radio\"],\n  .form-inline .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .form-inline .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox,\n.form-horizontal .radio-inline,\n.form-horizontal .checkbox-inline {\n  margin-top: 0;\n  margin-bottom: 0;\n  padding-top: 7px;\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox {\n  min-height: 27px;\n}\n.form-horizontal .form-group {\n  margin-left: -15px;\n  margin-right: -15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .control-label {\n    text-align: right;\n    margin-bottom: 0;\n    padding-top: 7px;\n  }\n}\n.form-horizontal .has-feedback .form-control-feedback {\n  right: 15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-lg .control-label {\n    padding-top: 14.333333px;\n  }\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-sm .control-label {\n    padding-top: 6px;\n  }\n}\n.btn {\n  display: inline-block;\n  margin-bottom: 0;\n  font-weight: normal;\n  text-align: center;\n  vertical-align: middle;\n  touch-action: manipulation;\n  cursor: pointer;\n  background-image: none;\n  border: 1px solid transparent;\n  white-space: nowrap;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  border-radius: 4px;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.btn:focus,\n.btn:active:focus,\n.btn.active:focus,\n.btn.focus,\n.btn:active.focus,\n.btn.active.focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\n.btn:hover,\n.btn:focus,\n.btn.focus {\n  color: #333333;\n  text-decoration: none;\n}\n.btn:active,\n.btn.active {\n  outline: 0;\n  background-image: none;\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n}\n.btn.disabled,\n.btn[disabled],\nfieldset[disabled] .btn {\n  cursor: not-allowed;\n  pointer-events: none;\n  opacity: 0.65;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn-default {\n  color: #333333;\n  background-color: #ffffff;\n  border-color: #cccccc;\n}\n.btn-default:hover,\n.btn-default:focus,\n.btn-default.focus,\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  color: #333333;\n  background-color: #e6e6e6;\n  border-color: #adadad;\n}\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  background-image: none;\n}\n.btn-default.disabled,\n.btn-default[disabled],\nfieldset[disabled] .btn-default,\n.btn-default.disabled:hover,\n.btn-default[disabled]:hover,\nfieldset[disabled] .btn-default:hover,\n.btn-default.disabled:focus,\n.btn-default[disabled]:focus,\nfieldset[disabled] .btn-default:focus,\n.btn-default.disabled.focus,\n.btn-default[disabled].focus,\nfieldset[disabled] .btn-default.focus,\n.btn-default.disabled:active,\n.btn-default[disabled]:active,\nfieldset[disabled] .btn-default:active,\n.btn-default.disabled.active,\n.btn-default[disabled].active,\nfieldset[disabled] .btn-default.active {\n  background-color: #ffffff;\n  border-color: #cccccc;\n}\n.btn-default .badge {\n  color: #ffffff;\n  background-color: #333333;\n}\n.btn-primary {\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary:hover,\n.btn-primary:focus,\n.btn-primary.focus,\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  color: #ffffff;\n  background-color: #286090;\n  border-color: #204d74;\n}\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  background-image: none;\n}\n.btn-primary.disabled,\n.btn-primary[disabled],\nfieldset[disabled] .btn-primary,\n.btn-primary.disabled:hover,\n.btn-primary[disabled]:hover,\nfieldset[disabled] .btn-primary:hover,\n.btn-primary.disabled:focus,\n.btn-primary[disabled]:focus,\nfieldset[disabled] .btn-primary:focus,\n.btn-primary.disabled.focus,\n.btn-primary[disabled].focus,\nfieldset[disabled] .btn-primary.focus,\n.btn-primary.disabled:active,\n.btn-primary[disabled]:active,\nfieldset[disabled] .btn-primary:active,\n.btn-primary.disabled.active,\n.btn-primary[disabled].active,\nfieldset[disabled] .btn-primary.active {\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.btn-success {\n  color: #ffffff;\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success:hover,\n.btn-success:focus,\n.btn-success.focus,\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  color: #ffffff;\n  background-color: #449d44;\n  border-color: #398439;\n}\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  background-image: none;\n}\n.btn-success.disabled,\n.btn-success[disabled],\nfieldset[disabled] .btn-success,\n.btn-success.disabled:hover,\n.btn-success[disabled]:hover,\nfieldset[disabled] .btn-success:hover,\n.btn-success.disabled:focus,\n.btn-success[disabled]:focus,\nfieldset[disabled] .btn-success:focus,\n.btn-success.disabled.focus,\n.btn-success[disabled].focus,\nfieldset[disabled] .btn-success.focus,\n.btn-success.disabled:active,\n.btn-success[disabled]:active,\nfieldset[disabled] .btn-success:active,\n.btn-success.disabled.active,\n.btn-success[disabled].active,\nfieldset[disabled] .btn-success.active {\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success .badge {\n  color: #5cb85c;\n  background-color: #ffffff;\n}\n.btn-info {\n  color: #ffffff;\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info:hover,\n.btn-info:focus,\n.btn-info.focus,\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  color: #ffffff;\n  background-color: #31b0d5;\n  border-color: #269abc;\n}\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  background-image: none;\n}\n.btn-info.disabled,\n.btn-info[disabled],\nfieldset[disabled] .btn-info,\n.btn-info.disabled:hover,\n.btn-info[disabled]:hover,\nfieldset[disabled] .btn-info:hover,\n.btn-info.disabled:focus,\n.btn-info[disabled]:focus,\nfieldset[disabled] .btn-info:focus,\n.btn-info.disabled.focus,\n.btn-info[disabled].focus,\nfieldset[disabled] .btn-info.focus,\n.btn-info.disabled:active,\n.btn-info[disabled]:active,\nfieldset[disabled] .btn-info:active,\n.btn-info.disabled.active,\n.btn-info[disabled].active,\nfieldset[disabled] .btn-info.active {\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info .badge {\n  color: #5bc0de;\n  background-color: #ffffff;\n}\n.btn-warning {\n  color: #ffffff;\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning:hover,\n.btn-warning:focus,\n.btn-warning.focus,\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  color: #ffffff;\n  background-color: #ec971f;\n  border-color: #d58512;\n}\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  background-image: none;\n}\n.btn-warning.disabled,\n.btn-warning[disabled],\nfieldset[disabled] .btn-warning,\n.btn-warning.disabled:hover,\n.btn-warning[disabled]:hover,\nfieldset[disabled] .btn-warning:hover,\n.btn-warning.disabled:focus,\n.btn-warning[disabled]:focus,\nfieldset[disabled] .btn-warning:focus,\n.btn-warning.disabled.focus,\n.btn-warning[disabled].focus,\nfieldset[disabled] .btn-warning.focus,\n.btn-warning.disabled:active,\n.btn-warning[disabled]:active,\nfieldset[disabled] .btn-warning:active,\n.btn-warning.disabled.active,\n.btn-warning[disabled].active,\nfieldset[disabled] .btn-warning.active {\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning .badge {\n  color: #f0ad4e;\n  background-color: #ffffff;\n}\n.btn-danger {\n  color: #ffffff;\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger:hover,\n.btn-danger:focus,\n.btn-danger.focus,\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  color: #ffffff;\n  background-color: #c9302c;\n  border-color: #ac2925;\n}\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  background-image: none;\n}\n.btn-danger.disabled,\n.btn-danger[disabled],\nfieldset[disabled] .btn-danger,\n.btn-danger.disabled:hover,\n.btn-danger[disabled]:hover,\nfieldset[disabled] .btn-danger:hover,\n.btn-danger.disabled:focus,\n.btn-danger[disabled]:focus,\nfieldset[disabled] .btn-danger:focus,\n.btn-danger.disabled.focus,\n.btn-danger[disabled].focus,\nfieldset[disabled] .btn-danger.focus,\n.btn-danger.disabled:active,\n.btn-danger[disabled]:active,\nfieldset[disabled] .btn-danger:active,\n.btn-danger.disabled.active,\n.btn-danger[disabled].active,\nfieldset[disabled] .btn-danger.active {\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger .badge {\n  color: #d9534f;\n  background-color: #ffffff;\n}\n.btn-link {\n  color: #337ab7;\n  font-weight: normal;\n  border-radius: 0;\n}\n.btn-link,\n.btn-link:active,\n.btn-link.active,\n.btn-link[disabled],\nfieldset[disabled] .btn-link {\n  background-color: transparent;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn-link,\n.btn-link:hover,\n.btn-link:focus,\n.btn-link:active {\n  border-color: transparent;\n}\n.btn-link:hover,\n.btn-link:focus {\n  color: #23527c;\n  text-decoration: underline;\n  background-color: transparent;\n}\n.btn-link[disabled]:hover,\nfieldset[disabled] .btn-link:hover,\n.btn-link[disabled]:focus,\nfieldset[disabled] .btn-link:focus {\n  color: #777777;\n  text-decoration: none;\n}\n.btn-lg,\n.btn-group-lg > .btn {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\n.btn-sm,\n.btn-group-sm > .btn {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-xs,\n.btn-group-xs > .btn {\n  padding: 1px 5px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-block {\n  display: block;\n  width: 100%;\n}\n.btn-block + .btn-block {\n  margin-top: 5px;\n}\ninput[type=\"submit\"].btn-block,\ninput[type=\"reset\"].btn-block,\ninput[type=\"button\"].btn-block {\n  width: 100%;\n}\n.fade {\n  opacity: 0;\n  -webkit-transition: opacity 0.15s linear;\n  -o-transition: opacity 0.15s linear;\n  transition: opacity 0.15s linear;\n}\n.fade.in {\n  opacity: 1;\n}\n.collapse {\n  display: none;\n  visibility: hidden;\n}\n.collapse.in {\n  display: block;\n  visibility: visible;\n}\ntr.collapse.in {\n  display: table-row;\n}\ntbody.collapse.in {\n  display: table-row-group;\n}\n.collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-property: height, visibility;\n  transition-property: height, visibility;\n  -webkit-transition-duration: 0.35s;\n  transition-duration: 0.35s;\n  -webkit-transition-timing-function: ease;\n  transition-timing-function: ease;\n}\n@font-face {\n  font-family: 'Glyphicons Halflings';\n  src: url("+__webpack_require__(220)+");\n  src: url("+__webpack_require__(220)+"?#iefix) format('embedded-opentype'), url("+__webpack_require__(221)+") format('woff2'), url("+__webpack_require__(222)+") format('woff'), url("+__webpack_require__(223)+") format('truetype'), url("+__webpack_require__(224)+"#glyphicons_halflingsregular) format('svg');\n}\n.glyphicon {\n  position: relative;\n  top: 1px;\n  display: inline-block;\n  font-family: 'Glyphicons Halflings';\n  font-style: normal;\n  font-weight: normal;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.glyphicon-asterisk:before {\n  content: \"\\2a\";\n}\n.glyphicon-plus:before {\n  content: \"\\2b\";\n}\n.glyphicon-euro:before,\n.glyphicon-eur:before {\n  content: \"\\20ac\";\n}\n.glyphicon-minus:before {\n  content: \"\\2212\";\n}\n.glyphicon-cloud:before {\n  content: \"\\2601\";\n}\n.glyphicon-envelope:before {\n  content: \"\\2709\";\n}\n.glyphicon-pencil:before {\n  content: \"\\270f\";\n}\n.glyphicon-glass:before {\n  content: \"\\e001\";\n}\n.glyphicon-music:before {\n  content: \"\\e002\";\n}\n.glyphicon-search:before {\n  content: \"\\e003\";\n}\n.glyphicon-heart:before {\n  content: \"\\e005\";\n}\n.glyphicon-star:before {\n  content: \"\\e006\";\n}\n.glyphicon-star-empty:before {\n  content: \"\\e007\";\n}\n.glyphicon-user:before {\n  content: \"\\e008\";\n}\n.glyphicon-film:before {\n  content: \"\\e009\";\n}\n.glyphicon-th-large:before {\n  content: \"\\e010\";\n}\n.glyphicon-th:before {\n  content: \"\\e011\";\n}\n.glyphicon-th-list:before {\n  content: \"\\e012\";\n}\n.glyphicon-ok:before {\n  content: \"\\e013\";\n}\n.glyphicon-remove:before {\n  content: \"\\e014\";\n}\n.glyphicon-zoom-in:before {\n  content: \"\\e015\";\n}\n.glyphicon-zoom-out:before {\n  content: \"\\e016\";\n}\n.glyphicon-off:before {\n  content: \"\\e017\";\n}\n.glyphicon-signal:before {\n  content: \"\\e018\";\n}\n.glyphicon-cog:before {\n  content: \"\\e019\";\n}\n.glyphicon-trash:before {\n  content: \"\\e020\";\n}\n.glyphicon-home:before {\n  content: \"\\e021\";\n}\n.glyphicon-file:before {\n  content: \"\\e022\";\n}\n.glyphicon-time:before {\n  content: \"\\e023\";\n}\n.glyphicon-road:before {\n  content: \"\\e024\";\n}\n.glyphicon-download-alt:before {\n  content: \"\\e025\";\n}\n.glyphicon-download:before {\n  content: \"\\e026\";\n}\n.glyphicon-upload:before {\n  content: \"\\e027\";\n}\n.glyphicon-inbox:before {\n  content: \"\\e028\";\n}\n.glyphicon-play-circle:before {\n  content: \"\\e029\";\n}\n.glyphicon-repeat:before {\n  content: \"\\e030\";\n}\n.glyphicon-refresh:before {\n  content: \"\\e031\";\n}\n.glyphicon-list-alt:before {\n  content: \"\\e032\";\n}\n.glyphicon-lock:before {\n  content: \"\\e033\";\n}\n.glyphicon-flag:before {\n  content: \"\\e034\";\n}\n.glyphicon-headphones:before {\n  content: \"\\e035\";\n}\n.glyphicon-volume-off:before {\n  content: \"\\e036\";\n}\n.glyphicon-volume-down:before {\n  content: \"\\e037\";\n}\n.glyphicon-volume-up:before {\n  content: \"\\e038\";\n}\n.glyphicon-qrcode:before {\n  content: \"\\e039\";\n}\n.glyphicon-barcode:before {\n  content: \"\\e040\";\n}\n.glyphicon-tag:before {\n  content: \"\\e041\";\n}\n.glyphicon-tags:before {\n  content: \"\\e042\";\n}\n.glyphicon-book:before {\n  content: \"\\e043\";\n}\n.glyphicon-bookmark:before {\n  content: \"\\e044\";\n}\n.glyphicon-print:before {\n  content: \"\\e045\";\n}\n.glyphicon-camera:before {\n  content: \"\\e046\";\n}\n.glyphicon-font:before {\n  content: \"\\e047\";\n}\n.glyphicon-bold:before {\n  content: \"\\e048\";\n}\n.glyphicon-italic:before {\n  content: \"\\e049\";\n}\n.glyphicon-text-height:before {\n  content: \"\\e050\";\n}\n.glyphicon-text-width:before {\n  content: \"\\e051\";\n}\n.glyphicon-align-left:before {\n  content: \"\\e052\";\n}\n.glyphicon-align-center:before {\n  content: \"\\e053\";\n}\n.glyphicon-align-right:before {\n  content: \"\\e054\";\n}\n.glyphicon-align-justify:before {\n  content: \"\\e055\";\n}\n.glyphicon-list:before {\n  content: \"\\e056\";\n}\n.glyphicon-indent-left:before {\n  content: \"\\e057\";\n}\n.glyphicon-indent-right:before {\n  content: \"\\e058\";\n}\n.glyphicon-facetime-video:before {\n  content: \"\\e059\";\n}\n.glyphicon-picture:before {\n  content: \"\\e060\";\n}\n.glyphicon-map-marker:before {\n  content: \"\\e062\";\n}\n.glyphicon-adjust:before {\n  content: \"\\e063\";\n}\n.glyphicon-tint:before {\n  content: \"\\e064\";\n}\n.glyphicon-edit:before {\n  content: \"\\e065\";\n}\n.glyphicon-share:before {\n  content: \"\\e066\";\n}\n.glyphicon-check:before {\n  content: \"\\e067\";\n}\n.glyphicon-move:before {\n  content: \"\\e068\";\n}\n.glyphicon-step-backward:before {\n  content: \"\\e069\";\n}\n.glyphicon-fast-backward:before {\n  content: \"\\e070\";\n}\n.glyphicon-backward:before {\n  content: \"\\e071\";\n}\n.glyphicon-play:before {\n  content: \"\\e072\";\n}\n.glyphicon-pause:before {\n  content: \"\\e073\";\n}\n.glyphicon-stop:before {\n  content: \"\\e074\";\n}\n.glyphicon-forward:before {\n  content: \"\\e075\";\n}\n.glyphicon-fast-forward:before {\n  content: \"\\e076\";\n}\n.glyphicon-step-forward:before {\n  content: \"\\e077\";\n}\n.glyphicon-eject:before {\n  content: \"\\e078\";\n}\n.glyphicon-chevron-left:before {\n  content: \"\\e079\";\n}\n.glyphicon-chevron-right:before {\n  content: \"\\e080\";\n}\n.glyphicon-plus-sign:before {\n  content: \"\\e081\";\n}\n.glyphicon-minus-sign:before {\n  content: \"\\e082\";\n}\n.glyphicon-remove-sign:before {\n  content: \"\\e083\";\n}\n.glyphicon-ok-sign:before {\n  content: \"\\e084\";\n}\n.glyphicon-question-sign:before {\n  content: \"\\e085\";\n}\n.glyphicon-info-sign:before {\n  content: \"\\e086\";\n}\n.glyphicon-screenshot:before {\n  content: \"\\e087\";\n}\n.glyphicon-remove-circle:before {\n  content: \"\\e088\";\n}\n.glyphicon-ok-circle:before {\n  content: \"\\e089\";\n}\n.glyphicon-ban-circle:before {\n  content: \"\\e090\";\n}\n.glyphicon-arrow-left:before {\n  content: \"\\e091\";\n}\n.glyphicon-arrow-right:before {\n  content: \"\\e092\";\n}\n.glyphicon-arrow-up:before {\n  content: \"\\e093\";\n}\n.glyphicon-arrow-down:before {\n  content: \"\\e094\";\n}\n.glyphicon-share-alt:before {\n  content: \"\\e095\";\n}\n.glyphicon-resize-full:before {\n  content: \"\\e096\";\n}\n.glyphicon-resize-small:before {\n  content: \"\\e097\";\n}\n.glyphicon-exclamation-sign:before {\n  content: \"\\e101\";\n}\n.glyphicon-gift:before {\n  content: \"\\e102\";\n}\n.glyphicon-leaf:before {\n  content: \"\\e103\";\n}\n.glyphicon-fire:before {\n  content: \"\\e104\";\n}\n.glyphicon-eye-open:before {\n  content: \"\\e105\";\n}\n.glyphicon-eye-close:before {\n  content: \"\\e106\";\n}\n.glyphicon-warning-sign:before {\n  content: \"\\e107\";\n}\n.glyphicon-plane:before {\n  content: \"\\e108\";\n}\n.glyphicon-calendar:before {\n  content: \"\\e109\";\n}\n.glyphicon-random:before {\n  content: \"\\e110\";\n}\n.glyphicon-comment:before {\n  content: \"\\e111\";\n}\n.glyphicon-magnet:before {\n  content: \"\\e112\";\n}\n.glyphicon-chevron-up:before {\n  content: \"\\e113\";\n}\n.glyphicon-chevron-down:before {\n  content: \"\\e114\";\n}\n.glyphicon-retweet:before {\n  content: \"\\e115\";\n}\n.glyphicon-shopping-cart:before {\n  content: \"\\e116\";\n}\n.glyphicon-folder-close:before {\n  content: \"\\e117\";\n}\n.glyphicon-folder-open:before {\n  content: \"\\e118\";\n}\n.glyphicon-resize-vertical:before {\n  content: \"\\e119\";\n}\n.glyphicon-resize-horizontal:before {\n  content: \"\\e120\";\n}\n.glyphicon-hdd:before {\n  content: \"\\e121\";\n}\n.glyphicon-bullhorn:before {\n  content: \"\\e122\";\n}\n.glyphicon-bell:before {\n  content: \"\\e123\";\n}\n.glyphicon-certificate:before {\n  content: \"\\e124\";\n}\n.glyphicon-thumbs-up:before {\n  content: \"\\e125\";\n}\n.glyphicon-thumbs-down:before {\n  content: \"\\e126\";\n}\n.glyphicon-hand-right:before {\n  content: \"\\e127\";\n}\n.glyphicon-hand-left:before {\n  content: \"\\e128\";\n}\n.glyphicon-hand-up:before {\n  content: \"\\e129\";\n}\n.glyphicon-hand-down:before {\n  content: \"\\e130\";\n}\n.glyphicon-circle-arrow-right:before {\n  content: \"\\e131\";\n}\n.glyphicon-circle-arrow-left:before {\n  content: \"\\e132\";\n}\n.glyphicon-circle-arrow-up:before {\n  content: \"\\e133\";\n}\n.glyphicon-circle-arrow-down:before {\n  content: \"\\e134\";\n}\n.glyphicon-globe:before {\n  content: \"\\e135\";\n}\n.glyphicon-wrench:before {\n  content: \"\\e136\";\n}\n.glyphicon-tasks:before {\n  content: \"\\e137\";\n}\n.glyphicon-filter:before {\n  content: \"\\e138\";\n}\n.glyphicon-briefcase:before {\n  content: \"\\e139\";\n}\n.glyphicon-fullscreen:before {\n  content: \"\\e140\";\n}\n.glyphicon-dashboard:before {\n  content: \"\\e141\";\n}\n.glyphicon-paperclip:before {\n  content: \"\\e142\";\n}\n.glyphicon-heart-empty:before {\n  content: \"\\e143\";\n}\n.glyphicon-link:before {\n  content: \"\\e144\";\n}\n.glyphicon-phone:before {\n  content: \"\\e145\";\n}\n.glyphicon-pushpin:before {\n  content: \"\\e146\";\n}\n.glyphicon-usd:before {\n  content: \"\\e148\";\n}\n.glyphicon-gbp:before {\n  content: \"\\e149\";\n}\n.glyphicon-sort:before {\n  content: \"\\e150\";\n}\n.glyphicon-sort-by-alphabet:before {\n  content: \"\\e151\";\n}\n.glyphicon-sort-by-alphabet-alt:before {\n  content: \"\\e152\";\n}\n.glyphicon-sort-by-order:before {\n  content: \"\\e153\";\n}\n.glyphicon-sort-by-order-alt:before {\n  content: \"\\e154\";\n}\n.glyphicon-sort-by-attributes:before {\n  content: \"\\e155\";\n}\n.glyphicon-sort-by-attributes-alt:before {\n  content: \"\\e156\";\n}\n.glyphicon-unchecked:before {\n  content: \"\\e157\";\n}\n.glyphicon-expand:before {\n  content: \"\\e158\";\n}\n.glyphicon-collapse-down:before {\n  content: \"\\e159\";\n}\n.glyphicon-collapse-up:before {\n  content: \"\\e160\";\n}\n.glyphicon-log-in:before {\n  content: \"\\e161\";\n}\n.glyphicon-flash:before {\n  content: \"\\e162\";\n}\n.glyphicon-log-out:before {\n  content: \"\\e163\";\n}\n.glyphicon-new-window:before {\n  content: \"\\e164\";\n}\n.glyphicon-record:before {\n  content: \"\\e165\";\n}\n.glyphicon-save:before {\n  content: \"\\e166\";\n}\n.glyphicon-open:before {\n  content: \"\\e167\";\n}\n.glyphicon-saved:before {\n  content: \"\\e168\";\n}\n.glyphicon-import:before {\n  content: \"\\e169\";\n}\n.glyphicon-export:before {\n  content: \"\\e170\";\n}\n.glyphicon-send:before {\n  content: \"\\e171\";\n}\n.glyphicon-floppy-disk:before {\n  content: \"\\e172\";\n}\n.glyphicon-floppy-saved:before {\n  content: \"\\e173\";\n}\n.glyphicon-floppy-remove:before {\n  content: \"\\e174\";\n}\n.glyphicon-floppy-save:before {\n  content: \"\\e175\";\n}\n.glyphicon-floppy-open:before {\n  content: \"\\e176\";\n}\n.glyphicon-credit-card:before {\n  content: \"\\e177\";\n}\n.glyphicon-transfer:before {\n  content: \"\\e178\";\n}\n.glyphicon-cutlery:before {\n  content: \"\\e179\";\n}\n.glyphicon-header:before {\n  content: \"\\e180\";\n}\n.glyphicon-compressed:before {\n  content: \"\\e181\";\n}\n.glyphicon-earphone:before {\n  content: \"\\e182\";\n}\n.glyphicon-phone-alt:before {\n  content: \"\\e183\";\n}\n.glyphicon-tower:before {\n  content: \"\\e184\";\n}\n.glyphicon-stats:before {\n  content: \"\\e185\";\n}\n.glyphicon-sd-video:before {\n  content: \"\\e186\";\n}\n.glyphicon-hd-video:before {\n  content: \"\\e187\";\n}\n.glyphicon-subtitles:before {\n  content: \"\\e188\";\n}\n.glyphicon-sound-stereo:before {\n  content: \"\\e189\";\n}\n.glyphicon-sound-dolby:before {\n  content: \"\\e190\";\n}\n.glyphicon-sound-5-1:before {\n  content: \"\\e191\";\n}\n.glyphicon-sound-6-1:before {\n  content: \"\\e192\";\n}\n.glyphicon-sound-7-1:before {\n  content: \"\\e193\";\n}\n.glyphicon-copyright-mark:before {\n  content: \"\\e194\";\n}\n.glyphicon-registration-mark:before {\n  content: \"\\e195\";\n}\n.glyphicon-cloud-download:before {\n  content: \"\\e197\";\n}\n.glyphicon-cloud-upload:before {\n  content: \"\\e198\";\n}\n.glyphicon-tree-conifer:before {\n  content: \"\\e199\";\n}\n.glyphicon-tree-deciduous:before {\n  content: \"\\e200\";\n}\n.glyphicon-cd:before {\n  content: \"\\e201\";\n}\n.glyphicon-save-file:before {\n  content: \"\\e202\";\n}\n.glyphicon-open-file:before {\n  content: \"\\e203\";\n}\n.glyphicon-level-up:before {\n  content: \"\\e204\";\n}\n.glyphicon-copy:before {\n  content: \"\\e205\";\n}\n.glyphicon-paste:before {\n  content: \"\\e206\";\n}\n.glyphicon-alert:before {\n  content: \"\\e209\";\n}\n.glyphicon-equalizer:before {\n  content: \"\\e210\";\n}\n.glyphicon-king:before {\n  content: \"\\e211\";\n}\n.glyphicon-queen:before {\n  content: \"\\e212\";\n}\n.glyphicon-pawn:before {\n  content: \"\\e213\";\n}\n.glyphicon-bishop:before {\n  content: \"\\e214\";\n}\n.glyphicon-knight:before {\n  content: \"\\e215\";\n}\n.glyphicon-baby-formula:before {\n  content: \"\\e216\";\n}\n.glyphicon-tent:before {\n  content: \"\\26fa\";\n}\n.glyphicon-blackboard:before {\n  content: \"\\e218\";\n}\n.glyphicon-bed:before {\n  content: \"\\e219\";\n}\n.glyphicon-apple:before {\n  content: \"\\f8ff\";\n}\n.glyphicon-erase:before {\n  content: \"\\e221\";\n}\n.glyphicon-hourglass:before {\n  content: \"\\231b\";\n}\n.glyphicon-lamp:before {\n  content: \"\\e223\";\n}\n.glyphicon-duplicate:before {\n  content: \"\\e224\";\n}\n.glyphicon-piggy-bank:before {\n  content: \"\\e225\";\n}\n.glyphicon-scissors:before {\n  content: \"\\e226\";\n}\n.glyphicon-bitcoin:before {\n  content: \"\\e227\";\n}\n.glyphicon-yen:before {\n  content: \"\\00a5\";\n}\n.glyphicon-ruble:before {\n  content: \"\\20bd\";\n}\n.glyphicon-scale:before {\n  content: \"\\e230\";\n}\n.glyphicon-ice-lolly:before {\n  content: \"\\e231\";\n}\n.glyphicon-ice-lolly-tasted:before {\n  content: \"\\e232\";\n}\n.glyphicon-education:before {\n  content: \"\\e233\";\n}\n.glyphicon-option-horizontal:before {\n  content: \"\\e234\";\n}\n.glyphicon-option-vertical:before {\n  content: \"\\e235\";\n}\n.glyphicon-menu-hamburger:before {\n  content: \"\\e236\";\n}\n.glyphicon-modal-window:before {\n  content: \"\\e237\";\n}\n.glyphicon-oil:before {\n  content: \"\\e238\";\n}\n.glyphicon-grain:before {\n  content: \"\\e239\";\n}\n.glyphicon-sunglasses:before {\n  content: \"\\e240\";\n}\n.glyphicon-text-size:before {\n  content: \"\\e241\";\n}\n.glyphicon-text-color:before {\n  content: \"\\e242\";\n}\n.glyphicon-text-background:before {\n  content: \"\\e243\";\n}\n.glyphicon-object-align-top:before {\n  content: \"\\e244\";\n}\n.glyphicon-object-align-bottom:before {\n  content: \"\\e245\";\n}\n.glyphicon-object-align-horizontal:before {\n  content: \"\\e246\";\n}\n.glyphicon-object-align-left:before {\n  content: \"\\e247\";\n}\n.glyphicon-object-align-vertical:before {\n  content: \"\\e248\";\n}\n.glyphicon-object-align-right:before {\n  content: \"\\e249\";\n}\n.glyphicon-triangle-right:before {\n  content: \"\\e250\";\n}\n.glyphicon-triangle-left:before {\n  content: \"\\e251\";\n}\n.glyphicon-triangle-bottom:before {\n  content: \"\\e252\";\n}\n.glyphicon-triangle-top:before {\n  content: \"\\e253\";\n}\n.glyphicon-console:before {\n  content: \"\\e254\";\n}\n.glyphicon-superscript:before {\n  content: \"\\e255\";\n}\n.glyphicon-subscript:before {\n  content: \"\\e256\";\n}\n.glyphicon-menu-left:before {\n  content: \"\\e257\";\n}\n.glyphicon-menu-right:before {\n  content: \"\\e258\";\n}\n.glyphicon-menu-down:before {\n  content: \"\\e259\";\n}\n.glyphicon-menu-up:before {\n  content: \"\\e260\";\n}\n.caret {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  margin-left: 2px;\n  vertical-align: middle;\n  border-top: 4px solid;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent;\n}\n.dropup,\n.dropdown {\n  position: relative;\n}\n.dropdown-toggle:focus {\n  outline: 0;\n}\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  text-align: left;\n  background-color: #ffffff;\n  border: 1px solid #cccccc;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  background-clip: padding-box;\n}\n.dropdown-menu.pull-right {\n  right: 0;\n  left: auto;\n}\n.dropdown-menu .divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.dropdown-menu > li > a {\n  display: block;\n  padding: 3px 20px;\n  clear: both;\n  font-weight: normal;\n  line-height: 1.428571429;\n  color: #333333;\n  white-space: nowrap;\n}\n.dropdown-menu > li > a:hover,\n.dropdown-menu > li > a:focus {\n  text-decoration: none;\n  color: #262626;\n  background-color: #f5f5f5;\n}\n.dropdown-menu > .active > a,\n.dropdown-menu > .active > a:hover,\n.dropdown-menu > .active > a:focus {\n  color: #ffffff;\n  text-decoration: none;\n  outline: 0;\n  background-color: #337ab7;\n}\n.dropdown-menu > .disabled > a,\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  color: #777777;\n}\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  text-decoration: none;\n  background-color: transparent;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n  cursor: not-allowed;\n}\n.open > .dropdown-menu {\n  display: block;\n}\n.open > a {\n  outline: 0;\n}\n.dropdown-menu-right {\n  left: auto;\n  right: 0;\n}\n.dropdown-menu-left {\n  left: 0;\n  right: auto;\n}\n.dropdown-header {\n  display: block;\n  padding: 3px 20px;\n  font-size: 12px;\n  line-height: 1.428571429;\n  color: #777777;\n  white-space: nowrap;\n}\n.dropdown-backdrop {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  z-index: 990;\n}\n.pull-right > .dropdown-menu {\n  right: 0;\n  left: auto;\n}\n.dropup .caret,\n.navbar-fixed-bottom .dropdown .caret {\n  border-top: 0;\n  border-bottom: 4px solid;\n  content: \"\";\n}\n.dropup .dropdown-menu,\n.navbar-fixed-bottom .dropdown .dropdown-menu {\n  top: auto;\n  bottom: 100%;\n  margin-bottom: 2px;\n}\n@media (min-width: 768px) {\n  .navbar-right .dropdown-menu {\n    left: auto;\n    right: 0;\n  }\n  .navbar-right .dropdown-menu-left {\n    left: 0;\n    right: auto;\n  }\n}\n.btn-group,\n.btn-group-vertical {\n  position: relative;\n  display: inline-block;\n  vertical-align: middle;\n}\n.btn-group > .btn,\n.btn-group-vertical > .btn {\n  position: relative;\n  float: left;\n}\n.btn-group > .btn:hover,\n.btn-group-vertical > .btn:hover,\n.btn-group > .btn:focus,\n.btn-group-vertical > .btn:focus,\n.btn-group > .btn:active,\n.btn-group-vertical > .btn:active,\n.btn-group > .btn.active,\n.btn-group-vertical > .btn.active {\n  z-index: 2;\n}\n.btn-group .btn + .btn,\n.btn-group .btn + .btn-group,\n.btn-group .btn-group + .btn,\n.btn-group .btn-group + .btn-group {\n  margin-left: -1px;\n}\n.btn-toolbar {\n  margin-left: -5px;\n}\n.btn-toolbar .btn-group,\n.btn-toolbar .input-group {\n  float: left;\n}\n.btn-toolbar > .btn,\n.btn-toolbar > .btn-group,\n.btn-toolbar > .input-group {\n  margin-left: 5px;\n}\n.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n  border-radius: 0;\n}\n.btn-group > .btn:first-child {\n  margin-left: 0;\n}\n.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.btn-group > .btn:last-child:not(:first-child),\n.btn-group > .dropdown-toggle:not(:first-child) {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group > .btn-group {\n  float: left;\n}\n.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group .dropdown-toggle:active,\n.btn-group.open .dropdown-toggle {\n  outline: 0;\n}\n.btn-group > .btn + .dropdown-toggle {\n  padding-left: 8px;\n  padding-right: 8px;\n}\n.btn-group > .btn-lg + .dropdown-toggle {\n  padding-left: 12px;\n  padding-right: 12px;\n}\n.btn-group.open .dropdown-toggle {\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n}\n.btn-group.open .dropdown-toggle.btn-link {\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn .caret {\n  margin-left: 0;\n}\n.btn-lg .caret {\n  border-width: 5px 5px 0;\n  border-bottom-width: 0;\n}\n.dropup .btn-lg .caret {\n  border-width: 0 5px 5px;\n}\n.btn-group-vertical > .btn,\n.btn-group-vertical > .btn-group,\n.btn-group-vertical > .btn-group > .btn {\n  display: block;\n  float: none;\n  width: 100%;\n  max-width: 100%;\n}\n.btn-group-vertical > .btn-group > .btn {\n  float: none;\n}\n.btn-group-vertical > .btn + .btn,\n.btn-group-vertical > .btn + .btn-group,\n.btn-group-vertical > .btn-group + .btn,\n.btn-group-vertical > .btn-group + .btn-group {\n  margin-top: -1px;\n  margin-left: 0;\n}\n.btn-group-vertical > .btn:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn:first-child:not(:last-child) {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn:last-child:not(:first-child) {\n  border-bottom-left-radius: 4px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group-justified {\n  display: table;\n  width: 100%;\n  table-layout: fixed;\n  border-collapse: separate;\n}\n.btn-group-justified > .btn,\n.btn-group-justified > .btn-group {\n  float: none;\n  display: table-cell;\n  width: 1%;\n}\n.btn-group-justified > .btn-group .btn {\n  width: 100%;\n}\n.btn-group-justified > .btn-group .dropdown-menu {\n  left: auto;\n}\n[data-toggle=\"buttons\"] > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn input[type=\"checkbox\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"checkbox\"] {\n  position: absolute;\n  clip: rect(0, 0, 0, 0);\n  pointer-events: none;\n}\n.input-group {\n  position: relative;\n  display: table;\n  border-collapse: separate;\n}\n.input-group[class*=\"col-\"] {\n  float: none;\n  padding-left: 0;\n  padding-right: 0;\n}\n.input-group .form-control {\n  position: relative;\n  z-index: 2;\n  float: left;\n  width: 100%;\n  margin-bottom: 0;\n}\n.input-group-lg > .form-control,\n.input-group-lg > .input-group-addon,\n.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-group-lg > .form-control,\nselect.input-group-lg > .input-group-addon,\nselect.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-group-lg > .form-control,\ntextarea.input-group-lg > .input-group-addon,\ntextarea.input-group-lg > .input-group-btn > .btn,\nselect[multiple].input-group-lg > .form-control,\nselect[multiple].input-group-lg > .input-group-addon,\nselect[multiple].input-group-lg > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-sm > .form-control,\n.input-group-sm > .input-group-addon,\n.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-group-sm > .form-control,\nselect.input-group-sm > .input-group-addon,\nselect.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-group-sm > .form-control,\ntextarea.input-group-sm > .input-group-addon,\ntextarea.input-group-sm > .input-group-btn > .btn,\nselect[multiple].input-group-sm > .form-control,\nselect[multiple].input-group-sm > .input-group-addon,\nselect[multiple].input-group-sm > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-addon,\n.input-group-btn,\n.input-group .form-control {\n  display: table-cell;\n}\n.input-group-addon:not(:first-child):not(:last-child),\n.input-group-btn:not(:first-child):not(:last-child),\n.input-group .form-control:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.input-group-addon,\n.input-group-btn {\n  width: 1%;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.input-group-addon {\n  padding: 6px 12px;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1;\n  color: #555555;\n  text-align: center;\n  background-color: #eeeeee;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\n.input-group-addon.input-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  border-radius: 3px;\n}\n.input-group-addon.input-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  border-radius: 6px;\n}\n.input-group-addon input[type=\"radio\"],\n.input-group-addon input[type=\"checkbox\"] {\n  margin-top: 0;\n}\n.input-group .form-control:first-child,\n.input-group-addon:first-child,\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group > .btn,\n.input-group-btn:first-child > .dropdown-toggle,\n.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),\n.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.input-group-addon:first-child {\n  border-right: 0;\n}\n.input-group .form-control:last-child,\n.input-group-addon:last-child,\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group > .btn,\n.input-group-btn:last-child > .dropdown-toggle,\n.input-group-btn:first-child > .btn:not(:first-child),\n.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.input-group-addon:last-child {\n  border-left: 0;\n}\n.input-group-btn {\n  position: relative;\n  font-size: 0;\n  white-space: nowrap;\n}\n.input-group-btn > .btn {\n  position: relative;\n}\n.input-group-btn > .btn + .btn {\n  margin-left: -1px;\n}\n.input-group-btn > .btn:hover,\n.input-group-btn > .btn:focus,\n.input-group-btn > .btn:active {\n  z-index: 2;\n}\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group {\n  margin-right: -1px;\n}\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group {\n  margin-left: -1px;\n}\n.nav {\n  margin-bottom: 0;\n  padding-left: 0;\n  list-style: none;\n}\n.nav > li {\n  position: relative;\n  display: block;\n}\n.nav > li > a {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n}\n.nav > li > a:hover,\n.nav > li > a:focus {\n  text-decoration: none;\n  background-color: #eeeeee;\n}\n.nav > li.disabled > a {\n  color: #777777;\n}\n.nav > li.disabled > a:hover,\n.nav > li.disabled > a:focus {\n  color: #777777;\n  text-decoration: none;\n  background-color: transparent;\n  cursor: not-allowed;\n}\n.nav .open > a,\n.nav .open > a:hover,\n.nav .open > a:focus {\n  background-color: #eeeeee;\n  border-color: #337ab7;\n}\n.nav .nav-divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.nav > li > a > img {\n  max-width: none;\n}\n.nav-tabs {\n  border-bottom: 1px solid #dddddd;\n}\n.nav-tabs > li {\n  float: left;\n  margin-bottom: -1px;\n}\n.nav-tabs > li > a {\n  margin-right: 2px;\n  line-height: 1.428571429;\n  border: 1px solid transparent;\n  border-radius: 4px 4px 0 0;\n}\n.nav-tabs > li > a:hover {\n  border-color: #eeeeee #eeeeee #dddddd;\n}\n.nav-tabs > li.active > a,\n.nav-tabs > li.active > a:hover,\n.nav-tabs > li.active > a:focus {\n  color: #555555;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-bottom-color: transparent;\n  cursor: default;\n}\n.nav-tabs.nav-justified {\n  width: 100%;\n  border-bottom: 0;\n}\n.nav-tabs.nav-justified > li {\n  float: none;\n}\n.nav-tabs.nav-justified > li > a {\n  text-align: center;\n  margin-bottom: 5px;\n}\n.nav-tabs.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-tabs.nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs.nav-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs.nav-justified > .active > a,\n.nav-tabs.nav-justified > .active > a:hover,\n.nav-tabs.nav-justified > .active > a:focus {\n  border: 1px solid #dddddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li > a {\n    border-bottom: 1px solid #dddddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs.nav-justified > .active > a,\n  .nav-tabs.nav-justified > .active > a:hover,\n  .nav-tabs.nav-justified > .active > a:focus {\n    border-bottom-color: #ffffff;\n  }\n}\n.nav-pills > li {\n  float: left;\n}\n.nav-pills > li > a {\n  border-radius: 4px;\n}\n.nav-pills > li + li {\n  margin-left: 2px;\n}\n.nav-pills > li.active > a,\n.nav-pills > li.active > a:hover,\n.nav-pills > li.active > a:focus {\n  color: #ffffff;\n  background-color: #337ab7;\n}\n.nav-stacked > li {\n  float: none;\n}\n.nav-stacked > li + li {\n  margin-top: 2px;\n  margin-left: 0;\n}\n.nav-justified {\n  width: 100%;\n}\n.nav-justified > li {\n  float: none;\n}\n.nav-justified > li > a {\n  text-align: center;\n  margin-bottom: 5px;\n}\n.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs-justified {\n  border-bottom: 0;\n}\n.nav-tabs-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs-justified > .active > a,\n.nav-tabs-justified > .active > a:hover,\n.nav-tabs-justified > .active > a:focus {\n  border: 1px solid #dddddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs-justified > li > a {\n    border-bottom: 1px solid #dddddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs-justified > .active > a,\n  .nav-tabs-justified > .active > a:hover,\n  .nav-tabs-justified > .active > a:focus {\n    border-bottom-color: #ffffff;\n  }\n}\n.tab-content > .tab-pane {\n  display: none;\n  visibility: hidden;\n}\n.tab-content > .active {\n  display: block;\n  visibility: visible;\n}\n.nav-tabs .dropdown-menu {\n  margin-top: -1px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.navbar {\n  position: relative;\n  min-height: 50px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n}\n@media (min-width: 768px) {\n  .navbar {\n    border-radius: 4px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-header {\n    float: left;\n  }\n}\n.navbar-collapse {\n  overflow-x: visible;\n  padding-right: 15px;\n  padding-left: 15px;\n  border-top: 1px solid transparent;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);\n  -webkit-overflow-scrolling: touch;\n}\n.navbar-collapse.in {\n  overflow-y: auto;\n}\n@media (min-width: 768px) {\n  .navbar-collapse {\n    width: auto;\n    border-top: 0;\n    box-shadow: none;\n  }\n  .navbar-collapse.collapse {\n    display: block !important;\n    visibility: visible !important;\n    height: auto !important;\n    padding-bottom: 0;\n    overflow: visible !important;\n  }\n  .navbar-collapse.in {\n    overflow-y: visible;\n  }\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-static-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    padding-left: 0;\n    padding-right: 0;\n  }\n}\n.navbar-fixed-top .navbar-collapse,\n.navbar-fixed-bottom .navbar-collapse {\n  max-height: 340px;\n}\n@media (max-device-width: 480px) and (orientation: landscape) {\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    max-height: 200px;\n  }\n}\n.container > .navbar-header,\n.container-fluid > .navbar-header,\n.container > .navbar-collapse,\n.container-fluid > .navbar-collapse {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n@media (min-width: 768px) {\n  .container > .navbar-header,\n  .container-fluid > .navbar-header,\n  .container > .navbar-collapse,\n  .container-fluid > .navbar-collapse {\n    margin-right: 0;\n    margin-left: 0;\n  }\n}\n.navbar-static-top {\n  z-index: 1000;\n  border-width: 0 0 1px;\n}\n@media (min-width: 768px) {\n  .navbar-static-top {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top,\n.navbar-fixed-bottom {\n  position: fixed;\n  right: 0;\n  left: 0;\n  z-index: 1030;\n}\n@media (min-width: 768px) {\n  .navbar-fixed-top,\n  .navbar-fixed-bottom {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top {\n  top: 0;\n  border-width: 0 0 1px;\n}\n.navbar-fixed-bottom {\n  bottom: 0;\n  margin-bottom: 0;\n  border-width: 1px 0 0;\n}\n.navbar-brand {\n  float: left;\n  padding: 15px 15px;\n  font-size: 18px;\n  line-height: 20px;\n  height: 50px;\n}\n.navbar-brand:hover,\n.navbar-brand:focus {\n  text-decoration: none;\n}\n.navbar-brand > img {\n  display: block;\n}\n@media (min-width: 768px) {\n  .navbar > .container .navbar-brand,\n  .navbar > .container-fluid .navbar-brand {\n    margin-left: -15px;\n  }\n}\n.navbar-toggle {\n  position: relative;\n  float: right;\n  margin-right: 15px;\n  padding: 9px 10px;\n  margin-top: 8px;\n  margin-bottom: 8px;\n  background-color: transparent;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.navbar-toggle:focus {\n  outline: 0;\n}\n.navbar-toggle .icon-bar {\n  display: block;\n  width: 22px;\n  height: 2px;\n  border-radius: 1px;\n}\n.navbar-toggle .icon-bar + .icon-bar {\n  margin-top: 4px;\n}\n@media (min-width: 768px) {\n  .navbar-toggle {\n    display: none;\n  }\n}\n.navbar-nav {\n  margin: 7.5px -15px;\n}\n.navbar-nav > li > a {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  line-height: 20px;\n}\n@media (max-width: 767px) {\n  .navbar-nav .open .dropdown-menu {\n    position: static;\n    float: none;\n    width: auto;\n    margin-top: 0;\n    background-color: transparent;\n    border: 0;\n    box-shadow: none;\n  }\n  .navbar-nav .open .dropdown-menu > li > a,\n  .navbar-nav .open .dropdown-menu .dropdown-header {\n    padding: 5px 15px 5px 25px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a {\n    line-height: 20px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-nav .open .dropdown-menu > li > a:focus {\n    background-image: none;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-nav {\n    float: left;\n    margin: 0;\n  }\n  .navbar-nav > li {\n    float: left;\n  }\n  .navbar-nav > li > a {\n    padding-top: 15px;\n    padding-bottom: 15px;\n  }\n}\n.navbar-form {\n  margin-left: -15px;\n  margin-right: -15px;\n  padding: 10px 15px;\n  border-top: 1px solid transparent;\n  border-bottom: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n@media (min-width: 768px) {\n  .navbar-form .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control-static {\n    display: inline-block;\n  }\n  .navbar-form .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .navbar-form .input-group .input-group-addon,\n  .navbar-form .input-group .input-group-btn,\n  .navbar-form .input-group .form-control {\n    width: auto;\n  }\n  .navbar-form .input-group > .form-control {\n    width: 100%;\n  }\n  .navbar-form .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio,\n  .navbar-form .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio label,\n  .navbar-form .checkbox label {\n    padding-left: 0;\n  }\n  .navbar-form .radio input[type=\"radio\"],\n  .navbar-form .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .navbar-form .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n@media (max-width: 767px) {\n  .navbar-form .form-group {\n    margin-bottom: 5px;\n  }\n  .navbar-form .form-group:last-child {\n    margin-bottom: 0;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-form {\n    width: auto;\n    border: 0;\n    margin-left: 0;\n    margin-right: 0;\n    padding-top: 0;\n    padding-bottom: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n  }\n}\n.navbar-nav > li > .dropdown-menu {\n  margin-top: 0;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {\n  margin-bottom: 0;\n  border-top-right-radius: 4px;\n  border-top-left-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.navbar-btn {\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n.navbar-btn.btn-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.navbar-btn.btn-xs {\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.navbar-text {\n  margin-top: 15px;\n  margin-bottom: 15px;\n}\n@media (min-width: 768px) {\n  .navbar-text {\n    float: left;\n    margin-left: 15px;\n    margin-right: 15px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-left {\n    float: left !important;\n  }\n  .navbar-right {\n    float: right !important;\n    margin-right: -15px;\n  }\n  .navbar-right ~ .navbar-right {\n    margin-right: 0;\n  }\n}\n.navbar-default {\n  background-color: #f8f8f8;\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-brand {\n  color: #777777;\n}\n.navbar-default .navbar-brand:hover,\n.navbar-default .navbar-brand:focus {\n  color: #5e5e5e;\n  background-color: transparent;\n}\n.navbar-default .navbar-text {\n  color: #777777;\n}\n.navbar-default .navbar-nav > li > a {\n  color: #777777;\n}\n.navbar-default .navbar-nav > li > a:hover,\n.navbar-default .navbar-nav > li > a:focus {\n  color: #333333;\n  background-color: transparent;\n}\n.navbar-default .navbar-nav > .active > a,\n.navbar-default .navbar-nav > .active > a:hover,\n.navbar-default .navbar-nav > .active > a:focus {\n  color: #555555;\n  background-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .disabled > a,\n.navbar-default .navbar-nav > .disabled > a:hover,\n.navbar-default .navbar-nav > .disabled > a:focus {\n  color: #cccccc;\n  background-color: transparent;\n}\n.navbar-default .navbar-toggle {\n  border-color: #dddddd;\n}\n.navbar-default .navbar-toggle:hover,\n.navbar-default .navbar-toggle:focus {\n  background-color: #dddddd;\n}\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #888888;\n}\n.navbar-default .navbar-collapse,\n.navbar-default .navbar-form {\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .open > a,\n.navbar-default .navbar-nav > .open > a:hover,\n.navbar-default .navbar-nav > .open > a:focus {\n  background-color: #e7e7e7;\n  color: #555555;\n}\n@media (max-width: 767px) {\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a {\n    color: #777777;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #333333;\n    background-color: transparent;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #555555;\n    background-color: #e7e7e7;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #cccccc;\n    background-color: transparent;\n  }\n}\n.navbar-default .navbar-link {\n  color: #777777;\n}\n.navbar-default .navbar-link:hover {\n  color: #333333;\n}\n.navbar-default .btn-link {\n  color: #777777;\n}\n.navbar-default .btn-link:hover,\n.navbar-default .btn-link:focus {\n  color: #333333;\n}\n.navbar-default .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-default .btn-link:hover,\n.navbar-default .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-default .btn-link:focus {\n  color: #cccccc;\n}\n.navbar-inverse {\n  background-color: #222222;\n  border-color: #080808;\n}\n.navbar-inverse .navbar-brand {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-brand:hover,\n.navbar-inverse .navbar-brand:focus {\n  color: #ffffff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-text {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a:hover,\n.navbar-inverse .navbar-nav > li > a:focus {\n  color: #ffffff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-nav > .active > a,\n.navbar-inverse .navbar-nav > .active > a:hover,\n.navbar-inverse .navbar-nav > .active > a:focus {\n  color: #ffffff;\n  background-color: #080808;\n}\n.navbar-inverse .navbar-nav > .disabled > a,\n.navbar-inverse .navbar-nav > .disabled > a:hover,\n.navbar-inverse .navbar-nav > .disabled > a:focus {\n  color: #444444;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-toggle {\n  border-color: #333333;\n}\n.navbar-inverse .navbar-toggle:hover,\n.navbar-inverse .navbar-toggle:focus {\n  background-color: #333333;\n}\n.navbar-inverse .navbar-toggle .icon-bar {\n  background-color: #ffffff;\n}\n.navbar-inverse .navbar-collapse,\n.navbar-inverse .navbar-form {\n  border-color: #101010;\n}\n.navbar-inverse .navbar-nav > .open > a,\n.navbar-inverse .navbar-nav > .open > a:hover,\n.navbar-inverse .navbar-nav > .open > a:focus {\n  background-color: #080808;\n  color: #ffffff;\n}\n@media (max-width: 767px) {\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {\n    border-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {\n    color: #9d9d9d;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #ffffff;\n    background-color: transparent;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #ffffff;\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #444444;\n    background-color: transparent;\n  }\n}\n.navbar-inverse .navbar-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-link:hover {\n  color: #ffffff;\n}\n.navbar-inverse .btn-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link:focus {\n  color: #ffffff;\n}\n.navbar-inverse .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-inverse .btn-link:focus {\n  color: #444444;\n}\n.breadcrumb {\n  padding: 8px 15px;\n  margin-bottom: 20px;\n  list-style: none;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n}\n.breadcrumb > li {\n  display: inline-block;\n}\n.breadcrumb > li + li:before {\n  content: \"/\\00a0\";\n  padding: 0 5px;\n  color: #cccccc;\n}\n.breadcrumb > .active {\n  color: #777777;\n}\n.pagination {\n  display: inline-block;\n  padding-left: 0;\n  margin: 20px 0;\n  border-radius: 4px;\n}\n.pagination > li {\n  display: inline;\n}\n.pagination > li > a,\n.pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  line-height: 1.428571429;\n  text-decoration: none;\n  color: #337ab7;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  margin-left: -1px;\n}\n.pagination > li:first-child > a,\n.pagination > li:first-child > span {\n  margin-left: 0;\n  border-bottom-left-radius: 4px;\n  border-top-left-radius: 4px;\n}\n.pagination > li:last-child > a,\n.pagination > li:last-child > span {\n  border-bottom-right-radius: 4px;\n  border-top-right-radius: 4px;\n}\n.pagination > li > a:hover,\n.pagination > li > span:hover,\n.pagination > li > a:focus,\n.pagination > li > span:focus {\n  color: #23527c;\n  background-color: #eeeeee;\n  border-color: #dddddd;\n}\n.pagination > .active > a,\n.pagination > .active > span,\n.pagination > .active > a:hover,\n.pagination > .active > span:hover,\n.pagination > .active > a:focus,\n.pagination > .active > span:focus {\n  z-index: 2;\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n  cursor: default;\n}\n.pagination > .disabled > span,\n.pagination > .disabled > span:hover,\n.pagination > .disabled > span:focus,\n.pagination > .disabled > a,\n.pagination > .disabled > a:hover,\n.pagination > .disabled > a:focus {\n  color: #777777;\n  background-color: #ffffff;\n  border-color: #dddddd;\n  cursor: not-allowed;\n}\n.pagination-lg > li > a,\n.pagination-lg > li > span {\n  padding: 10px 16px;\n  font-size: 18px;\n}\n.pagination-lg > li:first-child > a,\n.pagination-lg > li:first-child > span {\n  border-bottom-left-radius: 6px;\n  border-top-left-radius: 6px;\n}\n.pagination-lg > li:last-child > a,\n.pagination-lg > li:last-child > span {\n  border-bottom-right-radius: 6px;\n  border-top-right-radius: 6px;\n}\n.pagination-sm > li > a,\n.pagination-sm > li > span {\n  padding: 5px 10px;\n  font-size: 12px;\n}\n.pagination-sm > li:first-child > a,\n.pagination-sm > li:first-child > span {\n  border-bottom-left-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.pagination-sm > li:last-child > a,\n.pagination-sm > li:last-child > span {\n  border-bottom-right-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.pager {\n  padding-left: 0;\n  margin: 20px 0;\n  list-style: none;\n  text-align: center;\n}\n.pager li {\n  display: inline;\n}\n.pager li > a,\n.pager li > span {\n  display: inline-block;\n  padding: 5px 14px;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 15px;\n}\n.pager li > a:hover,\n.pager li > a:focus {\n  text-decoration: none;\n  background-color: #eeeeee;\n}\n.pager .next > a,\n.pager .next > span {\n  float: right;\n}\n.pager .previous > a,\n.pager .previous > span {\n  float: left;\n}\n.pager .disabled > a,\n.pager .disabled > a:hover,\n.pager .disabled > a:focus,\n.pager .disabled > span {\n  color: #777777;\n  background-color: #ffffff;\n  cursor: not-allowed;\n}\n.label {\n  display: inline;\n  padding: .2em .6em .3em;\n  font-size: 75%;\n  font-weight: bold;\n  line-height: 1;\n  color: #ffffff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: .25em;\n}\na.label:hover,\na.label:focus {\n  color: #ffffff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.label:empty {\n  display: none;\n}\n.btn .label {\n  position: relative;\n  top: -1px;\n}\n.label-default {\n  background-color: #777777;\n}\n.label-default[href]:hover,\n.label-default[href]:focus {\n  background-color: #5e5e5e;\n}\n.label-primary {\n  background-color: #337ab7;\n}\n.label-primary[href]:hover,\n.label-primary[href]:focus {\n  background-color: #286090;\n}\n.label-success {\n  background-color: #5cb85c;\n}\n.label-success[href]:hover,\n.label-success[href]:focus {\n  background-color: #449d44;\n}\n.label-info {\n  background-color: #5bc0de;\n}\n.label-info[href]:hover,\n.label-info[href]:focus {\n  background-color: #31b0d5;\n}\n.label-warning {\n  background-color: #f0ad4e;\n}\n.label-warning[href]:hover,\n.label-warning[href]:focus {\n  background-color: #ec971f;\n}\n.label-danger {\n  background-color: #d9534f;\n}\n.label-danger[href]:hover,\n.label-danger[href]:focus {\n  background-color: #c9302c;\n}\n.badge {\n  display: inline-block;\n  min-width: 10px;\n  padding: 3px 7px;\n  font-size: 12px;\n  font-weight: bold;\n  color: #ffffff;\n  line-height: 1;\n  vertical-align: baseline;\n  white-space: nowrap;\n  text-align: center;\n  background-color: #777777;\n  border-radius: 10px;\n}\n.badge:empty {\n  display: none;\n}\n.btn .badge {\n  position: relative;\n  top: -1px;\n}\n.btn-xs .badge {\n  top: 0;\n  padding: 1px 5px;\n}\na.badge:hover,\na.badge:focus {\n  color: #ffffff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.list-group-item.active > .badge,\n.nav-pills > .active > a > .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.list-group-item > .badge {\n  float: right;\n}\n.list-group-item > .badge + .badge {\n  margin-right: 5px;\n}\n.nav-pills > li > a > .badge {\n  margin-left: 3px;\n}\n.jumbotron {\n  padding: 30px 15px;\n  margin-bottom: 30px;\n  color: inherit;\n  background-color: #eeeeee;\n}\n.jumbotron h1,\n.jumbotron .h1 {\n  color: inherit;\n}\n.jumbotron p {\n  margin-bottom: 15px;\n  font-size: 21px;\n  font-weight: 200;\n}\n.jumbotron > hr {\n  border-top-color: #d5d5d5;\n}\n.container .jumbotron,\n.container-fluid .jumbotron {\n  border-radius: 6px;\n}\n.jumbotron .container {\n  max-width: 100%;\n}\n@media screen and (min-width: 768px) {\n  .jumbotron {\n    padding: 48px 0;\n  }\n  .container .jumbotron,\n  .container-fluid .jumbotron {\n    padding-left: 60px;\n    padding-right: 60px;\n  }\n  .jumbotron h1,\n  .jumbotron .h1 {\n    font-size: 63px;\n  }\n}\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.428571429;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 4px;\n  -webkit-transition: border 0.2s ease-in-out;\n  -o-transition: border 0.2s ease-in-out;\n  transition: border 0.2s ease-in-out;\n}\n.thumbnail > img,\n.thumbnail a > img {\n  margin-left: auto;\n  margin-right: auto;\n}\na.thumbnail:hover,\na.thumbnail:focus,\na.thumbnail.active {\n  border-color: #337ab7;\n}\n.thumbnail .caption {\n  padding: 9px;\n  color: #333333;\n}\n.alert {\n  padding: 15px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.alert h4 {\n  margin-top: 0;\n  color: inherit;\n}\n.alert .alert-link {\n  font-weight: bold;\n}\n.alert > p,\n.alert > ul {\n  margin-bottom: 0;\n}\n.alert > p + p {\n  margin-top: 5px;\n}\n.alert-dismissable,\n.alert-dismissible {\n  padding-right: 35px;\n}\n.alert-dismissable .close,\n.alert-dismissible .close {\n  position: relative;\n  top: -2px;\n  right: -21px;\n  color: inherit;\n}\n.alert-success {\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n  color: #3c763d;\n}\n.alert-success hr {\n  border-top-color: #c9e2b3;\n}\n.alert-success .alert-link {\n  color: #2b542c;\n}\n.alert-info {\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n  color: #31708f;\n}\n.alert-info hr {\n  border-top-color: #a6e1ec;\n}\n.alert-info .alert-link {\n  color: #245269;\n}\n.alert-warning {\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n  color: #8a6d3b;\n}\n.alert-warning hr {\n  border-top-color: #f7e1b5;\n}\n.alert-warning .alert-link {\n  color: #66512c;\n}\n.alert-danger {\n  background-color: #f2dede;\n  border-color: #ebccd1;\n  color: #a94442;\n}\n.alert-danger hr {\n  border-top-color: #e4b9c0;\n}\n.alert-danger .alert-link {\n  color: #843534;\n}\n@-webkit-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n@keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n.progress {\n  overflow: hidden;\n  height: 20px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.progress-bar {\n  float: left;\n  width: 0%;\n  height: 100%;\n  font-size: 12px;\n  line-height: 20px;\n  color: #ffffff;\n  text-align: center;\n  background-color: #337ab7;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  -webkit-transition: width 0.6s ease;\n  -o-transition: width 0.6s ease;\n  transition: width 0.6s ease;\n}\n.progress-striped .progress-bar,\n.progress-bar-striped {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-size: 40px 40px;\n}\n.progress.active .progress-bar,\n.progress-bar.active {\n  -webkit-animation: progress-bar-stripes 2s linear infinite;\n  -o-animation: progress-bar-stripes 2s linear infinite;\n  animation: progress-bar-stripes 2s linear infinite;\n}\n.progress-bar-success {\n  background-color: #5cb85c;\n}\n.progress-striped .progress-bar-success {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-info {\n  background-color: #5bc0de;\n}\n.progress-striped .progress-bar-info {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-warning {\n  background-color: #f0ad4e;\n}\n.progress-striped .progress-bar-warning {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-danger {\n  background-color: #d9534f;\n}\n.progress-striped .progress-bar-danger {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.media {\n  margin-top: 15px;\n}\n.media:first-child {\n  margin-top: 0;\n}\n.media,\n.media-body {\n  zoom: 1;\n  overflow: hidden;\n}\n.media-body {\n  width: 10000px;\n}\n.media-object {\n  display: block;\n}\n.media-right,\n.media > .pull-right {\n  padding-left: 10px;\n}\n.media-left,\n.media > .pull-left {\n  padding-right: 10px;\n}\n.media-left,\n.media-right,\n.media-body {\n  display: table-cell;\n  vertical-align: top;\n}\n.media-middle {\n  vertical-align: middle;\n}\n.media-bottom {\n  vertical-align: bottom;\n}\n.media-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.media-list {\n  padding-left: 0;\n  list-style: none;\n}\n.list-group {\n  margin-bottom: 20px;\n  padding-left: 0;\n}\n.list-group-item {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n  margin-bottom: -1px;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n}\n.list-group-item:first-child {\n  border-top-right-radius: 4px;\n  border-top-left-radius: 4px;\n}\n.list-group-item:last-child {\n  margin-bottom: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\na.list-group-item {\n  color: #555555;\n}\na.list-group-item .list-group-item-heading {\n  color: #333333;\n}\na.list-group-item:hover,\na.list-group-item:focus {\n  text-decoration: none;\n  color: #555555;\n  background-color: #f5f5f5;\n}\n.list-group-item.disabled,\n.list-group-item.disabled:hover,\n.list-group-item.disabled:focus {\n  background-color: #eeeeee;\n  color: #777777;\n  cursor: not-allowed;\n}\n.list-group-item.disabled .list-group-item-heading,\n.list-group-item.disabled:hover .list-group-item-heading,\n.list-group-item.disabled:focus .list-group-item-heading {\n  color: inherit;\n}\n.list-group-item.disabled .list-group-item-text,\n.list-group-item.disabled:hover .list-group-item-text,\n.list-group-item.disabled:focus .list-group-item-text {\n  color: #777777;\n}\n.list-group-item.active,\n.list-group-item.active:hover,\n.list-group-item.active:focus {\n  z-index: 2;\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.list-group-item.active .list-group-item-heading,\n.list-group-item.active:hover .list-group-item-heading,\n.list-group-item.active:focus .list-group-item-heading,\n.list-group-item.active .list-group-item-heading > small,\n.list-group-item.active:hover .list-group-item-heading > small,\n.list-group-item.active:focus .list-group-item-heading > small,\n.list-group-item.active .list-group-item-heading > .small,\n.list-group-item.active:hover .list-group-item-heading > .small,\n.list-group-item.active:focus .list-group-item-heading > .small {\n  color: inherit;\n}\n.list-group-item.active .list-group-item-text,\n.list-group-item.active:hover .list-group-item-text,\n.list-group-item.active:focus .list-group-item-text {\n  color: #c7ddef;\n}\n.list-group-item-success {\n  color: #3c763d;\n  background-color: #dff0d8;\n}\na.list-group-item-success {\n  color: #3c763d;\n}\na.list-group-item-success .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-success:hover,\na.list-group-item-success:focus {\n  color: #3c763d;\n  background-color: #d0e9c6;\n}\na.list-group-item-success.active,\na.list-group-item-success.active:hover,\na.list-group-item-success.active:focus {\n  color: #fff;\n  background-color: #3c763d;\n  border-color: #3c763d;\n}\n.list-group-item-info {\n  color: #31708f;\n  background-color: #d9edf7;\n}\na.list-group-item-info {\n  color: #31708f;\n}\na.list-group-item-info .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-info:hover,\na.list-group-item-info:focus {\n  color: #31708f;\n  background-color: #c4e3f3;\n}\na.list-group-item-info.active,\na.list-group-item-info.active:hover,\na.list-group-item-info.active:focus {\n  color: #fff;\n  background-color: #31708f;\n  border-color: #31708f;\n}\n.list-group-item-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n}\na.list-group-item-warning {\n  color: #8a6d3b;\n}\na.list-group-item-warning .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-warning:hover,\na.list-group-item-warning:focus {\n  color: #8a6d3b;\n  background-color: #faf2cc;\n}\na.list-group-item-warning.active,\na.list-group-item-warning.active:hover,\na.list-group-item-warning.active:focus {\n  color: #fff;\n  background-color: #8a6d3b;\n  border-color: #8a6d3b;\n}\n.list-group-item-danger {\n  color: #a94442;\n  background-color: #f2dede;\n}\na.list-group-item-danger {\n  color: #a94442;\n}\na.list-group-item-danger .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-danger:hover,\na.list-group-item-danger:focus {\n  color: #a94442;\n  background-color: #ebcccc;\n}\na.list-group-item-danger.active,\na.list-group-item-danger.active:hover,\na.list-group-item-danger.active:focus {\n  color: #fff;\n  background-color: #a94442;\n  border-color: #a94442;\n}\n.list-group-item-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.list-group-item-text {\n  margin-bottom: 0;\n  line-height: 1.3;\n}\n.panel {\n  margin-bottom: 20px;\n  background-color: #ffffff;\n  border: 1px solid transparent;\n  border-radius: 4px;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n}\n.panel-body {\n  padding: 15px;\n}\n.panel-heading {\n  padding: 10px 15px;\n  border-bottom: 1px solid transparent;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel-heading > .dropdown .dropdown-toggle {\n  color: inherit;\n}\n.panel-title {\n  margin-top: 0;\n  margin-bottom: 0;\n  font-size: 16px;\n  color: inherit;\n}\n.panel-title > a,\n.panel-title > small,\n.panel-title > .small,\n.panel-title > small > a,\n.panel-title > .small > a {\n  color: inherit;\n}\n.panel-footer {\n  padding: 10px 15px;\n  background-color: #f5f5f5;\n  border-top: 1px solid #dddddd;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .list-group,\n.panel > .panel-collapse > .list-group {\n  margin-bottom: 0;\n}\n.panel > .list-group .list-group-item,\n.panel > .panel-collapse > .list-group .list-group-item {\n  border-width: 1px 0;\n  border-radius: 0;\n}\n.panel > .list-group:first-child .list-group-item:first-child,\n.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {\n  border-top: 0;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel > .list-group:last-child .list-group-item:last-child,\n.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {\n  border-bottom: 0;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel-heading + .list-group .list-group-item:first-child {\n  border-top-width: 0;\n}\n.list-group + .panel-footer {\n  border-top-width: 0;\n}\n.panel > .table,\n.panel > .table-responsive > .table,\n.panel > .panel-collapse > .table {\n  margin-bottom: 0;\n}\n.panel > .table caption,\n.panel > .table-responsive > .table caption,\n.panel > .panel-collapse > .table caption {\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.panel > .table:first-child,\n.panel > .table-responsive:first-child > .table:first-child {\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {\n  border-top-left-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {\n  border-top-right-radius: 3px;\n}\n.panel > .table:last-child,\n.panel > .table-responsive:last-child > .table:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {\n  border-bottom-right-radius: 3px;\n}\n.panel > .panel-body + .table,\n.panel > .panel-body + .table-responsive,\n.panel > .table + .panel-body,\n.panel > .table-responsive + .panel-body {\n  border-top: 1px solid #dddddd;\n}\n.panel > .table > tbody:first-child > tr:first-child th,\n.panel > .table > tbody:first-child > tr:first-child td {\n  border-top: 0;\n}\n.panel > .table-bordered,\n.panel > .table-responsive > .table-bordered {\n  border: 0;\n}\n.panel > .table-bordered > thead > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:first-child,\n.panel > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-bordered > thead > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:first-child,\n.panel > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-bordered > tfoot > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n  border-left: 0;\n}\n.panel > .table-bordered > thead > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:last-child,\n.panel > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-bordered > thead > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:last-child,\n.panel > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-bordered > tfoot > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n  border-right: 0;\n}\n.panel > .table-bordered > thead > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > td,\n.panel > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-bordered > thead > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > th,\n.panel > .table-bordered > tbody > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > th {\n  border-bottom: 0;\n}\n.panel > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-bordered > tfoot > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n  border-bottom: 0;\n}\n.panel > .table-responsive {\n  border: 0;\n  margin-bottom: 0;\n}\n.panel-group {\n  margin-bottom: 20px;\n}\n.panel-group .panel {\n  margin-bottom: 0;\n  border-radius: 4px;\n}\n.panel-group .panel + .panel {\n  margin-top: 5px;\n}\n.panel-group .panel-heading {\n  border-bottom: 0;\n}\n.panel-group .panel-heading + .panel-collapse > .panel-body,\n.panel-group .panel-heading + .panel-collapse > .list-group {\n  border-top: 1px solid #dddddd;\n}\n.panel-group .panel-footer {\n  border-top: 0;\n}\n.panel-group .panel-footer + .panel-collapse .panel-body {\n  border-bottom: 1px solid #dddddd;\n}\n.panel-default {\n  border-color: #dddddd;\n}\n.panel-default > .panel-heading {\n  color: #333333;\n  background-color: #f5f5f5;\n  border-color: #dddddd;\n}\n.panel-default > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #dddddd;\n}\n.panel-default > .panel-heading .badge {\n  color: #f5f5f5;\n  background-color: #333333;\n}\n.panel-default > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #dddddd;\n}\n.panel-primary {\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading {\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #337ab7;\n}\n.panel-primary > .panel-heading .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.panel-primary > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #337ab7;\n}\n.panel-success {\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #d6e9c6;\n}\n.panel-success > .panel-heading .badge {\n  color: #dff0d8;\n  background-color: #3c763d;\n}\n.panel-success > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #d6e9c6;\n}\n.panel-info {\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #bce8f1;\n}\n.panel-info > .panel-heading .badge {\n  color: #d9edf7;\n  background-color: #31708f;\n}\n.panel-info > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #bce8f1;\n}\n.panel-warning {\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #faebcc;\n}\n.panel-warning > .panel-heading .badge {\n  color: #fcf8e3;\n  background-color: #8a6d3b;\n}\n.panel-warning > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #faebcc;\n}\n.panel-danger {\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ebccd1;\n}\n.panel-danger > .panel-heading .badge {\n  color: #f2dede;\n  background-color: #a94442;\n}\n.panel-danger > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ebccd1;\n}\n.well {\n  min-height: 20px;\n  padding: 19px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n}\n.well blockquote {\n  border-color: #ddd;\n  border-color: rgba(0, 0, 0, 0.15);\n}\n.well-lg {\n  padding: 24px;\n  border-radius: 6px;\n}\n.well-sm {\n  padding: 9px;\n  border-radius: 3px;\n}\n.close {\n  float: right;\n  font-size: 21px;\n  font-weight: bold;\n  line-height: 1;\n  color: #000000;\n  text-shadow: 0 1px 0 #ffffff;\n  opacity: 0.2;\n  filter: alpha(opacity=20);\n}\n.close:hover,\n.close:focus {\n  color: #000000;\n  text-decoration: none;\n  cursor: pointer;\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n}\nbutton.close {\n  padding: 0;\n  cursor: pointer;\n  background: transparent;\n  border: 0;\n  -webkit-appearance: none;\n}\n.modal-open {\n  overflow: hidden;\n}\n.modal {\n  display: none;\n  overflow: hidden;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  -webkit-overflow-scrolling: touch;\n  outline: 0;\n}\n.modal.fade .modal-dialog {\n  -webkit-transform: translate(0, -25%);\n  -ms-transform: translate(0, -25%);\n  -o-transform: translate(0, -25%);\n  transform: translate(0, -25%);\n  -webkit-transition: -webkit-transform 0.3s ease-out;\n  -moz-transition: -moz-transform 0.3s ease-out;\n  -o-transition: -o-transform 0.3s ease-out;\n  transition: transform 0.3s ease-out;\n}\n.modal.in .modal-dialog {\n  -webkit-transform: translate(0, 0);\n  -ms-transform: translate(0, 0);\n  -o-transform: translate(0, 0);\n  transform: translate(0, 0);\n}\n.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal-dialog {\n  position: relative;\n  width: auto;\n  margin: 10px;\n}\n.modal-content {\n  position: relative;\n  background-color: #ffffff;\n  border: 1px solid #999999;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  background-clip: padding-box;\n  outline: 0;\n}\n.modal-backdrop {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  background-color: #000000;\n}\n.modal-backdrop.fade {\n  opacity: 0;\n  filter: alpha(opacity=0);\n}\n.modal-backdrop.in {\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n}\n.modal-header {\n  padding: 15px;\n  border-bottom: 1px solid #e5e5e5;\n  min-height: 16.428571429px;\n}\n.modal-header .close {\n  margin-top: -2px;\n}\n.modal-title {\n  margin: 0;\n  line-height: 1.428571429;\n}\n.modal-body {\n  position: relative;\n  padding: 15px;\n}\n.modal-footer {\n  padding: 15px;\n  text-align: right;\n  border-top: 1px solid #e5e5e5;\n}\n.modal-footer .btn + .btn {\n  margin-left: 5px;\n  margin-bottom: 0;\n}\n.modal-footer .btn-group .btn + .btn {\n  margin-left: -1px;\n}\n.modal-footer .btn-block + .btn-block {\n  margin-left: 0;\n}\n.modal-scrollbar-measure {\n  position: absolute;\n  top: -9999px;\n  width: 50px;\n  height: 50px;\n  overflow: scroll;\n}\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto;\n  }\n  .modal-content {\n    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n  }\n  .modal-sm {\n    width: 300px;\n  }\n}\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px;\n  }\n}\n.tooltip {\n  position: absolute;\n  z-index: 1070;\n  display: block;\n  visibility: visible;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 1.4;\n  opacity: 0;\n  filter: alpha(opacity=0);\n}\n.tooltip.in {\n  opacity: 0.9;\n  filter: alpha(opacity=90);\n}\n.tooltip.top {\n  margin-top: -3px;\n  padding: 5px 0;\n}\n.tooltip.right {\n  margin-left: 3px;\n  padding: 0 5px;\n}\n.tooltip.bottom {\n  margin-top: 3px;\n  padding: 5px 0;\n}\n.tooltip.left {\n  margin-left: -3px;\n  padding: 0 5px;\n}\n.tooltip-inner {\n  max-width: 200px;\n  padding: 3px 8px;\n  color: #ffffff;\n  text-align: center;\n  text-decoration: none;\n  background-color: #000000;\n  border-radius: 4px;\n}\n.tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.tooltip.top .tooltip-arrow {\n  bottom: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.top-left .tooltip-arrow {\n  bottom: 0;\n  right: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.top-right .tooltip-arrow {\n  bottom: 0;\n  left: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.right .tooltip-arrow {\n  top: 50%;\n  left: 0;\n  margin-top: -5px;\n  border-width: 5px 5px 5px 0;\n  border-right-color: #000000;\n}\n.tooltip.left .tooltip-arrow {\n  top: 50%;\n  right: 0;\n  margin-top: -5px;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #000000;\n}\n.tooltip.bottom .tooltip-arrow {\n  top: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.tooltip.bottom-left .tooltip-arrow {\n  top: 0;\n  right: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.tooltip.bottom-right .tooltip-arrow {\n  top: 0;\n  left: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.popover {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1060;\n  display: none;\n  max-width: 276px;\n  padding: 1px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1.428571429;\n  text-align: left;\n  background-color: #ffffff;\n  background-clip: padding-box;\n  border: 1px solid #cccccc;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  white-space: normal;\n}\n.popover.top {\n  margin-top: -10px;\n}\n.popover.right {\n  margin-left: 10px;\n}\n.popover.bottom {\n  margin-top: 10px;\n}\n.popover.left {\n  margin-left: -10px;\n}\n.popover-title {\n  margin: 0;\n  padding: 8px 14px;\n  font-size: 14px;\n  background-color: #f7f7f7;\n  border-bottom: 1px solid #ebebeb;\n  border-radius: 5px 5px 0 0;\n}\n.popover-content {\n  padding: 9px 14px;\n}\n.popover > .arrow,\n.popover > .arrow:after {\n  position: absolute;\n  display: block;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.popover > .arrow {\n  border-width: 11px;\n}\n.popover > .arrow:after {\n  border-width: 10px;\n  content: \"\";\n}\n.popover.top > .arrow {\n  left: 50%;\n  margin-left: -11px;\n  border-bottom-width: 0;\n  border-top-color: #999999;\n  border-top-color: rgba(0, 0, 0, 0.25);\n  bottom: -11px;\n}\n.popover.top > .arrow:after {\n  content: \" \";\n  bottom: 1px;\n  margin-left: -10px;\n  border-bottom-width: 0;\n  border-top-color: #ffffff;\n}\n.popover.right > .arrow {\n  top: 50%;\n  left: -11px;\n  margin-top: -11px;\n  border-left-width: 0;\n  border-right-color: #999999;\n  border-right-color: rgba(0, 0, 0, 0.25);\n}\n.popover.right > .arrow:after {\n  content: \" \";\n  left: 1px;\n  bottom: -10px;\n  border-left-width: 0;\n  border-right-color: #ffffff;\n}\n.popover.bottom > .arrow {\n  left: 50%;\n  margin-left: -11px;\n  border-top-width: 0;\n  border-bottom-color: #999999;\n  border-bottom-color: rgba(0, 0, 0, 0.25);\n  top: -11px;\n}\n.popover.bottom > .arrow:after {\n  content: \" \";\n  top: 1px;\n  margin-left: -10px;\n  border-top-width: 0;\n  border-bottom-color: #ffffff;\n}\n.popover.left > .arrow {\n  top: 50%;\n  right: -11px;\n  margin-top: -11px;\n  border-right-width: 0;\n  border-left-color: #999999;\n  border-left-color: rgba(0, 0, 0, 0.25);\n}\n.popover.left > .arrow:after {\n  content: \" \";\n  right: 1px;\n  border-right-width: 0;\n  border-left-color: #ffffff;\n  bottom: -10px;\n}\n.carousel {\n  position: relative;\n}\n.carousel-inner {\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n}\n.carousel-inner > .item {\n  display: none;\n  position: relative;\n  -webkit-transition: 0.6s ease-in-out left;\n  -o-transition: 0.6s ease-in-out left;\n  transition: 0.6s ease-in-out left;\n}\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  line-height: 1;\n}\n@media all and (transform-3d), (-webkit-transform-3d) {\n  .carousel-inner > .item {\n    -webkit-transition: -webkit-transform 0.6s ease-in-out;\n    -moz-transition: -moz-transform 0.6s ease-in-out;\n    -o-transition: -o-transform 0.6s ease-in-out;\n    transition: transform 0.6s ease-in-out;\n    -webkit-backface-visibility: hidden;\n    -moz-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -webkit-perspective: 1000;\n    -moz-perspective: 1000;\n    perspective: 1000;\n  }\n  .carousel-inner > .item.next,\n  .carousel-inner > .item.active.right {\n    -webkit-transform: translate3d(100%, 0, 0);\n    transform: translate3d(100%, 0, 0);\n    left: 0;\n  }\n  .carousel-inner > .item.prev,\n  .carousel-inner > .item.active.left {\n    -webkit-transform: translate3d(-100%, 0, 0);\n    transform: translate3d(-100%, 0, 0);\n    left: 0;\n  }\n  .carousel-inner > .item.next.left,\n  .carousel-inner > .item.prev.right,\n  .carousel-inner > .item.active {\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0);\n    left: 0;\n  }\n}\n.carousel-inner > .active,\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  display: block;\n}\n.carousel-inner > .active {\n  left: 0;\n}\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  position: absolute;\n  top: 0;\n  width: 100%;\n}\n.carousel-inner > .next {\n  left: 100%;\n}\n.carousel-inner > .prev {\n  left: -100%;\n}\n.carousel-inner > .next.left,\n.carousel-inner > .prev.right {\n  left: 0;\n}\n.carousel-inner > .active.left {\n  left: -100%;\n}\n.carousel-inner > .active.right {\n  left: 100%;\n}\n.carousel-control {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  width: 15%;\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n  font-size: 20px;\n  color: #ffffff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n}\n.carousel-control.left {\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);\n}\n.carousel-control.right {\n  left: auto;\n  right: 0;\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);\n}\n.carousel-control:hover,\n.carousel-control:focus {\n  outline: 0;\n  color: #ffffff;\n  text-decoration: none;\n  opacity: 0.9;\n  filter: alpha(opacity=90);\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-left,\n.carousel-control .glyphicon-chevron-right {\n  position: absolute;\n  top: 50%;\n  z-index: 5;\n  display: inline-block;\n}\n.carousel-control .icon-prev,\n.carousel-control .glyphicon-chevron-left {\n  left: 50%;\n  margin-left: -10px;\n}\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-right {\n  right: 50%;\n  margin-right: -10px;\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next {\n  width: 20px;\n  height: 20px;\n  margin-top: -10px;\n  line-height: 1;\n  font-family: serif;\n}\n.carousel-control .icon-prev:before {\n  content: '\\2039';\n}\n.carousel-control .icon-next:before {\n  content: '\\203a';\n}\n.carousel-indicators {\n  position: absolute;\n  bottom: 10px;\n  left: 50%;\n  z-index: 15;\n  width: 60%;\n  margin-left: -30%;\n  padding-left: 0;\n  list-style: none;\n  text-align: center;\n}\n.carousel-indicators li {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n  text-indent: -999px;\n  border: 1px solid #ffffff;\n  border-radius: 10px;\n  cursor: pointer;\n  background-color: #000 \\9;\n  background-color: rgba(0, 0, 0, 0);\n}\n.carousel-indicators .active {\n  margin: 0;\n  width: 12px;\n  height: 12px;\n  background-color: #ffffff;\n}\n.carousel-caption {\n  position: absolute;\n  left: 15%;\n  right: 15%;\n  bottom: 20px;\n  z-index: 10;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  color: #ffffff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n}\n.carousel-caption .btn {\n  text-shadow: none;\n}\n@media screen and (min-width: 768px) {\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-prev,\n  .carousel-control .icon-next {\n    width: 30px;\n    height: 30px;\n    margin-top: -15px;\n    font-size: 30px;\n  }\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .icon-prev {\n    margin-left: -15px;\n  }\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-next {\n    margin-right: -15px;\n  }\n  .carousel-caption {\n    left: 20%;\n    right: 20%;\n    padding-bottom: 30px;\n  }\n  .carousel-indicators {\n    bottom: 20px;\n  }\n}\n.clearfix:before,\n.clearfix:after,\n.dl-horizontal dd:before,\n.dl-horizontal dd:after,\n.container:before,\n.container:after,\n.container-fluid:before,\n.container-fluid:after,\n.row:before,\n.row:after,\n.form-horizontal .form-group:before,\n.form-horizontal .form-group:after,\n.btn-toolbar:before,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:before,\n.btn-group-vertical > .btn-group:after,\n.nav:before,\n.nav:after,\n.navbar:before,\n.navbar:after,\n.navbar-header:before,\n.navbar-header:after,\n.navbar-collapse:before,\n.navbar-collapse:after,\n.pager:before,\n.pager:after,\n.panel-body:before,\n.panel-body:after,\n.modal-footer:before,\n.modal-footer:after {\n  content: \" \";\n  display: table;\n}\n.clearfix:after,\n.dl-horizontal dd:after,\n.container:after,\n.container-fluid:after,\n.row:after,\n.form-horizontal .form-group:after,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:after,\n.nav:after,\n.navbar:after,\n.navbar-header:after,\n.navbar-collapse:after,\n.pager:after,\n.panel-body:after,\n.modal-footer:after {\n  clear: both;\n}\n.center-block {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n.pull-right {\n  float: right !important;\n}\n.pull-left {\n  float: left !important;\n}\n.hide {\n  display: none !important;\n}\n.show {\n  display: block !important;\n}\n.invisible {\n  visibility: hidden;\n}\n.text-hide {\n  font: 0/0 a;\n  color: transparent;\n  text-shadow: none;\n  background-color: transparent;\n  border: 0;\n}\n.hidden {\n  display: none !important;\n  visibility: hidden !important;\n}\n.affix {\n  position: fixed;\n}\n@-ms-viewport {\n  width: device-width;\n}\n.visible-xs,\n.visible-sm,\n.visible-md,\n.visible-lg {\n  display: none !important;\n}\n.visible-xs-block,\n.visible-xs-inline,\n.visible-xs-inline-block,\n.visible-sm-block,\n.visible-sm-inline,\n.visible-sm-inline-block,\n.visible-md-block,\n.visible-md-inline,\n.visible-md-inline-block,\n.visible-lg-block,\n.visible-lg-inline,\n.visible-lg-inline-block {\n  display: none !important;\n}\n@media (max-width: 767px) {\n  .visible-xs {\n    display: block !important;\n  }\n  table.visible-xs {\n    display: table;\n  }\n  tr.visible-xs {\n    display: table-row !important;\n  }\n  th.visible-xs,\n  td.visible-xs {\n    display: table-cell !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-block {\n    display: block !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline {\n    display: inline !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm {\n    display: block !important;\n  }\n  table.visible-sm {\n    display: table;\n  }\n  tr.visible-sm {\n    display: table-row !important;\n  }\n  th.visible-sm,\n  td.visible-sm {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-block {\n    display: block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md {\n    display: block !important;\n  }\n  table.visible-md {\n    display: table;\n  }\n  tr.visible-md {\n    display: table-row !important;\n  }\n  th.visible-md,\n  td.visible-md {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-block {\n    display: block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg {\n    display: block !important;\n  }\n  table.visible-lg {\n    display: table;\n  }\n  tr.visible-lg {\n    display: table-row !important;\n  }\n  th.visible-lg,\n  td.visible-lg {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-block {\n    display: block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (max-width: 767px) {\n  .hidden-xs {\n    display: none !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important;\n  }\n}\n@media (min-width: 1200px) {\n  .hidden-lg {\n    display: none !important;\n  }\n}\n.visible-print {\n  display: none !important;\n}\n@media print {\n  .visible-print {\n    display: block !important;\n  }\n  table.visible-print {\n    display: table;\n  }\n  tr.visible-print {\n    display: table-row !important;\n  }\n  th.visible-print,\n  td.visible-print {\n    display: table-cell !important;\n  }\n}\n.visible-print-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-block {\n    display: block !important;\n  }\n}\n.visible-print-inline {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline {\n    display: inline !important;\n  }\n}\n.visible-print-inline-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline-block {\n    display: inline-block !important;\n  }\n}\n@media print {\n  .hidden-print {\n    display: none !important;\n  }\n}\n";
-
-/***/ },
-/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(angular, famous) {/**
@@ -33330,7 +33249,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35)))
 
 /***/ },
-/* 9 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -33366,9 +33285,9 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(15);
-	    var ScrollController = __webpack_require__(16);
-	    var ListLayout = __webpack_require__(25);
+	    var LayoutUtility = __webpack_require__(13);
+	    var ScrollController = __webpack_require__(14);
+	    var ListLayout = __webpack_require__(23);
 
 	    //
 	    // Pull to refresh states
@@ -33931,7 +33850,7 @@
 
 
 /***/ },
-/* 10 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -33961,7 +33880,7 @@
 	    var Particle = __webpack_require__(39);
 	    var Spring = __webpack_require__(40);
 	    var PhysicsEngine = __webpack_require__(41);
-	    var LayoutNode = __webpack_require__(13);
+	    var LayoutNode = __webpack_require__(11);
 	    var Transitionable = __webpack_require__(42);
 
 	    /**
@@ -34434,7 +34353,7 @@
 
 
 /***/ },
-/* 11 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -34704,7 +34623,7 @@
 
 
 /***/ },
-/* 12 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -34742,12 +34661,12 @@
 	    var ViewSequence = __webpack_require__(45);
 	    var OptionsManager = __webpack_require__(36);
 	    var EventHandler = __webpack_require__(46);
-	    var LayoutUtility = __webpack_require__(15);
-	    var LayoutNodeManager = __webpack_require__(14);
-	    var LayoutNode = __webpack_require__(13);
-	    var FlowLayoutNode = __webpack_require__(10);
+	    var LayoutUtility = __webpack_require__(13);
+	    var LayoutNodeManager = __webpack_require__(12);
+	    var LayoutNode = __webpack_require__(11);
+	    var FlowLayoutNode = __webpack_require__(8);
 	    var Transform = __webpack_require__(37);
-	    __webpack_require__(19);
+	    __webpack_require__(17);
 
 	    /**
 	     * @class
@@ -35528,7 +35447,7 @@
 
 
 /***/ },
-/* 13 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -35553,7 +35472,7 @@
 
 	    // import dependencies
 	    var Transform = __webpack_require__(37);
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    /**
 	     * @class
@@ -35729,7 +35648,7 @@
 
 
 /***/ },
-/* 14 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -35762,8 +35681,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutContext = __webpack_require__(11);
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutContext = __webpack_require__(9);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    var MAX_POOL_SIZE = 100;
 
@@ -36466,7 +36385,7 @@
 
 
 /***/ },
-/* 15 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36756,7 +36675,7 @@
 
 
 /***/ },
-/* 16 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36799,11 +36718,11 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(15);
-	    var LayoutController = __webpack_require__(12);
-	    var LayoutNode = __webpack_require__(13);
-	    var FlowLayoutNode = __webpack_require__(10);
-	    var LayoutNodeManager = __webpack_require__(14);
+	    var LayoutUtility = __webpack_require__(13);
+	    var LayoutController = __webpack_require__(10);
+	    var LayoutNode = __webpack_require__(11);
+	    var FlowLayoutNode = __webpack_require__(8);
+	    var LayoutNodeManager = __webpack_require__(12);
 	    var ContainerSurface = __webpack_require__(47);
 	    var Transform = __webpack_require__(37);
 	    var EventHandler = __webpack_require__(46);
@@ -38672,7 +38591,7 @@
 
 
 /***/ },
-/* 17 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;// Deprecated, require FlexScrollView instead
@@ -38682,12 +38601,12 @@
 	    if (console.warn) {
 	        console.warn('file famous-flex/ScrollView has been deprecated, use famous-flex/FlexScrollView instead');
 	    }
-	    module.exports = __webpack_require__(9);
+	    module.exports = __webpack_require__(7);
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ },
-/* 18 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -38955,7 +38874,7 @@
 
 
 /***/ },
-/* 19 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39008,7 +38927,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    /**
 	     * @class
@@ -39223,7 +39142,7 @@
 
 
 /***/ },
-/* 20 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39276,7 +39195,7 @@
 
 	    // import dependencies
 	    var Utility = __webpack_require__(43);
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -39491,7 +39410,7 @@
 
 
 /***/ },
-/* 21 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39636,7 +39555,7 @@
 
 
 /***/ },
-/* 22 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39725,7 +39644,7 @@
 
 
 /***/ },
-/* 23 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39776,7 +39695,7 @@
 
 	    // import dependencies
 	    var Utility = __webpack_require__(43);
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -39832,7 +39751,7 @@
 
 
 /***/ },
-/* 24 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39879,7 +39798,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutDockHelper = __webpack_require__(19);
+	    var LayoutDockHelper = __webpack_require__(17);
 
 	    // Layout function
 	    module.exports = function HeaderFooterLayout(context, options) {
@@ -39892,7 +39811,7 @@
 
 
 /***/ },
-/* 25 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39966,7 +39885,7 @@
 
 	    // import dependencies
 	    var Utility = __webpack_require__(43);
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -40190,7 +40109,7 @@
 
 
 /***/ },
-/* 26 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40257,7 +40176,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutDockHelper = __webpack_require__(19);
+	    var LayoutDockHelper = __webpack_require__(17);
 
 	    // Layout function
 	    module.exports = function NavBarLayout(context, options) {
@@ -40302,7 +40221,7 @@
 
 
 /***/ },
-/* 27 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40415,7 +40334,7 @@
 
 
 /***/ },
-/* 28 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40482,7 +40401,7 @@
 
 	    // import dependencies
 	    var Utility = __webpack_require__(43);
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -40608,7 +40527,7 @@
 
 
 /***/ },
-/* 29 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40635,12 +40554,12 @@
 		if (console.warn) {
 			console.warn('TableLayout has been deprecated and will be removed in the future, use ListLayout instead');
 		}
-	    module.exports = __webpack_require__(25);
+	    module.exports = __webpack_require__(23);
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ },
-/* 30 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40816,7 +40735,7 @@
 
 
 /***/ },
-/* 31 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40880,13 +40799,13 @@
 	    var Surface = __webpack_require__(52);
 	    var Utility = __webpack_require__(43);
 	    var ContainerSurface = __webpack_require__(47);
-	    var LayoutController = __webpack_require__(12);
-	    var ScrollController = __webpack_require__(16);
-	    var WheelLayout = __webpack_require__(30);
-	    var ProportionalLayout = __webpack_require__(27);
-	    var VirtualViewSequence = __webpack_require__(18);
-	    var DatePickerComponents = __webpack_require__(32);
-	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutController = __webpack_require__(10);
+	    var ScrollController = __webpack_require__(14);
+	    var WheelLayout = __webpack_require__(28);
+	    var ProportionalLayout = __webpack_require__(25);
+	    var VirtualViewSequence = __webpack_require__(16);
+	    var DatePickerComponents = __webpack_require__(30);
+	    var LayoutUtility = __webpack_require__(13);
 
 	    /**
 	     * @class
@@ -41271,7 +41190,7 @@
 
 
 /***/ },
-/* 32 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41591,7 +41510,7 @@
 
 
 /***/ },
-/* 33 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41665,8 +41584,8 @@
 	    // import dependencies
 	    var Surface = __webpack_require__(52);
 	    var View = __webpack_require__(51);
-	    var LayoutController = __webpack_require__(12);
-	    var TabBarLayout = __webpack_require__(28);
+	    var LayoutController = __webpack_require__(10);
+	    var TabBarLayout = __webpack_require__(26);
 
 	    /**
 	     * @class
@@ -41923,6 +41842,27 @@
 
 
 /***/ },
+/* 32 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+	var dispose = __webpack_require__(34)
+		// The css code:
+		(__webpack_require__(33));
+	// Hot Module Replacement
+	if(false) {
+		module.hot.accept();
+		module.hot.dispose(dispose);
+	}
+
+/***/ },
+/* 33 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports =
+		"/*! normalize.css v3.0.2 | MIT License | git.io/normalize */\nhtml {\n  font-family: sans-serif;\n  -ms-text-size-adjust: 100%;\n  -webkit-text-size-adjust: 100%;\n}\nbody {\n  margin: 0;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmain,\nmenu,\nnav,\nsection,\nsummary {\n  display: block;\n}\naudio,\ncanvas,\nprogress,\nvideo {\n  display: inline-block;\n  vertical-align: baseline;\n}\naudio:not([controls]) {\n  display: none;\n  height: 0;\n}\n[hidden],\ntemplate {\n  display: none;\n}\na {\n  background-color: transparent;\n}\na:active,\na:hover {\n  outline: 0;\n}\nabbr[title] {\n  border-bottom: 1px dotted;\n}\nb,\nstrong {\n  font-weight: bold;\n}\ndfn {\n  font-style: italic;\n}\nh1 {\n  font-size: 2em;\n  margin: 0.67em 0;\n}\nmark {\n  background: #ff0;\n  color: #000;\n}\nsmall {\n  font-size: 80%;\n}\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\nsup {\n  top: -0.5em;\n}\nsub {\n  bottom: -0.25em;\n}\nimg {\n  border: 0;\n}\nsvg:not(:root) {\n  overflow: hidden;\n}\nfigure {\n  margin: 1em 40px;\n}\nhr {\n  -moz-box-sizing: content-box;\n  box-sizing: content-box;\n  height: 0;\n}\npre {\n  overflow: auto;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: monospace, monospace;\n  font-size: 1em;\n}\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  color: inherit;\n  font: inherit;\n  margin: 0;\n}\nbutton {\n  overflow: visible;\n}\nbutton,\nselect {\n  text-transform: none;\n}\nbutton,\nhtml input[type=\"button\"],\ninput[type=\"reset\"],\ninput[type=\"submit\"] {\n  -webkit-appearance: button;\n  cursor: pointer;\n}\nbutton[disabled],\nhtml input[disabled] {\n  cursor: default;\n}\nbutton::-moz-focus-inner,\ninput::-moz-focus-inner {\n  border: 0;\n  padding: 0;\n}\ninput {\n  line-height: normal;\n}\ninput[type=\"checkbox\"],\ninput[type=\"radio\"] {\n  box-sizing: border-box;\n  padding: 0;\n}\ninput[type=\"number\"]::-webkit-inner-spin-button,\ninput[type=\"number\"]::-webkit-outer-spin-button {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: textfield;\n  -moz-box-sizing: content-box;\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\ninput[type=\"search\"]::-webkit-search-cancel-button,\ninput[type=\"search\"]::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\nfieldset {\n  border: 1px solid #c0c0c0;\n  margin: 0 2px;\n  padding: 0.35em 0.625em 0.75em;\n}\nlegend {\n  border: 0;\n  padding: 0;\n}\ntextarea {\n  overflow: auto;\n}\noptgroup {\n  font-weight: bold;\n}\ntable {\n  border-collapse: collapse;\n  border-spacing: 0;\n}\ntd,\nth {\n  padding: 0;\n}\n/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */\n@media print {\n  *,\n  *:before,\n  *:after {\n    background: transparent !important;\n    color: #000 !important;\n    box-shadow: none !important;\n    text-shadow: none !important;\n  }\n  a,\n  a:visited {\n    text-decoration: underline;\n  }\n  a[href]:after {\n    content: \" (\" attr(href) \")\";\n  }\n  abbr[title]:after {\n    content: \" (\" attr(title) \")\";\n  }\n  a[href^=\"#\"]:after,\n  a[href^=\"javascript:\"]:after {\n    content: \"\";\n  }\n  pre,\n  blockquote {\n    border: 1px solid #999;\n    page-break-inside: avoid;\n  }\n  thead {\n    display: table-header-group;\n  }\n  tr,\n  img {\n    page-break-inside: avoid;\n  }\n  img {\n    max-width: 100% !important;\n  }\n  p,\n  h2,\n  h3 {\n    orphans: 3;\n    widows: 3;\n  }\n  h2,\n  h3 {\n    page-break-after: avoid;\n  }\n  select {\n    background: #fff !important;\n  }\n  .navbar {\n    display: none;\n  }\n  .btn > .caret,\n  .dropup > .btn > .caret {\n    border-top-color: #000 !important;\n  }\n  .label {\n    border: 1px solid #000;\n  }\n  .table {\n    border-collapse: collapse !important;\n  }\n  .table td,\n  .table th {\n    background-color: #fff !important;\n  }\n  .table-bordered th,\n  .table-bordered td {\n    border: 1px solid #ddd !important;\n  }\n}\n* {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\n*:before,\n*:after {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\nhtml {\n  font-size: 10px;\n  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);\n}\nbody {\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #333333;\n  background-color: #ffffff;\n}\ninput,\nbutton,\nselect,\ntextarea {\n  font-family: inherit;\n  font-size: inherit;\n  line-height: inherit;\n}\na {\n  color: #337ab7;\n  text-decoration: none;\n}\na:hover,\na:focus {\n  color: #23527c;\n  text-decoration: underline;\n}\na:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\nfigure {\n  margin: 0;\n}\nimg {\n  vertical-align: middle;\n}\n.img-responsive,\n.thumbnail > img,\n.thumbnail a > img,\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  display: block;\n  max-width: 100%;\n  height: auto;\n}\n.img-rounded {\n  border-radius: 6px;\n}\n.img-thumbnail {\n  padding: 4px;\n  line-height: 1.428571429;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 4px;\n  -webkit-transition: all 0.2s ease-in-out;\n  -o-transition: all 0.2s ease-in-out;\n  transition: all 0.2s ease-in-out;\n  display: inline-block;\n  max-width: 100%;\n  height: auto;\n}\n.img-circle {\n  border-radius: 50%;\n}\nhr {\n  margin-top: 20px;\n  margin-bottom: 20px;\n  border: 0;\n  border-top: 1px solid #eeeeee;\n}\n.sr-only {\n  position: absolute;\n  width: 1px;\n  height: 1px;\n  margin: -1px;\n  padding: 0;\n  overflow: hidden;\n  clip: rect(0, 0, 0, 0);\n  border: 0;\n}\n.sr-only-focusable:active,\n.sr-only-focusable:focus {\n  position: static;\n  width: auto;\n  height: auto;\n  margin: 0;\n  overflow: visible;\n  clip: auto;\n}\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\n.h1,\n.h2,\n.h3,\n.h4,\n.h5,\n.h6 {\n  font-family: inherit;\n  font-weight: 500;\n  line-height: 1.1;\n  color: inherit;\n}\nh1 small,\nh2 small,\nh3 small,\nh4 small,\nh5 small,\nh6 small,\n.h1 small,\n.h2 small,\n.h3 small,\n.h4 small,\n.h5 small,\n.h6 small,\nh1 .small,\nh2 .small,\nh3 .small,\nh4 .small,\nh5 .small,\nh6 .small,\n.h1 .small,\n.h2 .small,\n.h3 .small,\n.h4 .small,\n.h5 .small,\n.h6 .small {\n  font-weight: normal;\n  line-height: 1;\n  color: #777777;\n}\nh1,\n.h1,\nh2,\n.h2,\nh3,\n.h3 {\n  margin-top: 20px;\n  margin-bottom: 10px;\n}\nh1 small,\n.h1 small,\nh2 small,\n.h2 small,\nh3 small,\n.h3 small,\nh1 .small,\n.h1 .small,\nh2 .small,\n.h2 .small,\nh3 .small,\n.h3 .small {\n  font-size: 65%;\n}\nh4,\n.h4,\nh5,\n.h5,\nh6,\n.h6 {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\nh4 small,\n.h4 small,\nh5 small,\n.h5 small,\nh6 small,\n.h6 small,\nh4 .small,\n.h4 .small,\nh5 .small,\n.h5 .small,\nh6 .small,\n.h6 .small {\n  font-size: 75%;\n}\nh1,\n.h1 {\n  font-size: 36px;\n}\nh2,\n.h2 {\n  font-size: 30px;\n}\nh3,\n.h3 {\n  font-size: 24px;\n}\nh4,\n.h4 {\n  font-size: 18px;\n}\nh5,\n.h5 {\n  font-size: 14px;\n}\nh6,\n.h6 {\n  font-size: 12px;\n}\np {\n  margin: 0 0 10px;\n}\n.lead {\n  margin-bottom: 20px;\n  font-size: 16px;\n  font-weight: 300;\n  line-height: 1.4;\n}\n@media (min-width: 768px) {\n  .lead {\n    font-size: 21px;\n  }\n}\nsmall,\n.small {\n  font-size: 85%;\n}\nmark,\n.mark {\n  background-color: #fcf8e3;\n  padding: .2em;\n}\n.text-left {\n  text-align: left;\n}\n.text-right {\n  text-align: right;\n}\n.text-center {\n  text-align: center;\n}\n.text-justify {\n  text-align: justify;\n}\n.text-nowrap {\n  white-space: nowrap;\n}\n.text-lowercase {\n  text-transform: lowercase;\n}\n.text-uppercase {\n  text-transform: uppercase;\n}\n.text-capitalize {\n  text-transform: capitalize;\n}\n.text-muted {\n  color: #777777;\n}\n.text-primary {\n  color: #337ab7;\n}\na.text-primary:hover {\n  color: #286090;\n}\n.text-success {\n  color: #3c763d;\n}\na.text-success:hover {\n  color: #2b542c;\n}\n.text-info {\n  color: #31708f;\n}\na.text-info:hover {\n  color: #245269;\n}\n.text-warning {\n  color: #8a6d3b;\n}\na.text-warning:hover {\n  color: #66512c;\n}\n.text-danger {\n  color: #a94442;\n}\na.text-danger:hover {\n  color: #843534;\n}\n.bg-primary {\n  color: #fff;\n  background-color: #337ab7;\n}\na.bg-primary:hover {\n  background-color: #286090;\n}\n.bg-success {\n  background-color: #dff0d8;\n}\na.bg-success:hover {\n  background-color: #c1e2b3;\n}\n.bg-info {\n  background-color: #d9edf7;\n}\na.bg-info:hover {\n  background-color: #afd9ee;\n}\n.bg-warning {\n  background-color: #fcf8e3;\n}\na.bg-warning:hover {\n  background-color: #f7ecb5;\n}\n.bg-danger {\n  background-color: #f2dede;\n}\na.bg-danger:hover {\n  background-color: #e4b9b9;\n}\n.page-header {\n  padding-bottom: 9px;\n  margin: 40px 0 20px;\n  border-bottom: 1px solid #eeeeee;\n}\nul,\nol {\n  margin-top: 0;\n  margin-bottom: 10px;\n}\nul ul,\nol ul,\nul ol,\nol ol {\n  margin-bottom: 0;\n}\n.list-unstyled {\n  padding-left: 0;\n  list-style: none;\n}\n.list-inline {\n  padding-left: 0;\n  list-style: none;\n  margin-left: -5px;\n}\n.list-inline > li {\n  display: inline-block;\n  padding-left: 5px;\n  padding-right: 5px;\n}\ndl {\n  margin-top: 0;\n  margin-bottom: 20px;\n}\ndt,\ndd {\n  line-height: 1.428571429;\n}\ndt {\n  font-weight: bold;\n}\ndd {\n  margin-left: 0;\n}\n@media (min-width: 768px) {\n  .dl-horizontal dt {\n    float: left;\n    width: 160px;\n    clear: left;\n    text-align: right;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n  }\n  .dl-horizontal dd {\n    margin-left: 180px;\n  }\n}\nabbr[title],\nabbr[data-original-title] {\n  cursor: help;\n  border-bottom: 1px dotted #777777;\n}\n.initialism {\n  font-size: 90%;\n  text-transform: uppercase;\n}\nblockquote {\n  padding: 10px 20px;\n  margin: 0 0 20px;\n  font-size: 17.5px;\n  border-left: 5px solid #eeeeee;\n}\nblockquote p:last-child,\nblockquote ul:last-child,\nblockquote ol:last-child {\n  margin-bottom: 0;\n}\nblockquote footer,\nblockquote small,\nblockquote .small {\n  display: block;\n  font-size: 80%;\n  line-height: 1.428571429;\n  color: #777777;\n}\nblockquote footer:before,\nblockquote small:before,\nblockquote .small:before {\n  content: '\\2014 \\00A0';\n}\n.blockquote-reverse,\nblockquote.pull-right {\n  padding-right: 15px;\n  padding-left: 0;\n  border-right: 5px solid #eeeeee;\n  border-left: 0;\n  text-align: right;\n}\n.blockquote-reverse footer:before,\nblockquote.pull-right footer:before,\n.blockquote-reverse small:before,\nblockquote.pull-right small:before,\n.blockquote-reverse .small:before,\nblockquote.pull-right .small:before {\n  content: '';\n}\n.blockquote-reverse footer:after,\nblockquote.pull-right footer:after,\n.blockquote-reverse small:after,\nblockquote.pull-right small:after,\n.blockquote-reverse .small:after,\nblockquote.pull-right .small:after {\n  content: '\\00A0 \\2014';\n}\naddress {\n  margin-bottom: 20px;\n  font-style: normal;\n  line-height: 1.428571429;\n}\ncode,\nkbd,\npre,\nsamp {\n  font-family: Menlo, Monaco, Consolas, \"Courier New\", monospace;\n}\ncode {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #c7254e;\n  background-color: #f9f2f4;\n  border-radius: 4px;\n}\nkbd {\n  padding: 2px 4px;\n  font-size: 90%;\n  color: #ffffff;\n  background-color: #333333;\n  border-radius: 3px;\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.25);\n}\nkbd kbd {\n  padding: 0;\n  font-size: 100%;\n  font-weight: bold;\n  box-shadow: none;\n}\npre {\n  display: block;\n  padding: 9.5px;\n  margin: 0 0 10px;\n  font-size: 13px;\n  line-height: 1.428571429;\n  word-break: break-all;\n  word-wrap: break-word;\n  color: #333333;\n  background-color: #f5f5f5;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\npre code {\n  padding: 0;\n  font-size: inherit;\n  color: inherit;\n  white-space: pre-wrap;\n  background-color: transparent;\n  border-radius: 0;\n}\n.pre-scrollable {\n  max-height: 340px;\n  overflow-y: scroll;\n}\n.container {\n  margin-right: auto;\n  margin-left: auto;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n@media (min-width: 768px) {\n  .container {\n    width: 750px;\n  }\n}\n@media (min-width: 992px) {\n  .container {\n    width: 970px;\n  }\n}\n@media (min-width: 1200px) {\n  .container {\n    width: 1170px;\n  }\n}\n.container-fluid {\n  margin-right: auto;\n  margin-left: auto;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.row {\n  margin-left: -15px;\n  margin-right: -15px;\n}\n.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {\n  position: relative;\n  min-height: 1px;\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {\n  float: left;\n}\n.col-xs-12 {\n  width: 100%;\n}\n.col-xs-11 {\n  width: 91.66666666666666%;\n}\n.col-xs-10 {\n  width: 83.33333333333334%;\n}\n.col-xs-9 {\n  width: 75%;\n}\n.col-xs-8 {\n  width: 66.66666666666666%;\n}\n.col-xs-7 {\n  width: 58.333333333333336%;\n}\n.col-xs-6 {\n  width: 50%;\n}\n.col-xs-5 {\n  width: 41.66666666666667%;\n}\n.col-xs-4 {\n  width: 33.33333333333333%;\n}\n.col-xs-3 {\n  width: 25%;\n}\n.col-xs-2 {\n  width: 16.666666666666664%;\n}\n.col-xs-1 {\n  width: 8.333333333333332%;\n}\n.col-xs-pull-12 {\n  right: 100%;\n}\n.col-xs-pull-11 {\n  right: 91.66666666666666%;\n}\n.col-xs-pull-10 {\n  right: 83.33333333333334%;\n}\n.col-xs-pull-9 {\n  right: 75%;\n}\n.col-xs-pull-8 {\n  right: 66.66666666666666%;\n}\n.col-xs-pull-7 {\n  right: 58.333333333333336%;\n}\n.col-xs-pull-6 {\n  right: 50%;\n}\n.col-xs-pull-5 {\n  right: 41.66666666666667%;\n}\n.col-xs-pull-4 {\n  right: 33.33333333333333%;\n}\n.col-xs-pull-3 {\n  right: 25%;\n}\n.col-xs-pull-2 {\n  right: 16.666666666666664%;\n}\n.col-xs-pull-1 {\n  right: 8.333333333333332%;\n}\n.col-xs-pull-0 {\n  right: auto;\n}\n.col-xs-push-12 {\n  left: 100%;\n}\n.col-xs-push-11 {\n  left: 91.66666666666666%;\n}\n.col-xs-push-10 {\n  left: 83.33333333333334%;\n}\n.col-xs-push-9 {\n  left: 75%;\n}\n.col-xs-push-8 {\n  left: 66.66666666666666%;\n}\n.col-xs-push-7 {\n  left: 58.333333333333336%;\n}\n.col-xs-push-6 {\n  left: 50%;\n}\n.col-xs-push-5 {\n  left: 41.66666666666667%;\n}\n.col-xs-push-4 {\n  left: 33.33333333333333%;\n}\n.col-xs-push-3 {\n  left: 25%;\n}\n.col-xs-push-2 {\n  left: 16.666666666666664%;\n}\n.col-xs-push-1 {\n  left: 8.333333333333332%;\n}\n.col-xs-push-0 {\n  left: auto;\n}\n.col-xs-offset-12 {\n  margin-left: 100%;\n}\n.col-xs-offset-11 {\n  margin-left: 91.66666666666666%;\n}\n.col-xs-offset-10 {\n  margin-left: 83.33333333333334%;\n}\n.col-xs-offset-9 {\n  margin-left: 75%;\n}\n.col-xs-offset-8 {\n  margin-left: 66.66666666666666%;\n}\n.col-xs-offset-7 {\n  margin-left: 58.333333333333336%;\n}\n.col-xs-offset-6 {\n  margin-left: 50%;\n}\n.col-xs-offset-5 {\n  margin-left: 41.66666666666667%;\n}\n.col-xs-offset-4 {\n  margin-left: 33.33333333333333%;\n}\n.col-xs-offset-3 {\n  margin-left: 25%;\n}\n.col-xs-offset-2 {\n  margin-left: 16.666666666666664%;\n}\n.col-xs-offset-1 {\n  margin-left: 8.333333333333332%;\n}\n.col-xs-offset-0 {\n  margin-left: 0%;\n}\n@media (min-width: 768px) {\n  .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {\n    float: left;\n  }\n  .col-sm-12 {\n    width: 100%;\n  }\n  .col-sm-11 {\n    width: 91.66666666666666%;\n  }\n  .col-sm-10 {\n    width: 83.33333333333334%;\n  }\n  .col-sm-9 {\n    width: 75%;\n  }\n  .col-sm-8 {\n    width: 66.66666666666666%;\n  }\n  .col-sm-7 {\n    width: 58.333333333333336%;\n  }\n  .col-sm-6 {\n    width: 50%;\n  }\n  .col-sm-5 {\n    width: 41.66666666666667%;\n  }\n  .col-sm-4 {\n    width: 33.33333333333333%;\n  }\n  .col-sm-3 {\n    width: 25%;\n  }\n  .col-sm-2 {\n    width: 16.666666666666664%;\n  }\n  .col-sm-1 {\n    width: 8.333333333333332%;\n  }\n  .col-sm-pull-12 {\n    right: 100%;\n  }\n  .col-sm-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-sm-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-sm-pull-9 {\n    right: 75%;\n  }\n  .col-sm-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-sm-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-sm-pull-6 {\n    right: 50%;\n  }\n  .col-sm-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-sm-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-sm-pull-3 {\n    right: 25%;\n  }\n  .col-sm-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-sm-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-sm-pull-0 {\n    right: auto;\n  }\n  .col-sm-push-12 {\n    left: 100%;\n  }\n  .col-sm-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-sm-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-sm-push-9 {\n    left: 75%;\n  }\n  .col-sm-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-sm-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-sm-push-6 {\n    left: 50%;\n  }\n  .col-sm-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-sm-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-sm-push-3 {\n    left: 25%;\n  }\n  .col-sm-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-sm-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-sm-push-0 {\n    left: auto;\n  }\n  .col-sm-offset-12 {\n    margin-left: 100%;\n  }\n  .col-sm-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-sm-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-sm-offset-9 {\n    margin-left: 75%;\n  }\n  .col-sm-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-sm-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-sm-offset-6 {\n    margin-left: 50%;\n  }\n  .col-sm-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-sm-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-sm-offset-3 {\n    margin-left: 25%;\n  }\n  .col-sm-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-sm-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-sm-offset-0 {\n    margin-left: 0%;\n  }\n}\n@media (min-width: 992px) {\n  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {\n    float: left;\n  }\n  .col-md-12 {\n    width: 100%;\n  }\n  .col-md-11 {\n    width: 91.66666666666666%;\n  }\n  .col-md-10 {\n    width: 83.33333333333334%;\n  }\n  .col-md-9 {\n    width: 75%;\n  }\n  .col-md-8 {\n    width: 66.66666666666666%;\n  }\n  .col-md-7 {\n    width: 58.333333333333336%;\n  }\n  .col-md-6 {\n    width: 50%;\n  }\n  .col-md-5 {\n    width: 41.66666666666667%;\n  }\n  .col-md-4 {\n    width: 33.33333333333333%;\n  }\n  .col-md-3 {\n    width: 25%;\n  }\n  .col-md-2 {\n    width: 16.666666666666664%;\n  }\n  .col-md-1 {\n    width: 8.333333333333332%;\n  }\n  .col-md-pull-12 {\n    right: 100%;\n  }\n  .col-md-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-md-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-md-pull-9 {\n    right: 75%;\n  }\n  .col-md-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-md-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-md-pull-6 {\n    right: 50%;\n  }\n  .col-md-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-md-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-md-pull-3 {\n    right: 25%;\n  }\n  .col-md-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-md-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-md-pull-0 {\n    right: auto;\n  }\n  .col-md-push-12 {\n    left: 100%;\n  }\n  .col-md-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-md-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-md-push-9 {\n    left: 75%;\n  }\n  .col-md-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-md-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-md-push-6 {\n    left: 50%;\n  }\n  .col-md-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-md-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-md-push-3 {\n    left: 25%;\n  }\n  .col-md-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-md-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-md-push-0 {\n    left: auto;\n  }\n  .col-md-offset-12 {\n    margin-left: 100%;\n  }\n  .col-md-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-md-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-md-offset-9 {\n    margin-left: 75%;\n  }\n  .col-md-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-md-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-md-offset-6 {\n    margin-left: 50%;\n  }\n  .col-md-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-md-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-md-offset-3 {\n    margin-left: 25%;\n  }\n  .col-md-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-md-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-md-offset-0 {\n    margin-left: 0%;\n  }\n}\n@media (min-width: 1200px) {\n  .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12 {\n    float: left;\n  }\n  .col-lg-12 {\n    width: 100%;\n  }\n  .col-lg-11 {\n    width: 91.66666666666666%;\n  }\n  .col-lg-10 {\n    width: 83.33333333333334%;\n  }\n  .col-lg-9 {\n    width: 75%;\n  }\n  .col-lg-8 {\n    width: 66.66666666666666%;\n  }\n  .col-lg-7 {\n    width: 58.333333333333336%;\n  }\n  .col-lg-6 {\n    width: 50%;\n  }\n  .col-lg-5 {\n    width: 41.66666666666667%;\n  }\n  .col-lg-4 {\n    width: 33.33333333333333%;\n  }\n  .col-lg-3 {\n    width: 25%;\n  }\n  .col-lg-2 {\n    width: 16.666666666666664%;\n  }\n  .col-lg-1 {\n    width: 8.333333333333332%;\n  }\n  .col-lg-pull-12 {\n    right: 100%;\n  }\n  .col-lg-pull-11 {\n    right: 91.66666666666666%;\n  }\n  .col-lg-pull-10 {\n    right: 83.33333333333334%;\n  }\n  .col-lg-pull-9 {\n    right: 75%;\n  }\n  .col-lg-pull-8 {\n    right: 66.66666666666666%;\n  }\n  .col-lg-pull-7 {\n    right: 58.333333333333336%;\n  }\n  .col-lg-pull-6 {\n    right: 50%;\n  }\n  .col-lg-pull-5 {\n    right: 41.66666666666667%;\n  }\n  .col-lg-pull-4 {\n    right: 33.33333333333333%;\n  }\n  .col-lg-pull-3 {\n    right: 25%;\n  }\n  .col-lg-pull-2 {\n    right: 16.666666666666664%;\n  }\n  .col-lg-pull-1 {\n    right: 8.333333333333332%;\n  }\n  .col-lg-pull-0 {\n    right: auto;\n  }\n  .col-lg-push-12 {\n    left: 100%;\n  }\n  .col-lg-push-11 {\n    left: 91.66666666666666%;\n  }\n  .col-lg-push-10 {\n    left: 83.33333333333334%;\n  }\n  .col-lg-push-9 {\n    left: 75%;\n  }\n  .col-lg-push-8 {\n    left: 66.66666666666666%;\n  }\n  .col-lg-push-7 {\n    left: 58.333333333333336%;\n  }\n  .col-lg-push-6 {\n    left: 50%;\n  }\n  .col-lg-push-5 {\n    left: 41.66666666666667%;\n  }\n  .col-lg-push-4 {\n    left: 33.33333333333333%;\n  }\n  .col-lg-push-3 {\n    left: 25%;\n  }\n  .col-lg-push-2 {\n    left: 16.666666666666664%;\n  }\n  .col-lg-push-1 {\n    left: 8.333333333333332%;\n  }\n  .col-lg-push-0 {\n    left: auto;\n  }\n  .col-lg-offset-12 {\n    margin-left: 100%;\n  }\n  .col-lg-offset-11 {\n    margin-left: 91.66666666666666%;\n  }\n  .col-lg-offset-10 {\n    margin-left: 83.33333333333334%;\n  }\n  .col-lg-offset-9 {\n    margin-left: 75%;\n  }\n  .col-lg-offset-8 {\n    margin-left: 66.66666666666666%;\n  }\n  .col-lg-offset-7 {\n    margin-left: 58.333333333333336%;\n  }\n  .col-lg-offset-6 {\n    margin-left: 50%;\n  }\n  .col-lg-offset-5 {\n    margin-left: 41.66666666666667%;\n  }\n  .col-lg-offset-4 {\n    margin-left: 33.33333333333333%;\n  }\n  .col-lg-offset-3 {\n    margin-left: 25%;\n  }\n  .col-lg-offset-2 {\n    margin-left: 16.666666666666664%;\n  }\n  .col-lg-offset-1 {\n    margin-left: 8.333333333333332%;\n  }\n  .col-lg-offset-0 {\n    margin-left: 0%;\n  }\n}\ntable {\n  background-color: transparent;\n}\ncaption {\n  padding-top: 8px;\n  padding-bottom: 8px;\n  color: #777777;\n  text-align: left;\n}\nth {\n  text-align: left;\n}\n.table {\n  width: 100%;\n  max-width: 100%;\n  margin-bottom: 20px;\n}\n.table > thead > tr > th,\n.table > tbody > tr > th,\n.table > tfoot > tr > th,\n.table > thead > tr > td,\n.table > tbody > tr > td,\n.table > tfoot > tr > td {\n  padding: 8px;\n  line-height: 1.428571429;\n  vertical-align: top;\n  border-top: 1px solid #dddddd;\n}\n.table > thead > tr > th {\n  vertical-align: bottom;\n  border-bottom: 2px solid #dddddd;\n}\n.table > caption + thead > tr:first-child > th,\n.table > colgroup + thead > tr:first-child > th,\n.table > thead:first-child > tr:first-child > th,\n.table > caption + thead > tr:first-child > td,\n.table > colgroup + thead > tr:first-child > td,\n.table > thead:first-child > tr:first-child > td {\n  border-top: 0;\n}\n.table > tbody + tbody {\n  border-top: 2px solid #dddddd;\n}\n.table .table {\n  background-color: #ffffff;\n}\n.table-condensed > thead > tr > th,\n.table-condensed > tbody > tr > th,\n.table-condensed > tfoot > tr > th,\n.table-condensed > thead > tr > td,\n.table-condensed > tbody > tr > td,\n.table-condensed > tfoot > tr > td {\n  padding: 5px;\n}\n.table-bordered {\n  border: 1px solid #dddddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > tbody > tr > th,\n.table-bordered > tfoot > tr > th,\n.table-bordered > thead > tr > td,\n.table-bordered > tbody > tr > td,\n.table-bordered > tfoot > tr > td {\n  border: 1px solid #dddddd;\n}\n.table-bordered > thead > tr > th,\n.table-bordered > thead > tr > td {\n  border-bottom-width: 2px;\n}\n.table-striped > tbody > tr:nth-of-type(odd) {\n  background-color: #f9f9f9;\n}\n.table-hover > tbody > tr:hover {\n  background-color: #f5f5f5;\n}\ntable col[class*=\"col-\"] {\n  position: static;\n  float: none;\n  display: table-column;\n}\ntable td[class*=\"col-\"],\ntable th[class*=\"col-\"] {\n  position: static;\n  float: none;\n  display: table-cell;\n}\n.table > thead > tr > td.active,\n.table > tbody > tr > td.active,\n.table > tfoot > tr > td.active,\n.table > thead > tr > th.active,\n.table > tbody > tr > th.active,\n.table > tfoot > tr > th.active,\n.table > thead > tr.active > td,\n.table > tbody > tr.active > td,\n.table > tfoot > tr.active > td,\n.table > thead > tr.active > th,\n.table > tbody > tr.active > th,\n.table > tfoot > tr.active > th {\n  background-color: #f5f5f5;\n}\n.table-hover > tbody > tr > td.active:hover,\n.table-hover > tbody > tr > th.active:hover,\n.table-hover > tbody > tr.active:hover > td,\n.table-hover > tbody > tr:hover > .active,\n.table-hover > tbody > tr.active:hover > th {\n  background-color: #e8e8e8;\n}\n.table > thead > tr > td.success,\n.table > tbody > tr > td.success,\n.table > tfoot > tr > td.success,\n.table > thead > tr > th.success,\n.table > tbody > tr > th.success,\n.table > tfoot > tr > th.success,\n.table > thead > tr.success > td,\n.table > tbody > tr.success > td,\n.table > tfoot > tr.success > td,\n.table > thead > tr.success > th,\n.table > tbody > tr.success > th,\n.table > tfoot > tr.success > th {\n  background-color: #dff0d8;\n}\n.table-hover > tbody > tr > td.success:hover,\n.table-hover > tbody > tr > th.success:hover,\n.table-hover > tbody > tr.success:hover > td,\n.table-hover > tbody > tr:hover > .success,\n.table-hover > tbody > tr.success:hover > th {\n  background-color: #d0e9c6;\n}\n.table > thead > tr > td.info,\n.table > tbody > tr > td.info,\n.table > tfoot > tr > td.info,\n.table > thead > tr > th.info,\n.table > tbody > tr > th.info,\n.table > tfoot > tr > th.info,\n.table > thead > tr.info > td,\n.table > tbody > tr.info > td,\n.table > tfoot > tr.info > td,\n.table > thead > tr.info > th,\n.table > tbody > tr.info > th,\n.table > tfoot > tr.info > th {\n  background-color: #d9edf7;\n}\n.table-hover > tbody > tr > td.info:hover,\n.table-hover > tbody > tr > th.info:hover,\n.table-hover > tbody > tr.info:hover > td,\n.table-hover > tbody > tr:hover > .info,\n.table-hover > tbody > tr.info:hover > th {\n  background-color: #c4e3f3;\n}\n.table > thead > tr > td.warning,\n.table > tbody > tr > td.warning,\n.table > tfoot > tr > td.warning,\n.table > thead > tr > th.warning,\n.table > tbody > tr > th.warning,\n.table > tfoot > tr > th.warning,\n.table > thead > tr.warning > td,\n.table > tbody > tr.warning > td,\n.table > tfoot > tr.warning > td,\n.table > thead > tr.warning > th,\n.table > tbody > tr.warning > th,\n.table > tfoot > tr.warning > th {\n  background-color: #fcf8e3;\n}\n.table-hover > tbody > tr > td.warning:hover,\n.table-hover > tbody > tr > th.warning:hover,\n.table-hover > tbody > tr.warning:hover > td,\n.table-hover > tbody > tr:hover > .warning,\n.table-hover > tbody > tr.warning:hover > th {\n  background-color: #faf2cc;\n}\n.table > thead > tr > td.danger,\n.table > tbody > tr > td.danger,\n.table > tfoot > tr > td.danger,\n.table > thead > tr > th.danger,\n.table > tbody > tr > th.danger,\n.table > tfoot > tr > th.danger,\n.table > thead > tr.danger > td,\n.table > tbody > tr.danger > td,\n.table > tfoot > tr.danger > td,\n.table > thead > tr.danger > th,\n.table > tbody > tr.danger > th,\n.table > tfoot > tr.danger > th {\n  background-color: #f2dede;\n}\n.table-hover > tbody > tr > td.danger:hover,\n.table-hover > tbody > tr > th.danger:hover,\n.table-hover > tbody > tr.danger:hover > td,\n.table-hover > tbody > tr:hover > .danger,\n.table-hover > tbody > tr.danger:hover > th {\n  background-color: #ebcccc;\n}\n.table-responsive {\n  overflow-x: auto;\n  min-height: 0.01%;\n}\n@media screen and (max-width: 767px) {\n  .table-responsive {\n    width: 100%;\n    margin-bottom: 15px;\n    overflow-y: hidden;\n    -ms-overflow-style: -ms-autohiding-scrollbar;\n    border: 1px solid #dddddd;\n  }\n  .table-responsive > .table {\n    margin-bottom: 0;\n  }\n  .table-responsive > .table > thead > tr > th,\n  .table-responsive > .table > tbody > tr > th,\n  .table-responsive > .table > tfoot > tr > th,\n  .table-responsive > .table > thead > tr > td,\n  .table-responsive > .table > tbody > tr > td,\n  .table-responsive > .table > tfoot > tr > td {\n    white-space: nowrap;\n  }\n  .table-responsive > .table-bordered {\n    border: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:first-child,\n  .table-responsive > .table-bordered > tbody > tr > th:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n  .table-responsive > .table-bordered > thead > tr > td:first-child,\n  .table-responsive > .table-bordered > tbody > tr > td:first-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n    border-left: 0;\n  }\n  .table-responsive > .table-bordered > thead > tr > th:last-child,\n  .table-responsive > .table-bordered > tbody > tr > th:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n  .table-responsive > .table-bordered > thead > tr > td:last-child,\n  .table-responsive > .table-bordered > tbody > tr > td:last-child,\n  .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n    border-right: 0;\n  }\n  .table-responsive > .table-bordered > tbody > tr:last-child > th,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > th,\n  .table-responsive > .table-bordered > tbody > tr:last-child > td,\n  .table-responsive > .table-bordered > tfoot > tr:last-child > td {\n    border-bottom: 0;\n  }\n}\nfieldset {\n  padding: 0;\n  margin: 0;\n  border: 0;\n  min-width: 0;\n}\nlegend {\n  display: block;\n  width: 100%;\n  padding: 0;\n  margin-bottom: 20px;\n  font-size: 21px;\n  line-height: inherit;\n  color: #333333;\n  border: 0;\n  border-bottom: 1px solid #e5e5e5;\n}\nlabel {\n  display: inline-block;\n  max-width: 100%;\n  margin-bottom: 5px;\n  font-weight: bold;\n}\ninput[type=\"search\"] {\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n}\ninput[type=\"radio\"],\ninput[type=\"checkbox\"] {\n  margin: 4px 0 0;\n  margin-top: 1px \\9;\n  line-height: normal;\n}\ninput[type=\"file\"] {\n  display: block;\n}\ninput[type=\"range\"] {\n  display: block;\n  width: 100%;\n}\nselect[multiple],\nselect[size] {\n  height: auto;\n}\ninput[type=\"file\"]:focus,\ninput[type=\"radio\"]:focus,\ninput[type=\"checkbox\"]:focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\noutput {\n  display: block;\n  padding-top: 7px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #555555;\n}\n.form-control {\n  display: block;\n  width: 100%;\n  height: 34px;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  color: #555555;\n  background-color: #ffffff;\n  background-image: none;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;\n}\n.form-control:focus {\n  border-color: #66afe9;\n  outline: 0;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);\n  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);\n}\n.form-control::-moz-placeholder {\n  color: #999999;\n  opacity: 1;\n}\n.form-control:-ms-input-placeholder {\n  color: #999999;\n}\n.form-control::-webkit-input-placeholder {\n  color: #999999;\n}\n.form-control[disabled],\n.form-control[readonly],\nfieldset[disabled] .form-control {\n  cursor: not-allowed;\n  background-color: #eeeeee;\n  opacity: 1;\n}\ntextarea.form-control {\n  height: auto;\n}\ninput[type=\"search\"] {\n  -webkit-appearance: none;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 0) {\n  input[type=\"date\"],\n  input[type=\"time\"],\n  input[type=\"datetime-local\"],\n  input[type=\"month\"] {\n    line-height: 34px;\n  }\n  input[type=\"date\"].input-sm,\n  input[type=\"time\"].input-sm,\n  input[type=\"datetime-local\"].input-sm,\n  input[type=\"month\"].input-sm,\n  .input-group-sm input[type=\"date\"],\n  .input-group-sm input[type=\"time\"],\n  .input-group-sm input[type=\"datetime-local\"],\n  .input-group-sm input[type=\"month\"] {\n    line-height: 30px;\n  }\n  input[type=\"date\"].input-lg,\n  input[type=\"time\"].input-lg,\n  input[type=\"datetime-local\"].input-lg,\n  input[type=\"month\"].input-lg,\n  .input-group-lg input[type=\"date\"],\n  .input-group-lg input[type=\"time\"],\n  .input-group-lg input[type=\"datetime-local\"],\n  .input-group-lg input[type=\"month\"] {\n    line-height: 46px;\n  }\n}\n.form-group {\n  margin-bottom: 15px;\n}\n.radio,\n.checkbox {\n  position: relative;\n  display: block;\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.radio label,\n.checkbox label {\n  min-height: 20px;\n  padding-left: 20px;\n  margin-bottom: 0;\n  font-weight: normal;\n  cursor: pointer;\n}\n.radio input[type=\"radio\"],\n.radio-inline input[type=\"radio\"],\n.checkbox input[type=\"checkbox\"],\n.checkbox-inline input[type=\"checkbox\"] {\n  position: absolute;\n  margin-left: -20px;\n  margin-top: 4px \\9;\n}\n.radio + .radio,\n.checkbox + .checkbox {\n  margin-top: -5px;\n}\n.radio-inline,\n.checkbox-inline {\n  display: inline-block;\n  padding-left: 20px;\n  margin-bottom: 0;\n  vertical-align: middle;\n  font-weight: normal;\n  cursor: pointer;\n}\n.radio-inline + .radio-inline,\n.checkbox-inline + .checkbox-inline {\n  margin-top: 0;\n  margin-left: 10px;\n}\ninput[type=\"radio\"][disabled],\ninput[type=\"checkbox\"][disabled],\ninput[type=\"radio\"].disabled,\ninput[type=\"checkbox\"].disabled,\nfieldset[disabled] input[type=\"radio\"],\nfieldset[disabled] input[type=\"checkbox\"] {\n  cursor: not-allowed;\n}\n.radio-inline.disabled,\n.checkbox-inline.disabled,\nfieldset[disabled] .radio-inline,\nfieldset[disabled] .checkbox-inline {\n  cursor: not-allowed;\n}\n.radio.disabled label,\n.checkbox.disabled label,\nfieldset[disabled] .radio label,\nfieldset[disabled] .checkbox label {\n  cursor: not-allowed;\n}\n.form-control-static {\n  padding-top: 7px;\n  padding-bottom: 7px;\n  margin-bottom: 0;\n}\n.form-control-static.input-lg,\n.form-control-static.input-sm {\n  padding-left: 0;\n  padding-right: 0;\n}\n.input-sm {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-sm {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-sm,\nselect[multiple].input-sm {\n  height: auto;\n}\n.form-group-sm .form-control {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.form-group-sm .form-control {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.form-group-sm .form-control,\nselect[multiple].form-group-sm .form-control {\n  height: auto;\n}\n.form-group-sm .form-control-static {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n}\n.input-lg {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-lg {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-lg,\nselect[multiple].input-lg {\n  height: auto;\n}\n.form-group-lg .form-control {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.form-group-lg .form-control {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.form-group-lg .form-control,\nselect[multiple].form-group-lg .form-control {\n  height: auto;\n}\n.form-group-lg .form-control-static {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n}\n.has-feedback {\n  position: relative;\n}\n.has-feedback .form-control {\n  padding-right: 42.5px;\n}\n.form-control-feedback {\n  position: absolute;\n  top: 0;\n  right: 0;\n  z-index: 2;\n  display: block;\n  width: 34px;\n  height: 34px;\n  line-height: 34px;\n  text-align: center;\n  pointer-events: none;\n}\n.input-lg + .form-control-feedback {\n  width: 46px;\n  height: 46px;\n  line-height: 46px;\n}\n.input-sm + .form-control-feedback {\n  width: 30px;\n  height: 30px;\n  line-height: 30px;\n}\n.has-success .help-block,\n.has-success .control-label,\n.has-success .radio,\n.has-success .checkbox,\n.has-success .radio-inline,\n.has-success .checkbox-inline,\n.has-success.radio label,\n.has-success.checkbox label,\n.has-success.radio-inline label,\n.has-success.checkbox-inline label {\n  color: #3c763d;\n}\n.has-success .form-control {\n  border-color: #3c763d;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-success .form-control:focus {\n  border-color: #2b542c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #67b168;\n}\n.has-success .input-group-addon {\n  color: #3c763d;\n  border-color: #3c763d;\n  background-color: #dff0d8;\n}\n.has-success .form-control-feedback {\n  color: #3c763d;\n}\n.has-warning .help-block,\n.has-warning .control-label,\n.has-warning .radio,\n.has-warning .checkbox,\n.has-warning .radio-inline,\n.has-warning .checkbox-inline,\n.has-warning.radio label,\n.has-warning.checkbox label,\n.has-warning.radio-inline label,\n.has-warning.checkbox-inline label {\n  color: #8a6d3b;\n}\n.has-warning .form-control {\n  border-color: #8a6d3b;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-warning .form-control:focus {\n  border-color: #66512c;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;\n}\n.has-warning .input-group-addon {\n  color: #8a6d3b;\n  border-color: #8a6d3b;\n  background-color: #fcf8e3;\n}\n.has-warning .form-control-feedback {\n  color: #8a6d3b;\n}\n.has-error .help-block,\n.has-error .control-label,\n.has-error .radio,\n.has-error .checkbox,\n.has-error .radio-inline,\n.has-error .checkbox-inline,\n.has-error.radio label,\n.has-error.checkbox label,\n.has-error.radio-inline label,\n.has-error.checkbox-inline label {\n  color: #a94442;\n}\n.has-error .form-control {\n  border-color: #a94442;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);\n}\n.has-error .form-control:focus {\n  border-color: #843534;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;\n}\n.has-error .input-group-addon {\n  color: #a94442;\n  border-color: #a94442;\n  background-color: #f2dede;\n}\n.has-error .form-control-feedback {\n  color: #a94442;\n}\n.has-feedback label ~ .form-control-feedback {\n  top: 25px;\n}\n.has-feedback label.sr-only ~ .form-control-feedback {\n  top: 0;\n}\n.help-block {\n  display: block;\n  margin-top: 5px;\n  margin-bottom: 10px;\n  color: #737373;\n}\n@media (min-width: 768px) {\n  .form-inline .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .form-inline .form-control-static {\n    display: inline-block;\n  }\n  .form-inline .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .form-inline .input-group .input-group-addon,\n  .form-inline .input-group .input-group-btn,\n  .form-inline .input-group .form-control {\n    width: auto;\n  }\n  .form-inline .input-group > .form-control {\n    width: 100%;\n  }\n  .form-inline .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio,\n  .form-inline .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .form-inline .radio label,\n  .form-inline .checkbox label {\n    padding-left: 0;\n  }\n  .form-inline .radio input[type=\"radio\"],\n  .form-inline .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .form-inline .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox,\n.form-horizontal .radio-inline,\n.form-horizontal .checkbox-inline {\n  margin-top: 0;\n  margin-bottom: 0;\n  padding-top: 7px;\n}\n.form-horizontal .radio,\n.form-horizontal .checkbox {\n  min-height: 27px;\n}\n.form-horizontal .form-group {\n  margin-left: -15px;\n  margin-right: -15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .control-label {\n    text-align: right;\n    margin-bottom: 0;\n    padding-top: 7px;\n  }\n}\n.form-horizontal .has-feedback .form-control-feedback {\n  right: 15px;\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-lg .control-label {\n    padding-top: 14.333333px;\n  }\n}\n@media (min-width: 768px) {\n  .form-horizontal .form-group-sm .control-label {\n    padding-top: 6px;\n  }\n}\n.btn {\n  display: inline-block;\n  margin-bottom: 0;\n  font-weight: normal;\n  text-align: center;\n  vertical-align: middle;\n  touch-action: manipulation;\n  cursor: pointer;\n  background-image: none;\n  border: 1px solid transparent;\n  white-space: nowrap;\n  padding: 6px 12px;\n  font-size: 14px;\n  line-height: 1.428571429;\n  border-radius: 4px;\n  -webkit-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n}\n.btn:focus,\n.btn:active:focus,\n.btn.active:focus,\n.btn.focus,\n.btn:active.focus,\n.btn.active.focus {\n  outline: thin dotted;\n  outline: 5px auto -webkit-focus-ring-color;\n  outline-offset: -2px;\n}\n.btn:hover,\n.btn:focus,\n.btn.focus {\n  color: #333333;\n  text-decoration: none;\n}\n.btn:active,\n.btn.active {\n  outline: 0;\n  background-image: none;\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n}\n.btn.disabled,\n.btn[disabled],\nfieldset[disabled] .btn {\n  cursor: not-allowed;\n  pointer-events: none;\n  opacity: 0.65;\n  filter: alpha(opacity=65);\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn-default {\n  color: #333333;\n  background-color: #ffffff;\n  border-color: #cccccc;\n}\n.btn-default:hover,\n.btn-default:focus,\n.btn-default.focus,\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  color: #333333;\n  background-color: #e6e6e6;\n  border-color: #adadad;\n}\n.btn-default:active,\n.btn-default.active,\n.open > .dropdown-toggle.btn-default {\n  background-image: none;\n}\n.btn-default.disabled,\n.btn-default[disabled],\nfieldset[disabled] .btn-default,\n.btn-default.disabled:hover,\n.btn-default[disabled]:hover,\nfieldset[disabled] .btn-default:hover,\n.btn-default.disabled:focus,\n.btn-default[disabled]:focus,\nfieldset[disabled] .btn-default:focus,\n.btn-default.disabled.focus,\n.btn-default[disabled].focus,\nfieldset[disabled] .btn-default.focus,\n.btn-default.disabled:active,\n.btn-default[disabled]:active,\nfieldset[disabled] .btn-default:active,\n.btn-default.disabled.active,\n.btn-default[disabled].active,\nfieldset[disabled] .btn-default.active {\n  background-color: #ffffff;\n  border-color: #cccccc;\n}\n.btn-default .badge {\n  color: #ffffff;\n  background-color: #333333;\n}\n.btn-primary {\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary:hover,\n.btn-primary:focus,\n.btn-primary.focus,\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  color: #ffffff;\n  background-color: #286090;\n  border-color: #204d74;\n}\n.btn-primary:active,\n.btn-primary.active,\n.open > .dropdown-toggle.btn-primary {\n  background-image: none;\n}\n.btn-primary.disabled,\n.btn-primary[disabled],\nfieldset[disabled] .btn-primary,\n.btn-primary.disabled:hover,\n.btn-primary[disabled]:hover,\nfieldset[disabled] .btn-primary:hover,\n.btn-primary.disabled:focus,\n.btn-primary[disabled]:focus,\nfieldset[disabled] .btn-primary:focus,\n.btn-primary.disabled.focus,\n.btn-primary[disabled].focus,\nfieldset[disabled] .btn-primary.focus,\n.btn-primary.disabled:active,\n.btn-primary[disabled]:active,\nfieldset[disabled] .btn-primary:active,\n.btn-primary.disabled.active,\n.btn-primary[disabled].active,\nfieldset[disabled] .btn-primary.active {\n  background-color: #337ab7;\n  border-color: #2e6da4;\n}\n.btn-primary .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.btn-success {\n  color: #ffffff;\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success:hover,\n.btn-success:focus,\n.btn-success.focus,\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  color: #ffffff;\n  background-color: #449d44;\n  border-color: #398439;\n}\n.btn-success:active,\n.btn-success.active,\n.open > .dropdown-toggle.btn-success {\n  background-image: none;\n}\n.btn-success.disabled,\n.btn-success[disabled],\nfieldset[disabled] .btn-success,\n.btn-success.disabled:hover,\n.btn-success[disabled]:hover,\nfieldset[disabled] .btn-success:hover,\n.btn-success.disabled:focus,\n.btn-success[disabled]:focus,\nfieldset[disabled] .btn-success:focus,\n.btn-success.disabled.focus,\n.btn-success[disabled].focus,\nfieldset[disabled] .btn-success.focus,\n.btn-success.disabled:active,\n.btn-success[disabled]:active,\nfieldset[disabled] .btn-success:active,\n.btn-success.disabled.active,\n.btn-success[disabled].active,\nfieldset[disabled] .btn-success.active {\n  background-color: #5cb85c;\n  border-color: #4cae4c;\n}\n.btn-success .badge {\n  color: #5cb85c;\n  background-color: #ffffff;\n}\n.btn-info {\n  color: #ffffff;\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info:hover,\n.btn-info:focus,\n.btn-info.focus,\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  color: #ffffff;\n  background-color: #31b0d5;\n  border-color: #269abc;\n}\n.btn-info:active,\n.btn-info.active,\n.open > .dropdown-toggle.btn-info {\n  background-image: none;\n}\n.btn-info.disabled,\n.btn-info[disabled],\nfieldset[disabled] .btn-info,\n.btn-info.disabled:hover,\n.btn-info[disabled]:hover,\nfieldset[disabled] .btn-info:hover,\n.btn-info.disabled:focus,\n.btn-info[disabled]:focus,\nfieldset[disabled] .btn-info:focus,\n.btn-info.disabled.focus,\n.btn-info[disabled].focus,\nfieldset[disabled] .btn-info.focus,\n.btn-info.disabled:active,\n.btn-info[disabled]:active,\nfieldset[disabled] .btn-info:active,\n.btn-info.disabled.active,\n.btn-info[disabled].active,\nfieldset[disabled] .btn-info.active {\n  background-color: #5bc0de;\n  border-color: #46b8da;\n}\n.btn-info .badge {\n  color: #5bc0de;\n  background-color: #ffffff;\n}\n.btn-warning {\n  color: #ffffff;\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning:hover,\n.btn-warning:focus,\n.btn-warning.focus,\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  color: #ffffff;\n  background-color: #ec971f;\n  border-color: #d58512;\n}\n.btn-warning:active,\n.btn-warning.active,\n.open > .dropdown-toggle.btn-warning {\n  background-image: none;\n}\n.btn-warning.disabled,\n.btn-warning[disabled],\nfieldset[disabled] .btn-warning,\n.btn-warning.disabled:hover,\n.btn-warning[disabled]:hover,\nfieldset[disabled] .btn-warning:hover,\n.btn-warning.disabled:focus,\n.btn-warning[disabled]:focus,\nfieldset[disabled] .btn-warning:focus,\n.btn-warning.disabled.focus,\n.btn-warning[disabled].focus,\nfieldset[disabled] .btn-warning.focus,\n.btn-warning.disabled:active,\n.btn-warning[disabled]:active,\nfieldset[disabled] .btn-warning:active,\n.btn-warning.disabled.active,\n.btn-warning[disabled].active,\nfieldset[disabled] .btn-warning.active {\n  background-color: #f0ad4e;\n  border-color: #eea236;\n}\n.btn-warning .badge {\n  color: #f0ad4e;\n  background-color: #ffffff;\n}\n.btn-danger {\n  color: #ffffff;\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger:hover,\n.btn-danger:focus,\n.btn-danger.focus,\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  color: #ffffff;\n  background-color: #c9302c;\n  border-color: #ac2925;\n}\n.btn-danger:active,\n.btn-danger.active,\n.open > .dropdown-toggle.btn-danger {\n  background-image: none;\n}\n.btn-danger.disabled,\n.btn-danger[disabled],\nfieldset[disabled] .btn-danger,\n.btn-danger.disabled:hover,\n.btn-danger[disabled]:hover,\nfieldset[disabled] .btn-danger:hover,\n.btn-danger.disabled:focus,\n.btn-danger[disabled]:focus,\nfieldset[disabled] .btn-danger:focus,\n.btn-danger.disabled.focus,\n.btn-danger[disabled].focus,\nfieldset[disabled] .btn-danger.focus,\n.btn-danger.disabled:active,\n.btn-danger[disabled]:active,\nfieldset[disabled] .btn-danger:active,\n.btn-danger.disabled.active,\n.btn-danger[disabled].active,\nfieldset[disabled] .btn-danger.active {\n  background-color: #d9534f;\n  border-color: #d43f3a;\n}\n.btn-danger .badge {\n  color: #d9534f;\n  background-color: #ffffff;\n}\n.btn-link {\n  color: #337ab7;\n  font-weight: normal;\n  border-radius: 0;\n}\n.btn-link,\n.btn-link:active,\n.btn-link.active,\n.btn-link[disabled],\nfieldset[disabled] .btn-link {\n  background-color: transparent;\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn-link,\n.btn-link:hover,\n.btn-link:focus,\n.btn-link:active {\n  border-color: transparent;\n}\n.btn-link:hover,\n.btn-link:focus {\n  color: #23527c;\n  text-decoration: underline;\n  background-color: transparent;\n}\n.btn-link[disabled]:hover,\nfieldset[disabled] .btn-link:hover,\n.btn-link[disabled]:focus,\nfieldset[disabled] .btn-link:focus {\n  color: #777777;\n  text-decoration: none;\n}\n.btn-lg,\n.btn-group-lg > .btn {\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\n.btn-sm,\n.btn-group-sm > .btn {\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-xs,\n.btn-group-xs > .btn {\n  padding: 1px 5px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\n.btn-block {\n  display: block;\n  width: 100%;\n}\n.btn-block + .btn-block {\n  margin-top: 5px;\n}\ninput[type=\"submit\"].btn-block,\ninput[type=\"reset\"].btn-block,\ninput[type=\"button\"].btn-block {\n  width: 100%;\n}\n.fade {\n  opacity: 0;\n  -webkit-transition: opacity 0.15s linear;\n  -o-transition: opacity 0.15s linear;\n  transition: opacity 0.15s linear;\n}\n.fade.in {\n  opacity: 1;\n}\n.collapse {\n  display: none;\n  visibility: hidden;\n}\n.collapse.in {\n  display: block;\n  visibility: visible;\n}\ntr.collapse.in {\n  display: table-row;\n}\ntbody.collapse.in {\n  display: table-row-group;\n}\n.collapsing {\n  position: relative;\n  height: 0;\n  overflow: hidden;\n  -webkit-transition-property: height, visibility;\n  transition-property: height, visibility;\n  -webkit-transition-duration: 0.35s;\n  transition-duration: 0.35s;\n  -webkit-transition-timing-function: ease;\n  transition-timing-function: ease;\n}\n@font-face {\n  font-family: 'Glyphicons Halflings';\n  src: url("+__webpack_require__(233)+");\n  src: url("+__webpack_require__(233)+"?#iefix) format('embedded-opentype'), url("+__webpack_require__(234)+") format('woff2'), url("+__webpack_require__(235)+") format('woff'), url("+__webpack_require__(236)+") format('truetype'), url("+__webpack_require__(237)+"#glyphicons_halflingsregular) format('svg');\n}\n.glyphicon {\n  position: relative;\n  top: 1px;\n  display: inline-block;\n  font-family: 'Glyphicons Halflings';\n  font-style: normal;\n  font-weight: normal;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.glyphicon-asterisk:before {\n  content: \"\\2a\";\n}\n.glyphicon-plus:before {\n  content: \"\\2b\";\n}\n.glyphicon-euro:before,\n.glyphicon-eur:before {\n  content: \"\\20ac\";\n}\n.glyphicon-minus:before {\n  content: \"\\2212\";\n}\n.glyphicon-cloud:before {\n  content: \"\\2601\";\n}\n.glyphicon-envelope:before {\n  content: \"\\2709\";\n}\n.glyphicon-pencil:before {\n  content: \"\\270f\";\n}\n.glyphicon-glass:before {\n  content: \"\\e001\";\n}\n.glyphicon-music:before {\n  content: \"\\e002\";\n}\n.glyphicon-search:before {\n  content: \"\\e003\";\n}\n.glyphicon-heart:before {\n  content: \"\\e005\";\n}\n.glyphicon-star:before {\n  content: \"\\e006\";\n}\n.glyphicon-star-empty:before {\n  content: \"\\e007\";\n}\n.glyphicon-user:before {\n  content: \"\\e008\";\n}\n.glyphicon-film:before {\n  content: \"\\e009\";\n}\n.glyphicon-th-large:before {\n  content: \"\\e010\";\n}\n.glyphicon-th:before {\n  content: \"\\e011\";\n}\n.glyphicon-th-list:before {\n  content: \"\\e012\";\n}\n.glyphicon-ok:before {\n  content: \"\\e013\";\n}\n.glyphicon-remove:before {\n  content: \"\\e014\";\n}\n.glyphicon-zoom-in:before {\n  content: \"\\e015\";\n}\n.glyphicon-zoom-out:before {\n  content: \"\\e016\";\n}\n.glyphicon-off:before {\n  content: \"\\e017\";\n}\n.glyphicon-signal:before {\n  content: \"\\e018\";\n}\n.glyphicon-cog:before {\n  content: \"\\e019\";\n}\n.glyphicon-trash:before {\n  content: \"\\e020\";\n}\n.glyphicon-home:before {\n  content: \"\\e021\";\n}\n.glyphicon-file:before {\n  content: \"\\e022\";\n}\n.glyphicon-time:before {\n  content: \"\\e023\";\n}\n.glyphicon-road:before {\n  content: \"\\e024\";\n}\n.glyphicon-download-alt:before {\n  content: \"\\e025\";\n}\n.glyphicon-download:before {\n  content: \"\\e026\";\n}\n.glyphicon-upload:before {\n  content: \"\\e027\";\n}\n.glyphicon-inbox:before {\n  content: \"\\e028\";\n}\n.glyphicon-play-circle:before {\n  content: \"\\e029\";\n}\n.glyphicon-repeat:before {\n  content: \"\\e030\";\n}\n.glyphicon-refresh:before {\n  content: \"\\e031\";\n}\n.glyphicon-list-alt:before {\n  content: \"\\e032\";\n}\n.glyphicon-lock:before {\n  content: \"\\e033\";\n}\n.glyphicon-flag:before {\n  content: \"\\e034\";\n}\n.glyphicon-headphones:before {\n  content: \"\\e035\";\n}\n.glyphicon-volume-off:before {\n  content: \"\\e036\";\n}\n.glyphicon-volume-down:before {\n  content: \"\\e037\";\n}\n.glyphicon-volume-up:before {\n  content: \"\\e038\";\n}\n.glyphicon-qrcode:before {\n  content: \"\\e039\";\n}\n.glyphicon-barcode:before {\n  content: \"\\e040\";\n}\n.glyphicon-tag:before {\n  content: \"\\e041\";\n}\n.glyphicon-tags:before {\n  content: \"\\e042\";\n}\n.glyphicon-book:before {\n  content: \"\\e043\";\n}\n.glyphicon-bookmark:before {\n  content: \"\\e044\";\n}\n.glyphicon-print:before {\n  content: \"\\e045\";\n}\n.glyphicon-camera:before {\n  content: \"\\e046\";\n}\n.glyphicon-font:before {\n  content: \"\\e047\";\n}\n.glyphicon-bold:before {\n  content: \"\\e048\";\n}\n.glyphicon-italic:before {\n  content: \"\\e049\";\n}\n.glyphicon-text-height:before {\n  content: \"\\e050\";\n}\n.glyphicon-text-width:before {\n  content: \"\\e051\";\n}\n.glyphicon-align-left:before {\n  content: \"\\e052\";\n}\n.glyphicon-align-center:before {\n  content: \"\\e053\";\n}\n.glyphicon-align-right:before {\n  content: \"\\e054\";\n}\n.glyphicon-align-justify:before {\n  content: \"\\e055\";\n}\n.glyphicon-list:before {\n  content: \"\\e056\";\n}\n.glyphicon-indent-left:before {\n  content: \"\\e057\";\n}\n.glyphicon-indent-right:before {\n  content: \"\\e058\";\n}\n.glyphicon-facetime-video:before {\n  content: \"\\e059\";\n}\n.glyphicon-picture:before {\n  content: \"\\e060\";\n}\n.glyphicon-map-marker:before {\n  content: \"\\e062\";\n}\n.glyphicon-adjust:before {\n  content: \"\\e063\";\n}\n.glyphicon-tint:before {\n  content: \"\\e064\";\n}\n.glyphicon-edit:before {\n  content: \"\\e065\";\n}\n.glyphicon-share:before {\n  content: \"\\e066\";\n}\n.glyphicon-check:before {\n  content: \"\\e067\";\n}\n.glyphicon-move:before {\n  content: \"\\e068\";\n}\n.glyphicon-step-backward:before {\n  content: \"\\e069\";\n}\n.glyphicon-fast-backward:before {\n  content: \"\\e070\";\n}\n.glyphicon-backward:before {\n  content: \"\\e071\";\n}\n.glyphicon-play:before {\n  content: \"\\e072\";\n}\n.glyphicon-pause:before {\n  content: \"\\e073\";\n}\n.glyphicon-stop:before {\n  content: \"\\e074\";\n}\n.glyphicon-forward:before {\n  content: \"\\e075\";\n}\n.glyphicon-fast-forward:before {\n  content: \"\\e076\";\n}\n.glyphicon-step-forward:before {\n  content: \"\\e077\";\n}\n.glyphicon-eject:before {\n  content: \"\\e078\";\n}\n.glyphicon-chevron-left:before {\n  content: \"\\e079\";\n}\n.glyphicon-chevron-right:before {\n  content: \"\\e080\";\n}\n.glyphicon-plus-sign:before {\n  content: \"\\e081\";\n}\n.glyphicon-minus-sign:before {\n  content: \"\\e082\";\n}\n.glyphicon-remove-sign:before {\n  content: \"\\e083\";\n}\n.glyphicon-ok-sign:before {\n  content: \"\\e084\";\n}\n.glyphicon-question-sign:before {\n  content: \"\\e085\";\n}\n.glyphicon-info-sign:before {\n  content: \"\\e086\";\n}\n.glyphicon-screenshot:before {\n  content: \"\\e087\";\n}\n.glyphicon-remove-circle:before {\n  content: \"\\e088\";\n}\n.glyphicon-ok-circle:before {\n  content: \"\\e089\";\n}\n.glyphicon-ban-circle:before {\n  content: \"\\e090\";\n}\n.glyphicon-arrow-left:before {\n  content: \"\\e091\";\n}\n.glyphicon-arrow-right:before {\n  content: \"\\e092\";\n}\n.glyphicon-arrow-up:before {\n  content: \"\\e093\";\n}\n.glyphicon-arrow-down:before {\n  content: \"\\e094\";\n}\n.glyphicon-share-alt:before {\n  content: \"\\e095\";\n}\n.glyphicon-resize-full:before {\n  content: \"\\e096\";\n}\n.glyphicon-resize-small:before {\n  content: \"\\e097\";\n}\n.glyphicon-exclamation-sign:before {\n  content: \"\\e101\";\n}\n.glyphicon-gift:before {\n  content: \"\\e102\";\n}\n.glyphicon-leaf:before {\n  content: \"\\e103\";\n}\n.glyphicon-fire:before {\n  content: \"\\e104\";\n}\n.glyphicon-eye-open:before {\n  content: \"\\e105\";\n}\n.glyphicon-eye-close:before {\n  content: \"\\e106\";\n}\n.glyphicon-warning-sign:before {\n  content: \"\\e107\";\n}\n.glyphicon-plane:before {\n  content: \"\\e108\";\n}\n.glyphicon-calendar:before {\n  content: \"\\e109\";\n}\n.glyphicon-random:before {\n  content: \"\\e110\";\n}\n.glyphicon-comment:before {\n  content: \"\\e111\";\n}\n.glyphicon-magnet:before {\n  content: \"\\e112\";\n}\n.glyphicon-chevron-up:before {\n  content: \"\\e113\";\n}\n.glyphicon-chevron-down:before {\n  content: \"\\e114\";\n}\n.glyphicon-retweet:before {\n  content: \"\\e115\";\n}\n.glyphicon-shopping-cart:before {\n  content: \"\\e116\";\n}\n.glyphicon-folder-close:before {\n  content: \"\\e117\";\n}\n.glyphicon-folder-open:before {\n  content: \"\\e118\";\n}\n.glyphicon-resize-vertical:before {\n  content: \"\\e119\";\n}\n.glyphicon-resize-horizontal:before {\n  content: \"\\e120\";\n}\n.glyphicon-hdd:before {\n  content: \"\\e121\";\n}\n.glyphicon-bullhorn:before {\n  content: \"\\e122\";\n}\n.glyphicon-bell:before {\n  content: \"\\e123\";\n}\n.glyphicon-certificate:before {\n  content: \"\\e124\";\n}\n.glyphicon-thumbs-up:before {\n  content: \"\\e125\";\n}\n.glyphicon-thumbs-down:before {\n  content: \"\\e126\";\n}\n.glyphicon-hand-right:before {\n  content: \"\\e127\";\n}\n.glyphicon-hand-left:before {\n  content: \"\\e128\";\n}\n.glyphicon-hand-up:before {\n  content: \"\\e129\";\n}\n.glyphicon-hand-down:before {\n  content: \"\\e130\";\n}\n.glyphicon-circle-arrow-right:before {\n  content: \"\\e131\";\n}\n.glyphicon-circle-arrow-left:before {\n  content: \"\\e132\";\n}\n.glyphicon-circle-arrow-up:before {\n  content: \"\\e133\";\n}\n.glyphicon-circle-arrow-down:before {\n  content: \"\\e134\";\n}\n.glyphicon-globe:before {\n  content: \"\\e135\";\n}\n.glyphicon-wrench:before {\n  content: \"\\e136\";\n}\n.glyphicon-tasks:before {\n  content: \"\\e137\";\n}\n.glyphicon-filter:before {\n  content: \"\\e138\";\n}\n.glyphicon-briefcase:before {\n  content: \"\\e139\";\n}\n.glyphicon-fullscreen:before {\n  content: \"\\e140\";\n}\n.glyphicon-dashboard:before {\n  content: \"\\e141\";\n}\n.glyphicon-paperclip:before {\n  content: \"\\e142\";\n}\n.glyphicon-heart-empty:before {\n  content: \"\\e143\";\n}\n.glyphicon-link:before {\n  content: \"\\e144\";\n}\n.glyphicon-phone:before {\n  content: \"\\e145\";\n}\n.glyphicon-pushpin:before {\n  content: \"\\e146\";\n}\n.glyphicon-usd:before {\n  content: \"\\e148\";\n}\n.glyphicon-gbp:before {\n  content: \"\\e149\";\n}\n.glyphicon-sort:before {\n  content: \"\\e150\";\n}\n.glyphicon-sort-by-alphabet:before {\n  content: \"\\e151\";\n}\n.glyphicon-sort-by-alphabet-alt:before {\n  content: \"\\e152\";\n}\n.glyphicon-sort-by-order:before {\n  content: \"\\e153\";\n}\n.glyphicon-sort-by-order-alt:before {\n  content: \"\\e154\";\n}\n.glyphicon-sort-by-attributes:before {\n  content: \"\\e155\";\n}\n.glyphicon-sort-by-attributes-alt:before {\n  content: \"\\e156\";\n}\n.glyphicon-unchecked:before {\n  content: \"\\e157\";\n}\n.glyphicon-expand:before {\n  content: \"\\e158\";\n}\n.glyphicon-collapse-down:before {\n  content: \"\\e159\";\n}\n.glyphicon-collapse-up:before {\n  content: \"\\e160\";\n}\n.glyphicon-log-in:before {\n  content: \"\\e161\";\n}\n.glyphicon-flash:before {\n  content: \"\\e162\";\n}\n.glyphicon-log-out:before {\n  content: \"\\e163\";\n}\n.glyphicon-new-window:before {\n  content: \"\\e164\";\n}\n.glyphicon-record:before {\n  content: \"\\e165\";\n}\n.glyphicon-save:before {\n  content: \"\\e166\";\n}\n.glyphicon-open:before {\n  content: \"\\e167\";\n}\n.glyphicon-saved:before {\n  content: \"\\e168\";\n}\n.glyphicon-import:before {\n  content: \"\\e169\";\n}\n.glyphicon-export:before {\n  content: \"\\e170\";\n}\n.glyphicon-send:before {\n  content: \"\\e171\";\n}\n.glyphicon-floppy-disk:before {\n  content: \"\\e172\";\n}\n.glyphicon-floppy-saved:before {\n  content: \"\\e173\";\n}\n.glyphicon-floppy-remove:before {\n  content: \"\\e174\";\n}\n.glyphicon-floppy-save:before {\n  content: \"\\e175\";\n}\n.glyphicon-floppy-open:before {\n  content: \"\\e176\";\n}\n.glyphicon-credit-card:before {\n  content: \"\\e177\";\n}\n.glyphicon-transfer:before {\n  content: \"\\e178\";\n}\n.glyphicon-cutlery:before {\n  content: \"\\e179\";\n}\n.glyphicon-header:before {\n  content: \"\\e180\";\n}\n.glyphicon-compressed:before {\n  content: \"\\e181\";\n}\n.glyphicon-earphone:before {\n  content: \"\\e182\";\n}\n.glyphicon-phone-alt:before {\n  content: \"\\e183\";\n}\n.glyphicon-tower:before {\n  content: \"\\e184\";\n}\n.glyphicon-stats:before {\n  content: \"\\e185\";\n}\n.glyphicon-sd-video:before {\n  content: \"\\e186\";\n}\n.glyphicon-hd-video:before {\n  content: \"\\e187\";\n}\n.glyphicon-subtitles:before {\n  content: \"\\e188\";\n}\n.glyphicon-sound-stereo:before {\n  content: \"\\e189\";\n}\n.glyphicon-sound-dolby:before {\n  content: \"\\e190\";\n}\n.glyphicon-sound-5-1:before {\n  content: \"\\e191\";\n}\n.glyphicon-sound-6-1:before {\n  content: \"\\e192\";\n}\n.glyphicon-sound-7-1:before {\n  content: \"\\e193\";\n}\n.glyphicon-copyright-mark:before {\n  content: \"\\e194\";\n}\n.glyphicon-registration-mark:before {\n  content: \"\\e195\";\n}\n.glyphicon-cloud-download:before {\n  content: \"\\e197\";\n}\n.glyphicon-cloud-upload:before {\n  content: \"\\e198\";\n}\n.glyphicon-tree-conifer:before {\n  content: \"\\e199\";\n}\n.glyphicon-tree-deciduous:before {\n  content: \"\\e200\";\n}\n.glyphicon-cd:before {\n  content: \"\\e201\";\n}\n.glyphicon-save-file:before {\n  content: \"\\e202\";\n}\n.glyphicon-open-file:before {\n  content: \"\\e203\";\n}\n.glyphicon-level-up:before {\n  content: \"\\e204\";\n}\n.glyphicon-copy:before {\n  content: \"\\e205\";\n}\n.glyphicon-paste:before {\n  content: \"\\e206\";\n}\n.glyphicon-alert:before {\n  content: \"\\e209\";\n}\n.glyphicon-equalizer:before {\n  content: \"\\e210\";\n}\n.glyphicon-king:before {\n  content: \"\\e211\";\n}\n.glyphicon-queen:before {\n  content: \"\\e212\";\n}\n.glyphicon-pawn:before {\n  content: \"\\e213\";\n}\n.glyphicon-bishop:before {\n  content: \"\\e214\";\n}\n.glyphicon-knight:before {\n  content: \"\\e215\";\n}\n.glyphicon-baby-formula:before {\n  content: \"\\e216\";\n}\n.glyphicon-tent:before {\n  content: \"\\26fa\";\n}\n.glyphicon-blackboard:before {\n  content: \"\\e218\";\n}\n.glyphicon-bed:before {\n  content: \"\\e219\";\n}\n.glyphicon-apple:before {\n  content: \"\\f8ff\";\n}\n.glyphicon-erase:before {\n  content: \"\\e221\";\n}\n.glyphicon-hourglass:before {\n  content: \"\\231b\";\n}\n.glyphicon-lamp:before {\n  content: \"\\e223\";\n}\n.glyphicon-duplicate:before {\n  content: \"\\e224\";\n}\n.glyphicon-piggy-bank:before {\n  content: \"\\e225\";\n}\n.glyphicon-scissors:before {\n  content: \"\\e226\";\n}\n.glyphicon-bitcoin:before {\n  content: \"\\e227\";\n}\n.glyphicon-yen:before {\n  content: \"\\00a5\";\n}\n.glyphicon-ruble:before {\n  content: \"\\20bd\";\n}\n.glyphicon-scale:before {\n  content: \"\\e230\";\n}\n.glyphicon-ice-lolly:before {\n  content: \"\\e231\";\n}\n.glyphicon-ice-lolly-tasted:before {\n  content: \"\\e232\";\n}\n.glyphicon-education:before {\n  content: \"\\e233\";\n}\n.glyphicon-option-horizontal:before {\n  content: \"\\e234\";\n}\n.glyphicon-option-vertical:before {\n  content: \"\\e235\";\n}\n.glyphicon-menu-hamburger:before {\n  content: \"\\e236\";\n}\n.glyphicon-modal-window:before {\n  content: \"\\e237\";\n}\n.glyphicon-oil:before {\n  content: \"\\e238\";\n}\n.glyphicon-grain:before {\n  content: \"\\e239\";\n}\n.glyphicon-sunglasses:before {\n  content: \"\\e240\";\n}\n.glyphicon-text-size:before {\n  content: \"\\e241\";\n}\n.glyphicon-text-color:before {\n  content: \"\\e242\";\n}\n.glyphicon-text-background:before {\n  content: \"\\e243\";\n}\n.glyphicon-object-align-top:before {\n  content: \"\\e244\";\n}\n.glyphicon-object-align-bottom:before {\n  content: \"\\e245\";\n}\n.glyphicon-object-align-horizontal:before {\n  content: \"\\e246\";\n}\n.glyphicon-object-align-left:before {\n  content: \"\\e247\";\n}\n.glyphicon-object-align-vertical:before {\n  content: \"\\e248\";\n}\n.glyphicon-object-align-right:before {\n  content: \"\\e249\";\n}\n.glyphicon-triangle-right:before {\n  content: \"\\e250\";\n}\n.glyphicon-triangle-left:before {\n  content: \"\\e251\";\n}\n.glyphicon-triangle-bottom:before {\n  content: \"\\e252\";\n}\n.glyphicon-triangle-top:before {\n  content: \"\\e253\";\n}\n.glyphicon-console:before {\n  content: \"\\e254\";\n}\n.glyphicon-superscript:before {\n  content: \"\\e255\";\n}\n.glyphicon-subscript:before {\n  content: \"\\e256\";\n}\n.glyphicon-menu-left:before {\n  content: \"\\e257\";\n}\n.glyphicon-menu-right:before {\n  content: \"\\e258\";\n}\n.glyphicon-menu-down:before {\n  content: \"\\e259\";\n}\n.glyphicon-menu-up:before {\n  content: \"\\e260\";\n}\n.caret {\n  display: inline-block;\n  width: 0;\n  height: 0;\n  margin-left: 2px;\n  vertical-align: middle;\n  border-top: 4px solid;\n  border-right: 4px solid transparent;\n  border-left: 4px solid transparent;\n}\n.dropup,\n.dropdown {\n  position: relative;\n}\n.dropdown-toggle:focus {\n  outline: 0;\n}\n.dropdown-menu {\n  position: absolute;\n  top: 100%;\n  left: 0;\n  z-index: 1000;\n  display: none;\n  float: left;\n  min-width: 160px;\n  padding: 5px 0;\n  margin: 2px 0 0;\n  list-style: none;\n  font-size: 14px;\n  text-align: left;\n  background-color: #ffffff;\n  border: 1px solid #cccccc;\n  border: 1px solid rgba(0, 0, 0, 0.15);\n  border-radius: 4px;\n  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);\n  background-clip: padding-box;\n}\n.dropdown-menu.pull-right {\n  right: 0;\n  left: auto;\n}\n.dropdown-menu .divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.dropdown-menu > li > a {\n  display: block;\n  padding: 3px 20px;\n  clear: both;\n  font-weight: normal;\n  line-height: 1.428571429;\n  color: #333333;\n  white-space: nowrap;\n}\n.dropdown-menu > li > a:hover,\n.dropdown-menu > li > a:focus {\n  text-decoration: none;\n  color: #262626;\n  background-color: #f5f5f5;\n}\n.dropdown-menu > .active > a,\n.dropdown-menu > .active > a:hover,\n.dropdown-menu > .active > a:focus {\n  color: #ffffff;\n  text-decoration: none;\n  outline: 0;\n  background-color: #337ab7;\n}\n.dropdown-menu > .disabled > a,\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  color: #777777;\n}\n.dropdown-menu > .disabled > a:hover,\n.dropdown-menu > .disabled > a:focus {\n  text-decoration: none;\n  background-color: transparent;\n  background-image: none;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n  cursor: not-allowed;\n}\n.open > .dropdown-menu {\n  display: block;\n}\n.open > a {\n  outline: 0;\n}\n.dropdown-menu-right {\n  left: auto;\n  right: 0;\n}\n.dropdown-menu-left {\n  left: 0;\n  right: auto;\n}\n.dropdown-header {\n  display: block;\n  padding: 3px 20px;\n  font-size: 12px;\n  line-height: 1.428571429;\n  color: #777777;\n  white-space: nowrap;\n}\n.dropdown-backdrop {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  top: 0;\n  z-index: 990;\n}\n.pull-right > .dropdown-menu {\n  right: 0;\n  left: auto;\n}\n.dropup .caret,\n.navbar-fixed-bottom .dropdown .caret {\n  border-top: 0;\n  border-bottom: 4px solid;\n  content: \"\";\n}\n.dropup .dropdown-menu,\n.navbar-fixed-bottom .dropdown .dropdown-menu {\n  top: auto;\n  bottom: 100%;\n  margin-bottom: 2px;\n}\n@media (min-width: 768px) {\n  .navbar-right .dropdown-menu {\n    left: auto;\n    right: 0;\n  }\n  .navbar-right .dropdown-menu-left {\n    left: 0;\n    right: auto;\n  }\n}\n.btn-group,\n.btn-group-vertical {\n  position: relative;\n  display: inline-block;\n  vertical-align: middle;\n}\n.btn-group > .btn,\n.btn-group-vertical > .btn {\n  position: relative;\n  float: left;\n}\n.btn-group > .btn:hover,\n.btn-group-vertical > .btn:hover,\n.btn-group > .btn:focus,\n.btn-group-vertical > .btn:focus,\n.btn-group > .btn:active,\n.btn-group-vertical > .btn:active,\n.btn-group > .btn.active,\n.btn-group-vertical > .btn.active {\n  z-index: 2;\n}\n.btn-group .btn + .btn,\n.btn-group .btn + .btn-group,\n.btn-group .btn-group + .btn,\n.btn-group .btn-group + .btn-group {\n  margin-left: -1px;\n}\n.btn-toolbar {\n  margin-left: -5px;\n}\n.btn-toolbar .btn-group,\n.btn-toolbar .input-group {\n  float: left;\n}\n.btn-toolbar > .btn,\n.btn-toolbar > .btn-group,\n.btn-toolbar > .input-group {\n  margin-left: 5px;\n}\n.btn-group > .btn:not(:first-child):not(:last-child):not(.dropdown-toggle) {\n  border-radius: 0;\n}\n.btn-group > .btn:first-child {\n  margin-left: 0;\n}\n.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.btn-group > .btn:last-child:not(:first-child),\n.btn-group > .dropdown-toggle:not(:first-child) {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group > .btn-group {\n  float: left;\n}\n.btn-group > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.btn-group > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group .dropdown-toggle:active,\n.btn-group.open .dropdown-toggle {\n  outline: 0;\n}\n.btn-group > .btn + .dropdown-toggle {\n  padding-left: 8px;\n  padding-right: 8px;\n}\n.btn-group > .btn-lg + .dropdown-toggle {\n  padding-left: 12px;\n  padding-right: 12px;\n}\n.btn-group.open .dropdown-toggle {\n  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);\n}\n.btn-group.open .dropdown-toggle.btn-link {\n  -webkit-box-shadow: none;\n  box-shadow: none;\n}\n.btn .caret {\n  margin-left: 0;\n}\n.btn-lg .caret {\n  border-width: 5px 5px 0;\n  border-bottom-width: 0;\n}\n.dropup .btn-lg .caret {\n  border-width: 0 5px 5px;\n}\n.btn-group-vertical > .btn,\n.btn-group-vertical > .btn-group,\n.btn-group-vertical > .btn-group > .btn {\n  display: block;\n  float: none;\n  width: 100%;\n  max-width: 100%;\n}\n.btn-group-vertical > .btn-group > .btn {\n  float: none;\n}\n.btn-group-vertical > .btn + .btn,\n.btn-group-vertical > .btn + .btn-group,\n.btn-group-vertical > .btn-group + .btn,\n.btn-group-vertical > .btn-group + .btn-group {\n  margin-top: -1px;\n  margin-left: 0;\n}\n.btn-group-vertical > .btn:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn:first-child:not(:last-child) {\n  border-top-right-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn:last-child:not(:first-child) {\n  border-bottom-left-radius: 4px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group-vertical > .btn-group:not(:first-child):not(:last-child) > .btn {\n  border-radius: 0;\n}\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .btn:last-child,\n.btn-group-vertical > .btn-group:first-child:not(:last-child) > .dropdown-toggle {\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.btn-group-vertical > .btn-group:last-child:not(:first-child) > .btn:first-child {\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.btn-group-justified {\n  display: table;\n  width: 100%;\n  table-layout: fixed;\n  border-collapse: separate;\n}\n.btn-group-justified > .btn,\n.btn-group-justified > .btn-group {\n  float: none;\n  display: table-cell;\n  width: 1%;\n}\n.btn-group-justified > .btn-group .btn {\n  width: 100%;\n}\n.btn-group-justified > .btn-group .dropdown-menu {\n  left: auto;\n}\n[data-toggle=\"buttons\"] > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"radio\"],\n[data-toggle=\"buttons\"] > .btn input[type=\"checkbox\"],\n[data-toggle=\"buttons\"] > .btn-group > .btn input[type=\"checkbox\"] {\n  position: absolute;\n  clip: rect(0, 0, 0, 0);\n  pointer-events: none;\n}\n.input-group {\n  position: relative;\n  display: table;\n  border-collapse: separate;\n}\n.input-group[class*=\"col-\"] {\n  float: none;\n  padding-left: 0;\n  padding-right: 0;\n}\n.input-group .form-control {\n  position: relative;\n  z-index: 2;\n  float: left;\n  width: 100%;\n  margin-bottom: 0;\n}\n.input-group-lg > .form-control,\n.input-group-lg > .input-group-addon,\n.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  padding: 10px 16px;\n  font-size: 18px;\n  line-height: 1.3333333;\n  border-radius: 6px;\n}\nselect.input-group-lg > .form-control,\nselect.input-group-lg > .input-group-addon,\nselect.input-group-lg > .input-group-btn > .btn {\n  height: 46px;\n  line-height: 46px;\n}\ntextarea.input-group-lg > .form-control,\ntextarea.input-group-lg > .input-group-addon,\ntextarea.input-group-lg > .input-group-btn > .btn,\nselect[multiple].input-group-lg > .form-control,\nselect[multiple].input-group-lg > .input-group-addon,\nselect[multiple].input-group-lg > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-sm > .form-control,\n.input-group-sm > .input-group-addon,\n.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  padding: 5px 10px;\n  font-size: 12px;\n  line-height: 1.5;\n  border-radius: 3px;\n}\nselect.input-group-sm > .form-control,\nselect.input-group-sm > .input-group-addon,\nselect.input-group-sm > .input-group-btn > .btn {\n  height: 30px;\n  line-height: 30px;\n}\ntextarea.input-group-sm > .form-control,\ntextarea.input-group-sm > .input-group-addon,\ntextarea.input-group-sm > .input-group-btn > .btn,\nselect[multiple].input-group-sm > .form-control,\nselect[multiple].input-group-sm > .input-group-addon,\nselect[multiple].input-group-sm > .input-group-btn > .btn {\n  height: auto;\n}\n.input-group-addon,\n.input-group-btn,\n.input-group .form-control {\n  display: table-cell;\n}\n.input-group-addon:not(:first-child):not(:last-child),\n.input-group-btn:not(:first-child):not(:last-child),\n.input-group .form-control:not(:first-child):not(:last-child) {\n  border-radius: 0;\n}\n.input-group-addon,\n.input-group-btn {\n  width: 1%;\n  white-space: nowrap;\n  vertical-align: middle;\n}\n.input-group-addon {\n  padding: 6px 12px;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1;\n  color: #555555;\n  text-align: center;\n  background-color: #eeeeee;\n  border: 1px solid #cccccc;\n  border-radius: 4px;\n}\n.input-group-addon.input-sm {\n  padding: 5px 10px;\n  font-size: 12px;\n  border-radius: 3px;\n}\n.input-group-addon.input-lg {\n  padding: 10px 16px;\n  font-size: 18px;\n  border-radius: 6px;\n}\n.input-group-addon input[type=\"radio\"],\n.input-group-addon input[type=\"checkbox\"] {\n  margin-top: 0;\n}\n.input-group .form-control:first-child,\n.input-group-addon:first-child,\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group > .btn,\n.input-group-btn:first-child > .dropdown-toggle,\n.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),\n.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {\n  border-bottom-right-radius: 0;\n  border-top-right-radius: 0;\n}\n.input-group-addon:first-child {\n  border-right: 0;\n}\n.input-group .form-control:last-child,\n.input-group-addon:last-child,\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group > .btn,\n.input-group-btn:last-child > .dropdown-toggle,\n.input-group-btn:first-child > .btn:not(:first-child),\n.input-group-btn:first-child > .btn-group:not(:first-child) > .btn {\n  border-bottom-left-radius: 0;\n  border-top-left-radius: 0;\n}\n.input-group-addon:last-child {\n  border-left: 0;\n}\n.input-group-btn {\n  position: relative;\n  font-size: 0;\n  white-space: nowrap;\n}\n.input-group-btn > .btn {\n  position: relative;\n}\n.input-group-btn > .btn + .btn {\n  margin-left: -1px;\n}\n.input-group-btn > .btn:hover,\n.input-group-btn > .btn:focus,\n.input-group-btn > .btn:active {\n  z-index: 2;\n}\n.input-group-btn:first-child > .btn,\n.input-group-btn:first-child > .btn-group {\n  margin-right: -1px;\n}\n.input-group-btn:last-child > .btn,\n.input-group-btn:last-child > .btn-group {\n  margin-left: -1px;\n}\n.nav {\n  margin-bottom: 0;\n  padding-left: 0;\n  list-style: none;\n}\n.nav > li {\n  position: relative;\n  display: block;\n}\n.nav > li > a {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n}\n.nav > li > a:hover,\n.nav > li > a:focus {\n  text-decoration: none;\n  background-color: #eeeeee;\n}\n.nav > li.disabled > a {\n  color: #777777;\n}\n.nav > li.disabled > a:hover,\n.nav > li.disabled > a:focus {\n  color: #777777;\n  text-decoration: none;\n  background-color: transparent;\n  cursor: not-allowed;\n}\n.nav .open > a,\n.nav .open > a:hover,\n.nav .open > a:focus {\n  background-color: #eeeeee;\n  border-color: #337ab7;\n}\n.nav .nav-divider {\n  height: 1px;\n  margin: 9px 0;\n  overflow: hidden;\n  background-color: #e5e5e5;\n}\n.nav > li > a > img {\n  max-width: none;\n}\n.nav-tabs {\n  border-bottom: 1px solid #dddddd;\n}\n.nav-tabs > li {\n  float: left;\n  margin-bottom: -1px;\n}\n.nav-tabs > li > a {\n  margin-right: 2px;\n  line-height: 1.428571429;\n  border: 1px solid transparent;\n  border-radius: 4px 4px 0 0;\n}\n.nav-tabs > li > a:hover {\n  border-color: #eeeeee #eeeeee #dddddd;\n}\n.nav-tabs > li.active > a,\n.nav-tabs > li.active > a:hover,\n.nav-tabs > li.active > a:focus {\n  color: #555555;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-bottom-color: transparent;\n  cursor: default;\n}\n.nav-tabs.nav-justified {\n  width: 100%;\n  border-bottom: 0;\n}\n.nav-tabs.nav-justified > li {\n  float: none;\n}\n.nav-tabs.nav-justified > li > a {\n  text-align: center;\n  margin-bottom: 5px;\n}\n.nav-tabs.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-tabs.nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs.nav-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs.nav-justified > .active > a,\n.nav-tabs.nav-justified > .active > a:hover,\n.nav-tabs.nav-justified > .active > a:focus {\n  border: 1px solid #dddddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs.nav-justified > li > a {\n    border-bottom: 1px solid #dddddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs.nav-justified > .active > a,\n  .nav-tabs.nav-justified > .active > a:hover,\n  .nav-tabs.nav-justified > .active > a:focus {\n    border-bottom-color: #ffffff;\n  }\n}\n.nav-pills > li {\n  float: left;\n}\n.nav-pills > li > a {\n  border-radius: 4px;\n}\n.nav-pills > li + li {\n  margin-left: 2px;\n}\n.nav-pills > li.active > a,\n.nav-pills > li.active > a:hover,\n.nav-pills > li.active > a:focus {\n  color: #ffffff;\n  background-color: #337ab7;\n}\n.nav-stacked > li {\n  float: none;\n}\n.nav-stacked > li + li {\n  margin-top: 2px;\n  margin-left: 0;\n}\n.nav-justified {\n  width: 100%;\n}\n.nav-justified > li {\n  float: none;\n}\n.nav-justified > li > a {\n  text-align: center;\n  margin-bottom: 5px;\n}\n.nav-justified > .dropdown .dropdown-menu {\n  top: auto;\n  left: auto;\n}\n@media (min-width: 768px) {\n  .nav-justified > li {\n    display: table-cell;\n    width: 1%;\n  }\n  .nav-justified > li > a {\n    margin-bottom: 0;\n  }\n}\n.nav-tabs-justified {\n  border-bottom: 0;\n}\n.nav-tabs-justified > li > a {\n  margin-right: 0;\n  border-radius: 4px;\n}\n.nav-tabs-justified > .active > a,\n.nav-tabs-justified > .active > a:hover,\n.nav-tabs-justified > .active > a:focus {\n  border: 1px solid #dddddd;\n}\n@media (min-width: 768px) {\n  .nav-tabs-justified > li > a {\n    border-bottom: 1px solid #dddddd;\n    border-radius: 4px 4px 0 0;\n  }\n  .nav-tabs-justified > .active > a,\n  .nav-tabs-justified > .active > a:hover,\n  .nav-tabs-justified > .active > a:focus {\n    border-bottom-color: #ffffff;\n  }\n}\n.tab-content > .tab-pane {\n  display: none;\n  visibility: hidden;\n}\n.tab-content > .active {\n  display: block;\n  visibility: visible;\n}\n.nav-tabs .dropdown-menu {\n  margin-top: -1px;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.navbar {\n  position: relative;\n  min-height: 50px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n}\n@media (min-width: 768px) {\n  .navbar {\n    border-radius: 4px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-header {\n    float: left;\n  }\n}\n.navbar-collapse {\n  overflow-x: visible;\n  padding-right: 15px;\n  padding-left: 15px;\n  border-top: 1px solid transparent;\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);\n  -webkit-overflow-scrolling: touch;\n}\n.navbar-collapse.in {\n  overflow-y: auto;\n}\n@media (min-width: 768px) {\n  .navbar-collapse {\n    width: auto;\n    border-top: 0;\n    box-shadow: none;\n  }\n  .navbar-collapse.collapse {\n    display: block !important;\n    visibility: visible !important;\n    height: auto !important;\n    padding-bottom: 0;\n    overflow: visible !important;\n  }\n  .navbar-collapse.in {\n    overflow-y: visible;\n  }\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-static-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    padding-left: 0;\n    padding-right: 0;\n  }\n}\n.navbar-fixed-top .navbar-collapse,\n.navbar-fixed-bottom .navbar-collapse {\n  max-height: 340px;\n}\n@media (max-device-width: 480px) and (orientation: landscape) {\n  .navbar-fixed-top .navbar-collapse,\n  .navbar-fixed-bottom .navbar-collapse {\n    max-height: 200px;\n  }\n}\n.container > .navbar-header,\n.container-fluid > .navbar-header,\n.container > .navbar-collapse,\n.container-fluid > .navbar-collapse {\n  margin-right: -15px;\n  margin-left: -15px;\n}\n@media (min-width: 768px) {\n  .container > .navbar-header,\n  .container-fluid > .navbar-header,\n  .container > .navbar-collapse,\n  .container-fluid > .navbar-collapse {\n    margin-right: 0;\n    margin-left: 0;\n  }\n}\n.navbar-static-top {\n  z-index: 1000;\n  border-width: 0 0 1px;\n}\n@media (min-width: 768px) {\n  .navbar-static-top {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top,\n.navbar-fixed-bottom {\n  position: fixed;\n  right: 0;\n  left: 0;\n  z-index: 1030;\n}\n@media (min-width: 768px) {\n  .navbar-fixed-top,\n  .navbar-fixed-bottom {\n    border-radius: 0;\n  }\n}\n.navbar-fixed-top {\n  top: 0;\n  border-width: 0 0 1px;\n}\n.navbar-fixed-bottom {\n  bottom: 0;\n  margin-bottom: 0;\n  border-width: 1px 0 0;\n}\n.navbar-brand {\n  float: left;\n  padding: 15px 15px;\n  font-size: 18px;\n  line-height: 20px;\n  height: 50px;\n}\n.navbar-brand:hover,\n.navbar-brand:focus {\n  text-decoration: none;\n}\n.navbar-brand > img {\n  display: block;\n}\n@media (min-width: 768px) {\n  .navbar > .container .navbar-brand,\n  .navbar > .container-fluid .navbar-brand {\n    margin-left: -15px;\n  }\n}\n.navbar-toggle {\n  position: relative;\n  float: right;\n  margin-right: 15px;\n  padding: 9px 10px;\n  margin-top: 8px;\n  margin-bottom: 8px;\n  background-color: transparent;\n  background-image: none;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.navbar-toggle:focus {\n  outline: 0;\n}\n.navbar-toggle .icon-bar {\n  display: block;\n  width: 22px;\n  height: 2px;\n  border-radius: 1px;\n}\n.navbar-toggle .icon-bar + .icon-bar {\n  margin-top: 4px;\n}\n@media (min-width: 768px) {\n  .navbar-toggle {\n    display: none;\n  }\n}\n.navbar-nav {\n  margin: 7.5px -15px;\n}\n.navbar-nav > li > a {\n  padding-top: 10px;\n  padding-bottom: 10px;\n  line-height: 20px;\n}\n@media (max-width: 767px) {\n  .navbar-nav .open .dropdown-menu {\n    position: static;\n    float: none;\n    width: auto;\n    margin-top: 0;\n    background-color: transparent;\n    border: 0;\n    box-shadow: none;\n  }\n  .navbar-nav .open .dropdown-menu > li > a,\n  .navbar-nav .open .dropdown-menu .dropdown-header {\n    padding: 5px 15px 5px 25px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a {\n    line-height: 20px;\n  }\n  .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-nav .open .dropdown-menu > li > a:focus {\n    background-image: none;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-nav {\n    float: left;\n    margin: 0;\n  }\n  .navbar-nav > li {\n    float: left;\n  }\n  .navbar-nav > li > a {\n    padding-top: 15px;\n    padding-bottom: 15px;\n  }\n}\n.navbar-form {\n  margin-left: -15px;\n  margin-right: -15px;\n  padding: 10px 15px;\n  border-top: 1px solid transparent;\n  border-bottom: 1px solid transparent;\n  -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n@media (min-width: 768px) {\n  .navbar-form .form-group {\n    display: inline-block;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control {\n    display: inline-block;\n    width: auto;\n    vertical-align: middle;\n  }\n  .navbar-form .form-control-static {\n    display: inline-block;\n  }\n  .navbar-form .input-group {\n    display: inline-table;\n    vertical-align: middle;\n  }\n  .navbar-form .input-group .input-group-addon,\n  .navbar-form .input-group .input-group-btn,\n  .navbar-form .input-group .form-control {\n    width: auto;\n  }\n  .navbar-form .input-group > .form-control {\n    width: 100%;\n  }\n  .navbar-form .control-label {\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio,\n  .navbar-form .checkbox {\n    display: inline-block;\n    margin-top: 0;\n    margin-bottom: 0;\n    vertical-align: middle;\n  }\n  .navbar-form .radio label,\n  .navbar-form .checkbox label {\n    padding-left: 0;\n  }\n  .navbar-form .radio input[type=\"radio\"],\n  .navbar-form .checkbox input[type=\"checkbox\"] {\n    position: relative;\n    margin-left: 0;\n  }\n  .navbar-form .has-feedback .form-control-feedback {\n    top: 0;\n  }\n}\n@media (max-width: 767px) {\n  .navbar-form .form-group {\n    margin-bottom: 5px;\n  }\n  .navbar-form .form-group:last-child {\n    margin-bottom: 0;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-form {\n    width: auto;\n    border: 0;\n    margin-left: 0;\n    margin-right: 0;\n    padding-top: 0;\n    padding-bottom: 0;\n    -webkit-box-shadow: none;\n    box-shadow: none;\n  }\n}\n.navbar-nav > li > .dropdown-menu {\n  margin-top: 0;\n  border-top-right-radius: 0;\n  border-top-left-radius: 0;\n}\n.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {\n  margin-bottom: 0;\n  border-top-right-radius: 4px;\n  border-top-left-radius: 4px;\n  border-bottom-right-radius: 0;\n  border-bottom-left-radius: 0;\n}\n.navbar-btn {\n  margin-top: 8px;\n  margin-bottom: 8px;\n}\n.navbar-btn.btn-sm {\n  margin-top: 10px;\n  margin-bottom: 10px;\n}\n.navbar-btn.btn-xs {\n  margin-top: 14px;\n  margin-bottom: 14px;\n}\n.navbar-text {\n  margin-top: 15px;\n  margin-bottom: 15px;\n}\n@media (min-width: 768px) {\n  .navbar-text {\n    float: left;\n    margin-left: 15px;\n    margin-right: 15px;\n  }\n}\n@media (min-width: 768px) {\n  .navbar-left {\n    float: left !important;\n  }\n  .navbar-right {\n    float: right !important;\n    margin-right: -15px;\n  }\n  .navbar-right ~ .navbar-right {\n    margin-right: 0;\n  }\n}\n.navbar-default {\n  background-color: #f8f8f8;\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-brand {\n  color: #777777;\n}\n.navbar-default .navbar-brand:hover,\n.navbar-default .navbar-brand:focus {\n  color: #5e5e5e;\n  background-color: transparent;\n}\n.navbar-default .navbar-text {\n  color: #777777;\n}\n.navbar-default .navbar-nav > li > a {\n  color: #777777;\n}\n.navbar-default .navbar-nav > li > a:hover,\n.navbar-default .navbar-nav > li > a:focus {\n  color: #333333;\n  background-color: transparent;\n}\n.navbar-default .navbar-nav > .active > a,\n.navbar-default .navbar-nav > .active > a:hover,\n.navbar-default .navbar-nav > .active > a:focus {\n  color: #555555;\n  background-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .disabled > a,\n.navbar-default .navbar-nav > .disabled > a:hover,\n.navbar-default .navbar-nav > .disabled > a:focus {\n  color: #cccccc;\n  background-color: transparent;\n}\n.navbar-default .navbar-toggle {\n  border-color: #dddddd;\n}\n.navbar-default .navbar-toggle:hover,\n.navbar-default .navbar-toggle:focus {\n  background-color: #dddddd;\n}\n.navbar-default .navbar-toggle .icon-bar {\n  background-color: #888888;\n}\n.navbar-default .navbar-collapse,\n.navbar-default .navbar-form {\n  border-color: #e7e7e7;\n}\n.navbar-default .navbar-nav > .open > a,\n.navbar-default .navbar-nav > .open > a:hover,\n.navbar-default .navbar-nav > .open > a:focus {\n  background-color: #e7e7e7;\n  color: #555555;\n}\n@media (max-width: 767px) {\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a {\n    color: #777777;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #333333;\n    background-color: transparent;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #555555;\n    background-color: #e7e7e7;\n  }\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #cccccc;\n    background-color: transparent;\n  }\n}\n.navbar-default .navbar-link {\n  color: #777777;\n}\n.navbar-default .navbar-link:hover {\n  color: #333333;\n}\n.navbar-default .btn-link {\n  color: #777777;\n}\n.navbar-default .btn-link:hover,\n.navbar-default .btn-link:focus {\n  color: #333333;\n}\n.navbar-default .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-default .btn-link:hover,\n.navbar-default .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-default .btn-link:focus {\n  color: #cccccc;\n}\n.navbar-inverse {\n  background-color: #222222;\n  border-color: #080808;\n}\n.navbar-inverse .navbar-brand {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-brand:hover,\n.navbar-inverse .navbar-brand:focus {\n  color: #ffffff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-text {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-nav > li > a:hover,\n.navbar-inverse .navbar-nav > li > a:focus {\n  color: #ffffff;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-nav > .active > a,\n.navbar-inverse .navbar-nav > .active > a:hover,\n.navbar-inverse .navbar-nav > .active > a:focus {\n  color: #ffffff;\n  background-color: #080808;\n}\n.navbar-inverse .navbar-nav > .disabled > a,\n.navbar-inverse .navbar-nav > .disabled > a:hover,\n.navbar-inverse .navbar-nav > .disabled > a:focus {\n  color: #444444;\n  background-color: transparent;\n}\n.navbar-inverse .navbar-toggle {\n  border-color: #333333;\n}\n.navbar-inverse .navbar-toggle:hover,\n.navbar-inverse .navbar-toggle:focus {\n  background-color: #333333;\n}\n.navbar-inverse .navbar-toggle .icon-bar {\n  background-color: #ffffff;\n}\n.navbar-inverse .navbar-collapse,\n.navbar-inverse .navbar-form {\n  border-color: #101010;\n}\n.navbar-inverse .navbar-nav > .open > a,\n.navbar-inverse .navbar-nav > .open > a:hover,\n.navbar-inverse .navbar-nav > .open > a:focus {\n  background-color: #080808;\n  color: #ffffff;\n}\n@media (max-width: 767px) {\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .dropdown-header {\n    border-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu .divider {\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {\n    color: #9d9d9d;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus {\n    color: #ffffff;\n    background-color: transparent;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .active > a:focus {\n    color: #ffffff;\n    background-color: #080808;\n  }\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:hover,\n  .navbar-inverse .navbar-nav .open .dropdown-menu > .disabled > a:focus {\n    color: #444444;\n    background-color: transparent;\n  }\n}\n.navbar-inverse .navbar-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .navbar-link:hover {\n  color: #ffffff;\n}\n.navbar-inverse .btn-link {\n  color: #9d9d9d;\n}\n.navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link:focus {\n  color: #ffffff;\n}\n.navbar-inverse .btn-link[disabled]:hover,\nfieldset[disabled] .navbar-inverse .btn-link:hover,\n.navbar-inverse .btn-link[disabled]:focus,\nfieldset[disabled] .navbar-inverse .btn-link:focus {\n  color: #444444;\n}\n.breadcrumb {\n  padding: 8px 15px;\n  margin-bottom: 20px;\n  list-style: none;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n}\n.breadcrumb > li {\n  display: inline-block;\n}\n.breadcrumb > li + li:before {\n  content: \"/\\00a0\";\n  padding: 0 5px;\n  color: #cccccc;\n}\n.breadcrumb > .active {\n  color: #777777;\n}\n.pagination {\n  display: inline-block;\n  padding-left: 0;\n  margin: 20px 0;\n  border-radius: 4px;\n}\n.pagination > li {\n  display: inline;\n}\n.pagination > li > a,\n.pagination > li > span {\n  position: relative;\n  float: left;\n  padding: 6px 12px;\n  line-height: 1.428571429;\n  text-decoration: none;\n  color: #337ab7;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  margin-left: -1px;\n}\n.pagination > li:first-child > a,\n.pagination > li:first-child > span {\n  margin-left: 0;\n  border-bottom-left-radius: 4px;\n  border-top-left-radius: 4px;\n}\n.pagination > li:last-child > a,\n.pagination > li:last-child > span {\n  border-bottom-right-radius: 4px;\n  border-top-right-radius: 4px;\n}\n.pagination > li > a:hover,\n.pagination > li > span:hover,\n.pagination > li > a:focus,\n.pagination > li > span:focus {\n  color: #23527c;\n  background-color: #eeeeee;\n  border-color: #dddddd;\n}\n.pagination > .active > a,\n.pagination > .active > span,\n.pagination > .active > a:hover,\n.pagination > .active > span:hover,\n.pagination > .active > a:focus,\n.pagination > .active > span:focus {\n  z-index: 2;\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n  cursor: default;\n}\n.pagination > .disabled > span,\n.pagination > .disabled > span:hover,\n.pagination > .disabled > span:focus,\n.pagination > .disabled > a,\n.pagination > .disabled > a:hover,\n.pagination > .disabled > a:focus {\n  color: #777777;\n  background-color: #ffffff;\n  border-color: #dddddd;\n  cursor: not-allowed;\n}\n.pagination-lg > li > a,\n.pagination-lg > li > span {\n  padding: 10px 16px;\n  font-size: 18px;\n}\n.pagination-lg > li:first-child > a,\n.pagination-lg > li:first-child > span {\n  border-bottom-left-radius: 6px;\n  border-top-left-radius: 6px;\n}\n.pagination-lg > li:last-child > a,\n.pagination-lg > li:last-child > span {\n  border-bottom-right-radius: 6px;\n  border-top-right-radius: 6px;\n}\n.pagination-sm > li > a,\n.pagination-sm > li > span {\n  padding: 5px 10px;\n  font-size: 12px;\n}\n.pagination-sm > li:first-child > a,\n.pagination-sm > li:first-child > span {\n  border-bottom-left-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.pagination-sm > li:last-child > a,\n.pagination-sm > li:last-child > span {\n  border-bottom-right-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.pager {\n  padding-left: 0;\n  margin: 20px 0;\n  list-style: none;\n  text-align: center;\n}\n.pager li {\n  display: inline;\n}\n.pager li > a,\n.pager li > span {\n  display: inline-block;\n  padding: 5px 14px;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 15px;\n}\n.pager li > a:hover,\n.pager li > a:focus {\n  text-decoration: none;\n  background-color: #eeeeee;\n}\n.pager .next > a,\n.pager .next > span {\n  float: right;\n}\n.pager .previous > a,\n.pager .previous > span {\n  float: left;\n}\n.pager .disabled > a,\n.pager .disabled > a:hover,\n.pager .disabled > a:focus,\n.pager .disabled > span {\n  color: #777777;\n  background-color: #ffffff;\n  cursor: not-allowed;\n}\n.label {\n  display: inline;\n  padding: .2em .6em .3em;\n  font-size: 75%;\n  font-weight: bold;\n  line-height: 1;\n  color: #ffffff;\n  text-align: center;\n  white-space: nowrap;\n  vertical-align: baseline;\n  border-radius: .25em;\n}\na.label:hover,\na.label:focus {\n  color: #ffffff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.label:empty {\n  display: none;\n}\n.btn .label {\n  position: relative;\n  top: -1px;\n}\n.label-default {\n  background-color: #777777;\n}\n.label-default[href]:hover,\n.label-default[href]:focus {\n  background-color: #5e5e5e;\n}\n.label-primary {\n  background-color: #337ab7;\n}\n.label-primary[href]:hover,\n.label-primary[href]:focus {\n  background-color: #286090;\n}\n.label-success {\n  background-color: #5cb85c;\n}\n.label-success[href]:hover,\n.label-success[href]:focus {\n  background-color: #449d44;\n}\n.label-info {\n  background-color: #5bc0de;\n}\n.label-info[href]:hover,\n.label-info[href]:focus {\n  background-color: #31b0d5;\n}\n.label-warning {\n  background-color: #f0ad4e;\n}\n.label-warning[href]:hover,\n.label-warning[href]:focus {\n  background-color: #ec971f;\n}\n.label-danger {\n  background-color: #d9534f;\n}\n.label-danger[href]:hover,\n.label-danger[href]:focus {\n  background-color: #c9302c;\n}\n.badge {\n  display: inline-block;\n  min-width: 10px;\n  padding: 3px 7px;\n  font-size: 12px;\n  font-weight: bold;\n  color: #ffffff;\n  line-height: 1;\n  vertical-align: baseline;\n  white-space: nowrap;\n  text-align: center;\n  background-color: #777777;\n  border-radius: 10px;\n}\n.badge:empty {\n  display: none;\n}\n.btn .badge {\n  position: relative;\n  top: -1px;\n}\n.btn-xs .badge {\n  top: 0;\n  padding: 1px 5px;\n}\na.badge:hover,\na.badge:focus {\n  color: #ffffff;\n  text-decoration: none;\n  cursor: pointer;\n}\n.list-group-item.active > .badge,\n.nav-pills > .active > a > .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.list-group-item > .badge {\n  float: right;\n}\n.list-group-item > .badge + .badge {\n  margin-right: 5px;\n}\n.nav-pills > li > a > .badge {\n  margin-left: 3px;\n}\n.jumbotron {\n  padding: 30px 15px;\n  margin-bottom: 30px;\n  color: inherit;\n  background-color: #eeeeee;\n}\n.jumbotron h1,\n.jumbotron .h1 {\n  color: inherit;\n}\n.jumbotron p {\n  margin-bottom: 15px;\n  font-size: 21px;\n  font-weight: 200;\n}\n.jumbotron > hr {\n  border-top-color: #d5d5d5;\n}\n.container .jumbotron,\n.container-fluid .jumbotron {\n  border-radius: 6px;\n}\n.jumbotron .container {\n  max-width: 100%;\n}\n@media screen and (min-width: 768px) {\n  .jumbotron {\n    padding: 48px 0;\n  }\n  .container .jumbotron,\n  .container-fluid .jumbotron {\n    padding-left: 60px;\n    padding-right: 60px;\n  }\n  .jumbotron h1,\n  .jumbotron .h1 {\n    font-size: 63px;\n  }\n}\n.thumbnail {\n  display: block;\n  padding: 4px;\n  margin-bottom: 20px;\n  line-height: 1.428571429;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n  border-radius: 4px;\n  -webkit-transition: border 0.2s ease-in-out;\n  -o-transition: border 0.2s ease-in-out;\n  transition: border 0.2s ease-in-out;\n}\n.thumbnail > img,\n.thumbnail a > img {\n  margin-left: auto;\n  margin-right: auto;\n}\na.thumbnail:hover,\na.thumbnail:focus,\na.thumbnail.active {\n  border-color: #337ab7;\n}\n.thumbnail .caption {\n  padding: 9px;\n  color: #333333;\n}\n.alert {\n  padding: 15px;\n  margin-bottom: 20px;\n  border: 1px solid transparent;\n  border-radius: 4px;\n}\n.alert h4 {\n  margin-top: 0;\n  color: inherit;\n}\n.alert .alert-link {\n  font-weight: bold;\n}\n.alert > p,\n.alert > ul {\n  margin-bottom: 0;\n}\n.alert > p + p {\n  margin-top: 5px;\n}\n.alert-dismissable,\n.alert-dismissible {\n  padding-right: 35px;\n}\n.alert-dismissable .close,\n.alert-dismissible .close {\n  position: relative;\n  top: -2px;\n  right: -21px;\n  color: inherit;\n}\n.alert-success {\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n  color: #3c763d;\n}\n.alert-success hr {\n  border-top-color: #c9e2b3;\n}\n.alert-success .alert-link {\n  color: #2b542c;\n}\n.alert-info {\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n  color: #31708f;\n}\n.alert-info hr {\n  border-top-color: #a6e1ec;\n}\n.alert-info .alert-link {\n  color: #245269;\n}\n.alert-warning {\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n  color: #8a6d3b;\n}\n.alert-warning hr {\n  border-top-color: #f7e1b5;\n}\n.alert-warning .alert-link {\n  color: #66512c;\n}\n.alert-danger {\n  background-color: #f2dede;\n  border-color: #ebccd1;\n  color: #a94442;\n}\n.alert-danger hr {\n  border-top-color: #e4b9c0;\n}\n.alert-danger .alert-link {\n  color: #843534;\n}\n@-webkit-keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n@keyframes progress-bar-stripes {\n  from {\n    background-position: 40px 0;\n  }\n  to {\n    background-position: 0 0;\n  }\n}\n.progress {\n  overflow: hidden;\n  height: 20px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);\n}\n.progress-bar {\n  float: left;\n  width: 0%;\n  height: 100%;\n  font-size: 12px;\n  line-height: 20px;\n  color: #ffffff;\n  text-align: center;\n  background-color: #337ab7;\n  -webkit-box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.15);\n  -webkit-transition: width 0.6s ease;\n  -o-transition: width 0.6s ease;\n  transition: width 0.6s ease;\n}\n.progress-striped .progress-bar,\n.progress-bar-striped {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-size: 40px 40px;\n}\n.progress.active .progress-bar,\n.progress-bar.active {\n  -webkit-animation: progress-bar-stripes 2s linear infinite;\n  -o-animation: progress-bar-stripes 2s linear infinite;\n  animation: progress-bar-stripes 2s linear infinite;\n}\n.progress-bar-success {\n  background-color: #5cb85c;\n}\n.progress-striped .progress-bar-success {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-info {\n  background-color: #5bc0de;\n}\n.progress-striped .progress-bar-info {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-warning {\n  background-color: #f0ad4e;\n}\n.progress-striped .progress-bar-warning {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.progress-bar-danger {\n  background-color: #d9534f;\n}\n.progress-striped .progress-bar-danger {\n  background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: -o-linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);\n}\n.media {\n  margin-top: 15px;\n}\n.media:first-child {\n  margin-top: 0;\n}\n.media,\n.media-body {\n  zoom: 1;\n  overflow: hidden;\n}\n.media-body {\n  width: 10000px;\n}\n.media-object {\n  display: block;\n}\n.media-right,\n.media > .pull-right {\n  padding-left: 10px;\n}\n.media-left,\n.media > .pull-left {\n  padding-right: 10px;\n}\n.media-left,\n.media-right,\n.media-body {\n  display: table-cell;\n  vertical-align: top;\n}\n.media-middle {\n  vertical-align: middle;\n}\n.media-bottom {\n  vertical-align: bottom;\n}\n.media-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.media-list {\n  padding-left: 0;\n  list-style: none;\n}\n.list-group {\n  margin-bottom: 20px;\n  padding-left: 0;\n}\n.list-group-item {\n  position: relative;\n  display: block;\n  padding: 10px 15px;\n  margin-bottom: -1px;\n  background-color: #ffffff;\n  border: 1px solid #dddddd;\n}\n.list-group-item:first-child {\n  border-top-right-radius: 4px;\n  border-top-left-radius: 4px;\n}\n.list-group-item:last-child {\n  margin-bottom: 0;\n  border-bottom-right-radius: 4px;\n  border-bottom-left-radius: 4px;\n}\na.list-group-item {\n  color: #555555;\n}\na.list-group-item .list-group-item-heading {\n  color: #333333;\n}\na.list-group-item:hover,\na.list-group-item:focus {\n  text-decoration: none;\n  color: #555555;\n  background-color: #f5f5f5;\n}\n.list-group-item.disabled,\n.list-group-item.disabled:hover,\n.list-group-item.disabled:focus {\n  background-color: #eeeeee;\n  color: #777777;\n  cursor: not-allowed;\n}\n.list-group-item.disabled .list-group-item-heading,\n.list-group-item.disabled:hover .list-group-item-heading,\n.list-group-item.disabled:focus .list-group-item-heading {\n  color: inherit;\n}\n.list-group-item.disabled .list-group-item-text,\n.list-group-item.disabled:hover .list-group-item-text,\n.list-group-item.disabled:focus .list-group-item-text {\n  color: #777777;\n}\n.list-group-item.active,\n.list-group-item.active:hover,\n.list-group-item.active:focus {\n  z-index: 2;\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.list-group-item.active .list-group-item-heading,\n.list-group-item.active:hover .list-group-item-heading,\n.list-group-item.active:focus .list-group-item-heading,\n.list-group-item.active .list-group-item-heading > small,\n.list-group-item.active:hover .list-group-item-heading > small,\n.list-group-item.active:focus .list-group-item-heading > small,\n.list-group-item.active .list-group-item-heading > .small,\n.list-group-item.active:hover .list-group-item-heading > .small,\n.list-group-item.active:focus .list-group-item-heading > .small {\n  color: inherit;\n}\n.list-group-item.active .list-group-item-text,\n.list-group-item.active:hover .list-group-item-text,\n.list-group-item.active:focus .list-group-item-text {\n  color: #c7ddef;\n}\n.list-group-item-success {\n  color: #3c763d;\n  background-color: #dff0d8;\n}\na.list-group-item-success {\n  color: #3c763d;\n}\na.list-group-item-success .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-success:hover,\na.list-group-item-success:focus {\n  color: #3c763d;\n  background-color: #d0e9c6;\n}\na.list-group-item-success.active,\na.list-group-item-success.active:hover,\na.list-group-item-success.active:focus {\n  color: #fff;\n  background-color: #3c763d;\n  border-color: #3c763d;\n}\n.list-group-item-info {\n  color: #31708f;\n  background-color: #d9edf7;\n}\na.list-group-item-info {\n  color: #31708f;\n}\na.list-group-item-info .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-info:hover,\na.list-group-item-info:focus {\n  color: #31708f;\n  background-color: #c4e3f3;\n}\na.list-group-item-info.active,\na.list-group-item-info.active:hover,\na.list-group-item-info.active:focus {\n  color: #fff;\n  background-color: #31708f;\n  border-color: #31708f;\n}\n.list-group-item-warning {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n}\na.list-group-item-warning {\n  color: #8a6d3b;\n}\na.list-group-item-warning .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-warning:hover,\na.list-group-item-warning:focus {\n  color: #8a6d3b;\n  background-color: #faf2cc;\n}\na.list-group-item-warning.active,\na.list-group-item-warning.active:hover,\na.list-group-item-warning.active:focus {\n  color: #fff;\n  background-color: #8a6d3b;\n  border-color: #8a6d3b;\n}\n.list-group-item-danger {\n  color: #a94442;\n  background-color: #f2dede;\n}\na.list-group-item-danger {\n  color: #a94442;\n}\na.list-group-item-danger .list-group-item-heading {\n  color: inherit;\n}\na.list-group-item-danger:hover,\na.list-group-item-danger:focus {\n  color: #a94442;\n  background-color: #ebcccc;\n}\na.list-group-item-danger.active,\na.list-group-item-danger.active:hover,\na.list-group-item-danger.active:focus {\n  color: #fff;\n  background-color: #a94442;\n  border-color: #a94442;\n}\n.list-group-item-heading {\n  margin-top: 0;\n  margin-bottom: 5px;\n}\n.list-group-item-text {\n  margin-bottom: 0;\n  line-height: 1.3;\n}\n.panel {\n  margin-bottom: 20px;\n  background-color: #ffffff;\n  border: 1px solid transparent;\n  border-radius: 4px;\n  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);\n}\n.panel-body {\n  padding: 15px;\n}\n.panel-heading {\n  padding: 10px 15px;\n  border-bottom: 1px solid transparent;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel-heading > .dropdown .dropdown-toggle {\n  color: inherit;\n}\n.panel-title {\n  margin-top: 0;\n  margin-bottom: 0;\n  font-size: 16px;\n  color: inherit;\n}\n.panel-title > a,\n.panel-title > small,\n.panel-title > .small,\n.panel-title > small > a,\n.panel-title > .small > a {\n  color: inherit;\n}\n.panel-footer {\n  padding: 10px 15px;\n  background-color: #f5f5f5;\n  border-top: 1px solid #dddddd;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .list-group,\n.panel > .panel-collapse > .list-group {\n  margin-bottom: 0;\n}\n.panel > .list-group .list-group-item,\n.panel > .panel-collapse > .list-group .list-group-item {\n  border-width: 1px 0;\n  border-radius: 0;\n}\n.panel > .list-group:first-child .list-group-item:first-child,\n.panel > .panel-collapse > .list-group:first-child .list-group-item:first-child {\n  border-top: 0;\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel > .list-group:last-child .list-group-item:last-child,\n.panel > .panel-collapse > .list-group:last-child .list-group-item:last-child {\n  border-bottom: 0;\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel-heading + .list-group .list-group-item:first-child {\n  border-top-width: 0;\n}\n.list-group + .panel-footer {\n  border-top-width: 0;\n}\n.panel > .table,\n.panel > .table-responsive > .table,\n.panel > .panel-collapse > .table {\n  margin-bottom: 0;\n}\n.panel > .table caption,\n.panel > .table-responsive > .table caption,\n.panel > .panel-collapse > .table caption {\n  padding-left: 15px;\n  padding-right: 15px;\n}\n.panel > .table:first-child,\n.panel > .table-responsive:first-child > .table:first-child {\n  border-top-right-radius: 3px;\n  border-top-left-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child {\n  border-top-left-radius: 3px;\n  border-top-right-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child {\n  border-top-left-radius: 3px;\n}\n.panel > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child,\n.panel > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,\n.panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,\n.panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child {\n  border-top-right-radius: 3px;\n}\n.panel > .table:last-child,\n.panel > .table-responsive:last-child > .table:last-child {\n  border-bottom-right-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child {\n  border-bottom-left-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child {\n  border-bottom-left-radius: 3px;\n}\n.panel > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child,\n.panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,\n.panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,\n.panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child {\n  border-bottom-right-radius: 3px;\n}\n.panel > .panel-body + .table,\n.panel > .panel-body + .table-responsive,\n.panel > .table + .panel-body,\n.panel > .table-responsive + .panel-body {\n  border-top: 1px solid #dddddd;\n}\n.panel > .table > tbody:first-child > tr:first-child th,\n.panel > .table > tbody:first-child > tr:first-child td {\n  border-top: 0;\n}\n.panel > .table-bordered,\n.panel > .table-responsive > .table-bordered {\n  border: 0;\n}\n.panel > .table-bordered > thead > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:first-child,\n.panel > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:first-child,\n.panel > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:first-child,\n.panel > .table-bordered > thead > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:first-child,\n.panel > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:first-child,\n.panel > .table-bordered > tfoot > tr > td:first-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:first-child {\n  border-left: 0;\n}\n.panel > .table-bordered > thead > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > th:last-child,\n.panel > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > th:last-child,\n.panel > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > th:last-child,\n.panel > .table-bordered > thead > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > thead > tr > td:last-child,\n.panel > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tbody > tr > td:last-child,\n.panel > .table-bordered > tfoot > tr > td:last-child,\n.panel > .table-responsive > .table-bordered > tfoot > tr > td:last-child {\n  border-right: 0;\n}\n.panel > .table-bordered > thead > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > td,\n.panel > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > td,\n.panel > .table-bordered > thead > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > thead > tr:first-child > th,\n.panel > .table-bordered > tbody > tr:first-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:first-child > th {\n  border-bottom: 0;\n}\n.panel > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > td,\n.panel > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > td,\n.panel > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tbody > tr:last-child > th,\n.panel > .table-bordered > tfoot > tr:last-child > th,\n.panel > .table-responsive > .table-bordered > tfoot > tr:last-child > th {\n  border-bottom: 0;\n}\n.panel > .table-responsive {\n  border: 0;\n  margin-bottom: 0;\n}\n.panel-group {\n  margin-bottom: 20px;\n}\n.panel-group .panel {\n  margin-bottom: 0;\n  border-radius: 4px;\n}\n.panel-group .panel + .panel {\n  margin-top: 5px;\n}\n.panel-group .panel-heading {\n  border-bottom: 0;\n}\n.panel-group .panel-heading + .panel-collapse > .panel-body,\n.panel-group .panel-heading + .panel-collapse > .list-group {\n  border-top: 1px solid #dddddd;\n}\n.panel-group .panel-footer {\n  border-top: 0;\n}\n.panel-group .panel-footer + .panel-collapse .panel-body {\n  border-bottom: 1px solid #dddddd;\n}\n.panel-default {\n  border-color: #dddddd;\n}\n.panel-default > .panel-heading {\n  color: #333333;\n  background-color: #f5f5f5;\n  border-color: #dddddd;\n}\n.panel-default > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #dddddd;\n}\n.panel-default > .panel-heading .badge {\n  color: #f5f5f5;\n  background-color: #333333;\n}\n.panel-default > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #dddddd;\n}\n.panel-primary {\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading {\n  color: #ffffff;\n  background-color: #337ab7;\n  border-color: #337ab7;\n}\n.panel-primary > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #337ab7;\n}\n.panel-primary > .panel-heading .badge {\n  color: #337ab7;\n  background-color: #ffffff;\n}\n.panel-primary > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #337ab7;\n}\n.panel-success {\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading {\n  color: #3c763d;\n  background-color: #dff0d8;\n  border-color: #d6e9c6;\n}\n.panel-success > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #d6e9c6;\n}\n.panel-success > .panel-heading .badge {\n  color: #dff0d8;\n  background-color: #3c763d;\n}\n.panel-success > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #d6e9c6;\n}\n.panel-info {\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading {\n  color: #31708f;\n  background-color: #d9edf7;\n  border-color: #bce8f1;\n}\n.panel-info > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #bce8f1;\n}\n.panel-info > .panel-heading .badge {\n  color: #d9edf7;\n  background-color: #31708f;\n}\n.panel-info > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #bce8f1;\n}\n.panel-warning {\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading {\n  color: #8a6d3b;\n  background-color: #fcf8e3;\n  border-color: #faebcc;\n}\n.panel-warning > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #faebcc;\n}\n.panel-warning > .panel-heading .badge {\n  color: #fcf8e3;\n  background-color: #8a6d3b;\n}\n.panel-warning > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #faebcc;\n}\n.panel-danger {\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading {\n  color: #a94442;\n  background-color: #f2dede;\n  border-color: #ebccd1;\n}\n.panel-danger > .panel-heading + .panel-collapse > .panel-body {\n  border-top-color: #ebccd1;\n}\n.panel-danger > .panel-heading .badge {\n  color: #f2dede;\n  background-color: #a94442;\n}\n.panel-danger > .panel-footer + .panel-collapse > .panel-body {\n  border-bottom-color: #ebccd1;\n}\n.well {\n  min-height: 20px;\n  padding: 19px;\n  margin-bottom: 20px;\n  background-color: #f5f5f5;\n  border: 1px solid #e3e3e3;\n  border-radius: 4px;\n  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);\n}\n.well blockquote {\n  border-color: #ddd;\n  border-color: rgba(0, 0, 0, 0.15);\n}\n.well-lg {\n  padding: 24px;\n  border-radius: 6px;\n}\n.well-sm {\n  padding: 9px;\n  border-radius: 3px;\n}\n.close {\n  float: right;\n  font-size: 21px;\n  font-weight: bold;\n  line-height: 1;\n  color: #000000;\n  text-shadow: 0 1px 0 #ffffff;\n  opacity: 0.2;\n  filter: alpha(opacity=20);\n}\n.close:hover,\n.close:focus {\n  color: #000000;\n  text-decoration: none;\n  cursor: pointer;\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n}\nbutton.close {\n  padding: 0;\n  cursor: pointer;\n  background: transparent;\n  border: 0;\n  -webkit-appearance: none;\n}\n.modal-open {\n  overflow: hidden;\n}\n.modal {\n  display: none;\n  overflow: hidden;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  z-index: 1040;\n  -webkit-overflow-scrolling: touch;\n  outline: 0;\n}\n.modal.fade .modal-dialog {\n  -webkit-transform: translate(0, -25%);\n  -ms-transform: translate(0, -25%);\n  -o-transform: translate(0, -25%);\n  transform: translate(0, -25%);\n  -webkit-transition: -webkit-transform 0.3s ease-out;\n  -moz-transition: -moz-transform 0.3s ease-out;\n  -o-transition: -o-transform 0.3s ease-out;\n  transition: transform 0.3s ease-out;\n}\n.modal.in .modal-dialog {\n  -webkit-transform: translate(0, 0);\n  -ms-transform: translate(0, 0);\n  -o-transform: translate(0, 0);\n  transform: translate(0, 0);\n}\n.modal-open .modal {\n  overflow-x: hidden;\n  overflow-y: auto;\n}\n.modal-dialog {\n  position: relative;\n  width: auto;\n  margin: 10px;\n}\n.modal-content {\n  position: relative;\n  background-color: #ffffff;\n  border: 1px solid #999999;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);\n  background-clip: padding-box;\n  outline: 0;\n}\n.modal-backdrop {\n  position: absolute;\n  top: 0;\n  right: 0;\n  left: 0;\n  background-color: #000000;\n}\n.modal-backdrop.fade {\n  opacity: 0;\n  filter: alpha(opacity=0);\n}\n.modal-backdrop.in {\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n}\n.modal-header {\n  padding: 15px;\n  border-bottom: 1px solid #e5e5e5;\n  min-height: 16.428571429px;\n}\n.modal-header .close {\n  margin-top: -2px;\n}\n.modal-title {\n  margin: 0;\n  line-height: 1.428571429;\n}\n.modal-body {\n  position: relative;\n  padding: 15px;\n}\n.modal-footer {\n  padding: 15px;\n  text-align: right;\n  border-top: 1px solid #e5e5e5;\n}\n.modal-footer .btn + .btn {\n  margin-left: 5px;\n  margin-bottom: 0;\n}\n.modal-footer .btn-group .btn + .btn {\n  margin-left: -1px;\n}\n.modal-footer .btn-block + .btn-block {\n  margin-left: 0;\n}\n.modal-scrollbar-measure {\n  position: absolute;\n  top: -9999px;\n  width: 50px;\n  height: 50px;\n  overflow: scroll;\n}\n@media (min-width: 768px) {\n  .modal-dialog {\n    width: 600px;\n    margin: 30px auto;\n  }\n  .modal-content {\n    -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);\n  }\n  .modal-sm {\n    width: 300px;\n  }\n}\n@media (min-width: 992px) {\n  .modal-lg {\n    width: 900px;\n  }\n}\n.tooltip {\n  position: absolute;\n  z-index: 1070;\n  display: block;\n  visibility: visible;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 12px;\n  font-weight: normal;\n  line-height: 1.4;\n  opacity: 0;\n  filter: alpha(opacity=0);\n}\n.tooltip.in {\n  opacity: 0.9;\n  filter: alpha(opacity=90);\n}\n.tooltip.top {\n  margin-top: -3px;\n  padding: 5px 0;\n}\n.tooltip.right {\n  margin-left: 3px;\n  padding: 0 5px;\n}\n.tooltip.bottom {\n  margin-top: 3px;\n  padding: 5px 0;\n}\n.tooltip.left {\n  margin-left: -3px;\n  padding: 0 5px;\n}\n.tooltip-inner {\n  max-width: 200px;\n  padding: 3px 8px;\n  color: #ffffff;\n  text-align: center;\n  text-decoration: none;\n  background-color: #000000;\n  border-radius: 4px;\n}\n.tooltip-arrow {\n  position: absolute;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.tooltip.top .tooltip-arrow {\n  bottom: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.top-left .tooltip-arrow {\n  bottom: 0;\n  right: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.top-right .tooltip-arrow {\n  bottom: 0;\n  left: 5px;\n  margin-bottom: -5px;\n  border-width: 5px 5px 0;\n  border-top-color: #000000;\n}\n.tooltip.right .tooltip-arrow {\n  top: 50%;\n  left: 0;\n  margin-top: -5px;\n  border-width: 5px 5px 5px 0;\n  border-right-color: #000000;\n}\n.tooltip.left .tooltip-arrow {\n  top: 50%;\n  right: 0;\n  margin-top: -5px;\n  border-width: 5px 0 5px 5px;\n  border-left-color: #000000;\n}\n.tooltip.bottom .tooltip-arrow {\n  top: 0;\n  left: 50%;\n  margin-left: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.tooltip.bottom-left .tooltip-arrow {\n  top: 0;\n  right: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.tooltip.bottom-right .tooltip-arrow {\n  top: 0;\n  left: 5px;\n  margin-top: -5px;\n  border-width: 0 5px 5px;\n  border-bottom-color: #000000;\n}\n.popover {\n  position: absolute;\n  top: 0;\n  left: 0;\n  z-index: 1060;\n  display: none;\n  max-width: 276px;\n  padding: 1px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  font-weight: normal;\n  line-height: 1.428571429;\n  text-align: left;\n  background-color: #ffffff;\n  background-clip: padding-box;\n  border: 1px solid #cccccc;\n  border: 1px solid rgba(0, 0, 0, 0.2);\n  border-radius: 6px;\n  -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);\n  white-space: normal;\n}\n.popover.top {\n  margin-top: -10px;\n}\n.popover.right {\n  margin-left: 10px;\n}\n.popover.bottom {\n  margin-top: 10px;\n}\n.popover.left {\n  margin-left: -10px;\n}\n.popover-title {\n  margin: 0;\n  padding: 8px 14px;\n  font-size: 14px;\n  background-color: #f7f7f7;\n  border-bottom: 1px solid #ebebeb;\n  border-radius: 5px 5px 0 0;\n}\n.popover-content {\n  padding: 9px 14px;\n}\n.popover > .arrow,\n.popover > .arrow:after {\n  position: absolute;\n  display: block;\n  width: 0;\n  height: 0;\n  border-color: transparent;\n  border-style: solid;\n}\n.popover > .arrow {\n  border-width: 11px;\n}\n.popover > .arrow:after {\n  border-width: 10px;\n  content: \"\";\n}\n.popover.top > .arrow {\n  left: 50%;\n  margin-left: -11px;\n  border-bottom-width: 0;\n  border-top-color: #999999;\n  border-top-color: rgba(0, 0, 0, 0.25);\n  bottom: -11px;\n}\n.popover.top > .arrow:after {\n  content: \" \";\n  bottom: 1px;\n  margin-left: -10px;\n  border-bottom-width: 0;\n  border-top-color: #ffffff;\n}\n.popover.right > .arrow {\n  top: 50%;\n  left: -11px;\n  margin-top: -11px;\n  border-left-width: 0;\n  border-right-color: #999999;\n  border-right-color: rgba(0, 0, 0, 0.25);\n}\n.popover.right > .arrow:after {\n  content: \" \";\n  left: 1px;\n  bottom: -10px;\n  border-left-width: 0;\n  border-right-color: #ffffff;\n}\n.popover.bottom > .arrow {\n  left: 50%;\n  margin-left: -11px;\n  border-top-width: 0;\n  border-bottom-color: #999999;\n  border-bottom-color: rgba(0, 0, 0, 0.25);\n  top: -11px;\n}\n.popover.bottom > .arrow:after {\n  content: \" \";\n  top: 1px;\n  margin-left: -10px;\n  border-top-width: 0;\n  border-bottom-color: #ffffff;\n}\n.popover.left > .arrow {\n  top: 50%;\n  right: -11px;\n  margin-top: -11px;\n  border-right-width: 0;\n  border-left-color: #999999;\n  border-left-color: rgba(0, 0, 0, 0.25);\n}\n.popover.left > .arrow:after {\n  content: \" \";\n  right: 1px;\n  border-right-width: 0;\n  border-left-color: #ffffff;\n  bottom: -10px;\n}\n.carousel {\n  position: relative;\n}\n.carousel-inner {\n  position: relative;\n  overflow: hidden;\n  width: 100%;\n}\n.carousel-inner > .item {\n  display: none;\n  position: relative;\n  -webkit-transition: 0.6s ease-in-out left;\n  -o-transition: 0.6s ease-in-out left;\n  transition: 0.6s ease-in-out left;\n}\n.carousel-inner > .item > img,\n.carousel-inner > .item > a > img {\n  line-height: 1;\n}\n@media all and (transform-3d), (-webkit-transform-3d) {\n  .carousel-inner > .item {\n    -webkit-transition: -webkit-transform 0.6s ease-in-out;\n    -moz-transition: -moz-transform 0.6s ease-in-out;\n    -o-transition: -o-transform 0.6s ease-in-out;\n    transition: transform 0.6s ease-in-out;\n    -webkit-backface-visibility: hidden;\n    -moz-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -webkit-perspective: 1000;\n    -moz-perspective: 1000;\n    perspective: 1000;\n  }\n  .carousel-inner > .item.next,\n  .carousel-inner > .item.active.right {\n    -webkit-transform: translate3d(100%, 0, 0);\n    transform: translate3d(100%, 0, 0);\n    left: 0;\n  }\n  .carousel-inner > .item.prev,\n  .carousel-inner > .item.active.left {\n    -webkit-transform: translate3d(-100%, 0, 0);\n    transform: translate3d(-100%, 0, 0);\n    left: 0;\n  }\n  .carousel-inner > .item.next.left,\n  .carousel-inner > .item.prev.right,\n  .carousel-inner > .item.active {\n    -webkit-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0);\n    left: 0;\n  }\n}\n.carousel-inner > .active,\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  display: block;\n}\n.carousel-inner > .active {\n  left: 0;\n}\n.carousel-inner > .next,\n.carousel-inner > .prev {\n  position: absolute;\n  top: 0;\n  width: 100%;\n}\n.carousel-inner > .next {\n  left: 100%;\n}\n.carousel-inner > .prev {\n  left: -100%;\n}\n.carousel-inner > .next.left,\n.carousel-inner > .prev.right {\n  left: 0;\n}\n.carousel-inner > .active.left {\n  left: -100%;\n}\n.carousel-inner > .active.right {\n  left: 100%;\n}\n.carousel-control {\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  width: 15%;\n  opacity: 0.5;\n  filter: alpha(opacity=50);\n  font-size: 20px;\n  color: #ffffff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n}\n.carousel-control.left {\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.0001) 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);\n}\n.carousel-control.right {\n  left: auto;\n  right: 0;\n  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.0001) 0%, rgba(0, 0, 0, 0.5) 100%);\n  background-repeat: repeat-x;\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);\n}\n.carousel-control:hover,\n.carousel-control:focus {\n  outline: 0;\n  color: #ffffff;\n  text-decoration: none;\n  opacity: 0.9;\n  filter: alpha(opacity=90);\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-left,\n.carousel-control .glyphicon-chevron-right {\n  position: absolute;\n  top: 50%;\n  z-index: 5;\n  display: inline-block;\n}\n.carousel-control .icon-prev,\n.carousel-control .glyphicon-chevron-left {\n  left: 50%;\n  margin-left: -10px;\n}\n.carousel-control .icon-next,\n.carousel-control .glyphicon-chevron-right {\n  right: 50%;\n  margin-right: -10px;\n}\n.carousel-control .icon-prev,\n.carousel-control .icon-next {\n  width: 20px;\n  height: 20px;\n  margin-top: -10px;\n  line-height: 1;\n  font-family: serif;\n}\n.carousel-control .icon-prev:before {\n  content: '\\2039';\n}\n.carousel-control .icon-next:before {\n  content: '\\203a';\n}\n.carousel-indicators {\n  position: absolute;\n  bottom: 10px;\n  left: 50%;\n  z-index: 15;\n  width: 60%;\n  margin-left: -30%;\n  padding-left: 0;\n  list-style: none;\n  text-align: center;\n}\n.carousel-indicators li {\n  display: inline-block;\n  width: 10px;\n  height: 10px;\n  margin: 1px;\n  text-indent: -999px;\n  border: 1px solid #ffffff;\n  border-radius: 10px;\n  cursor: pointer;\n  background-color: #000 \\9;\n  background-color: rgba(0, 0, 0, 0);\n}\n.carousel-indicators .active {\n  margin: 0;\n  width: 12px;\n  height: 12px;\n  background-color: #ffffff;\n}\n.carousel-caption {\n  position: absolute;\n  left: 15%;\n  right: 15%;\n  bottom: 20px;\n  z-index: 10;\n  padding-top: 20px;\n  padding-bottom: 20px;\n  color: #ffffff;\n  text-align: center;\n  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);\n}\n.carousel-caption .btn {\n  text-shadow: none;\n}\n@media screen and (min-width: 768px) {\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-prev,\n  .carousel-control .icon-next {\n    width: 30px;\n    height: 30px;\n    margin-top: -15px;\n    font-size: 30px;\n  }\n  .carousel-control .glyphicon-chevron-left,\n  .carousel-control .icon-prev {\n    margin-left: -15px;\n  }\n  .carousel-control .glyphicon-chevron-right,\n  .carousel-control .icon-next {\n    margin-right: -15px;\n  }\n  .carousel-caption {\n    left: 20%;\n    right: 20%;\n    padding-bottom: 30px;\n  }\n  .carousel-indicators {\n    bottom: 20px;\n  }\n}\n.clearfix:before,\n.clearfix:after,\n.dl-horizontal dd:before,\n.dl-horizontal dd:after,\n.container:before,\n.container:after,\n.container-fluid:before,\n.container-fluid:after,\n.row:before,\n.row:after,\n.form-horizontal .form-group:before,\n.form-horizontal .form-group:after,\n.btn-toolbar:before,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:before,\n.btn-group-vertical > .btn-group:after,\n.nav:before,\n.nav:after,\n.navbar:before,\n.navbar:after,\n.navbar-header:before,\n.navbar-header:after,\n.navbar-collapse:before,\n.navbar-collapse:after,\n.pager:before,\n.pager:after,\n.panel-body:before,\n.panel-body:after,\n.modal-footer:before,\n.modal-footer:after {\n  content: \" \";\n  display: table;\n}\n.clearfix:after,\n.dl-horizontal dd:after,\n.container:after,\n.container-fluid:after,\n.row:after,\n.form-horizontal .form-group:after,\n.btn-toolbar:after,\n.btn-group-vertical > .btn-group:after,\n.nav:after,\n.navbar:after,\n.navbar-header:after,\n.navbar-collapse:after,\n.pager:after,\n.panel-body:after,\n.modal-footer:after {\n  clear: both;\n}\n.center-block {\n  display: block;\n  margin-left: auto;\n  margin-right: auto;\n}\n.pull-right {\n  float: right !important;\n}\n.pull-left {\n  float: left !important;\n}\n.hide {\n  display: none !important;\n}\n.show {\n  display: block !important;\n}\n.invisible {\n  visibility: hidden;\n}\n.text-hide {\n  font: 0/0 a;\n  color: transparent;\n  text-shadow: none;\n  background-color: transparent;\n  border: 0;\n}\n.hidden {\n  display: none !important;\n  visibility: hidden !important;\n}\n.affix {\n  position: fixed;\n}\n@-ms-viewport {\n  width: device-width;\n}\n.visible-xs,\n.visible-sm,\n.visible-md,\n.visible-lg {\n  display: none !important;\n}\n.visible-xs-block,\n.visible-xs-inline,\n.visible-xs-inline-block,\n.visible-sm-block,\n.visible-sm-inline,\n.visible-sm-inline-block,\n.visible-md-block,\n.visible-md-inline,\n.visible-md-inline-block,\n.visible-lg-block,\n.visible-lg-inline,\n.visible-lg-inline-block {\n  display: none !important;\n}\n@media (max-width: 767px) {\n  .visible-xs {\n    display: block !important;\n  }\n  table.visible-xs {\n    display: table;\n  }\n  tr.visible-xs {\n    display: table-row !important;\n  }\n  th.visible-xs,\n  td.visible-xs {\n    display: table-cell !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-block {\n    display: block !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline {\n    display: inline !important;\n  }\n}\n@media (max-width: 767px) {\n  .visible-xs-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm {\n    display: block !important;\n  }\n  table.visible-sm {\n    display: table;\n  }\n  tr.visible-sm {\n    display: table-row !important;\n  }\n  th.visible-sm,\n  td.visible-sm {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-block {\n    display: block !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .visible-sm-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md {\n    display: block !important;\n  }\n  table.visible-md {\n    display: table;\n  }\n  tr.visible-md {\n    display: table-row !important;\n  }\n  th.visible-md,\n  td.visible-md {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-block {\n    display: block !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .visible-md-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg {\n    display: block !important;\n  }\n  table.visible-lg {\n    display: table;\n  }\n  tr.visible-lg {\n    display: table-row !important;\n  }\n  th.visible-lg,\n  td.visible-lg {\n    display: table-cell !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-block {\n    display: block !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline {\n    display: inline !important;\n  }\n}\n@media (min-width: 1200px) {\n  .visible-lg-inline-block {\n    display: inline-block !important;\n  }\n}\n@media (max-width: 767px) {\n  .hidden-xs {\n    display: none !important;\n  }\n}\n@media (min-width: 768px) and (max-width: 991px) {\n  .hidden-sm {\n    display: none !important;\n  }\n}\n@media (min-width: 992px) and (max-width: 1199px) {\n  .hidden-md {\n    display: none !important;\n  }\n}\n@media (min-width: 1200px) {\n  .hidden-lg {\n    display: none !important;\n  }\n}\n.visible-print {\n  display: none !important;\n}\n@media print {\n  .visible-print {\n    display: block !important;\n  }\n  table.visible-print {\n    display: table;\n  }\n  tr.visible-print {\n    display: table-row !important;\n  }\n  th.visible-print,\n  td.visible-print {\n    display: table-cell !important;\n  }\n}\n.visible-print-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-block {\n    display: block !important;\n  }\n}\n.visible-print-inline {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline {\n    display: inline !important;\n  }\n}\n.visible-print-inline-block {\n  display: none !important;\n}\n@media print {\n  .visible-print-inline-block {\n    display: inline-block !important;\n  }\n}\n@media print {\n  .hidden-print {\n    display: none !important;\n  }\n}\n";
+
+/***/ },
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41963,8 +41903,8 @@
 	  surfaces: __webpack_require__(110),
 	  transitions: __webpack_require__(111),
 	  utilities: __webpack_require__(112),
-	  views: __webpack_require__(113),
-	  widgets: __webpack_require__(114)
+	  views: __webpack_require__(114),
+	  widgets: __webpack_require__(113)
 	};
 
 
@@ -42936,7 +42876,7 @@
 	var Vector = __webpack_require__(38);
 	var Transform = __webpack_require__(37);
 	var EventHandler = __webpack_require__(46);
-	var Integrator = __webpack_require__(115);
+	var Integrator = __webpack_require__(116);
 	function Particle(options) {
 	    options = options || {};
 	    var defaults = Particle.DEFAULT_OPTIONS;
@@ -43141,7 +43081,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(116);
+	var Force = __webpack_require__(115);
 	var Vector = __webpack_require__(38);
 	function Spring(options) {
 	    Force.call(this);
@@ -44050,7 +43990,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventEmitter = __webpack_require__(120);
+	var EventEmitter = __webpack_require__(119);
 	function EventHandler() {
 	    EventEmitter.apply(this, arguments);
 	    this.downstream = [];
@@ -44163,7 +44103,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Surface = __webpack_require__(52);
-	var Context = __webpack_require__(119);
+	var Context = __webpack_require__(120);
 	function ContainerSurface(options) {
 	    Surface.call(this, options);
 	    this._container = document.createElement('div');
@@ -44215,7 +44155,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(119);
+	var Context = __webpack_require__(120);
 	var Transform = __webpack_require__(37);
 	var Surface = __webpack_require__(52);
 	function Group(options) {
@@ -44290,7 +44230,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(116);
+	var Force = __webpack_require__(115);
 	function Drag(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -44341,7 +44281,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var EventHandler = __webpack_require__(46);
-	var Engine = __webpack_require__(122);
+	var Engine = __webpack_require__(121);
 	var OptionsManager = __webpack_require__(36);
 	function ScrollSync(options) {
 	    this.options = Object.create(ScrollSync.DEFAULT_OPTIONS);
@@ -44485,7 +44425,7 @@
 	 */
 	var EventHandler = __webpack_require__(46);
 	var OptionsManager = __webpack_require__(36);
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(122);
 	var Utility = __webpack_require__(43);
 	function View(options) {
 	    this._node = new RenderNode();
@@ -47263,19 +47203,19 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Context: __webpack_require__(119),
-	  ElementAllocator: __webpack_require__(164),
+	  Context: __webpack_require__(120),
+	  ElementAllocator: __webpack_require__(156),
 	  ElementOutput: __webpack_require__(123),
-	  Engine: __webpack_require__(122),
+	  Engine: __webpack_require__(121),
 	  Entity: __webpack_require__(44),
-	  EventEmitter: __webpack_require__(120),
+	  EventEmitter: __webpack_require__(119),
 	  EventHandler: __webpack_require__(46),
 	  Group: __webpack_require__(48),
-	  Modifier: __webpack_require__(165),
+	  Modifier: __webpack_require__(157),
 	  OptionsManager: __webpack_require__(36),
-	  RenderNode: __webpack_require__(121),
-	  Scene: __webpack_require__(166),
-	  SpecParser: __webpack_require__(167),
+	  RenderNode: __webpack_require__(122),
+	  Scene: __webpack_require__(158),
+	  SpecParser: __webpack_require__(159),
 	  Surface: __webpack_require__(52),
 	  Transform: __webpack_require__(37),
 	  View: __webpack_require__(51),
@@ -47288,9 +47228,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  EventArbiter: __webpack_require__(168),
-	  EventFilter: __webpack_require__(169),
-	  EventMapper: __webpack_require__(170)
+	  EventArbiter: __webpack_require__(153),
+	  EventFilter: __webpack_require__(154),
+	  EventMapper: __webpack_require__(155)
 	};
 
 
@@ -47299,18 +47239,18 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Accumulator: __webpack_require__(153),
-	  DesktopEmulationMode: __webpack_require__(154),
-	  FastClick: __webpack_require__(155),
-	  GenericSync: __webpack_require__(156),
-	  MouseSync: __webpack_require__(157),
-	  PinchSync: __webpack_require__(158),
-	  RotateSync: __webpack_require__(159),
-	  ScaleSync: __webpack_require__(160),
+	  Accumulator: __webpack_require__(160),
+	  DesktopEmulationMode: __webpack_require__(161),
+	  FastClick: __webpack_require__(162),
+	  GenericSync: __webpack_require__(163),
+	  MouseSync: __webpack_require__(164),
+	  PinchSync: __webpack_require__(165),
+	  RotateSync: __webpack_require__(166),
+	  ScaleSync: __webpack_require__(167),
 	  ScrollSync: __webpack_require__(50),
-	  TouchSync: __webpack_require__(161),
-	  TouchTracker: __webpack_require__(162),
-	  TwoFingerSync: __webpack_require__(163)
+	  TouchSync: __webpack_require__(168),
+	  TouchTracker: __webpack_require__(169),
+	  TwoFingerSync: __webpack_require__(170)
 	};
 
 
@@ -47319,10 +47259,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Matrix: __webpack_require__(171),
-	  Quaternion: __webpack_require__(172),
-	  Random: __webpack_require__(173),
-	  Utilities: __webpack_require__(174),
+	  Matrix: __webpack_require__(175),
+	  Quaternion: __webpack_require__(176),
+	  Random: __webpack_require__(177),
+	  Utilities: __webpack_require__(178),
 	  Vector: __webpack_require__(38)
 	};
 
@@ -47332,10 +47272,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Draggable: __webpack_require__(175),
-	  Fader: __webpack_require__(176),
-	  ModifierChain: __webpack_require__(177),
-	  StateModifier: __webpack_require__(178)
+	  Draggable: __webpack_require__(171),
+	  Fader: __webpack_require__(172),
+	  ModifierChain: __webpack_require__(173),
+	  StateModifier: __webpack_require__(174)
 	};
 
 
@@ -47390,14 +47330,26 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  KeyCodes: __webpack_require__(192),
-	  Timer: __webpack_require__(193),
+	  KeyCodes: __webpack_require__(196),
+	  Timer: __webpack_require__(197),
 	  Utility: __webpack_require__(43)
 	};
 
 
 /***/ },
 /* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  NavigationBar: __webpack_require__(192),
+	  Slider: __webpack_require__(193),
+	  TabBar: __webpack_require__(194),
+	  ToggleButton: __webpack_require__(195)
+	};
+
+
+/***/ },
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -47420,19 +47372,39 @@
 
 
 /***/ },
-/* 114 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = {
-	  NavigationBar: __webpack_require__(194),
-	  Slider: __webpack_require__(195),
-	  TabBar: __webpack_require__(196),
-	  ToggleButton: __webpack_require__(197)
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Vector = __webpack_require__(38);
+	var EventHandler = __webpack_require__(46);
+	function Force(force) {
+	    this.force = new Vector(force);
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	}
+	Force.prototype.setOptions = function setOptions(options) {
+	    this._eventOutput.emit('change', options);
 	};
-
+	Force.prototype.applyForce = function applyForce(targets) {
+	    var length = targets.length;
+	    while (length--) {
+	        targets[length].applyForce(this.force);
+	    }
+	};
+	Force.prototype.getEnergy = function getEnergy() {
+	    return 0;
+	};
+	module.exports = Force;
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47473,38 +47445,6 @@
 	    q.add(q.multiply(w).scalarMultiply(0.5 * dt)).put(q);
 	};
 	module.exports = SymplecticEuler;
-
-/***/ },
-/* 116 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Vector = __webpack_require__(38);
-	var EventHandler = __webpack_require__(46);
-	function Force(force) {
-	    this.force = new Vector(force);
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	}
-	Force.prototype.setOptions = function setOptions(options) {
-	    this._eventOutput.emit('change', options);
-	};
-	Force.prototype.applyForce = function applyForce(targets) {
-	    var length = targets.length;
-	    while (length--) {
-	        targets[length].applyForce(this.force);
-	    }
-	};
-	Force.prototype.getEnergy = function getEnergy() {
-	    return 0;
-	};
-	module.exports = Force;
 
 /***/ },
 /* 117 */
@@ -47808,9 +47748,56 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var RenderNode = __webpack_require__(121);
+	function EventEmitter() {
+	    this.listeners = {};
+	    this._owner = this;
+	}
+	EventEmitter.prototype.emit = function emit(type, event) {
+	    var handlers = this.listeners[type];
+	    if (handlers) {
+	        for (var i = 0; i < handlers.length; i++) {
+	            handlers[i].call(this._owner, event);
+	        }
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.on = function on(type, handler) {
+	    if (!(type in this.listeners))
+	        this.listeners[type] = [];
+	    var index = this.listeners[type].indexOf(handler);
+	    if (index < 0)
+	        this.listeners[type].push(handler);
+	    return this;
+	};
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
+	    var listener = this.listeners[type];
+	    if (listener !== undefined) {
+	        var index = listener.indexOf(handler);
+	        if (index >= 0)
+	            listener.splice(index, 1);
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.bindThis = function bindThis(owner) {
+	    this._owner = owner;
+	};
+	module.exports = EventEmitter;
+
+/***/ },
+/* 120 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var RenderNode = __webpack_require__(122);
 	var EventHandler = __webpack_require__(46);
-	var ElementAllocator = __webpack_require__(164);
+	var ElementAllocator = __webpack_require__(156);
 	var Transform = __webpack_require__(37);
 	var Transitionable = __webpack_require__(42);
 	var _zeroZero = [
@@ -47915,53 +47902,6 @@
 	module.exports = Context;
 
 /***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function EventEmitter() {
-	    this.listeners = {};
-	    this._owner = this;
-	}
-	EventEmitter.prototype.emit = function emit(type, event) {
-	    var handlers = this.listeners[type];
-	    if (handlers) {
-	        for (var i = 0; i < handlers.length; i++) {
-	            handlers[i].call(this._owner, event);
-	        }
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.on = function on(type, handler) {
-	    if (!(type in this.listeners))
-	        this.listeners[type] = [];
-	    var index = this.listeners[type].indexOf(handler);
-	    if (index < 0)
-	        this.listeners[type].push(handler);
-	    return this;
-	};
-	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
-	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
-	    var listener = this.listeners[type];
-	    if (listener !== undefined) {
-	        var index = listener.indexOf(handler);
-	        if (index >= 0)
-	            listener.splice(index, 1);
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.bindThis = function bindThis(owner) {
-	    this._owner = owner;
-	};
-	module.exports = EventEmitter;
-
-/***/ },
 /* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47972,116 +47912,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(44);
-	var SpecParser = __webpack_require__(167);
-	function RenderNode(object) {
-	    this._object = null;
-	    this._child = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = false;
-	    this._isModifier = false;
-	    this._resultCache = {};
-	    this._prevResults = {};
-	    this._childResult = null;
-	    if (object)
-	        this.set(object);
-	}
-	RenderNode.prototype.add = function add(child) {
-	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
-	    if (this._child instanceof Array)
-	        this._child.push(childNode);
-	    else if (this._child) {
-	        this._child = [
-	            this._child,
-	            childNode
-	        ];
-	        this._hasMultipleChildren = true;
-	        this._childResult = [];
-	    } else
-	        this._child = childNode;
-	    return childNode;
-	};
-	RenderNode.prototype.get = function get() {
-	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
-	};
-	RenderNode.prototype.set = function set(child) {
-	    this._childResult = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = child.render ? true : false;
-	    this._isModifier = child.modify ? true : false;
-	    this._object = child;
-	    this._child = null;
-	    if (child instanceof RenderNode)
-	        return child;
-	    else
-	        return this;
-	};
-	RenderNode.prototype.getSize = function getSize() {
-	    var result = null;
-	    var target = this.get();
-	    if (target && target.getSize)
-	        result = target.getSize();
-	    if (!result && this._child && this._child.getSize)
-	        result = this._child.getSize();
-	    return result;
-	};
-	function _applyCommit(spec, context, cacheStorage) {
-	    var result = SpecParser.parse(spec, context);
-	    var keys = Object.keys(result);
-	    for (var i = 0; i < keys.length; i++) {
-	        var id = keys[i];
-	        var childNode = Entity.get(id);
-	        var commitParams = result[id];
-	        commitParams.allocator = context.allocator;
-	        var commitResult = childNode.commit(commitParams);
-	        if (commitResult)
-	            _applyCommit(commitResult, context, cacheStorage);
-	        else
-	            cacheStorage[id] = commitParams;
-	    }
-	}
-	RenderNode.prototype.commit = function commit(context) {
-	    var prevKeys = Object.keys(this._prevResults);
-	    for (var i = 0; i < prevKeys.length; i++) {
-	        var id = prevKeys[i];
-	        if (this._resultCache[id] === undefined) {
-	            var object = Entity.get(id);
-	            if (object.cleanup)
-	                object.cleanup(context.allocator);
-	        }
-	    }
-	    this._prevResults = this._resultCache;
-	    this._resultCache = {};
-	    _applyCommit(this.render(), context, this._resultCache);
-	};
-	RenderNode.prototype.render = function render() {
-	    if (this._isRenderable)
-	        return this._object.render();
-	    var result = null;
-	    if (this._hasMultipleChildren) {
-	        result = this._childResult;
-	        var children = this._child;
-	        for (var i = 0; i < children.length; i++) {
-	            result[i] = children[i].render();
-	        }
-	    } else if (this._child)
-	        result = this._child.render();
-	    return this._isModifier ? this._object.modify(result) : result;
-	};
-	module.exports = RenderNode;
-
-/***/ },
-/* 122 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Context = __webpack_require__(119);
+	var Context = __webpack_require__(120);
 	var EventHandler = __webpack_require__(46);
 	var OptionsManager = __webpack_require__(36);
 	var Engine = {};
@@ -48252,6 +48083,115 @@
 	    }
 	});
 	module.exports = Engine;
+
+/***/ },
+/* 122 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(44);
+	var SpecParser = __webpack_require__(159);
+	function RenderNode(object) {
+	    this._object = null;
+	    this._child = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = false;
+	    this._isModifier = false;
+	    this._resultCache = {};
+	    this._prevResults = {};
+	    this._childResult = null;
+	    if (object)
+	        this.set(object);
+	}
+	RenderNode.prototype.add = function add(child) {
+	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
+	    if (this._child instanceof Array)
+	        this._child.push(childNode);
+	    else if (this._child) {
+	        this._child = [
+	            this._child,
+	            childNode
+	        ];
+	        this._hasMultipleChildren = true;
+	        this._childResult = [];
+	    } else
+	        this._child = childNode;
+	    return childNode;
+	};
+	RenderNode.prototype.get = function get() {
+	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
+	};
+	RenderNode.prototype.set = function set(child) {
+	    this._childResult = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = child.render ? true : false;
+	    this._isModifier = child.modify ? true : false;
+	    this._object = child;
+	    this._child = null;
+	    if (child instanceof RenderNode)
+	        return child;
+	    else
+	        return this;
+	};
+	RenderNode.prototype.getSize = function getSize() {
+	    var result = null;
+	    var target = this.get();
+	    if (target && target.getSize)
+	        result = target.getSize();
+	    if (!result && this._child && this._child.getSize)
+	        result = this._child.getSize();
+	    return result;
+	};
+	function _applyCommit(spec, context, cacheStorage) {
+	    var result = SpecParser.parse(spec, context);
+	    var keys = Object.keys(result);
+	    for (var i = 0; i < keys.length; i++) {
+	        var id = keys[i];
+	        var childNode = Entity.get(id);
+	        var commitParams = result[id];
+	        commitParams.allocator = context.allocator;
+	        var commitResult = childNode.commit(commitParams);
+	        if (commitResult)
+	            _applyCommit(commitResult, context, cacheStorage);
+	        else
+	            cacheStorage[id] = commitParams;
+	    }
+	}
+	RenderNode.prototype.commit = function commit(context) {
+	    var prevKeys = Object.keys(this._prevResults);
+	    for (var i = 0; i < prevKeys.length; i++) {
+	        var id = prevKeys[i];
+	        if (this._resultCache[id] === undefined) {
+	            var object = Entity.get(id);
+	            if (object.cleanup)
+	                object.cleanup(context.allocator);
+	        }
+	    }
+	    this._prevResults = this._resultCache;
+	    this._resultCache = {};
+	    _applyCommit(this.render(), context, this._resultCache);
+	};
+	RenderNode.prototype.render = function render() {
+	    if (this._isRenderable)
+	        return this._object.render();
+	    var result = null;
+	    if (this._hasMultipleChildren) {
+	        result = this._childResult;
+	        var children = this._child;
+	        for (var i = 0; i < children.length; i++) {
+	            result[i] = children[i].render();
+	        }
+	    } else if (this._child)
+	        result = this._child.render();
+	    return this._isModifier ? this._object.modify(result) : result;
+	};
+	module.exports = RenderNode;
 
 /***/ },
 /* 123 */
@@ -48481,33 +48421,40 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var EventHandler = __webpack_require__(46);
-	var Transitionable = __webpack_require__(42);
-	function Accumulator(value, eventName) {
-	    if (eventName === undefined)
-	        eventName = 'update';
-	    this._state = value && value.get && value.set ? value : new Transitionable(value || 0);
-	    this._eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    this._eventInput.on(eventName, _handleUpdate.bind(this));
+	function EventArbiter(startMode) {
+	    this.dispatchers = {};
+	    this.currMode = undefined;
+	    this.setMode(startMode);
 	}
-	function _handleUpdate(data) {
-	    var delta = data.delta;
-	    var state = this.get();
-	    if (delta.constructor === state.constructor) {
-	        var newState = delta instanceof Array ? [
-	            state[0] + delta[0],
-	            state[1] + delta[1]
-	        ] : state + delta;
-	        this.set(newState);
+	EventArbiter.prototype.setMode = function setMode(mode) {
+	    if (mode !== this.currMode) {
+	        var startMode = this.currMode;
+	        if (this.dispatchers[this.currMode])
+	            this.dispatchers[this.currMode].trigger('unpipe');
+	        this.currMode = mode;
+	        if (this.dispatchers[mode])
+	            this.dispatchers[mode].emit('pipe');
+	        this.emit('change', {
+	            from: startMode,
+	            to: mode
+	        });
 	    }
-	}
-	Accumulator.prototype.get = function get() {
-	    return this._state.get();
 	};
-	Accumulator.prototype.set = function set(value) {
-	    this._state.set(value);
+	EventArbiter.prototype.forMode = function forMode(mode) {
+	    if (!this.dispatchers[mode])
+	        this.dispatchers[mode] = new EventHandler();
+	    return this.dispatchers[mode];
 	};
-	module.exports = Accumulator;
+	EventArbiter.prototype.emit = function emit(eventType, event) {
+	    if (this.currMode === undefined)
+	        return false;
+	    if (!event)
+	        event = {};
+	    var dispatcher = this.dispatchers[this.currMode];
+	    if (dispatcher)
+	        return dispatcher.trigger(eventType, event);
+	};
+	module.exports = EventArbiter;
 
 /***/ },
 /* 154 */
@@ -48520,19 +48467,19 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var hasTouch = 'ontouchstart' in window;
-	function kill(type) {
-	    window.addEventListener(type, function (event) {
-	        event.stopPropagation();
-	        return false;
-	    }, true);
+	var EventHandler = __webpack_require__(46);
+	function EventFilter(condition) {
+	    EventHandler.call(this);
+	    this._condition = condition;
 	}
-	if (hasTouch) {
-	    kill('mousedown');
-	    kill('mousemove');
-	    kill('mouseup');
-	    kill('mouseleave');
-	}
+	EventFilter.prototype = Object.create(EventHandler.prototype);
+	EventFilter.prototype.constructor = EventFilter;
+	EventFilter.prototype.emit = function emit(type, data) {
+	    if (this._condition(type, data))
+	        return EventHandler.prototype.emit.apply(this, arguments);
+	};
+	EventFilter.prototype.trigger = EventFilter.prototype.emit;
+	module.exports = EventFilter;
 
 /***/ },
 /* 155 */
@@ -48545,911 +48492,25 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	(function () {
-	    if (!window.CustomEvent)
-	        return;
-	    var clickThreshold = 300;
-	    var clickWindow = 500;
-	    var potentialClicks = {};
-	    var recentlyDispatched = {};
-	    var _now = Date.now;
-	    window.addEventListener('touchstart', function (event) {
-	        var timestamp = _now();
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            potentialClicks[touch.identifier] = timestamp;
-	        }
-	    });
-	    window.addEventListener('touchmove', function (event) {
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            delete potentialClicks[touch.identifier];
-	        }
-	    });
-	    window.addEventListener('touchend', function (event) {
-	        var currTime = _now();
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            var startTime = potentialClicks[touch.identifier];
-	            if (startTime && currTime - startTime < clickThreshold) {
-	                var clickEvt = new window.CustomEvent('click', {
-	                    'bubbles': true,
-	                    'detail': touch
-	                });
-	                recentlyDispatched[currTime] = event;
-	                event.target.dispatchEvent(clickEvt);
-	            }
-	            delete potentialClicks[touch.identifier];
-	        }
-	    });
-	    window.addEventListener('click', function (event) {
-	        var currTime = _now();
-	        for (var i in recentlyDispatched) {
-	            var previousEvent = recentlyDispatched[i];
-	            if (currTime - i < clickWindow) {
-	                if (event instanceof window.MouseEvent && event.target === previousEvent.target)
-	                    event.stopPropagation();
-	            } else
-	                delete recentlyDispatched[i];
-	        }
-	    }, true);
-	}());
+	var EventHandler = __webpack_require__(46);
+	function EventMapper(mappingFunction) {
+	    EventHandler.call(this);
+	    this._mappingFunction = mappingFunction;
+	}
+	EventMapper.prototype = Object.create(EventHandler.prototype);
+	EventMapper.prototype.constructor = EventMapper;
+	EventMapper.prototype.subscribe = null;
+	EventMapper.prototype.unsubscribe = null;
+	EventMapper.prototype.emit = function emit(type, data) {
+	    var target = this._mappingFunction.apply(this, arguments);
+	    if (target && target.emit instanceof Function)
+	        target.emit(type, data);
+	};
+	EventMapper.prototype.trigger = EventMapper.prototype.emit;
+	module.exports = EventMapper;
 
 /***/ },
 /* 156 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(46);
-	function GenericSync(syncs, options) {
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._syncs = {};
-	    if (syncs)
-	        this.addSync(syncs);
-	    if (options)
-	        this.setOptions(options);
-	}
-	GenericSync.DIRECTION_X = 0;
-	GenericSync.DIRECTION_Y = 1;
-	GenericSync.DIRECTION_Z = 2;
-	var registry = {};
-	GenericSync.register = function register(syncObject) {
-	    for (var key in syncObject) {
-	        if (registry[key]) {
-	            if (registry[key] !== syncObject[key])
-	                throw new Error('Conflicting sync classes for key: ' + key);
-	        } else
-	            registry[key] = syncObject[key];
-	    }
-	};
-	GenericSync.prototype.setOptions = function (options) {
-	    for (var key in this._syncs) {
-	        this._syncs[key].setOptions(options);
-	    }
-	};
-	GenericSync.prototype.pipeSync = function pipeToSync(key) {
-	    var sync = this._syncs[key];
-	    this._eventInput.pipe(sync);
-	    sync.pipe(this._eventOutput);
-	};
-	GenericSync.prototype.unpipeSync = function unpipeFromSync(key) {
-	    var sync = this._syncs[key];
-	    this._eventInput.unpipe(sync);
-	    sync.unpipe(this._eventOutput);
-	};
-	function _addSingleSync(key, options) {
-	    if (!registry[key])
-	        return;
-	    this._syncs[key] = new registry[key](options);
-	    this.pipeSync(key);
-	}
-	GenericSync.prototype.addSync = function addSync(syncs) {
-	    if (syncs instanceof Array)
-	        for (var i = 0; i < syncs.length; i++)
-	            _addSingleSync.call(this, syncs[i]);
-	    else if (syncs instanceof Object)
-	        for (var key in syncs)
-	            _addSingleSync.call(this, key, syncs[key]);
-	};
-	module.exports = GenericSync;
-
-/***/ },
-/* 157 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(46);
-	var OptionsManager = __webpack_require__(36);
-	function MouseSync(options) {
-	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._eventInput.on('mousedown', _handleStart.bind(this));
-	    this._eventInput.on('mousemove', _handleMove.bind(this));
-	    this._eventInput.on('mouseup', _handleEnd.bind(this));
-	    if (this.options.propogate)
-	        this._eventInput.on('mouseleave', _handleLeave.bind(this));
-	    else
-	        this._eventInput.on('mouseleave', _handleEnd.bind(this));
-	    if (this.options.clickThreshold) {
-	        window.addEventListener('click', function (event) {
-	            if (Math.sqrt(Math.pow(this._displacement[0], 2) + Math.pow(this._displacement[1], 2)) > this.options.clickThreshold) {
-	                event.stopPropagation();
-	            }
-	        }.bind(this), true);
-	    }
-	    this._payload = {
-	        delta: null,
-	        position: null,
-	        velocity: null,
-	        clientX: 0,
-	        clientY: 0,
-	        offsetX: 0,
-	        offsetY: 0
-	    };
-	    this._positionHistory = [];
-	    this._position = null;
-	    this._prevCoord = undefined;
-	    this._prevTime = undefined;
-	    this._down = false;
-	    this._moved = false;
-	    this._displacement = [
-	        0,
-	        0
-	    ];
-	    this._documentActive = false;
-	}
-	MouseSync.DEFAULT_OPTIONS = {
-	    clickThreshold: undefined,
-	    direction: undefined,
-	    rails: false,
-	    scale: 1,
-	    propogate: true,
-	    velocitySampleLength: 10,
-	    preventDefault: true
-	};
-	MouseSync.DIRECTION_X = 0;
-	MouseSync.DIRECTION_Y = 1;
-	var MINIMUM_TICK_TIME = 8;
-	function _handleStart(event) {
-	    var delta;
-	    var velocity;
-	    if (this.options.preventDefault)
-	        event.preventDefault();
-	    var x = event.clientX;
-	    var y = event.clientY;
-	    this._prevCoord = [
-	        x,
-	        y
-	    ];
-	    this._prevTime = Date.now();
-	    this._down = true;
-	    this._move = false;
-	    if (this.options.direction !== undefined) {
-	        this._position = 0;
-	        delta = 0;
-	        velocity = 0;
-	    } else {
-	        this._position = [
-	            0,
-	            0
-	        ];
-	        delta = [
-	            0,
-	            0
-	        ];
-	        velocity = [
-	            0,
-	            0
-	        ];
-	    }
-	    if (this.options.clickThreshold) {
-	        this._displacement = [
-	            0,
-	            0
-	        ];
-	    }
-	    var payload = this._payload;
-	    payload.delta = delta;
-	    payload.position = this._position;
-	    payload.velocity = velocity;
-	    payload.clientX = x;
-	    payload.clientY = y;
-	    payload.offsetX = event.offsetX;
-	    payload.offsetY = event.offsetY;
-	    this._positionHistory.push({
-	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
-	        time: this._prevTime
-	    });
-	    this._eventOutput.emit('start', payload);
-	    this._documentActive = false;
-	}
-	function _handleMove(event) {
-	    if (!this._prevCoord)
-	        return;
-	    var prevCoord = this._prevCoord;
-	    var prevTime = this._prevTime;
-	    var x = event.clientX;
-	    var y = event.clientY;
-	    var currTime = Date.now();
-	    var diffX = x - prevCoord[0];
-	    var diffY = y - prevCoord[1];
-	    if (this.options.rails) {
-	        if (Math.abs(diffX) > Math.abs(diffY))
-	            diffY = 0;
-	        else
-	            diffX = 0;
-	    }
-	    var diffTime = Math.max(currTime - this._positionHistory[0].time, MINIMUM_TICK_TIME);
-	    var scale = this.options.scale;
-	    var nextVel;
-	    var nextDelta;
-	    if (this.options.direction === MouseSync.DIRECTION_X) {
-	        nextDelta = scale * diffX;
-	        this._position += nextDelta;
-	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
-	    } else if (this.options.direction === MouseSync.DIRECTION_Y) {
-	        nextDelta = scale * diffY;
-	        this._position += nextDelta;
-	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
-	    } else {
-	        nextDelta = [
-	            scale * diffX,
-	            scale * diffY
-	        ];
-	        nextVel = [
-	            scale * (this._position[0] - this._positionHistory[0].position[0]) / diffTime,
-	            scale * (this._position[1] - this._positionHistory[0].position[1]) / diffTime
-	        ];
-	        this._position[0] += nextDelta[0];
-	        this._position[1] += nextDelta[1];
-	    }
-	    if (this.options.clickThreshold !== false) {
-	        this._displacement[0] += diffX;
-	        this._displacement[1] += diffY;
-	    }
-	    var payload = this._payload;
-	    payload.delta = nextDelta;
-	    payload.position = this._position;
-	    payload.velocity = nextVel;
-	    payload.clientX = x;
-	    payload.clientY = y;
-	    payload.offsetX = event.offsetX;
-	    payload.offsetY = event.offsetY;
-	    if (this._positionHistory.length === this.options.velocitySampleLength) {
-	        this._positionHistory.shift();
-	    }
-	    this._positionHistory.push({
-	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
-	        time: currTime
-	    });
-	    this._eventOutput.emit('update', payload);
-	    this._prevCoord = [
-	        x,
-	        y
-	    ];
-	    this._prevTime = currTime;
-	    this._move = true;
-	}
-	function _handleEnd(event) {
-	    if (!this._down)
-	        return;
-	    this._eventOutput.emit('end', this._payload);
-	    this._prevCoord = undefined;
-	    this._prevTime = undefined;
-	    this._down = false;
-	    this._move = false;
-	    this._positionHistory = [];
-	}
-	function _handleLeave(event) {
-	    if (!this._down || !this._move)
-	        return;
-	    if (!this._documentActive) {
-	        var boundMove = _handleMove.bind(this);
-	        var boundEnd = function (event) {
-	            _handleEnd.call(this, event);
-	            document.removeEventListener('mousemove', boundMove);
-	            document.removeEventListener('mouseup', boundEnd);
-	        }.bind(this, event);
-	        document.addEventListener('mousemove', boundMove);
-	        document.addEventListener('mouseup', boundEnd);
-	        this._documentActive = true;
-	    }
-	}
-	MouseSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	MouseSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = MouseSync;
-
-/***/ },
-/* 158 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(163);
-	var OptionsManager = __webpack_require__(36);
-	function PinchSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._displacement = 0;
-	    this._previousDistance = 0;
-	}
-	PinchSync.prototype = Object.create(TwoFingerSync.prototype);
-	PinchSync.prototype.constructor = PinchSync;
-	PinchSync.DEFAULT_OPTIONS = { scale: 1 };
-	PinchSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._previousDistance = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    this._displacement = 0;
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ],
-	        distance: this._dist,
-	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
-	    });
-	};
-	PinchSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var scale = this.options.scale;
-	    var delta = scale * (currDist - this._previousDistance);
-	    var velocity = delta / diffTime;
-	    this._previousDistance = currDist;
-	    this._displacement += delta;
-	    this._eventOutput.emit('update', {
-	        delta: delta,
-	        velocity: velocity,
-	        distance: currDist,
-	        displacement: this._displacement,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	};
-	PinchSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	PinchSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = PinchSync;
-
-/***/ },
-/* 159 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(163);
-	var OptionsManager = __webpack_require__(36);
-	function RotateSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._angle = 0;
-	    this._previousAngle = 0;
-	}
-	RotateSync.prototype = Object.create(TwoFingerSync.prototype);
-	RotateSync.prototype.constructor = RotateSync;
-	RotateSync.DEFAULT_OPTIONS = { scale: 1 };
-	RotateSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._angle = 0;
-	    this._previousAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        angle: this._angle,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	};
-	RotateSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var scale = this.options.scale;
-	    var currAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var diffTheta = scale * (currAngle - this._previousAngle);
-	    var velTheta = diffTheta / diffTime;
-	    this._angle += diffTheta;
-	    this._eventOutput.emit('update', {
-	        delta: diffTheta,
-	        velocity: velTheta,
-	        angle: this._angle,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	    this._previousAngle = currAngle;
-	};
-	RotateSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	RotateSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = RotateSync;
-
-/***/ },
-/* 160 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(163);
-	var OptionsManager = __webpack_require__(36);
-	function ScaleSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._scaleFactor = 1;
-	    this._startDist = 0;
-	    this._eventInput.on('pipe', _reset.bind(this));
-	}
-	ScaleSync.prototype = Object.create(TwoFingerSync.prototype);
-	ScaleSync.prototype.constructor = ScaleSync;
-	ScaleSync.DEFAULT_OPTIONS = { scale: 1 };
-	function _reset() {
-	    this.touchAId = undefined;
-	    this.touchBId = undefined;
-	}
-	ScaleSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._scaleFactor = 1;
-	    this._startDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ],
-	        distance: this._startDist,
-	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
-	    });
-	};
-	ScaleSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var scale = this.options.scale;
-	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var delta = (currDist - this._startDist) / this._startDist;
-	    var newScaleFactor = Math.max(1 + scale * delta, 0);
-	    var veloScale = (newScaleFactor - this._scaleFactor) / diffTime;
-	    this._eventOutput.emit('update', {
-	        delta: delta,
-	        scale: newScaleFactor,
-	        velocity: veloScale,
-	        distance: currDist,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	    this._scaleFactor = newScaleFactor;
-	};
-	ScaleSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	ScaleSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = ScaleSync;
-
-/***/ },
-/* 161 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TouchTracker = __webpack_require__(162);
-	var EventHandler = __webpack_require__(46);
-	var OptionsManager = __webpack_require__(36);
-	function TouchSync(options) {
-	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._eventOutput = new EventHandler();
-	    this._touchTracker = new TouchTracker({ touchLimit: this.options.touchLimit });
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    EventHandler.setInputHandler(this, this._touchTracker);
-	    this._touchTracker.on('trackstart', _handleStart.bind(this));
-	    this._touchTracker.on('trackmove', _handleMove.bind(this));
-	    this._touchTracker.on('trackend', _handleEnd.bind(this));
-	    this._payload = {
-	        delta: null,
-	        position: null,
-	        velocity: null,
-	        clientX: undefined,
-	        clientY: undefined,
-	        count: 0,
-	        touch: undefined
-	    };
-	    this._position = null;
-	}
-	TouchSync.DEFAULT_OPTIONS = {
-	    direction: undefined,
-	    rails: false,
-	    touchLimit: 1,
-	    velocitySampleLength: 10,
-	    scale: 1
-	};
-	TouchSync.DIRECTION_X = 0;
-	TouchSync.DIRECTION_Y = 1;
-	var MINIMUM_TICK_TIME = 8;
-	function _handleStart(data) {
-	    var velocity;
-	    var delta;
-	    if (this.options.direction !== undefined) {
-	        this._position = 0;
-	        velocity = 0;
-	        delta = 0;
-	    } else {
-	        this._position = [
-	            0,
-	            0
-	        ];
-	        velocity = [
-	            0,
-	            0
-	        ];
-	        delta = [
-	            0,
-	            0
-	        ];
-	    }
-	    var payload = this._payload;
-	    payload.delta = delta;
-	    payload.position = this._position;
-	    payload.velocity = velocity;
-	    payload.clientX = data.x;
-	    payload.clientY = data.y;
-	    payload.count = data.count;
-	    payload.touch = data.identifier;
-	    this._eventOutput.emit('start', payload);
-	}
-	function _handleMove(data) {
-	    var history = data.history;
-	    var currHistory = history[history.length - 1];
-	    var prevHistory = history[history.length - 2];
-	    var distantHistory = history[history.length - this.options.velocitySampleLength] ? history[history.length - this.options.velocitySampleLength] : history[history.length - 2];
-	    var distantTime = distantHistory.timestamp;
-	    var currTime = currHistory.timestamp;
-	    var diffX = currHistory.x - prevHistory.x;
-	    var diffY = currHistory.y - prevHistory.y;
-	    var velDiffX = currHistory.x - distantHistory.x;
-	    var velDiffY = currHistory.y - distantHistory.y;
-	    if (this.options.rails) {
-	        if (Math.abs(diffX) > Math.abs(diffY))
-	            diffY = 0;
-	        else
-	            diffX = 0;
-	        if (Math.abs(velDiffX) > Math.abs(velDiffY))
-	            velDiffY = 0;
-	        else
-	            velDiffX = 0;
-	    }
-	    var diffTime = Math.max(currTime - distantTime, MINIMUM_TICK_TIME);
-	    var velX = velDiffX / diffTime;
-	    var velY = velDiffY / diffTime;
-	    var scale = this.options.scale;
-	    var nextVel;
-	    var nextDelta;
-	    if (this.options.direction === TouchSync.DIRECTION_X) {
-	        nextDelta = scale * diffX;
-	        nextVel = scale * velX;
-	        this._position += nextDelta;
-	    } else if (this.options.direction === TouchSync.DIRECTION_Y) {
-	        nextDelta = scale * diffY;
-	        nextVel = scale * velY;
-	        this._position += nextDelta;
-	    } else {
-	        nextDelta = [
-	            scale * diffX,
-	            scale * diffY
-	        ];
-	        nextVel = [
-	            scale * velX,
-	            scale * velY
-	        ];
-	        this._position[0] += nextDelta[0];
-	        this._position[1] += nextDelta[1];
-	    }
-	    var payload = this._payload;
-	    payload.delta = nextDelta;
-	    payload.velocity = nextVel;
-	    payload.position = this._position;
-	    payload.clientX = data.x;
-	    payload.clientY = data.y;
-	    payload.count = data.count;
-	    payload.touch = data.identifier;
-	    this._eventOutput.emit('update', payload);
-	}
-	function _handleEnd(data) {
-	    this._payload.count = data.count;
-	    this._eventOutput.emit('end', this._payload);
-	}
-	TouchSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	TouchSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	module.exports = TouchSync;
-
-/***/ },
-/* 162 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(46);
-	var _now = Date.now;
-	function _timestampTouch(touch, event, history) {
-	    return {
-	        x: touch.clientX,
-	        y: touch.clientY,
-	        identifier: touch.identifier,
-	        origin: event.origin,
-	        timestamp: _now(),
-	        count: event.touches.length,
-	        history: history
-	    };
-	}
-	function _handleStart(event) {
-	    if (event.touches.length > this.touchLimit)
-	        return;
-	    this.isTouched = true;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var data = _timestampTouch(touch, event, null);
-	        this.eventOutput.emit('trackstart', data);
-	        if (!this.selective && !this.touchHistory[touch.identifier])
-	            this.track(data);
-	    }
-	}
-	function _handleMove(event) {
-	    if (event.touches.length > this.touchLimit)
-	        return;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var history = this.touchHistory[touch.identifier];
-	        if (history) {
-	            var data = _timestampTouch(touch, event, history);
-	            this.touchHistory[touch.identifier].push(data);
-	            this.eventOutput.emit('trackmove', data);
-	        }
-	    }
-	}
-	function _handleEnd(event) {
-	    if (!this.isTouched)
-	        return;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var history = this.touchHistory[touch.identifier];
-	        if (history) {
-	            var data = _timestampTouch(touch, event, history);
-	            this.eventOutput.emit('trackend', data);
-	            delete this.touchHistory[touch.identifier];
-	        }
-	    }
-	    this.isTouched = false;
-	}
-	function _handleUnpipe() {
-	    for (var i in this.touchHistory) {
-	        var history = this.touchHistory[i];
-	        this.eventOutput.emit('trackend', {
-	            touch: history[history.length - 1].touch,
-	            timestamp: Date.now(),
-	            count: 0,
-	            history: history
-	        });
-	        delete this.touchHistory[i];
-	    }
-	}
-	function TouchTracker(options) {
-	    this.selective = options.selective;
-	    this.touchLimit = options.touchLimit || 1;
-	    this.touchHistory = {};
-	    this.eventInput = new EventHandler();
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.eventInput);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    this.eventInput.on('touchstart', _handleStart.bind(this));
-	    this.eventInput.on('touchmove', _handleMove.bind(this));
-	    this.eventInput.on('touchend', _handleEnd.bind(this));
-	    this.eventInput.on('touchcancel', _handleEnd.bind(this));
-	    this.eventInput.on('unpipe', _handleUnpipe.bind(this));
-	    this.isTouched = false;
-	}
-	TouchTracker.prototype.track = function track(data) {
-	    this.touchHistory[data.identifier] = [data];
-	};
-	module.exports = TouchTracker;
-
-/***/ },
-/* 163 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(46);
-	function TwoFingerSync() {
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.touchAEnabled = false;
-	    this.touchAId = 0;
-	    this.posA = null;
-	    this.timestampA = 0;
-	    this.touchBEnabled = false;
-	    this.touchBId = 0;
-	    this.posB = null;
-	    this.timestampB = 0;
-	    this._eventInput.on('touchstart', this.handleStart.bind(this));
-	    this._eventInput.on('touchmove', this.handleMove.bind(this));
-	    this._eventInput.on('touchend', this.handleEnd.bind(this));
-	    this._eventInput.on('touchcancel', this.handleEnd.bind(this));
-	}
-	TwoFingerSync.calculateAngle = function (posA, posB) {
-	    var diffX = posB[0] - posA[0];
-	    var diffY = posB[1] - posA[1];
-	    return Math.atan2(diffY, diffX);
-	};
-	TwoFingerSync.calculateDistance = function (posA, posB) {
-	    var diffX = posB[0] - posA[0];
-	    var diffY = posB[1] - posA[1];
-	    return Math.sqrt(diffX * diffX + diffY * diffY);
-	};
-	TwoFingerSync.calculateCenter = function (posA, posB) {
-	    return [
-	        (posA[0] + posB[0]) / 2,
-	        (posA[1] + posB[1]) / 2
-	    ];
-	};
-	var _now = Date.now;
-	TwoFingerSync.prototype.handleStart = function handleStart(event) {
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (!this.touchAEnabled) {
-	            this.touchAId = touch.identifier;
-	            this.touchAEnabled = true;
-	            this.posA = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampA = _now();
-	        } else if (!this.touchBEnabled) {
-	            this.touchBId = touch.identifier;
-	            this.touchBEnabled = true;
-	            this.posB = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampB = _now();
-	            this._startUpdate(event);
-	        }
-	    }
-	};
-	TwoFingerSync.prototype.handleMove = function handleMove(event) {
-	    if (!(this.touchAEnabled && this.touchBEnabled))
-	        return;
-	    var prevTimeA = this.timestampA;
-	    var prevTimeB = this.timestampB;
-	    var diffTime;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (touch.identifier === this.touchAId) {
-	            this.posA = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampA = _now();
-	            diffTime = this.timestampA - prevTimeA;
-	        } else if (touch.identifier === this.touchBId) {
-	            this.posB = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampB = _now();
-	            diffTime = this.timestampB - prevTimeB;
-	        }
-	    }
-	    if (diffTime)
-	        this._moveUpdate(diffTime);
-	};
-	TwoFingerSync.prototype.handleEnd = function handleEnd(event) {
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (touch.identifier === this.touchAId || touch.identifier === this.touchBId) {
-	            if (this.touchAEnabled && this.touchBEnabled) {
-	                this._eventOutput.emit('end', {
-	                    touches: [
-	                        this.touchAId,
-	                        this.touchBId
-	                    ],
-	                    angle: this._angle
-	                });
-	            }
-	            this.touchAEnabled = false;
-	            this.touchAId = 0;
-	            this.touchBEnabled = false;
-	            this.touchBId = 0;
-	        }
-	    }
-	};
-	module.exports = TwoFingerSync;
-
-/***/ },
-/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49506,7 +48567,7 @@
 	module.exports = ElementAllocator;
 
 /***/ },
-/* 165 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49763,7 +48824,7 @@
 	module.exports = Modifier;
 
 /***/ },
-/* 166 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49774,8 +48835,8 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Transform = __webpack_require__(37);
-	var Modifier = __webpack_require__(165);
-	var RenderNode = __webpack_require__(121);
+	var Modifier = __webpack_require__(157);
+	var RenderNode = __webpack_require__(122);
 	function Scene(definition) {
 	    this.id = null;
 	    this._objects = null;
@@ -49887,7 +48948,7 @@
 	module.exports = Scene;
 
 /***/ },
-/* 167 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50023,7 +49084,7 @@
 	module.exports = SpecParser;
 
 /***/ },
-/* 168 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50034,40 +49095,758 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var EventHandler = __webpack_require__(46);
-	function EventArbiter(startMode) {
-	    this.dispatchers = {};
-	    this.currMode = undefined;
-	    this.setMode(startMode);
+	var Transitionable = __webpack_require__(42);
+	function Accumulator(value, eventName) {
+	    if (eventName === undefined)
+	        eventName = 'update';
+	    this._state = value && value.get && value.set ? value : new Transitionable(value || 0);
+	    this._eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    this._eventInput.on(eventName, _handleUpdate.bind(this));
 	}
-	EventArbiter.prototype.setMode = function setMode(mode) {
-	    if (mode !== this.currMode) {
-	        var startMode = this.currMode;
-	        if (this.dispatchers[this.currMode])
-	            this.dispatchers[this.currMode].trigger('unpipe');
-	        this.currMode = mode;
-	        if (this.dispatchers[mode])
-	            this.dispatchers[mode].emit('pipe');
-	        this.emit('change', {
-	            from: startMode,
-	            to: mode
-	        });
+	function _handleUpdate(data) {
+	    var delta = data.delta;
+	    var state = this.get();
+	    if (delta.constructor === state.constructor) {
+	        var newState = delta instanceof Array ? [
+	            state[0] + delta[0],
+	            state[1] + delta[1]
+	        ] : state + delta;
+	        this.set(newState);
+	    }
+	}
+	Accumulator.prototype.get = function get() {
+	    return this._state.get();
+	};
+	Accumulator.prototype.set = function set(value) {
+	    this._state.set(value);
+	};
+	module.exports = Accumulator;
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var hasTouch = 'ontouchstart' in window;
+	function kill(type) {
+	    window.addEventListener(type, function (event) {
+	        event.stopPropagation();
+	        return false;
+	    }, true);
+	}
+	if (hasTouch) {
+	    kill('mousedown');
+	    kill('mousemove');
+	    kill('mouseup');
+	    kill('mouseleave');
+	}
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	(function () {
+	    if (!window.CustomEvent)
+	        return;
+	    var clickThreshold = 300;
+	    var clickWindow = 500;
+	    var potentialClicks = {};
+	    var recentlyDispatched = {};
+	    var _now = Date.now;
+	    window.addEventListener('touchstart', function (event) {
+	        var timestamp = _now();
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            potentialClicks[touch.identifier] = timestamp;
+	        }
+	    });
+	    window.addEventListener('touchmove', function (event) {
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            delete potentialClicks[touch.identifier];
+	        }
+	    });
+	    window.addEventListener('touchend', function (event) {
+	        var currTime = _now();
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            var startTime = potentialClicks[touch.identifier];
+	            if (startTime && currTime - startTime < clickThreshold) {
+	                var clickEvt = new window.CustomEvent('click', {
+	                    'bubbles': true,
+	                    'detail': touch
+	                });
+	                recentlyDispatched[currTime] = event;
+	                event.target.dispatchEvent(clickEvt);
+	            }
+	            delete potentialClicks[touch.identifier];
+	        }
+	    });
+	    window.addEventListener('click', function (event) {
+	        var currTime = _now();
+	        for (var i in recentlyDispatched) {
+	            var previousEvent = recentlyDispatched[i];
+	            if (currTime - i < clickWindow) {
+	                if (event instanceof window.MouseEvent && event.target === previousEvent.target)
+	                    event.stopPropagation();
+	            } else
+	                delete recentlyDispatched[i];
+	        }
+	    }, true);
+	}());
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	function GenericSync(syncs, options) {
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._syncs = {};
+	    if (syncs)
+	        this.addSync(syncs);
+	    if (options)
+	        this.setOptions(options);
+	}
+	GenericSync.DIRECTION_X = 0;
+	GenericSync.DIRECTION_Y = 1;
+	GenericSync.DIRECTION_Z = 2;
+	var registry = {};
+	GenericSync.register = function register(syncObject) {
+	    for (var key in syncObject) {
+	        if (registry[key]) {
+	            if (registry[key] !== syncObject[key])
+	                throw new Error('Conflicting sync classes for key: ' + key);
+	        } else
+	            registry[key] = syncObject[key];
 	    }
 	};
-	EventArbiter.prototype.forMode = function forMode(mode) {
-	    if (!this.dispatchers[mode])
-	        this.dispatchers[mode] = new EventHandler();
-	    return this.dispatchers[mode];
+	GenericSync.prototype.setOptions = function (options) {
+	    for (var key in this._syncs) {
+	        this._syncs[key].setOptions(options);
+	    }
 	};
-	EventArbiter.prototype.emit = function emit(eventType, event) {
-	    if (this.currMode === undefined)
-	        return false;
-	    if (!event)
-	        event = {};
-	    var dispatcher = this.dispatchers[this.currMode];
-	    if (dispatcher)
-	        return dispatcher.trigger(eventType, event);
+	GenericSync.prototype.pipeSync = function pipeToSync(key) {
+	    var sync = this._syncs[key];
+	    this._eventInput.pipe(sync);
+	    sync.pipe(this._eventOutput);
 	};
-	module.exports = EventArbiter;
+	GenericSync.prototype.unpipeSync = function unpipeFromSync(key) {
+	    var sync = this._syncs[key];
+	    this._eventInput.unpipe(sync);
+	    sync.unpipe(this._eventOutput);
+	};
+	function _addSingleSync(key, options) {
+	    if (!registry[key])
+	        return;
+	    this._syncs[key] = new registry[key](options);
+	    this.pipeSync(key);
+	}
+	GenericSync.prototype.addSync = function addSync(syncs) {
+	    if (syncs instanceof Array)
+	        for (var i = 0; i < syncs.length; i++)
+	            _addSingleSync.call(this, syncs[i]);
+	    else if (syncs instanceof Object)
+	        for (var key in syncs)
+	            _addSingleSync.call(this, key, syncs[key]);
+	};
+	module.exports = GenericSync;
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
+	function MouseSync(options) {
+	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._eventInput.on('mousedown', _handleStart.bind(this));
+	    this._eventInput.on('mousemove', _handleMove.bind(this));
+	    this._eventInput.on('mouseup', _handleEnd.bind(this));
+	    if (this.options.propogate)
+	        this._eventInput.on('mouseleave', _handleLeave.bind(this));
+	    else
+	        this._eventInput.on('mouseleave', _handleEnd.bind(this));
+	    if (this.options.clickThreshold) {
+	        window.addEventListener('click', function (event) {
+	            if (Math.sqrt(Math.pow(this._displacement[0], 2) + Math.pow(this._displacement[1], 2)) > this.options.clickThreshold) {
+	                event.stopPropagation();
+	            }
+	        }.bind(this), true);
+	    }
+	    this._payload = {
+	        delta: null,
+	        position: null,
+	        velocity: null,
+	        clientX: 0,
+	        clientY: 0,
+	        offsetX: 0,
+	        offsetY: 0
+	    };
+	    this._positionHistory = [];
+	    this._position = null;
+	    this._prevCoord = undefined;
+	    this._prevTime = undefined;
+	    this._down = false;
+	    this._moved = false;
+	    this._displacement = [
+	        0,
+	        0
+	    ];
+	    this._documentActive = false;
+	}
+	MouseSync.DEFAULT_OPTIONS = {
+	    clickThreshold: undefined,
+	    direction: undefined,
+	    rails: false,
+	    scale: 1,
+	    propogate: true,
+	    velocitySampleLength: 10,
+	    preventDefault: true
+	};
+	MouseSync.DIRECTION_X = 0;
+	MouseSync.DIRECTION_Y = 1;
+	var MINIMUM_TICK_TIME = 8;
+	function _handleStart(event) {
+	    var delta;
+	    var velocity;
+	    if (this.options.preventDefault)
+	        event.preventDefault();
+	    var x = event.clientX;
+	    var y = event.clientY;
+	    this._prevCoord = [
+	        x,
+	        y
+	    ];
+	    this._prevTime = Date.now();
+	    this._down = true;
+	    this._move = false;
+	    if (this.options.direction !== undefined) {
+	        this._position = 0;
+	        delta = 0;
+	        velocity = 0;
+	    } else {
+	        this._position = [
+	            0,
+	            0
+	        ];
+	        delta = [
+	            0,
+	            0
+	        ];
+	        velocity = [
+	            0,
+	            0
+	        ];
+	    }
+	    if (this.options.clickThreshold) {
+	        this._displacement = [
+	            0,
+	            0
+	        ];
+	    }
+	    var payload = this._payload;
+	    payload.delta = delta;
+	    payload.position = this._position;
+	    payload.velocity = velocity;
+	    payload.clientX = x;
+	    payload.clientY = y;
+	    payload.offsetX = event.offsetX;
+	    payload.offsetY = event.offsetY;
+	    this._positionHistory.push({
+	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
+	        time: this._prevTime
+	    });
+	    this._eventOutput.emit('start', payload);
+	    this._documentActive = false;
+	}
+	function _handleMove(event) {
+	    if (!this._prevCoord)
+	        return;
+	    var prevCoord = this._prevCoord;
+	    var prevTime = this._prevTime;
+	    var x = event.clientX;
+	    var y = event.clientY;
+	    var currTime = Date.now();
+	    var diffX = x - prevCoord[0];
+	    var diffY = y - prevCoord[1];
+	    if (this.options.rails) {
+	        if (Math.abs(diffX) > Math.abs(diffY))
+	            diffY = 0;
+	        else
+	            diffX = 0;
+	    }
+	    var diffTime = Math.max(currTime - this._positionHistory[0].time, MINIMUM_TICK_TIME);
+	    var scale = this.options.scale;
+	    var nextVel;
+	    var nextDelta;
+	    if (this.options.direction === MouseSync.DIRECTION_X) {
+	        nextDelta = scale * diffX;
+	        this._position += nextDelta;
+	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
+	    } else if (this.options.direction === MouseSync.DIRECTION_Y) {
+	        nextDelta = scale * diffY;
+	        this._position += nextDelta;
+	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
+	    } else {
+	        nextDelta = [
+	            scale * diffX,
+	            scale * diffY
+	        ];
+	        nextVel = [
+	            scale * (this._position[0] - this._positionHistory[0].position[0]) / diffTime,
+	            scale * (this._position[1] - this._positionHistory[0].position[1]) / diffTime
+	        ];
+	        this._position[0] += nextDelta[0];
+	        this._position[1] += nextDelta[1];
+	    }
+	    if (this.options.clickThreshold !== false) {
+	        this._displacement[0] += diffX;
+	        this._displacement[1] += diffY;
+	    }
+	    var payload = this._payload;
+	    payload.delta = nextDelta;
+	    payload.position = this._position;
+	    payload.velocity = nextVel;
+	    payload.clientX = x;
+	    payload.clientY = y;
+	    payload.offsetX = event.offsetX;
+	    payload.offsetY = event.offsetY;
+	    if (this._positionHistory.length === this.options.velocitySampleLength) {
+	        this._positionHistory.shift();
+	    }
+	    this._positionHistory.push({
+	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
+	        time: currTime
+	    });
+	    this._eventOutput.emit('update', payload);
+	    this._prevCoord = [
+	        x,
+	        y
+	    ];
+	    this._prevTime = currTime;
+	    this._move = true;
+	}
+	function _handleEnd(event) {
+	    if (!this._down)
+	        return;
+	    this._eventOutput.emit('end', this._payload);
+	    this._prevCoord = undefined;
+	    this._prevTime = undefined;
+	    this._down = false;
+	    this._move = false;
+	    this._positionHistory = [];
+	}
+	function _handleLeave(event) {
+	    if (!this._down || !this._move)
+	        return;
+	    if (!this._documentActive) {
+	        var boundMove = _handleMove.bind(this);
+	        var boundEnd = function (event) {
+	            _handleEnd.call(this, event);
+	            document.removeEventListener('mousemove', boundMove);
+	            document.removeEventListener('mouseup', boundEnd);
+	        }.bind(this, event);
+	        document.addEventListener('mousemove', boundMove);
+	        document.addEventListener('mouseup', boundEnd);
+	        this._documentActive = true;
+	    }
+	}
+	MouseSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	MouseSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = MouseSync;
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(170);
+	var OptionsManager = __webpack_require__(36);
+	function PinchSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._displacement = 0;
+	    this._previousDistance = 0;
+	}
+	PinchSync.prototype = Object.create(TwoFingerSync.prototype);
+	PinchSync.prototype.constructor = PinchSync;
+	PinchSync.DEFAULT_OPTIONS = { scale: 1 };
+	PinchSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._previousDistance = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    this._displacement = 0;
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ],
+	        distance: this._dist,
+	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
+	    });
+	};
+	PinchSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var scale = this.options.scale;
+	    var delta = scale * (currDist - this._previousDistance);
+	    var velocity = delta / diffTime;
+	    this._previousDistance = currDist;
+	    this._displacement += delta;
+	    this._eventOutput.emit('update', {
+	        delta: delta,
+	        velocity: velocity,
+	        distance: currDist,
+	        displacement: this._displacement,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	};
+	PinchSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	PinchSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = PinchSync;
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(170);
+	var OptionsManager = __webpack_require__(36);
+	function RotateSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._angle = 0;
+	    this._previousAngle = 0;
+	}
+	RotateSync.prototype = Object.create(TwoFingerSync.prototype);
+	RotateSync.prototype.constructor = RotateSync;
+	RotateSync.DEFAULT_OPTIONS = { scale: 1 };
+	RotateSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._angle = 0;
+	    this._previousAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        angle: this._angle,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	};
+	RotateSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var scale = this.options.scale;
+	    var currAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var diffTheta = scale * (currAngle - this._previousAngle);
+	    var velTheta = diffTheta / diffTime;
+	    this._angle += diffTheta;
+	    this._eventOutput.emit('update', {
+	        delta: diffTheta,
+	        velocity: velTheta,
+	        angle: this._angle,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	    this._previousAngle = currAngle;
+	};
+	RotateSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	RotateSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = RotateSync;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(170);
+	var OptionsManager = __webpack_require__(36);
+	function ScaleSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._scaleFactor = 1;
+	    this._startDist = 0;
+	    this._eventInput.on('pipe', _reset.bind(this));
+	}
+	ScaleSync.prototype = Object.create(TwoFingerSync.prototype);
+	ScaleSync.prototype.constructor = ScaleSync;
+	ScaleSync.DEFAULT_OPTIONS = { scale: 1 };
+	function _reset() {
+	    this.touchAId = undefined;
+	    this.touchBId = undefined;
+	}
+	ScaleSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._scaleFactor = 1;
+	    this._startDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ],
+	        distance: this._startDist,
+	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
+	    });
+	};
+	ScaleSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var scale = this.options.scale;
+	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var delta = (currDist - this._startDist) / this._startDist;
+	    var newScaleFactor = Math.max(1 + scale * delta, 0);
+	    var veloScale = (newScaleFactor - this._scaleFactor) / diffTime;
+	    this._eventOutput.emit('update', {
+	        delta: delta,
+	        scale: newScaleFactor,
+	        velocity: veloScale,
+	        distance: currDist,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	    this._scaleFactor = newScaleFactor;
+	};
+	ScaleSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	ScaleSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = ScaleSync;
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TouchTracker = __webpack_require__(169);
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
+	function TouchSync(options) {
+	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._eventOutput = new EventHandler();
+	    this._touchTracker = new TouchTracker({ touchLimit: this.options.touchLimit });
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    EventHandler.setInputHandler(this, this._touchTracker);
+	    this._touchTracker.on('trackstart', _handleStart.bind(this));
+	    this._touchTracker.on('trackmove', _handleMove.bind(this));
+	    this._touchTracker.on('trackend', _handleEnd.bind(this));
+	    this._payload = {
+	        delta: null,
+	        position: null,
+	        velocity: null,
+	        clientX: undefined,
+	        clientY: undefined,
+	        count: 0,
+	        touch: undefined
+	    };
+	    this._position = null;
+	}
+	TouchSync.DEFAULT_OPTIONS = {
+	    direction: undefined,
+	    rails: false,
+	    touchLimit: 1,
+	    velocitySampleLength: 10,
+	    scale: 1
+	};
+	TouchSync.DIRECTION_X = 0;
+	TouchSync.DIRECTION_Y = 1;
+	var MINIMUM_TICK_TIME = 8;
+	function _handleStart(data) {
+	    var velocity;
+	    var delta;
+	    if (this.options.direction !== undefined) {
+	        this._position = 0;
+	        velocity = 0;
+	        delta = 0;
+	    } else {
+	        this._position = [
+	            0,
+	            0
+	        ];
+	        velocity = [
+	            0,
+	            0
+	        ];
+	        delta = [
+	            0,
+	            0
+	        ];
+	    }
+	    var payload = this._payload;
+	    payload.delta = delta;
+	    payload.position = this._position;
+	    payload.velocity = velocity;
+	    payload.clientX = data.x;
+	    payload.clientY = data.y;
+	    payload.count = data.count;
+	    payload.touch = data.identifier;
+	    this._eventOutput.emit('start', payload);
+	}
+	function _handleMove(data) {
+	    var history = data.history;
+	    var currHistory = history[history.length - 1];
+	    var prevHistory = history[history.length - 2];
+	    var distantHistory = history[history.length - this.options.velocitySampleLength] ? history[history.length - this.options.velocitySampleLength] : history[history.length - 2];
+	    var distantTime = distantHistory.timestamp;
+	    var currTime = currHistory.timestamp;
+	    var diffX = currHistory.x - prevHistory.x;
+	    var diffY = currHistory.y - prevHistory.y;
+	    var velDiffX = currHistory.x - distantHistory.x;
+	    var velDiffY = currHistory.y - distantHistory.y;
+	    if (this.options.rails) {
+	        if (Math.abs(diffX) > Math.abs(diffY))
+	            diffY = 0;
+	        else
+	            diffX = 0;
+	        if (Math.abs(velDiffX) > Math.abs(velDiffY))
+	            velDiffY = 0;
+	        else
+	            velDiffX = 0;
+	    }
+	    var diffTime = Math.max(currTime - distantTime, MINIMUM_TICK_TIME);
+	    var velX = velDiffX / diffTime;
+	    var velY = velDiffY / diffTime;
+	    var scale = this.options.scale;
+	    var nextVel;
+	    var nextDelta;
+	    if (this.options.direction === TouchSync.DIRECTION_X) {
+	        nextDelta = scale * diffX;
+	        nextVel = scale * velX;
+	        this._position += nextDelta;
+	    } else if (this.options.direction === TouchSync.DIRECTION_Y) {
+	        nextDelta = scale * diffY;
+	        nextVel = scale * velY;
+	        this._position += nextDelta;
+	    } else {
+	        nextDelta = [
+	            scale * diffX,
+	            scale * diffY
+	        ];
+	        nextVel = [
+	            scale * velX,
+	            scale * velY
+	        ];
+	        this._position[0] += nextDelta[0];
+	        this._position[1] += nextDelta[1];
+	    }
+	    var payload = this._payload;
+	    payload.delta = nextDelta;
+	    payload.velocity = nextVel;
+	    payload.position = this._position;
+	    payload.clientX = data.x;
+	    payload.clientY = data.y;
+	    payload.count = data.count;
+	    payload.touch = data.identifier;
+	    this._eventOutput.emit('update', payload);
+	}
+	function _handleEnd(data) {
+	    this._payload.count = data.count;
+	    this._eventOutput.emit('end', this._payload);
+	}
+	TouchSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	TouchSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	module.exports = TouchSync;
 
 /***/ },
 /* 169 */
@@ -50081,18 +49860,88 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var EventHandler = __webpack_require__(46);
-	function EventFilter(condition) {
-	    EventHandler.call(this);
-	    this._condition = condition;
+	var _now = Date.now;
+	function _timestampTouch(touch, event, history) {
+	    return {
+	        x: touch.clientX,
+	        y: touch.clientY,
+	        identifier: touch.identifier,
+	        origin: event.origin,
+	        timestamp: _now(),
+	        count: event.touches.length,
+	        history: history
+	    };
 	}
-	EventFilter.prototype = Object.create(EventHandler.prototype);
-	EventFilter.prototype.constructor = EventFilter;
-	EventFilter.prototype.emit = function emit(type, data) {
-	    if (this._condition(type, data))
-	        return EventHandler.prototype.emit.apply(this, arguments);
+	function _handleStart(event) {
+	    if (event.touches.length > this.touchLimit)
+	        return;
+	    this.isTouched = true;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var data = _timestampTouch(touch, event, null);
+	        this.eventOutput.emit('trackstart', data);
+	        if (!this.selective && !this.touchHistory[touch.identifier])
+	            this.track(data);
+	    }
+	}
+	function _handleMove(event) {
+	    if (event.touches.length > this.touchLimit)
+	        return;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var history = this.touchHistory[touch.identifier];
+	        if (history) {
+	            var data = _timestampTouch(touch, event, history);
+	            this.touchHistory[touch.identifier].push(data);
+	            this.eventOutput.emit('trackmove', data);
+	        }
+	    }
+	}
+	function _handleEnd(event) {
+	    if (!this.isTouched)
+	        return;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var history = this.touchHistory[touch.identifier];
+	        if (history) {
+	            var data = _timestampTouch(touch, event, history);
+	            this.eventOutput.emit('trackend', data);
+	            delete this.touchHistory[touch.identifier];
+	        }
+	    }
+	    this.isTouched = false;
+	}
+	function _handleUnpipe() {
+	    for (var i in this.touchHistory) {
+	        var history = this.touchHistory[i];
+	        this.eventOutput.emit('trackend', {
+	            touch: history[history.length - 1].touch,
+	            timestamp: Date.now(),
+	            count: 0,
+	            history: history
+	        });
+	        delete this.touchHistory[i];
+	    }
+	}
+	function TouchTracker(options) {
+	    this.selective = options.selective;
+	    this.touchLimit = options.touchLimit || 1;
+	    this.touchHistory = {};
+	    this.eventInput = new EventHandler();
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.eventInput);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    this.eventInput.on('touchstart', _handleStart.bind(this));
+	    this.eventInput.on('touchmove', _handleMove.bind(this));
+	    this.eventInput.on('touchend', _handleEnd.bind(this));
+	    this.eventInput.on('touchcancel', _handleEnd.bind(this));
+	    this.eventInput.on('unpipe', _handleUnpipe.bind(this));
+	    this.isTouched = false;
+	}
+	TouchTracker.prototype.track = function track(data) {
+	    this.touchHistory[data.identifier] = [data];
 	};
-	EventFilter.prototype.trigger = EventFilter.prototype.emit;
-	module.exports = EventFilter;
+	module.exports = TouchTracker;
 
 /***/ },
 /* 170 */
@@ -50106,24 +49955,550 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var EventHandler = __webpack_require__(46);
-	function EventMapper(mappingFunction) {
-	    EventHandler.call(this);
-	    this._mappingFunction = mappingFunction;
+	function TwoFingerSync() {
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.touchAEnabled = false;
+	    this.touchAId = 0;
+	    this.posA = null;
+	    this.timestampA = 0;
+	    this.touchBEnabled = false;
+	    this.touchBId = 0;
+	    this.posB = null;
+	    this.timestampB = 0;
+	    this._eventInput.on('touchstart', this.handleStart.bind(this));
+	    this._eventInput.on('touchmove', this.handleMove.bind(this));
+	    this._eventInput.on('touchend', this.handleEnd.bind(this));
+	    this._eventInput.on('touchcancel', this.handleEnd.bind(this));
 	}
-	EventMapper.prototype = Object.create(EventHandler.prototype);
-	EventMapper.prototype.constructor = EventMapper;
-	EventMapper.prototype.subscribe = null;
-	EventMapper.prototype.unsubscribe = null;
-	EventMapper.prototype.emit = function emit(type, data) {
-	    var target = this._mappingFunction.apply(this, arguments);
-	    if (target && target.emit instanceof Function)
-	        target.emit(type, data);
+	TwoFingerSync.calculateAngle = function (posA, posB) {
+	    var diffX = posB[0] - posA[0];
+	    var diffY = posB[1] - posA[1];
+	    return Math.atan2(diffY, diffX);
 	};
-	EventMapper.prototype.trigger = EventMapper.prototype.emit;
-	module.exports = EventMapper;
+	TwoFingerSync.calculateDistance = function (posA, posB) {
+	    var diffX = posB[0] - posA[0];
+	    var diffY = posB[1] - posA[1];
+	    return Math.sqrt(diffX * diffX + diffY * diffY);
+	};
+	TwoFingerSync.calculateCenter = function (posA, posB) {
+	    return [
+	        (posA[0] + posB[0]) / 2,
+	        (posA[1] + posB[1]) / 2
+	    ];
+	};
+	var _now = Date.now;
+	TwoFingerSync.prototype.handleStart = function handleStart(event) {
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (!this.touchAEnabled) {
+	            this.touchAId = touch.identifier;
+	            this.touchAEnabled = true;
+	            this.posA = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampA = _now();
+	        } else if (!this.touchBEnabled) {
+	            this.touchBId = touch.identifier;
+	            this.touchBEnabled = true;
+	            this.posB = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampB = _now();
+	            this._startUpdate(event);
+	        }
+	    }
+	};
+	TwoFingerSync.prototype.handleMove = function handleMove(event) {
+	    if (!(this.touchAEnabled && this.touchBEnabled))
+	        return;
+	    var prevTimeA = this.timestampA;
+	    var prevTimeB = this.timestampB;
+	    var diffTime;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (touch.identifier === this.touchAId) {
+	            this.posA = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampA = _now();
+	            diffTime = this.timestampA - prevTimeA;
+	        } else if (touch.identifier === this.touchBId) {
+	            this.posB = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampB = _now();
+	            diffTime = this.timestampB - prevTimeB;
+	        }
+	    }
+	    if (diffTime)
+	        this._moveUpdate(diffTime);
+	};
+	TwoFingerSync.prototype.handleEnd = function handleEnd(event) {
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (touch.identifier === this.touchAId || touch.identifier === this.touchBId) {
+	            if (this.touchAEnabled && this.touchBEnabled) {
+	                this._eventOutput.emit('end', {
+	                    touches: [
+	                        this.touchAId,
+	                        this.touchBId
+	                    ],
+	                    angle: this._angle
+	                });
+	            }
+	            this.touchAEnabled = false;
+	            this.touchAId = 0;
+	            this.touchBEnabled = false;
+	            this.touchBId = 0;
+	        }
+	    }
+	};
+	module.exports = TwoFingerSync;
 
 /***/ },
 /* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var EventHandler = __webpack_require__(46);
+	var Utilities = __webpack_require__(178);
+	var GenericSync = __webpack_require__(163);
+	var MouseSync = __webpack_require__(164);
+	var TouchSync = __webpack_require__(168);
+	GenericSync.register({
+	    'mouse': MouseSync,
+	    'touch': TouchSync
+	});
+	function Draggable(options) {
+	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this._positionState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._differential = [
+	        0,
+	        0
+	    ];
+	    this._active = true;
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], { scale: this.options.scale });
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.sync);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    _bindEvents.call(this);
+	}
+	var _direction = {
+	    x: 1,
+	    y: 2
+	};
+	Draggable.DIRECTION_X = _direction.x;
+	Draggable.DIRECTION_Y = _direction.y;
+	var _clamp = Utilities.clamp;
+	Draggable.DEFAULT_OPTIONS = {
+	    projection: _direction.x | _direction.y,
+	    scale: 1,
+	    xRange: null,
+	    yRange: null,
+	    snapX: 0,
+	    snapY: 0,
+	    transition: { duration: 0 }
+	};
+	function _mapDifferential(differential) {
+	    var opts = this.options;
+	    var projection = opts.projection;
+	    var snapX = opts.snapX;
+	    var snapY = opts.snapY;
+	    var tx = projection & _direction.x ? differential[0] : 0;
+	    var ty = projection & _direction.y ? differential[1] : 0;
+	    if (snapX > 0)
+	        tx -= tx % snapX;
+	    if (snapY > 0)
+	        ty -= ty % snapY;
+	    return [
+	        tx,
+	        ty
+	    ];
+	}
+	function _handleStart() {
+	    if (!this._active)
+	        return;
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this.eventOutput.emit('start', { position: this.getPosition() });
+	}
+	function _handleMove(event) {
+	    if (!this._active)
+	        return;
+	    var options = this.options;
+	    this._differential = event.position;
+	    var newDifferential = _mapDifferential.call(this, this._differential);
+	    this._differential[0] -= newDifferential[0];
+	    this._differential[1] -= newDifferential[1];
+	    var pos = this.getPosition();
+	    pos[0] += newDifferential[0];
+	    pos[1] += newDifferential[1];
+	    if (options.xRange) {
+	        var xRange = [
+	            options.xRange[0] + 0.5 * options.snapX,
+	            options.xRange[1] - 0.5 * options.snapX
+	        ];
+	        pos[0] = _clamp(pos[0], xRange);
+	    }
+	    if (options.yRange) {
+	        var yRange = [
+	            options.yRange[0] + 0.5 * options.snapY,
+	            options.yRange[1] - 0.5 * options.snapY
+	        ];
+	        pos[1] = _clamp(pos[1], yRange);
+	    }
+	    this.eventOutput.emit('update', { position: pos });
+	}
+	function _handleEnd() {
+	    if (!this._active)
+	        return;
+	    this.eventOutput.emit('end', { position: this.getPosition() });
+	}
+	function _bindEvents() {
+	    this.sync.on('start', _handleStart.bind(this));
+	    this.sync.on('update', _handleMove.bind(this));
+	    this.sync.on('end', _handleEnd.bind(this));
+	}
+	Draggable.prototype.setOptions = function setOptions(options) {
+	    var currentOptions = this.options;
+	    if (options.projection !== undefined) {
+	        var proj = options.projection;
+	        this.options.projection = 0;
+	        [
+	            'x',
+	            'y'
+	        ].forEach(function (val) {
+	            if (proj.indexOf(val) !== -1)
+	                currentOptions.projection |= _direction[val];
+	        });
+	    }
+	    if (options.scale !== undefined) {
+	        currentOptions.scale = options.scale;
+	        this.sync.setOptions({ scale: options.scale });
+	    }
+	    if (options.xRange !== undefined)
+	        currentOptions.xRange = options.xRange;
+	    if (options.yRange !== undefined)
+	        currentOptions.yRange = options.yRange;
+	    if (options.snapX !== undefined)
+	        currentOptions.snapX = options.snapX;
+	    if (options.snapY !== undefined)
+	        currentOptions.snapY = options.snapY;
+	};
+	Draggable.prototype.getPosition = function getPosition() {
+	    return this._positionState.get();
+	};
+	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
+	    var currPos = this.getPosition();
+	    var relativePosition = [
+	        currPos[0] + position[0],
+	        currPos[1] + position[1]
+	    ];
+	    this.setPosition(relativePosition, transition, callback);
+	};
+	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this._positionState.set(position, transition, callback);
+	};
+	Draggable.prototype.activate = function activate() {
+	    this._active = true;
+	};
+	Draggable.prototype.deactivate = function deactivate() {
+	    this._active = false;
+	};
+	Draggable.prototype.toggle = function toggle() {
+	    this._active = !this._active;
+	};
+	Draggable.prototype.modify = function modify(target) {
+	    var pos = this.getPosition();
+	    return {
+	        transform: Transform.translate(pos[0], pos[1]),
+	        target: target
+	    };
+	};
+	module.exports = Draggable;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transitionable = __webpack_require__(42);
+	var OptionsManager = __webpack_require__(36);
+	function Fader(options, startState) {
+	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    if (!startState)
+	        startState = 0;
+	    this.transitionHelper = new Transitionable(startState);
+	}
+	Fader.DEFAULT_OPTIONS = {
+	    cull: false,
+	    transition: true,
+	    pulseInTransition: true,
+	    pulseOutTransition: true
+	};
+	Fader.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	Fader.prototype.show = function show(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(1, transition, callback);
+	};
+	Fader.prototype.hide = function hide(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(0, transition, callback);
+	};
+	Fader.prototype.set = function set(state, transition, callback) {
+	    this.halt();
+	    this.transitionHelper.set(state, transition, callback);
+	};
+	Fader.prototype.halt = function halt() {
+	    this.transitionHelper.halt();
+	};
+	Fader.prototype.isVisible = function isVisible() {
+	    return this.transitionHelper.get() > 0;
+	};
+	Fader.prototype.modify = function modify(target) {
+	    var currOpacity = this.transitionHelper.get();
+	    if (this.options.cull && !currOpacity)
+	        return undefined;
+	    else
+	        return {
+	            opacity: currOpacity,
+	            target: target
+	        };
+	};
+	module.exports = Fader;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function ModifierChain() {
+	    this._chain = [];
+	    if (arguments.length)
+	        this.addModifier.apply(this, arguments);
+	}
+	ModifierChain.prototype.addModifier = function addModifier(varargs) {
+	    Array.prototype.push.apply(this._chain, arguments);
+	};
+	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
+	    var index = this._chain.indexOf(modifier);
+	    if (index < 0)
+	        return;
+	    this._chain.splice(index, 1);
+	};
+	ModifierChain.prototype.modify = function modify(input) {
+	    var chain = this._chain;
+	    var result = input;
+	    for (var i = 0; i < chain.length; i++) {
+	        result = chain[i].modify(result);
+	    }
+	    return result;
+	};
+	module.exports = ModifierChain;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Modifier = __webpack_require__(157);
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var TransitionableTransform = __webpack_require__(183);
+	function StateModifier(options) {
+	    this._transformState = new TransitionableTransform(Transform.identity);
+	    this._opacityState = new Transitionable(1);
+	    this._originState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._alignState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._sizeState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._proportionsState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._modifier = new Modifier({
+	        transform: this._transformState,
+	        opacity: this._opacityState,
+	        origin: null,
+	        align: null,
+	        size: null,
+	        proportions: null
+	    });
+	    this._hasOrigin = false;
+	    this._hasAlign = false;
+	    this._hasSize = false;
+	    this._hasProportions = false;
+	    if (options) {
+	        if (options.transform)
+	            this.setTransform(options.transform);
+	        if (options.opacity !== undefined)
+	            this.setOpacity(options.opacity);
+	        if (options.origin)
+	            this.setOrigin(options.origin);
+	        if (options.align)
+	            this.setAlign(options.align);
+	        if (options.size)
+	            this.setSize(options.size);
+	        if (options.proportions)
+	            this.setProportions(options.proportions);
+	    }
+	}
+	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
+	    this._transformState.set(transform, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
+	    this._opacityState.set(opacity, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
+	    if (origin === null) {
+	        if (this._hasOrigin) {
+	            this._modifier.originFrom(null);
+	            this._hasOrigin = false;
+	        }
+	        return this;
+	    } else if (!this._hasOrigin) {
+	        this._hasOrigin = true;
+	        this._modifier.originFrom(this._originState);
+	    }
+	    this._originState.set(origin, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
+	    if (align === null) {
+	        if (this._hasAlign) {
+	            this._modifier.alignFrom(null);
+	            this._hasAlign = false;
+	        }
+	        return this;
+	    } else if (!this._hasAlign) {
+	        this._hasAlign = true;
+	        this._modifier.alignFrom(this._alignState);
+	    }
+	    this._alignState.set(align, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
+	    if (size === null) {
+	        if (this._hasSize) {
+	            this._modifier.sizeFrom(null);
+	            this._hasSize = false;
+	        }
+	        return this;
+	    } else if (!this._hasSize) {
+	        this._hasSize = true;
+	        this._modifier.sizeFrom(this._sizeState);
+	    }
+	    this._sizeState.set(size, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
+	    if (proportions === null) {
+	        if (this._hasProportions) {
+	            this._modifier.proportionsFrom(null);
+	            this._hasProportions = false;
+	        }
+	        return this;
+	    } else if (!this._hasProportions) {
+	        this._hasProportions = true;
+	        this._modifier.proportionsFrom(this._proportionsState);
+	    }
+	    this._proportionsState.set(proportions, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.halt = function halt() {
+	    this._transformState.halt();
+	    this._opacityState.halt();
+	    this._originState.halt();
+	    this._alignState.halt();
+	    this._sizeState.halt();
+	    this._proportionsState.halt();
+	};
+	StateModifier.prototype.getTransform = function getTransform() {
+	    return this._transformState.get();
+	};
+	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
+	    return this._transformState.getFinal();
+	};
+	StateModifier.prototype.getOpacity = function getOpacity() {
+	    return this._opacityState.get();
+	};
+	StateModifier.prototype.getOrigin = function getOrigin() {
+	    return this._hasOrigin ? this._originState.get() : null;
+	};
+	StateModifier.prototype.getAlign = function getAlign() {
+	    return this._hasAlign ? this._alignState.get() : null;
+	};
+	StateModifier.prototype.getSize = function getSize() {
+	    return this._hasSize ? this._sizeState.get() : null;
+	};
+	StateModifier.prototype.getProportions = function getProportions() {
+	    return this._hasProportions ? this._proportionsState.get() : null;
+	};
+	StateModifier.prototype.modify = function modify(target) {
+	    return this._modifier.modify(target);
+	};
+	module.exports = StateModifier;
+
+/***/ },
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50220,7 +50595,7 @@
 	module.exports = Matrix;
 
 /***/ },
-/* 172 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50230,7 +50605,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Matrix = __webpack_require__(171);
+	var Matrix = __webpack_require__(175);
 	function Quaternion(w, x, y, z) {
 	    if (arguments.length === 1)
 	        this.set(w);
@@ -50418,7 +50793,7 @@
 	module.exports = Quaternion;
 
 /***/ },
-/* 173 */
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50463,7 +50838,7 @@
 	module.exports = Random;
 
 /***/ },
-/* 174 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50485,441 +50860,6 @@
 	    return Math.sqrt(distanceSquared);
 	};
 	module.exports = Utilities;
-
-/***/ },
-/* 175 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(37);
-	var Transitionable = __webpack_require__(42);
-	var EventHandler = __webpack_require__(46);
-	var Utilities = __webpack_require__(174);
-	var GenericSync = __webpack_require__(156);
-	var MouseSync = __webpack_require__(157);
-	var TouchSync = __webpack_require__(161);
-	GenericSync.register({
-	    'mouse': MouseSync,
-	    'touch': TouchSync
-	});
-	function Draggable(options) {
-	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this._positionState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._differential = [
-	        0,
-	        0
-	    ];
-	    this._active = true;
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], { scale: this.options.scale });
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.sync);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    _bindEvents.call(this);
-	}
-	var _direction = {
-	    x: 1,
-	    y: 2
-	};
-	Draggable.DIRECTION_X = _direction.x;
-	Draggable.DIRECTION_Y = _direction.y;
-	var _clamp = Utilities.clamp;
-	Draggable.DEFAULT_OPTIONS = {
-	    projection: _direction.x | _direction.y,
-	    scale: 1,
-	    xRange: null,
-	    yRange: null,
-	    snapX: 0,
-	    snapY: 0,
-	    transition: { duration: 0 }
-	};
-	function _mapDifferential(differential) {
-	    var opts = this.options;
-	    var projection = opts.projection;
-	    var snapX = opts.snapX;
-	    var snapY = opts.snapY;
-	    var tx = projection & _direction.x ? differential[0] : 0;
-	    var ty = projection & _direction.y ? differential[1] : 0;
-	    if (snapX > 0)
-	        tx -= tx % snapX;
-	    if (snapY > 0)
-	        ty -= ty % snapY;
-	    return [
-	        tx,
-	        ty
-	    ];
-	}
-	function _handleStart() {
-	    if (!this._active)
-	        return;
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this.eventOutput.emit('start', { position: this.getPosition() });
-	}
-	function _handleMove(event) {
-	    if (!this._active)
-	        return;
-	    var options = this.options;
-	    this._differential = event.position;
-	    var newDifferential = _mapDifferential.call(this, this._differential);
-	    this._differential[0] -= newDifferential[0];
-	    this._differential[1] -= newDifferential[1];
-	    var pos = this.getPosition();
-	    pos[0] += newDifferential[0];
-	    pos[1] += newDifferential[1];
-	    if (options.xRange) {
-	        var xRange = [
-	            options.xRange[0] + 0.5 * options.snapX,
-	            options.xRange[1] - 0.5 * options.snapX
-	        ];
-	        pos[0] = _clamp(pos[0], xRange);
-	    }
-	    if (options.yRange) {
-	        var yRange = [
-	            options.yRange[0] + 0.5 * options.snapY,
-	            options.yRange[1] - 0.5 * options.snapY
-	        ];
-	        pos[1] = _clamp(pos[1], yRange);
-	    }
-	    this.eventOutput.emit('update', { position: pos });
-	}
-	function _handleEnd() {
-	    if (!this._active)
-	        return;
-	    this.eventOutput.emit('end', { position: this.getPosition() });
-	}
-	function _bindEvents() {
-	    this.sync.on('start', _handleStart.bind(this));
-	    this.sync.on('update', _handleMove.bind(this));
-	    this.sync.on('end', _handleEnd.bind(this));
-	}
-	Draggable.prototype.setOptions = function setOptions(options) {
-	    var currentOptions = this.options;
-	    if (options.projection !== undefined) {
-	        var proj = options.projection;
-	        this.options.projection = 0;
-	        [
-	            'x',
-	            'y'
-	        ].forEach(function (val) {
-	            if (proj.indexOf(val) !== -1)
-	                currentOptions.projection |= _direction[val];
-	        });
-	    }
-	    if (options.scale !== undefined) {
-	        currentOptions.scale = options.scale;
-	        this.sync.setOptions({ scale: options.scale });
-	    }
-	    if (options.xRange !== undefined)
-	        currentOptions.xRange = options.xRange;
-	    if (options.yRange !== undefined)
-	        currentOptions.yRange = options.yRange;
-	    if (options.snapX !== undefined)
-	        currentOptions.snapX = options.snapX;
-	    if (options.snapY !== undefined)
-	        currentOptions.snapY = options.snapY;
-	};
-	Draggable.prototype.getPosition = function getPosition() {
-	    return this._positionState.get();
-	};
-	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
-	    var currPos = this.getPosition();
-	    var relativePosition = [
-	        currPos[0] + position[0],
-	        currPos[1] + position[1]
-	    ];
-	    this.setPosition(relativePosition, transition, callback);
-	};
-	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this._positionState.set(position, transition, callback);
-	};
-	Draggable.prototype.activate = function activate() {
-	    this._active = true;
-	};
-	Draggable.prototype.deactivate = function deactivate() {
-	    this._active = false;
-	};
-	Draggable.prototype.toggle = function toggle() {
-	    this._active = !this._active;
-	};
-	Draggable.prototype.modify = function modify(target) {
-	    var pos = this.getPosition();
-	    return {
-	        transform: Transform.translate(pos[0], pos[1]),
-	        target: target
-	    };
-	};
-	module.exports = Draggable;
-
-/***/ },
-/* 176 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transitionable = __webpack_require__(42);
-	var OptionsManager = __webpack_require__(36);
-	function Fader(options, startState) {
-	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    if (!startState)
-	        startState = 0;
-	    this.transitionHelper = new Transitionable(startState);
-	}
-	Fader.DEFAULT_OPTIONS = {
-	    cull: false,
-	    transition: true,
-	    pulseInTransition: true,
-	    pulseOutTransition: true
-	};
-	Fader.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	Fader.prototype.show = function show(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(1, transition, callback);
-	};
-	Fader.prototype.hide = function hide(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(0, transition, callback);
-	};
-	Fader.prototype.set = function set(state, transition, callback) {
-	    this.halt();
-	    this.transitionHelper.set(state, transition, callback);
-	};
-	Fader.prototype.halt = function halt() {
-	    this.transitionHelper.halt();
-	};
-	Fader.prototype.isVisible = function isVisible() {
-	    return this.transitionHelper.get() > 0;
-	};
-	Fader.prototype.modify = function modify(target) {
-	    var currOpacity = this.transitionHelper.get();
-	    if (this.options.cull && !currOpacity)
-	        return undefined;
-	    else
-	        return {
-	            opacity: currOpacity,
-	            target: target
-	        };
-	};
-	module.exports = Fader;
-
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function ModifierChain() {
-	    this._chain = [];
-	    if (arguments.length)
-	        this.addModifier.apply(this, arguments);
-	}
-	ModifierChain.prototype.addModifier = function addModifier(varargs) {
-	    Array.prototype.push.apply(this._chain, arguments);
-	};
-	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
-	    var index = this._chain.indexOf(modifier);
-	    if (index < 0)
-	        return;
-	    this._chain.splice(index, 1);
-	};
-	ModifierChain.prototype.modify = function modify(input) {
-	    var chain = this._chain;
-	    var result = input;
-	    for (var i = 0; i < chain.length; i++) {
-	        result = chain[i].modify(result);
-	    }
-	    return result;
-	};
-	module.exports = ModifierChain;
-
-/***/ },
-/* 178 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Modifier = __webpack_require__(165);
-	var Transform = __webpack_require__(37);
-	var Transitionable = __webpack_require__(42);
-	var TransitionableTransform = __webpack_require__(183);
-	function StateModifier(options) {
-	    this._transformState = new TransitionableTransform(Transform.identity);
-	    this._opacityState = new Transitionable(1);
-	    this._originState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._alignState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._sizeState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._proportionsState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._modifier = new Modifier({
-	        transform: this._transformState,
-	        opacity: this._opacityState,
-	        origin: null,
-	        align: null,
-	        size: null,
-	        proportions: null
-	    });
-	    this._hasOrigin = false;
-	    this._hasAlign = false;
-	    this._hasSize = false;
-	    this._hasProportions = false;
-	    if (options) {
-	        if (options.transform)
-	            this.setTransform(options.transform);
-	        if (options.opacity !== undefined)
-	            this.setOpacity(options.opacity);
-	        if (options.origin)
-	            this.setOrigin(options.origin);
-	        if (options.align)
-	            this.setAlign(options.align);
-	        if (options.size)
-	            this.setSize(options.size);
-	        if (options.proportions)
-	            this.setProportions(options.proportions);
-	    }
-	}
-	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
-	    this._transformState.set(transform, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
-	    this._opacityState.set(opacity, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
-	    if (origin === null) {
-	        if (this._hasOrigin) {
-	            this._modifier.originFrom(null);
-	            this._hasOrigin = false;
-	        }
-	        return this;
-	    } else if (!this._hasOrigin) {
-	        this._hasOrigin = true;
-	        this._modifier.originFrom(this._originState);
-	    }
-	    this._originState.set(origin, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
-	    if (align === null) {
-	        if (this._hasAlign) {
-	            this._modifier.alignFrom(null);
-	            this._hasAlign = false;
-	        }
-	        return this;
-	    } else if (!this._hasAlign) {
-	        this._hasAlign = true;
-	        this._modifier.alignFrom(this._alignState);
-	    }
-	    this._alignState.set(align, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
-	    if (size === null) {
-	        if (this._hasSize) {
-	            this._modifier.sizeFrom(null);
-	            this._hasSize = false;
-	        }
-	        return this;
-	    } else if (!this._hasSize) {
-	        this._hasSize = true;
-	        this._modifier.sizeFrom(this._sizeState);
-	    }
-	    this._sizeState.set(size, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
-	    if (proportions === null) {
-	        if (this._hasProportions) {
-	            this._modifier.proportionsFrom(null);
-	            this._hasProportions = false;
-	        }
-	        return this;
-	    } else if (!this._hasProportions) {
-	        this._hasProportions = true;
-	        this._modifier.proportionsFrom(this._proportionsState);
-	    }
-	    this._proportionsState.set(proportions, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.halt = function halt() {
-	    this._transformState.halt();
-	    this._opacityState.halt();
-	    this._originState.halt();
-	    this._alignState.halt();
-	    this._sizeState.halt();
-	    this._proportionsState.halt();
-	};
-	StateModifier.prototype.getTransform = function getTransform() {
-	    return this._transformState.get();
-	};
-	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
-	    return this._transformState.getFinal();
-	};
-	StateModifier.prototype.getOpacity = function getOpacity() {
-	    return this._opacityState.get();
-	};
-	StateModifier.prototype.getOrigin = function getOrigin() {
-	    return this._hasOrigin ? this._originState.get() : null;
-	};
-	StateModifier.prototype.getAlign = function getAlign() {
-	    return this._hasAlign ? this._alignState.get() : null;
-	};
-	StateModifier.prototype.getSize = function getSize() {
-	    return this._hasSize ? this._sizeState.get() : null;
-	};
-	StateModifier.prototype.getProportions = function getProportions() {
-	    return this._hasProportions ? this._proportionsState.get() : null;
-	};
-	StateModifier.prototype.modify = function modify(target) {
-	    return this._modifier.modify(target);
-	};
-	module.exports = StateModifier;
 
 /***/ },
 /* 179 */
@@ -52132,196 +52072,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var KeyCodes = {
-	    0: 48,
-	    1: 49,
-	    2: 50,
-	    3: 51,
-	    4: 52,
-	    5: 53,
-	    6: 54,
-	    7: 55,
-	    8: 56,
-	    9: 57,
-	    a: 97,
-	    b: 98,
-	    c: 99,
-	    d: 100,
-	    e: 101,
-	    f: 102,
-	    g: 103,
-	    h: 104,
-	    i: 105,
-	    j: 106,
-	    k: 107,
-	    l: 108,
-	    m: 109,
-	    n: 110,
-	    o: 111,
-	    p: 112,
-	    q: 113,
-	    r: 114,
-	    s: 115,
-	    t: 116,
-	    u: 117,
-	    v: 118,
-	    w: 119,
-	    x: 120,
-	    y: 121,
-	    z: 122,
-	    A: 65,
-	    B: 66,
-	    C: 67,
-	    D: 68,
-	    E: 69,
-	    F: 70,
-	    G: 71,
-	    H: 72,
-	    I: 73,
-	    J: 74,
-	    K: 75,
-	    L: 76,
-	    M: 77,
-	    N: 78,
-	    O: 79,
-	    P: 80,
-	    Q: 81,
-	    R: 82,
-	    S: 83,
-	    T: 84,
-	    U: 85,
-	    V: 86,
-	    W: 87,
-	    X: 88,
-	    Y: 89,
-	    Z: 90,
-	    ENTER: 13,
-	    LEFT_ARROW: 37,
-	    RIGHT_ARROW: 39,
-	    UP_ARROW: 38,
-	    DOWN_ARROW: 40,
-	    SPACE: 32,
-	    SHIFT: 16,
-	    TAB: 9
-	};
-	module.exports = KeyCodes;
-
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var FamousEngine = __webpack_require__(122);
-	var _event = 'prerender';
-	var getTime = window.performance && window.performance.now ? function () {
-	    return window.performance.now();
-	} : function () {
-	    return Date.now();
-	};
-	function addTimerFunction(fn) {
-	    FamousEngine.on(_event, fn);
-	    return fn;
-	}
-	function setTimeout(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            FamousEngine.removeListener(_event, callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function setInterval(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            t = getTime();
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function after(fn, numTicks) {
-	    if (numTicks === undefined)
-	        return undefined;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            clear(callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function every(fn, numTicks) {
-	    numTicks = numTicks || 1;
-	    var initial = numTicks;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            numTicks = initial;
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function clear(fn) {
-	    FamousEngine.removeListener(_event, fn);
-	}
-	function debounce(func, wait) {
-	    var timeout;
-	    var ctx;
-	    var timestamp;
-	    var result;
-	    var args;
-	    return function () {
-	        ctx = this;
-	        args = arguments;
-	        timestamp = getTime();
-	        var fn = function () {
-	            var last = getTime - timestamp;
-	            if (last < wait) {
-	                timeout = setTimeout(fn, wait - last);
-	            } else {
-	                timeout = null;
-	                result = func.apply(ctx, args);
-	            }
-	        };
-	        clear(timeout);
-	        timeout = setTimeout(fn, wait);
-	        return result;
-	    };
-	}
-	module.exports = {
-	    setTimeout: setTimeout,
-	    setInterval: setInterval,
-	    debounce: debounce,
-	    after: after,
-	    every: every,
-	    clear: clear
-	};
-
-/***/ },
-/* 194 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Scene = __webpack_require__(166);
+	var Scene = __webpack_require__(158);
 	var Surface = __webpack_require__(52);
 	var Transform = __webpack_require__(37);
 	var View = __webpack_require__(51);
@@ -52446,7 +52197,7 @@
 	module.exports = NavigationBar;
 
 /***/ },
-/* 195 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52460,11 +52211,11 @@
 	var CanvasSurface = __webpack_require__(185);
 	var Transform = __webpack_require__(37);
 	var EventHandler = __webpack_require__(46);
-	var Utilities = __webpack_require__(174);
+	var Utilities = __webpack_require__(178);
 	var OptionsManager = __webpack_require__(36);
-	var MouseSync = __webpack_require__(157);
-	var TouchSync = __webpack_require__(161);
-	var GenericSync = __webpack_require__(156);
+	var MouseSync = __webpack_require__(164);
+	var TouchSync = __webpack_require__(168);
+	var GenericSync = __webpack_require__(163);
 	GenericSync.register({
 	    mouse: MouseSync,
 	    touch: TouchSync
@@ -52580,7 +52331,7 @@
 	module.exports = Slider;
 
 /***/ },
-/* 196 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52593,7 +52344,7 @@
 	var Utility = __webpack_require__(43);
 	var View = __webpack_require__(51);
 	var GridLayout = __webpack_require__(204);
-	var ToggleButton = __webpack_require__(197);
+	var ToggleButton = __webpack_require__(195);
 	function TabBar(options) {
 	    View.apply(this, arguments);
 	    this.layout = new GridLayout();
@@ -52678,7 +52429,7 @@
 	module.exports = TabBar;
 
 /***/ },
-/* 197 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52792,6 +52543,195 @@
 	    return this.arbiter.render();
 	};
 	module.exports = ToggleButton;
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var KeyCodes = {
+	    0: 48,
+	    1: 49,
+	    2: 50,
+	    3: 51,
+	    4: 52,
+	    5: 53,
+	    6: 54,
+	    7: 55,
+	    8: 56,
+	    9: 57,
+	    a: 97,
+	    b: 98,
+	    c: 99,
+	    d: 100,
+	    e: 101,
+	    f: 102,
+	    g: 103,
+	    h: 104,
+	    i: 105,
+	    j: 106,
+	    k: 107,
+	    l: 108,
+	    m: 109,
+	    n: 110,
+	    o: 111,
+	    p: 112,
+	    q: 113,
+	    r: 114,
+	    s: 115,
+	    t: 116,
+	    u: 117,
+	    v: 118,
+	    w: 119,
+	    x: 120,
+	    y: 121,
+	    z: 122,
+	    A: 65,
+	    B: 66,
+	    C: 67,
+	    D: 68,
+	    E: 69,
+	    F: 70,
+	    G: 71,
+	    H: 72,
+	    I: 73,
+	    J: 74,
+	    K: 75,
+	    L: 76,
+	    M: 77,
+	    N: 78,
+	    O: 79,
+	    P: 80,
+	    Q: 81,
+	    R: 82,
+	    S: 83,
+	    T: 84,
+	    U: 85,
+	    V: 86,
+	    W: 87,
+	    X: 88,
+	    Y: 89,
+	    Z: 90,
+	    ENTER: 13,
+	    LEFT_ARROW: 37,
+	    RIGHT_ARROW: 39,
+	    UP_ARROW: 38,
+	    DOWN_ARROW: 40,
+	    SPACE: 32,
+	    SHIFT: 16,
+	    TAB: 9
+	};
+	module.exports = KeyCodes;
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var FamousEngine = __webpack_require__(121);
+	var _event = 'prerender';
+	var getTime = window.performance && window.performance.now ? function () {
+	    return window.performance.now();
+	} : function () {
+	    return Date.now();
+	};
+	function addTimerFunction(fn) {
+	    FamousEngine.on(_event, fn);
+	    return fn;
+	}
+	function setTimeout(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            FamousEngine.removeListener(_event, callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function setInterval(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            t = getTime();
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function after(fn, numTicks) {
+	    if (numTicks === undefined)
+	        return undefined;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            clear(callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function every(fn, numTicks) {
+	    numTicks = numTicks || 1;
+	    var initial = numTicks;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            numTicks = initial;
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function clear(fn) {
+	    FamousEngine.removeListener(_event, fn);
+	}
+	function debounce(func, wait) {
+	    var timeout;
+	    var ctx;
+	    var timestamp;
+	    var result;
+	    var args;
+	    return function () {
+	        ctx = this;
+	        args = arguments;
+	        timestamp = getTime();
+	        var fn = function () {
+	            var last = getTime - timestamp;
+	            if (last < wait) {
+	                timeout = setTimeout(fn, wait - last);
+	            } else {
+	                timeout = null;
+	                result = func.apply(ctx, args);
+	            }
+	        };
+	        clear(timeout);
+	        timeout = setTimeout(fn, wait);
+	        return result;
+	    };
+	}
+	module.exports = {
+	    setTimeout: setTimeout,
+	    setInterval: setInterval,
+	    debounce: debounce,
+	    after: after,
+	    every: every,
+	    clear: clear
+	};
 
 /***/ },
 /* 198 */
@@ -52942,7 +52882,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(122);
 	var Transform = __webpack_require__(37);
 	var OptionsManager = __webpack_require__(36);
 	var Transitionable = __webpack_require__(42);
@@ -53351,7 +53291,7 @@
 	 */
 	var Transform = __webpack_require__(37);
 	var Transitionable = __webpack_require__(42);
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(122);
 	var OptionsManager = __webpack_require__(36);
 	function Flipper(options) {
 	    this.options = Object.create(Flipper.DEFAULT_OPTIONS);
@@ -53435,11 +53375,11 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Entity = __webpack_require__(44);
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(122);
 	var Transform = __webpack_require__(37);
 	var ViewSequence = __webpack_require__(45);
 	var EventHandler = __webpack_require__(46);
-	var Modifier = __webpack_require__(165);
+	var Modifier = __webpack_require__(157);
 	var OptionsManager = __webpack_require__(36);
 	var Transitionable = __webpack_require__(42);
 	var TransitionableTransform = __webpack_require__(183);
@@ -53629,7 +53569,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Entity = __webpack_require__(44);
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(122);
 	var Transform = __webpack_require__(37);
 	var OptionsManager = __webpack_require__(36);
 	function HeaderFooterLayout(options) {
@@ -53730,8 +53670,8 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Transform = __webpack_require__(37);
-	var Modifier = __webpack_require__(165);
-	var RenderNode = __webpack_require__(121);
+	var Modifier = __webpack_require__(157);
+	var RenderNode = __webpack_require__(122);
 	var Utility = __webpack_require__(43);
 	var OptionsManager = __webpack_require__(36);
 	var Transitionable = __webpack_require__(42);
@@ -53870,8 +53810,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Modifier = __webpack_require__(165);
-	var RenderNode = __webpack_require__(121);
+	var Modifier = __webpack_require__(157);
+	var RenderNode = __webpack_require__(122);
 	var Transform = __webpack_require__(37);
 	var Transitionable = __webpack_require__(42);
 	var View = __webpack_require__(51);
@@ -54380,9 +54320,9 @@
 	var ViewSequence = __webpack_require__(45);
 	var Scroller = __webpack_require__(209);
 	var Utility = __webpack_require__(43);
-	var GenericSync = __webpack_require__(156);
+	var GenericSync = __webpack_require__(163);
 	var ScrollSync = __webpack_require__(50);
-	var TouchSync = __webpack_require__(161);
+	var TouchSync = __webpack_require__(168);
 	GenericSync.register({
 	    scroll: ScrollSync,
 	    touch: TouchSync
@@ -55001,10 +54941,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Body: __webpack_require__(231),
-	  Circle: __webpack_require__(232),
+	  Body: __webpack_require__(230),
+	  Circle: __webpack_require__(231),
 	  Particle: __webpack_require__(39),
-	  Rectangle: __webpack_require__(233)
+	  Rectangle: __webpack_require__(232)
 	};
 
 
@@ -55013,14 +54953,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Collision: __webpack_require__(225),
-	  Constraint: __webpack_require__(226),
-	  Curve: __webpack_require__(227),
-	  Distance: __webpack_require__(228),
+	  Collision: __webpack_require__(220),
+	  Constraint: __webpack_require__(221),
+	  Curve: __webpack_require__(222),
+	  Distance: __webpack_require__(223),
 	  Snap: __webpack_require__(218),
-	  Surface: __webpack_require__(229),
+	  Surface: __webpack_require__(224),
 	  Wall: __webpack_require__(219),
-	  Walls: __webpack_require__(230)
+	  Walls: __webpack_require__(225)
 	};
 
 
@@ -55030,12 +54970,12 @@
 
 	module.exports = {
 	  Drag: __webpack_require__(49),
-	  Force: __webpack_require__(116),
-	  Repulsion: __webpack_require__(234),
-	  RotationalDrag: __webpack_require__(235),
-	  RotationalSpring: __webpack_require__(236),
+	  Force: __webpack_require__(115),
+	  Repulsion: __webpack_require__(226),
+	  RotationalDrag: __webpack_require__(227),
+	  RotationalSpring: __webpack_require__(228),
 	  Spring: __webpack_require__(40),
-	  VectorField: __webpack_require__(237)
+	  VectorField: __webpack_require__(229)
 	};
 
 
@@ -55044,7 +54984,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  SymplecticEuler: __webpack_require__(115)
+	  SymplecticEuler: __webpack_require__(116)
 	};
 
 
@@ -64270,7 +64210,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(221);
 	var Vector = __webpack_require__(38);
 	function Snap(options) {
 	    Constraint.call(this);
@@ -64382,7 +64322,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(221);
 	var Vector = __webpack_require__(38);
 	function Wall(options) {
 	    this.options = Object.create(Wall.DEFAULT_OPTIONS);
@@ -64499,36 +64439,6 @@
 /* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "f4769f9bdb7466be65088239c12046d1.eot"
-
-/***/ },
-/* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "448c34a56d699c29117adc64c43affeb.woff2"
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "fa2772327f55d8198301fdb8bcfc8158.woff"
-
-/***/ },
-/* 223 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "e18bbf611f2a2e43afc071aa2f4e1512.ttf"
-
-/***/ },
-/* 224 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = __webpack_require__.p + "89889688147bd7575d6327160d64e760.svg"
-
-/***/ },
-/* 225 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* This Source Code Form is subject to the terms of the Mozilla Public
 	 * License, v. 2.0. If a copy of the MPL was not distributed with this
 	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
@@ -64536,7 +64446,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(221);
 	var Vector = __webpack_require__(38);
 	function Collision(options) {
 	    this.options = Object.create(Collision.DEFAULT_OPTIONS);
@@ -64618,7 +64528,7 @@
 	module.exports = Collision;
 
 /***/ },
-/* 226 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64645,7 +64555,7 @@
 	module.exports = Constraint;
 
 /***/ },
-/* 227 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64655,7 +64565,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(221);
 	var Vector = __webpack_require__(38);
 	function Curve(options) {
 	    this.options = Object.create(Curve.DEFAULT_OPTIONS);
@@ -64728,7 +64638,7 @@
 	module.exports = Curve;
 
 /***/ },
-/* 228 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64738,7 +64648,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(221);
 	var Vector = __webpack_require__(38);
 	function Distance(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -64843,7 +64753,7 @@
 	module.exports = Distance;
 
 /***/ },
-/* 229 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64853,7 +64763,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(221);
 	var Vector = __webpack_require__(38);
 	function Surface(options) {
 	    this.options = Object.create(Surface.DEFAULT_OPTIONS);
@@ -64916,7 +64826,7 @@
 	module.exports = Surface;
 
 /***/ },
-/* 230 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64926,7 +64836,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(221);
 	var Wall = __webpack_require__(219);
 	var Vector = __webpack_require__(38);
 	function Walls(options) {
@@ -65097,7 +65007,353 @@
 	module.exports = Walls;
 
 /***/ },
-/* 231 */
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(115);
+	var Vector = __webpack_require__(38);
+	function Repulsion(options) {
+	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.disp = new Vector();
+	    Force.call(this);
+	}
+	Repulsion.prototype = Object.create(Force.prototype);
+	Repulsion.prototype.constructor = Repulsion;
+	Repulsion.DECAY_FUNCTIONS = {
+	    LINEAR: function (r, cutoff) {
+	        return Math.max(1 - 1 / cutoff * r, 0);
+	    },
+	    MORSE: function (r, cutoff) {
+	        var r0 = cutoff === 0 ? 100 : cutoff;
+	        var rShifted = r + r0 * (1 - Math.log(2));
+	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
+	    },
+	    INVERSE: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r);
+	    },
+	    GRAVITY: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r * r);
+	    }
+	};
+	Repulsion.DEFAULT_OPTIONS = {
+	    strength: 1,
+	    anchor: undefined,
+	    range: [
+	        0,
+	        Infinity
+	    ],
+	    cutoff: 0,
+	    cap: Infinity,
+	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
+	};
+	Repulsion.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor.position instanceof Vector)
+	            this.options.anchor = options.anchor.position;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Vector(options.anchor);
+	        delete options.anchor;
+	    }
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	Repulsion.prototype.applyForce = function applyForce(targets, source) {
+	    var options = this.options;
+	    var force = this.force;
+	    var disp = this.disp;
+	    var strength = options.strength;
+	    var anchor = options.anchor || source.position;
+	    var cap = options.cap;
+	    var cutoff = options.cutoff;
+	    var rMin = options.range[0];
+	    var rMax = options.range[1];
+	    var decayFn = options.decayFunction;
+	    if (strength === 0)
+	        return;
+	    var length = targets.length;
+	    var particle;
+	    var m1;
+	    var p1;
+	    var r;
+	    while (length--) {
+	        particle = targets[length];
+	        if (particle === source)
+	            continue;
+	        m1 = particle.mass;
+	        p1 = particle.position;
+	        disp.set(p1.sub(anchor));
+	        r = disp.norm();
+	        if (r < rMax && r > rMin) {
+	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
+	            particle.applyForce(force);
+	        }
+	    }
+	};
+	module.exports = Repulsion;
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Drag = __webpack_require__(49);
+	function RotationalDrag(options) {
+	    Drag.call(this, options);
+	}
+	RotationalDrag.prototype = Object.create(Drag.prototype);
+	RotationalDrag.prototype.constructor = RotationalDrag;
+	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = {
+	    LINEAR: function (angularVelocity) {
+	        return angularVelocity;
+	    },
+	    QUADRATIC: function (angularVelocity) {
+	        return angularVelocity.mult(angularVelocity.norm());
+	    }
+	};
+	RotationalDrag.prototype.applyForce = function applyForce(targets) {
+	    var strength = this.options.strength;
+	    var forceFunction = this.options.forceFunction;
+	    var force = this.force;
+	    var index;
+	    var particle;
+	    for (index = 0; index < targets.length; index++) {
+	        particle = targets[index];
+	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
+	        particle.applyTorque(force);
+	    }
+	};
+	RotationalDrag.prototype.setOptions = function setOptions(options) {
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	module.exports = RotationalDrag;
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(115);
+	var Spring = __webpack_require__(40);
+	var Quaternion = __webpack_require__(176);
+	function RotationalSpring(options) {
+	    Spring.call(this, options);
+	}
+	RotationalSpring.prototype = Object.create(Spring.prototype);
+	RotationalSpring.prototype.constructor = RotationalSpring;
+	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
+	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
+	var pi = Math.PI;
+	function _calcStiffness() {
+	    var options = this.options;
+	    options.stiffness = Math.pow(2 * pi / options.period, 2);
+	}
+	function _calcDamping() {
+	    var options = this.options;
+	    options.damping = 4 * pi * options.dampingRatio / options.period;
+	}
+	function _init() {
+	    _calcStiffness.call(this);
+	    _calcDamping.call(this);
+	}
+	RotationalSpring.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor instanceof Quaternion)
+	            this.options.anchor = options.anchor;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Quaternion(options.anchor);
+	    }
+	    if (options.period !== undefined) {
+	        this.options.period = options.period;
+	    }
+	    if (options.dampingRatio !== undefined)
+	        this.options.dampingRatio = options.dampingRatio;
+	    if (options.length !== undefined)
+	        this.options.length = options.length;
+	    if (options.forceFunction !== undefined)
+	        this.options.forceFunction = options.forceFunction;
+	    if (options.maxLength !== undefined)
+	        this.options.maxLength = options.maxLength;
+	    _init.call(this);
+	    Force.prototype.setOptions.call(this, options);
+	};
+	RotationalSpring.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var options = this.options;
+	    var disp = this.disp;
+	    var stiffness = options.stiffness;
+	    var damping = options.damping;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var forceFunction = options.forceFunction;
+	    var maxLength = options.maxLength;
+	    var i;
+	    var target;
+	    var dist;
+	    var m;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        disp.set(anchor.sub(target.orientation));
+	        dist = disp.norm() - restLength;
+	        if (dist === 0)
+	            return;
+	        m = target.mass;
+	        stiffness *= m;
+	        damping *= m;
+	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
+	        if (damping)
+	            force.add(target.angularVelocity.mult(-damping)).put(force);
+	        target.applyTorque(force);
+	    }
+	};
+	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
+	    var options = this.options;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var strength = options.stiffness;
+	    var energy = 0;
+	    for (var i = 0; i < targets.length; i++) {
+	        var target = targets[i];
+	        var dist = anchor.sub(target.orientation).norm() - restLength;
+	        energy += 0.5 * strength * dist * dist;
+	    }
+	    return energy;
+	};
+	module.exports = RotationalSpring;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(115);
+	var Vector = __webpack_require__(38);
+	function VectorField(options) {
+	    Force.call(this);
+	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.evaluation = new Vector();
+	}
+	VectorField.prototype = Object.create(Force.prototype);
+	VectorField.prototype.constructor = VectorField;
+	VectorField.FIELDS = {
+	    CONSTANT: function (v, options) {
+	        options.direction.put(this.evaluation);
+	    },
+	    LINEAR: function (v) {
+	        v.put(this.evaluation);
+	    },
+	    RADIAL: function (v) {
+	        v.mult(-1).put(this.evaluation);
+	    },
+	    POINT_ATTRACTOR: function (v, options) {
+	        options.position.sub(v).put(this.evaluation);
+	    }
+	};
+	VectorField.DEFAULT_OPTIONS = {
+	    strength: 0.01,
+	    field: VectorField.FIELDS.CONSTANT
+	};
+	VectorField.prototype.setOptions = function setOptions(options) {
+	    if (options.strength !== undefined)
+	        this.options.strength = options.strength;
+	    if (options.direction !== undefined)
+	        this.options.direction = options.direction;
+	    if (options.field !== undefined) {
+	        this.options.field = options.field;
+	        _setFieldOptions.call(this, this.options.field);
+	    }
+	};
+	function _setFieldOptions(field) {
+	    var FIELDS = VectorField.FIELDS;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        if (!this.options.direction)
+	            this.options.direction = new Vector(0, 1, 0);
+	        else if (this.options.direction instanceof Array)
+	            this.options.direction = new Vector(this.options.direction);
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        if (!this.options.position)
+	            this.options.position = new Vector(0, 0, 0);
+	        else if (this.options.position instanceof Array)
+	            this.options.position = new Vector(this.options.position);
+	        break;
+	    }
+	}
+	VectorField.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var strength = this.options.strength;
+	    var field = this.options.field;
+	    var i;
+	    var target;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        field.call(this, target.position, this.options);
+	        this.evaluation.mult(target.mass * strength).put(force);
+	        target.applyForce(force);
+	    }
+	};
+	VectorField.prototype.getEnergy = function getEnergy(targets) {
+	    var field = this.options.field;
+	    var FIELDS = VectorField.FIELDS;
+	    var energy = 0;
+	    var i;
+	    var target;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        energy = targets.length * this.options.direction.norm();
+	        break;
+	    case FIELDS.RADIAL:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.norm();
+	        }
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.sub(this.options.position).norm();
+	        }
+	        break;
+	    }
+	    energy *= this.options.strength;
+	    return energy;
+	};
+	module.exports = VectorField;
+
+/***/ },
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65110,9 +65366,9 @@
 	var Particle = __webpack_require__(39);
 	var Transform = __webpack_require__(37);
 	var Vector = __webpack_require__(38);
-	var Quaternion = __webpack_require__(172);
-	var Matrix = __webpack_require__(171);
-	var Integrator = __webpack_require__(115);
+	var Quaternion = __webpack_require__(176);
+	var Matrix = __webpack_require__(175);
+	var Integrator = __webpack_require__(116);
 	function Body(options) {
 	    Particle.call(this, options);
 	    options = options || {};
@@ -65217,7 +65473,7 @@
 	module.exports = Body;
 
 /***/ },
-/* 232 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65227,8 +65483,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(231);
-	var Matrix = __webpack_require__(171);
+	var Body = __webpack_require__(230);
+	var Matrix = __webpack_require__(175);
 	function Circle(options) {
 	    options = options || {};
 	    this.setRadius(options.radius || 0);
@@ -65285,7 +65541,7 @@
 	module.exports = Circle;
 
 /***/ },
-/* 233 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65295,8 +65551,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(231);
-	var Matrix = __webpack_require__(171);
+	var Body = __webpack_require__(230);
+	var Matrix = __webpack_require__(175);
 	function Rectangle(options) {
 	    options = options || {};
 	    this.size = options.size || [
@@ -65353,350 +65609,34 @@
 	module.exports = Rectangle;
 
 /***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "f4769f9bdb7466be65088239c12046d1.eot"
+
+/***/ },
 /* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(116);
-	var Vector = __webpack_require__(38);
-	function Repulsion(options) {
-	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.disp = new Vector();
-	    Force.call(this);
-	}
-	Repulsion.prototype = Object.create(Force.prototype);
-	Repulsion.prototype.constructor = Repulsion;
-	Repulsion.DECAY_FUNCTIONS = {
-	    LINEAR: function (r, cutoff) {
-	        return Math.max(1 - 1 / cutoff * r, 0);
-	    },
-	    MORSE: function (r, cutoff) {
-	        var r0 = cutoff === 0 ? 100 : cutoff;
-	        var rShifted = r + r0 * (1 - Math.log(2));
-	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
-	    },
-	    INVERSE: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r);
-	    },
-	    GRAVITY: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r * r);
-	    }
-	};
-	Repulsion.DEFAULT_OPTIONS = {
-	    strength: 1,
-	    anchor: undefined,
-	    range: [
-	        0,
-	        Infinity
-	    ],
-	    cutoff: 0,
-	    cap: Infinity,
-	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
-	};
-	Repulsion.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor.position instanceof Vector)
-	            this.options.anchor = options.anchor.position;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Vector(options.anchor);
-	        delete options.anchor;
-	    }
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	Repulsion.prototype.applyForce = function applyForce(targets, source) {
-	    var options = this.options;
-	    var force = this.force;
-	    var disp = this.disp;
-	    var strength = options.strength;
-	    var anchor = options.anchor || source.position;
-	    var cap = options.cap;
-	    var cutoff = options.cutoff;
-	    var rMin = options.range[0];
-	    var rMax = options.range[1];
-	    var decayFn = options.decayFunction;
-	    if (strength === 0)
-	        return;
-	    var length = targets.length;
-	    var particle;
-	    var m1;
-	    var p1;
-	    var r;
-	    while (length--) {
-	        particle = targets[length];
-	        if (particle === source)
-	            continue;
-	        m1 = particle.mass;
-	        p1 = particle.position;
-	        disp.set(p1.sub(anchor));
-	        r = disp.norm();
-	        if (r < rMax && r > rMin) {
-	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
-	            particle.applyForce(force);
-	        }
-	    }
-	};
-	module.exports = Repulsion;
+	module.exports = __webpack_require__.p + "448c34a56d699c29117adc64c43affeb.woff2"
 
 /***/ },
 /* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Drag = __webpack_require__(49);
-	function RotationalDrag(options) {
-	    Drag.call(this, options);
-	}
-	RotationalDrag.prototype = Object.create(Drag.prototype);
-	RotationalDrag.prototype.constructor = RotationalDrag;
-	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = {
-	    LINEAR: function (angularVelocity) {
-	        return angularVelocity;
-	    },
-	    QUADRATIC: function (angularVelocity) {
-	        return angularVelocity.mult(angularVelocity.norm());
-	    }
-	};
-	RotationalDrag.prototype.applyForce = function applyForce(targets) {
-	    var strength = this.options.strength;
-	    var forceFunction = this.options.forceFunction;
-	    var force = this.force;
-	    var index;
-	    var particle;
-	    for (index = 0; index < targets.length; index++) {
-	        particle = targets[index];
-	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
-	        particle.applyTorque(force);
-	    }
-	};
-	RotationalDrag.prototype.setOptions = function setOptions(options) {
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	module.exports = RotationalDrag;
+	module.exports = __webpack_require__.p + "fa2772327f55d8198301fdb8bcfc8158.woff"
 
 /***/ },
 /* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(116);
-	var Spring = __webpack_require__(40);
-	var Quaternion = __webpack_require__(172);
-	function RotationalSpring(options) {
-	    Spring.call(this, options);
-	}
-	RotationalSpring.prototype = Object.create(Spring.prototype);
-	RotationalSpring.prototype.constructor = RotationalSpring;
-	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
-	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
-	var pi = Math.PI;
-	function _calcStiffness() {
-	    var options = this.options;
-	    options.stiffness = Math.pow(2 * pi / options.period, 2);
-	}
-	function _calcDamping() {
-	    var options = this.options;
-	    options.damping = 4 * pi * options.dampingRatio / options.period;
-	}
-	function _init() {
-	    _calcStiffness.call(this);
-	    _calcDamping.call(this);
-	}
-	RotationalSpring.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor instanceof Quaternion)
-	            this.options.anchor = options.anchor;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Quaternion(options.anchor);
-	    }
-	    if (options.period !== undefined) {
-	        this.options.period = options.period;
-	    }
-	    if (options.dampingRatio !== undefined)
-	        this.options.dampingRatio = options.dampingRatio;
-	    if (options.length !== undefined)
-	        this.options.length = options.length;
-	    if (options.forceFunction !== undefined)
-	        this.options.forceFunction = options.forceFunction;
-	    if (options.maxLength !== undefined)
-	        this.options.maxLength = options.maxLength;
-	    _init.call(this);
-	    Force.prototype.setOptions.call(this, options);
-	};
-	RotationalSpring.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var options = this.options;
-	    var disp = this.disp;
-	    var stiffness = options.stiffness;
-	    var damping = options.damping;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var forceFunction = options.forceFunction;
-	    var maxLength = options.maxLength;
-	    var i;
-	    var target;
-	    var dist;
-	    var m;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        disp.set(anchor.sub(target.orientation));
-	        dist = disp.norm() - restLength;
-	        if (dist === 0)
-	            return;
-	        m = target.mass;
-	        stiffness *= m;
-	        damping *= m;
-	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
-	        if (damping)
-	            force.add(target.angularVelocity.mult(-damping)).put(force);
-	        target.applyTorque(force);
-	    }
-	};
-	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
-	    var options = this.options;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var strength = options.stiffness;
-	    var energy = 0;
-	    for (var i = 0; i < targets.length; i++) {
-	        var target = targets[i];
-	        var dist = anchor.sub(target.orientation).norm() - restLength;
-	        energy += 0.5 * strength * dist * dist;
-	    }
-	    return energy;
-	};
-	module.exports = RotationalSpring;
+	module.exports = __webpack_require__.p + "e18bbf611f2a2e43afc071aa2f4e1512.ttf"
 
 /***/ },
 /* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(116);
-	var Vector = __webpack_require__(38);
-	function VectorField(options) {
-	    Force.call(this);
-	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.evaluation = new Vector();
-	}
-	VectorField.prototype = Object.create(Force.prototype);
-	VectorField.prototype.constructor = VectorField;
-	VectorField.FIELDS = {
-	    CONSTANT: function (v, options) {
-	        options.direction.put(this.evaluation);
-	    },
-	    LINEAR: function (v) {
-	        v.put(this.evaluation);
-	    },
-	    RADIAL: function (v) {
-	        v.mult(-1).put(this.evaluation);
-	    },
-	    POINT_ATTRACTOR: function (v, options) {
-	        options.position.sub(v).put(this.evaluation);
-	    }
-	};
-	VectorField.DEFAULT_OPTIONS = {
-	    strength: 0.01,
-	    field: VectorField.FIELDS.CONSTANT
-	};
-	VectorField.prototype.setOptions = function setOptions(options) {
-	    if (options.strength !== undefined)
-	        this.options.strength = options.strength;
-	    if (options.direction !== undefined)
-	        this.options.direction = options.direction;
-	    if (options.field !== undefined) {
-	        this.options.field = options.field;
-	        _setFieldOptions.call(this, this.options.field);
-	    }
-	};
-	function _setFieldOptions(field) {
-	    var FIELDS = VectorField.FIELDS;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        if (!this.options.direction)
-	            this.options.direction = new Vector(0, 1, 0);
-	        else if (this.options.direction instanceof Array)
-	            this.options.direction = new Vector(this.options.direction);
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        if (!this.options.position)
-	            this.options.position = new Vector(0, 0, 0);
-	        else if (this.options.position instanceof Array)
-	            this.options.position = new Vector(this.options.position);
-	        break;
-	    }
-	}
-	VectorField.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var strength = this.options.strength;
-	    var field = this.options.field;
-	    var i;
-	    var target;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        field.call(this, target.position, this.options);
-	        this.evaluation.mult(target.mass * strength).put(force);
-	        target.applyForce(force);
-	    }
-	};
-	VectorField.prototype.getEnergy = function getEnergy(targets) {
-	    var field = this.options.field;
-	    var FIELDS = VectorField.FIELDS;
-	    var energy = 0;
-	    var i;
-	    var target;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        energy = targets.length * this.options.direction.norm();
-	        break;
-	    case FIELDS.RADIAL:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.norm();
-	        }
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.sub(this.options.position).norm();
-	        }
-	        break;
-	    }
-	    energy *= this.options.strength;
-	    return energy;
-	};
-	module.exports = VectorField;
+	module.exports = __webpack_require__.p + "89889688147bd7575d6327160d64e760.svg"
 
 /***/ }
 /******/ ])
