@@ -20,7 +20,8 @@ var aliases = {
         'famous': node_dir + '/famous',
         'famous.angular': 'famous-angular',
         'famous-angular': node_dir + '/famous-angular/dist/famous-angular.js',
-        'famous-flex': node_dir + '/famous-flex/src'
+        'famous-flex': node_dir + '/famous-flex/src',
+	ngRoute$: 'angular-route'
 }
 
 module.exports = {

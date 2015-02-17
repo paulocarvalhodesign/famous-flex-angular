@@ -611,7 +611,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(angular) {/**
-	 * @license AngularJS v1.3.8
+	 * @license AngularJS v1.3.13
 	 * (c) 2010-2014 Google, Inc. http://angularjs.org
 	 * License: MIT
 	 */
@@ -666,7 +666,7 @@
 	      return match;
 	    });
 
-	    message = message + '\nhttp://errors.angularjs.org/1.3.8/' +
+	    message = message + '\nhttp://errors.angularjs.org/1.3.13/' +
 	      (module ? module + '/' : '') + code;
 	    for (i = 2; i < arguments.length; i++) {
 	      message = message + (i == 2 ? '?' : '&') + 'p' + (i - 2) + '=' +
@@ -993,8 +993,7 @@
 	function setHashKey(obj, h) {
 	  if (h) {
 	    obj.$$hashKey = h;
-	  }
-	  else {
+	  } else {
 	    delete obj.$$hashKey;
 	  }
 	}
@@ -1303,7 +1302,7 @@
 	function makeMap(str) {
 	  var obj = {}, items = str.split(","), i;
 	  for (i = 0; i < items.length; i++)
-	    obj[ items[i] ] = true;
+	    obj[items[i]] = true;
 	  return obj;
 	}
 
@@ -2014,7 +2013,7 @@
 	 * @param {DOMElement} element DOM element which is the root of angular application.
 	 * @param {Array<String|Function|Array>=} modules an array of modules to load into the application.
 	 *     Each item in the array should be the name of a predefined module or a (DI annotated)
-	 *     function that will be invoked by the injector as a run block.
+	 *     function that will be invoked by the injector as a `config` block.
 	 *     See: {@link angular.module modules}
 	 * @param {Object=} config an object for defining configuration options for the application. The
 	 *     following keys are supported:
@@ -2084,8 +2083,12 @@
 	    forEach(extraModules, function(module) {
 	      modules.push(module);
 	    });
-	    doBootstrap();
+	    return doBootstrap();
 	  };
+
+	  if (isFunction(angular.resumeDeferredBootstrap)) {
+	    angular.resumeDeferredBootstrap();
+	  }
 	}
 
 	/**
@@ -2730,11 +2733,11 @@
 	 * - `codeName` – `{string}` – Code name of the release, such as "jiggling-armfat".
 	 */
 	var version = {
-	  full: '1.3.8',    // all of these placeholder strings will be replaced by grunt's
+	  full: '1.3.13',    // all of these placeholder strings will be replaced by grunt's
 	  major: 1,    // package task
 	  minor: 3,
-	  dot: 8,
-	  codeName: 'prophetic-narwhal'
+	  dot: 13,
+	  codeName: 'meticulous-riffleshuffle'
 	};
 
 
@@ -4769,7 +4772,7 @@
 	      }
 
 	      var args = [],
-	          $inject = annotate(fn, strictDi, serviceName),
+	          $inject = createInjector.$$annotate(fn, strictDi, serviceName),
 	          length, i,
 	          key;
 
@@ -4798,7 +4801,7 @@
 	      // Check if Type is annotated and use just the given function at n-1 as parameter
 	      // e.g. someModule.factory('greeter', ['$window', function(renamed$window) {}]);
 	      // Object creation: http://jsperf.com/create-constructor/2
-	      var instance = Object.create((isArray(Type) ? Type[Type.length - 1] : Type).prototype);
+	      var instance = Object.create((isArray(Type) ? Type[Type.length - 1] : Type).prototype || null);
 	      var returnedValue = invoke(Type, instance, locals, serviceName);
 
 	      return isObject(returnedValue) || isFunction(returnedValue) ? returnedValue : instance;
@@ -4808,7 +4811,7 @@
 	      invoke: invoke,
 	      instantiate: instantiate,
 	      get: getService,
-	      annotate: annotate,
+	      annotate: createInjector.$$annotate,
 	      has: function(name) {
 	        return providerCache.hasOwnProperty(name + providerSuffix) || cache.hasOwnProperty(name);
 	      }
@@ -7777,6 +7780,10 @@
 
 	          // use class as directive
 	          className = node.className;
+	          if (isObject(className)) {
+	              // Maybe SVGAnimatedString
+	              className = className.animVal;
+	          }
 	          if (isString(className) && className !== '') {
 	            while (match = CLASS_DIRECTIVE_REGEXP.exec(className)) {
 	              nName = directiveNormalize(match[2]);
@@ -8478,8 +8485,7 @@
 	          afterTemplateChildLinkFn,
 	          beforeTemplateCompileNode = $compileNode[0],
 	          origAsyncDirective = directives.shift(),
-	          // The fact that we have to copy and patch the directive seems wrong!
-	          derivedSyncDirective = extend({}, origAsyncDirective, {
+	          derivedSyncDirective = inherit(origAsyncDirective, {
 	            templateUrl: null, transclude: null, replace: null, $$originalDirective: origAsyncDirective
 	          }),
 	          templateUrl = (isFunction(origAsyncDirective.templateUrl))
@@ -8932,6 +8938,8 @@
 	  return jqNodes;
 	}
 
+	var $controllerMinErr = minErr('$controller');
+
 	/**
 	 * @ngdoc provider
 	 * @name $controllerProvider
@@ -9019,7 +9027,12 @@
 	      }
 
 	      if (isString(expression)) {
-	        match = expression.match(CNTRL_REG),
+	        match = expression.match(CNTRL_REG);
+	        if (!match) {
+	          throw $controllerMinErr('ctrlfmt',
+	            "Badly formed controller string '{0}'. " +
+	            "Must match `__name__ as __id__` or `__name__`.", expression);
+	        }
 	        constructor = match[1],
 	        identifier = identifier || match[3];
 	        expression = controllers.hasOwnProperty(constructor)
@@ -9043,7 +9056,7 @@
 	        // Object creation: http://jsperf.com/create-constructor/2
 	        var controllerPrototype = (isArray(expression) ?
 	          expression[expression.length - 1] : expression).prototype;
-	        instance = Object.create(controllerPrototype);
+	        instance = Object.create(controllerPrototype || null);
 
 	        if (identifier) {
 	          addIdentifier(locals, identifier, instance, constructor || expression.name);
@@ -9539,7 +9552,7 @@
 	     *
 	     * Both requests and responses can be transformed using transformation functions: `transformRequest`
 	     * and `transformResponse`. These properties can be a single function that returns
-	     * the transformed value (`{function(data, headersGetter, status)`) or an array of such transformation functions,
+	     * the transformed value (`function(data, headersGetter, status)`) or an array of such transformation functions,
 	     * which allows you to `push` or `unshift` a new transformation function into the transformation chain.
 	     *
 	     * ### Default Transformations
@@ -11928,7 +11941,7 @@
 	      // TODO(vojta): rewrite link when opening in new tab/window (in legacy browser)
 	      // currently we open nice url link and redirect then
 
-	      if (!html5Mode.rewriteLinks || event.ctrlKey || event.metaKey || event.which == 2) return;
+	      if (!html5Mode.rewriteLinks || event.ctrlKey || event.metaKey || event.shiftKey || event.which == 2 || event.button == 2) return;
 
 	      var elm = jqLite(event.target);
 
@@ -11970,7 +11983,7 @@
 
 
 	    // rewrite hashbang url <> html5 url
-	    if ($location.absUrl() != initialUrl) {
+	    if (trimEmptyHash($location.absUrl()) != trimEmptyHash(initialUrl)) {
 	      $browser.url($location.absUrl(), true);
 	    }
 
@@ -12880,7 +12893,7 @@
 	    }, {
 	      assign: function(scope, value, locals) {
 	        var o = object(scope, locals);
-	        if (!o) object.assign(scope, o = {});
+	        if (!o) object.assign(scope, o = {}, locals);
 	        return getter.assign(o, value);
 	      }
 	    });
@@ -12906,7 +12919,7 @@
 	        var key = ensureSafeMemberName(indexFn(self, locals), expression);
 	        // prevent overwriting of Function.constructor which would break ensureSafeObject check
 	        var o = ensureSafeObject(obj(self, locals), expression);
-	        if (!o) obj.assign(self, o = {});
+	        if (!o) obj.assign(self, o = {}, locals);
 	        return o[key] = value;
 	      }
 	    });
@@ -12943,6 +12956,11 @@
 	      var v = fn.apply
 	            ? fn.apply(context, args)
 	            : fn(args[0], args[1], args[2], args[3], args[4]);
+
+	      if (args) {
+	        // Free-up the memory (arguments of the last function call).
+	        args.length = 0;
+	      }
 
 	      return ensureSafeObject(v, expressionText);
 	      };
@@ -13016,18 +13034,19 @@
 	// Parser helper functions
 	//////////////////////////////////////////////////
 
-	function setter(obj, path, setValue, fullExp) {
+	function setter(obj, locals, path, setValue, fullExp) {
 	  ensureSafeObject(obj, fullExp);
+	  ensureSafeObject(locals, fullExp);
 
 	  var element = path.split('.'), key;
 	  for (var i = 0; element.length > 1; i++) {
 	    key = ensureSafeMemberName(element.shift(), fullExp);
-	    var propertyObj = ensureSafeObject(obj[key], fullExp);
+	    var propertyObj = (i === 0 && locals && locals[key]) || obj[key];
 	    if (!propertyObj) {
 	      propertyObj = {};
 	      obj[key] = propertyObj;
 	    }
-	    obj = propertyObj;
+	    obj = ensureSafeObject(propertyObj, fullExp);
 	  }
 	  key = ensureSafeMemberName(element.shift(), fullExp);
 	  ensureSafeObject(obj[key], fullExp);
@@ -13154,8 +13173,8 @@
 	  }
 
 	  fn.sharedGetter = true;
-	  fn.assign = function(self, value) {
-	    return setter(self, path, value, path);
+	  fn.assign = function(self, value, locals) {
+	    return setter(self, locals, path, value, path);
 	  };
 	  getterFnCache[path] = fn;
 	  return fn;
@@ -13814,8 +13833,7 @@
 	          'qcycle',
 	          "Expected promise to be resolved with value other than itself '{0}'",
 	          val));
-	      }
-	      else {
+	      } else {
 	        this.$$resolve(val);
 	      }
 
@@ -15111,7 +15129,7 @@
 	       * @kind function
 	       *
 	       * @description
-	       * Schedule the invokation of $apply to occur at a later time. The actual time difference
+	       * Schedule the invocation of $apply to occur at a later time. The actual time difference
 	       * varies across browsers, but is typically around ~10 milliseconds.
 	       *
 	       * This can be used to queue up multiple expressions which need to be evaluated in the same
@@ -16621,8 +16639,7 @@
 	function $TemplateRequestProvider() {
 	  this.$get = ['$templateCache', '$http', '$q', function($templateCache, $http, $q) {
 	    function handleRequestFn(tpl, ignoreRequestError) {
-	      var self = handleRequestFn;
-	      self.totalPendingRequests++;
+	      handleRequestFn.totalPendingRequests++;
 
 	      var transformResponse = $http.defaults && $http.defaults.transformResponse;
 
@@ -16640,13 +16657,14 @@
 	      };
 
 	      return $http.get(tpl, httpOptions)
+	        .finally(function() {
+	          handleRequestFn.totalPendingRequests--;
+	        })
 	        .then(function(response) {
-	          self.totalPendingRequests--;
 	          return response.data;
 	        }, handleError);
 
 	      function handleError(resp) {
-	        self.totalPendingRequests--;
 	        if (!ignoreRequestError) {
 	          throw $compileMinErr('tpload', 'Failed to load template: {0}', tpl);
 	        }
@@ -17340,7 +17358,7 @@
 
 	  if ((expectedType === 'string') && (expected.charAt(0) === '!')) {
 	    return !deepCompare(actual, expected.substring(1), comparator, matchAgainstAnyProp);
-	  } else if (actualType === 'array') {
+	  } else if (isArray(actual)) {
 	    // In case `actual` is an array, consider it a match
 	    // if ANY of it's items matches `expected`
 	    return actual.some(function(item) {
@@ -17736,7 +17754,7 @@
 	 *   * `'m'`: Minute in hour (0-59)
 	 *   * `'ss'`: Second in minute, padded (00-59)
 	 *   * `'s'`: Second in minute (0-59)
-	 *   * `'.sss' or ',sss'`: Millisecond in second, padded (000-999)
+	 *   * `'sss'`: Millisecond in second, padded (000-999)
 	 *   * `'a'`: AM/PM marker
 	 *   * `'Z'`: 4 digit (+sign) representation of the timezone offset (-1200-+1200)
 	 *   * `'ww'`: Week of year, padded (00-53). Week 01 is the week with the first Thursday of the year
@@ -18031,35 +18049,12 @@
 	      limit = int(limit);
 	    }
 
-	    if (isString(input)) {
-	      //NaN check on limit
-	      if (limit) {
-	        return limit >= 0 ? input.slice(0, limit) : input.slice(limit, input.length);
-	      } else {
-	        return "";
-	      }
-	    }
-
-	    var i, n;
-
-	    // if abs(limit) exceeds maximum length, trim it
-	    if (limit > input.length)
-	      limit = input.length;
-	    else if (limit < -input.length)
-	      limit = -input.length;
-
-	    if (limit > 0) {
-	      i = 0;
-	      n = limit;
+	    //NaN check on limit
+	    if (limit) {
+	      return limit > 0 ? input.slice(0, limit) : input.slice(limit);
 	    } else {
-	      // zero and NaN check on limit - return empty array
-	      if (!limit) return [];
-
-	      i = input.length + limit;
-	      n = input.length;
+	      return isString(input) ? "" : [];
 	    }
-
-	    return input.slice(i, n);
 	  };
 	}
 
@@ -18295,6 +18290,9 @@
 	  compile: function(element, attr) {
 	    if (!attr.href && !attr.xlinkHref && !attr.name) {
 	      return function(scope, element) {
+	        // If the linked element is not an anchor tag anymore, do nothing
+	        if (element[0].nodeName.toLowerCase() !== 'a') return;
+
 	        // SVGAElement does not use the href attribute, but rather the 'xlinkHref' attribute.
 	        var href = toString.call(element.prop('href')) === '[object SVGAnimatedString]' ?
 	                   'xlink:href' : 'href';
@@ -18895,6 +18893,9 @@
 	    forEach(form.$error, function(value, name) {
 	      form.$setValidity(name, null, control);
 	    });
+	    forEach(form.$$success, function(value, name) {
+	      form.$setValidity(name, null, control);
+	    });
 
 	    arrayRemove(controls, control);
 	  };
@@ -18912,23 +18913,23 @@
 	  addSetValidityMethod({
 	    ctrl: this,
 	    $element: element,
-	    set: function(object, property, control) {
+	    set: function(object, property, controller) {
 	      var list = object[property];
 	      if (!list) {
-	        object[property] = [control];
+	        object[property] = [controller];
 	      } else {
-	        var index = list.indexOf(control);
+	        var index = list.indexOf(controller);
 	        if (index === -1) {
-	          list.push(control);
+	          list.push(controller);
 	        }
 	      }
 	    },
-	    unset: function(object, property, control) {
+	    unset: function(object, property, controller) {
 	      var list = object[property];
 	      if (!list) {
 	        return;
 	      }
-	      arrayRemove(list, control);
+	      arrayRemove(list, controller);
 	      if (list.length === 0) {
 	        delete object[property];
 	      }
@@ -19221,19 +19222,19 @@
 	                alias = controller.$name;
 
 	            if (alias) {
-	              setter(scope, alias, controller, alias);
+	              setter(scope, null, alias, controller, alias);
 	              attr.$observe(attr.name ? 'name' : 'ngForm', function(newValue) {
 	                if (alias === newValue) return;
-	                setter(scope, alias, undefined, alias);
+	                setter(scope, null, alias, undefined, alias);
 	                alias = newValue;
-	                setter(scope, alias, controller, alias);
+	                setter(scope, null, alias, controller, alias);
 	                parentFormCtrl.$$renameControl(controller, alias);
 	              });
 	            }
 	            formElement.on('$destroy', function() {
 	              parentFormCtrl.$removeControl(controller);
 	              if (alias) {
-	                setter(scope, alias, undefined, alias);
+	                setter(scope, null, alias, undefined, alias);
 	              }
 	              extend(controller, nullFormCtrl); //stop propagating child destruction handlers upwards
 	            });
@@ -19249,12 +19250,13 @@
 	var formDirective = formDirectiveFactory();
 	var ngFormDirective = formDirectiveFactory(true);
 
-	/* global VALID_CLASS: true,
-	  INVALID_CLASS: true,
-	  PRISTINE_CLASS: true,
-	  DIRTY_CLASS: true,
-	  UNTOUCHED_CLASS: true,
-	  TOUCHED_CLASS: true,
+	/* global VALID_CLASS: false,
+	  INVALID_CLASS: false,
+	  PRISTINE_CLASS: false,
+	  DIRTY_CLASS: false,
+	  UNTOUCHED_CLASS: false,
+	  TOUCHED_CLASS: false,
+	  $ngModelMinErr: false,
 	*/
 
 	// Regex code is obtained from SO: https://stackoverflow.com/questions/3143070/javascript-regex-iso-datetime#answer-3143231
@@ -19267,9 +19269,6 @@
 	var WEEK_REGEXP = /^(\d{4})-W(\d\d)$/;
 	var MONTH_REGEXP = /^(\d{4})-(\d\d)$/;
 	var TIME_REGEXP = /^(\d\d):(\d\d)(?::(\d\d)(\.\d{1,3})?)?$/;
-	var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
-
-	var $ngModelMinErr = new minErr('ngModel');
 
 	var inputType = {
 
@@ -19312,19 +19311,21 @@
 	         <script>
 	           angular.module('textInputExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.text = 'guest';
-	               $scope.word = /^\s*\w*\s*$/;
+	               $scope.example = {
+	                 text: 'guest',
+	                 word: /^\s*\w*\s*$/
+	               };
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           Single word: <input type="text" name="input" ng-model="text"
-	                               ng-pattern="word" required ng-trim="false">
+	           Single word: <input type="text" name="input" ng-model="example.text"
+	                               ng-pattern="example.word" required ng-trim="false">
 	           <span class="error" ng-show="myForm.input.$error.required">
 	             Required!</span>
 	           <span class="error" ng-show="myForm.input.$error.pattern">
 	             Single word only!</span>
 
-	           <tt>text = {{text}}</tt><br/>
+	           <tt>text = {{example.text}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19332,9 +19333,9 @@
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
-	          var text = element(by.binding('text'));
+	          var text = element(by.binding('example.text'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('text'));
+	          var input = element(by.model('example.text'));
 
 	          it('should initialize to model', function() {
 	            expect(text.getText()).toContain('guest');
@@ -19396,18 +19397,20 @@
 	       <script>
 	          angular.module('dateInputExample', [])
 	            .controller('DateController', ['$scope', function($scope) {
-	              $scope.value = new Date(2013, 9, 22);
+	              $scope.example = {
+	                value: new Date(2013, 9, 22)
+	              };
 	            }]);
 	       </script>
 	       <form name="myForm" ng-controller="DateController as dateCtrl">
 	          Pick a date in 2013:
-	          <input type="date" id="exampleInput" name="input" ng-model="value"
+	          <input type="date" id="exampleInput" name="input" ng-model="example.value"
 	              placeholder="yyyy-MM-dd" min="2013-01-01" max="2013-12-31" required />
 	          <span class="error" ng-show="myForm.input.$error.required">
 	              Required!</span>
 	          <span class="error" ng-show="myForm.input.$error.date">
 	              Not a valid date!</span>
-	           <tt>value = {{value | date: "yyyy-MM-dd"}}</tt><br/>
+	           <tt>value = {{example.value | date: "yyyy-MM-dd"}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19415,9 +19418,9 @@
 	       </form>
 	     </file>
 	     <file name="protractor.js" type="protractor">
-	        var value = element(by.binding('value | date: "yyyy-MM-dd"'));
+	        var value = element(by.binding('example.value | date: "yyyy-MM-dd"'));
 	        var valid = element(by.binding('myForm.input.$valid'));
-	        var input = element(by.model('value'));
+	        var input = element(by.model('example.value'));
 
 	        // currently protractor/webdriver does not support
 	        // sending keys to all known HTML5 input controls
@@ -19487,18 +19490,20 @@
 	      <script>
 	        angular.module('dateExample', [])
 	          .controller('DateController', ['$scope', function($scope) {
-	            $scope.value = new Date(2010, 11, 28, 14, 57);
+	            $scope.example = {
+	              value: new Date(2010, 11, 28, 14, 57)
+	            };
 	          }]);
 	      </script>
 	      <form name="myForm" ng-controller="DateController as dateCtrl">
 	        Pick a date between in 2013:
-	        <input type="datetime-local" id="exampleInput" name="input" ng-model="value"
+	        <input type="datetime-local" id="exampleInput" name="input" ng-model="example.value"
 	            placeholder="yyyy-MM-ddTHH:mm:ss" min="2001-01-01T00:00:00" max="2013-12-31T00:00:00" required />
 	        <span class="error" ng-show="myForm.input.$error.required">
 	            Required!</span>
 	        <span class="error" ng-show="myForm.input.$error.datetimelocal">
 	            Not a valid date!</span>
-	        <tt>value = {{value | date: "yyyy-MM-ddTHH:mm:ss"}}</tt><br/>
+	        <tt>value = {{example.value | date: "yyyy-MM-ddTHH:mm:ss"}}</tt><br/>
 	        <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	        <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19506,9 +19511,9 @@
 	      </form>
 	    </file>
 	    <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('value | date: "yyyy-MM-ddTHH:mm:ss"'));
+	      var value = element(by.binding('example.value | date: "yyyy-MM-ddTHH:mm:ss"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('value'));
+	      var input = element(by.model('example.value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19579,18 +19584,20 @@
 	     <script>
 	      angular.module('timeExample', [])
 	        .controller('DateController', ['$scope', function($scope) {
-	          $scope.value = new Date(1970, 0, 1, 14, 57, 0);
+	          $scope.example = {
+	            value: new Date(1970, 0, 1, 14, 57, 0)
+	          };
 	        }]);
 	     </script>
 	     <form name="myForm" ng-controller="DateController as dateCtrl">
 	        Pick a between 8am and 5pm:
-	        <input type="time" id="exampleInput" name="input" ng-model="value"
+	        <input type="time" id="exampleInput" name="input" ng-model="example.value"
 	            placeholder="HH:mm:ss" min="08:00:00" max="17:00:00" required />
 	        <span class="error" ng-show="myForm.input.$error.required">
 	            Required!</span>
 	        <span class="error" ng-show="myForm.input.$error.time">
 	            Not a valid date!</span>
-	        <tt>value = {{value | date: "HH:mm:ss"}}</tt><br/>
+	        <tt>value = {{example.value | date: "HH:mm:ss"}}</tt><br/>
 	        <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	        <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19598,9 +19605,9 @@
 	     </form>
 	   </file>
 	   <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('value | date: "HH:mm:ss"'));
+	      var value = element(by.binding('example.value | date: "HH:mm:ss"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('value'));
+	      var input = element(by.model('example.value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19670,18 +19677,20 @@
 	      <script>
 	      angular.module('weekExample', [])
 	        .controller('DateController', ['$scope', function($scope) {
-	          $scope.value = new Date(2013, 0, 3);
+	          $scope.example = {
+	            value: new Date(2013, 0, 3)
+	          };
 	        }]);
 	      </script>
 	      <form name="myForm" ng-controller="DateController as dateCtrl">
 	        Pick a date between in 2013:
-	        <input id="exampleInput" type="week" name="input" ng-model="value"
+	        <input id="exampleInput" type="week" name="input" ng-model="example.value"
 	            placeholder="YYYY-W##" min="2012-W32" max="2013-W52" required />
 	        <span class="error" ng-show="myForm.input.$error.required">
 	            Required!</span>
 	        <span class="error" ng-show="myForm.input.$error.week">
 	            Not a valid date!</span>
-	        <tt>value = {{value | date: "yyyy-Www"}}</tt><br/>
+	        <tt>value = {{example.value | date: "yyyy-Www"}}</tt><br/>
 	        <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	        <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	        <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19689,9 +19698,9 @@
 	      </form>
 	    </file>
 	    <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('value | date: "yyyy-Www"'));
+	      var value = element(by.binding('example.value | date: "yyyy-Www"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('value'));
+	      var input = element(by.model('example.value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19761,18 +19770,20 @@
 	     <script>
 	      angular.module('monthExample', [])
 	        .controller('DateController', ['$scope', function($scope) {
-	          $scope.value = new Date(2013, 9, 1);
+	          $scope.example = {
+	            value: new Date(2013, 9, 1)
+	          };
 	        }]);
 	     </script>
 	     <form name="myForm" ng-controller="DateController as dateCtrl">
-	       Pick a month int 2013:
-	       <input id="exampleInput" type="month" name="input" ng-model="value"
+	       Pick a month in 2013:
+	       <input id="exampleInput" type="month" name="input" ng-model="example.value"
 	          placeholder="yyyy-MM" min="2013-01" max="2013-12" required />
 	       <span class="error" ng-show="myForm.input.$error.required">
 	          Required!</span>
 	       <span class="error" ng-show="myForm.input.$error.month">
 	          Not a valid month!</span>
-	       <tt>value = {{value | date: "yyyy-MM"}}</tt><br/>
+	       <tt>value = {{example.value | date: "yyyy-MM"}}</tt><br/>
 	       <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	       <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	       <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19780,9 +19791,9 @@
 	     </form>
 	   </file>
 	   <file name="protractor.js" type="protractor">
-	      var value = element(by.binding('value | date: "yyyy-MM"'));
+	      var value = element(by.binding('example.value | date: "yyyy-MM"'));
 	      var valid = element(by.binding('myForm.input.$valid'));
-	      var input = element(by.model('value'));
+	      var input = element(by.model('example.value'));
 
 	      // currently protractor/webdriver does not support
 	      // sending keys to all known HTML5 input controls
@@ -19858,17 +19869,19 @@
 	         <script>
 	           angular.module('numberExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.value = 12;
+	               $scope.example = {
+	                 value: 12
+	               };
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           Number: <input type="number" name="input" ng-model="value"
+	           Number: <input type="number" name="input" ng-model="example.value"
 	                          min="0" max="99" required>
 	           <span class="error" ng-show="myForm.input.$error.required">
 	             Required!</span>
 	           <span class="error" ng-show="myForm.input.$error.number">
 	             Not valid number!</span>
-	           <tt>value = {{value}}</tt><br/>
+	           <tt>value = {{example.value}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19876,9 +19889,9 @@
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
-	          var value = element(by.binding('value'));
+	          var value = element(by.binding('example.value'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('value'));
+	          var input = element(by.model('example.value'));
 
 	          it('should initialize to model', function() {
 	            expect(value.getText()).toContain('12');
@@ -19946,16 +19959,18 @@
 	         <script>
 	           angular.module('urlExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.text = 'http://google.com';
+	               $scope.url = {
+	                 text: 'http://google.com'
+	               };
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           URL: <input type="url" name="input" ng-model="text" required>
+	           URL: <input type="url" name="input" ng-model="url.text" required>
 	           <span class="error" ng-show="myForm.input.$error.required">
 	             Required!</span>
 	           <span class="error" ng-show="myForm.input.$error.url">
 	             Not valid url!</span>
-	           <tt>text = {{text}}</tt><br/>
+	           <tt>text = {{url.text}}</tt><br/>
 	           <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	           <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	           <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -19964,9 +19979,9 @@
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
-	          var text = element(by.binding('text'));
+	          var text = element(by.binding('url.text'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('text'));
+	          var input = element(by.model('url.text'));
 
 	          it('should initialize to model', function() {
 	            expect(text.getText()).toContain('http://google.com');
@@ -20035,16 +20050,18 @@
 	         <script>
 	           angular.module('emailExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.text = 'me@example.com';
+	               $scope.email = {
+	                 text: 'me@example.com'
+	               };
 	             }]);
 	         </script>
 	           <form name="myForm" ng-controller="ExampleController">
-	             Email: <input type="email" name="input" ng-model="text" required>
+	             Email: <input type="email" name="input" ng-model="email.text" required>
 	             <span class="error" ng-show="myForm.input.$error.required">
 	               Required!</span>
 	             <span class="error" ng-show="myForm.input.$error.email">
 	               Not valid email!</span>
-	             <tt>text = {{text}}</tt><br/>
+	             <tt>text = {{email.text}}</tt><br/>
 	             <tt>myForm.input.$valid = {{myForm.input.$valid}}</tt><br/>
 	             <tt>myForm.input.$error = {{myForm.input.$error}}</tt><br/>
 	             <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
@@ -20053,9 +20070,9 @@
 	           </form>
 	         </file>
 	        <file name="protractor.js" type="protractor">
-	          var text = element(by.binding('text'));
+	          var text = element(by.binding('email.text'));
 	          var valid = element(by.binding('myForm.input.$valid'));
-	          var input = element(by.model('text'));
+	          var input = element(by.model('email.text'));
 
 	          it('should initialize to model', function() {
 	            expect(text.getText()).toContain('me@example.com');
@@ -20102,7 +20119,9 @@
 	         <script>
 	           angular.module('radioExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.color = 'blue';
+	               $scope.color = {
+	                 name: 'blue'
+	               };
 	               $scope.specialValue = {
 	                 "id": "12345",
 	                 "value": "green"
@@ -20110,20 +20129,20 @@
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           <input type="radio" ng-model="color" value="red">  Red <br/>
-	           <input type="radio" ng-model="color" ng-value="specialValue"> Green <br/>
-	           <input type="radio" ng-model="color" value="blue"> Blue <br/>
-	           <tt>color = {{color | json}}</tt><br/>
+	           <input type="radio" ng-model="color.name" value="red">  Red <br/>
+	           <input type="radio" ng-model="color.name" ng-value="specialValue"> Green <br/>
+	           <input type="radio" ng-model="color.name" value="blue"> Blue <br/>
+	           <tt>color = {{color.name | json}}</tt><br/>
 	          </form>
 	          Note that `ng-value="specialValue"` sets radio item's value to be the value of `$scope.specialValue`.
 	        </file>
 	        <file name="protractor.js" type="protractor">
 	          it('should change state', function() {
-	            var color = element(by.binding('color'));
+	            var color = element(by.binding('color.name'));
 
 	            expect(color.getText()).toContain('blue');
 
-	            element.all(by.model('color')).get(0).click();
+	            element.all(by.model('color.name')).get(0).click();
 
 	            expect(color.getText()).toContain('red');
 	          });
@@ -20153,28 +20172,30 @@
 	         <script>
 	           angular.module('checkboxExample', [])
 	             .controller('ExampleController', ['$scope', function($scope) {
-	               $scope.value1 = true;
-	               $scope.value2 = 'YES'
+	               $scope.checkboxModel = {
+	                value1 : true,
+	                value2 : 'YES'
+	              };
 	             }]);
 	         </script>
 	         <form name="myForm" ng-controller="ExampleController">
-	           Value1: <input type="checkbox" ng-model="value1"> <br/>
-	           Value2: <input type="checkbox" ng-model="value2"
+	           Value1: <input type="checkbox" ng-model="checkboxModel.value1"> <br/>
+	           Value2: <input type="checkbox" ng-model="checkboxModel.value2"
 	                          ng-true-value="'YES'" ng-false-value="'NO'"> <br/>
-	           <tt>value1 = {{value1}}</tt><br/>
-	           <tt>value2 = {{value2}}</tt><br/>
+	           <tt>value1 = {{checkboxModel.value1}}</tt><br/>
+	           <tt>value2 = {{checkboxModel.value2}}</tt><br/>
 	          </form>
 	        </file>
 	        <file name="protractor.js" type="protractor">
 	          it('should change state', function() {
-	            var value1 = element(by.binding('value1'));
-	            var value2 = element(by.binding('value2'));
+	            var value1 = element(by.binding('checkboxModel.value1'));
+	            var value2 = element(by.binding('checkboxModel.value2'));
 
 	            expect(value1.getText()).toContain('true');
 	            expect(value2.getText()).toContain('YES');
 
-	            element(by.model('value1')).click();
-	            element(by.model('value2')).click();
+	            element(by.model('checkboxModel.value1')).click();
+	            element(by.model('checkboxModel.value2')).click();
 
 	            expect(value1.getText()).toContain('false');
 	            expect(value2.getText()).toContain('NO');
@@ -20771,1344 +20792,6 @@
 	  };
 	}];
 
-	var VALID_CLASS = 'ng-valid',
-	    INVALID_CLASS = 'ng-invalid',
-	    PRISTINE_CLASS = 'ng-pristine',
-	    DIRTY_CLASS = 'ng-dirty',
-	    UNTOUCHED_CLASS = 'ng-untouched',
-	    TOUCHED_CLASS = 'ng-touched',
-	    PENDING_CLASS = 'ng-pending';
-
-	/**
-	 * @ngdoc type
-	 * @name ngModel.NgModelController
-	 *
-	 * @property {string} $viewValue Actual string value in the view.
-	 * @property {*} $modelValue The value in the model that the control is bound to.
-	 * @property {Array.<Function>} $parsers Array of functions to execute, as a pipeline, whenever
-	       the control reads value from the DOM. The functions are called in array order, each passing
-	       its return value through to the next. The last return value is forwarded to the
-	       {@link ngModel.NgModelController#$validators `$validators`} collection.
-
-	Parsers are used to sanitize / convert the {@link ngModel.NgModelController#$viewValue
-	`$viewValue`}.
-
-	Returning `undefined` from a parser means a parse error occurred. In that case,
-	no {@link ngModel.NgModelController#$validators `$validators`} will run and the `ngModel`
-	will be set to `undefined` unless {@link ngModelOptions `ngModelOptions.allowInvalid`}
-	is set to `true`. The parse error is stored in `ngModel.$error.parse`.
-
-	 *
-	 * @property {Array.<Function>} $formatters Array of functions to execute, as a pipeline, whenever
-	       the model value changes. The functions are called in reverse array order, each passing the value through to the
-	       next. The last return value is used as the actual DOM value.
-	       Used to format / convert values for display in the control.
-	 * ```js
-	 * function formatter(value) {
-	 *   if (value) {
-	 *     return value.toUpperCase();
-	 *   }
-	 * }
-	 * ngModel.$formatters.push(formatter);
-	 * ```
-	 *
-	 * @property {Object.<string, function>} $validators A collection of validators that are applied
-	 *      whenever the model value changes. The key value within the object refers to the name of the
-	 *      validator while the function refers to the validation operation. The validation operation is
-	 *      provided with the model value as an argument and must return a true or false value depending
-	 *      on the response of that validation.
-	 *
-	 * ```js
-	 * ngModel.$validators.validCharacters = function(modelValue, viewValue) {
-	 *   var value = modelValue || viewValue;
-	 *   return /[0-9]+/.test(value) &&
-	 *          /[a-z]+/.test(value) &&
-	 *          /[A-Z]+/.test(value) &&
-	 *          /\W+/.test(value);
-	 * };
-	 * ```
-	 *
-	 * @property {Object.<string, function>} $asyncValidators A collection of validations that are expected to
-	 *      perform an asynchronous validation (e.g. a HTTP request). The validation function that is provided
-	 *      is expected to return a promise when it is run during the model validation process. Once the promise
-	 *      is delivered then the validation status will be set to true when fulfilled and false when rejected.
-	 *      When the asynchronous validators are triggered, each of the validators will run in parallel and the model
-	 *      value will only be updated once all validators have been fulfilled. As long as an asynchronous validator
-	 *      is unfulfilled, its key will be added to the controllers `$pending` property. Also, all asynchronous validators
-	 *      will only run once all synchronous validators have passed.
-	 *
-	 * Please note that if $http is used then it is important that the server returns a success HTTP response code
-	 * in order to fulfill the validation and a status level of `4xx` in order to reject the validation.
-	 *
-	 * ```js
-	 * ngModel.$asyncValidators.uniqueUsername = function(modelValue, viewValue) {
-	 *   var value = modelValue || viewValue;
-	 *
-	 *   // Lookup user by username
-	 *   return $http.get('/api/users/' + value).
-	 *      then(function resolved() {
-	 *        //username exists, this means validation fails
-	 *        return $q.reject('exists');
-	 *      }, function rejected() {
-	 *        //username does not exist, therefore this validation passes
-	 *        return true;
-	 *      });
-	 * };
-	 * ```
-	 *
-	 * @property {Array.<Function>} $viewChangeListeners Array of functions to execute whenever the
-	 *     view value has changed. It is called with no arguments, and its return value is ignored.
-	 *     This can be used in place of additional $watches against the model value.
-	 *
-	 * @property {Object} $error An object hash with all failing validator ids as keys.
-	 * @property {Object} $pending An object hash with all pending validator ids as keys.
-	 *
-	 * @property {boolean} $untouched True if control has not lost focus yet.
-	 * @property {boolean} $touched True if control has lost focus.
-	 * @property {boolean} $pristine True if user has not interacted with the control yet.
-	 * @property {boolean} $dirty True if user has already interacted with the control.
-	 * @property {boolean} $valid True if there is no error.
-	 * @property {boolean} $invalid True if at least one error on the control.
-	 * @property {string} $name The name attribute of the control.
-	 *
-	 * @description
-	 *
-	 * `NgModelController` provides API for the {@link ngModel `ngModel`} directive.
-	 * The controller contains services for data-binding, validation, CSS updates, and value formatting
-	 * and parsing. It purposefully does not contain any logic which deals with DOM rendering or
-	 * listening to DOM events.
-	 * Such DOM related logic should be provided by other directives which make use of
-	 * `NgModelController` for data-binding to control elements.
-	 * Angular provides this DOM logic for most {@link input `input`} elements.
-	 * At the end of this page you can find a {@link ngModel.NgModelController#custom-control-example
-	 * custom control example} that uses `ngModelController` to bind to `contenteditable` elements.
-	 *
-	 * @example
-	 * ### Custom Control Example
-	 * This example shows how to use `NgModelController` with a custom control to achieve
-	 * data-binding. Notice how different directives (`contenteditable`, `ng-model`, and `required`)
-	 * collaborate together to achieve the desired result.
-	 *
-	 * Note that `contenteditable` is an HTML5 attribute, which tells the browser to let the element
-	 * contents be edited in place by the user.  This will not work on older browsers.
-	 *
-	 * We are using the {@link ng.service:$sce $sce} service here and include the {@link ngSanitize $sanitize}
-	 * module to automatically remove "bad" content like inline event listener (e.g. `<span onclick="...">`).
-	 * However, as we are using `$sce` the model can still decide to provide unsafe content if it marks
-	 * that content using the `$sce` service.
-	 *
-	 * <example name="NgModelController" module="customControl" deps="angular-sanitize.js">
-	    <file name="style.css">
-	      [contenteditable] {
-	        border: 1px solid black;
-	        background-color: white;
-	        min-height: 20px;
-	      }
-
-	      .ng-invalid {
-	        border: 1px solid red;
-	      }
-
-	    </file>
-	    <file name="script.js">
-	      angular.module('customControl', ['ngSanitize']).
-	        directive('contenteditable', ['$sce', function($sce) {
-	          return {
-	            restrict: 'A', // only activate on element attribute
-	            require: '?ngModel', // get a hold of NgModelController
-	            link: function(scope, element, attrs, ngModel) {
-	              if (!ngModel) return; // do nothing if no ng-model
-
-	              // Specify how UI should be updated
-	              ngModel.$render = function() {
-	                element.html($sce.getTrustedHtml(ngModel.$viewValue || ''));
-	              };
-
-	              // Listen for change events to enable binding
-	              element.on('blur keyup change', function() {
-	                scope.$evalAsync(read);
-	              });
-	              read(); // initialize
-
-	              // Write data to the model
-	              function read() {
-	                var html = element.html();
-	                // When we clear the content editable the browser leaves a <br> behind
-	                // If strip-br attribute is provided then we strip this out
-	                if ( attrs.stripBr && html == '<br>' ) {
-	                  html = '';
-	                }
-	                ngModel.$setViewValue(html);
-	              }
-	            }
-	          };
-	        }]);
-	    </file>
-	    <file name="index.html">
-	      <form name="myForm">
-	       <div contenteditable
-	            name="myWidget" ng-model="userContent"
-	            strip-br="true"
-	            required>Change me!</div>
-	        <span ng-show="myForm.myWidget.$error.required">Required!</span>
-	       <hr>
-	       <textarea ng-model="userContent"></textarea>
-	      </form>
-	    </file>
-	    <file name="protractor.js" type="protractor">
-	    it('should data-bind and become invalid', function() {
-	      if (browser.params.browser == 'safari' || browser.params.browser == 'firefox') {
-	        // SafariDriver can't handle contenteditable
-	        // and Firefox driver can't clear contenteditables very well
-	        return;
-	      }
-	      var contentEditable = element(by.css('[contenteditable]'));
-	      var content = 'Change me!';
-
-	      expect(contentEditable.getText()).toEqual(content);
-
-	      contentEditable.clear();
-	      contentEditable.sendKeys(protractor.Key.BACK_SPACE);
-	      expect(contentEditable.getText()).toEqual('');
-	      expect(contentEditable.getAttribute('class')).toMatch(/ng-invalid-required/);
-	    });
-	    </file>
-	 * </example>
-	 *
-	 *
-	 */
-	var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$parse', '$animate', '$timeout', '$rootScope', '$q', '$interpolate',
-	    function($scope, $exceptionHandler, $attr, $element, $parse, $animate, $timeout, $rootScope, $q, $interpolate) {
-	  this.$viewValue = Number.NaN;
-	  this.$modelValue = Number.NaN;
-	  this.$$rawModelValue = undefined; // stores the parsed modelValue / model set from scope regardless of validity.
-	  this.$validators = {};
-	  this.$asyncValidators = {};
-	  this.$parsers = [];
-	  this.$formatters = [];
-	  this.$viewChangeListeners = [];
-	  this.$untouched = true;
-	  this.$touched = false;
-	  this.$pristine = true;
-	  this.$dirty = false;
-	  this.$valid = true;
-	  this.$invalid = false;
-	  this.$error = {}; // keep invalid keys here
-	  this.$$success = {}; // keep valid keys here
-	  this.$pending = undefined; // keep pending keys here
-	  this.$name = $interpolate($attr.name || '', false)($scope);
-
-
-	  var parsedNgModel = $parse($attr.ngModel),
-	      parsedNgModelAssign = parsedNgModel.assign,
-	      ngModelGet = parsedNgModel,
-	      ngModelSet = parsedNgModelAssign,
-	      pendingDebounce = null,
-	      ctrl = this;
-
-	  this.$$setOptions = function(options) {
-	    ctrl.$options = options;
-	    if (options && options.getterSetter) {
-	      var invokeModelGetter = $parse($attr.ngModel + '()'),
-	          invokeModelSetter = $parse($attr.ngModel + '($$$p)');
-
-	      ngModelGet = function($scope) {
-	        var modelValue = parsedNgModel($scope);
-	        if (isFunction(modelValue)) {
-	          modelValue = invokeModelGetter($scope);
-	        }
-	        return modelValue;
-	      };
-	      ngModelSet = function($scope, newValue) {
-	        if (isFunction(parsedNgModel($scope))) {
-	          invokeModelSetter($scope, {$$$p: ctrl.$modelValue});
-	        } else {
-	          parsedNgModelAssign($scope, ctrl.$modelValue);
-	        }
-	      };
-	    } else if (!parsedNgModel.assign) {
-	      throw $ngModelMinErr('nonassign', "Expression '{0}' is non-assignable. Element: {1}",
-	          $attr.ngModel, startingTag($element));
-	    }
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$render
-	   *
-	   * @description
-	   * Called when the view needs to be updated. It is expected that the user of the ng-model
-	   * directive will implement this method.
-	   *
-	   * The `$render()` method is invoked in the following situations:
-	   *
-	   * * `$rollbackViewValue()` is called.  If we are rolling back the view value to the last
-	   *   committed value then `$render()` is called to update the input control.
-	   * * The value referenced by `ng-model` is changed programmatically and both the `$modelValue` and
-	   *   the `$viewValue` are different to last time.
-	   *
-	   * Since `ng-model` does not do a deep watch, `$render()` is only invoked if the values of
-	   * `$modelValue` and `$viewValue` are actually different to their previous value. If `$modelValue`
-	   * or `$viewValue` are objects (rather than a string or number) then `$render()` will not be
-	   * invoked if you only change a property on the objects.
-	   */
-	  this.$render = noop;
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$isEmpty
-	   *
-	   * @description
-	   * This is called when we need to determine if the value of an input is empty.
-	   *
-	   * For instance, the required directive does this to work out if the input has data or not.
-	   *
-	   * The default `$isEmpty` function checks whether the value is `undefined`, `''`, `null` or `NaN`.
-	   *
-	   * You can override this for input directives whose concept of being empty is different to the
-	   * default. The `checkboxInputType` directive does this because in its case a value of `false`
-	   * implies empty.
-	   *
-	   * @param {*} value The value of the input to check for emptiness.
-	   * @returns {boolean} True if `value` is "empty".
-	   */
-	  this.$isEmpty = function(value) {
-	    return isUndefined(value) || value === '' || value === null || value !== value;
-	  };
-
-	  var parentForm = $element.inheritedData('$formController') || nullFormCtrl,
-	      currentValidationRunId = 0;
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setValidity
-	   *
-	   * @description
-	   * Change the validity state, and notify the form.
-	   *
-	   * This method can be called within $parsers/$formatters or a custom validation implementation.
-	   * However, in most cases it should be sufficient to use the `ngModel.$validators` and
-	   * `ngModel.$asyncValidators` collections which will call `$setValidity` automatically.
-	   *
-	   * @param {string} validationErrorKey Name of the validator. The `validationErrorKey` will be assigned
-	   *        to either `$error[validationErrorKey]` or `$pending[validationErrorKey]`
-	   *        (for unfulfilled `$asyncValidators`), so that it is available for data-binding.
-	   *        The `validationErrorKey` should be in camelCase and will get converted into dash-case
-	   *        for class name. Example: `myError` will result in `ng-valid-my-error` and `ng-invalid-my-error`
-	   *        class and can be bound to as  `{{someForm.someControl.$error.myError}}` .
-	   * @param {boolean} isValid Whether the current state is valid (true), invalid (false), pending (undefined),
-	   *                          or skipped (null). Pending is used for unfulfilled `$asyncValidators`.
-	   *                          Skipped is used by Angular when validators do not run because of parse errors and
-	   *                          when `$asyncValidators` do not run because any of the `$validators` failed.
-	   */
-	  addSetValidityMethod({
-	    ctrl: this,
-	    $element: $element,
-	    set: function(object, property) {
-	      object[property] = true;
-	    },
-	    unset: function(object, property) {
-	      delete object[property];
-	    },
-	    parentForm: parentForm,
-	    $animate: $animate
-	  });
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setPristine
-	   *
-	   * @description
-	   * Sets the control to its pristine state.
-	   *
-	   * This method can be called to remove the `ng-dirty` class and set the control to its pristine
-	   * state (`ng-pristine` class). A model is considered to be pristine when the control
-	   * has not been changed from when first compiled.
-	   */
-	  this.$setPristine = function() {
-	    ctrl.$dirty = false;
-	    ctrl.$pristine = true;
-	    $animate.removeClass($element, DIRTY_CLASS);
-	    $animate.addClass($element, PRISTINE_CLASS);
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setDirty
-	   *
-	   * @description
-	   * Sets the control to its dirty state.
-	   *
-	   * This method can be called to remove the `ng-pristine` class and set the control to its dirty
-	   * state (`ng-dirty` class). A model is considered to be dirty when the control has been changed
-	   * from when first compiled.
-	   */
-	  this.$setDirty = function() {
-	    ctrl.$dirty = true;
-	    ctrl.$pristine = false;
-	    $animate.removeClass($element, PRISTINE_CLASS);
-	    $animate.addClass($element, DIRTY_CLASS);
-	    parentForm.$setDirty();
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setUntouched
-	   *
-	   * @description
-	   * Sets the control to its untouched state.
-	   *
-	   * This method can be called to remove the `ng-touched` class and set the control to its
-	   * untouched state (`ng-untouched` class). Upon compilation, a model is set as untouched
-	   * by default, however this function can be used to restore that state if the model has
-	   * already been touched by the user.
-	   */
-	  this.$setUntouched = function() {
-	    ctrl.$touched = false;
-	    ctrl.$untouched = true;
-	    $animate.setClass($element, UNTOUCHED_CLASS, TOUCHED_CLASS);
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setTouched
-	   *
-	   * @description
-	   * Sets the control to its touched state.
-	   *
-	   * This method can be called to remove the `ng-untouched` class and set the control to its
-	   * touched state (`ng-touched` class). A model is considered to be touched when the user has
-	   * first focused the control element and then shifted focus away from the control (blur event).
-	   */
-	  this.$setTouched = function() {
-	    ctrl.$touched = true;
-	    ctrl.$untouched = false;
-	    $animate.setClass($element, TOUCHED_CLASS, UNTOUCHED_CLASS);
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$rollbackViewValue
-	   *
-	   * @description
-	   * Cancel an update and reset the input element's value to prevent an update to the `$modelValue`,
-	   * which may be caused by a pending debounced event or because the input is waiting for a some
-	   * future event.
-	   *
-	   * If you have an input that uses `ng-model-options` to set up debounced events or events such
-	   * as blur you can have a situation where there is a period when the `$viewValue`
-	   * is out of synch with the ngModel's `$modelValue`.
-	   *
-	   * In this case, you can run into difficulties if you try to update the ngModel's `$modelValue`
-	   * programmatically before these debounced/future events have resolved/occurred, because Angular's
-	   * dirty checking mechanism is not able to tell whether the model has actually changed or not.
-	   *
-	   * The `$rollbackViewValue()` method should be called before programmatically changing the model of an
-	   * input which may have such events pending. This is important in order to make sure that the
-	   * input field will be updated with the new model value and any pending operations are cancelled.
-	   *
-	   * <example name="ng-model-cancel-update" module="cancel-update-example">
-	   *   <file name="app.js">
-	   *     angular.module('cancel-update-example', [])
-	   *
-	   *     .controller('CancelUpdateController', ['$scope', function($scope) {
-	   *       $scope.resetWithCancel = function(e) {
-	   *         if (e.keyCode == 27) {
-	   *           $scope.myForm.myInput1.$rollbackViewValue();
-	   *           $scope.myValue = '';
-	   *         }
-	   *       };
-	   *       $scope.resetWithoutCancel = function(e) {
-	   *         if (e.keyCode == 27) {
-	   *           $scope.myValue = '';
-	   *         }
-	   *       };
-	   *     }]);
-	   *   </file>
-	   *   <file name="index.html">
-	   *     <div ng-controller="CancelUpdateController">
-	   *       <p>Try typing something in each input.  See that the model only updates when you
-	   *          blur off the input.
-	   *        </p>
-	   *        <p>Now see what happens if you start typing then press the Escape key</p>
-	   *
-	   *       <form name="myForm" ng-model-options="{ updateOn: 'blur' }">
-	   *         <p>With $rollbackViewValue()</p>
-	   *         <input name="myInput1" ng-model="myValue" ng-keydown="resetWithCancel($event)"><br/>
-	   *         myValue: "{{ myValue }}"
-	   *
-	   *         <p>Without $rollbackViewValue()</p>
-	   *         <input name="myInput2" ng-model="myValue" ng-keydown="resetWithoutCancel($event)"><br/>
-	   *         myValue: "{{ myValue }}"
-	   *       </form>
-	   *     </div>
-	   *   </file>
-	   * </example>
-	   */
-	  this.$rollbackViewValue = function() {
-	    $timeout.cancel(pendingDebounce);
-	    ctrl.$viewValue = ctrl.$$lastCommittedViewValue;
-	    ctrl.$render();
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$validate
-	   *
-	   * @description
-	   * Runs each of the registered validators (first synchronous validators and then
-	   * asynchronous validators).
-	   * If the validity changes to invalid, the model will be set to `undefined`,
-	   * unless {@link ngModelOptions `ngModelOptions.allowInvalid`} is `true`.
-	   * If the validity changes to valid, it will set the model to the last available valid
-	   * modelValue, i.e. either the last parsed value or the last value set from the scope.
-	   */
-	  this.$validate = function() {
-	    // ignore $validate before model is initialized
-	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
-	      return;
-	    }
-
-	    var viewValue = ctrl.$$lastCommittedViewValue;
-	    // Note: we use the $$rawModelValue as $modelValue might have been
-	    // set to undefined during a view -> model update that found validation
-	    // errors. We can't parse the view here, since that could change
-	    // the model although neither viewValue nor the model on the scope changed
-	    var modelValue = ctrl.$$rawModelValue;
-
-	    // Check if the there's a parse error, so we don't unset it accidentially
-	    var parserName = ctrl.$$parserName || 'parse';
-	    var parserValid = ctrl.$error[parserName] ? false : undefined;
-
-	    var prevValid = ctrl.$valid;
-	    var prevModelValue = ctrl.$modelValue;
-
-	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
-
-	    ctrl.$$runValidators(parserValid, modelValue, viewValue, function(allValid) {
-	      // If there was no change in validity, don't update the model
-	      // This prevents changing an invalid modelValue to undefined
-	      if (!allowInvalid && prevValid !== allValid) {
-	        // Note: Don't check ctrl.$valid here, as we could have
-	        // external validators (e.g. calculated on the server),
-	        // that just call $setValidity and need the model value
-	        // to calculate their validity.
-	        ctrl.$modelValue = allValid ? modelValue : undefined;
-
-	        if (ctrl.$modelValue !== prevModelValue) {
-	          ctrl.$$writeModelToScope();
-	        }
-	      }
-	    });
-
-	  };
-
-	  this.$$runValidators = function(parseValid, modelValue, viewValue, doneCallback) {
-	    currentValidationRunId++;
-	    var localValidationRunId = currentValidationRunId;
-
-	    // check parser error
-	    if (!processParseErrors(parseValid)) {
-	      validationDone(false);
-	      return;
-	    }
-	    if (!processSyncValidators()) {
-	      validationDone(false);
-	      return;
-	    }
-	    processAsyncValidators();
-
-	    function processParseErrors(parseValid) {
-	      var errorKey = ctrl.$$parserName || 'parse';
-	      if (parseValid === undefined) {
-	        setValidity(errorKey, null);
-	      } else {
-	        setValidity(errorKey, parseValid);
-	        if (!parseValid) {
-	          forEach(ctrl.$validators, function(v, name) {
-	            setValidity(name, null);
-	          });
-	          forEach(ctrl.$asyncValidators, function(v, name) {
-	            setValidity(name, null);
-	          });
-	          return false;
-	        }
-	      }
-	      return true;
-	    }
-
-	    function processSyncValidators() {
-	      var syncValidatorsValid = true;
-	      forEach(ctrl.$validators, function(validator, name) {
-	        var result = validator(modelValue, viewValue);
-	        syncValidatorsValid = syncValidatorsValid && result;
-	        setValidity(name, result);
-	      });
-	      if (!syncValidatorsValid) {
-	        forEach(ctrl.$asyncValidators, function(v, name) {
-	          setValidity(name, null);
-	        });
-	        return false;
-	      }
-	      return true;
-	    }
-
-	    function processAsyncValidators() {
-	      var validatorPromises = [];
-	      var allValid = true;
-	      forEach(ctrl.$asyncValidators, function(validator, name) {
-	        var promise = validator(modelValue, viewValue);
-	        if (!isPromiseLike(promise)) {
-	          throw $ngModelMinErr("$asyncValidators",
-	            "Expected asynchronous validator to return a promise but got '{0}' instead.", promise);
-	        }
-	        setValidity(name, undefined);
-	        validatorPromises.push(promise.then(function() {
-	          setValidity(name, true);
-	        }, function(error) {
-	          allValid = false;
-	          setValidity(name, false);
-	        }));
-	      });
-	      if (!validatorPromises.length) {
-	        validationDone(true);
-	      } else {
-	        $q.all(validatorPromises).then(function() {
-	          validationDone(allValid);
-	        }, noop);
-	      }
-	    }
-
-	    function setValidity(name, isValid) {
-	      if (localValidationRunId === currentValidationRunId) {
-	        ctrl.$setValidity(name, isValid);
-	      }
-	    }
-
-	    function validationDone(allValid) {
-	      if (localValidationRunId === currentValidationRunId) {
-
-	        doneCallback(allValid);
-	      }
-	    }
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$commitViewValue
-	   *
-	   * @description
-	   * Commit a pending update to the `$modelValue`.
-	   *
-	   * Updates may be pending by a debounced event or because the input is waiting for a some future
-	   * event defined in `ng-model-options`. this method is rarely needed as `NgModelController`
-	   * usually handles calling this in response to input events.
-	   */
-	  this.$commitViewValue = function() {
-	    var viewValue = ctrl.$viewValue;
-
-	    $timeout.cancel(pendingDebounce);
-
-	    // If the view value has not changed then we should just exit, except in the case where there is
-	    // a native validator on the element. In this case the validation state may have changed even though
-	    // the viewValue has stayed empty.
-	    if (ctrl.$$lastCommittedViewValue === viewValue && (viewValue !== '' || !ctrl.$$hasNativeValidators)) {
-	      return;
-	    }
-	    ctrl.$$lastCommittedViewValue = viewValue;
-
-	    // change to dirty
-	    if (ctrl.$pristine) {
-	      this.$setDirty();
-	    }
-	    this.$$parseAndValidate();
-	  };
-
-	  this.$$parseAndValidate = function() {
-	    var viewValue = ctrl.$$lastCommittedViewValue;
-	    var modelValue = viewValue;
-	    var parserValid = isUndefined(modelValue) ? undefined : true;
-
-	    if (parserValid) {
-	      for (var i = 0; i < ctrl.$parsers.length; i++) {
-	        modelValue = ctrl.$parsers[i](modelValue);
-	        if (isUndefined(modelValue)) {
-	          parserValid = false;
-	          break;
-	        }
-	      }
-	    }
-	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
-	      // ctrl.$modelValue has not been touched yet...
-	      ctrl.$modelValue = ngModelGet($scope);
-	    }
-	    var prevModelValue = ctrl.$modelValue;
-	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
-	    ctrl.$$rawModelValue = modelValue;
-
-	    if (allowInvalid) {
-	      ctrl.$modelValue = modelValue;
-	      writeToModelIfNeeded();
-	    }
-
-	    // Pass the $$lastCommittedViewValue here, because the cached viewValue might be out of date.
-	    // This can happen if e.g. $setViewValue is called from inside a parser
-	    ctrl.$$runValidators(parserValid, modelValue, ctrl.$$lastCommittedViewValue, function(allValid) {
-	      if (!allowInvalid) {
-	        // Note: Don't check ctrl.$valid here, as we could have
-	        // external validators (e.g. calculated on the server),
-	        // that just call $setValidity and need the model value
-	        // to calculate their validity.
-	        ctrl.$modelValue = allValid ? modelValue : undefined;
-	        writeToModelIfNeeded();
-	      }
-	    });
-
-	    function writeToModelIfNeeded() {
-	      if (ctrl.$modelValue !== prevModelValue) {
-	        ctrl.$$writeModelToScope();
-	      }
-	    }
-	  };
-
-	  this.$$writeModelToScope = function() {
-	    ngModelSet($scope, ctrl.$modelValue);
-	    forEach(ctrl.$viewChangeListeners, function(listener) {
-	      try {
-	        listener();
-	      } catch (e) {
-	        $exceptionHandler(e);
-	      }
-	    });
-	  };
-
-	  /**
-	   * @ngdoc method
-	   * @name ngModel.NgModelController#$setViewValue
-	   *
-	   * @description
-	   * Update the view value.
-	   *
-	   * This method should be called when an input directive want to change the view value; typically,
-	   * this is done from within a DOM event handler.
-	   *
-	   * For example {@link ng.directive:input input} calls it when the value of the input changes and
-	   * {@link ng.directive:select select} calls it when an option is selected.
-	   *
-	   * If the new `value` is an object (rather than a string or a number), we should make a copy of the
-	   * object before passing it to `$setViewValue`.  This is because `ngModel` does not perform a deep
-	   * watch of objects, it only looks for a change of identity. If you only change the property of
-	   * the object then ngModel will not realise that the object has changed and will not invoke the
-	   * `$parsers` and `$validators` pipelines.
-	   *
-	   * For this reason, you should not change properties of the copy once it has been passed to
-	   * `$setViewValue`. Otherwise you may cause the model value on the scope to change incorrectly.
-	   *
-	   * When this method is called, the new `value` will be staged for committing through the `$parsers`
-	   * and `$validators` pipelines. If there are no special {@link ngModelOptions} specified then the staged
-	   * value sent directly for processing, finally to be applied to `$modelValue` and then the
-	   * **expression** specified in the `ng-model` attribute.
-	   *
-	   * Lastly, all the registered change listeners, in the `$viewChangeListeners` list, are called.
-	   *
-	   * In case the {@link ng.directive:ngModelOptions ngModelOptions} directive is used with `updateOn`
-	   * and the `default` trigger is not listed, all those actions will remain pending until one of the
-	   * `updateOn` events is triggered on the DOM element.
-	   * All these actions will be debounced if the {@link ng.directive:ngModelOptions ngModelOptions}
-	   * directive is used with a custom debounce for this particular event.
-	   *
-	   * Note that calling this function does not trigger a `$digest`.
-	   *
-	   * @param {string} value Value from the view.
-	   * @param {string} trigger Event that triggered the update.
-	   */
-	  this.$setViewValue = function(value, trigger) {
-	    ctrl.$viewValue = value;
-	    if (!ctrl.$options || ctrl.$options.updateOnDefault) {
-	      ctrl.$$debounceViewValueCommit(trigger);
-	    }
-	  };
-
-	  this.$$debounceViewValueCommit = function(trigger) {
-	    var debounceDelay = 0,
-	        options = ctrl.$options,
-	        debounce;
-
-	    if (options && isDefined(options.debounce)) {
-	      debounce = options.debounce;
-	      if (isNumber(debounce)) {
-	        debounceDelay = debounce;
-	      } else if (isNumber(debounce[trigger])) {
-	        debounceDelay = debounce[trigger];
-	      } else if (isNumber(debounce['default'])) {
-	        debounceDelay = debounce['default'];
-	      }
-	    }
-
-	    $timeout.cancel(pendingDebounce);
-	    if (debounceDelay) {
-	      pendingDebounce = $timeout(function() {
-	        ctrl.$commitViewValue();
-	      }, debounceDelay);
-	    } else if ($rootScope.$$phase) {
-	      ctrl.$commitViewValue();
-	    } else {
-	      $scope.$apply(function() {
-	        ctrl.$commitViewValue();
-	      });
-	    }
-	  };
-
-	  // model -> value
-	  // Note: we cannot use a normal scope.$watch as we want to detect the following:
-	  // 1. scope value is 'a'
-	  // 2. user enters 'b'
-	  // 3. ng-change kicks in and reverts scope value to 'a'
-	  //    -> scope value did not change since the last digest as
-	  //       ng-change executes in apply phase
-	  // 4. view should be changed back to 'a'
-	  $scope.$watch(function ngModelWatch() {
-	    var modelValue = ngModelGet($scope);
-
-	    // if scope model value and ngModel value are out of sync
-	    // TODO(perf): why not move this to the action fn?
-	    if (modelValue !== ctrl.$modelValue) {
-	      ctrl.$modelValue = ctrl.$$rawModelValue = modelValue;
-
-	      var formatters = ctrl.$formatters,
-	          idx = formatters.length;
-
-	      var viewValue = modelValue;
-	      while (idx--) {
-	        viewValue = formatters[idx](viewValue);
-	      }
-	      if (ctrl.$viewValue !== viewValue) {
-	        ctrl.$viewValue = ctrl.$$lastCommittedViewValue = viewValue;
-	        ctrl.$render();
-
-	        ctrl.$$runValidators(undefined, modelValue, viewValue, noop);
-	      }
-	    }
-
-	    return modelValue;
-	  });
-	}];
-
-
-	/**
-	 * @ngdoc directive
-	 * @name ngModel
-	 *
-	 * @element input
-	 * @priority 1
-	 *
-	 * @description
-	 * The `ngModel` directive binds an `input`,`select`, `textarea` (or custom form control) to a
-	 * property on the scope using {@link ngModel.NgModelController NgModelController},
-	 * which is created and exposed by this directive.
-	 *
-	 * `ngModel` is responsible for:
-	 *
-	 * - Binding the view into the model, which other directives such as `input`, `textarea` or `select`
-	 *   require.
-	 * - Providing validation behavior (i.e. required, number, email, url).
-	 * - Keeping the state of the control (valid/invalid, dirty/pristine, touched/untouched, validation errors).
-	 * - Setting related css classes on the element (`ng-valid`, `ng-invalid`, `ng-dirty`, `ng-pristine`, `ng-touched`, `ng-untouched`) including animations.
-	 * - Registering the control with its parent {@link ng.directive:form form}.
-	 *
-	 * Note: `ngModel` will try to bind to the property given by evaluating the expression on the
-	 * current scope. If the property doesn't already exist on this scope, it will be created
-	 * implicitly and added to the scope.
-	 *
-	 * For best practices on using `ngModel`, see:
-	 *
-	 *  - [Understanding Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
-	 *
-	 * For basic examples, how to use `ngModel`, see:
-	 *
-	 *  - {@link ng.directive:input input}
-	 *    - {@link input[text] text}
-	 *    - {@link input[checkbox] checkbox}
-	 *    - {@link input[radio] radio}
-	 *    - {@link input[number] number}
-	 *    - {@link input[email] email}
-	 *    - {@link input[url] url}
-	 *    - {@link input[date] date}
-	 *    - {@link input[datetime-local] datetime-local}
-	 *    - {@link input[time] time}
-	 *    - {@link input[month] month}
-	 *    - {@link input[week] week}
-	 *  - {@link ng.directive:select select}
-	 *  - {@link ng.directive:textarea textarea}
-	 *
-	 * # CSS classes
-	 * The following CSS classes are added and removed on the associated input/select/textarea element
-	 * depending on the validity of the model.
-	 *
-	 *  - `ng-valid`: the model is valid
-	 *  - `ng-invalid`: the model is invalid
-	 *  - `ng-valid-[key]`: for each valid key added by `$setValidity`
-	 *  - `ng-invalid-[key]`: for each invalid key added by `$setValidity`
-	 *  - `ng-pristine`: the control hasn't been interacted with yet
-	 *  - `ng-dirty`: the control has been interacted with
-	 *  - `ng-touched`: the control has been blurred
-	 *  - `ng-untouched`: the control hasn't been blurred
-	 *  - `ng-pending`: any `$asyncValidators` are unfulfilled
-	 *
-	 * Keep in mind that ngAnimate can detect each of these classes when added and removed.
-	 *
-	 * ## Animation Hooks
-	 *
-	 * Animations within models are triggered when any of the associated CSS classes are added and removed
-	 * on the input element which is attached to the model. These classes are: `.ng-pristine`, `.ng-dirty`,
-	 * `.ng-invalid` and `.ng-valid` as well as any other validations that are performed on the model itself.
-	 * The animations that are triggered within ngModel are similar to how they work in ngClass and
-	 * animations can be hooked into using CSS transitions, keyframes as well as JS animations.
-	 *
-	 * The following example shows a simple way to utilize CSS transitions to style an input element
-	 * that has been rendered as invalid after it has been validated:
-	 *
-	 * <pre>
-	 * //be sure to include ngAnimate as a module to hook into more
-	 * //advanced animations
-	 * .my-input {
-	 *   transition:0.5s linear all;
-	 *   background: white;
-	 * }
-	 * .my-input.ng-invalid {
-	 *   background: red;
-	 *   color:white;
-	 * }
-	 * </pre>
-	 *
-	 * @example
-	 * <example deps="angular-animate.js" animations="true" fixBase="true" module="inputExample">
-	     <file name="index.html">
-	       <script>
-	        angular.module('inputExample', [])
-	          .controller('ExampleController', ['$scope', function($scope) {
-	            $scope.val = '1';
-	          }]);
-	       </script>
-	       <style>
-	         .my-input {
-	           -webkit-transition:all linear 0.5s;
-	           transition:all linear 0.5s;
-	           background: transparent;
-	         }
-	         .my-input.ng-invalid {
-	           color:white;
-	           background: red;
-	         }
-	       </style>
-	       Update input to see transitions when valid/invalid.
-	       Integer is a valid value.
-	       <form name="testForm" ng-controller="ExampleController">
-	         <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input" />
-	       </form>
-	     </file>
-	 * </example>
-	 *
-	 * ## Binding to a getter/setter
-	 *
-	 * Sometimes it's helpful to bind `ngModel` to a getter/setter function.  A getter/setter is a
-	 * function that returns a representation of the model when called with zero arguments, and sets
-	 * the internal state of a model when called with an argument. It's sometimes useful to use this
-	 * for models that have an internal representation that's different than what the model exposes
-	 * to the view.
-	 *
-	 * <div class="alert alert-success">
-	 * **Best Practice:** It's best to keep getters fast because Angular is likely to call them more
-	 * frequently than other parts of your code.
-	 * </div>
-	 *
-	 * You use this behavior by adding `ng-model-options="{ getterSetter: true }"` to an element that
-	 * has `ng-model` attached to it. You can also add `ng-model-options="{ getterSetter: true }"` to
-	 * a `<form>`, which will enable this behavior for all `<input>`s within it. See
-	 * {@link ng.directive:ngModelOptions `ngModelOptions`} for more.
-	 *
-	 * The following example shows how to use `ngModel` with a getter/setter:
-	 *
-	 * @example
-	 * <example name="ngModel-getter-setter" module="getterSetterExample">
-	     <file name="index.html">
-	       <div ng-controller="ExampleController">
-	         <form name="userForm">
-	           Name:
-	           <input type="text" name="userName"
-	                  ng-model="user.name"
-	                  ng-model-options="{ getterSetter: true }" />
-	         </form>
-	         <pre>user.name = <span ng-bind="user.name()"></span></pre>
-	       </div>
-	     </file>
-	     <file name="app.js">
-	       angular.module('getterSetterExample', [])
-	         .controller('ExampleController', ['$scope', function($scope) {
-	           var _name = 'Brian';
-	           $scope.user = {
-	             name: function(newName) {
-	               if (angular.isDefined(newName)) {
-	                 _name = newName;
-	               }
-	               return _name;
-	             }
-	           };
-	         }]);
-	     </file>
-	 * </example>
-	 */
-	var ngModelDirective = ['$rootScope', function($rootScope) {
-	  return {
-	    restrict: 'A',
-	    require: ['ngModel', '^?form', '^?ngModelOptions'],
-	    controller: NgModelController,
-	    // Prelink needs to run before any input directive
-	    // so that we can set the NgModelOptions in NgModelController
-	    // before anyone else uses it.
-	    priority: 1,
-	    compile: function ngModelCompile(element) {
-	      // Setup initial state of the control
-	      element.addClass(PRISTINE_CLASS).addClass(UNTOUCHED_CLASS).addClass(VALID_CLASS);
-
-	      return {
-	        pre: function ngModelPreLink(scope, element, attr, ctrls) {
-	          var modelCtrl = ctrls[0],
-	              formCtrl = ctrls[1] || nullFormCtrl;
-
-	          modelCtrl.$$setOptions(ctrls[2] && ctrls[2].$options);
-
-	          // notify others, especially parent forms
-	          formCtrl.$addControl(modelCtrl);
-
-	          attr.$observe('name', function(newValue) {
-	            if (modelCtrl.$name !== newValue) {
-	              formCtrl.$$renameControl(modelCtrl, newValue);
-	            }
-	          });
-
-	          scope.$on('$destroy', function() {
-	            formCtrl.$removeControl(modelCtrl);
-	          });
-	        },
-	        post: function ngModelPostLink(scope, element, attr, ctrls) {
-	          var modelCtrl = ctrls[0];
-	          if (modelCtrl.$options && modelCtrl.$options.updateOn) {
-	            element.on(modelCtrl.$options.updateOn, function(ev) {
-	              modelCtrl.$$debounceViewValueCommit(ev && ev.type);
-	            });
-	          }
-
-	          element.on('blur', function(ev) {
-	            if (modelCtrl.$touched) return;
-
-	            if ($rootScope.$$phase) {
-	              scope.$evalAsync(modelCtrl.$setTouched);
-	            } else {
-	              scope.$apply(modelCtrl.$setTouched);
-	            }
-	          });
-	        }
-	      };
-	    }
-	  };
-	}];
-
-
-	/**
-	 * @ngdoc directive
-	 * @name ngChange
-	 *
-	 * @description
-	 * Evaluate the given expression when the user changes the input.
-	 * The expression is evaluated immediately, unlike the JavaScript onchange event
-	 * which only triggers at the end of a change (usually, when the user leaves the
-	 * form element or presses the return key).
-	 *
-	 * The `ngChange` expression is only evaluated when a change in the input value causes
-	 * a new value to be committed to the model.
-	 *
-	 * It will not be evaluated:
-	 * * if the value returned from the `$parsers` transformation pipeline has not changed
-	 * * if the input has continued to be invalid since the model will stay `null`
-	 * * if the model is changed programmatically and not by a change to the input value
-	 *
-	 *
-	 * Note, this directive requires `ngModel` to be present.
-	 *
-	 * @element input
-	 * @param {expression} ngChange {@link guide/expression Expression} to evaluate upon change
-	 * in input value.
-	 *
-	 * @example
-	 * <example name="ngChange-directive" module="changeExample">
-	 *   <file name="index.html">
-	 *     <script>
-	 *       angular.module('changeExample', [])
-	 *         .controller('ExampleController', ['$scope', function($scope) {
-	 *           $scope.counter = 0;
-	 *           $scope.change = function() {
-	 *             $scope.counter++;
-	 *           };
-	 *         }]);
-	 *     </script>
-	 *     <div ng-controller="ExampleController">
-	 *       <input type="checkbox" ng-model="confirmed" ng-change="change()" id="ng-change-example1" />
-	 *       <input type="checkbox" ng-model="confirmed" id="ng-change-example2" />
-	 *       <label for="ng-change-example2">Confirmed</label><br />
-	 *       <tt>debug = {{confirmed}}</tt><br/>
-	 *       <tt>counter = {{counter}}</tt><br/>
-	 *     </div>
-	 *   </file>
-	 *   <file name="protractor.js" type="protractor">
-	 *     var counter = element(by.binding('counter'));
-	 *     var debug = element(by.binding('confirmed'));
-	 *
-	 *     it('should evaluate the expression if changing from view', function() {
-	 *       expect(counter.getText()).toContain('0');
-	 *
-	 *       element(by.id('ng-change-example1')).click();
-	 *
-	 *       expect(counter.getText()).toContain('1');
-	 *       expect(debug.getText()).toContain('true');
-	 *     });
-	 *
-	 *     it('should not evaluate the expression if changing from model', function() {
-	 *       element(by.id('ng-change-example2')).click();
-
-	 *       expect(counter.getText()).toContain('0');
-	 *       expect(debug.getText()).toContain('true');
-	 *     });
-	 *   </file>
-	 * </example>
-	 */
-	var ngChangeDirective = valueFn({
-	  restrict: 'A',
-	  require: 'ngModel',
-	  link: function(scope, element, attr, ctrl) {
-	    ctrl.$viewChangeListeners.push(function() {
-	      scope.$eval(attr.ngChange);
-	    });
-	  }
-	});
-
-
-	var requiredDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-	      attr.required = true; // force truthy in case we are on non input element
-
-	      ctrl.$validators.required = function(modelValue, viewValue) {
-	        return !attr.required || !ctrl.$isEmpty(viewValue);
-	      };
-
-	      attr.$observe('required', function() {
-	        ctrl.$validate();
-	      });
-	    }
-	  };
-	};
-
-
-	var patternDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-
-	      var regexp, patternExp = attr.ngPattern || attr.pattern;
-	      attr.$observe('pattern', function(regex) {
-	        if (isString(regex) && regex.length > 0) {
-	          regex = new RegExp('^' + regex + '$');
-	        }
-
-	        if (regex && !regex.test) {
-	          throw minErr('ngPattern')('noregexp',
-	            'Expected {0} to be a RegExp but was {1}. Element: {2}', patternExp,
-	            regex, startingTag(elm));
-	        }
-
-	        regexp = regex || undefined;
-	        ctrl.$validate();
-	      });
-
-	      ctrl.$validators.pattern = function(value) {
-	        return ctrl.$isEmpty(value) || isUndefined(regexp) || regexp.test(value);
-	      };
-	    }
-	  };
-	};
-
-
-	var maxlengthDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-
-	      var maxlength = -1;
-	      attr.$observe('maxlength', function(value) {
-	        var intVal = int(value);
-	        maxlength = isNaN(intVal) ? -1 : intVal;
-	        ctrl.$validate();
-	      });
-	      ctrl.$validators.maxlength = function(modelValue, viewValue) {
-	        return (maxlength < 0) || ctrl.$isEmpty(modelValue) || (viewValue.length <= maxlength);
-	      };
-	    }
-	  };
-	};
-
-	var minlengthDirective = function() {
-	  return {
-	    restrict: 'A',
-	    require: '?ngModel',
-	    link: function(scope, elm, attr, ctrl) {
-	      if (!ctrl) return;
-
-	      var minlength = 0;
-	      attr.$observe('minlength', function(value) {
-	        minlength = int(value) || 0;
-	        ctrl.$validate();
-	      });
-	      ctrl.$validators.minlength = function(modelValue, viewValue) {
-	        return ctrl.$isEmpty(viewValue) || viewValue.length >= minlength;
-	      };
-	    }
-	  };
-	};
-
-
-	/**
-	 * @ngdoc directive
-	 * @name ngList
-	 *
-	 * @description
-	 * Text input that converts between a delimited string and an array of strings. The default
-	 * delimiter is a comma followed by a space - equivalent to `ng-list=", "`. You can specify a custom
-	 * delimiter as the value of the `ngList` attribute - for example, `ng-list=" | "`.
-	 *
-	 * The behaviour of the directive is affected by the use of the `ngTrim` attribute.
-	 * * If `ngTrim` is set to `"false"` then whitespace around both the separator and each
-	 *   list item is respected. This implies that the user of the directive is responsible for
-	 *   dealing with whitespace but also allows you to use whitespace as a delimiter, such as a
-	 *   tab or newline character.
-	 * * Otherwise whitespace around the delimiter is ignored when splitting (although it is respected
-	 *   when joining the list items back together) and whitespace around each list item is stripped
-	 *   before it is added to the model.
-	 *
-	 * ### Example with Validation
-	 *
-	 * <example name="ngList-directive" module="listExample">
-	 *   <file name="app.js">
-	 *      angular.module('listExample', [])
-	 *        .controller('ExampleController', ['$scope', function($scope) {
-	 *          $scope.names = ['morpheus', 'neo', 'trinity'];
-	 *        }]);
-	 *   </file>
-	 *   <file name="index.html">
-	 *    <form name="myForm" ng-controller="ExampleController">
-	 *      List: <input name="namesInput" ng-model="names" ng-list required>
-	 *      <span class="error" ng-show="myForm.namesInput.$error.required">
-	 *        Required!</span>
-	 *      <br>
-	 *      <tt>names = {{names}}</tt><br/>
-	 *      <tt>myForm.namesInput.$valid = {{myForm.namesInput.$valid}}</tt><br/>
-	 *      <tt>myForm.namesInput.$error = {{myForm.namesInput.$error}}</tt><br/>
-	 *      <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
-	 *      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
-	 *     </form>
-	 *   </file>
-	 *   <file name="protractor.js" type="protractor">
-	 *     var listInput = element(by.model('names'));
-	 *     var names = element(by.exactBinding('names'));
-	 *     var valid = element(by.binding('myForm.namesInput.$valid'));
-	 *     var error = element(by.css('span.error'));
-	 *
-	 *     it('should initialize to model', function() {
-	 *       expect(names.getText()).toContain('["morpheus","neo","trinity"]');
-	 *       expect(valid.getText()).toContain('true');
-	 *       expect(error.getCssValue('display')).toBe('none');
-	 *     });
-	 *
-	 *     it('should be invalid if empty', function() {
-	 *       listInput.clear();
-	 *       listInput.sendKeys('');
-	 *
-	 *       expect(names.getText()).toContain('');
-	 *       expect(valid.getText()).toContain('false');
-	 *       expect(error.getCssValue('display')).not.toBe('none');
-	 *     });
-	 *   </file>
-	 * </example>
-	 *
-	 * ### Example - splitting on whitespace
-	 * <example name="ngList-directive-newlines">
-	 *   <file name="index.html">
-	 *    <textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
-	 *    <pre>{{ list | json }}</pre>
-	 *   </file>
-	 *   <file name="protractor.js" type="protractor">
-	 *     it("should split the text by newlines", function() {
-	 *       var listInput = element(by.model('list'));
-	 *       var output = element(by.binding('list | json'));
-	 *       listInput.sendKeys('abc\ndef\nghi');
-	 *       expect(output.getText()).toContain('[\n  "abc",\n  "def",\n  "ghi"\n]');
-	 *     });
-	 *   </file>
-	 * </example>
-	 *
-	 * @element input
-	 * @param {string=} ngList optional delimiter that should be used to split the value.
-	 */
-	var ngListDirective = function() {
-	  return {
-	    restrict: 'A',
-	    priority: 100,
-	    require: 'ngModel',
-	    link: function(scope, element, attr, ctrl) {
-	      // We want to control whitespace trimming so we use this convoluted approach
-	      // to access the ngList attribute, which doesn't pre-trim the attribute
-	      var ngList = element.attr(attr.$attr.ngList) || ', ';
-	      var trimValues = attr.ngTrim !== 'false';
-	      var separator = trimValues ? trim(ngList) : ngList;
-
-	      var parse = function(viewValue) {
-	        // If the viewValue is invalid (say required but empty) it will be `undefined`
-	        if (isUndefined(viewValue)) return;
-
-	        var list = [];
-
-	        if (viewValue) {
-	          forEach(viewValue.split(separator), function(value) {
-	            if (value) list.push(trimValues ? trim(value) : value);
-	          });
-	        }
-
-	        return list;
-	      };
-
-	      ctrl.$parsers.push(parse);
-	      ctrl.$formatters.push(function(value) {
-	        if (isArray(value)) {
-	          return value.join(ngList);
-	        }
-
-	        return undefined;
-	      });
-
-	      // Override the standard $isEmpty because an empty array means the input is empty.
-	      ctrl.$isEmpty = function(value) {
-	        return !value || !value.length;
-	      };
-	    }
-	  };
-	};
 
 
 	var CONSTANT_VALUE_REGEXP = /^(true|false|\d+)$/;
@@ -22188,281 +20871,6 @@
 	    }
 	  };
 	};
-
-	/**
-	 * @ngdoc directive
-	 * @name ngModelOptions
-	 *
-	 * @description
-	 * Allows tuning how model updates are done. Using `ngModelOptions` you can specify a custom list of
-	 * events that will trigger a model update and/or a debouncing delay so that the actual update only
-	 * takes place when a timer expires; this timer will be reset after another change takes place.
-	 *
-	 * Given the nature of `ngModelOptions`, the value displayed inside input fields in the view might
-	 * be different than the value in the actual model. This means that if you update the model you
-	 * should also invoke {@link ngModel.NgModelController `$rollbackViewValue`} on the relevant input field in
-	 * order to make sure it is synchronized with the model and that any debounced action is canceled.
-	 *
-	 * The easiest way to reference the control's {@link ngModel.NgModelController `$rollbackViewValue`}
-	 * method is by making sure the input is placed inside a form that has a `name` attribute. This is
-	 * important because `form` controllers are published to the related scope under the name in their
-	 * `name` attribute.
-	 *
-	 * Any pending changes will take place immediately when an enclosing form is submitted via the
-	 * `submit` event. Note that `ngClick` events will occur before the model is updated. Use `ngSubmit`
-	 * to have access to the updated model.
-	 *
-	 * `ngModelOptions` has an effect on the element it's declared on and its descendants.
-	 *
-	 * @param {Object} ngModelOptions options to apply to the current model. Valid keys are:
-	 *   - `updateOn`: string specifying which event should the input be bound to. You can set several
-	 *     events using an space delimited list. There is a special event called `default` that
-	 *     matches the default events belonging of the control.
-	 *   - `debounce`: integer value which contains the debounce model update value in milliseconds. A
-	 *     value of 0 triggers an immediate update. If an object is supplied instead, you can specify a
-	 *     custom value for each event. For example:
-	 *     `ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"`
-	 *   - `allowInvalid`: boolean value which indicates that the model can be set with values that did
-	 *     not validate correctly instead of the default behavior of setting the model to undefined.
-	 *   - `getterSetter`: boolean value which determines whether or not to treat functions bound to
-	       `ngModel` as getters/setters.
-	 *   - `timezone`: Defines the timezone to be used to read/write the `Date` instance in the model for
-	 *     `<input type="date">`, `<input type="time">`, ... . Right now, the only supported value is `'UTC'`,
-	 *     otherwise the default timezone of the browser will be used.
-	 *
-	 * @example
-
-	  The following example shows how to override immediate updates. Changes on the inputs within the
-	  form will update the model only when the control loses focus (blur event). If `escape` key is
-	  pressed while the input field is focused, the value is reset to the value in the current model.
-
-	  <example name="ngModelOptions-directive-blur" module="optionsExample">
-	    <file name="index.html">
-	      <div ng-controller="ExampleController">
-	        <form name="userForm">
-	          Name:
-	          <input type="text" name="userName"
-	                 ng-model="user.name"
-	                 ng-model-options="{ updateOn: 'blur' }"
-	                 ng-keyup="cancel($event)" /><br />
-
-	          Other data:
-	          <input type="text" ng-model="user.data" /><br />
-	        </form>
-	        <pre>user.name = <span ng-bind="user.name"></span></pre>
-	      </div>
-	    </file>
-	    <file name="app.js">
-	      angular.module('optionsExample', [])
-	        .controller('ExampleController', ['$scope', function($scope) {
-	          $scope.user = { name: 'say', data: '' };
-
-	          $scope.cancel = function(e) {
-	            if (e.keyCode == 27) {
-	              $scope.userForm.userName.$rollbackViewValue();
-	            }
-	          };
-	        }]);
-	    </file>
-	    <file name="protractor.js" type="protractor">
-	      var model = element(by.binding('user.name'));
-	      var input = element(by.model('user.name'));
-	      var other = element(by.model('user.data'));
-
-	      it('should allow custom events', function() {
-	        input.sendKeys(' hello');
-	        input.click();
-	        expect(model.getText()).toEqual('say');
-	        other.click();
-	        expect(model.getText()).toEqual('say hello');
-	      });
-
-	      it('should $rollbackViewValue when model changes', function() {
-	        input.sendKeys(' hello');
-	        expect(input.getAttribute('value')).toEqual('say hello');
-	        input.sendKeys(protractor.Key.ESCAPE);
-	        expect(input.getAttribute('value')).toEqual('say');
-	        other.click();
-	        expect(model.getText()).toEqual('say');
-	      });
-	    </file>
-	  </example>
-
-	  This one shows how to debounce model changes. Model will be updated only 1 sec after last change.
-	  If the `Clear` button is pressed, any debounced action is canceled and the value becomes empty.
-
-	  <example name="ngModelOptions-directive-debounce" module="optionsExample">
-	    <file name="index.html">
-	      <div ng-controller="ExampleController">
-	        <form name="userForm">
-	          Name:
-	          <input type="text" name="userName"
-	                 ng-model="user.name"
-	                 ng-model-options="{ debounce: 1000 }" />
-	          <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button><br />
-	        </form>
-	        <pre>user.name = <span ng-bind="user.name"></span></pre>
-	      </div>
-	    </file>
-	    <file name="app.js">
-	      angular.module('optionsExample', [])
-	        .controller('ExampleController', ['$scope', function($scope) {
-	          $scope.user = { name: 'say' };
-	        }]);
-	    </file>
-	  </example>
-
-	  This one shows how to bind to getter/setters:
-
-	  <example name="ngModelOptions-directive-getter-setter" module="getterSetterExample">
-	    <file name="index.html">
-	      <div ng-controller="ExampleController">
-	        <form name="userForm">
-	          Name:
-	          <input type="text" name="userName"
-	                 ng-model="user.name"
-	                 ng-model-options="{ getterSetter: true }" />
-	        </form>
-	        <pre>user.name = <span ng-bind="user.name()"></span></pre>
-	      </div>
-	    </file>
-	    <file name="app.js">
-	      angular.module('getterSetterExample', [])
-	        .controller('ExampleController', ['$scope', function($scope) {
-	          var _name = 'Brian';
-	          $scope.user = {
-	            name: function(newName) {
-	              return angular.isDefined(newName) ? (_name = newName) : _name;
-	            }
-	          };
-	        }]);
-	    </file>
-	  </example>
-	 */
-	var ngModelOptionsDirective = function() {
-	  return {
-	    restrict: 'A',
-	    controller: ['$scope', '$attrs', function($scope, $attrs) {
-	      var that = this;
-	      this.$options = $scope.$eval($attrs.ngModelOptions);
-	      // Allow adding/overriding bound events
-	      if (this.$options.updateOn !== undefined) {
-	        this.$options.updateOnDefault = false;
-	        // extract "default" pseudo-event from list of events that can trigger a model update
-	        this.$options.updateOn = trim(this.$options.updateOn.replace(DEFAULT_REGEXP, function() {
-	          that.$options.updateOnDefault = true;
-	          return ' ';
-	        }));
-	      } else {
-	        this.$options.updateOnDefault = true;
-	      }
-	    }]
-	  };
-	};
-
-	// helper methods
-	function addSetValidityMethod(context) {
-	  var ctrl = context.ctrl,
-	      $element = context.$element,
-	      classCache = {},
-	      set = context.set,
-	      unset = context.unset,
-	      parentForm = context.parentForm,
-	      $animate = context.$animate;
-
-	  classCache[INVALID_CLASS] = !(classCache[VALID_CLASS] = $element.hasClass(VALID_CLASS));
-
-	  ctrl.$setValidity = setValidity;
-
-	  function setValidity(validationErrorKey, state, options) {
-	    if (state === undefined) {
-	      createAndSet('$pending', validationErrorKey, options);
-	    } else {
-	      unsetAndCleanup('$pending', validationErrorKey, options);
-	    }
-	    if (!isBoolean(state)) {
-	      unset(ctrl.$error, validationErrorKey, options);
-	      unset(ctrl.$$success, validationErrorKey, options);
-	    } else {
-	      if (state) {
-	        unset(ctrl.$error, validationErrorKey, options);
-	        set(ctrl.$$success, validationErrorKey, options);
-	      } else {
-	        set(ctrl.$error, validationErrorKey, options);
-	        unset(ctrl.$$success, validationErrorKey, options);
-	      }
-	    }
-	    if (ctrl.$pending) {
-	      cachedToggleClass(PENDING_CLASS, true);
-	      ctrl.$valid = ctrl.$invalid = undefined;
-	      toggleValidationCss('', null);
-	    } else {
-	      cachedToggleClass(PENDING_CLASS, false);
-	      ctrl.$valid = isObjectEmpty(ctrl.$error);
-	      ctrl.$invalid = !ctrl.$valid;
-	      toggleValidationCss('', ctrl.$valid);
-	    }
-
-	    // re-read the state as the set/unset methods could have
-	    // combined state in ctrl.$error[validationError] (used for forms),
-	    // where setting/unsetting only increments/decrements the value,
-	    // and does not replace it.
-	    var combinedState;
-	    if (ctrl.$pending && ctrl.$pending[validationErrorKey]) {
-	      combinedState = undefined;
-	    } else if (ctrl.$error[validationErrorKey]) {
-	      combinedState = false;
-	    } else if (ctrl.$$success[validationErrorKey]) {
-	      combinedState = true;
-	    } else {
-	      combinedState = null;
-	    }
-	    toggleValidationCss(validationErrorKey, combinedState);
-	    parentForm.$setValidity(validationErrorKey, combinedState, ctrl);
-	  }
-
-	  function createAndSet(name, value, options) {
-	    if (!ctrl[name]) {
-	      ctrl[name] = {};
-	    }
-	    set(ctrl[name], value, options);
-	  }
-
-	  function unsetAndCleanup(name, value, options) {
-	    if (ctrl[name]) {
-	      unset(ctrl[name], value, options);
-	    }
-	    if (isObjectEmpty(ctrl[name])) {
-	      ctrl[name] = undefined;
-	    }
-	  }
-
-	  function cachedToggleClass(className, switchValue) {
-	    if (switchValue && !classCache[className]) {
-	      $animate.addClass($element, className);
-	      classCache[className] = true;
-	    } else if (!switchValue && classCache[className]) {
-	      $animate.removeClass($element, className);
-	      classCache[className] = false;
-	    }
-	  }
-
-	  function toggleValidationCss(validationErrorKey, isValid) {
-	    validationErrorKey = validationErrorKey ? '-' + snake_case(validationErrorKey, '-') : '';
-
-	    cachedToggleClass(VALID_CLASS + validationErrorKey, isValid === true);
-	    cachedToggleClass(INVALID_CLASS + validationErrorKey, isValid === false);
-	  }
-	}
-
-	function isObjectEmpty(obj) {
-	  if (obj) {
-	    for (var prop in obj) {
-	      return false;
-	    }
-	  }
-	  return true;
-	}
 
 	/**
 	 * @ngdoc directive
@@ -22670,6 +21078,83 @@
 	  };
 	}];
 
+	/**
+	 * @ngdoc directive
+	 * @name ngChange
+	 *
+	 * @description
+	 * Evaluate the given expression when the user changes the input.
+	 * The expression is evaluated immediately, unlike the JavaScript onchange event
+	 * which only triggers at the end of a change (usually, when the user leaves the
+	 * form element or presses the return key).
+	 *
+	 * The `ngChange` expression is only evaluated when a change in the input value causes
+	 * a new value to be committed to the model.
+	 *
+	 * It will not be evaluated:
+	 * * if the value returned from the `$parsers` transformation pipeline has not changed
+	 * * if the input has continued to be invalid since the model will stay `null`
+	 * * if the model is changed programmatically and not by a change to the input value
+	 *
+	 *
+	 * Note, this directive requires `ngModel` to be present.
+	 *
+	 * @element input
+	 * @param {expression} ngChange {@link guide/expression Expression} to evaluate upon change
+	 * in input value.
+	 *
+	 * @example
+	 * <example name="ngChange-directive" module="changeExample">
+	 *   <file name="index.html">
+	 *     <script>
+	 *       angular.module('changeExample', [])
+	 *         .controller('ExampleController', ['$scope', function($scope) {
+	 *           $scope.counter = 0;
+	 *           $scope.change = function() {
+	 *             $scope.counter++;
+	 *           };
+	 *         }]);
+	 *     </script>
+	 *     <div ng-controller="ExampleController">
+	 *       <input type="checkbox" ng-model="confirmed" ng-change="change()" id="ng-change-example1" />
+	 *       <input type="checkbox" ng-model="confirmed" id="ng-change-example2" />
+	 *       <label for="ng-change-example2">Confirmed</label><br />
+	 *       <tt>debug = {{confirmed}}</tt><br/>
+	 *       <tt>counter = {{counter}}</tt><br/>
+	 *     </div>
+	 *   </file>
+	 *   <file name="protractor.js" type="protractor">
+	 *     var counter = element(by.binding('counter'));
+	 *     var debug = element(by.binding('confirmed'));
+	 *
+	 *     it('should evaluate the expression if changing from view', function() {
+	 *       expect(counter.getText()).toContain('0');
+	 *
+	 *       element(by.id('ng-change-example1')).click();
+	 *
+	 *       expect(counter.getText()).toContain('1');
+	 *       expect(debug.getText()).toContain('true');
+	 *     });
+	 *
+	 *     it('should not evaluate the expression if changing from model', function() {
+	 *       element(by.id('ng-change-example2')).click();
+
+	 *       expect(counter.getText()).toContain('0');
+	 *       expect(debug.getText()).toContain('true');
+	 *     });
+	 *   </file>
+	 * </example>
+	 */
+	var ngChangeDirective = valueFn({
+	  restrict: 'A',
+	  require: 'ngModel',
+	  link: function(scope, element, attr, ctrl) {
+	    ctrl.$viewChangeListeners.push(function() {
+	      scope.$eval(attr.ngChange);
+	    });
+	  }
+	});
+
 	function classDirective(name, selector) {
 	  name = 'ngClass' + name;
 	  return ['$animate', function($animate) {
@@ -22811,8 +21296,9 @@
 	 * new classes are added.
 	 *
 	 * @animations
-	 * add - happens just before the class is applied to the element
-	 * remove - happens just before the class is removed from the element
+	 * **add** - happens just before the class is applied to the elements
+	 *
+	 * **remove** - happens just before the class is removed from the element
 	 *
 	 * @element ANY
 	 * @param {expression} ngClass {@link guide/expression Expression} to eval. The result
@@ -24154,7 +22640,7 @@
 	       <select ng-model="template" ng-options="t.name for t in templates">
 	        <option value="">(blank)</option>
 	       </select>
-	       url of the template: <tt>{{template.url}}</tt>
+	       url of the template: <code>{{template.url}}</code>
 	       <hr/>
 	       <div class="slide-animate-container">
 	         <div class="slide-animate" ng-include="template.url"></div>
@@ -24278,7 +22764,7 @@
 	 * @name ngInclude#$includeContentError
 	 * @eventType emit on the scope ngInclude was declared in
 	 * @description
-	 * Emitted when a template HTTP request yields an erronous response (status < 200 || status > 299)
+	 * Emitted when a template HTTP request yields an erroneous response (status < 200 || status > 299)
 	 *
 	 * @param {Object} angularEvent Synthetic event object.
 	 * @param {String} src URL of content to load.
@@ -24418,7 +22904,7 @@
 	 * **Note**: If you have assignment in `ngInit` along with {@link ng.$filter `$filter`}, make
 	 * sure you have parenthesis for correct precedence:
 	 * <pre class="prettyprint">
-	 *   <div ng-init="test1 = (data | orderBy:'name')"></div>
+	 * `<div ng-init="test1 = (data | orderBy:'name')"></div>`
 	 * </pre>
 	 * </div>
 	 *
@@ -24465,6 +22951,1466 @@
 	    };
 	  }
 	});
+
+	/**
+	 * @ngdoc directive
+	 * @name ngList
+	 *
+	 * @description
+	 * Text input that converts between a delimited string and an array of strings. The default
+	 * delimiter is a comma followed by a space - equivalent to `ng-list=", "`. You can specify a custom
+	 * delimiter as the value of the `ngList` attribute - for example, `ng-list=" | "`.
+	 *
+	 * The behaviour of the directive is affected by the use of the `ngTrim` attribute.
+	 * * If `ngTrim` is set to `"false"` then whitespace around both the separator and each
+	 *   list item is respected. This implies that the user of the directive is responsible for
+	 *   dealing with whitespace but also allows you to use whitespace as a delimiter, such as a
+	 *   tab or newline character.
+	 * * Otherwise whitespace around the delimiter is ignored when splitting (although it is respected
+	 *   when joining the list items back together) and whitespace around each list item is stripped
+	 *   before it is added to the model.
+	 *
+	 * ### Example with Validation
+	 *
+	 * <example name="ngList-directive" module="listExample">
+	 *   <file name="app.js">
+	 *      angular.module('listExample', [])
+	 *        .controller('ExampleController', ['$scope', function($scope) {
+	 *          $scope.names = ['morpheus', 'neo', 'trinity'];
+	 *        }]);
+	 *   </file>
+	 *   <file name="index.html">
+	 *    <form name="myForm" ng-controller="ExampleController">
+	 *      List: <input name="namesInput" ng-model="names" ng-list required>
+	 *      <span class="error" ng-show="myForm.namesInput.$error.required">
+	 *        Required!</span>
+	 *      <br>
+	 *      <tt>names = {{names}}</tt><br/>
+	 *      <tt>myForm.namesInput.$valid = {{myForm.namesInput.$valid}}</tt><br/>
+	 *      <tt>myForm.namesInput.$error = {{myForm.namesInput.$error}}</tt><br/>
+	 *      <tt>myForm.$valid = {{myForm.$valid}}</tt><br/>
+	 *      <tt>myForm.$error.required = {{!!myForm.$error.required}}</tt><br/>
+	 *     </form>
+	 *   </file>
+	 *   <file name="protractor.js" type="protractor">
+	 *     var listInput = element(by.model('names'));
+	 *     var names = element(by.exactBinding('names'));
+	 *     var valid = element(by.binding('myForm.namesInput.$valid'));
+	 *     var error = element(by.css('span.error'));
+	 *
+	 *     it('should initialize to model', function() {
+	 *       expect(names.getText()).toContain('["morpheus","neo","trinity"]');
+	 *       expect(valid.getText()).toContain('true');
+	 *       expect(error.getCssValue('display')).toBe('none');
+	 *     });
+	 *
+	 *     it('should be invalid if empty', function() {
+	 *       listInput.clear();
+	 *       listInput.sendKeys('');
+	 *
+	 *       expect(names.getText()).toContain('');
+	 *       expect(valid.getText()).toContain('false');
+	 *       expect(error.getCssValue('display')).not.toBe('none');
+	 *     });
+	 *   </file>
+	 * </example>
+	 *
+	 * ### Example - splitting on whitespace
+	 * <example name="ngList-directive-newlines">
+	 *   <file name="index.html">
+	 *    <textarea ng-model="list" ng-list="&#10;" ng-trim="false"></textarea>
+	 *    <pre>{{ list | json }}</pre>
+	 *   </file>
+	 *   <file name="protractor.js" type="protractor">
+	 *     it("should split the text by newlines", function() {
+	 *       var listInput = element(by.model('list'));
+	 *       var output = element(by.binding('list | json'));
+	 *       listInput.sendKeys('abc\ndef\nghi');
+	 *       expect(output.getText()).toContain('[\n  "abc",\n  "def",\n  "ghi"\n]');
+	 *     });
+	 *   </file>
+	 * </example>
+	 *
+	 * @element input
+	 * @param {string=} ngList optional delimiter that should be used to split the value.
+	 */
+	var ngListDirective = function() {
+	  return {
+	    restrict: 'A',
+	    priority: 100,
+	    require: 'ngModel',
+	    link: function(scope, element, attr, ctrl) {
+	      // We want to control whitespace trimming so we use this convoluted approach
+	      // to access the ngList attribute, which doesn't pre-trim the attribute
+	      var ngList = element.attr(attr.$attr.ngList) || ', ';
+	      var trimValues = attr.ngTrim !== 'false';
+	      var separator = trimValues ? trim(ngList) : ngList;
+
+	      var parse = function(viewValue) {
+	        // If the viewValue is invalid (say required but empty) it will be `undefined`
+	        if (isUndefined(viewValue)) return;
+
+	        var list = [];
+
+	        if (viewValue) {
+	          forEach(viewValue.split(separator), function(value) {
+	            if (value) list.push(trimValues ? trim(value) : value);
+	          });
+	        }
+
+	        return list;
+	      };
+
+	      ctrl.$parsers.push(parse);
+	      ctrl.$formatters.push(function(value) {
+	        if (isArray(value)) {
+	          return value.join(ngList);
+	        }
+
+	        return undefined;
+	      });
+
+	      // Override the standard $isEmpty because an empty array means the input is empty.
+	      ctrl.$isEmpty = function(value) {
+	        return !value || !value.length;
+	      };
+	    }
+	  };
+	};
+
+	/* global VALID_CLASS: true,
+	  INVALID_CLASS: true,
+	  PRISTINE_CLASS: true,
+	  DIRTY_CLASS: true,
+	  UNTOUCHED_CLASS: true,
+	  TOUCHED_CLASS: true,
+	*/
+
+	var VALID_CLASS = 'ng-valid',
+	    INVALID_CLASS = 'ng-invalid',
+	    PRISTINE_CLASS = 'ng-pristine',
+	    DIRTY_CLASS = 'ng-dirty',
+	    UNTOUCHED_CLASS = 'ng-untouched',
+	    TOUCHED_CLASS = 'ng-touched',
+	    PENDING_CLASS = 'ng-pending';
+
+
+	var $ngModelMinErr = new minErr('ngModel');
+
+	/**
+	 * @ngdoc type
+	 * @name ngModel.NgModelController
+	 *
+	 * @property {string} $viewValue Actual string value in the view.
+	 * @property {*} $modelValue The value in the model that the control is bound to.
+	 * @property {Array.<Function>} $parsers Array of functions to execute, as a pipeline, whenever
+	       the control reads value from the DOM. The functions are called in array order, each passing
+	       its return value through to the next. The last return value is forwarded to the
+	       {@link ngModel.NgModelController#$validators `$validators`} collection.
+
+	Parsers are used to sanitize / convert the {@link ngModel.NgModelController#$viewValue
+	`$viewValue`}.
+
+	Returning `undefined` from a parser means a parse error occurred. In that case,
+	no {@link ngModel.NgModelController#$validators `$validators`} will run and the `ngModel`
+	will be set to `undefined` unless {@link ngModelOptions `ngModelOptions.allowInvalid`}
+	is set to `true`. The parse error is stored in `ngModel.$error.parse`.
+
+	 *
+	 * @property {Array.<Function>} $formatters Array of functions to execute, as a pipeline, whenever
+	       the model value changes. The functions are called in reverse array order, each passing the value through to the
+	       next. The last return value is used as the actual DOM value.
+	       Used to format / convert values for display in the control.
+	 * ```js
+	 * function formatter(value) {
+	 *   if (value) {
+	 *     return value.toUpperCase();
+	 *   }
+	 * }
+	 * ngModel.$formatters.push(formatter);
+	 * ```
+	 *
+	 * @property {Object.<string, function>} $validators A collection of validators that are applied
+	 *      whenever the model value changes. The key value within the object refers to the name of the
+	 *      validator while the function refers to the validation operation. The validation operation is
+	 *      provided with the model value as an argument and must return a true or false value depending
+	 *      on the response of that validation.
+	 *
+	 * ```js
+	 * ngModel.$validators.validCharacters = function(modelValue, viewValue) {
+	 *   var value = modelValue || viewValue;
+	 *   return /[0-9]+/.test(value) &&
+	 *          /[a-z]+/.test(value) &&
+	 *          /[A-Z]+/.test(value) &&
+	 *          /\W+/.test(value);
+	 * };
+	 * ```
+	 *
+	 * @property {Object.<string, function>} $asyncValidators A collection of validations that are expected to
+	 *      perform an asynchronous validation (e.g. a HTTP request). The validation function that is provided
+	 *      is expected to return a promise when it is run during the model validation process. Once the promise
+	 *      is delivered then the validation status will be set to true when fulfilled and false when rejected.
+	 *      When the asynchronous validators are triggered, each of the validators will run in parallel and the model
+	 *      value will only be updated once all validators have been fulfilled. As long as an asynchronous validator
+	 *      is unfulfilled, its key will be added to the controllers `$pending` property. Also, all asynchronous validators
+	 *      will only run once all synchronous validators have passed.
+	 *
+	 * Please note that if $http is used then it is important that the server returns a success HTTP response code
+	 * in order to fulfill the validation and a status level of `4xx` in order to reject the validation.
+	 *
+	 * ```js
+	 * ngModel.$asyncValidators.uniqueUsername = function(modelValue, viewValue) {
+	 *   var value = modelValue || viewValue;
+	 *
+	 *   // Lookup user by username
+	 *   return $http.get('/api/users/' + value).
+	 *      then(function resolved() {
+	 *        //username exists, this means validation fails
+	 *        return $q.reject('exists');
+	 *      }, function rejected() {
+	 *        //username does not exist, therefore this validation passes
+	 *        return true;
+	 *      });
+	 * };
+	 * ```
+	 *
+	 * @property {Array.<Function>} $viewChangeListeners Array of functions to execute whenever the
+	 *     view value has changed. It is called with no arguments, and its return value is ignored.
+	 *     This can be used in place of additional $watches against the model value.
+	 *
+	 * @property {Object} $error An object hash with all failing validator ids as keys.
+	 * @property {Object} $pending An object hash with all pending validator ids as keys.
+	 *
+	 * @property {boolean} $untouched True if control has not lost focus yet.
+	 * @property {boolean} $touched True if control has lost focus.
+	 * @property {boolean} $pristine True if user has not interacted with the control yet.
+	 * @property {boolean} $dirty True if user has already interacted with the control.
+	 * @property {boolean} $valid True if there is no error.
+	 * @property {boolean} $invalid True if at least one error on the control.
+	 * @property {string} $name The name attribute of the control.
+	 *
+	 * @description
+	 *
+	 * `NgModelController` provides API for the {@link ngModel `ngModel`} directive.
+	 * The controller contains services for data-binding, validation, CSS updates, and value formatting
+	 * and parsing. It purposefully does not contain any logic which deals with DOM rendering or
+	 * listening to DOM events.
+	 * Such DOM related logic should be provided by other directives which make use of
+	 * `NgModelController` for data-binding to control elements.
+	 * Angular provides this DOM logic for most {@link input `input`} elements.
+	 * At the end of this page you can find a {@link ngModel.NgModelController#custom-control-example
+	 * custom control example} that uses `ngModelController` to bind to `contenteditable` elements.
+	 *
+	 * @example
+	 * ### Custom Control Example
+	 * This example shows how to use `NgModelController` with a custom control to achieve
+	 * data-binding. Notice how different directives (`contenteditable`, `ng-model`, and `required`)
+	 * collaborate together to achieve the desired result.
+	 *
+	 * Note that `contenteditable` is an HTML5 attribute, which tells the browser to let the element
+	 * contents be edited in place by the user.  This will not work on older browsers.
+	 *
+	 * We are using the {@link ng.service:$sce $sce} service here and include the {@link ngSanitize $sanitize}
+	 * module to automatically remove "bad" content like inline event listener (e.g. `<span onclick="...">`).
+	 * However, as we are using `$sce` the model can still decide to provide unsafe content if it marks
+	 * that content using the `$sce` service.
+	 *
+	 * <example name="NgModelController" module="customControl" deps="angular-sanitize.js">
+	    <file name="style.css">
+	      [contenteditable] {
+	        border: 1px solid black;
+	        background-color: white;
+	        min-height: 20px;
+	      }
+
+	      .ng-invalid {
+	        border: 1px solid red;
+	      }
+
+	    </file>
+	    <file name="script.js">
+	      angular.module('customControl', ['ngSanitize']).
+	        directive('contenteditable', ['$sce', function($sce) {
+	          return {
+	            restrict: 'A', // only activate on element attribute
+	            require: '?ngModel', // get a hold of NgModelController
+	            link: function(scope, element, attrs, ngModel) {
+	              if (!ngModel) return; // do nothing if no ng-model
+
+	              // Specify how UI should be updated
+	              ngModel.$render = function() {
+	                element.html($sce.getTrustedHtml(ngModel.$viewValue || ''));
+	              };
+
+	              // Listen for change events to enable binding
+	              element.on('blur keyup change', function() {
+	                scope.$evalAsync(read);
+	              });
+	              read(); // initialize
+
+	              // Write data to the model
+	              function read() {
+	                var html = element.html();
+	                // When we clear the content editable the browser leaves a <br> behind
+	                // If strip-br attribute is provided then we strip this out
+	                if ( attrs.stripBr && html == '<br>' ) {
+	                  html = '';
+	                }
+	                ngModel.$setViewValue(html);
+	              }
+	            }
+	          };
+	        }]);
+	    </file>
+	    <file name="index.html">
+	      <form name="myForm">
+	       <div contenteditable
+	            name="myWidget" ng-model="userContent"
+	            strip-br="true"
+	            required>Change me!</div>
+	        <span ng-show="myForm.myWidget.$error.required">Required!</span>
+	       <hr>
+	       <textarea ng-model="userContent"></textarea>
+	      </form>
+	    </file>
+	    <file name="protractor.js" type="protractor">
+	    it('should data-bind and become invalid', function() {
+	      if (browser.params.browser == 'safari' || browser.params.browser == 'firefox') {
+	        // SafariDriver can't handle contenteditable
+	        // and Firefox driver can't clear contenteditables very well
+	        return;
+	      }
+	      var contentEditable = element(by.css('[contenteditable]'));
+	      var content = 'Change me!';
+
+	      expect(contentEditable.getText()).toEqual(content);
+
+	      contentEditable.clear();
+	      contentEditable.sendKeys(protractor.Key.BACK_SPACE);
+	      expect(contentEditable.getText()).toEqual('');
+	      expect(contentEditable.getAttribute('class')).toMatch(/ng-invalid-required/);
+	    });
+	    </file>
+	 * </example>
+	 *
+	 *
+	 */
+	var NgModelController = ['$scope', '$exceptionHandler', '$attrs', '$element', '$parse', '$animate', '$timeout', '$rootScope', '$q', '$interpolate',
+	    function($scope, $exceptionHandler, $attr, $element, $parse, $animate, $timeout, $rootScope, $q, $interpolate) {
+	  this.$viewValue = Number.NaN;
+	  this.$modelValue = Number.NaN;
+	  this.$$rawModelValue = undefined; // stores the parsed modelValue / model set from scope regardless of validity.
+	  this.$validators = {};
+	  this.$asyncValidators = {};
+	  this.$parsers = [];
+	  this.$formatters = [];
+	  this.$viewChangeListeners = [];
+	  this.$untouched = true;
+	  this.$touched = false;
+	  this.$pristine = true;
+	  this.$dirty = false;
+	  this.$valid = true;
+	  this.$invalid = false;
+	  this.$error = {}; // keep invalid keys here
+	  this.$$success = {}; // keep valid keys here
+	  this.$pending = undefined; // keep pending keys here
+	  this.$name = $interpolate($attr.name || '', false)($scope);
+
+
+	  var parsedNgModel = $parse($attr.ngModel),
+	      parsedNgModelAssign = parsedNgModel.assign,
+	      ngModelGet = parsedNgModel,
+	      ngModelSet = parsedNgModelAssign,
+	      pendingDebounce = null,
+	      ctrl = this;
+
+	  this.$$setOptions = function(options) {
+	    ctrl.$options = options;
+	    if (options && options.getterSetter) {
+	      var invokeModelGetter = $parse($attr.ngModel + '()'),
+	          invokeModelSetter = $parse($attr.ngModel + '($$$p)');
+
+	      ngModelGet = function($scope) {
+	        var modelValue = parsedNgModel($scope);
+	        if (isFunction(modelValue)) {
+	          modelValue = invokeModelGetter($scope);
+	        }
+	        return modelValue;
+	      };
+	      ngModelSet = function($scope, newValue) {
+	        if (isFunction(parsedNgModel($scope))) {
+	          invokeModelSetter($scope, {$$$p: ctrl.$modelValue});
+	        } else {
+	          parsedNgModelAssign($scope, ctrl.$modelValue);
+	        }
+	      };
+	    } else if (!parsedNgModel.assign) {
+	      throw $ngModelMinErr('nonassign', "Expression '{0}' is non-assignable. Element: {1}",
+	          $attr.ngModel, startingTag($element));
+	    }
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$render
+	   *
+	   * @description
+	   * Called when the view needs to be updated. It is expected that the user of the ng-model
+	   * directive will implement this method.
+	   *
+	   * The `$render()` method is invoked in the following situations:
+	   *
+	   * * `$rollbackViewValue()` is called.  If we are rolling back the view value to the last
+	   *   committed value then `$render()` is called to update the input control.
+	   * * The value referenced by `ng-model` is changed programmatically and both the `$modelValue` and
+	   *   the `$viewValue` are different to last time.
+	   *
+	   * Since `ng-model` does not do a deep watch, `$render()` is only invoked if the values of
+	   * `$modelValue` and `$viewValue` are actually different to their previous value. If `$modelValue`
+	   * or `$viewValue` are objects (rather than a string or number) then `$render()` will not be
+	   * invoked if you only change a property on the objects.
+	   */
+	  this.$render = noop;
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$isEmpty
+	   *
+	   * @description
+	   * This is called when we need to determine if the value of an input is empty.
+	   *
+	   * For instance, the required directive does this to work out if the input has data or not.
+	   *
+	   * The default `$isEmpty` function checks whether the value is `undefined`, `''`, `null` or `NaN`.
+	   *
+	   * You can override this for input directives whose concept of being empty is different to the
+	   * default. The `checkboxInputType` directive does this because in its case a value of `false`
+	   * implies empty.
+	   *
+	   * @param {*} value The value of the input to check for emptiness.
+	   * @returns {boolean} True if `value` is "empty".
+	   */
+	  this.$isEmpty = function(value) {
+	    return isUndefined(value) || value === '' || value === null || value !== value;
+	  };
+
+	  var parentForm = $element.inheritedData('$formController') || nullFormCtrl,
+	      currentValidationRunId = 0;
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setValidity
+	   *
+	   * @description
+	   * Change the validity state, and notify the form.
+	   *
+	   * This method can be called within $parsers/$formatters or a custom validation implementation.
+	   * However, in most cases it should be sufficient to use the `ngModel.$validators` and
+	   * `ngModel.$asyncValidators` collections which will call `$setValidity` automatically.
+	   *
+	   * @param {string} validationErrorKey Name of the validator. The `validationErrorKey` will be assigned
+	   *        to either `$error[validationErrorKey]` or `$pending[validationErrorKey]`
+	   *        (for unfulfilled `$asyncValidators`), so that it is available for data-binding.
+	   *        The `validationErrorKey` should be in camelCase and will get converted into dash-case
+	   *        for class name. Example: `myError` will result in `ng-valid-my-error` and `ng-invalid-my-error`
+	   *        class and can be bound to as  `{{someForm.someControl.$error.myError}}` .
+	   * @param {boolean} isValid Whether the current state is valid (true), invalid (false), pending (undefined),
+	   *                          or skipped (null). Pending is used for unfulfilled `$asyncValidators`.
+	   *                          Skipped is used by Angular when validators do not run because of parse errors and
+	   *                          when `$asyncValidators` do not run because any of the `$validators` failed.
+	   */
+	  addSetValidityMethod({
+	    ctrl: this,
+	    $element: $element,
+	    set: function(object, property) {
+	      object[property] = true;
+	    },
+	    unset: function(object, property) {
+	      delete object[property];
+	    },
+	    parentForm: parentForm,
+	    $animate: $animate
+	  });
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setPristine
+	   *
+	   * @description
+	   * Sets the control to its pristine state.
+	   *
+	   * This method can be called to remove the `ng-dirty` class and set the control to its pristine
+	   * state (`ng-pristine` class). A model is considered to be pristine when the control
+	   * has not been changed from when first compiled.
+	   */
+	  this.$setPristine = function() {
+	    ctrl.$dirty = false;
+	    ctrl.$pristine = true;
+	    $animate.removeClass($element, DIRTY_CLASS);
+	    $animate.addClass($element, PRISTINE_CLASS);
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setDirty
+	   *
+	   * @description
+	   * Sets the control to its dirty state.
+	   *
+	   * This method can be called to remove the `ng-pristine` class and set the control to its dirty
+	   * state (`ng-dirty` class). A model is considered to be dirty when the control has been changed
+	   * from when first compiled.
+	   */
+	  this.$setDirty = function() {
+	    ctrl.$dirty = true;
+	    ctrl.$pristine = false;
+	    $animate.removeClass($element, PRISTINE_CLASS);
+	    $animate.addClass($element, DIRTY_CLASS);
+	    parentForm.$setDirty();
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setUntouched
+	   *
+	   * @description
+	   * Sets the control to its untouched state.
+	   *
+	   * This method can be called to remove the `ng-touched` class and set the control to its
+	   * untouched state (`ng-untouched` class). Upon compilation, a model is set as untouched
+	   * by default, however this function can be used to restore that state if the model has
+	   * already been touched by the user.
+	   */
+	  this.$setUntouched = function() {
+	    ctrl.$touched = false;
+	    ctrl.$untouched = true;
+	    $animate.setClass($element, UNTOUCHED_CLASS, TOUCHED_CLASS);
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setTouched
+	   *
+	   * @description
+	   * Sets the control to its touched state.
+	   *
+	   * This method can be called to remove the `ng-untouched` class and set the control to its
+	   * touched state (`ng-touched` class). A model is considered to be touched when the user has
+	   * first focused the control element and then shifted focus away from the control (blur event).
+	   */
+	  this.$setTouched = function() {
+	    ctrl.$touched = true;
+	    ctrl.$untouched = false;
+	    $animate.setClass($element, TOUCHED_CLASS, UNTOUCHED_CLASS);
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$rollbackViewValue
+	   *
+	   * @description
+	   * Cancel an update and reset the input element's value to prevent an update to the `$modelValue`,
+	   * which may be caused by a pending debounced event or because the input is waiting for a some
+	   * future event.
+	   *
+	   * If you have an input that uses `ng-model-options` to set up debounced events or events such
+	   * as blur you can have a situation where there is a period when the `$viewValue`
+	   * is out of synch with the ngModel's `$modelValue`.
+	   *
+	   * In this case, you can run into difficulties if you try to update the ngModel's `$modelValue`
+	   * programmatically before these debounced/future events have resolved/occurred, because Angular's
+	   * dirty checking mechanism is not able to tell whether the model has actually changed or not.
+	   *
+	   * The `$rollbackViewValue()` method should be called before programmatically changing the model of an
+	   * input which may have such events pending. This is important in order to make sure that the
+	   * input field will be updated with the new model value and any pending operations are cancelled.
+	   *
+	   * <example name="ng-model-cancel-update" module="cancel-update-example">
+	   *   <file name="app.js">
+	   *     angular.module('cancel-update-example', [])
+	   *
+	   *     .controller('CancelUpdateController', ['$scope', function($scope) {
+	   *       $scope.resetWithCancel = function(e) {
+	   *         if (e.keyCode == 27) {
+	   *           $scope.myForm.myInput1.$rollbackViewValue();
+	   *           $scope.myValue = '';
+	   *         }
+	   *       };
+	   *       $scope.resetWithoutCancel = function(e) {
+	   *         if (e.keyCode == 27) {
+	   *           $scope.myValue = '';
+	   *         }
+	   *       };
+	   *     }]);
+	   *   </file>
+	   *   <file name="index.html">
+	   *     <div ng-controller="CancelUpdateController">
+	   *       <p>Try typing something in each input.  See that the model only updates when you
+	   *          blur off the input.
+	   *        </p>
+	   *        <p>Now see what happens if you start typing then press the Escape key</p>
+	   *
+	   *       <form name="myForm" ng-model-options="{ updateOn: 'blur' }">
+	   *         <p>With $rollbackViewValue()</p>
+	   *         <input name="myInput1" ng-model="myValue" ng-keydown="resetWithCancel($event)"><br/>
+	   *         myValue: "{{ myValue }}"
+	   *
+	   *         <p>Without $rollbackViewValue()</p>
+	   *         <input name="myInput2" ng-model="myValue" ng-keydown="resetWithoutCancel($event)"><br/>
+	   *         myValue: "{{ myValue }}"
+	   *       </form>
+	   *     </div>
+	   *   </file>
+	   * </example>
+	   */
+	  this.$rollbackViewValue = function() {
+	    $timeout.cancel(pendingDebounce);
+	    ctrl.$viewValue = ctrl.$$lastCommittedViewValue;
+	    ctrl.$render();
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$validate
+	   *
+	   * @description
+	   * Runs each of the registered validators (first synchronous validators and then
+	   * asynchronous validators).
+	   * If the validity changes to invalid, the model will be set to `undefined`,
+	   * unless {@link ngModelOptions `ngModelOptions.allowInvalid`} is `true`.
+	   * If the validity changes to valid, it will set the model to the last available valid
+	   * modelValue, i.e. either the last parsed value or the last value set from the scope.
+	   */
+	  this.$validate = function() {
+	    // ignore $validate before model is initialized
+	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
+	      return;
+	    }
+
+	    var viewValue = ctrl.$$lastCommittedViewValue;
+	    // Note: we use the $$rawModelValue as $modelValue might have been
+	    // set to undefined during a view -> model update that found validation
+	    // errors. We can't parse the view here, since that could change
+	    // the model although neither viewValue nor the model on the scope changed
+	    var modelValue = ctrl.$$rawModelValue;
+
+	    // Check if the there's a parse error, so we don't unset it accidentially
+	    var parserName = ctrl.$$parserName || 'parse';
+	    var parserValid = ctrl.$error[parserName] ? false : undefined;
+
+	    var prevValid = ctrl.$valid;
+	    var prevModelValue = ctrl.$modelValue;
+
+	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
+
+	    ctrl.$$runValidators(parserValid, modelValue, viewValue, function(allValid) {
+	      // If there was no change in validity, don't update the model
+	      // This prevents changing an invalid modelValue to undefined
+	      if (!allowInvalid && prevValid !== allValid) {
+	        // Note: Don't check ctrl.$valid here, as we could have
+	        // external validators (e.g. calculated on the server),
+	        // that just call $setValidity and need the model value
+	        // to calculate their validity.
+	        ctrl.$modelValue = allValid ? modelValue : undefined;
+
+	        if (ctrl.$modelValue !== prevModelValue) {
+	          ctrl.$$writeModelToScope();
+	        }
+	      }
+	    });
+
+	  };
+
+	  this.$$runValidators = function(parseValid, modelValue, viewValue, doneCallback) {
+	    currentValidationRunId++;
+	    var localValidationRunId = currentValidationRunId;
+
+	    // check parser error
+	    if (!processParseErrors(parseValid)) {
+	      validationDone(false);
+	      return;
+	    }
+	    if (!processSyncValidators()) {
+	      validationDone(false);
+	      return;
+	    }
+	    processAsyncValidators();
+
+	    function processParseErrors(parseValid) {
+	      var errorKey = ctrl.$$parserName || 'parse';
+	      if (parseValid === undefined) {
+	        setValidity(errorKey, null);
+	      } else {
+	        setValidity(errorKey, parseValid);
+	        if (!parseValid) {
+	          forEach(ctrl.$validators, function(v, name) {
+	            setValidity(name, null);
+	          });
+	          forEach(ctrl.$asyncValidators, function(v, name) {
+	            setValidity(name, null);
+	          });
+	          return false;
+	        }
+	      }
+	      return true;
+	    }
+
+	    function processSyncValidators() {
+	      var syncValidatorsValid = true;
+	      forEach(ctrl.$validators, function(validator, name) {
+	        var result = validator(modelValue, viewValue);
+	        syncValidatorsValid = syncValidatorsValid && result;
+	        setValidity(name, result);
+	      });
+	      if (!syncValidatorsValid) {
+	        forEach(ctrl.$asyncValidators, function(v, name) {
+	          setValidity(name, null);
+	        });
+	        return false;
+	      }
+	      return true;
+	    }
+
+	    function processAsyncValidators() {
+	      var validatorPromises = [];
+	      var allValid = true;
+	      forEach(ctrl.$asyncValidators, function(validator, name) {
+	        var promise = validator(modelValue, viewValue);
+	        if (!isPromiseLike(promise)) {
+	          throw $ngModelMinErr("$asyncValidators",
+	            "Expected asynchronous validator to return a promise but got '{0}' instead.", promise);
+	        }
+	        setValidity(name, undefined);
+	        validatorPromises.push(promise.then(function() {
+	          setValidity(name, true);
+	        }, function(error) {
+	          allValid = false;
+	          setValidity(name, false);
+	        }));
+	      });
+	      if (!validatorPromises.length) {
+	        validationDone(true);
+	      } else {
+	        $q.all(validatorPromises).then(function() {
+	          validationDone(allValid);
+	        }, noop);
+	      }
+	    }
+
+	    function setValidity(name, isValid) {
+	      if (localValidationRunId === currentValidationRunId) {
+	        ctrl.$setValidity(name, isValid);
+	      }
+	    }
+
+	    function validationDone(allValid) {
+	      if (localValidationRunId === currentValidationRunId) {
+
+	        doneCallback(allValid);
+	      }
+	    }
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$commitViewValue
+	   *
+	   * @description
+	   * Commit a pending update to the `$modelValue`.
+	   *
+	   * Updates may be pending by a debounced event or because the input is waiting for a some future
+	   * event defined in `ng-model-options`. this method is rarely needed as `NgModelController`
+	   * usually handles calling this in response to input events.
+	   */
+	  this.$commitViewValue = function() {
+	    var viewValue = ctrl.$viewValue;
+
+	    $timeout.cancel(pendingDebounce);
+
+	    // If the view value has not changed then we should just exit, except in the case where there is
+	    // a native validator on the element. In this case the validation state may have changed even though
+	    // the viewValue has stayed empty.
+	    if (ctrl.$$lastCommittedViewValue === viewValue && (viewValue !== '' || !ctrl.$$hasNativeValidators)) {
+	      return;
+	    }
+	    ctrl.$$lastCommittedViewValue = viewValue;
+
+	    // change to dirty
+	    if (ctrl.$pristine) {
+	      this.$setDirty();
+	    }
+	    this.$$parseAndValidate();
+	  };
+
+	  this.$$parseAndValidate = function() {
+	    var viewValue = ctrl.$$lastCommittedViewValue;
+	    var modelValue = viewValue;
+	    var parserValid = isUndefined(modelValue) ? undefined : true;
+
+	    if (parserValid) {
+	      for (var i = 0; i < ctrl.$parsers.length; i++) {
+	        modelValue = ctrl.$parsers[i](modelValue);
+	        if (isUndefined(modelValue)) {
+	          parserValid = false;
+	          break;
+	        }
+	      }
+	    }
+	    if (isNumber(ctrl.$modelValue) && isNaN(ctrl.$modelValue)) {
+	      // ctrl.$modelValue has not been touched yet...
+	      ctrl.$modelValue = ngModelGet($scope);
+	    }
+	    var prevModelValue = ctrl.$modelValue;
+	    var allowInvalid = ctrl.$options && ctrl.$options.allowInvalid;
+	    ctrl.$$rawModelValue = modelValue;
+
+	    if (allowInvalid) {
+	      ctrl.$modelValue = modelValue;
+	      writeToModelIfNeeded();
+	    }
+
+	    // Pass the $$lastCommittedViewValue here, because the cached viewValue might be out of date.
+	    // This can happen if e.g. $setViewValue is called from inside a parser
+	    ctrl.$$runValidators(parserValid, modelValue, ctrl.$$lastCommittedViewValue, function(allValid) {
+	      if (!allowInvalid) {
+	        // Note: Don't check ctrl.$valid here, as we could have
+	        // external validators (e.g. calculated on the server),
+	        // that just call $setValidity and need the model value
+	        // to calculate their validity.
+	        ctrl.$modelValue = allValid ? modelValue : undefined;
+	        writeToModelIfNeeded();
+	      }
+	    });
+
+	    function writeToModelIfNeeded() {
+	      if (ctrl.$modelValue !== prevModelValue) {
+	        ctrl.$$writeModelToScope();
+	      }
+	    }
+	  };
+
+	  this.$$writeModelToScope = function() {
+	    ngModelSet($scope, ctrl.$modelValue);
+	    forEach(ctrl.$viewChangeListeners, function(listener) {
+	      try {
+	        listener();
+	      } catch (e) {
+	        $exceptionHandler(e);
+	      }
+	    });
+	  };
+
+	  /**
+	   * @ngdoc method
+	   * @name ngModel.NgModelController#$setViewValue
+	   *
+	   * @description
+	   * Update the view value.
+	   *
+	   * This method should be called when an input directive want to change the view value; typically,
+	   * this is done from within a DOM event handler.
+	   *
+	   * For example {@link ng.directive:input input} calls it when the value of the input changes and
+	   * {@link ng.directive:select select} calls it when an option is selected.
+	   *
+	   * If the new `value` is an object (rather than a string or a number), we should make a copy of the
+	   * object before passing it to `$setViewValue`.  This is because `ngModel` does not perform a deep
+	   * watch of objects, it only looks for a change of identity. If you only change the property of
+	   * the object then ngModel will not realise that the object has changed and will not invoke the
+	   * `$parsers` and `$validators` pipelines.
+	   *
+	   * For this reason, you should not change properties of the copy once it has been passed to
+	   * `$setViewValue`. Otherwise you may cause the model value on the scope to change incorrectly.
+	   *
+	   * When this method is called, the new `value` will be staged for committing through the `$parsers`
+	   * and `$validators` pipelines. If there are no special {@link ngModelOptions} specified then the staged
+	   * value sent directly for processing, finally to be applied to `$modelValue` and then the
+	   * **expression** specified in the `ng-model` attribute.
+	   *
+	   * Lastly, all the registered change listeners, in the `$viewChangeListeners` list, are called.
+	   *
+	   * In case the {@link ng.directive:ngModelOptions ngModelOptions} directive is used with `updateOn`
+	   * and the `default` trigger is not listed, all those actions will remain pending until one of the
+	   * `updateOn` events is triggered on the DOM element.
+	   * All these actions will be debounced if the {@link ng.directive:ngModelOptions ngModelOptions}
+	   * directive is used with a custom debounce for this particular event.
+	   *
+	   * Note that calling this function does not trigger a `$digest`.
+	   *
+	   * @param {string} value Value from the view.
+	   * @param {string} trigger Event that triggered the update.
+	   */
+	  this.$setViewValue = function(value, trigger) {
+	    ctrl.$viewValue = value;
+	    if (!ctrl.$options || ctrl.$options.updateOnDefault) {
+	      ctrl.$$debounceViewValueCommit(trigger);
+	    }
+	  };
+
+	  this.$$debounceViewValueCommit = function(trigger) {
+	    var debounceDelay = 0,
+	        options = ctrl.$options,
+	        debounce;
+
+	    if (options && isDefined(options.debounce)) {
+	      debounce = options.debounce;
+	      if (isNumber(debounce)) {
+	        debounceDelay = debounce;
+	      } else if (isNumber(debounce[trigger])) {
+	        debounceDelay = debounce[trigger];
+	      } else if (isNumber(debounce['default'])) {
+	        debounceDelay = debounce['default'];
+	      }
+	    }
+
+	    $timeout.cancel(pendingDebounce);
+	    if (debounceDelay) {
+	      pendingDebounce = $timeout(function() {
+	        ctrl.$commitViewValue();
+	      }, debounceDelay);
+	    } else if ($rootScope.$$phase) {
+	      ctrl.$commitViewValue();
+	    } else {
+	      $scope.$apply(function() {
+	        ctrl.$commitViewValue();
+	      });
+	    }
+	  };
+
+	  // model -> value
+	  // Note: we cannot use a normal scope.$watch as we want to detect the following:
+	  // 1. scope value is 'a'
+	  // 2. user enters 'b'
+	  // 3. ng-change kicks in and reverts scope value to 'a'
+	  //    -> scope value did not change since the last digest as
+	  //       ng-change executes in apply phase
+	  // 4. view should be changed back to 'a'
+	  $scope.$watch(function ngModelWatch() {
+	    var modelValue = ngModelGet($scope);
+
+	    // if scope model value and ngModel value are out of sync
+	    // TODO(perf): why not move this to the action fn?
+	    if (modelValue !== ctrl.$modelValue) {
+	      ctrl.$modelValue = ctrl.$$rawModelValue = modelValue;
+
+	      var formatters = ctrl.$formatters,
+	          idx = formatters.length;
+
+	      var viewValue = modelValue;
+	      while (idx--) {
+	        viewValue = formatters[idx](viewValue);
+	      }
+	      if (ctrl.$viewValue !== viewValue) {
+	        ctrl.$viewValue = ctrl.$$lastCommittedViewValue = viewValue;
+	        ctrl.$render();
+
+	        ctrl.$$runValidators(undefined, modelValue, viewValue, noop);
+	      }
+	    }
+
+	    return modelValue;
+	  });
+	}];
+
+
+	/**
+	 * @ngdoc directive
+	 * @name ngModel
+	 *
+	 * @element input
+	 * @priority 1
+	 *
+	 * @description
+	 * The `ngModel` directive binds an `input`,`select`, `textarea` (or custom form control) to a
+	 * property on the scope using {@link ngModel.NgModelController NgModelController},
+	 * which is created and exposed by this directive.
+	 *
+	 * `ngModel` is responsible for:
+	 *
+	 * - Binding the view into the model, which other directives such as `input`, `textarea` or `select`
+	 *   require.
+	 * - Providing validation behavior (i.e. required, number, email, url).
+	 * - Keeping the state of the control (valid/invalid, dirty/pristine, touched/untouched, validation errors).
+	 * - Setting related css classes on the element (`ng-valid`, `ng-invalid`, `ng-dirty`, `ng-pristine`, `ng-touched`, `ng-untouched`) including animations.
+	 * - Registering the control with its parent {@link ng.directive:form form}.
+	 *
+	 * Note: `ngModel` will try to bind to the property given by evaluating the expression on the
+	 * current scope. If the property doesn't already exist on this scope, it will be created
+	 * implicitly and added to the scope.
+	 *
+	 * For best practices on using `ngModel`, see:
+	 *
+	 *  - [Understanding Scopes](https://github.com/angular/angular.js/wiki/Understanding-Scopes)
+	 *
+	 * For basic examples, how to use `ngModel`, see:
+	 *
+	 *  - {@link ng.directive:input input}
+	 *    - {@link input[text] text}
+	 *    - {@link input[checkbox] checkbox}
+	 *    - {@link input[radio] radio}
+	 *    - {@link input[number] number}
+	 *    - {@link input[email] email}
+	 *    - {@link input[url] url}
+	 *    - {@link input[date] date}
+	 *    - {@link input[datetime-local] datetime-local}
+	 *    - {@link input[time] time}
+	 *    - {@link input[month] month}
+	 *    - {@link input[week] week}
+	 *  - {@link ng.directive:select select}
+	 *  - {@link ng.directive:textarea textarea}
+	 *
+	 * # CSS classes
+	 * The following CSS classes are added and removed on the associated input/select/textarea element
+	 * depending on the validity of the model.
+	 *
+	 *  - `ng-valid`: the model is valid
+	 *  - `ng-invalid`: the model is invalid
+	 *  - `ng-valid-[key]`: for each valid key added by `$setValidity`
+	 *  - `ng-invalid-[key]`: for each invalid key added by `$setValidity`
+	 *  - `ng-pristine`: the control hasn't been interacted with yet
+	 *  - `ng-dirty`: the control has been interacted with
+	 *  - `ng-touched`: the control has been blurred
+	 *  - `ng-untouched`: the control hasn't been blurred
+	 *  - `ng-pending`: any `$asyncValidators` are unfulfilled
+	 *
+	 * Keep in mind that ngAnimate can detect each of these classes when added and removed.
+	 *
+	 * ## Animation Hooks
+	 *
+	 * Animations within models are triggered when any of the associated CSS classes are added and removed
+	 * on the input element which is attached to the model. These classes are: `.ng-pristine`, `.ng-dirty`,
+	 * `.ng-invalid` and `.ng-valid` as well as any other validations that are performed on the model itself.
+	 * The animations that are triggered within ngModel are similar to how they work in ngClass and
+	 * animations can be hooked into using CSS transitions, keyframes as well as JS animations.
+	 *
+	 * The following example shows a simple way to utilize CSS transitions to style an input element
+	 * that has been rendered as invalid after it has been validated:
+	 *
+	 * <pre>
+	 * //be sure to include ngAnimate as a module to hook into more
+	 * //advanced animations
+	 * .my-input {
+	 *   transition:0.5s linear all;
+	 *   background: white;
+	 * }
+	 * .my-input.ng-invalid {
+	 *   background: red;
+	 *   color:white;
+	 * }
+	 * </pre>
+	 *
+	 * @example
+	 * <example deps="angular-animate.js" animations="true" fixBase="true" module="inputExample">
+	     <file name="index.html">
+	       <script>
+	        angular.module('inputExample', [])
+	          .controller('ExampleController', ['$scope', function($scope) {
+	            $scope.val = '1';
+	          }]);
+	       </script>
+	       <style>
+	         .my-input {
+	           -webkit-transition:all linear 0.5s;
+	           transition:all linear 0.5s;
+	           background: transparent;
+	         }
+	         .my-input.ng-invalid {
+	           color:white;
+	           background: red;
+	         }
+	       </style>
+	       Update input to see transitions when valid/invalid.
+	       Integer is a valid value.
+	       <form name="testForm" ng-controller="ExampleController">
+	         <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input" />
+	       </form>
+	     </file>
+	 * </example>
+	 *
+	 * ## Binding to a getter/setter
+	 *
+	 * Sometimes it's helpful to bind `ngModel` to a getter/setter function.  A getter/setter is a
+	 * function that returns a representation of the model when called with zero arguments, and sets
+	 * the internal state of a model when called with an argument. It's sometimes useful to use this
+	 * for models that have an internal representation that's different than what the model exposes
+	 * to the view.
+	 *
+	 * <div class="alert alert-success">
+	 * **Best Practice:** It's best to keep getters fast because Angular is likely to call them more
+	 * frequently than other parts of your code.
+	 * </div>
+	 *
+	 * You use this behavior by adding `ng-model-options="{ getterSetter: true }"` to an element that
+	 * has `ng-model` attached to it. You can also add `ng-model-options="{ getterSetter: true }"` to
+	 * a `<form>`, which will enable this behavior for all `<input>`s within it. See
+	 * {@link ng.directive:ngModelOptions `ngModelOptions`} for more.
+	 *
+	 * The following example shows how to use `ngModel` with a getter/setter:
+	 *
+	 * @example
+	 * <example name="ngModel-getter-setter" module="getterSetterExample">
+	     <file name="index.html">
+	       <div ng-controller="ExampleController">
+	         <form name="userForm">
+	           Name:
+	           <input type="text" name="userName"
+	                  ng-model="user.name"
+	                  ng-model-options="{ getterSetter: true }" />
+	         </form>
+	         <pre>user.name = <span ng-bind="user.name()"></span></pre>
+	       </div>
+	     </file>
+	     <file name="app.js">
+	       angular.module('getterSetterExample', [])
+	         .controller('ExampleController', ['$scope', function($scope) {
+	           var _name = 'Brian';
+	           $scope.user = {
+	             name: function(newName) {
+	               if (angular.isDefined(newName)) {
+	                 _name = newName;
+	               }
+	               return _name;
+	             }
+	           };
+	         }]);
+	     </file>
+	 * </example>
+	 */
+	var ngModelDirective = ['$rootScope', function($rootScope) {
+	  return {
+	    restrict: 'A',
+	    require: ['ngModel', '^?form', '^?ngModelOptions'],
+	    controller: NgModelController,
+	    // Prelink needs to run before any input directive
+	    // so that we can set the NgModelOptions in NgModelController
+	    // before anyone else uses it.
+	    priority: 1,
+	    compile: function ngModelCompile(element) {
+	      // Setup initial state of the control
+	      element.addClass(PRISTINE_CLASS).addClass(UNTOUCHED_CLASS).addClass(VALID_CLASS);
+
+	      return {
+	        pre: function ngModelPreLink(scope, element, attr, ctrls) {
+	          var modelCtrl = ctrls[0],
+	              formCtrl = ctrls[1] || nullFormCtrl;
+
+	          modelCtrl.$$setOptions(ctrls[2] && ctrls[2].$options);
+
+	          // notify others, especially parent forms
+	          formCtrl.$addControl(modelCtrl);
+
+	          attr.$observe('name', function(newValue) {
+	            if (modelCtrl.$name !== newValue) {
+	              formCtrl.$$renameControl(modelCtrl, newValue);
+	            }
+	          });
+
+	          scope.$on('$destroy', function() {
+	            formCtrl.$removeControl(modelCtrl);
+	          });
+	        },
+	        post: function ngModelPostLink(scope, element, attr, ctrls) {
+	          var modelCtrl = ctrls[0];
+	          if (modelCtrl.$options && modelCtrl.$options.updateOn) {
+	            element.on(modelCtrl.$options.updateOn, function(ev) {
+	              modelCtrl.$$debounceViewValueCommit(ev && ev.type);
+	            });
+	          }
+
+	          element.on('blur', function(ev) {
+	            if (modelCtrl.$touched) return;
+
+	            if ($rootScope.$$phase) {
+	              scope.$evalAsync(modelCtrl.$setTouched);
+	            } else {
+	              scope.$apply(modelCtrl.$setTouched);
+	            }
+	          });
+	        }
+	      };
+	    }
+	  };
+	}];
+
+	var DEFAULT_REGEXP = /(\s+|^)default(\s+|$)/;
+
+	/**
+	 * @ngdoc directive
+	 * @name ngModelOptions
+	 *
+	 * @description
+	 * Allows tuning how model updates are done. Using `ngModelOptions` you can specify a custom list of
+	 * events that will trigger a model update and/or a debouncing delay so that the actual update only
+	 * takes place when a timer expires; this timer will be reset after another change takes place.
+	 *
+	 * Given the nature of `ngModelOptions`, the value displayed inside input fields in the view might
+	 * be different than the value in the actual model. This means that if you update the model you
+	 * should also invoke {@link ngModel.NgModelController `$rollbackViewValue`} on the relevant input field in
+	 * order to make sure it is synchronized with the model and that any debounced action is canceled.
+	 *
+	 * The easiest way to reference the control's {@link ngModel.NgModelController `$rollbackViewValue`}
+	 * method is by making sure the input is placed inside a form that has a `name` attribute. This is
+	 * important because `form` controllers are published to the related scope under the name in their
+	 * `name` attribute.
+	 *
+	 * Any pending changes will take place immediately when an enclosing form is submitted via the
+	 * `submit` event. Note that `ngClick` events will occur before the model is updated. Use `ngSubmit`
+	 * to have access to the updated model.
+	 *
+	 * `ngModelOptions` has an effect on the element it's declared on and its descendants.
+	 *
+	 * @param {Object} ngModelOptions options to apply to the current model. Valid keys are:
+	 *   - `updateOn`: string specifying which event should the input be bound to. You can set several
+	 *     events using an space delimited list. There is a special event called `default` that
+	 *     matches the default events belonging of the control.
+	 *   - `debounce`: integer value which contains the debounce model update value in milliseconds. A
+	 *     value of 0 triggers an immediate update. If an object is supplied instead, you can specify a
+	 *     custom value for each event. For example:
+	 *     `ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"`
+	 *   - `allowInvalid`: boolean value which indicates that the model can be set with values that did
+	 *     not validate correctly instead of the default behavior of setting the model to undefined.
+	 *   - `getterSetter`: boolean value which determines whether or not to treat functions bound to
+	       `ngModel` as getters/setters.
+	 *   - `timezone`: Defines the timezone to be used to read/write the `Date` instance in the model for
+	 *     `<input type="date">`, `<input type="time">`, ... . Right now, the only supported value is `'UTC'`,
+	 *     otherwise the default timezone of the browser will be used.
+	 *
+	 * @example
+
+	  The following example shows how to override immediate updates. Changes on the inputs within the
+	  form will update the model only when the control loses focus (blur event). If `escape` key is
+	  pressed while the input field is focused, the value is reset to the value in the current model.
+
+	  <example name="ngModelOptions-directive-blur" module="optionsExample">
+	    <file name="index.html">
+	      <div ng-controller="ExampleController">
+	        <form name="userForm">
+	          Name:
+	          <input type="text" name="userName"
+	                 ng-model="user.name"
+	                 ng-model-options="{ updateOn: 'blur' }"
+	                 ng-keyup="cancel($event)" /><br />
+
+	          Other data:
+	          <input type="text" ng-model="user.data" /><br />
+	        </form>
+	        <pre>user.name = <span ng-bind="user.name"></span></pre>
+	      </div>
+	    </file>
+	    <file name="app.js">
+	      angular.module('optionsExample', [])
+	        .controller('ExampleController', ['$scope', function($scope) {
+	          $scope.user = { name: 'say', data: '' };
+
+	          $scope.cancel = function(e) {
+	            if (e.keyCode == 27) {
+	              $scope.userForm.userName.$rollbackViewValue();
+	            }
+	          };
+	        }]);
+	    </file>
+	    <file name="protractor.js" type="protractor">
+	      var model = element(by.binding('user.name'));
+	      var input = element(by.model('user.name'));
+	      var other = element(by.model('user.data'));
+
+	      it('should allow custom events', function() {
+	        input.sendKeys(' hello');
+	        input.click();
+	        expect(model.getText()).toEqual('say');
+	        other.click();
+	        expect(model.getText()).toEqual('say hello');
+	      });
+
+	      it('should $rollbackViewValue when model changes', function() {
+	        input.sendKeys(' hello');
+	        expect(input.getAttribute('value')).toEqual('say hello');
+	        input.sendKeys(protractor.Key.ESCAPE);
+	        expect(input.getAttribute('value')).toEqual('say');
+	        other.click();
+	        expect(model.getText()).toEqual('say');
+	      });
+	    </file>
+	  </example>
+
+	  This one shows how to debounce model changes. Model will be updated only 1 sec after last change.
+	  If the `Clear` button is pressed, any debounced action is canceled and the value becomes empty.
+
+	  <example name="ngModelOptions-directive-debounce" module="optionsExample">
+	    <file name="index.html">
+	      <div ng-controller="ExampleController">
+	        <form name="userForm">
+	          Name:
+	          <input type="text" name="userName"
+	                 ng-model="user.name"
+	                 ng-model-options="{ debounce: 1000 }" />
+	          <button ng-click="userForm.userName.$rollbackViewValue(); user.name=''">Clear</button><br />
+	        </form>
+	        <pre>user.name = <span ng-bind="user.name"></span></pre>
+	      </div>
+	    </file>
+	    <file name="app.js">
+	      angular.module('optionsExample', [])
+	        .controller('ExampleController', ['$scope', function($scope) {
+	          $scope.user = { name: 'say' };
+	        }]);
+	    </file>
+	  </example>
+
+	  This one shows how to bind to getter/setters:
+
+	  <example name="ngModelOptions-directive-getter-setter" module="getterSetterExample">
+	    <file name="index.html">
+	      <div ng-controller="ExampleController">
+	        <form name="userForm">
+	          Name:
+	          <input type="text" name="userName"
+	                 ng-model="user.name"
+	                 ng-model-options="{ getterSetter: true }" />
+	        </form>
+	        <pre>user.name = <span ng-bind="user.name()"></span></pre>
+	      </div>
+	    </file>
+	    <file name="app.js">
+	      angular.module('getterSetterExample', [])
+	        .controller('ExampleController', ['$scope', function($scope) {
+	          var _name = 'Brian';
+	          $scope.user = {
+	            name: function(newName) {
+	              return angular.isDefined(newName) ? (_name = newName) : _name;
+	            }
+	          };
+	        }]);
+	    </file>
+	  </example>
+	 */
+	var ngModelOptionsDirective = function() {
+	  return {
+	    restrict: 'A',
+	    controller: ['$scope', '$attrs', function($scope, $attrs) {
+	      var that = this;
+	      this.$options = $scope.$eval($attrs.ngModelOptions);
+	      // Allow adding/overriding bound events
+	      if (this.$options.updateOn !== undefined) {
+	        this.$options.updateOnDefault = false;
+	        // extract "default" pseudo-event from list of events that can trigger a model update
+	        this.$options.updateOn = trim(this.$options.updateOn.replace(DEFAULT_REGEXP, function() {
+	          that.$options.updateOnDefault = true;
+	          return ' ';
+	        }));
+	      } else {
+	        this.$options.updateOnDefault = true;
+	      }
+	    }]
+	  };
+	};
+
+
+
+	// helper methods
+	function addSetValidityMethod(context) {
+	  var ctrl = context.ctrl,
+	      $element = context.$element,
+	      classCache = {},
+	      set = context.set,
+	      unset = context.unset,
+	      parentForm = context.parentForm,
+	      $animate = context.$animate;
+
+	  classCache[INVALID_CLASS] = !(classCache[VALID_CLASS] = $element.hasClass(VALID_CLASS));
+
+	  ctrl.$setValidity = setValidity;
+
+	  function setValidity(validationErrorKey, state, controller) {
+	    if (state === undefined) {
+	      createAndSet('$pending', validationErrorKey, controller);
+	    } else {
+	      unsetAndCleanup('$pending', validationErrorKey, controller);
+	    }
+	    if (!isBoolean(state)) {
+	      unset(ctrl.$error, validationErrorKey, controller);
+	      unset(ctrl.$$success, validationErrorKey, controller);
+	    } else {
+	      if (state) {
+	        unset(ctrl.$error, validationErrorKey, controller);
+	        set(ctrl.$$success, validationErrorKey, controller);
+	      } else {
+	        set(ctrl.$error, validationErrorKey, controller);
+	        unset(ctrl.$$success, validationErrorKey, controller);
+	      }
+	    }
+	    if (ctrl.$pending) {
+	      cachedToggleClass(PENDING_CLASS, true);
+	      ctrl.$valid = ctrl.$invalid = undefined;
+	      toggleValidationCss('', null);
+	    } else {
+	      cachedToggleClass(PENDING_CLASS, false);
+	      ctrl.$valid = isObjectEmpty(ctrl.$error);
+	      ctrl.$invalid = !ctrl.$valid;
+	      toggleValidationCss('', ctrl.$valid);
+	    }
+
+	    // re-read the state as the set/unset methods could have
+	    // combined state in ctrl.$error[validationError] (used for forms),
+	    // where setting/unsetting only increments/decrements the value,
+	    // and does not replace it.
+	    var combinedState;
+	    if (ctrl.$pending && ctrl.$pending[validationErrorKey]) {
+	      combinedState = undefined;
+	    } else if (ctrl.$error[validationErrorKey]) {
+	      combinedState = false;
+	    } else if (ctrl.$$success[validationErrorKey]) {
+	      combinedState = true;
+	    } else {
+	      combinedState = null;
+	    }
+
+	    toggleValidationCss(validationErrorKey, combinedState);
+	    parentForm.$setValidity(validationErrorKey, combinedState, ctrl);
+	  }
+
+	  function createAndSet(name, value, controller) {
+	    if (!ctrl[name]) {
+	      ctrl[name] = {};
+	    }
+	    set(ctrl[name], value, controller);
+	  }
+
+	  function unsetAndCleanup(name, value, controller) {
+	    if (ctrl[name]) {
+	      unset(ctrl[name], value, controller);
+	    }
+	    if (isObjectEmpty(ctrl[name])) {
+	      ctrl[name] = undefined;
+	    }
+	  }
+
+	  function cachedToggleClass(className, switchValue) {
+	    if (switchValue && !classCache[className]) {
+	      $animate.addClass($element, className);
+	      classCache[className] = true;
+	    } else if (!switchValue && classCache[className]) {
+	      $animate.removeClass($element, className);
+	      classCache[className] = false;
+	    }
+	  }
+
+	  function toggleValidationCss(validationErrorKey, isValid) {
+	    validationErrorKey = validationErrorKey ? '-' + snake_case(validationErrorKey, '-') : '';
+
+	    cachedToggleClass(VALID_CLASS + validationErrorKey, isValid === true);
+	    cachedToggleClass(INVALID_CLASS + validationErrorKey, isValid === false);
+	  }
+	}
+
+	function isObjectEmpty(obj) {
+	  if (obj) {
+	    for (var prop in obj) {
+	      return false;
+	    }
+	  }
+	  return true;
+	}
 
 	/**
 	 * @ngdoc directive
@@ -24751,6 +24697,29 @@
 	 * Creating aliases for these properties is possible with {@link ng.directive:ngInit `ngInit`}.
 	 * This may be useful when, for instance, nesting ngRepeats.
 	 *
+	 * # Iterating over object properties
+	 *
+	 * It is possible to get `ngRepeat` to iterate over the properties of an object using the following
+	 * syntax:
+	 *
+	 * ```js
+	 * <div ng-repeat="(key, value) in myObj"> ... </div>
+	 * ```
+	 *
+	 * You need to be aware that the JavaScript specification does not define what order
+	 * it will return the keys for an object. In order to have a guaranteed deterministic order
+	 * for the keys, Angular versions up to and including 1.3 **sort the keys alphabetically**.
+	 *
+	 * If this is not desired, the recommended workaround is to convert your object into an array
+	 * that is sorted into the order that you prefer before providing it to `ngRepeat`.  You could
+	 * do this with a filter such as [toArrayFilter](http://ngmodules.org/modules/angular-toArrayFilter)
+	 * or implement a `$watch` on the object yourself.
+	 *
+	 * In version 1.4 we will remove the sorting, since it seems that browsers generally follow the
+	 * strategy of providing keys in the order in which they were defined, although there are exceptions
+	 * when keys are deleted and reinstated.
+	 *
+	 *
 	 * # Special repeat start and end points
 	 * To repeat a series of elements instead of just one parent element, ngRepeat (as well as other ng directives) supports extending
 	 * the range of the repeater by defining explicit start and end points by using **ng-repeat-start** and **ng-repeat-end** respectively.
@@ -24995,7 +24964,7 @@
 	      var keyIdentifier = match[2];
 
 	      if (aliasAs && (!/^[$a-zA-Z_][$a-zA-Z0-9_]*$/.test(aliasAs) ||
-	          /^(null|undefined|this|\$index|\$first|\$middle|\$last|\$even|\$odd|\$parent)$/.test(aliasAs))) {
+	          /^(null|undefined|this|\$index|\$first|\$middle|\$last|\$even|\$odd|\$parent|\$root|\$id)$/.test(aliasAs))) {
 	        throw ngRepeatMinErr('badident', "alias '{0}' is invalid --- must be a valid JS identifier which is not a reserved name.",
 	          aliasAs);
 	      }
@@ -25207,10 +25176,11 @@
 	 *
 	 * By default, the `.ng-hide` class will style the element with `display: none!important`. If you wish to change
 	 * the hide behavior with ngShow/ngHide then this can be achieved by restating the styles for the `.ng-hide`
-	 * class in CSS:
+	 * class CSS. Note that the selector that needs to be used is actually `.ng-hide:not(.ng-hide-animate)` to cope
+	 * with extra animation classes that can be added.
 	 *
 	 * ```css
-	 * .ng-hide {
+	 * .ng-hide:not(.ng-hide-animate) {
 	 *   /&#42; this is just another form of hiding an element &#42;/
 	 *   display: block!important;
 	 *   position: absolute;
@@ -25548,12 +25518,12 @@
 	   </example>
 	 */
 	var ngStyleDirective = ngDirective(function(scope, element, attr) {
-	  scope.$watch(attr.ngStyle, function ngStyleWatchAction(newStyles, oldStyles) {
+	  scope.$watchCollection(attr.ngStyle, function ngStyleWatchAction(newStyles, oldStyles) {
 	    if (oldStyles && (newStyles !== oldStyles)) {
 	      forEach(oldStyles, function(val, style) { element.css(style, '');});
 	    }
 	    if (newStyles) element.css(newStyles);
-	  }, true);
+	  });
 	});
 
 	/**
@@ -26661,6 +26631,96 @@
 	  terminal: false
 	});
 
+	var requiredDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+	      attr.required = true; // force truthy in case we are on non input element
+
+	      ctrl.$validators.required = function(modelValue, viewValue) {
+	        return !attr.required || !ctrl.$isEmpty(viewValue);
+	      };
+
+	      attr.$observe('required', function() {
+	        ctrl.$validate();
+	      });
+	    }
+	  };
+	};
+
+
+	var patternDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+
+	      var regexp, patternExp = attr.ngPattern || attr.pattern;
+	      attr.$observe('pattern', function(regex) {
+	        if (isString(regex) && regex.length > 0) {
+	          regex = new RegExp('^' + regex + '$');
+	        }
+
+	        if (regex && !regex.test) {
+	          throw minErr('ngPattern')('noregexp',
+	            'Expected {0} to be a RegExp but was {1}. Element: {2}', patternExp,
+	            regex, startingTag(elm));
+	        }
+
+	        regexp = regex || undefined;
+	        ctrl.$validate();
+	      });
+
+	      ctrl.$validators.pattern = function(value) {
+	        return ctrl.$isEmpty(value) || isUndefined(regexp) || regexp.test(value);
+	      };
+	    }
+	  };
+	};
+
+
+	var maxlengthDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+
+	      var maxlength = -1;
+	      attr.$observe('maxlength', function(value) {
+	        var intVal = int(value);
+	        maxlength = isNaN(intVal) ? -1 : intVal;
+	        ctrl.$validate();
+	      });
+	      ctrl.$validators.maxlength = function(modelValue, viewValue) {
+	        return (maxlength < 0) || ctrl.$isEmpty(viewValue) || (viewValue.length <= maxlength);
+	      };
+	    }
+	  };
+	};
+
+	var minlengthDirective = function() {
+	  return {
+	    restrict: 'A',
+	    require: '?ngModel',
+	    link: function(scope, elm, attr, ctrl) {
+	      if (!ctrl) return;
+
+	      var minlength = 0;
+	      attr.$observe('minlength', function(value) {
+	        minlength = int(value) || 0;
+	        ctrl.$validate();
+	      });
+	      ctrl.$validators.minlength = function(modelValue, viewValue) {
+	        return ctrl.$isEmpty(viewValue) || viewValue.length >= minlength;
+	      };
+	    }
+	  };
+	};
+
 	  if (window.angular.bootstrap) {
 	    //AngularJS is already loaded, so we can return here...
 	    console.log('WARNING: Tried to load angular more than once.');
@@ -26689,9 +26749,6 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(92);
-	__webpack_require__(93);
-	__webpack_require__(94);
 	__webpack_require__(95);
 	__webpack_require__(96);
 	__webpack_require__(97);
@@ -26701,6 +26758,9 @@
 	__webpack_require__(101);
 	__webpack_require__(102);
 	__webpack_require__(103);
+	__webpack_require__(104);
+	__webpack_require__(105);
+	__webpack_require__(106);
 
 /***/ },
 /* 6 */
@@ -33246,7 +33306,7 @@
 	    };
 	  }]);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(34)))
 
 /***/ },
 /* 7 */
@@ -33877,9 +33937,9 @@
 	    var OptionsManager = __webpack_require__(36);
 	    var Transform = __webpack_require__(37);
 	    var Vector = __webpack_require__(38);
-	    var Particle = __webpack_require__(39);
-	    var Spring = __webpack_require__(40);
-	    var PhysicsEngine = __webpack_require__(41);
+	    var Particle = __webpack_require__(40);
+	    var Spring = __webpack_require__(41);
+	    var PhysicsEngine = __webpack_require__(39);
 	    var LayoutNode = __webpack_require__(11);
 	    var Transitionable = __webpack_require__(42);
 
@@ -36728,10 +36788,10 @@
 	    var EventHandler = __webpack_require__(46);
 	    var Group = __webpack_require__(48);
 	    var Vector = __webpack_require__(38);
-	    var PhysicsEngine = __webpack_require__(41);
-	    var Particle = __webpack_require__(39);
+	    var PhysicsEngine = __webpack_require__(39);
+	    var Particle = __webpack_require__(40);
 	    var Drag = __webpack_require__(49);
-	    var Spring = __webpack_require__(40);
+	    var Spring = __webpack_require__(41);
 	    var ScrollSync = __webpack_require__(50);
 	    var ViewSequence = __webpack_require__(45);
 
@@ -41846,7 +41906,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
-	var dispose = __webpack_require__(34)
+	var dispose = __webpack_require__(35)
 		// The css code:
 		(__webpack_require__(33));
 	// Hot Module Replacement
@@ -41864,6 +41924,25 @@
 
 /***/ },
 /* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  core: __webpack_require__(92),
+	  events: __webpack_require__(93),
+	  inputs: __webpack_require__(94),
+	  math: __webpack_require__(107),
+	  modifiers: __webpack_require__(108),
+	  physics: __webpack_require__(109),
+	  surfaces: __webpack_require__(110),
+	  transitions: __webpack_require__(111),
+	  utilities: __webpack_require__(112),
+	  views: __webpack_require__(113),
+	  widgets: __webpack_require__(114)
+	};
+
+
+/***/ },
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -41887,25 +41966,6 @@
 			head.removeChild(styleElement);
 		};
 	}
-
-
-/***/ },
-/* 35 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  core: __webpack_require__(104),
-	  events: __webpack_require__(105),
-	  inputs: __webpack_require__(106),
-	  math: __webpack_require__(107),
-	  modifiers: __webpack_require__(108),
-	  physics: __webpack_require__(109),
-	  surfaces: __webpack_require__(110),
-	  transitions: __webpack_require__(111),
-	  utilities: __webpack_require__(112),
-	  views: __webpack_require__(114),
-	  widgets: __webpack_require__(113)
-	};
 
 
 /***/ },
@@ -42873,349 +42933,6 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Vector = __webpack_require__(38);
-	var Transform = __webpack_require__(37);
-	var EventHandler = __webpack_require__(46);
-	var Integrator = __webpack_require__(116);
-	function Particle(options) {
-	    options = options || {};
-	    var defaults = Particle.DEFAULT_OPTIONS;
-	    this.position = new Vector();
-	    this.velocity = new Vector();
-	    this.force = new Vector();
-	    this._engine = null;
-	    this._isSleeping = true;
-	    this._eventOutput = null;
-	    this.mass = options.mass !== undefined ? options.mass : defaults.mass;
-	    this.inverseMass = 1 / this.mass;
-	    this.setPosition(options.position || defaults.position);
-	    this.setVelocity(options.velocity || defaults.velocity);
-	    this.force.set(options.force || [
-	        0,
-	        0,
-	        0
-	    ]);
-	    this.transform = Transform.identity.slice();
-	    this._spec = {
-	        size: [
-	            true,
-	            true
-	        ],
-	        target: {
-	            transform: this.transform,
-	            origin: [
-	                0.5,
-	                0.5
-	            ],
-	            target: null
-	        }
-	    };
-	}
-	Particle.DEFAULT_OPTIONS = {
-	    position: [
-	        0,
-	        0,
-	        0
-	    ],
-	    velocity: [
-	        0,
-	        0,
-	        0
-	    ],
-	    mass: 1
-	};
-	var _events = {
-	    start: 'start',
-	    update: 'update',
-	    end: 'end'
-	};
-	var now = Date.now;
-	Particle.prototype.isBody = false;
-	Particle.prototype.isActive = function isActive() {
-	    return !this._isSleeping;
-	};
-	Particle.prototype.sleep = function sleep() {
-	    if (this._isSleeping)
-	        return;
-	    this.emit(_events.end, this);
-	    this._isSleeping = true;
-	};
-	Particle.prototype.wake = function wake() {
-	    if (!this._isSleeping)
-	        return;
-	    this.emit(_events.start, this);
-	    this._isSleeping = false;
-	    this._prevTime = now();
-	    if (this._engine)
-	        this._engine.wake();
-	};
-	Particle.prototype.setPosition = function setPosition(position) {
-	    this.position.set(position);
-	};
-	Particle.prototype.setPosition1D = function setPosition1D(x) {
-	    this.position.x = x;
-	};
-	Particle.prototype.getPosition = function getPosition() {
-	    this._engine.step();
-	    return this.position.get();
-	};
-	Particle.prototype.getPosition1D = function getPosition1D() {
-	    this._engine.step();
-	    return this.position.x;
-	};
-	Particle.prototype.setVelocity = function setVelocity(velocity) {
-	    this.velocity.set(velocity);
-	    if (!(velocity[0] === 0 && velocity[1] === 0 && velocity[2] === 0))
-	        this.wake();
-	};
-	Particle.prototype.setVelocity1D = function setVelocity1D(x) {
-	    this.velocity.x = x;
-	    if (x !== 0)
-	        this.wake();
-	};
-	Particle.prototype.getVelocity = function getVelocity() {
-	    return this.velocity.get();
-	};
-	Particle.prototype.setForce = function setForce(force) {
-	    this.force.set(force);
-	    this.wake();
-	};
-	Particle.prototype.getVelocity1D = function getVelocity1D() {
-	    return this.velocity.x;
-	};
-	Particle.prototype.setMass = function setMass(mass) {
-	    this.mass = mass;
-	    this.inverseMass = 1 / mass;
-	};
-	Particle.prototype.getMass = function getMass() {
-	    return this.mass;
-	};
-	Particle.prototype.reset = function reset(position, velocity) {
-	    this.setPosition(position || [
-	        0,
-	        0,
-	        0
-	    ]);
-	    this.setVelocity(velocity || [
-	        0,
-	        0,
-	        0
-	    ]);
-	};
-	Particle.prototype.applyForce = function applyForce(force) {
-	    if (force.isZero())
-	        return;
-	    this.force.add(force).put(this.force);
-	    this.wake();
-	};
-	Particle.prototype.applyImpulse = function applyImpulse(impulse) {
-	    if (impulse.isZero())
-	        return;
-	    var velocity = this.velocity;
-	    velocity.add(impulse.mult(this.inverseMass)).put(velocity);
-	};
-	Particle.prototype.integrateVelocity = function integrateVelocity(dt) {
-	    Integrator.integrateVelocity(this, dt);
-	};
-	Particle.prototype.integratePosition = function integratePosition(dt) {
-	    Integrator.integratePosition(this, dt);
-	};
-	Particle.prototype._integrate = function _integrate(dt) {
-	    this.integrateVelocity(dt);
-	    this.integratePosition(dt);
-	};
-	Particle.prototype.getEnergy = function getEnergy() {
-	    return 0.5 * this.mass * this.velocity.normSquared();
-	};
-	Particle.prototype.getTransform = function getTransform() {
-	    this._engine.step();
-	    var position = this.position;
-	    var transform = this.transform;
-	    transform[12] = position.x;
-	    transform[13] = position.y;
-	    transform[14] = position.z;
-	    return transform;
-	};
-	Particle.prototype.modify = function modify(target) {
-	    var _spec = this._spec.target;
-	    _spec.transform = this.getTransform();
-	    _spec.target = target;
-	    return this._spec;
-	};
-	function _createEventOutput() {
-	    this._eventOutput = new EventHandler();
-	    this._eventOutput.bindThis(this);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	}
-	Particle.prototype.emit = function emit(type, data) {
-	    if (!this._eventOutput)
-	        return;
-	    this._eventOutput.emit(type, data);
-	};
-	Particle.prototype.on = function on() {
-	    _createEventOutput.call(this);
-	    return this.on.apply(this, arguments);
-	};
-	Particle.prototype.removeListener = function removeListener() {
-	    _createEventOutput.call(this);
-	    return this.removeListener.apply(this, arguments);
-	};
-	Particle.prototype.pipe = function pipe() {
-	    _createEventOutput.call(this);
-	    return this.pipe.apply(this, arguments);
-	};
-	Particle.prototype.unpipe = function unpipe() {
-	    _createEventOutput.call(this);
-	    return this.unpipe.apply(this, arguments);
-	};
-	module.exports = Particle;
-
-/***/ },
-/* 40 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(115);
-	var Vector = __webpack_require__(38);
-	function Spring(options) {
-	    Force.call(this);
-	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.disp = new Vector(0, 0, 0);
-	    _init.call(this);
-	}
-	Spring.prototype = Object.create(Force.prototype);
-	Spring.prototype.constructor = Spring;
-	var pi = Math.PI;
-	var MIN_PERIOD = 150;
-	Spring.FORCE_FUNCTIONS = {
-	    FENE: function (dist, rMax) {
-	        var rMaxSmall = rMax * 0.99;
-	        var r = Math.max(Math.min(dist, rMaxSmall), -rMaxSmall);
-	        return r / (1 - r * r / (rMax * rMax));
-	    },
-	    HOOK: function (dist) {
-	        return dist;
-	    }
-	};
-	Spring.DEFAULT_OPTIONS = {
-	    period: 300,
-	    dampingRatio: 0.1,
-	    length: 0,
-	    maxLength: Infinity,
-	    anchor: undefined,
-	    forceFunction: Spring.FORCE_FUNCTIONS.HOOK
-	};
-	function _calcStiffness() {
-	    var options = this.options;
-	    options.stiffness = Math.pow(2 * pi / options.period, 2);
-	}
-	function _calcDamping() {
-	    var options = this.options;
-	    options.damping = 4 * pi * options.dampingRatio / options.period;
-	}
-	function _init() {
-	    _calcStiffness.call(this);
-	    _calcDamping.call(this);
-	}
-	Spring.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor.position instanceof Vector)
-	            this.options.anchor = options.anchor.position;
-	        if (options.anchor instanceof Vector)
-	            this.options.anchor = options.anchor;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Vector(options.anchor);
-	    }
-	    if (options.period !== undefined) {
-	        if (options.period < MIN_PERIOD) {
-	            options.period = MIN_PERIOD;
-	            console.warn('The period of a SpringTransition is capped at ' + MIN_PERIOD + ' ms. Use a SnapTransition for faster transitions');
-	        }
-	        this.options.period = options.period;
-	    }
-	    if (options.dampingRatio !== undefined)
-	        this.options.dampingRatio = options.dampingRatio;
-	    if (options.length !== undefined)
-	        this.options.length = options.length;
-	    if (options.forceFunction !== undefined)
-	        this.options.forceFunction = options.forceFunction;
-	    if (options.maxLength !== undefined)
-	        this.options.maxLength = options.maxLength;
-	    _init.call(this);
-	    Force.prototype.setOptions.call(this, options);
-	};
-	Spring.prototype.applyForce = function applyForce(targets, source) {
-	    var force = this.force;
-	    var disp = this.disp;
-	    var options = this.options;
-	    var stiffness = options.stiffness;
-	    var damping = options.damping;
-	    var restLength = options.length;
-	    var maxLength = options.maxLength;
-	    var anchor = options.anchor || source.position;
-	    var forceFunction = options.forceFunction;
-	    var i;
-	    var target;
-	    var p2;
-	    var v2;
-	    var dist;
-	    var m;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        p2 = target.position;
-	        v2 = target.velocity;
-	        anchor.sub(p2).put(disp);
-	        dist = disp.norm() - restLength;
-	        if (dist === 0)
-	            return;
-	        m = target.mass;
-	        stiffness *= m;
-	        damping *= m;
-	        disp.normalize(stiffness * forceFunction(dist, maxLength)).put(force);
-	        if (damping)
-	            if (source)
-	                force.add(v2.sub(source.velocity).mult(-damping)).put(force);
-	            else
-	                force.add(v2.mult(-damping)).put(force);
-	        target.applyForce(force);
-	        if (source)
-	            source.applyForce(force.mult(-1));
-	    }
-	};
-	Spring.prototype.getEnergy = function getEnergy(targets, source) {
-	    var options = this.options;
-	    var restLength = options.length;
-	    var anchor = source ? source.position : options.anchor;
-	    var strength = options.stiffness;
-	    var energy = 0;
-	    for (var i = 0; i < targets.length; i++) {
-	        var target = targets[i];
-	        var dist = anchor.sub(target.position).norm() - restLength;
-	        energy += 0.5 * strength * dist * dist;
-	    }
-	    return energy;
-	};
-	module.exports = Spring;
-
-/***/ },
-/* 41 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
 	var EventHandler = __webpack_require__(46);
 	function PhysicsEngine(options) {
 	    this.options = Object.create(PhysicsEngine.DEFAULT_OPTIONS);
@@ -43483,6 +43200,349 @@
 	    this._eventHandler.on(event, fn);
 	};
 	module.exports = PhysicsEngine;
+
+/***/ },
+/* 40 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Vector = __webpack_require__(38);
+	var Transform = __webpack_require__(37);
+	var EventHandler = __webpack_require__(46);
+	var Integrator = __webpack_require__(115);
+	function Particle(options) {
+	    options = options || {};
+	    var defaults = Particle.DEFAULT_OPTIONS;
+	    this.position = new Vector();
+	    this.velocity = new Vector();
+	    this.force = new Vector();
+	    this._engine = null;
+	    this._isSleeping = true;
+	    this._eventOutput = null;
+	    this.mass = options.mass !== undefined ? options.mass : defaults.mass;
+	    this.inverseMass = 1 / this.mass;
+	    this.setPosition(options.position || defaults.position);
+	    this.setVelocity(options.velocity || defaults.velocity);
+	    this.force.set(options.force || [
+	        0,
+	        0,
+	        0
+	    ]);
+	    this.transform = Transform.identity.slice();
+	    this._spec = {
+	        size: [
+	            true,
+	            true
+	        ],
+	        target: {
+	            transform: this.transform,
+	            origin: [
+	                0.5,
+	                0.5
+	            ],
+	            target: null
+	        }
+	    };
+	}
+	Particle.DEFAULT_OPTIONS = {
+	    position: [
+	        0,
+	        0,
+	        0
+	    ],
+	    velocity: [
+	        0,
+	        0,
+	        0
+	    ],
+	    mass: 1
+	};
+	var _events = {
+	    start: 'start',
+	    update: 'update',
+	    end: 'end'
+	};
+	var now = Date.now;
+	Particle.prototype.isBody = false;
+	Particle.prototype.isActive = function isActive() {
+	    return !this._isSleeping;
+	};
+	Particle.prototype.sleep = function sleep() {
+	    if (this._isSleeping)
+	        return;
+	    this.emit(_events.end, this);
+	    this._isSleeping = true;
+	};
+	Particle.prototype.wake = function wake() {
+	    if (!this._isSleeping)
+	        return;
+	    this.emit(_events.start, this);
+	    this._isSleeping = false;
+	    this._prevTime = now();
+	    if (this._engine)
+	        this._engine.wake();
+	};
+	Particle.prototype.setPosition = function setPosition(position) {
+	    this.position.set(position);
+	};
+	Particle.prototype.setPosition1D = function setPosition1D(x) {
+	    this.position.x = x;
+	};
+	Particle.prototype.getPosition = function getPosition() {
+	    this._engine.step();
+	    return this.position.get();
+	};
+	Particle.prototype.getPosition1D = function getPosition1D() {
+	    this._engine.step();
+	    return this.position.x;
+	};
+	Particle.prototype.setVelocity = function setVelocity(velocity) {
+	    this.velocity.set(velocity);
+	    if (!(velocity[0] === 0 && velocity[1] === 0 && velocity[2] === 0))
+	        this.wake();
+	};
+	Particle.prototype.setVelocity1D = function setVelocity1D(x) {
+	    this.velocity.x = x;
+	    if (x !== 0)
+	        this.wake();
+	};
+	Particle.prototype.getVelocity = function getVelocity() {
+	    return this.velocity.get();
+	};
+	Particle.prototype.setForce = function setForce(force) {
+	    this.force.set(force);
+	    this.wake();
+	};
+	Particle.prototype.getVelocity1D = function getVelocity1D() {
+	    return this.velocity.x;
+	};
+	Particle.prototype.setMass = function setMass(mass) {
+	    this.mass = mass;
+	    this.inverseMass = 1 / mass;
+	};
+	Particle.prototype.getMass = function getMass() {
+	    return this.mass;
+	};
+	Particle.prototype.reset = function reset(position, velocity) {
+	    this.setPosition(position || [
+	        0,
+	        0,
+	        0
+	    ]);
+	    this.setVelocity(velocity || [
+	        0,
+	        0,
+	        0
+	    ]);
+	};
+	Particle.prototype.applyForce = function applyForce(force) {
+	    if (force.isZero())
+	        return;
+	    this.force.add(force).put(this.force);
+	    this.wake();
+	};
+	Particle.prototype.applyImpulse = function applyImpulse(impulse) {
+	    if (impulse.isZero())
+	        return;
+	    var velocity = this.velocity;
+	    velocity.add(impulse.mult(this.inverseMass)).put(velocity);
+	};
+	Particle.prototype.integrateVelocity = function integrateVelocity(dt) {
+	    Integrator.integrateVelocity(this, dt);
+	};
+	Particle.prototype.integratePosition = function integratePosition(dt) {
+	    Integrator.integratePosition(this, dt);
+	};
+	Particle.prototype._integrate = function _integrate(dt) {
+	    this.integrateVelocity(dt);
+	    this.integratePosition(dt);
+	};
+	Particle.prototype.getEnergy = function getEnergy() {
+	    return 0.5 * this.mass * this.velocity.normSquared();
+	};
+	Particle.prototype.getTransform = function getTransform() {
+	    this._engine.step();
+	    var position = this.position;
+	    var transform = this.transform;
+	    transform[12] = position.x;
+	    transform[13] = position.y;
+	    transform[14] = position.z;
+	    return transform;
+	};
+	Particle.prototype.modify = function modify(target) {
+	    var _spec = this._spec.target;
+	    _spec.transform = this.getTransform();
+	    _spec.target = target;
+	    return this._spec;
+	};
+	function _createEventOutput() {
+	    this._eventOutput = new EventHandler();
+	    this._eventOutput.bindThis(this);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	}
+	Particle.prototype.emit = function emit(type, data) {
+	    if (!this._eventOutput)
+	        return;
+	    this._eventOutput.emit(type, data);
+	};
+	Particle.prototype.on = function on() {
+	    _createEventOutput.call(this);
+	    return this.on.apply(this, arguments);
+	};
+	Particle.prototype.removeListener = function removeListener() {
+	    _createEventOutput.call(this);
+	    return this.removeListener.apply(this, arguments);
+	};
+	Particle.prototype.pipe = function pipe() {
+	    _createEventOutput.call(this);
+	    return this.pipe.apply(this, arguments);
+	};
+	Particle.prototype.unpipe = function unpipe() {
+	    _createEventOutput.call(this);
+	    return this.unpipe.apply(this, arguments);
+	};
+	module.exports = Particle;
+
+/***/ },
+/* 41 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(116);
+	var Vector = __webpack_require__(38);
+	function Spring(options) {
+	    Force.call(this);
+	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.disp = new Vector(0, 0, 0);
+	    _init.call(this);
+	}
+	Spring.prototype = Object.create(Force.prototype);
+	Spring.prototype.constructor = Spring;
+	var pi = Math.PI;
+	var MIN_PERIOD = 150;
+	Spring.FORCE_FUNCTIONS = {
+	    FENE: function (dist, rMax) {
+	        var rMaxSmall = rMax * 0.99;
+	        var r = Math.max(Math.min(dist, rMaxSmall), -rMaxSmall);
+	        return r / (1 - r * r / (rMax * rMax));
+	    },
+	    HOOK: function (dist) {
+	        return dist;
+	    }
+	};
+	Spring.DEFAULT_OPTIONS = {
+	    period: 300,
+	    dampingRatio: 0.1,
+	    length: 0,
+	    maxLength: Infinity,
+	    anchor: undefined,
+	    forceFunction: Spring.FORCE_FUNCTIONS.HOOK
+	};
+	function _calcStiffness() {
+	    var options = this.options;
+	    options.stiffness = Math.pow(2 * pi / options.period, 2);
+	}
+	function _calcDamping() {
+	    var options = this.options;
+	    options.damping = 4 * pi * options.dampingRatio / options.period;
+	}
+	function _init() {
+	    _calcStiffness.call(this);
+	    _calcDamping.call(this);
+	}
+	Spring.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor.position instanceof Vector)
+	            this.options.anchor = options.anchor.position;
+	        if (options.anchor instanceof Vector)
+	            this.options.anchor = options.anchor;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Vector(options.anchor);
+	    }
+	    if (options.period !== undefined) {
+	        if (options.period < MIN_PERIOD) {
+	            options.period = MIN_PERIOD;
+	            console.warn('The period of a SpringTransition is capped at ' + MIN_PERIOD + ' ms. Use a SnapTransition for faster transitions');
+	        }
+	        this.options.period = options.period;
+	    }
+	    if (options.dampingRatio !== undefined)
+	        this.options.dampingRatio = options.dampingRatio;
+	    if (options.length !== undefined)
+	        this.options.length = options.length;
+	    if (options.forceFunction !== undefined)
+	        this.options.forceFunction = options.forceFunction;
+	    if (options.maxLength !== undefined)
+	        this.options.maxLength = options.maxLength;
+	    _init.call(this);
+	    Force.prototype.setOptions.call(this, options);
+	};
+	Spring.prototype.applyForce = function applyForce(targets, source) {
+	    var force = this.force;
+	    var disp = this.disp;
+	    var options = this.options;
+	    var stiffness = options.stiffness;
+	    var damping = options.damping;
+	    var restLength = options.length;
+	    var maxLength = options.maxLength;
+	    var anchor = options.anchor || source.position;
+	    var forceFunction = options.forceFunction;
+	    var i;
+	    var target;
+	    var p2;
+	    var v2;
+	    var dist;
+	    var m;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        p2 = target.position;
+	        v2 = target.velocity;
+	        anchor.sub(p2).put(disp);
+	        dist = disp.norm() - restLength;
+	        if (dist === 0)
+	            return;
+	        m = target.mass;
+	        stiffness *= m;
+	        damping *= m;
+	        disp.normalize(stiffness * forceFunction(dist, maxLength)).put(force);
+	        if (damping)
+	            if (source)
+	                force.add(v2.sub(source.velocity).mult(-damping)).put(force);
+	            else
+	                force.add(v2.mult(-damping)).put(force);
+	        target.applyForce(force);
+	        if (source)
+	            source.applyForce(force.mult(-1));
+	    }
+	};
+	Spring.prototype.getEnergy = function getEnergy(targets, source) {
+	    var options = this.options;
+	    var restLength = options.length;
+	    var anchor = source ? source.position : options.anchor;
+	    var strength = options.stiffness;
+	    var energy = 0;
+	    for (var i = 0; i < targets.length; i++) {
+	        var target = targets[i];
+	        var dist = anchor.sub(target.position).norm() - restLength;
+	        energy += 0.5 * strength * dist * dist;
+	    }
+	    return energy;
+	};
+	module.exports = Spring;
 
 /***/ },
 /* 42 */
@@ -43990,7 +44050,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventEmitter = __webpack_require__(119);
+	var EventEmitter = __webpack_require__(120);
 	function EventHandler() {
 	    EventEmitter.apply(this, arguments);
 	    this.downstream = [];
@@ -44103,7 +44163,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Surface = __webpack_require__(52);
-	var Context = __webpack_require__(120);
+	var Context = __webpack_require__(119);
 	function ContainerSurface(options) {
 	    Surface.call(this, options);
 	    this._container = document.createElement('div');
@@ -44155,7 +44215,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(120);
+	var Context = __webpack_require__(119);
 	var Transform = __webpack_require__(37);
 	var Surface = __webpack_require__(52);
 	function Group(options) {
@@ -44230,7 +44290,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(115);
+	var Force = __webpack_require__(116);
 	function Drag(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -44817,6 +44877,62 @@
 /* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
+	module.exports = {
+	  Context: __webpack_require__(119),
+	  ElementAllocator: __webpack_require__(153),
+	  ElementOutput: __webpack_require__(123),
+	  Engine: __webpack_require__(121),
+	  Entity: __webpack_require__(44),
+	  EventEmitter: __webpack_require__(120),
+	  EventHandler: __webpack_require__(46),
+	  Group: __webpack_require__(48),
+	  Modifier: __webpack_require__(154),
+	  OptionsManager: __webpack_require__(36),
+	  RenderNode: __webpack_require__(122),
+	  Scene: __webpack_require__(155),
+	  SpecParser: __webpack_require__(156),
+	  Surface: __webpack_require__(52),
+	  Transform: __webpack_require__(37),
+	  View: __webpack_require__(51),
+	  ViewSequence: __webpack_require__(45)
+	};
+
+
+/***/ },
+/* 93 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  EventArbiter: __webpack_require__(157),
+	  EventFilter: __webpack_require__(158),
+	  EventMapper: __webpack_require__(159)
+	};
+
+
+/***/ },
+/* 94 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Accumulator: __webpack_require__(160),
+	  DesktopEmulationMode: __webpack_require__(161),
+	  FastClick: __webpack_require__(162),
+	  GenericSync: __webpack_require__(163),
+	  MouseSync: __webpack_require__(164),
+	  PinchSync: __webpack_require__(165),
+	  RotateSync: __webpack_require__(166),
+	  ScaleSync: __webpack_require__(167),
+	  ScrollSync: __webpack_require__(50),
+	  TouchSync: __webpack_require__(168),
+	  TouchTracker: __webpack_require__(169),
+	  TwoFingerSync: __webpack_require__(170)
+	};
+
+
+/***/ },
+/* 95 */
+/***/ function(module, exports, __webpack_require__) {
+
 	/*** IMPORTS FROM imports-loader ***/
 	var jQuery = __webpack_require__(217);
 
@@ -44882,7 +44998,7 @@
 
 
 /***/ },
-/* 93 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -44985,7 +45101,7 @@
 
 
 /***/ },
-/* 94 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45110,7 +45226,7 @@
 
 
 /***/ },
-/* 95 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45356,7 +45472,7 @@
 
 
 /***/ },
-/* 96 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45576,7 +45692,7 @@
 
 
 /***/ },
-/* 97 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45746,7 +45862,7 @@
 
 
 /***/ },
-/* 98 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -46079,7 +46195,7 @@
 
 
 /***/ },
-/* 99 */
+/* 102 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -46560,7 +46676,7 @@
 
 
 /***/ },
-/* 100 */
+/* 103 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -46682,7 +46798,7 @@
 
 
 /***/ },
-/* 101 */
+/* 104 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -46866,7 +46982,7 @@
 
 
 /***/ },
-/* 102 */
+/* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -47028,7 +47144,7 @@
 
 
 /***/ },
-/* 103 */
+/* 106 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -47199,70 +47315,14 @@
 
 
 /***/ },
-/* 104 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Context: __webpack_require__(120),
-	  ElementAllocator: __webpack_require__(156),
-	  ElementOutput: __webpack_require__(123),
-	  Engine: __webpack_require__(121),
-	  Entity: __webpack_require__(44),
-	  EventEmitter: __webpack_require__(119),
-	  EventHandler: __webpack_require__(46),
-	  Group: __webpack_require__(48),
-	  Modifier: __webpack_require__(157),
-	  OptionsManager: __webpack_require__(36),
-	  RenderNode: __webpack_require__(122),
-	  Scene: __webpack_require__(158),
-	  SpecParser: __webpack_require__(159),
-	  Surface: __webpack_require__(52),
-	  Transform: __webpack_require__(37),
-	  View: __webpack_require__(51),
-	  ViewSequence: __webpack_require__(45)
-	};
-
-
-/***/ },
-/* 105 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  EventArbiter: __webpack_require__(153),
-	  EventFilter: __webpack_require__(154),
-	  EventMapper: __webpack_require__(155)
-	};
-
-
-/***/ },
-/* 106 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Accumulator: __webpack_require__(160),
-	  DesktopEmulationMode: __webpack_require__(161),
-	  FastClick: __webpack_require__(162),
-	  GenericSync: __webpack_require__(163),
-	  MouseSync: __webpack_require__(164),
-	  PinchSync: __webpack_require__(165),
-	  RotateSync: __webpack_require__(166),
-	  ScaleSync: __webpack_require__(167),
-	  ScrollSync: __webpack_require__(50),
-	  TouchSync: __webpack_require__(168),
-	  TouchTracker: __webpack_require__(169),
-	  TwoFingerSync: __webpack_require__(170)
-	};
-
-
-/***/ },
 /* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Matrix: __webpack_require__(175),
-	  Quaternion: __webpack_require__(176),
-	  Random: __webpack_require__(177),
-	  Utilities: __webpack_require__(178),
+	  Matrix: __webpack_require__(171),
+	  Quaternion: __webpack_require__(172),
+	  Random: __webpack_require__(173),
+	  Utilities: __webpack_require__(174),
 	  Vector: __webpack_require__(38)
 	};
 
@@ -47272,10 +47332,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Draggable: __webpack_require__(171),
-	  Fader: __webpack_require__(172),
-	  ModifierChain: __webpack_require__(173),
-	  StateModifier: __webpack_require__(174)
+	  Draggable: __webpack_require__(175),
+	  Fader: __webpack_require__(176),
+	  ModifierChain: __webpack_require__(177),
+	  StateModifier: __webpack_require__(178)
 	};
 
 
@@ -47284,7 +47344,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  PhysicsEngine: __webpack_require__(41),
+	  PhysicsEngine: __webpack_require__(39),
 	  bodies: __webpack_require__(213),
 	  constraints: __webpack_require__(214),
 	  forces: __webpack_require__(215),
@@ -47297,14 +47357,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  CanvasSurface: __webpack_require__(185),
+	  CanvasSurface: __webpack_require__(179),
 	  ContainerSurface: __webpack_require__(47),
-	  FormContainerSurface: __webpack_require__(186),
-	  ImageSurface: __webpack_require__(187),
-	  InputSurface: __webpack_require__(188),
-	  SubmitInputSurface: __webpack_require__(189),
-	  TextareaSurface: __webpack_require__(190),
-	  VideoSurface: __webpack_require__(191)
+	  FormContainerSurface: __webpack_require__(180),
+	  ImageSurface: __webpack_require__(181),
+	  InputSurface: __webpack_require__(182),
+	  SubmitInputSurface: __webpack_require__(183),
+	  TextareaSurface: __webpack_require__(184),
+	  VideoSurface: __webpack_require__(185)
 	};
 
 
@@ -47313,15 +47373,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  CachedMap: __webpack_require__(179),
-	  Easing: __webpack_require__(180),
+	  CachedMap: __webpack_require__(190),
+	  Easing: __webpack_require__(191),
 	  MultipleTransition: __webpack_require__(117),
-	  SnapTransition: __webpack_require__(181),
-	  SpringTransition: __webpack_require__(182),
+	  SnapTransition: __webpack_require__(192),
+	  SpringTransition: __webpack_require__(193),
 	  Transitionable: __webpack_require__(42),
-	  TransitionableTransform: __webpack_require__(183),
+	  TransitionableTransform: __webpack_require__(194),
 	  TweenTransition: __webpack_require__(118),
-	  WallTransition: __webpack_require__(184)
+	  WallTransition: __webpack_require__(195)
 	};
 
 
@@ -47338,18 +47398,6 @@
 
 /***/ },
 /* 113 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  NavigationBar: __webpack_require__(192),
-	  Slider: __webpack_require__(193),
-	  TabBar: __webpack_require__(194),
-	  ToggleButton: __webpack_require__(195)
-	};
-
-
-/***/ },
-/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
@@ -47372,39 +47420,19 @@
 
 
 /***/ },
-/* 115 */
+/* 114 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Vector = __webpack_require__(38);
-	var EventHandler = __webpack_require__(46);
-	function Force(force) {
-	    this.force = new Vector(force);
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	}
-	Force.prototype.setOptions = function setOptions(options) {
-	    this._eventOutput.emit('change', options);
+	module.exports = {
+	  NavigationBar: __webpack_require__(186),
+	  Slider: __webpack_require__(187),
+	  TabBar: __webpack_require__(188),
+	  ToggleButton: __webpack_require__(189)
 	};
-	Force.prototype.applyForce = function applyForce(targets) {
-	    var length = targets.length;
-	    while (length--) {
-	        targets[length].applyForce(this.force);
-	    }
-	};
-	Force.prototype.getEnergy = function getEnergy() {
-	    return 0;
-	};
-	module.exports = Force;
+
 
 /***/ },
-/* 116 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47445,6 +47473,38 @@
 	    q.add(q.multiply(w).scalarMultiply(0.5 * dt)).put(q);
 	};
 	module.exports = SymplecticEuler;
+
+/***/ },
+/* 116 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Vector = __webpack_require__(38);
+	var EventHandler = __webpack_require__(46);
+	function Force(force) {
+	    this.force = new Vector(force);
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	}
+	Force.prototype.setOptions = function setOptions(options) {
+	    this._eventOutput.emit('change', options);
+	};
+	Force.prototype.applyForce = function applyForce(targets) {
+	    var length = targets.length;
+	    while (length--) {
+	        targets[length].applyForce(this.force);
+	    }
+	};
+	Force.prototype.getEnergy = function getEnergy() {
+	    return 0;
+	};
+	module.exports = Force;
 
 /***/ },
 /* 117 */
@@ -47748,56 +47808,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	function EventEmitter() {
-	    this.listeners = {};
-	    this._owner = this;
-	}
-	EventEmitter.prototype.emit = function emit(type, event) {
-	    var handlers = this.listeners[type];
-	    if (handlers) {
-	        for (var i = 0; i < handlers.length; i++) {
-	            handlers[i].call(this._owner, event);
-	        }
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.on = function on(type, handler) {
-	    if (!(type in this.listeners))
-	        this.listeners[type] = [];
-	    var index = this.listeners[type].indexOf(handler);
-	    if (index < 0)
-	        this.listeners[type].push(handler);
-	    return this;
-	};
-	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
-	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
-	    var listener = this.listeners[type];
-	    if (listener !== undefined) {
-	        var index = listener.indexOf(handler);
-	        if (index >= 0)
-	            listener.splice(index, 1);
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.bindThis = function bindThis(owner) {
-	    this._owner = owner;
-	};
-	module.exports = EventEmitter;
-
-/***/ },
-/* 120 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
 	var RenderNode = __webpack_require__(122);
 	var EventHandler = __webpack_require__(46);
-	var ElementAllocator = __webpack_require__(156);
+	var ElementAllocator = __webpack_require__(153);
 	var Transform = __webpack_require__(37);
 	var Transitionable = __webpack_require__(42);
 	var _zeroZero = [
@@ -47902,6 +47915,53 @@
 	module.exports = Context;
 
 /***/ },
+/* 120 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function EventEmitter() {
+	    this.listeners = {};
+	    this._owner = this;
+	}
+	EventEmitter.prototype.emit = function emit(type, event) {
+	    var handlers = this.listeners[type];
+	    if (handlers) {
+	        for (var i = 0; i < handlers.length; i++) {
+	            handlers[i].call(this._owner, event);
+	        }
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.on = function on(type, handler) {
+	    if (!(type in this.listeners))
+	        this.listeners[type] = [];
+	    var index = this.listeners[type].indexOf(handler);
+	    if (index < 0)
+	        this.listeners[type].push(handler);
+	    return this;
+	};
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
+	    var listener = this.listeners[type];
+	    if (listener !== undefined) {
+	        var index = listener.indexOf(handler);
+	        if (index >= 0)
+	            listener.splice(index, 1);
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.bindThis = function bindThis(owner) {
+	    this._owner = owner;
+	};
+	module.exports = EventEmitter;
+
+/***/ },
 /* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47912,7 +47972,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(120);
+	var Context = __webpack_require__(119);
 	var EventHandler = __webpack_require__(46);
 	var OptionsManager = __webpack_require__(36);
 	var Engine = {};
@@ -48096,7 +48156,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Entity = __webpack_require__(44);
-	var SpecParser = __webpack_require__(159);
+	var SpecParser = __webpack_require__(156);
 	function RenderNode(object) {
 	    this._object = null;
 	    this._child = null;
@@ -48420,106 +48480,6 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(46);
-	function EventArbiter(startMode) {
-	    this.dispatchers = {};
-	    this.currMode = undefined;
-	    this.setMode(startMode);
-	}
-	EventArbiter.prototype.setMode = function setMode(mode) {
-	    if (mode !== this.currMode) {
-	        var startMode = this.currMode;
-	        if (this.dispatchers[this.currMode])
-	            this.dispatchers[this.currMode].trigger('unpipe');
-	        this.currMode = mode;
-	        if (this.dispatchers[mode])
-	            this.dispatchers[mode].emit('pipe');
-	        this.emit('change', {
-	            from: startMode,
-	            to: mode
-	        });
-	    }
-	};
-	EventArbiter.prototype.forMode = function forMode(mode) {
-	    if (!this.dispatchers[mode])
-	        this.dispatchers[mode] = new EventHandler();
-	    return this.dispatchers[mode];
-	};
-	EventArbiter.prototype.emit = function emit(eventType, event) {
-	    if (this.currMode === undefined)
-	        return false;
-	    if (!event)
-	        event = {};
-	    var dispatcher = this.dispatchers[this.currMode];
-	    if (dispatcher)
-	        return dispatcher.trigger(eventType, event);
-	};
-	module.exports = EventArbiter;
-
-/***/ },
-/* 154 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(46);
-	function EventFilter(condition) {
-	    EventHandler.call(this);
-	    this._condition = condition;
-	}
-	EventFilter.prototype = Object.create(EventHandler.prototype);
-	EventFilter.prototype.constructor = EventFilter;
-	EventFilter.prototype.emit = function emit(type, data) {
-	    if (this._condition(type, data))
-	        return EventHandler.prototype.emit.apply(this, arguments);
-	};
-	EventFilter.prototype.trigger = EventFilter.prototype.emit;
-	module.exports = EventFilter;
-
-/***/ },
-/* 155 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(46);
-	function EventMapper(mappingFunction) {
-	    EventHandler.call(this);
-	    this._mappingFunction = mappingFunction;
-	}
-	EventMapper.prototype = Object.create(EventHandler.prototype);
-	EventMapper.prototype.constructor = EventMapper;
-	EventMapper.prototype.subscribe = null;
-	EventMapper.prototype.unsubscribe = null;
-	EventMapper.prototype.emit = function emit(type, data) {
-	    var target = this._mappingFunction.apply(this, arguments);
-	    if (target && target.emit instanceof Function)
-	        target.emit(type, data);
-	};
-	EventMapper.prototype.trigger = EventMapper.prototype.emit;
-	module.exports = EventMapper;
-
-/***/ },
-/* 156 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
 	function ElementAllocator(container) {
 	    if (!container)
 	        container = document.createDocumentFragment();
@@ -48567,7 +48527,7 @@
 	module.exports = ElementAllocator;
 
 /***/ },
-/* 157 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48579,7 +48539,7 @@
 	 */
 	var Transform = __webpack_require__(37);
 	var Transitionable = __webpack_require__(42);
-	var TransitionableTransform = __webpack_require__(183);
+	var TransitionableTransform = __webpack_require__(194);
 	function Modifier(options) {
 	    this._transformGetter = null;
 	    this._opacityGetter = null;
@@ -48824,7 +48784,7 @@
 	module.exports = Modifier;
 
 /***/ },
-/* 158 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48835,7 +48795,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Transform = __webpack_require__(37);
-	var Modifier = __webpack_require__(157);
+	var Modifier = __webpack_require__(154);
 	var RenderNode = __webpack_require__(122);
 	function Scene(definition) {
 	    this.id = null;
@@ -48948,7 +48908,7 @@
 	module.exports = Scene;
 
 /***/ },
-/* 159 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49082,6 +49042,106 @@
 	    }
 	};
 	module.exports = SpecParser;
+
+/***/ },
+/* 157 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	function EventArbiter(startMode) {
+	    this.dispatchers = {};
+	    this.currMode = undefined;
+	    this.setMode(startMode);
+	}
+	EventArbiter.prototype.setMode = function setMode(mode) {
+	    if (mode !== this.currMode) {
+	        var startMode = this.currMode;
+	        if (this.dispatchers[this.currMode])
+	            this.dispatchers[this.currMode].trigger('unpipe');
+	        this.currMode = mode;
+	        if (this.dispatchers[mode])
+	            this.dispatchers[mode].emit('pipe');
+	        this.emit('change', {
+	            from: startMode,
+	            to: mode
+	        });
+	    }
+	};
+	EventArbiter.prototype.forMode = function forMode(mode) {
+	    if (!this.dispatchers[mode])
+	        this.dispatchers[mode] = new EventHandler();
+	    return this.dispatchers[mode];
+	};
+	EventArbiter.prototype.emit = function emit(eventType, event) {
+	    if (this.currMode === undefined)
+	        return false;
+	    if (!event)
+	        event = {};
+	    var dispatcher = this.dispatchers[this.currMode];
+	    if (dispatcher)
+	        return dispatcher.trigger(eventType, event);
+	};
+	module.exports = EventArbiter;
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	function EventFilter(condition) {
+	    EventHandler.call(this);
+	    this._condition = condition;
+	}
+	EventFilter.prototype = Object.create(EventHandler.prototype);
+	EventFilter.prototype.constructor = EventFilter;
+	EventFilter.prototype.emit = function emit(type, data) {
+	    if (this._condition(type, data))
+	        return EventHandler.prototype.emit.apply(this, arguments);
+	};
+	EventFilter.prototype.trigger = EventFilter.prototype.emit;
+	module.exports = EventFilter;
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	function EventMapper(mappingFunction) {
+	    EventHandler.call(this);
+	    this._mappingFunction = mappingFunction;
+	}
+	EventMapper.prototype = Object.create(EventHandler.prototype);
+	EventMapper.prototype.constructor = EventMapper;
+	EventMapper.prototype.subscribe = null;
+	EventMapper.prototype.unsubscribe = null;
+	EventMapper.prototype.emit = function emit(type, data) {
+	    var target = this._mappingFunction.apply(this, arguments);
+	    if (target && target.emit instanceof Function)
+	        target.emit(type, data);
+	};
+	EventMapper.prototype.trigger = EventMapper.prototype.emit;
+	module.exports = EventMapper;
 
 /***/ },
 /* 160 */
@@ -50073,441 +50133,6 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(37);
-	var Transitionable = __webpack_require__(42);
-	var EventHandler = __webpack_require__(46);
-	var Utilities = __webpack_require__(178);
-	var GenericSync = __webpack_require__(163);
-	var MouseSync = __webpack_require__(164);
-	var TouchSync = __webpack_require__(168);
-	GenericSync.register({
-	    'mouse': MouseSync,
-	    'touch': TouchSync
-	});
-	function Draggable(options) {
-	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this._positionState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._differential = [
-	        0,
-	        0
-	    ];
-	    this._active = true;
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], { scale: this.options.scale });
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.sync);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    _bindEvents.call(this);
-	}
-	var _direction = {
-	    x: 1,
-	    y: 2
-	};
-	Draggable.DIRECTION_X = _direction.x;
-	Draggable.DIRECTION_Y = _direction.y;
-	var _clamp = Utilities.clamp;
-	Draggable.DEFAULT_OPTIONS = {
-	    projection: _direction.x | _direction.y,
-	    scale: 1,
-	    xRange: null,
-	    yRange: null,
-	    snapX: 0,
-	    snapY: 0,
-	    transition: { duration: 0 }
-	};
-	function _mapDifferential(differential) {
-	    var opts = this.options;
-	    var projection = opts.projection;
-	    var snapX = opts.snapX;
-	    var snapY = opts.snapY;
-	    var tx = projection & _direction.x ? differential[0] : 0;
-	    var ty = projection & _direction.y ? differential[1] : 0;
-	    if (snapX > 0)
-	        tx -= tx % snapX;
-	    if (snapY > 0)
-	        ty -= ty % snapY;
-	    return [
-	        tx,
-	        ty
-	    ];
-	}
-	function _handleStart() {
-	    if (!this._active)
-	        return;
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this.eventOutput.emit('start', { position: this.getPosition() });
-	}
-	function _handleMove(event) {
-	    if (!this._active)
-	        return;
-	    var options = this.options;
-	    this._differential = event.position;
-	    var newDifferential = _mapDifferential.call(this, this._differential);
-	    this._differential[0] -= newDifferential[0];
-	    this._differential[1] -= newDifferential[1];
-	    var pos = this.getPosition();
-	    pos[0] += newDifferential[0];
-	    pos[1] += newDifferential[1];
-	    if (options.xRange) {
-	        var xRange = [
-	            options.xRange[0] + 0.5 * options.snapX,
-	            options.xRange[1] - 0.5 * options.snapX
-	        ];
-	        pos[0] = _clamp(pos[0], xRange);
-	    }
-	    if (options.yRange) {
-	        var yRange = [
-	            options.yRange[0] + 0.5 * options.snapY,
-	            options.yRange[1] - 0.5 * options.snapY
-	        ];
-	        pos[1] = _clamp(pos[1], yRange);
-	    }
-	    this.eventOutput.emit('update', { position: pos });
-	}
-	function _handleEnd() {
-	    if (!this._active)
-	        return;
-	    this.eventOutput.emit('end', { position: this.getPosition() });
-	}
-	function _bindEvents() {
-	    this.sync.on('start', _handleStart.bind(this));
-	    this.sync.on('update', _handleMove.bind(this));
-	    this.sync.on('end', _handleEnd.bind(this));
-	}
-	Draggable.prototype.setOptions = function setOptions(options) {
-	    var currentOptions = this.options;
-	    if (options.projection !== undefined) {
-	        var proj = options.projection;
-	        this.options.projection = 0;
-	        [
-	            'x',
-	            'y'
-	        ].forEach(function (val) {
-	            if (proj.indexOf(val) !== -1)
-	                currentOptions.projection |= _direction[val];
-	        });
-	    }
-	    if (options.scale !== undefined) {
-	        currentOptions.scale = options.scale;
-	        this.sync.setOptions({ scale: options.scale });
-	    }
-	    if (options.xRange !== undefined)
-	        currentOptions.xRange = options.xRange;
-	    if (options.yRange !== undefined)
-	        currentOptions.yRange = options.yRange;
-	    if (options.snapX !== undefined)
-	        currentOptions.snapX = options.snapX;
-	    if (options.snapY !== undefined)
-	        currentOptions.snapY = options.snapY;
-	};
-	Draggable.prototype.getPosition = function getPosition() {
-	    return this._positionState.get();
-	};
-	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
-	    var currPos = this.getPosition();
-	    var relativePosition = [
-	        currPos[0] + position[0],
-	        currPos[1] + position[1]
-	    ];
-	    this.setPosition(relativePosition, transition, callback);
-	};
-	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this._positionState.set(position, transition, callback);
-	};
-	Draggable.prototype.activate = function activate() {
-	    this._active = true;
-	};
-	Draggable.prototype.deactivate = function deactivate() {
-	    this._active = false;
-	};
-	Draggable.prototype.toggle = function toggle() {
-	    this._active = !this._active;
-	};
-	Draggable.prototype.modify = function modify(target) {
-	    var pos = this.getPosition();
-	    return {
-	        transform: Transform.translate(pos[0], pos[1]),
-	        target: target
-	    };
-	};
-	module.exports = Draggable;
-
-/***/ },
-/* 172 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transitionable = __webpack_require__(42);
-	var OptionsManager = __webpack_require__(36);
-	function Fader(options, startState) {
-	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    if (!startState)
-	        startState = 0;
-	    this.transitionHelper = new Transitionable(startState);
-	}
-	Fader.DEFAULT_OPTIONS = {
-	    cull: false,
-	    transition: true,
-	    pulseInTransition: true,
-	    pulseOutTransition: true
-	};
-	Fader.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	Fader.prototype.show = function show(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(1, transition, callback);
-	};
-	Fader.prototype.hide = function hide(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(0, transition, callback);
-	};
-	Fader.prototype.set = function set(state, transition, callback) {
-	    this.halt();
-	    this.transitionHelper.set(state, transition, callback);
-	};
-	Fader.prototype.halt = function halt() {
-	    this.transitionHelper.halt();
-	};
-	Fader.prototype.isVisible = function isVisible() {
-	    return this.transitionHelper.get() > 0;
-	};
-	Fader.prototype.modify = function modify(target) {
-	    var currOpacity = this.transitionHelper.get();
-	    if (this.options.cull && !currOpacity)
-	        return undefined;
-	    else
-	        return {
-	            opacity: currOpacity,
-	            target: target
-	        };
-	};
-	module.exports = Fader;
-
-/***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function ModifierChain() {
-	    this._chain = [];
-	    if (arguments.length)
-	        this.addModifier.apply(this, arguments);
-	}
-	ModifierChain.prototype.addModifier = function addModifier(varargs) {
-	    Array.prototype.push.apply(this._chain, arguments);
-	};
-	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
-	    var index = this._chain.indexOf(modifier);
-	    if (index < 0)
-	        return;
-	    this._chain.splice(index, 1);
-	};
-	ModifierChain.prototype.modify = function modify(input) {
-	    var chain = this._chain;
-	    var result = input;
-	    for (var i = 0; i < chain.length; i++) {
-	        result = chain[i].modify(result);
-	    }
-	    return result;
-	};
-	module.exports = ModifierChain;
-
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Modifier = __webpack_require__(157);
-	var Transform = __webpack_require__(37);
-	var Transitionable = __webpack_require__(42);
-	var TransitionableTransform = __webpack_require__(183);
-	function StateModifier(options) {
-	    this._transformState = new TransitionableTransform(Transform.identity);
-	    this._opacityState = new Transitionable(1);
-	    this._originState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._alignState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._sizeState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._proportionsState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._modifier = new Modifier({
-	        transform: this._transformState,
-	        opacity: this._opacityState,
-	        origin: null,
-	        align: null,
-	        size: null,
-	        proportions: null
-	    });
-	    this._hasOrigin = false;
-	    this._hasAlign = false;
-	    this._hasSize = false;
-	    this._hasProportions = false;
-	    if (options) {
-	        if (options.transform)
-	            this.setTransform(options.transform);
-	        if (options.opacity !== undefined)
-	            this.setOpacity(options.opacity);
-	        if (options.origin)
-	            this.setOrigin(options.origin);
-	        if (options.align)
-	            this.setAlign(options.align);
-	        if (options.size)
-	            this.setSize(options.size);
-	        if (options.proportions)
-	            this.setProportions(options.proportions);
-	    }
-	}
-	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
-	    this._transformState.set(transform, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
-	    this._opacityState.set(opacity, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
-	    if (origin === null) {
-	        if (this._hasOrigin) {
-	            this._modifier.originFrom(null);
-	            this._hasOrigin = false;
-	        }
-	        return this;
-	    } else if (!this._hasOrigin) {
-	        this._hasOrigin = true;
-	        this._modifier.originFrom(this._originState);
-	    }
-	    this._originState.set(origin, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
-	    if (align === null) {
-	        if (this._hasAlign) {
-	            this._modifier.alignFrom(null);
-	            this._hasAlign = false;
-	        }
-	        return this;
-	    } else if (!this._hasAlign) {
-	        this._hasAlign = true;
-	        this._modifier.alignFrom(this._alignState);
-	    }
-	    this._alignState.set(align, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
-	    if (size === null) {
-	        if (this._hasSize) {
-	            this._modifier.sizeFrom(null);
-	            this._hasSize = false;
-	        }
-	        return this;
-	    } else if (!this._hasSize) {
-	        this._hasSize = true;
-	        this._modifier.sizeFrom(this._sizeState);
-	    }
-	    this._sizeState.set(size, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
-	    if (proportions === null) {
-	        if (this._hasProportions) {
-	            this._modifier.proportionsFrom(null);
-	            this._hasProportions = false;
-	        }
-	        return this;
-	    } else if (!this._hasProportions) {
-	        this._hasProportions = true;
-	        this._modifier.proportionsFrom(this._proportionsState);
-	    }
-	    this._proportionsState.set(proportions, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.halt = function halt() {
-	    this._transformState.halt();
-	    this._opacityState.halt();
-	    this._originState.halt();
-	    this._alignState.halt();
-	    this._sizeState.halt();
-	    this._proportionsState.halt();
-	};
-	StateModifier.prototype.getTransform = function getTransform() {
-	    return this._transformState.get();
-	};
-	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
-	    return this._transformState.getFinal();
-	};
-	StateModifier.prototype.getOpacity = function getOpacity() {
-	    return this._opacityState.get();
-	};
-	StateModifier.prototype.getOrigin = function getOrigin() {
-	    return this._hasOrigin ? this._originState.get() : null;
-	};
-	StateModifier.prototype.getAlign = function getAlign() {
-	    return this._hasAlign ? this._alignState.get() : null;
-	};
-	StateModifier.prototype.getSize = function getSize() {
-	    return this._hasSize ? this._sizeState.get() : null;
-	};
-	StateModifier.prototype.getProportions = function getProportions() {
-	    return this._hasProportions ? this._proportionsState.get() : null;
-	};
-	StateModifier.prototype.modify = function modify(target) {
-	    return this._modifier.modify(target);
-	};
-	module.exports = StateModifier;
-
-/***/ },
-/* 175 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
 	var Vector = __webpack_require__(38);
 	function Matrix(values) {
 	    this.values = values || [
@@ -50595,7 +50220,7 @@
 	module.exports = Matrix;
 
 /***/ },
-/* 176 */
+/* 172 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50605,7 +50230,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Matrix = __webpack_require__(175);
+	var Matrix = __webpack_require__(171);
 	function Quaternion(w, x, y, z) {
 	    if (arguments.length === 1)
 	        this.set(w);
@@ -50793,7 +50418,7 @@
 	module.exports = Quaternion;
 
 /***/ },
-/* 177 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50838,7 +50463,7 @@
 	module.exports = Random;
 
 /***/ },
-/* 178 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50862,7 +50487,1349 @@
 	module.exports = Utilities;
 
 /***/ },
+/* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var EventHandler = __webpack_require__(46);
+	var Utilities = __webpack_require__(174);
+	var GenericSync = __webpack_require__(163);
+	var MouseSync = __webpack_require__(164);
+	var TouchSync = __webpack_require__(168);
+	GenericSync.register({
+	    'mouse': MouseSync,
+	    'touch': TouchSync
+	});
+	function Draggable(options) {
+	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this._positionState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._differential = [
+	        0,
+	        0
+	    ];
+	    this._active = true;
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], { scale: this.options.scale });
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.sync);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    _bindEvents.call(this);
+	}
+	var _direction = {
+	    x: 1,
+	    y: 2
+	};
+	Draggable.DIRECTION_X = _direction.x;
+	Draggable.DIRECTION_Y = _direction.y;
+	var _clamp = Utilities.clamp;
+	Draggable.DEFAULT_OPTIONS = {
+	    projection: _direction.x | _direction.y,
+	    scale: 1,
+	    xRange: null,
+	    yRange: null,
+	    snapX: 0,
+	    snapY: 0,
+	    transition: { duration: 0 }
+	};
+	function _mapDifferential(differential) {
+	    var opts = this.options;
+	    var projection = opts.projection;
+	    var snapX = opts.snapX;
+	    var snapY = opts.snapY;
+	    var tx = projection & _direction.x ? differential[0] : 0;
+	    var ty = projection & _direction.y ? differential[1] : 0;
+	    if (snapX > 0)
+	        tx -= tx % snapX;
+	    if (snapY > 0)
+	        ty -= ty % snapY;
+	    return [
+	        tx,
+	        ty
+	    ];
+	}
+	function _handleStart() {
+	    if (!this._active)
+	        return;
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this.eventOutput.emit('start', { position: this.getPosition() });
+	}
+	function _handleMove(event) {
+	    if (!this._active)
+	        return;
+	    var options = this.options;
+	    this._differential = event.position;
+	    var newDifferential = _mapDifferential.call(this, this._differential);
+	    this._differential[0] -= newDifferential[0];
+	    this._differential[1] -= newDifferential[1];
+	    var pos = this.getPosition();
+	    pos[0] += newDifferential[0];
+	    pos[1] += newDifferential[1];
+	    if (options.xRange) {
+	        var xRange = [
+	            options.xRange[0] + 0.5 * options.snapX,
+	            options.xRange[1] - 0.5 * options.snapX
+	        ];
+	        pos[0] = _clamp(pos[0], xRange);
+	    }
+	    if (options.yRange) {
+	        var yRange = [
+	            options.yRange[0] + 0.5 * options.snapY,
+	            options.yRange[1] - 0.5 * options.snapY
+	        ];
+	        pos[1] = _clamp(pos[1], yRange);
+	    }
+	    this.eventOutput.emit('update', { position: pos });
+	}
+	function _handleEnd() {
+	    if (!this._active)
+	        return;
+	    this.eventOutput.emit('end', { position: this.getPosition() });
+	}
+	function _bindEvents() {
+	    this.sync.on('start', _handleStart.bind(this));
+	    this.sync.on('update', _handleMove.bind(this));
+	    this.sync.on('end', _handleEnd.bind(this));
+	}
+	Draggable.prototype.setOptions = function setOptions(options) {
+	    var currentOptions = this.options;
+	    if (options.projection !== undefined) {
+	        var proj = options.projection;
+	        this.options.projection = 0;
+	        [
+	            'x',
+	            'y'
+	        ].forEach(function (val) {
+	            if (proj.indexOf(val) !== -1)
+	                currentOptions.projection |= _direction[val];
+	        });
+	    }
+	    if (options.scale !== undefined) {
+	        currentOptions.scale = options.scale;
+	        this.sync.setOptions({ scale: options.scale });
+	    }
+	    if (options.xRange !== undefined)
+	        currentOptions.xRange = options.xRange;
+	    if (options.yRange !== undefined)
+	        currentOptions.yRange = options.yRange;
+	    if (options.snapX !== undefined)
+	        currentOptions.snapX = options.snapX;
+	    if (options.snapY !== undefined)
+	        currentOptions.snapY = options.snapY;
+	};
+	Draggable.prototype.getPosition = function getPosition() {
+	    return this._positionState.get();
+	};
+	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
+	    var currPos = this.getPosition();
+	    var relativePosition = [
+	        currPos[0] + position[0],
+	        currPos[1] + position[1]
+	    ];
+	    this.setPosition(relativePosition, transition, callback);
+	};
+	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this._positionState.set(position, transition, callback);
+	};
+	Draggable.prototype.activate = function activate() {
+	    this._active = true;
+	};
+	Draggable.prototype.deactivate = function deactivate() {
+	    this._active = false;
+	};
+	Draggable.prototype.toggle = function toggle() {
+	    this._active = !this._active;
+	};
+	Draggable.prototype.modify = function modify(target) {
+	    var pos = this.getPosition();
+	    return {
+	        transform: Transform.translate(pos[0], pos[1]),
+	        target: target
+	    };
+	};
+	module.exports = Draggable;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transitionable = __webpack_require__(42);
+	var OptionsManager = __webpack_require__(36);
+	function Fader(options, startState) {
+	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    if (!startState)
+	        startState = 0;
+	    this.transitionHelper = new Transitionable(startState);
+	}
+	Fader.DEFAULT_OPTIONS = {
+	    cull: false,
+	    transition: true,
+	    pulseInTransition: true,
+	    pulseOutTransition: true
+	};
+	Fader.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	Fader.prototype.show = function show(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(1, transition, callback);
+	};
+	Fader.prototype.hide = function hide(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(0, transition, callback);
+	};
+	Fader.prototype.set = function set(state, transition, callback) {
+	    this.halt();
+	    this.transitionHelper.set(state, transition, callback);
+	};
+	Fader.prototype.halt = function halt() {
+	    this.transitionHelper.halt();
+	};
+	Fader.prototype.isVisible = function isVisible() {
+	    return this.transitionHelper.get() > 0;
+	};
+	Fader.prototype.modify = function modify(target) {
+	    var currOpacity = this.transitionHelper.get();
+	    if (this.options.cull && !currOpacity)
+	        return undefined;
+	    else
+	        return {
+	            opacity: currOpacity,
+	            target: target
+	        };
+	};
+	module.exports = Fader;
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function ModifierChain() {
+	    this._chain = [];
+	    if (arguments.length)
+	        this.addModifier.apply(this, arguments);
+	}
+	ModifierChain.prototype.addModifier = function addModifier(varargs) {
+	    Array.prototype.push.apply(this._chain, arguments);
+	};
+	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
+	    var index = this._chain.indexOf(modifier);
+	    if (index < 0)
+	        return;
+	    this._chain.splice(index, 1);
+	};
+	ModifierChain.prototype.modify = function modify(input) {
+	    var chain = this._chain;
+	    var result = input;
+	    for (var i = 0; i < chain.length; i++) {
+	        result = chain[i].modify(result);
+	    }
+	    return result;
+	};
+	module.exports = ModifierChain;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Modifier = __webpack_require__(154);
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var TransitionableTransform = __webpack_require__(194);
+	function StateModifier(options) {
+	    this._transformState = new TransitionableTransform(Transform.identity);
+	    this._opacityState = new Transitionable(1);
+	    this._originState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._alignState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._sizeState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._proportionsState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._modifier = new Modifier({
+	        transform: this._transformState,
+	        opacity: this._opacityState,
+	        origin: null,
+	        align: null,
+	        size: null,
+	        proportions: null
+	    });
+	    this._hasOrigin = false;
+	    this._hasAlign = false;
+	    this._hasSize = false;
+	    this._hasProportions = false;
+	    if (options) {
+	        if (options.transform)
+	            this.setTransform(options.transform);
+	        if (options.opacity !== undefined)
+	            this.setOpacity(options.opacity);
+	        if (options.origin)
+	            this.setOrigin(options.origin);
+	        if (options.align)
+	            this.setAlign(options.align);
+	        if (options.size)
+	            this.setSize(options.size);
+	        if (options.proportions)
+	            this.setProportions(options.proportions);
+	    }
+	}
+	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
+	    this._transformState.set(transform, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
+	    this._opacityState.set(opacity, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
+	    if (origin === null) {
+	        if (this._hasOrigin) {
+	            this._modifier.originFrom(null);
+	            this._hasOrigin = false;
+	        }
+	        return this;
+	    } else if (!this._hasOrigin) {
+	        this._hasOrigin = true;
+	        this._modifier.originFrom(this._originState);
+	    }
+	    this._originState.set(origin, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
+	    if (align === null) {
+	        if (this._hasAlign) {
+	            this._modifier.alignFrom(null);
+	            this._hasAlign = false;
+	        }
+	        return this;
+	    } else if (!this._hasAlign) {
+	        this._hasAlign = true;
+	        this._modifier.alignFrom(this._alignState);
+	    }
+	    this._alignState.set(align, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
+	    if (size === null) {
+	        if (this._hasSize) {
+	            this._modifier.sizeFrom(null);
+	            this._hasSize = false;
+	        }
+	        return this;
+	    } else if (!this._hasSize) {
+	        this._hasSize = true;
+	        this._modifier.sizeFrom(this._sizeState);
+	    }
+	    this._sizeState.set(size, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
+	    if (proportions === null) {
+	        if (this._hasProportions) {
+	            this._modifier.proportionsFrom(null);
+	            this._hasProportions = false;
+	        }
+	        return this;
+	    } else if (!this._hasProportions) {
+	        this._hasProportions = true;
+	        this._modifier.proportionsFrom(this._proportionsState);
+	    }
+	    this._proportionsState.set(proportions, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.halt = function halt() {
+	    this._transformState.halt();
+	    this._opacityState.halt();
+	    this._originState.halt();
+	    this._alignState.halt();
+	    this._sizeState.halt();
+	    this._proportionsState.halt();
+	};
+	StateModifier.prototype.getTransform = function getTransform() {
+	    return this._transformState.get();
+	};
+	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
+	    return this._transformState.getFinal();
+	};
+	StateModifier.prototype.getOpacity = function getOpacity() {
+	    return this._opacityState.get();
+	};
+	StateModifier.prototype.getOrigin = function getOrigin() {
+	    return this._hasOrigin ? this._originState.get() : null;
+	};
+	StateModifier.prototype.getAlign = function getAlign() {
+	    return this._hasAlign ? this._alignState.get() : null;
+	};
+	StateModifier.prototype.getSize = function getSize() {
+	    return this._hasSize ? this._sizeState.get() : null;
+	};
+	StateModifier.prototype.getProportions = function getProportions() {
+	    return this._hasProportions ? this._proportionsState.get() : null;
+	};
+	StateModifier.prototype.modify = function modify(target) {
+	    return this._modifier.modify(target);
+	};
+	module.exports = StateModifier;
+
+/***/ },
 /* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	function CanvasSurface(options) {
+	    if (options && options.canvasSize)
+	        this._canvasSize = options.canvasSize;
+	    Surface.apply(this, arguments);
+	    if (!this._canvasSize)
+	        this._canvasSize = this.getSize();
+	    this._backBuffer = document.createElement('canvas');
+	    if (this._canvasSize) {
+	        this._backBuffer.width = this._canvasSize[0];
+	        this._backBuffer.height = this._canvasSize[1];
+	    }
+	    this._contextId = undefined;
+	}
+	CanvasSurface.prototype = Object.create(Surface.prototype);
+	CanvasSurface.prototype.constructor = CanvasSurface;
+	CanvasSurface.prototype.elementType = 'canvas';
+	CanvasSurface.prototype.elementClass = 'famous-surface';
+	CanvasSurface.prototype.setContent = function setContent() {
+	};
+	CanvasSurface.prototype.deploy = function deploy(target) {
+	    if (this._canvasSize) {
+	        target.width = this._canvasSize[0];
+	        target.height = this._canvasSize[1];
+	    }
+	    if (this._contextId === '2d') {
+	        target.getContext(this._contextId).drawImage(this._backBuffer, 0, 0);
+	        this._backBuffer.width = 0;
+	        this._backBuffer.height = 0;
+	    }
+	};
+	CanvasSurface.prototype.recall = function recall(target) {
+	    var size = this.getSize();
+	    this._backBuffer.width = target.width;
+	    this._backBuffer.height = target.height;
+	    if (this._contextId === '2d') {
+	        this._backBuffer.getContext(this._contextId).drawImage(target, 0, 0);
+	        target.width = 0;
+	        target.height = 0;
+	    }
+	};
+	CanvasSurface.prototype.getContext = function getContext(contextId) {
+	    this._contextId = contextId;
+	    return this._currentTarget ? this._currentTarget.getContext(contextId) : this._backBuffer.getContext(contextId);
+	};
+	CanvasSurface.prototype.setSize = function setSize(size, canvasSize) {
+	    Surface.prototype.setSize.apply(this, arguments);
+	    if (canvasSize)
+	        this._canvasSize = [
+	            canvasSize[0],
+	            canvasSize[1]
+	        ];
+	    if (this._currentTarget) {
+	        this._currentTarget.width = this._canvasSize[0];
+	        this._currentTarget.height = this._canvasSize[1];
+	    }
+	};
+	module.exports = CanvasSurface;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var ContainerSurface = __webpack_require__(47);
+	function FormContainerSurface(options) {
+	    if (options)
+	        this._method = options.method || '';
+	    ContainerSurface.apply(this, arguments);
+	}
+	FormContainerSurface.prototype = Object.create(ContainerSurface.prototype);
+	FormContainerSurface.prototype.constructor = FormContainerSurface;
+	FormContainerSurface.prototype.elementType = 'form';
+	FormContainerSurface.prototype.deploy = function deploy(target) {
+	    if (this._method)
+	        target.method = this._method;
+	    return ContainerSurface.prototype.deploy.apply(this, arguments);
+	};
+	module.exports = FormContainerSurface;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	function ImageSurface(options) {
+	    this._imageUrl = undefined;
+	    Surface.apply(this, arguments);
+	}
+	var urlCache = [];
+	var countCache = [];
+	var nodeCache = [];
+	var cacheEnabled = true;
+	ImageSurface.enableCache = function enableCache() {
+	    cacheEnabled = true;
+	};
+	ImageSurface.disableCache = function disableCache() {
+	    cacheEnabled = false;
+	};
+	ImageSurface.clearCache = function clearCache() {
+	    urlCache = [];
+	    countCache = [];
+	    nodeCache = [];
+	};
+	ImageSurface.getCache = function getCache() {
+	    return {
+	        urlCache: urlCache,
+	        countCache: countCache,
+	        nodeCache: nodeCache
+	    };
+	};
+	ImageSurface.prototype = Object.create(Surface.prototype);
+	ImageSurface.prototype.constructor = ImageSurface;
+	ImageSurface.prototype.elementType = 'img';
+	ImageSurface.prototype.elementClass = 'famous-surface';
+	ImageSurface.prototype.setContent = function setContent(imageUrl) {
+	    var urlIndex = urlCache.indexOf(this._imageUrl);
+	    if (urlIndex !== -1) {
+	        if (countCache[urlIndex] === 1) {
+	            urlCache.splice(urlIndex, 1);
+	            countCache.splice(urlIndex, 1);
+	            nodeCache.splice(urlIndex, 1);
+	        } else {
+	            countCache[urlIndex]--;
+	        }
+	    }
+	    urlIndex = urlCache.indexOf(imageUrl);
+	    if (urlIndex === -1) {
+	        urlCache.push(imageUrl);
+	        countCache.push(1);
+	    } else {
+	        countCache[urlIndex]++;
+	    }
+	    this._imageUrl = imageUrl;
+	    this._contentDirty = true;
+	};
+	ImageSurface.prototype.deploy = function deploy(target) {
+	    var urlIndex = urlCache.indexOf(this._imageUrl);
+	    if (nodeCache[urlIndex] === undefined && cacheEnabled) {
+	        var img = new Image();
+	        img.src = this._imageUrl || '';
+	        nodeCache[urlIndex] = img;
+	    }
+	    target.src = this._imageUrl || '';
+	};
+	ImageSurface.prototype.recall = function recall(target) {
+	    target.src = '';
+	};
+	module.exports = ImageSurface;
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	function InputSurface(options) {
+	    this._placeholder = options.placeholder || '';
+	    this._value = options.value || '';
+	    this._type = options.type || 'text';
+	    this._name = options.name || '';
+	    Surface.apply(this, arguments);
+	    this.on('click', this.focus.bind(this));
+	    window.addEventListener('click', function (event) {
+	        if (event.target !== this._currentTarget)
+	            this.blur();
+	    }.bind(this));
+	}
+	InputSurface.prototype = Object.create(Surface.prototype);
+	InputSurface.prototype.constructor = InputSurface;
+	InputSurface.prototype.elementType = 'input';
+	InputSurface.prototype.elementClass = 'famous-surface';
+	InputSurface.prototype.setPlaceholder = function setPlaceholder(str) {
+	    this._placeholder = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.focus = function focus() {
+	    if (this._currentTarget)
+	        this._currentTarget.focus();
+	    return this;
+	};
+	InputSurface.prototype.blur = function blur() {
+	    if (this._currentTarget)
+	        this._currentTarget.blur();
+	    return this;
+	};
+	InputSurface.prototype.setValue = function setValue(str) {
+	    this._value = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.setType = function setType(str) {
+	    this._type = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.getValue = function getValue() {
+	    if (this._currentTarget) {
+	        return this._currentTarget.value;
+	    } else {
+	        return this._value;
+	    }
+	};
+	InputSurface.prototype.setName = function setName(str) {
+	    this._name = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	InputSurface.prototype.getName = function getName() {
+	    return this._name;
+	};
+	InputSurface.prototype.deploy = function deploy(target) {
+	    if (this._placeholder !== '')
+	        target.placeholder = this._placeholder;
+	    target.value = this._value;
+	    target.type = this._type;
+	    target.name = this._name;
+	};
+	module.exports = InputSurface;
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var InputSurface = __webpack_require__(182);
+	function SubmitInputSurface(options) {
+	    InputSurface.apply(this, arguments);
+	    this._type = 'submit';
+	    if (options && options.onClick)
+	        this.setOnClick(options.onClick);
+	}
+	SubmitInputSurface.prototype = Object.create(InputSurface.prototype);
+	SubmitInputSurface.prototype.constructor = SubmitInputSurface;
+	SubmitInputSurface.prototype.setOnClick = function (onClick) {
+	    this.onClick = onClick;
+	};
+	SubmitInputSurface.prototype.deploy = function deploy(target) {
+	    if (this.onclick)
+	        target.onClick = this.onClick;
+	    InputSurface.prototype.deploy.apply(this, arguments);
+	};
+	module.exports = SubmitInputSurface;
+
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	function TextareaSurface(options) {
+	    this._placeholder = options.placeholder || '';
+	    this._value = options.value || '';
+	    this._name = options.name || '';
+	    this._wrap = options.wrap || '';
+	    this._cols = options.cols || '';
+	    this._rows = options.rows || '';
+	    Surface.apply(this, arguments);
+	    this.on('click', this.focus.bind(this));
+	}
+	TextareaSurface.prototype = Object.create(Surface.prototype);
+	TextareaSurface.prototype.constructor = TextareaSurface;
+	TextareaSurface.prototype.elementType = 'textarea';
+	TextareaSurface.prototype.elementClass = 'famous-surface';
+	TextareaSurface.prototype.setPlaceholder = function setPlaceholder(str) {
+	    this._placeholder = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.focus = function focus() {
+	    if (this._currentTarget)
+	        this._currentTarget.focus();
+	    return this;
+	};
+	TextareaSurface.prototype.blur = function blur() {
+	    if (this._currentTarget)
+	        this._currentTarget.blur();
+	    return this;
+	};
+	TextareaSurface.prototype.setValue = function setValue(str) {
+	    this._value = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.getValue = function getValue() {
+	    if (this._currentTarget) {
+	        return this._currentTarget.value;
+	    } else {
+	        return this._value;
+	    }
+	};
+	TextareaSurface.prototype.setName = function setName(str) {
+	    this._name = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.getName = function getName() {
+	    return this._name;
+	};
+	TextareaSurface.prototype.setWrap = function setWrap(str) {
+	    this._wrap = str;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.setColumns = function setColumns(num) {
+	    this._cols = num;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.setRows = function setRows(num) {
+	    this._rows = num;
+	    this._contentDirty = true;
+	    return this;
+	};
+	TextareaSurface.prototype.deploy = function deploy(target) {
+	    if (this._placeholder !== '')
+	        target.placeholder = this._placeholder;
+	    if (this._value !== '')
+	        target.value = this._value;
+	    if (this._name !== '')
+	        target.name = this._name;
+	    if (this._wrap !== '')
+	        target.wrap = this._wrap;
+	    if (this._cols !== '')
+	        target.cols = this._cols;
+	    if (this._rows !== '')
+	        target.rows = this._rows;
+	};
+	module.exports = TextareaSurface;
+
+/***/ },
+/* 185 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	function VideoSurface(options) {
+	    Surface.apply(this, arguments);
+	    this._videoUrl = undefined;
+	    this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	}
+	VideoSurface.prototype = Object.create(Surface.prototype);
+	VideoSurface.prototype.constructor = VideoSurface;
+	VideoSurface.DEFAULT_OPTIONS = { autoplay: false };
+	VideoSurface.prototype.elementType = 'video';
+	VideoSurface.prototype.elementClass = 'famous-surface';
+	VideoSurface.prototype.setOptions = function setOptions(options) {
+	    if (options.size)
+	        this.setSize(options.size);
+	    if (options.classes)
+	        this.setClasses(options.classes);
+	    if (options.properties)
+	        this.setProperties(options.properties);
+	    if (options.autoplay)
+	        this.options.autoplay = options.autoplay;
+	    if (options.src) {
+	        this._videoUrl = options.src;
+	        this._contentDirty = true;
+	    }
+	};
+	VideoSurface.prototype.setContent = function setContent(videoUrl) {
+	    this._videoUrl = videoUrl;
+	    this._contentDirty = true;
+	};
+	VideoSurface.prototype.deploy = function deploy(target) {
+	    target.src = this._videoUrl;
+	    target.autoplay = this.options.autoplay;
+	};
+	VideoSurface.prototype.recall = function recall(target) {
+	    target.src = '';
+	};
+	module.exports = VideoSurface;
+
+/***/ },
+/* 186 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Scene = __webpack_require__(155);
+	var Surface = __webpack_require__(52);
+	var Transform = __webpack_require__(37);
+	var View = __webpack_require__(51);
+	function NavigationBar(options) {
+	    View.apply(this, arguments);
+	    this.title = new Surface({
+	        classes: this.options.classes,
+	        content: this.options.content
+	    });
+	    this.back = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.backContent
+	    });
+	    this.back.on('click', function () {
+	        this._eventOutput.emit('back', {});
+	    }.bind(this));
+	    this.more = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.moreContent
+	    });
+	    this.more.on('click', function () {
+	        this._eventOutput.emit('more', {});
+	    }.bind(this));
+	    this.layout = new Scene({
+	        id: 'master',
+	        size: this.options.size,
+	        target: [
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    0,
+	                    0.5
+	                ],
+	                align: [
+	                    0,
+	                    0.5
+	                ],
+	                target: this.back
+	            },
+	            {
+	                origin: [
+	                    0.5,
+	                    0.5
+	                ],
+	                align: [
+	                    0.5,
+	                    0.5
+	                ],
+	                target: this.title
+	            },
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    1,
+	                    0.5
+	                ],
+	                align: [
+	                    1,
+	                    0.5
+	                ],
+	                target: this.more
+	            }
+	        ]
+	    });
+	    this._add(this.layout);
+	    this._optionsManager.on('change', function (event) {
+	        var key = event.id;
+	        var data = event.value;
+	        if (key === 'size') {
+	            this.layout.id.master.setSize(data);
+	            this.title.setSize(data);
+	            this.back.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	            this.more.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	        } else if (key === 'backClasses') {
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	        } else if (key === 'backContent') {
+	            this.back.setContent(this.options.backContent);
+	        } else if (key === 'classes') {
+	            this.title.setOptions({ classes: this.options.classes });
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'content') {
+	            this.setContent(this.options.content);
+	        } else if (key === 'moreClasses') {
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'moreContent') {
+	            this.more.setContent(this.options.content);
+	        }
+	    }.bind(this));
+	}
+	NavigationBar.prototype = Object.create(View.prototype);
+	NavigationBar.prototype.constructor = NavigationBar;
+	NavigationBar.DEFAULT_OPTIONS = {
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    backClasses: ['back'],
+	    backContent: '&#x25c0;',
+	    classes: ['navigation'],
+	    content: '',
+	    moreClasses: ['more'],
+	    moreContent: '&#x271a;'
+	};
+	NavigationBar.prototype.setContent = function setContent(content) {
+	    return this.title.setContent(content);
+	};
+	module.exports = NavigationBar;
+
+/***/ },
+/* 187 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	var CanvasSurface = __webpack_require__(179);
+	var Transform = __webpack_require__(37);
+	var EventHandler = __webpack_require__(46);
+	var Utilities = __webpack_require__(174);
+	var OptionsManager = __webpack_require__(36);
+	var MouseSync = __webpack_require__(164);
+	var TouchSync = __webpack_require__(168);
+	var GenericSync = __webpack_require__(163);
+	GenericSync.register({
+	    mouse: MouseSync,
+	    touch: TouchSync
+	});
+	function Slider(options) {
+	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
+	    this.optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.indicator = new CanvasSurface({
+	        size: this.options.indicatorSize,
+	        classes: ['slider-back']
+	    });
+	    this.label = new Surface({
+	        size: this.options.labelSize,
+	        content: this.options.label,
+	        properties: { pointerEvents: 'none' },
+	        classes: ['slider-label']
+	    });
+	    this.eventOutput = new EventHandler();
+	    this.eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.eventInput);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], {
+	        scale: scale,
+	        direction: GenericSync.DIRECTION_X
+	    });
+	    this.indicator.pipe(this.sync);
+	    this.sync.pipe(this);
+	    this.eventInput.on('update', function (data) {
+	        this.set(data.position);
+	    }.bind(this));
+	    this._drawPos = 0;
+	    _updateLabel.call(this);
+	}
+	Slider.DEFAULT_OPTIONS = {
+	    size: [
+	        200,
+	        60
+	    ],
+	    indicatorSize: [
+	        200,
+	        30
+	    ],
+	    labelSize: [
+	        200,
+	        30
+	    ],
+	    range: [
+	        0,
+	        1
+	    ],
+	    precision: 2,
+	    value: 0,
+	    label: '',
+	    fillColor: 'rgba(170, 170, 170, 1)'
+	};
+	function _updateLabel() {
+	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
+	}
+	Slider.prototype.setOptions = function setOptions(options) {
+	    return this.optionsManager.setOptions(options);
+	};
+	Slider.prototype.get = function get() {
+	    return this.options.value;
+	};
+	Slider.prototype.set = function set(value) {
+	    if (value === this.options.value)
+	        return;
+	    this.options.value = Utilities.clamp(value, this.options.range);
+	    _updateLabel.call(this);
+	    this.eventOutput.emit('change', { value: value });
+	};
+	Slider.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	Slider.prototype.render = function render() {
+	    var range = this.options.range;
+	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
+	    if (fillSize < this._drawPos) {
+	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
+	    } else if (fillSize > this._drawPos) {
+	        var ctx = this.indicator.getContext('2d');
+	        ctx.fillStyle = this.options.fillColor;
+	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
+	    }
+	    this._drawPos = fillSize;
+	    return {
+	        size: this.options.size,
+	        target: [
+	            {
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.indicator.render()
+	            },
+	            {
+	                transform: Transform.translate(0, 0, 1),
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.label.render()
+	            }
+	        ]
+	    };
+	};
+	module.exports = Slider;
+
+/***/ },
+/* 188 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Utility = __webpack_require__(43);
+	var View = __webpack_require__(51);
+	var GridLayout = __webpack_require__(204);
+	var ToggleButton = __webpack_require__(189);
+	function TabBar(options) {
+	    View.apply(this, arguments);
+	    this.layout = new GridLayout();
+	    this.buttons = [];
+	    this._buttonIds = {};
+	    this._buttonCallbacks = {};
+	    this.layout.sequenceFrom(this.buttons);
+	    this._add(this.layout);
+	    this._optionsManager.on('change', _updateOptions.bind(this));
+	}
+	TabBar.prototype = Object.create(View.prototype);
+	TabBar.prototype.constructor = TabBar;
+	TabBar.DEFAULT_OPTIONS = {
+	    sections: [],
+	    widget: ToggleButton,
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    direction: Utility.Direction.X,
+	    buttons: { toggleMode: ToggleButton.ON }
+	};
+	function _updateOptions(data) {
+	    var id = data.id;
+	    var value = data.value;
+	    if (id === 'direction') {
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
+	    } else if (id === 'buttons') {
+	        for (var i in this.buttons) {
+	            this.buttons[i].setOptions(value);
+	        }
+	    } else if (id === 'sections') {
+	        for (var sectionId in this.options.sections) {
+	            this.defineSection(sectionId, this.options.sections[sectionId]);
+	        }
+	    }
+	}
+	function _resolveGridDimensions(count, direction) {
+	    if (direction === Utility.Direction.X)
+	        return [
+	            count,
+	            1
+	        ];
+	    else
+	        return [
+	            1,
+	            count
+	        ];
+	}
+	TabBar.prototype.defineSection = function defineSection(id, content) {
+	    var button;
+	    var i = this._buttonIds[id];
+	    if (i === undefined) {
+	        i = this.buttons.length;
+	        this._buttonIds[id] = i;
+	        var widget = this.options.widget;
+	        button = new widget();
+	        this.buttons[i] = button;
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
+	    } else {
+	        button = this.buttons[i];
+	        button.unbind('select', this._buttonCallbacks[id]);
+	    }
+	    if (this.options.buttons)
+	        button.setOptions(this.options.buttons);
+	    button.setOptions(content);
+	    this._buttonCallbacks[id] = this.select.bind(this, id);
+	    button.on('select', this._buttonCallbacks[id]);
+	};
+	TabBar.prototype.select = function select(id) {
+	    var btn = this._buttonIds[id];
+	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
+	        this._eventOutput.emit('select', { id: id });
+	    } else if (this.buttons[btn]) {
+	        this.buttons[btn].select();
+	    }
+	    for (var i = 0; i < this.buttons.length; i++) {
+	        if (i !== btn)
+	            this.buttons[i].deselect();
+	    }
+	};
+	module.exports = TabBar;
+
+/***/ },
+/* 189 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	var EventHandler = __webpack_require__(46);
+	var RenderController = __webpack_require__(207);
+	function ToggleButton(options) {
+	    this.options = {
+	        content: [
+	            '',
+	            ''
+	        ],
+	        offClasses: ['off'],
+	        onClasses: ['on'],
+	        size: undefined,
+	        outTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        inTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        toggleMode: ToggleButton.TOGGLE,
+	        crossfade: true
+	    };
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.offSurface = new Surface();
+	    this.offSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.OFF)
+	            this.select();
+	    }.bind(this));
+	    this.offSurface.pipe(this._eventOutput);
+	    this.onSurface = new Surface();
+	    this.onSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.ON)
+	            this.deselect();
+	    }.bind(this));
+	    this.onSurface.pipe(this._eventOutput);
+	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
+	    this.deselect();
+	    if (options)
+	        this.setOptions(options);
+	}
+	ToggleButton.OFF = 0;
+	ToggleButton.ON = 1;
+	ToggleButton.TOGGLE = 2;
+	ToggleButton.prototype.select = function select(suppressEvent) {
+	    this.selected = true;
+	    this.arbiter.show(this.onSurface, this.options.inTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('select');
+	    }
+	};
+	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
+	    this.selected = false;
+	    this.arbiter.show(this.offSurface, this.options.outTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('deselect');
+	    }
+	};
+	ToggleButton.prototype.isSelected = function isSelected() {
+	    return this.selected;
+	};
+	ToggleButton.prototype.setOptions = function setOptions(options) {
+	    if (options.content !== undefined) {
+	        if (!(options.content instanceof Array))
+	            options.content = [
+	                options.content,
+	                options.content
+	            ];
+	        this.options.content = options.content;
+	        this.offSurface.setContent(this.options.content[0]);
+	        this.onSurface.setContent(this.options.content[1]);
+	    }
+	    if (options.offClasses) {
+	        this.options.offClasses = options.offClasses;
+	        this.offSurface.setClasses(this.options.offClasses);
+	    }
+	    if (options.onClasses) {
+	        this.options.onClasses = options.onClasses;
+	        this.onSurface.setClasses(this.options.onClasses);
+	    }
+	    if (options.size !== undefined) {
+	        this.options.size = options.size;
+	        this.onSurface.setSize(this.options.size);
+	        this.offSurface.setSize(this.options.size);
+	    }
+	    if (options.toggleMode !== undefined)
+	        this.options.toggleMode = options.toggleMode;
+	    if (options.outTransition !== undefined)
+	        this.options.outTransition = options.outTransition;
+	    if (options.inTransition !== undefined)
+	        this.options.inTransition = options.inTransition;
+	    if (options.crossfade !== undefined) {
+	        this.options.crossfade = options.crossfade;
+	        this.arbiter.setOptions({ overlap: this.options.crossfade });
+	    }
+	};
+	ToggleButton.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	ToggleButton.prototype.render = function render() {
+	    return this.arbiter.render();
+	};
+	module.exports = ToggleButton;
+
+/***/ },
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50891,7 +51858,7 @@
 	module.exports = CachedMap;
 
 /***/ },
-/* 180 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -51062,7 +52029,7 @@
 	module.exports = Easing;
 
 /***/ },
-/* 181 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -51072,8 +52039,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(41);
-	var Particle = __webpack_require__(39);
+	var PE = __webpack_require__(39);
+	var Particle = __webpack_require__(40);
 	var Spring = __webpack_require__(218);
 	var Vector = __webpack_require__(38);
 	function SnapTransition(state) {
@@ -51202,7 +52169,7 @@
 	module.exports = SnapTransition;
 
 /***/ },
-/* 182 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -51212,9 +52179,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(41);
-	var Particle = __webpack_require__(39);
-	var Spring = __webpack_require__(40);
+	var PE = __webpack_require__(39);
+	var Particle = __webpack_require__(40);
+	var Spring = __webpack_require__(41);
 	var Vector = __webpack_require__(38);
 	function SpringTransition(state) {
 	    state = state || 0;
@@ -51346,7 +52313,7 @@
 	module.exports = SpringTransition;
 
 /***/ },
-/* 183 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -51475,7 +52442,7 @@
 	module.exports = TransitionableTransform;
 
 /***/ },
-/* 184 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -51485,9 +52452,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(41);
-	var Particle = __webpack_require__(39);
-	var Spring = __webpack_require__(40);
+	var PE = __webpack_require__(39);
+	var Particle = __webpack_require__(40);
+	var Spring = __webpack_require__(41);
 	var Wall = __webpack_require__(219);
 	var Vector = __webpack_require__(38);
 	function WallTransition(state) {
@@ -51636,913 +52603,6 @@
 	    _setCallback.call(this, callback);
 	};
 	module.exports = WallTransition;
-
-/***/ },
-/* 185 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(52);
-	function CanvasSurface(options) {
-	    if (options && options.canvasSize)
-	        this._canvasSize = options.canvasSize;
-	    Surface.apply(this, arguments);
-	    if (!this._canvasSize)
-	        this._canvasSize = this.getSize();
-	    this._backBuffer = document.createElement('canvas');
-	    if (this._canvasSize) {
-	        this._backBuffer.width = this._canvasSize[0];
-	        this._backBuffer.height = this._canvasSize[1];
-	    }
-	    this._contextId = undefined;
-	}
-	CanvasSurface.prototype = Object.create(Surface.prototype);
-	CanvasSurface.prototype.constructor = CanvasSurface;
-	CanvasSurface.prototype.elementType = 'canvas';
-	CanvasSurface.prototype.elementClass = 'famous-surface';
-	CanvasSurface.prototype.setContent = function setContent() {
-	};
-	CanvasSurface.prototype.deploy = function deploy(target) {
-	    if (this._canvasSize) {
-	        target.width = this._canvasSize[0];
-	        target.height = this._canvasSize[1];
-	    }
-	    if (this._contextId === '2d') {
-	        target.getContext(this._contextId).drawImage(this._backBuffer, 0, 0);
-	        this._backBuffer.width = 0;
-	        this._backBuffer.height = 0;
-	    }
-	};
-	CanvasSurface.prototype.recall = function recall(target) {
-	    var size = this.getSize();
-	    this._backBuffer.width = target.width;
-	    this._backBuffer.height = target.height;
-	    if (this._contextId === '2d') {
-	        this._backBuffer.getContext(this._contextId).drawImage(target, 0, 0);
-	        target.width = 0;
-	        target.height = 0;
-	    }
-	};
-	CanvasSurface.prototype.getContext = function getContext(contextId) {
-	    this._contextId = contextId;
-	    return this._currentTarget ? this._currentTarget.getContext(contextId) : this._backBuffer.getContext(contextId);
-	};
-	CanvasSurface.prototype.setSize = function setSize(size, canvasSize) {
-	    Surface.prototype.setSize.apply(this, arguments);
-	    if (canvasSize)
-	        this._canvasSize = [
-	            canvasSize[0],
-	            canvasSize[1]
-	        ];
-	    if (this._currentTarget) {
-	        this._currentTarget.width = this._canvasSize[0];
-	        this._currentTarget.height = this._canvasSize[1];
-	    }
-	};
-	module.exports = CanvasSurface;
-
-/***/ },
-/* 186 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var ContainerSurface = __webpack_require__(47);
-	function FormContainerSurface(options) {
-	    if (options)
-	        this._method = options.method || '';
-	    ContainerSurface.apply(this, arguments);
-	}
-	FormContainerSurface.prototype = Object.create(ContainerSurface.prototype);
-	FormContainerSurface.prototype.constructor = FormContainerSurface;
-	FormContainerSurface.prototype.elementType = 'form';
-	FormContainerSurface.prototype.deploy = function deploy(target) {
-	    if (this._method)
-	        target.method = this._method;
-	    return ContainerSurface.prototype.deploy.apply(this, arguments);
-	};
-	module.exports = FormContainerSurface;
-
-/***/ },
-/* 187 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(52);
-	function ImageSurface(options) {
-	    this._imageUrl = undefined;
-	    Surface.apply(this, arguments);
-	}
-	var urlCache = [];
-	var countCache = [];
-	var nodeCache = [];
-	var cacheEnabled = true;
-	ImageSurface.enableCache = function enableCache() {
-	    cacheEnabled = true;
-	};
-	ImageSurface.disableCache = function disableCache() {
-	    cacheEnabled = false;
-	};
-	ImageSurface.clearCache = function clearCache() {
-	    urlCache = [];
-	    countCache = [];
-	    nodeCache = [];
-	};
-	ImageSurface.getCache = function getCache() {
-	    return {
-	        urlCache: urlCache,
-	        countCache: countCache,
-	        nodeCache: nodeCache
-	    };
-	};
-	ImageSurface.prototype = Object.create(Surface.prototype);
-	ImageSurface.prototype.constructor = ImageSurface;
-	ImageSurface.prototype.elementType = 'img';
-	ImageSurface.prototype.elementClass = 'famous-surface';
-	ImageSurface.prototype.setContent = function setContent(imageUrl) {
-	    var urlIndex = urlCache.indexOf(this._imageUrl);
-	    if (urlIndex !== -1) {
-	        if (countCache[urlIndex] === 1) {
-	            urlCache.splice(urlIndex, 1);
-	            countCache.splice(urlIndex, 1);
-	            nodeCache.splice(urlIndex, 1);
-	        } else {
-	            countCache[urlIndex]--;
-	        }
-	    }
-	    urlIndex = urlCache.indexOf(imageUrl);
-	    if (urlIndex === -1) {
-	        urlCache.push(imageUrl);
-	        countCache.push(1);
-	    } else {
-	        countCache[urlIndex]++;
-	    }
-	    this._imageUrl = imageUrl;
-	    this._contentDirty = true;
-	};
-	ImageSurface.prototype.deploy = function deploy(target) {
-	    var urlIndex = urlCache.indexOf(this._imageUrl);
-	    if (nodeCache[urlIndex] === undefined && cacheEnabled) {
-	        var img = new Image();
-	        img.src = this._imageUrl || '';
-	        nodeCache[urlIndex] = img;
-	    }
-	    target.src = this._imageUrl || '';
-	};
-	ImageSurface.prototype.recall = function recall(target) {
-	    target.src = '';
-	};
-	module.exports = ImageSurface;
-
-/***/ },
-/* 188 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(52);
-	function InputSurface(options) {
-	    this._placeholder = options.placeholder || '';
-	    this._value = options.value || '';
-	    this._type = options.type || 'text';
-	    this._name = options.name || '';
-	    Surface.apply(this, arguments);
-	    this.on('click', this.focus.bind(this));
-	    window.addEventListener('click', function (event) {
-	        if (event.target !== this._currentTarget)
-	            this.blur();
-	    }.bind(this));
-	}
-	InputSurface.prototype = Object.create(Surface.prototype);
-	InputSurface.prototype.constructor = InputSurface;
-	InputSurface.prototype.elementType = 'input';
-	InputSurface.prototype.elementClass = 'famous-surface';
-	InputSurface.prototype.setPlaceholder = function setPlaceholder(str) {
-	    this._placeholder = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.focus = function focus() {
-	    if (this._currentTarget)
-	        this._currentTarget.focus();
-	    return this;
-	};
-	InputSurface.prototype.blur = function blur() {
-	    if (this._currentTarget)
-	        this._currentTarget.blur();
-	    return this;
-	};
-	InputSurface.prototype.setValue = function setValue(str) {
-	    this._value = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.setType = function setType(str) {
-	    this._type = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.getValue = function getValue() {
-	    if (this._currentTarget) {
-	        return this._currentTarget.value;
-	    } else {
-	        return this._value;
-	    }
-	};
-	InputSurface.prototype.setName = function setName(str) {
-	    this._name = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	InputSurface.prototype.getName = function getName() {
-	    return this._name;
-	};
-	InputSurface.prototype.deploy = function deploy(target) {
-	    if (this._placeholder !== '')
-	        target.placeholder = this._placeholder;
-	    target.value = this._value;
-	    target.type = this._type;
-	    target.name = this._name;
-	};
-	module.exports = InputSurface;
-
-/***/ },
-/* 189 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var InputSurface = __webpack_require__(188);
-	function SubmitInputSurface(options) {
-	    InputSurface.apply(this, arguments);
-	    this._type = 'submit';
-	    if (options && options.onClick)
-	        this.setOnClick(options.onClick);
-	}
-	SubmitInputSurface.prototype = Object.create(InputSurface.prototype);
-	SubmitInputSurface.prototype.constructor = SubmitInputSurface;
-	SubmitInputSurface.prototype.setOnClick = function (onClick) {
-	    this.onClick = onClick;
-	};
-	SubmitInputSurface.prototype.deploy = function deploy(target) {
-	    if (this.onclick)
-	        target.onClick = this.onClick;
-	    InputSurface.prototype.deploy.apply(this, arguments);
-	};
-	module.exports = SubmitInputSurface;
-
-/***/ },
-/* 190 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(52);
-	function TextareaSurface(options) {
-	    this._placeholder = options.placeholder || '';
-	    this._value = options.value || '';
-	    this._name = options.name || '';
-	    this._wrap = options.wrap || '';
-	    this._cols = options.cols || '';
-	    this._rows = options.rows || '';
-	    Surface.apply(this, arguments);
-	    this.on('click', this.focus.bind(this));
-	}
-	TextareaSurface.prototype = Object.create(Surface.prototype);
-	TextareaSurface.prototype.constructor = TextareaSurface;
-	TextareaSurface.prototype.elementType = 'textarea';
-	TextareaSurface.prototype.elementClass = 'famous-surface';
-	TextareaSurface.prototype.setPlaceholder = function setPlaceholder(str) {
-	    this._placeholder = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.focus = function focus() {
-	    if (this._currentTarget)
-	        this._currentTarget.focus();
-	    return this;
-	};
-	TextareaSurface.prototype.blur = function blur() {
-	    if (this._currentTarget)
-	        this._currentTarget.blur();
-	    return this;
-	};
-	TextareaSurface.prototype.setValue = function setValue(str) {
-	    this._value = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.getValue = function getValue() {
-	    if (this._currentTarget) {
-	        return this._currentTarget.value;
-	    } else {
-	        return this._value;
-	    }
-	};
-	TextareaSurface.prototype.setName = function setName(str) {
-	    this._name = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.getName = function getName() {
-	    return this._name;
-	};
-	TextareaSurface.prototype.setWrap = function setWrap(str) {
-	    this._wrap = str;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.setColumns = function setColumns(num) {
-	    this._cols = num;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.setRows = function setRows(num) {
-	    this._rows = num;
-	    this._contentDirty = true;
-	    return this;
-	};
-	TextareaSurface.prototype.deploy = function deploy(target) {
-	    if (this._placeholder !== '')
-	        target.placeholder = this._placeholder;
-	    if (this._value !== '')
-	        target.value = this._value;
-	    if (this._name !== '')
-	        target.name = this._name;
-	    if (this._wrap !== '')
-	        target.wrap = this._wrap;
-	    if (this._cols !== '')
-	        target.cols = this._cols;
-	    if (this._rows !== '')
-	        target.rows = this._rows;
-	};
-	module.exports = TextareaSurface;
-
-/***/ },
-/* 191 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(52);
-	function VideoSurface(options) {
-	    Surface.apply(this, arguments);
-	    this._videoUrl = undefined;
-	    this.options = Object.create(VideoSurface.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	}
-	VideoSurface.prototype = Object.create(Surface.prototype);
-	VideoSurface.prototype.constructor = VideoSurface;
-	VideoSurface.DEFAULT_OPTIONS = { autoplay: false };
-	VideoSurface.prototype.elementType = 'video';
-	VideoSurface.prototype.elementClass = 'famous-surface';
-	VideoSurface.prototype.setOptions = function setOptions(options) {
-	    if (options.size)
-	        this.setSize(options.size);
-	    if (options.classes)
-	        this.setClasses(options.classes);
-	    if (options.properties)
-	        this.setProperties(options.properties);
-	    if (options.autoplay)
-	        this.options.autoplay = options.autoplay;
-	    if (options.src) {
-	        this._videoUrl = options.src;
-	        this._contentDirty = true;
-	    }
-	};
-	VideoSurface.prototype.setContent = function setContent(videoUrl) {
-	    this._videoUrl = videoUrl;
-	    this._contentDirty = true;
-	};
-	VideoSurface.prototype.deploy = function deploy(target) {
-	    target.src = this._videoUrl;
-	    target.autoplay = this.options.autoplay;
-	};
-	VideoSurface.prototype.recall = function recall(target) {
-	    target.src = '';
-	};
-	module.exports = VideoSurface;
-
-/***/ },
-/* 192 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Scene = __webpack_require__(158);
-	var Surface = __webpack_require__(52);
-	var Transform = __webpack_require__(37);
-	var View = __webpack_require__(51);
-	function NavigationBar(options) {
-	    View.apply(this, arguments);
-	    this.title = new Surface({
-	        classes: this.options.classes,
-	        content: this.options.content
-	    });
-	    this.back = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.backContent
-	    });
-	    this.back.on('click', function () {
-	        this._eventOutput.emit('back', {});
-	    }.bind(this));
-	    this.more = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.moreContent
-	    });
-	    this.more.on('click', function () {
-	        this._eventOutput.emit('more', {});
-	    }.bind(this));
-	    this.layout = new Scene({
-	        id: 'master',
-	        size: this.options.size,
-	        target: [
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    0,
-	                    0.5
-	                ],
-	                align: [
-	                    0,
-	                    0.5
-	                ],
-	                target: this.back
-	            },
-	            {
-	                origin: [
-	                    0.5,
-	                    0.5
-	                ],
-	                align: [
-	                    0.5,
-	                    0.5
-	                ],
-	                target: this.title
-	            },
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    1,
-	                    0.5
-	                ],
-	                align: [
-	                    1,
-	                    0.5
-	                ],
-	                target: this.more
-	            }
-	        ]
-	    });
-	    this._add(this.layout);
-	    this._optionsManager.on('change', function (event) {
-	        var key = event.id;
-	        var data = event.value;
-	        if (key === 'size') {
-	            this.layout.id.master.setSize(data);
-	            this.title.setSize(data);
-	            this.back.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	            this.more.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	        } else if (key === 'backClasses') {
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	        } else if (key === 'backContent') {
-	            this.back.setContent(this.options.backContent);
-	        } else if (key === 'classes') {
-	            this.title.setOptions({ classes: this.options.classes });
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'content') {
-	            this.setContent(this.options.content);
-	        } else if (key === 'moreClasses') {
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'moreContent') {
-	            this.more.setContent(this.options.content);
-	        }
-	    }.bind(this));
-	}
-	NavigationBar.prototype = Object.create(View.prototype);
-	NavigationBar.prototype.constructor = NavigationBar;
-	NavigationBar.DEFAULT_OPTIONS = {
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    backClasses: ['back'],
-	    backContent: '&#x25c0;',
-	    classes: ['navigation'],
-	    content: '',
-	    moreClasses: ['more'],
-	    moreContent: '&#x271a;'
-	};
-	NavigationBar.prototype.setContent = function setContent(content) {
-	    return this.title.setContent(content);
-	};
-	module.exports = NavigationBar;
-
-/***/ },
-/* 193 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(52);
-	var CanvasSurface = __webpack_require__(185);
-	var Transform = __webpack_require__(37);
-	var EventHandler = __webpack_require__(46);
-	var Utilities = __webpack_require__(178);
-	var OptionsManager = __webpack_require__(36);
-	var MouseSync = __webpack_require__(164);
-	var TouchSync = __webpack_require__(168);
-	var GenericSync = __webpack_require__(163);
-	GenericSync.register({
-	    mouse: MouseSync,
-	    touch: TouchSync
-	});
-	function Slider(options) {
-	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
-	    this.optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.indicator = new CanvasSurface({
-	        size: this.options.indicatorSize,
-	        classes: ['slider-back']
-	    });
-	    this.label = new Surface({
-	        size: this.options.labelSize,
-	        content: this.options.label,
-	        properties: { pointerEvents: 'none' },
-	        classes: ['slider-label']
-	    });
-	    this.eventOutput = new EventHandler();
-	    this.eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.eventInput);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], {
-	        scale: scale,
-	        direction: GenericSync.DIRECTION_X
-	    });
-	    this.indicator.pipe(this.sync);
-	    this.sync.pipe(this);
-	    this.eventInput.on('update', function (data) {
-	        this.set(data.position);
-	    }.bind(this));
-	    this._drawPos = 0;
-	    _updateLabel.call(this);
-	}
-	Slider.DEFAULT_OPTIONS = {
-	    size: [
-	        200,
-	        60
-	    ],
-	    indicatorSize: [
-	        200,
-	        30
-	    ],
-	    labelSize: [
-	        200,
-	        30
-	    ],
-	    range: [
-	        0,
-	        1
-	    ],
-	    precision: 2,
-	    value: 0,
-	    label: '',
-	    fillColor: 'rgba(170, 170, 170, 1)'
-	};
-	function _updateLabel() {
-	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
-	}
-	Slider.prototype.setOptions = function setOptions(options) {
-	    return this.optionsManager.setOptions(options);
-	};
-	Slider.prototype.get = function get() {
-	    return this.options.value;
-	};
-	Slider.prototype.set = function set(value) {
-	    if (value === this.options.value)
-	        return;
-	    this.options.value = Utilities.clamp(value, this.options.range);
-	    _updateLabel.call(this);
-	    this.eventOutput.emit('change', { value: value });
-	};
-	Slider.prototype.getSize = function getSize() {
-	    return this.options.size;
-	};
-	Slider.prototype.render = function render() {
-	    var range = this.options.range;
-	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
-	    if (fillSize < this._drawPos) {
-	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
-	    } else if (fillSize > this._drawPos) {
-	        var ctx = this.indicator.getContext('2d');
-	        ctx.fillStyle = this.options.fillColor;
-	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
-	    }
-	    this._drawPos = fillSize;
-	    return {
-	        size: this.options.size,
-	        target: [
-	            {
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.indicator.render()
-	            },
-	            {
-	                transform: Transform.translate(0, 0, 1),
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.label.render()
-	            }
-	        ]
-	    };
-	};
-	module.exports = Slider;
-
-/***/ },
-/* 194 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Utility = __webpack_require__(43);
-	var View = __webpack_require__(51);
-	var GridLayout = __webpack_require__(204);
-	var ToggleButton = __webpack_require__(195);
-	function TabBar(options) {
-	    View.apply(this, arguments);
-	    this.layout = new GridLayout();
-	    this.buttons = [];
-	    this._buttonIds = {};
-	    this._buttonCallbacks = {};
-	    this.layout.sequenceFrom(this.buttons);
-	    this._add(this.layout);
-	    this._optionsManager.on('change', _updateOptions.bind(this));
-	}
-	TabBar.prototype = Object.create(View.prototype);
-	TabBar.prototype.constructor = TabBar;
-	TabBar.DEFAULT_OPTIONS = {
-	    sections: [],
-	    widget: ToggleButton,
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    direction: Utility.Direction.X,
-	    buttons: { toggleMode: ToggleButton.ON }
-	};
-	function _updateOptions(data) {
-	    var id = data.id;
-	    var value = data.value;
-	    if (id === 'direction') {
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
-	    } else if (id === 'buttons') {
-	        for (var i in this.buttons) {
-	            this.buttons[i].setOptions(value);
-	        }
-	    } else if (id === 'sections') {
-	        for (var sectionId in this.options.sections) {
-	            this.defineSection(sectionId, this.options.sections[sectionId]);
-	        }
-	    }
-	}
-	function _resolveGridDimensions(count, direction) {
-	    if (direction === Utility.Direction.X)
-	        return [
-	            count,
-	            1
-	        ];
-	    else
-	        return [
-	            1,
-	            count
-	        ];
-	}
-	TabBar.prototype.defineSection = function defineSection(id, content) {
-	    var button;
-	    var i = this._buttonIds[id];
-	    if (i === undefined) {
-	        i = this.buttons.length;
-	        this._buttonIds[id] = i;
-	        var widget = this.options.widget;
-	        button = new widget();
-	        this.buttons[i] = button;
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
-	    } else {
-	        button = this.buttons[i];
-	        button.unbind('select', this._buttonCallbacks[id]);
-	    }
-	    if (this.options.buttons)
-	        button.setOptions(this.options.buttons);
-	    button.setOptions(content);
-	    this._buttonCallbacks[id] = this.select.bind(this, id);
-	    button.on('select', this._buttonCallbacks[id]);
-	};
-	TabBar.prototype.select = function select(id) {
-	    var btn = this._buttonIds[id];
-	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
-	        this._eventOutput.emit('select', { id: id });
-	    } else if (this.buttons[btn]) {
-	        this.buttons[btn].select();
-	    }
-	    for (var i = 0; i < this.buttons.length; i++) {
-	        if (i !== btn)
-	            this.buttons[i].deselect();
-	    }
-	};
-	module.exports = TabBar;
-
-/***/ },
-/* 195 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(52);
-	var EventHandler = __webpack_require__(46);
-	var RenderController = __webpack_require__(207);
-	function ToggleButton(options) {
-	    this.options = {
-	        content: [
-	            '',
-	            ''
-	        ],
-	        offClasses: ['off'],
-	        onClasses: ['on'],
-	        size: undefined,
-	        outTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        inTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        toggleMode: ToggleButton.TOGGLE,
-	        crossfade: true
-	    };
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.offSurface = new Surface();
-	    this.offSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.OFF)
-	            this.select();
-	    }.bind(this));
-	    this.offSurface.pipe(this._eventOutput);
-	    this.onSurface = new Surface();
-	    this.onSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.ON)
-	            this.deselect();
-	    }.bind(this));
-	    this.onSurface.pipe(this._eventOutput);
-	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
-	    this.deselect();
-	    if (options)
-	        this.setOptions(options);
-	}
-	ToggleButton.OFF = 0;
-	ToggleButton.ON = 1;
-	ToggleButton.TOGGLE = 2;
-	ToggleButton.prototype.select = function select(suppressEvent) {
-	    this.selected = true;
-	    this.arbiter.show(this.onSurface, this.options.inTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('select');
-	    }
-	};
-	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
-	    this.selected = false;
-	    this.arbiter.show(this.offSurface, this.options.outTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('deselect');
-	    }
-	};
-	ToggleButton.prototype.isSelected = function isSelected() {
-	    return this.selected;
-	};
-	ToggleButton.prototype.setOptions = function setOptions(options) {
-	    if (options.content !== undefined) {
-	        if (!(options.content instanceof Array))
-	            options.content = [
-	                options.content,
-	                options.content
-	            ];
-	        this.options.content = options.content;
-	        this.offSurface.setContent(this.options.content[0]);
-	        this.onSurface.setContent(this.options.content[1]);
-	    }
-	    if (options.offClasses) {
-	        this.options.offClasses = options.offClasses;
-	        this.offSurface.setClasses(this.options.offClasses);
-	    }
-	    if (options.onClasses) {
-	        this.options.onClasses = options.onClasses;
-	        this.onSurface.setClasses(this.options.onClasses);
-	    }
-	    if (options.size !== undefined) {
-	        this.options.size = options.size;
-	        this.onSurface.setSize(this.options.size);
-	        this.offSurface.setSize(this.options.size);
-	    }
-	    if (options.toggleMode !== undefined)
-	        this.options.toggleMode = options.toggleMode;
-	    if (options.outTransition !== undefined)
-	        this.options.outTransition = options.outTransition;
-	    if (options.inTransition !== undefined)
-	        this.options.inTransition = options.inTransition;
-	    if (options.crossfade !== undefined) {
-	        this.options.crossfade = options.crossfade;
-	        this.arbiter.setOptions({ overlap: this.options.crossfade });
-	    }
-	};
-	ToggleButton.prototype.getSize = function getSize() {
-	    return this.options.size;
-	};
-	ToggleButton.prototype.render = function render() {
-	    return this.arbiter.render();
-	};
-	module.exports = ToggleButton;
 
 /***/ },
 /* 196 */
@@ -53071,7 +53131,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var CachedMap = __webpack_require__(179);
+	var CachedMap = __webpack_require__(190);
 	var Entity = __webpack_require__(44);
 	var EventHandler = __webpack_require__(46);
 	var Transform = __webpack_require__(37);
@@ -53379,10 +53439,10 @@
 	var Transform = __webpack_require__(37);
 	var ViewSequence = __webpack_require__(45);
 	var EventHandler = __webpack_require__(46);
-	var Modifier = __webpack_require__(157);
+	var Modifier = __webpack_require__(154);
 	var OptionsManager = __webpack_require__(36);
 	var Transitionable = __webpack_require__(42);
-	var TransitionableTransform = __webpack_require__(183);
+	var TransitionableTransform = __webpack_require__(194);
 	function GridLayout(options) {
 	    this.options = Object.create(GridLayout.DEFAULT_OPTIONS);
 	    this.optionsManager = new OptionsManager(this.options);
@@ -53670,12 +53730,12 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Transform = __webpack_require__(37);
-	var Modifier = __webpack_require__(157);
+	var Modifier = __webpack_require__(154);
 	var RenderNode = __webpack_require__(122);
 	var Utility = __webpack_require__(43);
 	var OptionsManager = __webpack_require__(36);
 	var Transitionable = __webpack_require__(42);
-	var TransitionableTransform = __webpack_require__(183);
+	var TransitionableTransform = __webpack_require__(194);
 	function Lightbox(options) {
 	    this.options = Object.create(Lightbox.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -53810,7 +53870,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Modifier = __webpack_require__(157);
+	var Modifier = __webpack_require__(154);
 	var RenderNode = __webpack_require__(122);
 	var Transform = __webpack_require__(37);
 	var Transitionable = __webpack_require__(42);
@@ -54311,10 +54371,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PhysicsEngine = __webpack_require__(41);
-	var Particle = __webpack_require__(39);
+	var PhysicsEngine = __webpack_require__(39);
+	var Particle = __webpack_require__(40);
 	var Drag = __webpack_require__(49);
-	var Spring = __webpack_require__(40);
+	var Spring = __webpack_require__(41);
 	var EventHandler = __webpack_require__(46);
 	var OptionsManager = __webpack_require__(36);
 	var ViewSequence = __webpack_require__(45);
@@ -54941,10 +55001,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Body: __webpack_require__(230),
-	  Circle: __webpack_require__(231),
-	  Particle: __webpack_require__(39),
-	  Rectangle: __webpack_require__(232)
+	  Body: __webpack_require__(220),
+	  Circle: __webpack_require__(221),
+	  Particle: __webpack_require__(40),
+	  Rectangle: __webpack_require__(222)
 	};
 
 
@@ -54953,14 +55013,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Collision: __webpack_require__(220),
-	  Constraint: __webpack_require__(221),
-	  Curve: __webpack_require__(222),
-	  Distance: __webpack_require__(223),
+	  Collision: __webpack_require__(227),
+	  Constraint: __webpack_require__(228),
+	  Curve: __webpack_require__(229),
+	  Distance: __webpack_require__(230),
 	  Snap: __webpack_require__(218),
-	  Surface: __webpack_require__(224),
+	  Surface: __webpack_require__(231),
 	  Wall: __webpack_require__(219),
-	  Walls: __webpack_require__(225)
+	  Walls: __webpack_require__(232)
 	};
 
 
@@ -54970,12 +55030,12 @@
 
 	module.exports = {
 	  Drag: __webpack_require__(49),
-	  Force: __webpack_require__(115),
-	  Repulsion: __webpack_require__(226),
-	  RotationalDrag: __webpack_require__(227),
-	  RotationalSpring: __webpack_require__(228),
-	  Spring: __webpack_require__(40),
-	  VectorField: __webpack_require__(229)
+	  Force: __webpack_require__(116),
+	  Repulsion: __webpack_require__(223),
+	  RotationalDrag: __webpack_require__(224),
+	  RotationalSpring: __webpack_require__(225),
+	  Spring: __webpack_require__(41),
+	  VectorField: __webpack_require__(226)
 	};
 
 
@@ -54984,7 +55044,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  SymplecticEuler: __webpack_require__(116)
+	  SymplecticEuler: __webpack_require__(115)
 	};
 
 
@@ -64210,7 +64270,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(221);
+	var Constraint = __webpack_require__(228);
 	var Vector = __webpack_require__(38);
 	function Snap(options) {
 	    Constraint.call(this);
@@ -64322,7 +64382,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(221);
+	var Constraint = __webpack_require__(228);
 	var Vector = __webpack_require__(38);
 	function Wall(options) {
 	    this.options = Object.create(Wall.DEFAULT_OPTIONS);
@@ -64446,7 +64506,609 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(221);
+	var Particle = __webpack_require__(40);
+	var Transform = __webpack_require__(37);
+	var Vector = __webpack_require__(38);
+	var Quaternion = __webpack_require__(172);
+	var Matrix = __webpack_require__(171);
+	var Integrator = __webpack_require__(115);
+	function Body(options) {
+	    Particle.call(this, options);
+	    options = options || {};
+	    this.orientation = new Quaternion();
+	    this.angularVelocity = new Vector();
+	    this.angularMomentum = new Vector();
+	    this.torque = new Vector();
+	    if (options.orientation)
+	        this.orientation.set(options.orientation);
+	    if (options.angularVelocity)
+	        this.angularVelocity.set(options.angularVelocity);
+	    if (options.angularMomentum)
+	        this.angularMomentum.set(options.angularMomentum);
+	    if (options.torque)
+	        this.torque.set(options.torque);
+	    this.angularVelocity.w = 0;
+	    this.setMomentsOfInertia();
+	    this.pWorld = new Vector();
+	}
+	Body.DEFAULT_OPTIONS = Particle.DEFAULT_OPTIONS;
+	Body.DEFAULT_OPTIONS.orientation = [
+	    0,
+	    0,
+	    0,
+	    1
+	];
+	Body.DEFAULT_OPTIONS.angularVelocity = [
+	    0,
+	    0,
+	    0
+	];
+	Body.prototype = Object.create(Particle.prototype);
+	Body.prototype.constructor = Body;
+	Body.prototype.isBody = true;
+	Body.prototype.setMass = function setMass() {
+	    Particle.prototype.setMass.apply(this, arguments);
+	    this.setMomentsOfInertia();
+	};
+	Body.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
+	    this.inertia = new Matrix();
+	    this.inverseInertia = new Matrix();
+	};
+	Body.prototype.updateAngularVelocity = function updateAngularVelocity() {
+	    this.angularVelocity.set(this.inverseInertia.vectorMultiply(this.angularMomentum));
+	};
+	Body.prototype.toWorldCoordinates = function toWorldCoordinates(localPosition) {
+	    return this.pWorld.set(this.orientation.rotateVector(localPosition));
+	};
+	Body.prototype.getEnergy = function getEnergy() {
+	    return Particle.prototype.getEnergy.call(this) + 0.5 * this.inertia.vectorMultiply(this.angularVelocity).dot(this.angularVelocity);
+	};
+	Body.prototype.reset = function reset(p, v, q, L) {
+	    Particle.prototype.reset.call(this, p, v);
+	    this.angularVelocity.clear();
+	    this.setOrientation(q || [
+	        1,
+	        0,
+	        0,
+	        0
+	    ]);
+	    this.setAngularMomentum(L || [
+	        0,
+	        0,
+	        0
+	    ]);
+	};
+	Body.prototype.setOrientation = function setOrientation(q) {
+	    this.orientation.set(q);
+	};
+	Body.prototype.setAngularVelocity = function setAngularVelocity(w) {
+	    this.wake();
+	    this.angularVelocity.set(w);
+	};
+	Body.prototype.setAngularMomentum = function setAngularMomentum(L) {
+	    this.wake();
+	    this.angularMomentum.set(L);
+	};
+	Body.prototype.applyForce = function applyForce(force, location) {
+	    Particle.prototype.applyForce.call(this, force);
+	    if (location !== undefined)
+	        this.applyTorque(location.cross(force));
+	};
+	Body.prototype.applyTorque = function applyTorque(torque) {
+	    this.wake();
+	    this.torque.set(this.torque.add(torque));
+	};
+	Body.prototype.getTransform = function getTransform() {
+	    return Transform.thenMove(this.orientation.getTransform(), Transform.getTranslate(Particle.prototype.getTransform.call(this)));
+	};
+	Body.prototype._integrate = function _integrate(dt) {
+	    Particle.prototype._integrate.call(this, dt);
+	    this.integrateAngularMomentum(dt);
+	    this.updateAngularVelocity(dt);
+	    this.integrateOrientation(dt);
+	};
+	Body.prototype.integrateAngularMomentum = function integrateAngularMomentum(dt) {
+	    Integrator.integrateAngularMomentum(this, dt);
+	};
+	Body.prototype.integrateOrientation = function integrateOrientation(dt) {
+	    Integrator.integrateOrientation(this, dt);
+	};
+	module.exports = Body;
+
+/***/ },
+/* 221 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Body = __webpack_require__(220);
+	var Matrix = __webpack_require__(171);
+	function Circle(options) {
+	    options = options || {};
+	    this.setRadius(options.radius || 0);
+	    Body.call(this, options);
+	}
+	Circle.prototype = Object.create(Body.prototype);
+	Circle.prototype.constructor = Circle;
+	Circle.prototype.setRadius = function setRadius(r) {
+	    this.radius = r;
+	    this.size = [
+	        2 * this.radius,
+	        2 * this.radius
+	    ];
+	    this.setMomentsOfInertia();
+	};
+	Circle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
+	    var m = this.mass;
+	    var r = this.radius;
+	    this.inertia = new Matrix([
+	        [
+	            0.25 * m * r * r,
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            0.25 * m * r * r,
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            0.5 * m * r * r
+	        ]
+	    ]);
+	    this.inverseInertia = new Matrix([
+	        [
+	            4 / (m * r * r),
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            4 / (m * r * r),
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            2 / (m * r * r)
+	        ]
+	    ]);
+	};
+	module.exports = Circle;
+
+/***/ },
+/* 222 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Body = __webpack_require__(220);
+	var Matrix = __webpack_require__(171);
+	function Rectangle(options) {
+	    options = options || {};
+	    this.size = options.size || [
+	        0,
+	        0
+	    ];
+	    Body.call(this, options);
+	}
+	Rectangle.prototype = Object.create(Body.prototype);
+	Rectangle.prototype.constructor = Rectangle;
+	Rectangle.prototype.setSize = function setSize(size) {
+	    this.size = size;
+	    this.setMomentsOfInertia();
+	};
+	Rectangle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
+	    var m = this.mass;
+	    var w = this.size[0];
+	    var h = this.size[1];
+	    this.inertia = new Matrix([
+	        [
+	            m * h * h / 12,
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            m * w * w / 12,
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            m * (w * w + h * h) / 12
+	        ]
+	    ]);
+	    this.inverseInertia = new Matrix([
+	        [
+	            12 / (m * h * h),
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            12 / (m * w * w),
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            12 / (m * (w * w + h * h))
+	        ]
+	    ]);
+	};
+	module.exports = Rectangle;
+
+/***/ },
+/* 223 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(116);
+	var Vector = __webpack_require__(38);
+	function Repulsion(options) {
+	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.disp = new Vector();
+	    Force.call(this);
+	}
+	Repulsion.prototype = Object.create(Force.prototype);
+	Repulsion.prototype.constructor = Repulsion;
+	Repulsion.DECAY_FUNCTIONS = {
+	    LINEAR: function (r, cutoff) {
+	        return Math.max(1 - 1 / cutoff * r, 0);
+	    },
+	    MORSE: function (r, cutoff) {
+	        var r0 = cutoff === 0 ? 100 : cutoff;
+	        var rShifted = r + r0 * (1 - Math.log(2));
+	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
+	    },
+	    INVERSE: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r);
+	    },
+	    GRAVITY: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r * r);
+	    }
+	};
+	Repulsion.DEFAULT_OPTIONS = {
+	    strength: 1,
+	    anchor: undefined,
+	    range: [
+	        0,
+	        Infinity
+	    ],
+	    cutoff: 0,
+	    cap: Infinity,
+	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
+	};
+	Repulsion.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor.position instanceof Vector)
+	            this.options.anchor = options.anchor.position;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Vector(options.anchor);
+	        delete options.anchor;
+	    }
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	Repulsion.prototype.applyForce = function applyForce(targets, source) {
+	    var options = this.options;
+	    var force = this.force;
+	    var disp = this.disp;
+	    var strength = options.strength;
+	    var anchor = options.anchor || source.position;
+	    var cap = options.cap;
+	    var cutoff = options.cutoff;
+	    var rMin = options.range[0];
+	    var rMax = options.range[1];
+	    var decayFn = options.decayFunction;
+	    if (strength === 0)
+	        return;
+	    var length = targets.length;
+	    var particle;
+	    var m1;
+	    var p1;
+	    var r;
+	    while (length--) {
+	        particle = targets[length];
+	        if (particle === source)
+	            continue;
+	        m1 = particle.mass;
+	        p1 = particle.position;
+	        disp.set(p1.sub(anchor));
+	        r = disp.norm();
+	        if (r < rMax && r > rMin) {
+	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
+	            particle.applyForce(force);
+	        }
+	    }
+	};
+	module.exports = Repulsion;
+
+/***/ },
+/* 224 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Drag = __webpack_require__(49);
+	function RotationalDrag(options) {
+	    Drag.call(this, options);
+	}
+	RotationalDrag.prototype = Object.create(Drag.prototype);
+	RotationalDrag.prototype.constructor = RotationalDrag;
+	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = {
+	    LINEAR: function (angularVelocity) {
+	        return angularVelocity;
+	    },
+	    QUADRATIC: function (angularVelocity) {
+	        return angularVelocity.mult(angularVelocity.norm());
+	    }
+	};
+	RotationalDrag.prototype.applyForce = function applyForce(targets) {
+	    var strength = this.options.strength;
+	    var forceFunction = this.options.forceFunction;
+	    var force = this.force;
+	    var index;
+	    var particle;
+	    for (index = 0; index < targets.length; index++) {
+	        particle = targets[index];
+	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
+	        particle.applyTorque(force);
+	    }
+	};
+	RotationalDrag.prototype.setOptions = function setOptions(options) {
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	module.exports = RotationalDrag;
+
+/***/ },
+/* 225 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(116);
+	var Spring = __webpack_require__(41);
+	var Quaternion = __webpack_require__(172);
+	function RotationalSpring(options) {
+	    Spring.call(this, options);
+	}
+	RotationalSpring.prototype = Object.create(Spring.prototype);
+	RotationalSpring.prototype.constructor = RotationalSpring;
+	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
+	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
+	var pi = Math.PI;
+	function _calcStiffness() {
+	    var options = this.options;
+	    options.stiffness = Math.pow(2 * pi / options.period, 2);
+	}
+	function _calcDamping() {
+	    var options = this.options;
+	    options.damping = 4 * pi * options.dampingRatio / options.period;
+	}
+	function _init() {
+	    _calcStiffness.call(this);
+	    _calcDamping.call(this);
+	}
+	RotationalSpring.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor instanceof Quaternion)
+	            this.options.anchor = options.anchor;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Quaternion(options.anchor);
+	    }
+	    if (options.period !== undefined) {
+	        this.options.period = options.period;
+	    }
+	    if (options.dampingRatio !== undefined)
+	        this.options.dampingRatio = options.dampingRatio;
+	    if (options.length !== undefined)
+	        this.options.length = options.length;
+	    if (options.forceFunction !== undefined)
+	        this.options.forceFunction = options.forceFunction;
+	    if (options.maxLength !== undefined)
+	        this.options.maxLength = options.maxLength;
+	    _init.call(this);
+	    Force.prototype.setOptions.call(this, options);
+	};
+	RotationalSpring.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var options = this.options;
+	    var disp = this.disp;
+	    var stiffness = options.stiffness;
+	    var damping = options.damping;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var forceFunction = options.forceFunction;
+	    var maxLength = options.maxLength;
+	    var i;
+	    var target;
+	    var dist;
+	    var m;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        disp.set(anchor.sub(target.orientation));
+	        dist = disp.norm() - restLength;
+	        if (dist === 0)
+	            return;
+	        m = target.mass;
+	        stiffness *= m;
+	        damping *= m;
+	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
+	        if (damping)
+	            force.add(target.angularVelocity.mult(-damping)).put(force);
+	        target.applyTorque(force);
+	    }
+	};
+	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
+	    var options = this.options;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var strength = options.stiffness;
+	    var energy = 0;
+	    for (var i = 0; i < targets.length; i++) {
+	        var target = targets[i];
+	        var dist = anchor.sub(target.orientation).norm() - restLength;
+	        energy += 0.5 * strength * dist * dist;
+	    }
+	    return energy;
+	};
+	module.exports = RotationalSpring;
+
+/***/ },
+/* 226 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(116);
+	var Vector = __webpack_require__(38);
+	function VectorField(options) {
+	    Force.call(this);
+	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.evaluation = new Vector();
+	}
+	VectorField.prototype = Object.create(Force.prototype);
+	VectorField.prototype.constructor = VectorField;
+	VectorField.FIELDS = {
+	    CONSTANT: function (v, options) {
+	        options.direction.put(this.evaluation);
+	    },
+	    LINEAR: function (v) {
+	        v.put(this.evaluation);
+	    },
+	    RADIAL: function (v) {
+	        v.mult(-1).put(this.evaluation);
+	    },
+	    POINT_ATTRACTOR: function (v, options) {
+	        options.position.sub(v).put(this.evaluation);
+	    }
+	};
+	VectorField.DEFAULT_OPTIONS = {
+	    strength: 0.01,
+	    field: VectorField.FIELDS.CONSTANT
+	};
+	VectorField.prototype.setOptions = function setOptions(options) {
+	    if (options.strength !== undefined)
+	        this.options.strength = options.strength;
+	    if (options.direction !== undefined)
+	        this.options.direction = options.direction;
+	    if (options.field !== undefined) {
+	        this.options.field = options.field;
+	        _setFieldOptions.call(this, this.options.field);
+	    }
+	};
+	function _setFieldOptions(field) {
+	    var FIELDS = VectorField.FIELDS;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        if (!this.options.direction)
+	            this.options.direction = new Vector(0, 1, 0);
+	        else if (this.options.direction instanceof Array)
+	            this.options.direction = new Vector(this.options.direction);
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        if (!this.options.position)
+	            this.options.position = new Vector(0, 0, 0);
+	        else if (this.options.position instanceof Array)
+	            this.options.position = new Vector(this.options.position);
+	        break;
+	    }
+	}
+	VectorField.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var strength = this.options.strength;
+	    var field = this.options.field;
+	    var i;
+	    var target;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        field.call(this, target.position, this.options);
+	        this.evaluation.mult(target.mass * strength).put(force);
+	        target.applyForce(force);
+	    }
+	};
+	VectorField.prototype.getEnergy = function getEnergy(targets) {
+	    var field = this.options.field;
+	    var FIELDS = VectorField.FIELDS;
+	    var energy = 0;
+	    var i;
+	    var target;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        energy = targets.length * this.options.direction.norm();
+	        break;
+	    case FIELDS.RADIAL:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.norm();
+	        }
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.sub(this.options.position).norm();
+	        }
+	        break;
+	    }
+	    energy *= this.options.strength;
+	    return energy;
+	};
+	module.exports = VectorField;
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Constraint = __webpack_require__(228);
 	var Vector = __webpack_require__(38);
 	function Collision(options) {
 	    this.options = Object.create(Collision.DEFAULT_OPTIONS);
@@ -64528,7 +65190,7 @@
 	module.exports = Collision;
 
 /***/ },
-/* 221 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64555,7 +65217,7 @@
 	module.exports = Constraint;
 
 /***/ },
-/* 222 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64565,7 +65227,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(221);
+	var Constraint = __webpack_require__(228);
 	var Vector = __webpack_require__(38);
 	function Curve(options) {
 	    this.options = Object.create(Curve.DEFAULT_OPTIONS);
@@ -64638,7 +65300,7 @@
 	module.exports = Curve;
 
 /***/ },
-/* 223 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64648,7 +65310,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(221);
+	var Constraint = __webpack_require__(228);
 	var Vector = __webpack_require__(38);
 	function Distance(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -64753,7 +65415,7 @@
 	module.exports = Distance;
 
 /***/ },
-/* 224 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64763,7 +65425,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(221);
+	var Constraint = __webpack_require__(228);
 	var Vector = __webpack_require__(38);
 	function Surface(options) {
 	    this.options = Object.create(Surface.DEFAULT_OPTIONS);
@@ -64826,7 +65488,7 @@
 	module.exports = Surface;
 
 /***/ },
-/* 225 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64836,7 +65498,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(221);
+	var Constraint = __webpack_require__(228);
 	var Wall = __webpack_require__(219);
 	var Vector = __webpack_require__(38);
 	function Walls(options) {
@@ -65005,608 +65667,6 @@
 	    }
 	};
 	module.exports = Walls;
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(115);
-	var Vector = __webpack_require__(38);
-	function Repulsion(options) {
-	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.disp = new Vector();
-	    Force.call(this);
-	}
-	Repulsion.prototype = Object.create(Force.prototype);
-	Repulsion.prototype.constructor = Repulsion;
-	Repulsion.DECAY_FUNCTIONS = {
-	    LINEAR: function (r, cutoff) {
-	        return Math.max(1 - 1 / cutoff * r, 0);
-	    },
-	    MORSE: function (r, cutoff) {
-	        var r0 = cutoff === 0 ? 100 : cutoff;
-	        var rShifted = r + r0 * (1 - Math.log(2));
-	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
-	    },
-	    INVERSE: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r);
-	    },
-	    GRAVITY: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r * r);
-	    }
-	};
-	Repulsion.DEFAULT_OPTIONS = {
-	    strength: 1,
-	    anchor: undefined,
-	    range: [
-	        0,
-	        Infinity
-	    ],
-	    cutoff: 0,
-	    cap: Infinity,
-	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
-	};
-	Repulsion.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor.position instanceof Vector)
-	            this.options.anchor = options.anchor.position;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Vector(options.anchor);
-	        delete options.anchor;
-	    }
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	Repulsion.prototype.applyForce = function applyForce(targets, source) {
-	    var options = this.options;
-	    var force = this.force;
-	    var disp = this.disp;
-	    var strength = options.strength;
-	    var anchor = options.anchor || source.position;
-	    var cap = options.cap;
-	    var cutoff = options.cutoff;
-	    var rMin = options.range[0];
-	    var rMax = options.range[1];
-	    var decayFn = options.decayFunction;
-	    if (strength === 0)
-	        return;
-	    var length = targets.length;
-	    var particle;
-	    var m1;
-	    var p1;
-	    var r;
-	    while (length--) {
-	        particle = targets[length];
-	        if (particle === source)
-	            continue;
-	        m1 = particle.mass;
-	        p1 = particle.position;
-	        disp.set(p1.sub(anchor));
-	        r = disp.norm();
-	        if (r < rMax && r > rMin) {
-	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
-	            particle.applyForce(force);
-	        }
-	    }
-	};
-	module.exports = Repulsion;
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Drag = __webpack_require__(49);
-	function RotationalDrag(options) {
-	    Drag.call(this, options);
-	}
-	RotationalDrag.prototype = Object.create(Drag.prototype);
-	RotationalDrag.prototype.constructor = RotationalDrag;
-	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = {
-	    LINEAR: function (angularVelocity) {
-	        return angularVelocity;
-	    },
-	    QUADRATIC: function (angularVelocity) {
-	        return angularVelocity.mult(angularVelocity.norm());
-	    }
-	};
-	RotationalDrag.prototype.applyForce = function applyForce(targets) {
-	    var strength = this.options.strength;
-	    var forceFunction = this.options.forceFunction;
-	    var force = this.force;
-	    var index;
-	    var particle;
-	    for (index = 0; index < targets.length; index++) {
-	        particle = targets[index];
-	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
-	        particle.applyTorque(force);
-	    }
-	};
-	RotationalDrag.prototype.setOptions = function setOptions(options) {
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	module.exports = RotationalDrag;
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(115);
-	var Spring = __webpack_require__(40);
-	var Quaternion = __webpack_require__(176);
-	function RotationalSpring(options) {
-	    Spring.call(this, options);
-	}
-	RotationalSpring.prototype = Object.create(Spring.prototype);
-	RotationalSpring.prototype.constructor = RotationalSpring;
-	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
-	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
-	var pi = Math.PI;
-	function _calcStiffness() {
-	    var options = this.options;
-	    options.stiffness = Math.pow(2 * pi / options.period, 2);
-	}
-	function _calcDamping() {
-	    var options = this.options;
-	    options.damping = 4 * pi * options.dampingRatio / options.period;
-	}
-	function _init() {
-	    _calcStiffness.call(this);
-	    _calcDamping.call(this);
-	}
-	RotationalSpring.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor instanceof Quaternion)
-	            this.options.anchor = options.anchor;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Quaternion(options.anchor);
-	    }
-	    if (options.period !== undefined) {
-	        this.options.period = options.period;
-	    }
-	    if (options.dampingRatio !== undefined)
-	        this.options.dampingRatio = options.dampingRatio;
-	    if (options.length !== undefined)
-	        this.options.length = options.length;
-	    if (options.forceFunction !== undefined)
-	        this.options.forceFunction = options.forceFunction;
-	    if (options.maxLength !== undefined)
-	        this.options.maxLength = options.maxLength;
-	    _init.call(this);
-	    Force.prototype.setOptions.call(this, options);
-	};
-	RotationalSpring.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var options = this.options;
-	    var disp = this.disp;
-	    var stiffness = options.stiffness;
-	    var damping = options.damping;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var forceFunction = options.forceFunction;
-	    var maxLength = options.maxLength;
-	    var i;
-	    var target;
-	    var dist;
-	    var m;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        disp.set(anchor.sub(target.orientation));
-	        dist = disp.norm() - restLength;
-	        if (dist === 0)
-	            return;
-	        m = target.mass;
-	        stiffness *= m;
-	        damping *= m;
-	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
-	        if (damping)
-	            force.add(target.angularVelocity.mult(-damping)).put(force);
-	        target.applyTorque(force);
-	    }
-	};
-	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
-	    var options = this.options;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var strength = options.stiffness;
-	    var energy = 0;
-	    for (var i = 0; i < targets.length; i++) {
-	        var target = targets[i];
-	        var dist = anchor.sub(target.orientation).norm() - restLength;
-	        energy += 0.5 * strength * dist * dist;
-	    }
-	    return energy;
-	};
-	module.exports = RotationalSpring;
-
-/***/ },
-/* 229 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(115);
-	var Vector = __webpack_require__(38);
-	function VectorField(options) {
-	    Force.call(this);
-	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.evaluation = new Vector();
-	}
-	VectorField.prototype = Object.create(Force.prototype);
-	VectorField.prototype.constructor = VectorField;
-	VectorField.FIELDS = {
-	    CONSTANT: function (v, options) {
-	        options.direction.put(this.evaluation);
-	    },
-	    LINEAR: function (v) {
-	        v.put(this.evaluation);
-	    },
-	    RADIAL: function (v) {
-	        v.mult(-1).put(this.evaluation);
-	    },
-	    POINT_ATTRACTOR: function (v, options) {
-	        options.position.sub(v).put(this.evaluation);
-	    }
-	};
-	VectorField.DEFAULT_OPTIONS = {
-	    strength: 0.01,
-	    field: VectorField.FIELDS.CONSTANT
-	};
-	VectorField.prototype.setOptions = function setOptions(options) {
-	    if (options.strength !== undefined)
-	        this.options.strength = options.strength;
-	    if (options.direction !== undefined)
-	        this.options.direction = options.direction;
-	    if (options.field !== undefined) {
-	        this.options.field = options.field;
-	        _setFieldOptions.call(this, this.options.field);
-	    }
-	};
-	function _setFieldOptions(field) {
-	    var FIELDS = VectorField.FIELDS;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        if (!this.options.direction)
-	            this.options.direction = new Vector(0, 1, 0);
-	        else if (this.options.direction instanceof Array)
-	            this.options.direction = new Vector(this.options.direction);
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        if (!this.options.position)
-	            this.options.position = new Vector(0, 0, 0);
-	        else if (this.options.position instanceof Array)
-	            this.options.position = new Vector(this.options.position);
-	        break;
-	    }
-	}
-	VectorField.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var strength = this.options.strength;
-	    var field = this.options.field;
-	    var i;
-	    var target;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        field.call(this, target.position, this.options);
-	        this.evaluation.mult(target.mass * strength).put(force);
-	        target.applyForce(force);
-	    }
-	};
-	VectorField.prototype.getEnergy = function getEnergy(targets) {
-	    var field = this.options.field;
-	    var FIELDS = VectorField.FIELDS;
-	    var energy = 0;
-	    var i;
-	    var target;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        energy = targets.length * this.options.direction.norm();
-	        break;
-	    case FIELDS.RADIAL:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.norm();
-	        }
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.sub(this.options.position).norm();
-	        }
-	        break;
-	    }
-	    energy *= this.options.strength;
-	    return energy;
-	};
-	module.exports = VectorField;
-
-/***/ },
-/* 230 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Particle = __webpack_require__(39);
-	var Transform = __webpack_require__(37);
-	var Vector = __webpack_require__(38);
-	var Quaternion = __webpack_require__(176);
-	var Matrix = __webpack_require__(175);
-	var Integrator = __webpack_require__(116);
-	function Body(options) {
-	    Particle.call(this, options);
-	    options = options || {};
-	    this.orientation = new Quaternion();
-	    this.angularVelocity = new Vector();
-	    this.angularMomentum = new Vector();
-	    this.torque = new Vector();
-	    if (options.orientation)
-	        this.orientation.set(options.orientation);
-	    if (options.angularVelocity)
-	        this.angularVelocity.set(options.angularVelocity);
-	    if (options.angularMomentum)
-	        this.angularMomentum.set(options.angularMomentum);
-	    if (options.torque)
-	        this.torque.set(options.torque);
-	    this.angularVelocity.w = 0;
-	    this.setMomentsOfInertia();
-	    this.pWorld = new Vector();
-	}
-	Body.DEFAULT_OPTIONS = Particle.DEFAULT_OPTIONS;
-	Body.DEFAULT_OPTIONS.orientation = [
-	    0,
-	    0,
-	    0,
-	    1
-	];
-	Body.DEFAULT_OPTIONS.angularVelocity = [
-	    0,
-	    0,
-	    0
-	];
-	Body.prototype = Object.create(Particle.prototype);
-	Body.prototype.constructor = Body;
-	Body.prototype.isBody = true;
-	Body.prototype.setMass = function setMass() {
-	    Particle.prototype.setMass.apply(this, arguments);
-	    this.setMomentsOfInertia();
-	};
-	Body.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
-	    this.inertia = new Matrix();
-	    this.inverseInertia = new Matrix();
-	};
-	Body.prototype.updateAngularVelocity = function updateAngularVelocity() {
-	    this.angularVelocity.set(this.inverseInertia.vectorMultiply(this.angularMomentum));
-	};
-	Body.prototype.toWorldCoordinates = function toWorldCoordinates(localPosition) {
-	    return this.pWorld.set(this.orientation.rotateVector(localPosition));
-	};
-	Body.prototype.getEnergy = function getEnergy() {
-	    return Particle.prototype.getEnergy.call(this) + 0.5 * this.inertia.vectorMultiply(this.angularVelocity).dot(this.angularVelocity);
-	};
-	Body.prototype.reset = function reset(p, v, q, L) {
-	    Particle.prototype.reset.call(this, p, v);
-	    this.angularVelocity.clear();
-	    this.setOrientation(q || [
-	        1,
-	        0,
-	        0,
-	        0
-	    ]);
-	    this.setAngularMomentum(L || [
-	        0,
-	        0,
-	        0
-	    ]);
-	};
-	Body.prototype.setOrientation = function setOrientation(q) {
-	    this.orientation.set(q);
-	};
-	Body.prototype.setAngularVelocity = function setAngularVelocity(w) {
-	    this.wake();
-	    this.angularVelocity.set(w);
-	};
-	Body.prototype.setAngularMomentum = function setAngularMomentum(L) {
-	    this.wake();
-	    this.angularMomentum.set(L);
-	};
-	Body.prototype.applyForce = function applyForce(force, location) {
-	    Particle.prototype.applyForce.call(this, force);
-	    if (location !== undefined)
-	        this.applyTorque(location.cross(force));
-	};
-	Body.prototype.applyTorque = function applyTorque(torque) {
-	    this.wake();
-	    this.torque.set(this.torque.add(torque));
-	};
-	Body.prototype.getTransform = function getTransform() {
-	    return Transform.thenMove(this.orientation.getTransform(), Transform.getTranslate(Particle.prototype.getTransform.call(this)));
-	};
-	Body.prototype._integrate = function _integrate(dt) {
-	    Particle.prototype._integrate.call(this, dt);
-	    this.integrateAngularMomentum(dt);
-	    this.updateAngularVelocity(dt);
-	    this.integrateOrientation(dt);
-	};
-	Body.prototype.integrateAngularMomentum = function integrateAngularMomentum(dt) {
-	    Integrator.integrateAngularMomentum(this, dt);
-	};
-	Body.prototype.integrateOrientation = function integrateOrientation(dt) {
-	    Integrator.integrateOrientation(this, dt);
-	};
-	module.exports = Body;
-
-/***/ },
-/* 231 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Body = __webpack_require__(230);
-	var Matrix = __webpack_require__(175);
-	function Circle(options) {
-	    options = options || {};
-	    this.setRadius(options.radius || 0);
-	    Body.call(this, options);
-	}
-	Circle.prototype = Object.create(Body.prototype);
-	Circle.prototype.constructor = Circle;
-	Circle.prototype.setRadius = function setRadius(r) {
-	    this.radius = r;
-	    this.size = [
-	        2 * this.radius,
-	        2 * this.radius
-	    ];
-	    this.setMomentsOfInertia();
-	};
-	Circle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
-	    var m = this.mass;
-	    var r = this.radius;
-	    this.inertia = new Matrix([
-	        [
-	            0.25 * m * r * r,
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            0.25 * m * r * r,
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            0.5 * m * r * r
-	        ]
-	    ]);
-	    this.inverseInertia = new Matrix([
-	        [
-	            4 / (m * r * r),
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            4 / (m * r * r),
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            2 / (m * r * r)
-	        ]
-	    ]);
-	};
-	module.exports = Circle;
-
-/***/ },
-/* 232 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Body = __webpack_require__(230);
-	var Matrix = __webpack_require__(175);
-	function Rectangle(options) {
-	    options = options || {};
-	    this.size = options.size || [
-	        0,
-	        0
-	    ];
-	    Body.call(this, options);
-	}
-	Rectangle.prototype = Object.create(Body.prototype);
-	Rectangle.prototype.constructor = Rectangle;
-	Rectangle.prototype.setSize = function setSize(size) {
-	    this.size = size;
-	    this.setMomentsOfInertia();
-	};
-	Rectangle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
-	    var m = this.mass;
-	    var w = this.size[0];
-	    var h = this.size[1];
-	    this.inertia = new Matrix([
-	        [
-	            m * h * h / 12,
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            m * w * w / 12,
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            m * (w * w + h * h) / 12
-	        ]
-	    ]);
-	    this.inverseInertia = new Matrix([
-	        [
-	            12 / (m * h * h),
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            12 / (m * w * w),
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            12 / (m * (w * w + h * h))
-	        ]
-	    ]);
-	};
-	module.exports = Rectangle;
 
 /***/ },
 /* 233 */
