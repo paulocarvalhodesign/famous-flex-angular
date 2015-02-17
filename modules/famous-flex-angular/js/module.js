@@ -1,0 +1,30 @@
+var ffa = angular.module('famousFlexAngular',['famous.angular']);
+
+ffa.config(function($famousProvider) {
+  $famousProvider.registerModule('famous-flex/FlexScrollView',require('famous-flex/FlexScrollView'));
+  $famousProvider.registerModule('famous-flex/FlowLayoutNode',require('famous-flex/FlowLayoutNode'));
+  $famousProvider.registerModule('famous-flex/LayoutContext',require('famous-flex/LayoutContext'));
+  $famousProvider.registerModule('famous-flex/LayoutController',require('famous-flex/LayoutController'));
+  $famousProvider.registerModule('famous-flex/LayoutNode',require('famous-flex/LayoutNode'));
+  $famousProvider.registerModule('famous-flex/LayoutNodeManager',require('famous-flex/LayoutNodeManager'));
+  $famousProvider.registerModule('famous-flex/LayoutUtility',require('famous-flex/LayoutUtility'));
+  $famousProvider.registerModule('famous-flex/ScrollController',require('famous-flex/ScrollController'));
+  $famousProvider.registerModule('famous-flex/ScrollView',require('famous-flex/ScrollView'));
+  $famousProvider.registerModule('famous-flex/VirtualViewSequence',require('famous-flex/VirtualViewSequence'));
+  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',require('famous-flex/helpers/LayoutDockHelper'));
+  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',require('famous-flex/layouts/CollectionLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',require('famous-flex/layouts/CoverLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',require('famous-flex/layouts/CubeLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/GridLayout',require('famous-flex/layouts/GridLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',require('famous-flex/layouts/HeaderFooterLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/ListLayout',require('famous-flex/layouts/ListLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',require('famous-flex/layouts/NavBarLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',require('famous-flex/layouts/ProportionalLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',require('famous-flex/layouts/TabBarLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/TableLayout',require('famous-flex/layouts/TableLayout'));
+  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',require('famous-flex/layouts/WheelLayout'));
+  $famousProvider.registerModule('famous-flex/widgets/DatePicker',require('famous-flex/widgets/DatePicker'));
+  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',require('famous-flex/widgets/DatePickerComponents'));
+  $famousProvider.registerModule('famous-flex/widgets/TabBar',require('famous-flex/widgets/TabBar'));
+  //console.log($famousProvider.$get());
+});

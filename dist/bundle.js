@@ -51,7 +51,7 @@
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(4);
+	__webpack_require__(3);
 	/* WEBPACK VAR INJECTION */(function(angular) {//var LayoutController = require('famous-flex/LayoutController');
 	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
 	//var ListLayout = require('famous-flex/layouts/ListLayout');
@@ -87,7 +87,7 @@
 
 	}]);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 2 */
@@ -99,6 +99,515 @@
 
 /***/ },
 /* 3 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(8);
+	/* WEBPACK VAR INJECTION */(function(angular) {var ffa = (module.exports['famousFlexAngular'] = angular.module('famousFlexAngular',['famous.angular']));
+
+	ffa.config(function($famousProvider) {
+	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(9));
+	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(10));
+	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(11));
+	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(12));
+	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(13));
+	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(14));
+	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(15));
+	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(16));
+	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(17));
+	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(18));
+	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(19));
+	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(20));
+	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(21));
+	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(22));
+	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(23));
+	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(24));
+	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(25));
+	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(26));
+	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(27));
+	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(28));
+	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(29));
+	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(30));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(31));
+	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(32));
+	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(33));
+	  //console.log($famousProvider.$get());
+	});
+
+	//var LayoutController = require('famous-flex/LayoutController');
+	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
+	//var ListLayout = require('famous-flex/layouts/ListLayout');
+	//var WheelLayout = require('famous-flex/layouts/WheelLayout');
+	//var GridLayout = require('famous-flex/layouts/GridLayout');
+	//var NavBarLayout = require('famous-flex/layouts/NavBarLayout');
+	//require('bootstrap.min.css');
+
+	angular.module('famousFlexAngular')
+	.directive('faDumb', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+	  return {
+		template: '<div></div>',
+		restrict: 'E',
+		transclude: true,
+		scope: true,
+		compile: function(tElem, tAttrs, transclude) {
+		  var mySelection = 1;
+
+		  return {
+		    pre: function(scope, element, attrs) {
+	            	var isolate = $famousDecorator.ensureIsolate(scope);
+	            	var options = scope.$eval(attrs.faOptions) || {};
+
+			var LayoutController = $famous['famous-flex/LayoutController'];
+		 	isolate.renderNode = new LayoutController(options);
+
+		    		var _children = [];
+
+	            		var updateLayout = function () {
+	              			scope.$$postDigest(function(){
+	                			_children.sort(function (a, b) {
+	                  			return a.index - b.index;
+	                			});
+		        			isolate.renderNode.setDataSource(function(_children) {
+	                	  			var _ch = [];
+	                  				angular.forEach(_children, function(c, i) {
+	                    					_ch[i] = c.renderGate;//._object._child._object;
+	                  				});
+	                  				return _ch;
+	                			}(_children));
+	              			});
+					console.log(isolate.renderNode);
+	            		};
+
+	                       $famousDecorator.sequenceWith(
+	                                scope,
+	                                function(data) {
+	                                        _children.push(data);
+	                                        updateLayout();
+	                                },
+	                                function(childScopeId) {
+	                                        _children = function(_children) {
+	                                                var _ch = [];
+	                                                angular.forEach(_children, function(c) {
+	                                                        if (c.id !== childScopeId) {
+	                                                                _ch.push(c);
+	                                                        }
+	                                                });
+	                                                return _ch;
+	                                        }(_children);
+	                                        updateLayout();
+	                                },
+	                                updateLayout
+	                        );
+
+
+	            	$famousDecorator.addRole('renderable',isolate);
+	            	isolate.show();
+			console.log(isolate);
+
+		    	},
+		    post: function(scope,element,attrs) {
+		       		var isolate = $famousDecorator.ensureIsolate(scope);
+	            	    	transclude(scope, function(clone) {
+	              			element.find('div').append(clone);
+	            		});
+	            	    	$famousDecorator.registerChild(scope, element, isolate);
+		    }
+		  }
+		}
+	  }
+	}])
+	.directive('faNavbar', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+		return {
+			restrict: 'AE',
+			transclude: true,
+			compile: function(tElem,tAttrs,transclude) {
+				
+				var Surface = $famous['famous/core/Surface'];
+				var LayoutController = $famous['famous-flex/LayoutController'];
+				var NavBarLayout = $famous['famous-flex/NavBarLayout'];
+		
+				var _createLayoutController = function(options) {
+					var layoutController = new LayoutController({
+						layout: NavBarLayout,
+						layoutOptions: {
+							margins: [8],
+							itemSpacer: 5
+						}
+					});
+					return layoutController;
+				};
+
+				var _createBackground = function() {
+					var background = new Surface({classes: ['navbar', 'navbar-inverse']});
+					return background;
+				};
+
+				var _createTitle = function(myTitle) {
+					var title = new Surface({content: myTitle || 'famous-flex', classes: ['title']});
+					return title;
+				};
+
+	   			var _createButton = function(content) {
+	        			return new Surface({
+	            				size: [50, undefined],
+	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
+	        			});
+	    			};
+
+				var rightItems = [];
+
+				return {
+					pre: function(scope,elem,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+	                			var options = scope.$eval(attrs.faOptions) || {};
+	                			isolate.renderNode = _createLayoutController(options);
+
+				                $famousDecorator.addRole('renderable',isolate);
+	                			isolate.show();
+	                			console.log(isolate);
+					},
+					post: function(scope,element,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+		
+						transclude(scope, function(clone) {
+							var title = clone.find('div.title');
+							var buttons = clone.find('button.left');
+							var rightItems = [];
+							console.log(title);
+							angular.forEach(buttons, function(button) {
+								rightItems.push(_createButton('hello'));//button);
+							});
+	                				var isolate = $famousDecorator.ensureIsolate(scope);
+							console.log(rightItems);
+							isolate.renderNode.setDataSource({
+								background: _createBackground(),
+								title: _createTitle(),
+								rightItems: rightItems
+							});
+						});
+
+
+						$famousDecorator.registerChild(scope, element, isolate);
+					}
+				};
+			}
+		};
+	}]);
+				
+
+	angular.module('famousFlexAngular')
+	.directive('ffaFlexScrollView', ['$famous', '$famousDecorator', 'ffaFlexScrollViewService', function($famous, $famousDecorator, ffaFlexScrollViewService) {
+	  return {
+		template: '<div></div>',
+		restrict: 'E',
+		transclude: true,
+		scope: true,
+		compile: function(tElem, tAttrs, transclude) {
+		  var mySelection = 1;
+
+		  return {
+		    pre: function(scope, element, attrs) {
+	            	var isolate = $famousDecorator.ensureIsolate(scope);
+	            	var options = scope.$eval(attrs.faOptions) || {};
+
+			var FlexScrollView = $famous['famous-flex/FlexScrollView'];
+		 	isolate.renderNode = new FlexScrollView(options);
+
+				var scopeTracker = new ffaFlexScrollViewService(isolate.renderNode);
+
+				$famousDecorator.sequenceWith(scope,scopeTracker.add,scopeTracker.remove,scopeTracker.add);
+	/*		
+		    		var _children = [];
+
+	            		var updateLayout = function () {
+	              			scope.$$postDigest(function(){
+	                			_children.sort(function (a, b) {
+	                  			return a.index - b.index;
+	                			});
+		        			isolate.renderNode.setDataSource(function(_children) {
+	                	  			var _ch = [];
+	                  				angular.forEach(_children, function(c, i) {
+	                    					_ch[i] = c.renderGate;//._object._child._object;
+	                  				});
+	                  				return _ch;
+	                			}(_children));
+	              			});
+					console.log(isolate.renderNode);
+	            		};
+
+	                       $famousDecorator.sequenceWith(
+	                                scope,
+	                                function(data) {
+	                                        _children.push(data);
+	                                        updateLayout();
+	                                },
+	                                function(childScopeId) {
+	                                        _children = function(_children) {
+	                                                var _ch = [];
+	                                                angular.forEach(_children, function(c) {
+	                                                        if (c.id !== childScopeId) {
+	                                                                _ch.push(c);
+	                                                        }
+	                                                });
+	                                                return _ch;
+	                                        }(_children);
+	                                        updateLayout();
+	                                },
+	                                updateLayout
+	                        );
+	*/
+
+	            	$famousDecorator.addRole('renderable',isolate);
+	            	isolate.show();
+			console.log(isolate);
+
+		    	},
+		    post: function(scope,element,attrs) {
+		       		var isolate = $famousDecorator.ensureIsolate(scope);
+	            	    	transclude(scope, function(clone) {
+	              			element.find('div').append(clone);
+	            		});
+	            	    	$famousDecorator.registerChild(scope, element, isolate);
+		    }
+		  }
+		}
+	  }
+	}]);
+
+	angular.module('famousFlexAngular')
+	.directive('ffaLayoutController', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+	  return {
+		template: '<div></div>',
+		restrict: 'E',
+		transclude: true,
+		scope: true,
+		compile: function(tElem, tAttrs, transclude) {
+		  var mySelection = 1;
+
+		  return {
+		    pre: function(scope, element, attrs) {
+	            	var isolate = $famousDecorator.ensureIsolate(scope);
+	            	var options = scope.$eval(attrs.faOptions) || {};
+
+			var LayoutController = $famous['famous-flex/LayoutController'];
+		 	isolate.renderNode = new LayoutController(options);
+
+		    		var _children = [];
+
+	            		var updateLayout = function () {
+	              			scope.$$postDigest(function(){
+	                			_children.sort(function (a, b) {
+	                  			return a.index - b.index;
+	                			});
+		        			isolate.renderNode.setDataSource(function(_children) {
+	                	  			var _ch = [];
+	                  				angular.forEach(_children, function(c, i) {
+	                    					_ch[i] = c.renderGate;//._object._child._object;
+	                  				});
+	                  				return _ch;
+	                			}(_children));
+	              			});
+					console.log(isolate.renderNode);
+	            		};
+
+	                       $famousDecorator.sequenceWith(
+	                                scope,
+	                                function(data) {
+	                                        _children.push(data);
+	                                        updateLayout();
+	                                },
+	                                function(childScopeId) {
+	                                        _children = function(_children) {
+	                                                var _ch = [];
+	                                                angular.forEach(_children, function(c) {
+	                                                        if (c.id !== childScopeId) {
+	                                                                _ch.push(c);
+	                                                        }
+	                                                });
+	                                                return _ch;
+	                                        }(_children);
+	                                        updateLayout();
+	                                },
+	                                updateLayout
+	                        );
+
+
+	            	$famousDecorator.addRole('renderable',isolate);
+	            	isolate.show();
+			console.log(isolate);
+
+		    	},
+		    post: function(scope,element,attrs) {
+		       		var isolate = $famousDecorator.ensureIsolate(scope);
+	            	    	transclude(scope, function(clone) {
+	              			element.find('div').append(clone);
+	            		});
+	            	    	$famousDecorator.registerChild(scope, element, isolate);
+		    }
+		  }
+		}
+	  }
+	}]);
+
+	angular.module('famousFlexAngular')
+	.directive('ffaNavBarControl', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+		return {
+			restrict: 'AE',
+			transclude: true,
+			compile: function(tElem,tAttrs,transclude) {
+				
+				var Surface = $famous['famous/core/Surface'];
+				var LayoutController = $famous['famous-flex/LayoutController'];
+				var NavBarLayout = $famous['famous-flex/layouts/NavBarLayout'];
+
+		
+				var _createLayoutController = function(options) {
+					var layoutController = new LayoutController({
+						layout: NavBarLayout,
+						layoutOptions: {
+							margins: [8],
+							itemSpacer: 5
+						}
+					});
+					return layoutController;
+				};
+
+				var _createBackground = function() {
+					var background = new Surface({classes: ['navbar', 'navbar-default']});
+					return background;
+				};
+
+				var _createTitle = function(myTitle) {
+					var title = new Surface({content: myTitle || 'famous-flex', classes: ['title']});
+					return title;
+				};
+
+	   			var _createButton = function(content) {
+	        			return new Surface({
+	            				size: [50, undefined],
+	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
+	        			});
+	    			};
+
+				var rightItems = [];
+
+				return {
+					pre: function(scope,elem,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+	                			var options = scope.$eval(attrs.faOptions) || {};
+	                			isolate.renderNode = _createLayoutController(options);
+
+				                $famousDecorator.addRole('renderable',isolate);
+	                			isolate.show();
+	                			console.log(isolate);
+					},
+					post: function(scope,element,attrs) {
+	                			var isolate = $famousDecorator.ensureIsolate(scope);
+		
+						transclude(scope, function(clone) {
+							var title = clone.find('div.title');
+							var buttons = clone.find('button.left');
+							var rightItems = [];
+							console.log(title);
+							angular.forEach(buttons, function(button) {
+								rightItems.push(_createButton('hello'));//button);
+							});
+	                				var isolate = $famousDecorator.ensureIsolate(scope);
+							console.log(rightItems);
+							console.log(_createTitle());
+							isolate.renderNode.setDataSource({
+								background: _createBackground(),
+								title: _createTitle(),
+								rightItems: rightItems
+							});
+						});
+
+
+						$famousDecorator.registerChild(scope, element, isolate);
+					}
+				};
+			}
+		};
+	}]);
+				
+
+	angular.module('famousFlexAngular')
+	.directive('resizable', function($window) {
+	        return function($scope) {
+	          $scope.initializeWindowSize = function() {
+	            $scope.windowHeight = $window.innerHeight;
+	            $scope.windowWidth = $window.innerWidth;
+	          };
+	        
+	          angular.element($window).bind('resize', function() {
+	            $scope.initializeWindowSize();
+	            $scope.$apply();
+	          });
+	        }
+	});
+
+	angular.module('famousFlexAngular')
+	.factory('ffaFlexScrollViewService', function() {
+	  
+	  return Mapping;
+
+	  var Mapping = function(scrollView) {
+	    this.ids = [];
+	    this.scrollView = scrollView;
+	  };
+	  
+	  // nonnegative: add at index i
+	  // negative: -1 add at end
+	  // negative: -2 add in end-1
+	  Mapping.prototype.add = function(x,index) {
+	    var myIndex = this.getIndex(x);
+	    if (!myIndex) {
+	      this.insertBefore(x,index);  
+	    } else {
+	      if (myIndex !== index) {
+	        this.removeIndex(myIndex);
+	        this.insertBefore(index,x);
+	      }
+	    }
+	  };
+
+	  Mapping.prototype.getIndex = function(x) {
+	    var value = this.ids.indexOf(x.id);
+	    if (value === -1) return undefined;
+	    return value;
+	  }  
+	  Mapping.prototype.toArrayIndex = function(index) {
+	    if (index === undefined) return this.ids.length;
+	    if (index < 0) return Math.max(0,this.ids.length + index + 1);
+	    return index;
+	   };
+	  
+	  Mapping.prototype.remove = function(x) {
+	    var myIndex = this.getIndex(x);
+	    if (myIndex !== undefined) {
+	      this.removeIndex(myIndex);
+	    }
+	  };
+
+	  Mapping.prototype.removeIndex = function(index) {
+	    this.ids.splice(this.toArrayIndex(index),1); 
+	    this.scrollView.remove(index); 
+	  };
+	  
+	  Mapping.prototype.insertBefore = function(x,index) {
+	    this.ids.splice(this.toArrayIndex(index),0,x.id);
+	    this.scrollView.insert(index,x);
+	  };
+
+	  Mapping.prototype.insertAfter = function(x,index) {
+	    this.ids.splice(this.toArrayIndex(index)+1,0,x.id);  
+	    this.scrollView.insert(index+1,x);
+	  };
+	});
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var require;/* WEBPACK VAR INJECTION */(function(angular) {/**
@@ -26234,378 +26743,7 @@
 
 	/*** EXPORTS FROM exports-loader ***/
 	module.exports = window.angular
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
-
-/***/ },
-/* 4 */
-/***/ function(module, exports, __webpack_require__) {
-
-	__webpack_require__(8);
-	/* WEBPACK VAR INJECTION */(function(angular) {var ffa = (module.exports['famousFlexAngular'] = angular.module('famousFlexAngular',['famous.angular']));
-
-	ffa.config(function($famousProvider) {
-	  $famousProvider.registerModule('famous-flex/FlexScrollView',__webpack_require__(10));
-	  $famousProvider.registerModule('famous-flex/FlowLayoutNode',__webpack_require__(11));
-	  $famousProvider.registerModule('famous-flex/LayoutContext',__webpack_require__(12));
-	  $famousProvider.registerModule('famous-flex/LayoutController',__webpack_require__(13));
-	  $famousProvider.registerModule('famous-flex/LayoutNode',__webpack_require__(14));
-	  $famousProvider.registerModule('famous-flex/LayoutNodeManager',__webpack_require__(15));
-	  $famousProvider.registerModule('famous-flex/LayoutUtility',__webpack_require__(16));
-	  $famousProvider.registerModule('famous-flex/ScrollController',__webpack_require__(17));
-	  $famousProvider.registerModule('famous-flex/ScrollView',__webpack_require__(18));
-	  $famousProvider.registerModule('famous-flex/VirtualViewSequence',__webpack_require__(19));
-	  $famousProvider.registerModule('famous-flex/helpers/LayoutDockHelper',__webpack_require__(20));
-	  $famousProvider.registerModule('famous-flex/layouts/CollectionLayout',__webpack_require__(21));
-	  $famousProvider.registerModule('famous-flex/layouts/CoverLayout',__webpack_require__(22));
-	  $famousProvider.registerModule('famous-flex/layouts/CubeLayout',__webpack_require__(23));
-	  $famousProvider.registerModule('famous-flex/layouts/GridLayout',__webpack_require__(24));
-	  $famousProvider.registerModule('famous-flex/layouts/HeaderFooterLayout',__webpack_require__(25));
-	  $famousProvider.registerModule('famous-flex/layouts/ListLayout',__webpack_require__(26));
-	  $famousProvider.registerModule('famous-flex/layouts/NavBarLayout',__webpack_require__(27));
-	  $famousProvider.registerModule('famous-flex/layouts/ProportionalLayout',__webpack_require__(28));
-	  $famousProvider.registerModule('famous-flex/layouts/TabBarLayout',__webpack_require__(29));
-	  $famousProvider.registerModule('famous-flex/layouts/TableLayout',__webpack_require__(30));
-	  $famousProvider.registerModule('famous-flex/layouts/WheelLayout',__webpack_require__(31));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePicker',__webpack_require__(32));
-	  $famousProvider.registerModule('famous-flex/widgets/DatePickerComponents',__webpack_require__(33));
-	  $famousProvider.registerModule('famous-flex/widgets/TabBar',__webpack_require__(34));
-	  //console.log($famousProvider.$get());
-	});
-
-	//var LayoutController = require('famous-flex/LayoutController');
-	//var CollectionLayout = require('famous-flex/layouts/CollectionLayout');
-	//var ListLayout = require('famous-flex/layouts/ListLayout');
-	//var WheelLayout = require('famous-flex/layouts/WheelLayout');
-	//var GridLayout = require('famous-flex/layouts/GridLayout');
-	//var NavBarLayout = require('famous-flex/layouts/NavBarLayout');
-	//require('bootstrap.min.css');
-
-	angular.module('famousFlexAngular')
-	.directive('faDumb', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
-	  return {
-		template: '<div></div>',
-		restrict: 'E',
-		transclude: true,
-		scope: true,
-		compile: function(tElem, tAttrs, transclude) {
-		  var mySelection = 1;
-
-		  return {
-		    pre: function(scope, element, attrs) {
-	            	var isolate = $famousDecorator.ensureIsolate(scope);
-	            	var options = scope.$eval(attrs.faOptions) || {};
-
-			var LayoutController = $famous['famous-flex/LayoutController'];
-		 	isolate.renderNode = new LayoutController(options);
-
-		    		var _children = [];
-
-	            		var updateLayout = function () {
-	              			scope.$$postDigest(function(){
-	                			_children.sort(function (a, b) {
-	                  			return a.index - b.index;
-	                			});
-		        			isolate.renderNode.setDataSource(function(_children) {
-	                	  			var _ch = [];
-	                  				angular.forEach(_children, function(c, i) {
-	                    					_ch[i] = c.renderGate;//._object._child._object;
-	                  				});
-	                  				return _ch;
-	                			}(_children));
-	              			});
-					console.log(isolate.renderNode);
-	            		};
-
-	                       $famousDecorator.sequenceWith(
-	                                scope,
-	                                function(data) {
-	                                        _children.push(data);
-	                                        updateLayout();
-	                                },
-	                                function(childScopeId) {
-	                                        _children = function(_children) {
-	                                                var _ch = [];
-	                                                angular.forEach(_children, function(c) {
-	                                                        if (c.id !== childScopeId) {
-	                                                                _ch.push(c);
-	                                                        }
-	                                                });
-	                                                return _ch;
-	                                        }(_children);
-	                                        updateLayout();
-	                                },
-	                                updateLayout
-	                        );
-
-
-	            	$famousDecorator.addRole('renderable',isolate);
-	            	isolate.show();
-			console.log(isolate);
-
-		    	},
-		    post: function(scope,element,attrs) {
-		       		var isolate = $famousDecorator.ensureIsolate(scope);
-	            	    	transclude(scope, function(clone) {
-	              			element.find('div').append(clone);
-	            		});
-	            	    	$famousDecorator.registerChild(scope, element, isolate);
-		    }
-		  }
-		}
-	  }
-	}])
-	.directive('faNavbar', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
-		return {
-			restrict: 'AE',
-			transclude: true,
-			compile: function(tElem,tAttrs,transclude) {
-				
-				var Surface = $famous['famous/core/Surface'];
-				var LayoutController = $famous['famous-flex/LayoutController'];
-				var NavBarLayout = $famous['famous-flex/NavBarLayout'];
-		
-				var _createLayoutController = function(options) {
-					var layoutController = new LayoutController({
-						layout: NavBarLayout,
-						layoutOptions: {
-							margins: [8],
-							itemSpacer: 5
-						}
-					});
-					return layoutController;
-				};
-
-				var _createBackground = function() {
-					var background = new Surface({classes: ['navbar', 'navbar-inverse']});
-					return background;
-				};
-
-				var _createTitle = function(myTitle) {
-					var title = new Surface({content: myTitle || 'famous-flex', classes: ['title']});
-					return title;
-				};
-
-	   			var _createButton = function(content) {
-	        			return new Surface({
-	            				size: [50, undefined],
-	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
-	        			});
-	    			};
-
-				var rightItems = [];
-
-				return {
-					pre: function(scope,elem,attrs) {
-	                			var isolate = $famousDecorator.ensureIsolate(scope);
-	                			var options = scope.$eval(attrs.faOptions) || {};
-	                			isolate.renderNode = _createLayoutController(options);
-
-				                $famousDecorator.addRole('renderable',isolate);
-	                			isolate.show();
-	                			console.log(isolate);
-					},
-					post: function(scope,element,attrs) {
-	                			var isolate = $famousDecorator.ensureIsolate(scope);
-		
-						transclude(scope, function(clone) {
-							var title = clone.find('div.title');
-							var buttons = clone.find('button.left');
-							var rightItems = [];
-							console.log(title);
-							angular.forEach(buttons, function(button) {
-								rightItems.push(_createButton('hello'));//button);
-							});
-	                				var isolate = $famousDecorator.ensureIsolate(scope);
-							console.log(rightItems);
-							isolate.renderNode.setDataSource({
-								background: _createBackground(),
-								title: _createTitle(),
-								rightItems: rightItems
-							});
-						});
-
-
-						$famousDecorator.registerChild(scope, element, isolate);
-					}
-				};
-			}
-		};
-	}]);
-				
-
-	angular.module('famousFlexAngular')
-	.directive('ffaLayoutController', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
-	  return {
-		template: '<div></div>',
-		restrict: 'E',
-		transclude: true,
-		scope: true,
-		compile: function(tElem, tAttrs, transclude) {
-		  var mySelection = 1;
-
-		  return {
-		    pre: function(scope, element, attrs) {
-	            	var isolate = $famousDecorator.ensureIsolate(scope);
-	            	var options = scope.$eval(attrs.faOptions) || {};
-
-			var LayoutController = $famous['famous-flex/LayoutController'];
-		 	isolate.renderNode = new LayoutController(options);
-
-		    		var _children = [];
-
-	            		var updateLayout = function () {
-	              			scope.$$postDigest(function(){
-	                			_children.sort(function (a, b) {
-	                  			return a.index - b.index;
-	                			});
-		        			isolate.renderNode.setDataSource(function(_children) {
-	                	  			var _ch = [];
-	                  				angular.forEach(_children, function(c, i) {
-	                    					_ch[i] = c.renderGate;//._object._child._object;
-	                  				});
-	                  				return _ch;
-	                			}(_children));
-	              			});
-					console.log(isolate.renderNode);
-	            		};
-
-	                       $famousDecorator.sequenceWith(
-	                                scope,
-	                                function(data) {
-	                                        _children.push(data);
-	                                        updateLayout();
-	                                },
-	                                function(childScopeId) {
-	                                        _children = function(_children) {
-	                                                var _ch = [];
-	                                                angular.forEach(_children, function(c) {
-	                                                        if (c.id !== childScopeId) {
-	                                                                _ch.push(c);
-	                                                        }
-	                                                });
-	                                                return _ch;
-	                                        }(_children);
-	                                        updateLayout();
-	                                },
-	                                updateLayout
-	                        );
-
-
-	            	$famousDecorator.addRole('renderable',isolate);
-	            	isolate.show();
-			console.log(isolate);
-
-		    	},
-		    post: function(scope,element,attrs) {
-		       		var isolate = $famousDecorator.ensureIsolate(scope);
-	            	    	transclude(scope, function(clone) {
-	              			element.find('div').append(clone);
-	            		});
-	            	    	$famousDecorator.registerChild(scope, element, isolate);
-		    }
-		  }
-		}
-	  }
-	}]);
-
-	angular.module('famousFlexAngular')
-	.directive('ffaNavBarControl', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
-		return {
-			restrict: 'AE',
-			transclude: true,
-			compile: function(tElem,tAttrs,transclude) {
-				
-				var Surface = $famous['famous/core/Surface'];
-				var LayoutController = $famous['famous-flex/LayoutController'];
-				var NavBarLayout = $famous['famous-flex/layouts/NavBarLayout'];
-
-		
-				var _createLayoutController = function(options) {
-					var layoutController = new LayoutController({
-						layout: NavBarLayout,
-						layoutOptions: {
-							margins: [8],
-							itemSpacer: 5
-						}
-					});
-					return layoutController;
-				};
-
-				var _createBackground = function() {
-					var background = new Surface({classes: ['navbar', 'navbar-default']});
-					return background;
-				};
-
-				var _createTitle = function(myTitle) {
-					var title = new Surface({content: myTitle || 'famous-flex', classes: ['title']});
-					return title;
-				};
-
-	   			var _createButton = function(content) {
-	        			return new Surface({
-	            				size: [50, undefined],
-	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
-	        			});
-	    			};
-
-				var rightItems = [];
-
-				return {
-					pre: function(scope,elem,attrs) {
-	                			var isolate = $famousDecorator.ensureIsolate(scope);
-	                			var options = scope.$eval(attrs.faOptions) || {};
-	                			isolate.renderNode = _createLayoutController(options);
-
-				                $famousDecorator.addRole('renderable',isolate);
-	                			isolate.show();
-	                			console.log(isolate);
-					},
-					post: function(scope,element,attrs) {
-	                			var isolate = $famousDecorator.ensureIsolate(scope);
-		
-						transclude(scope, function(clone) {
-							var title = clone.find('div.title');
-							var buttons = clone.find('button.left');
-							var rightItems = [];
-							console.log(title);
-							angular.forEach(buttons, function(button) {
-								rightItems.push(_createButton('hello'));//button);
-							});
-	                				var isolate = $famousDecorator.ensureIsolate(scope);
-							console.log(rightItems);
-							console.log(_createTitle());
-							isolate.renderNode.setDataSource({
-								background: _createBackground(),
-								title: _createTitle(),
-								rightItems: rightItems
-							});
-						});
-
-
-						$famousDecorator.registerChild(scope, element, isolate);
-					}
-				};
-			}
-		};
-	}]);
-				
-
-	angular.module('famousFlexAngular')
-	.directive('resizable', function($window) {
-	        return function($scope) {
-	          $scope.initializeWindowSize = function() {
-	            $scope.windowHeight = $window.innerHeight;
-	            $scope.windowWidth = $window.innerWidth;
-	          };
-	        
-	          angular.element($window).bind('resize', function() {
-	            $scope.initializeWindowSize();
-	            $scope.$apply();
-	          });
-	        }
-	});
-	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
 /* 5 */
@@ -26629,7 +26767,7 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
-	var dispose = __webpack_require__(9)
+	var dispose = __webpack_require__(34)
 		// The css code:
 		(__webpack_require__(7));
 	// Hot Module Replacement
@@ -33189,37 +33327,10 @@
 	    };
 	  }]);
 	
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(35)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(35)))
 
 /***/ },
 /* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	module.exports = function addStyle(cssCode) {
-		if(false) {
-			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
-		}
-		var styleElement = document.createElement("style");
-		styleElement.type = "text/css";
-		var head = document.getElementsByTagName("head")[0];
-		head.appendChild(styleElement);
-		if (styleElement.styleSheet) {
-			styleElement.styleSheet.cssText = cssCode;
-		} else {
-			styleElement.appendChild(document.createTextNode(cssCode));
-		}
-		return function() {
-			head.removeChild(styleElement);
-		};
-	}
-
-
-/***/ },
-/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -33255,9 +33366,9 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(16);
-	    var ScrollController = __webpack_require__(17);
-	    var ListLayout = __webpack_require__(26);
+	    var LayoutUtility = __webpack_require__(15);
+	    var ScrollController = __webpack_require__(16);
+	    var ListLayout = __webpack_require__(25);
 
 	    //
 	    // Pull to refresh states
@@ -33820,7 +33931,7 @@
 
 
 /***/ },
-/* 11 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -33844,14 +33955,14 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var OptionsManager = __webpack_require__(75);
-	    var Transform = __webpack_require__(76);
-	    var Vector = __webpack_require__(77);
-	    var Particle = __webpack_require__(78);
-	    var Spring = __webpack_require__(79);
-	    var PhysicsEngine = __webpack_require__(80);
-	    var LayoutNode = __webpack_require__(14);
-	    var Transitionable = __webpack_require__(81);
+	    var OptionsManager = __webpack_require__(36);
+	    var Transform = __webpack_require__(37);
+	    var Vector = __webpack_require__(38);
+	    var Particle = __webpack_require__(39);
+	    var Spring = __webpack_require__(40);
+	    var PhysicsEngine = __webpack_require__(41);
+	    var LayoutNode = __webpack_require__(13);
+	    var Transitionable = __webpack_require__(42);
 
 	    /**
 	     * @class
@@ -34323,7 +34434,7 @@
 
 
 /***/ },
-/* 12 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -34593,7 +34704,7 @@
 
 
 /***/ },
-/* 13 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -34626,17 +34737,17 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
-	    var Entity = __webpack_require__(83);
-	    var ViewSequence = __webpack_require__(84);
-	    var OptionsManager = __webpack_require__(75);
-	    var EventHandler = __webpack_require__(85);
-	    var LayoutUtility = __webpack_require__(16);
-	    var LayoutNodeManager = __webpack_require__(15);
-	    var LayoutNode = __webpack_require__(14);
-	    var FlowLayoutNode = __webpack_require__(11);
-	    var Transform = __webpack_require__(76);
-	    __webpack_require__(20);
+	    var Utility = __webpack_require__(43);
+	    var Entity = __webpack_require__(44);
+	    var ViewSequence = __webpack_require__(45);
+	    var OptionsManager = __webpack_require__(36);
+	    var EventHandler = __webpack_require__(46);
+	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutNodeManager = __webpack_require__(14);
+	    var LayoutNode = __webpack_require__(13);
+	    var FlowLayoutNode = __webpack_require__(10);
+	    var Transform = __webpack_require__(37);
+	    __webpack_require__(19);
 
 	    /**
 	     * @class
@@ -35417,7 +35528,7 @@
 
 
 /***/ },
-/* 14 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -35441,8 +35552,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Transform = __webpack_require__(76);
-	    var LayoutUtility = __webpack_require__(16);
+	    var Transform = __webpack_require__(37);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    /**
 	     * @class
@@ -35618,7 +35729,7 @@
 
 
 /***/ },
-/* 15 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -35651,8 +35762,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutContext = __webpack_require__(12);
-	    var LayoutUtility = __webpack_require__(16);
+	    var LayoutContext = __webpack_require__(11);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    var MAX_POOL_SIZE = 100;
 
@@ -36355,7 +36466,7 @@
 
 
 /***/ },
-/* 16 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36379,7 +36490,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
+	    var Utility = __webpack_require__(43);
 
 	    /**
 	     * @class
@@ -36645,7 +36756,7 @@
 
 
 /***/ },
-/* 17 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -36688,22 +36799,22 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(16);
-	    var LayoutController = __webpack_require__(13);
-	    var LayoutNode = __webpack_require__(14);
-	    var FlowLayoutNode = __webpack_require__(11);
-	    var LayoutNodeManager = __webpack_require__(15);
-	    var ContainerSurface = __webpack_require__(86);
-	    var Transform = __webpack_require__(76);
-	    var EventHandler = __webpack_require__(85);
-	    var Group = __webpack_require__(87);
-	    var Vector = __webpack_require__(77);
-	    var PhysicsEngine = __webpack_require__(80);
-	    var Particle = __webpack_require__(78);
-	    var Drag = __webpack_require__(88);
-	    var Spring = __webpack_require__(79);
-	    var ScrollSync = __webpack_require__(89);
-	    var ViewSequence = __webpack_require__(84);
+	    var LayoutUtility = __webpack_require__(15);
+	    var LayoutController = __webpack_require__(12);
+	    var LayoutNode = __webpack_require__(13);
+	    var FlowLayoutNode = __webpack_require__(10);
+	    var LayoutNodeManager = __webpack_require__(14);
+	    var ContainerSurface = __webpack_require__(47);
+	    var Transform = __webpack_require__(37);
+	    var EventHandler = __webpack_require__(46);
+	    var Group = __webpack_require__(48);
+	    var Vector = __webpack_require__(38);
+	    var PhysicsEngine = __webpack_require__(41);
+	    var Particle = __webpack_require__(39);
+	    var Drag = __webpack_require__(49);
+	    var Spring = __webpack_require__(40);
+	    var ScrollSync = __webpack_require__(50);
+	    var ViewSequence = __webpack_require__(45);
 
 	    /**
 	     * Boudary reached detection
@@ -38561,7 +38672,7 @@
 
 
 /***/ },
-/* 18 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;// Deprecated, require FlexScrollView instead
@@ -38571,12 +38682,12 @@
 	    if (console.warn) {
 	        console.warn('file famous-flex/ScrollView has been deprecated, use famous-flex/FlexScrollView instead');
 	    }
-	    module.exports = __webpack_require__(10);
+	    module.exports = __webpack_require__(9);
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ },
-/* 19 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -38635,7 +38746,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var EventHandler = __webpack_require__(85);
+	    var EventHandler = __webpack_require__(46);
 
 	    /**
 	     * @class
@@ -38844,7 +38955,7 @@
 
 
 /***/ },
-/* 20 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -38897,7 +39008,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutUtility = __webpack_require__(16);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    /**
 	     * @class
@@ -39112,7 +39223,7 @@
 
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39164,8 +39275,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
-	    var LayoutUtility = __webpack_require__(16);
+	    var Utility = __webpack_require__(43);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -39380,7 +39491,7 @@
 
 
 /***/ },
-/* 22 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39428,7 +39539,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
+	    var Utility = __webpack_require__(43);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -39525,7 +39636,7 @@
 
 
 /***/ },
-/* 23 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39614,7 +39725,7 @@
 
 
 /***/ },
-/* 24 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39664,8 +39775,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
-	    var LayoutUtility = __webpack_require__(16);
+	    var Utility = __webpack_require__(43);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -39721,7 +39832,7 @@
 
 
 /***/ },
-/* 25 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39768,7 +39879,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutDockHelper = __webpack_require__(20);
+	    var LayoutDockHelper = __webpack_require__(19);
 
 	    // Layout function
 	    module.exports = function HeaderFooterLayout(context, options) {
@@ -39781,7 +39892,7 @@
 
 
 /***/ },
-/* 26 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -39854,8 +39965,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
-	    var LayoutUtility = __webpack_require__(16);
+	    var Utility = __webpack_require__(43);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -40079,7 +40190,7 @@
 
 
 /***/ },
-/* 27 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40146,7 +40257,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var LayoutDockHelper = __webpack_require__(20);
+	    var LayoutDockHelper = __webpack_require__(19);
 
 	    // Layout function
 	    module.exports = function NavBarLayout(context, options) {
@@ -40191,7 +40302,7 @@
 
 
 /***/ },
-/* 28 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40237,7 +40348,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
+	    var Utility = __webpack_require__(43);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -40304,7 +40415,7 @@
 
 
 /***/ },
-/* 29 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40370,8 +40481,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
-	    var LayoutUtility = __webpack_require__(16);
+	    var Utility = __webpack_require__(43);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -40497,7 +40608,7 @@
 
 
 /***/ },
-/* 30 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40524,12 +40635,12 @@
 		if (console.warn) {
 			console.warn('TableLayout has been deprecated and will be removed in the future, use ListLayout instead');
 		}
-	    module.exports = __webpack_require__(26);
+	    module.exports = __webpack_require__(25);
 	}.call(exports, __webpack_require__, exports, module), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ },
-/* 31 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40589,7 +40700,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Utility = __webpack_require__(82);
+	    var Utility = __webpack_require__(43);
 
 	    // Define capabilities of this layout function
 	    var capabilities = {
@@ -40705,7 +40816,7 @@
 
 
 /***/ },
-/* 32 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -40765,17 +40876,17 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var View = __webpack_require__(90);
-	    var Surface = __webpack_require__(91);
-	    var Utility = __webpack_require__(82);
-	    var ContainerSurface = __webpack_require__(86);
-	    var LayoutController = __webpack_require__(13);
-	    var ScrollController = __webpack_require__(17);
-	    var WheelLayout = __webpack_require__(31);
-	    var ProportionalLayout = __webpack_require__(28);
-	    var VirtualViewSequence = __webpack_require__(19);
-	    var DatePickerComponents = __webpack_require__(33);
-	    var LayoutUtility = __webpack_require__(16);
+	    var View = __webpack_require__(51);
+	    var Surface = __webpack_require__(52);
+	    var Utility = __webpack_require__(43);
+	    var ContainerSurface = __webpack_require__(47);
+	    var LayoutController = __webpack_require__(12);
+	    var ScrollController = __webpack_require__(16);
+	    var WheelLayout = __webpack_require__(30);
+	    var ProportionalLayout = __webpack_require__(27);
+	    var VirtualViewSequence = __webpack_require__(18);
+	    var DatePickerComponents = __webpack_require__(32);
+	    var LayoutUtility = __webpack_require__(15);
 
 	    /**
 	     * @class
@@ -41160,7 +41271,7 @@
 
 
 /***/ },
-/* 33 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41184,8 +41295,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Surface = __webpack_require__(91);
-	    var EventHandler = __webpack_require__(85);
+	    var Surface = __webpack_require__(52);
+	    var EventHandler = __webpack_require__(46);
 
 	    /**
 	     * Helper functions for formatting values with X decimal places.
@@ -41480,7 +41591,7 @@
 
 
 /***/ },
-/* 34 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -41552,10 +41663,10 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Surface = __webpack_require__(91);
-	    var View = __webpack_require__(90);
-	    var LayoutController = __webpack_require__(13);
-	    var TabBarLayout = __webpack_require__(29);
+	    var Surface = __webpack_require__(52);
+	    var View = __webpack_require__(51);
+	    var LayoutController = __webpack_require__(12);
+	    var TabBarLayout = __webpack_require__(28);
 
 	    /**
 	     * @class
@@ -41812,6 +41923,33 @@
 
 
 /***/ },
+/* 34 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	module.exports = function addStyle(cssCode) {
+		if(false) {
+			if(typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		}
+		var styleElement = document.createElement("style");
+		styleElement.type = "text/css";
+		var head = document.getElementsByTagName("head")[0];
+		head.appendChild(styleElement);
+		if (styleElement.styleSheet) {
+			styleElement.styleSheet.cssText = cssCode;
+		} else {
+			styleElement.appendChild(document.createTextNode(cssCode));
+		}
+		return function() {
+			head.removeChild(styleElement);
+		};
+	}
+
+
+/***/ },
 /* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -41831,46 +41969,7 @@
 
 
 /***/ },
-/* 36 */,
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */,
-/* 53 */,
-/* 54 */,
-/* 55 */,
-/* 56 */,
-/* 57 */,
-/* 58 */,
-/* 59 */,
-/* 60 */,
-/* 61 */,
-/* 62 */,
-/* 63 */,
-/* 64 */,
-/* 65 */,
-/* 66 */,
-/* 67 */,
-/* 68 */,
-/* 69 */,
-/* 70 */,
-/* 71 */,
-/* 72 */,
-/* 73 */,
-/* 74 */,
-/* 75 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -41880,7 +41979,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
+	var EventHandler = __webpack_require__(46);
 	function OptionsManager(value) {
 	    this._value = value;
 	    this.eventOutput = null;
@@ -41956,7 +42055,7 @@
 	module.exports = OptionsManager;
 
 /***/ },
-/* 76 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -42665,7 +42764,7 @@
 	module.exports = Transform;
 
 /***/ },
-/* 77 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -42824,7 +42923,7 @@
 	module.exports = Vector;
 
 /***/ },
-/* 78 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -42834,10 +42933,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Vector = __webpack_require__(77);
-	var Transform = __webpack_require__(76);
-	var EventHandler = __webpack_require__(85);
-	var Integrator = __webpack_require__(144);
+	var Vector = __webpack_require__(38);
+	var Transform = __webpack_require__(37);
+	var EventHandler = __webpack_require__(46);
+	var Integrator = __webpack_require__(115);
 	function Particle(options) {
 	    options = options || {};
 	    var defaults = Particle.DEFAULT_OPTIONS;
@@ -43032,7 +43131,7 @@
 	module.exports = Particle;
 
 /***/ },
-/* 79 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -43042,8 +43141,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(145);
-	var Vector = __webpack_require__(77);
+	var Force = __webpack_require__(116);
+	var Vector = __webpack_require__(38);
 	function Spring(options) {
 	    Force.call(this);
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -43167,7 +43266,7 @@
 	module.exports = Spring;
 
 /***/ },
-/* 80 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -43177,7 +43276,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
+	var EventHandler = __webpack_require__(46);
 	function PhysicsEngine(options) {
 	    this.options = Object.create(PhysicsEngine.DEFAULT_OPTIONS);
 	    if (options)
@@ -43446,7 +43545,7 @@
 	module.exports = PhysicsEngine;
 
 /***/ },
-/* 81 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -43456,8 +43555,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var MultipleTransition = __webpack_require__(146);
-	var TweenTransition = __webpack_require__(147);
+	var MultipleTransition = __webpack_require__(117);
+	var TweenTransition = __webpack_require__(118);
 	function Transitionable(start) {
 	    this.currentAction = null;
 	    this.actionQueue = [];
@@ -43586,7 +43685,7 @@
 	module.exports = Transitionable;
 
 /***/ },
-/* 82 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -43655,7 +43754,7 @@
 	module.exports = Utility;
 
 /***/ },
-/* 83 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -43688,7 +43787,7 @@
 	};
 
 /***/ },
-/* 84 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -43941,7 +44040,7 @@
 	module.exports = ViewSequence;
 
 /***/ },
-/* 85 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -43951,7 +44050,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventEmitter = __webpack_require__(148);
+	var EventEmitter = __webpack_require__(120);
 	function EventHandler() {
 	    EventEmitter.apply(this, arguments);
 	    this.downstream = [];
@@ -44053,7 +44152,7 @@
 	module.exports = EventHandler;
 
 /***/ },
-/* 86 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44063,8 +44162,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(91);
-	var Context = __webpack_require__(149);
+	var Surface = __webpack_require__(52);
+	var Context = __webpack_require__(119);
 	function ContainerSurface(options) {
 	    Surface.call(this, options);
 	    this._container = document.createElement('div');
@@ -44106,7 +44205,7 @@
 	module.exports = ContainerSurface;
 
 /***/ },
-/* 87 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44116,9 +44215,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(149);
-	var Transform = __webpack_require__(76);
-	var Surface = __webpack_require__(91);
+	var Context = __webpack_require__(119);
+	var Transform = __webpack_require__(37);
+	var Surface = __webpack_require__(52);
 	function Group(options) {
 	    Surface.call(this, options);
 	    this._shouldRecalculateSize = false;
@@ -44181,7 +44280,7 @@
 	module.exports = Group;
 
 /***/ },
-/* 88 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44191,7 +44290,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(145);
+	var Force = __webpack_require__(116);
 	function Drag(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -44231,7 +44330,7 @@
 	module.exports = Drag;
 
 /***/ },
-/* 89 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44241,9 +44340,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
-	var Engine = __webpack_require__(150);
-	var OptionsManager = __webpack_require__(75);
+	var EventHandler = __webpack_require__(46);
+	var Engine = __webpack_require__(122);
+	var OptionsManager = __webpack_require__(36);
 	function ScrollSync(options) {
 	    this.options = Object.create(ScrollSync.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -44374,7 +44473,7 @@
 	module.exports = ScrollSync;
 
 /***/ },
-/* 90 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44384,10 +44483,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
-	var OptionsManager = __webpack_require__(75);
-	var RenderNode = __webpack_require__(151);
-	var Utility = __webpack_require__(82);
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
+	var RenderNode = __webpack_require__(121);
+	var Utility = __webpack_require__(43);
 	function View(options) {
 	    this._node = new RenderNode();
 	    this._eventInput = new EventHandler();
@@ -44422,7 +44521,7 @@
 	module.exports = View;
 
 /***/ },
-/* 91 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -44432,7 +44531,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var ElementOutput = __webpack_require__(152);
+	var ElementOutput = __webpack_require__(123);
 	function Surface(options) {
 	    ElementOutput.call(this);
 	    this.options = {};
@@ -44736,6 +44835,45 @@
 	module.exports = Surface;
 
 /***/ },
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */,
+/* 74 */,
+/* 75 */,
+/* 76 */,
+/* 77 */,
+/* 78 */,
+/* 79 */,
+/* 80 */,
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */,
+/* 90 */,
+/* 91 */,
 /* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47125,23 +47263,23 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Context: __webpack_require__(149),
-	  ElementAllocator: __webpack_require__(171),
-	  ElementOutput: __webpack_require__(152),
-	  Engine: __webpack_require__(150),
-	  Entity: __webpack_require__(83),
-	  EventEmitter: __webpack_require__(148),
-	  EventHandler: __webpack_require__(85),
-	  Group: __webpack_require__(87),
-	  Modifier: __webpack_require__(172),
-	  OptionsManager: __webpack_require__(75),
-	  RenderNode: __webpack_require__(151),
-	  Scene: __webpack_require__(173),
-	  SpecParser: __webpack_require__(174),
-	  Surface: __webpack_require__(91),
-	  Transform: __webpack_require__(76),
-	  View: __webpack_require__(90),
-	  ViewSequence: __webpack_require__(84)
+	  Context: __webpack_require__(119),
+	  ElementAllocator: __webpack_require__(164),
+	  ElementOutput: __webpack_require__(123),
+	  Engine: __webpack_require__(122),
+	  Entity: __webpack_require__(44),
+	  EventEmitter: __webpack_require__(120),
+	  EventHandler: __webpack_require__(46),
+	  Group: __webpack_require__(48),
+	  Modifier: __webpack_require__(165),
+	  OptionsManager: __webpack_require__(36),
+	  RenderNode: __webpack_require__(121),
+	  Scene: __webpack_require__(166),
+	  SpecParser: __webpack_require__(167),
+	  Surface: __webpack_require__(52),
+	  Transform: __webpack_require__(37),
+	  View: __webpack_require__(51),
+	  ViewSequence: __webpack_require__(45)
 	};
 
 
@@ -47150,9 +47288,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  EventArbiter: __webpack_require__(153),
-	  EventFilter: __webpack_require__(154),
-	  EventMapper: __webpack_require__(155)
+	  EventArbiter: __webpack_require__(168),
+	  EventFilter: __webpack_require__(169),
+	  EventMapper: __webpack_require__(170)
 	};
 
 
@@ -47161,18 +47299,18 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Accumulator: __webpack_require__(156),
-	  DesktopEmulationMode: __webpack_require__(157),
-	  FastClick: __webpack_require__(158),
-	  GenericSync: __webpack_require__(159),
-	  MouseSync: __webpack_require__(160),
-	  PinchSync: __webpack_require__(161),
-	  RotateSync: __webpack_require__(162),
-	  ScaleSync: __webpack_require__(163),
-	  ScrollSync: __webpack_require__(89),
-	  TouchSync: __webpack_require__(164),
-	  TouchTracker: __webpack_require__(165),
-	  TwoFingerSync: __webpack_require__(166)
+	  Accumulator: __webpack_require__(153),
+	  DesktopEmulationMode: __webpack_require__(154),
+	  FastClick: __webpack_require__(155),
+	  GenericSync: __webpack_require__(156),
+	  MouseSync: __webpack_require__(157),
+	  PinchSync: __webpack_require__(158),
+	  RotateSync: __webpack_require__(159),
+	  ScaleSync: __webpack_require__(160),
+	  ScrollSync: __webpack_require__(50),
+	  TouchSync: __webpack_require__(161),
+	  TouchTracker: __webpack_require__(162),
+	  TwoFingerSync: __webpack_require__(163)
 	};
 
 
@@ -47181,11 +47319,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Matrix: __webpack_require__(167),
-	  Quaternion: __webpack_require__(168),
-	  Random: __webpack_require__(169),
-	  Utilities: __webpack_require__(170),
-	  Vector: __webpack_require__(77)
+	  Matrix: __webpack_require__(171),
+	  Quaternion: __webpack_require__(172),
+	  Random: __webpack_require__(173),
+	  Utilities: __webpack_require__(174),
+	  Vector: __webpack_require__(38)
 	};
 
 
@@ -47194,10 +47332,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Draggable: __webpack_require__(181),
-	  Fader: __webpack_require__(182),
-	  ModifierChain: __webpack_require__(183),
-	  StateModifier: __webpack_require__(184)
+	  Draggable: __webpack_require__(175),
+	  Fader: __webpack_require__(176),
+	  ModifierChain: __webpack_require__(177),
+	  StateModifier: __webpack_require__(178)
 	};
 
 
@@ -47206,11 +47344,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  PhysicsEngine: __webpack_require__(80),
-	  bodies: __webpack_require__(207),
-	  constraints: __webpack_require__(208),
-	  forces: __webpack_require__(209),
-	  integrators: __webpack_require__(210)
+	  PhysicsEngine: __webpack_require__(41),
+	  bodies: __webpack_require__(213),
+	  constraints: __webpack_require__(214),
+	  forces: __webpack_require__(215),
+	  integrators: __webpack_require__(216)
 	};
 
 
@@ -47220,7 +47358,7 @@
 
 	module.exports = {
 	  CanvasSurface: __webpack_require__(185),
-	  ContainerSurface: __webpack_require__(86),
+	  ContainerSurface: __webpack_require__(47),
 	  FormContainerSurface: __webpack_require__(186),
 	  ImageSurface: __webpack_require__(187),
 	  InputSurface: __webpack_require__(188),
@@ -47235,15 +47373,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  CachedMap: __webpack_require__(175),
-	  Easing: __webpack_require__(176),
-	  MultipleTransition: __webpack_require__(146),
-	  SnapTransition: __webpack_require__(177),
-	  SpringTransition: __webpack_require__(178),
-	  Transitionable: __webpack_require__(81),
-	  TransitionableTransform: __webpack_require__(179),
-	  TweenTransition: __webpack_require__(147),
-	  WallTransition: __webpack_require__(180)
+	  CachedMap: __webpack_require__(179),
+	  Easing: __webpack_require__(180),
+	  MultipleTransition: __webpack_require__(117),
+	  SnapTransition: __webpack_require__(181),
+	  SpringTransition: __webpack_require__(182),
+	  Transitionable: __webpack_require__(42),
+	  TransitionableTransform: __webpack_require__(183),
+	  TweenTransition: __webpack_require__(118),
+	  WallTransition: __webpack_require__(184)
 	};
 
 
@@ -47252,9 +47390,9 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  KeyCodes: __webpack_require__(215),
-	  Timer: __webpack_require__(216),
-	  Utility: __webpack_require__(82)
+	  KeyCodes: __webpack_require__(192),
+	  Timer: __webpack_require__(193),
+	  Utility: __webpack_require__(43)
 	};
 
 
@@ -47263,21 +47401,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  ContextualView: __webpack_require__(192),
-	  Deck: __webpack_require__(193),
-	  DrawerLayout: __webpack_require__(194),
-	  EdgeSwapper: __webpack_require__(195),
-	  FlexibleLayout: __webpack_require__(196),
-	  Flipper: __webpack_require__(197),
-	  GridLayout: __webpack_require__(198),
-	  HeaderFooterLayout: __webpack_require__(199),
-	  Lightbox: __webpack_require__(200),
-	  RenderController: __webpack_require__(201),
-	  ScrollContainer: __webpack_require__(202),
-	  Scroller: __webpack_require__(203),
-	  Scrollview: __webpack_require__(204),
-	  SequentialLayout: __webpack_require__(205),
-	  SizeAwareView: __webpack_require__(206)
+	  ContextualView: __webpack_require__(198),
+	  Deck: __webpack_require__(199),
+	  DrawerLayout: __webpack_require__(200),
+	  EdgeSwapper: __webpack_require__(201),
+	  FlexibleLayout: __webpack_require__(202),
+	  Flipper: __webpack_require__(203),
+	  GridLayout: __webpack_require__(204),
+	  HeaderFooterLayout: __webpack_require__(205),
+	  Lightbox: __webpack_require__(206),
+	  RenderController: __webpack_require__(207),
+	  ScrollContainer: __webpack_require__(208),
+	  Scroller: __webpack_require__(209),
+	  Scrollview: __webpack_require__(210),
+	  SequentialLayout: __webpack_require__(211),
+	  SizeAwareView: __webpack_require__(212)
 	};
 
 
@@ -47286,44 +47424,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  NavigationBar: __webpack_require__(211),
-	  Slider: __webpack_require__(212),
-	  TabBar: __webpack_require__(213),
-	  ToggleButton: __webpack_require__(214)
+	  NavigationBar: __webpack_require__(194),
+	  Slider: __webpack_require__(195),
+	  TabBar: __webpack_require__(196),
+	  ToggleButton: __webpack_require__(197)
 	};
 
 
 /***/ },
-/* 115 */,
-/* 116 */,
-/* 117 */,
-/* 118 */,
-/* 119 */,
-/* 120 */,
-/* 121 */,
-/* 122 */,
-/* 123 */,
-/* 124 */,
-/* 125 */,
-/* 126 */,
-/* 127 */,
-/* 128 */,
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */,
-/* 135 */,
-/* 136 */,
-/* 137 */,
-/* 138 */,
-/* 139 */,
-/* 140 */,
-/* 141 */,
-/* 142 */,
-/* 143 */,
-/* 144 */
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47366,7 +47475,7 @@
 	module.exports = SymplecticEuler;
 
 /***/ },
-/* 145 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47376,8 +47485,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Vector = __webpack_require__(77);
-	var EventHandler = __webpack_require__(85);
+	var Vector = __webpack_require__(38);
+	var EventHandler = __webpack_require__(46);
 	function Force(force) {
 	    this.force = new Vector(force);
 	    this._eventOutput = new EventHandler();
@@ -47398,7 +47507,7 @@
 	module.exports = Force;
 
 /***/ },
-/* 146 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47408,7 +47517,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Utility = __webpack_require__(82);
+	var Utility = __webpack_require__(43);
 	function MultipleTransition(method) {
 	    this.method = method;
 	    this._instances = [];
@@ -47439,7 +47548,7 @@
 	module.exports = MultipleTransition;
 
 /***/ },
-/* 147 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47689,7 +47798,7 @@
 	module.exports = TweenTransition;
 
 /***/ },
-/* 148 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47699,58 +47808,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	function EventEmitter() {
-	    this.listeners = {};
-	    this._owner = this;
-	}
-	EventEmitter.prototype.emit = function emit(type, event) {
-	    var handlers = this.listeners[type];
-	    if (handlers) {
-	        for (var i = 0; i < handlers.length; i++) {
-	            handlers[i].call(this._owner, event);
-	        }
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.on = function on(type, handler) {
-	    if (!(type in this.listeners))
-	        this.listeners[type] = [];
-	    var index = this.listeners[type].indexOf(handler);
-	    if (index < 0)
-	        this.listeners[type].push(handler);
-	    return this;
-	};
-	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
-	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
-	    var listener = this.listeners[type];
-	    if (listener !== undefined) {
-	        var index = listener.indexOf(handler);
-	        if (index >= 0)
-	            listener.splice(index, 1);
-	    }
-	    return this;
-	};
-	EventEmitter.prototype.bindThis = function bindThis(owner) {
-	    this._owner = owner;
-	};
-	module.exports = EventEmitter;
-
-/***/ },
-/* 149 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var RenderNode = __webpack_require__(151);
-	var EventHandler = __webpack_require__(85);
-	var ElementAllocator = __webpack_require__(171);
-	var Transform = __webpack_require__(76);
-	var Transitionable = __webpack_require__(81);
+	var RenderNode = __webpack_require__(121);
+	var EventHandler = __webpack_require__(46);
+	var ElementAllocator = __webpack_require__(164);
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
 	var _zeroZero = [
 	    0,
 	    0
@@ -47853,7 +47915,7 @@
 	module.exports = Context;
 
 /***/ },
-/* 150 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -47863,9 +47925,165 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Context = __webpack_require__(149);
-	var EventHandler = __webpack_require__(85);
-	var OptionsManager = __webpack_require__(75);
+	function EventEmitter() {
+	    this.listeners = {};
+	    this._owner = this;
+	}
+	EventEmitter.prototype.emit = function emit(type, event) {
+	    var handlers = this.listeners[type];
+	    if (handlers) {
+	        for (var i = 0; i < handlers.length; i++) {
+	            handlers[i].call(this._owner, event);
+	        }
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.on = function on(type, handler) {
+	    if (!(type in this.listeners))
+	        this.listeners[type] = [];
+	    var index = this.listeners[type].indexOf(handler);
+	    if (index < 0)
+	        this.listeners[type].push(handler);
+	    return this;
+	};
+	EventEmitter.prototype.addListener = EventEmitter.prototype.on;
+	EventEmitter.prototype.removeListener = function removeListener(type, handler) {
+	    var listener = this.listeners[type];
+	    if (listener !== undefined) {
+	        var index = listener.indexOf(handler);
+	        if (index >= 0)
+	            listener.splice(index, 1);
+	    }
+	    return this;
+	};
+	EventEmitter.prototype.bindThis = function bindThis(owner) {
+	    this._owner = owner;
+	};
+	module.exports = EventEmitter;
+
+/***/ },
+/* 121 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(44);
+	var SpecParser = __webpack_require__(167);
+	function RenderNode(object) {
+	    this._object = null;
+	    this._child = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = false;
+	    this._isModifier = false;
+	    this._resultCache = {};
+	    this._prevResults = {};
+	    this._childResult = null;
+	    if (object)
+	        this.set(object);
+	}
+	RenderNode.prototype.add = function add(child) {
+	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
+	    if (this._child instanceof Array)
+	        this._child.push(childNode);
+	    else if (this._child) {
+	        this._child = [
+	            this._child,
+	            childNode
+	        ];
+	        this._hasMultipleChildren = true;
+	        this._childResult = [];
+	    } else
+	        this._child = childNode;
+	    return childNode;
+	};
+	RenderNode.prototype.get = function get() {
+	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
+	};
+	RenderNode.prototype.set = function set(child) {
+	    this._childResult = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = child.render ? true : false;
+	    this._isModifier = child.modify ? true : false;
+	    this._object = child;
+	    this._child = null;
+	    if (child instanceof RenderNode)
+	        return child;
+	    else
+	        return this;
+	};
+	RenderNode.prototype.getSize = function getSize() {
+	    var result = null;
+	    var target = this.get();
+	    if (target && target.getSize)
+	        result = target.getSize();
+	    if (!result && this._child && this._child.getSize)
+	        result = this._child.getSize();
+	    return result;
+	};
+	function _applyCommit(spec, context, cacheStorage) {
+	    var result = SpecParser.parse(spec, context);
+	    var keys = Object.keys(result);
+	    for (var i = 0; i < keys.length; i++) {
+	        var id = keys[i];
+	        var childNode = Entity.get(id);
+	        var commitParams = result[id];
+	        commitParams.allocator = context.allocator;
+	        var commitResult = childNode.commit(commitParams);
+	        if (commitResult)
+	            _applyCommit(commitResult, context, cacheStorage);
+	        else
+	            cacheStorage[id] = commitParams;
+	    }
+	}
+	RenderNode.prototype.commit = function commit(context) {
+	    var prevKeys = Object.keys(this._prevResults);
+	    for (var i = 0; i < prevKeys.length; i++) {
+	        var id = prevKeys[i];
+	        if (this._resultCache[id] === undefined) {
+	            var object = Entity.get(id);
+	            if (object.cleanup)
+	                object.cleanup(context.allocator);
+	        }
+	    }
+	    this._prevResults = this._resultCache;
+	    this._resultCache = {};
+	    _applyCommit(this.render(), context, this._resultCache);
+	};
+	RenderNode.prototype.render = function render() {
+	    if (this._isRenderable)
+	        return this._object.render();
+	    var result = null;
+	    if (this._hasMultipleChildren) {
+	        result = this._childResult;
+	        var children = this._child;
+	        for (var i = 0; i < children.length; i++) {
+	            result[i] = children[i].render();
+	        }
+	    } else if (this._child)
+	        result = this._child.render();
+	    return this._isModifier ? this._object.modify(result) : result;
+	};
+	module.exports = RenderNode;
+
+/***/ },
+/* 122 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Context = __webpack_require__(119);
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
 	var Engine = {};
 	var contexts = [];
 	var nextTickQueue = [];
@@ -48036,7 +48254,7 @@
 	module.exports = Engine;
 
 /***/ },
-/* 151 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48046,118 +48264,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(83);
-	var SpecParser = __webpack_require__(174);
-	function RenderNode(object) {
-	    this._object = null;
-	    this._child = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = false;
-	    this._isModifier = false;
-	    this._resultCache = {};
-	    this._prevResults = {};
-	    this._childResult = null;
-	    if (object)
-	        this.set(object);
-	}
-	RenderNode.prototype.add = function add(child) {
-	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
-	    if (this._child instanceof Array)
-	        this._child.push(childNode);
-	    else if (this._child) {
-	        this._child = [
-	            this._child,
-	            childNode
-	        ];
-	        this._hasMultipleChildren = true;
-	        this._childResult = [];
-	    } else
-	        this._child = childNode;
-	    return childNode;
-	};
-	RenderNode.prototype.get = function get() {
-	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
-	};
-	RenderNode.prototype.set = function set(child) {
-	    this._childResult = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = child.render ? true : false;
-	    this._isModifier = child.modify ? true : false;
-	    this._object = child;
-	    this._child = null;
-	    if (child instanceof RenderNode)
-	        return child;
-	    else
-	        return this;
-	};
-	RenderNode.prototype.getSize = function getSize() {
-	    var result = null;
-	    var target = this.get();
-	    if (target && target.getSize)
-	        result = target.getSize();
-	    if (!result && this._child && this._child.getSize)
-	        result = this._child.getSize();
-	    return result;
-	};
-	function _applyCommit(spec, context, cacheStorage) {
-	    var result = SpecParser.parse(spec, context);
-	    var keys = Object.keys(result);
-	    for (var i = 0; i < keys.length; i++) {
-	        var id = keys[i];
-	        var childNode = Entity.get(id);
-	        var commitParams = result[id];
-	        commitParams.allocator = context.allocator;
-	        var commitResult = childNode.commit(commitParams);
-	        if (commitResult)
-	            _applyCommit(commitResult, context, cacheStorage);
-	        else
-	            cacheStorage[id] = commitParams;
-	    }
-	}
-	RenderNode.prototype.commit = function commit(context) {
-	    var prevKeys = Object.keys(this._prevResults);
-	    for (var i = 0; i < prevKeys.length; i++) {
-	        var id = prevKeys[i];
-	        if (this._resultCache[id] === undefined) {
-	            var object = Entity.get(id);
-	            if (object.cleanup)
-	                object.cleanup(context.allocator);
-	        }
-	    }
-	    this._prevResults = this._resultCache;
-	    this._resultCache = {};
-	    _applyCommit(this.render(), context, this._resultCache);
-	};
-	RenderNode.prototype.render = function render() {
-	    if (this._isRenderable)
-	        return this._object.render();
-	    var result = null;
-	    if (this._hasMultipleChildren) {
-	        result = this._childResult;
-	        var children = this._child;
-	        for (var i = 0; i < children.length; i++) {
-	            result[i] = children[i].render();
-	        }
-	    } else if (this._child)
-	        result = this._child.render();
-	    return this._isModifier ? this._object.modify(result) : result;
-	};
-	module.exports = RenderNode;
-
-/***/ },
-/* 152 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(83);
-	var EventHandler = __webpack_require__(85);
-	var Transform = __webpack_require__(76);
+	var Entity = __webpack_require__(44);
+	var EventHandler = __webpack_require__(46);
+	var Transform = __webpack_require__(37);
 	var usePrefix = !('transform' in document.documentElement.style);
 	var devicePixelRatio = window.devicePixelRatio || 1;
 	function ElementOutput(element) {
@@ -48332,6 +48441,35 @@
 	module.exports = ElementOutput;
 
 /***/ },
+/* 124 */,
+/* 125 */,
+/* 126 */,
+/* 127 */,
+/* 128 */,
+/* 129 */,
+/* 130 */,
+/* 131 */,
+/* 132 */,
+/* 133 */,
+/* 134 */,
+/* 135 */,
+/* 136 */,
+/* 137 */,
+/* 138 */,
+/* 139 */,
+/* 140 */,
+/* 141 */,
+/* 142 */,
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
+/* 151 */,
+/* 152 */,
 /* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -48342,108 +48480,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
-	function EventArbiter(startMode) {
-	    this.dispatchers = {};
-	    this.currMode = undefined;
-	    this.setMode(startMode);
-	}
-	EventArbiter.prototype.setMode = function setMode(mode) {
-	    if (mode !== this.currMode) {
-	        var startMode = this.currMode;
-	        if (this.dispatchers[this.currMode])
-	            this.dispatchers[this.currMode].trigger('unpipe');
-	        this.currMode = mode;
-	        if (this.dispatchers[mode])
-	            this.dispatchers[mode].emit('pipe');
-	        this.emit('change', {
-	            from: startMode,
-	            to: mode
-	        });
-	    }
-	};
-	EventArbiter.prototype.forMode = function forMode(mode) {
-	    if (!this.dispatchers[mode])
-	        this.dispatchers[mode] = new EventHandler();
-	    return this.dispatchers[mode];
-	};
-	EventArbiter.prototype.emit = function emit(eventType, event) {
-	    if (this.currMode === undefined)
-	        return false;
-	    if (!event)
-	        event = {};
-	    var dispatcher = this.dispatchers[this.currMode];
-	    if (dispatcher)
-	        return dispatcher.trigger(eventType, event);
-	};
-	module.exports = EventArbiter;
-
-/***/ },
-/* 154 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(85);
-	function EventFilter(condition) {
-	    EventHandler.call(this);
-	    this._condition = condition;
-	}
-	EventFilter.prototype = Object.create(EventHandler.prototype);
-	EventFilter.prototype.constructor = EventFilter;
-	EventFilter.prototype.emit = function emit(type, data) {
-	    if (this._condition(type, data))
-	        return EventHandler.prototype.emit.apply(this, arguments);
-	};
-	EventFilter.prototype.trigger = EventFilter.prototype.emit;
-	module.exports = EventFilter;
-
-/***/ },
-/* 155 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(85);
-	function EventMapper(mappingFunction) {
-	    EventHandler.call(this);
-	    this._mappingFunction = mappingFunction;
-	}
-	EventMapper.prototype = Object.create(EventHandler.prototype);
-	EventMapper.prototype.constructor = EventMapper;
-	EventMapper.prototype.subscribe = null;
-	EventMapper.prototype.unsubscribe = null;
-	EventMapper.prototype.emit = function emit(type, data) {
-	    var target = this._mappingFunction.apply(this, arguments);
-	    if (target && target.emit instanceof Function)
-	        target.emit(type, data);
-	};
-	EventMapper.prototype.trigger = EventMapper.prototype.emit;
-	module.exports = EventMapper;
-
-/***/ },
-/* 156 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(85);
-	var Transitionable = __webpack_require__(81);
+	var EventHandler = __webpack_require__(46);
+	var Transitionable = __webpack_require__(42);
 	function Accumulator(value, eventName) {
 	    if (eventName === undefined)
 	        eventName = 'update';
@@ -48472,7 +48510,7 @@
 	module.exports = Accumulator;
 
 /***/ },
-/* 157 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48497,7 +48535,7 @@
 	}
 
 /***/ },
-/* 158 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48558,7 +48596,7 @@
 	}());
 
 /***/ },
-/* 159 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48568,7 +48606,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
+	var EventHandler = __webpack_require__(46);
 	function GenericSync(syncs, options) {
 	    this._eventInput = new EventHandler();
 	    this._eventOutput = new EventHandler();
@@ -48625,7 +48663,7 @@
 	module.exports = GenericSync;
 
 /***/ },
-/* 160 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48635,8 +48673,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
-	var OptionsManager = __webpack_require__(75);
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
 	function MouseSync(options) {
 	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -48847,7 +48885,7 @@
 	module.exports = MouseSync;
 
 /***/ },
-/* 161 */
+/* 158 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48857,8 +48895,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TwoFingerSync = __webpack_require__(166);
-	var OptionsManager = __webpack_require__(75);
+	var TwoFingerSync = __webpack_require__(163);
+	var OptionsManager = __webpack_require__(36);
 	function PinchSync(options) {
 	    TwoFingerSync.call(this);
 	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
@@ -48913,7 +48951,7 @@
 	module.exports = PinchSync;
 
 /***/ },
-/* 162 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48923,8 +48961,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TwoFingerSync = __webpack_require__(166);
-	var OptionsManager = __webpack_require__(75);
+	var TwoFingerSync = __webpack_require__(163);
+	var OptionsManager = __webpack_require__(36);
 	function RotateSync(options) {
 	    TwoFingerSync.call(this);
 	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
@@ -48979,7 +49017,7 @@
 	module.exports = RotateSync;
 
 /***/ },
-/* 163 */
+/* 160 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -48989,8 +49027,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TwoFingerSync = __webpack_require__(166);
-	var OptionsManager = __webpack_require__(75);
+	var TwoFingerSync = __webpack_require__(163);
+	var OptionsManager = __webpack_require__(36);
 	function ScaleSync(options) {
 	    TwoFingerSync.call(this);
 	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
@@ -49050,7 +49088,7 @@
 	module.exports = ScaleSync;
 
 /***/ },
-/* 164 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49060,9 +49098,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var TouchTracker = __webpack_require__(165);
-	var EventHandler = __webpack_require__(85);
-	var OptionsManager = __webpack_require__(75);
+	var TouchTracker = __webpack_require__(162);
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
 	function TouchSync(options) {
 	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -49197,7 +49235,7 @@
 	module.exports = TouchSync;
 
 /***/ },
-/* 165 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49207,7 +49245,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
+	var EventHandler = __webpack_require__(46);
 	var _now = Date.now;
 	function _timestampTouch(touch, event, history) {
 	    return {
@@ -49292,7 +49330,7 @@
 	module.exports = TouchTracker;
 
 /***/ },
-/* 166 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49302,7 +49340,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
+	var EventHandler = __webpack_require__(46);
 	function TwoFingerSync() {
 	    this._eventInput = new EventHandler();
 	    this._eventOutput = new EventHandler();
@@ -49411,371 +49449,7 @@
 	module.exports = TwoFingerSync;
 
 /***/ },
-/* 167 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Vector = __webpack_require__(77);
-	function Matrix(values) {
-	    this.values = values || [
-	        [
-	            1,
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            1,
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            1
-	        ]
-	    ];
-	    return this;
-	}
-	var _register = new Matrix();
-	var _vectorRegister = new Vector();
-	Matrix.prototype.get = function get() {
-	    return this.values;
-	};
-	Matrix.prototype.set = function set(values) {
-	    this.values = values;
-	};
-	Matrix.prototype.vectorMultiply = function vectorMultiply(v) {
-	    var M = this.get();
-	    var v0 = v.x;
-	    var v1 = v.y;
-	    var v2 = v.z;
-	    var M0 = M[0];
-	    var M1 = M[1];
-	    var M2 = M[2];
-	    var M00 = M0[0];
-	    var M01 = M0[1];
-	    var M02 = M0[2];
-	    var M10 = M1[0];
-	    var M11 = M1[1];
-	    var M12 = M1[2];
-	    var M20 = M2[0];
-	    var M21 = M2[1];
-	    var M22 = M2[2];
-	    return _vectorRegister.setXYZ(M00 * v0 + M01 * v1 + M02 * v2, M10 * v0 + M11 * v1 + M12 * v2, M20 * v0 + M21 * v1 + M22 * v2);
-	};
-	Matrix.prototype.multiply = function multiply(M2) {
-	    var M1 = this.get();
-	    var result = [[]];
-	    for (var i = 0; i < 3; i++) {
-	        result[i] = [];
-	        for (var j = 0; j < 3; j++) {
-	            var sum = 0;
-	            for (var k = 0; k < 3; k++) {
-	                sum += M1[i][k] * M2[k][j];
-	            }
-	            result[i][j] = sum;
-	        }
-	    }
-	    return _register.set(result);
-	};
-	Matrix.prototype.transpose = function transpose() {
-	    var result = [
-	        [],
-	        [],
-	        []
-	    ];
-	    var M = this.get();
-	    for (var row = 0; row < 3; row++) {
-	        for (var col = 0; col < 3; col++) {
-	            result[row][col] = M[col][row];
-	        }
-	    }
-	    return _register.set(result);
-	};
-	Matrix.prototype.clone = function clone() {
-	    var values = this.get();
-	    var M = [];
-	    for (var row = 0; row < 3; row++)
-	        M[row] = values[row].slice();
-	    return new Matrix(M);
-	};
-	module.exports = Matrix;
-
-/***/ },
-/* 168 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Matrix = __webpack_require__(167);
-	function Quaternion(w, x, y, z) {
-	    if (arguments.length === 1)
-	        this.set(w);
-	    else {
-	        this.w = w !== undefined ? w : 1;
-	        this.x = x !== undefined ? x : 0;
-	        this.y = y !== undefined ? y : 0;
-	        this.z = z !== undefined ? z : 0;
-	    }
-	    return this;
-	}
-	var register = new Quaternion(1, 0, 0, 0);
-	Quaternion.prototype.add = function add(q) {
-	    return register.setWXYZ(this.w + q.w, this.x + q.x, this.y + q.y, this.z + q.z);
-	};
-	Quaternion.prototype.sub = function sub(q) {
-	    return register.setWXYZ(this.w - q.w, this.x - q.x, this.y - q.y, this.z - q.z);
-	};
-	Quaternion.prototype.scalarDivide = function scalarDivide(s) {
-	    return this.scalarMultiply(1 / s);
-	};
-	Quaternion.prototype.scalarMultiply = function scalarMultiply(s) {
-	    return register.setWXYZ(this.w * s, this.x * s, this.y * s, this.z * s);
-	};
-	Quaternion.prototype.multiply = function multiply(q) {
-	    var x1 = this.x;
-	    var y1 = this.y;
-	    var z1 = this.z;
-	    var w1 = this.w;
-	    var x2 = q.x;
-	    var y2 = q.y;
-	    var z2 = q.z;
-	    var w2 = q.w || 0;
-	    return register.setWXYZ(w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2, x1 * w2 + x2 * w1 + y2 * z1 - y1 * z2, y1 * w2 + y2 * w1 + x1 * z2 - x2 * z1, z1 * w2 + z2 * w1 + x2 * y1 - x1 * y2);
-	};
-	var conj = new Quaternion(1, 0, 0, 0);
-	Quaternion.prototype.rotateVector = function rotateVector(v) {
-	    conj.set(this.conj());
-	    return register.set(this.multiply(v).multiply(conj));
-	};
-	Quaternion.prototype.inverse = function inverse() {
-	    return register.set(this.conj().scalarDivide(this.normSquared()));
-	};
-	Quaternion.prototype.negate = function negate() {
-	    return this.scalarMultiply(-1);
-	};
-	Quaternion.prototype.conj = function conj() {
-	    return register.setWXYZ(this.w, -this.x, -this.y, -this.z);
-	};
-	Quaternion.prototype.normalize = function normalize(length) {
-	    length = length === undefined ? 1 : length;
-	    return this.scalarDivide(length * this.norm());
-	};
-	Quaternion.prototype.makeFromAngleAndAxis = function makeFromAngleAndAxis(angle, v) {
-	    var n = v.normalize();
-	    var ha = angle * 0.5;
-	    var s = -Math.sin(ha);
-	    this.x = s * n.x;
-	    this.y = s * n.y;
-	    this.z = s * n.z;
-	    this.w = Math.cos(ha);
-	    return this;
-	};
-	Quaternion.prototype.setWXYZ = function setWXYZ(w, x, y, z) {
-	    register.clear();
-	    this.w = w;
-	    this.x = x;
-	    this.y = y;
-	    this.z = z;
-	    return this;
-	};
-	Quaternion.prototype.set = function set(v) {
-	    if (v instanceof Array) {
-	        this.w = 0;
-	        this.x = v[0];
-	        this.y = v[1];
-	        this.z = v[2];
-	    } else {
-	        this.w = v.w;
-	        this.x = v.x;
-	        this.y = v.y;
-	        this.z = v.z;
-	    }
-	    if (this !== register)
-	        register.clear();
-	    return this;
-	};
-	Quaternion.prototype.put = function put(q) {
-	    q.set(register);
-	};
-	Quaternion.prototype.clone = function clone() {
-	    return new Quaternion(this);
-	};
-	Quaternion.prototype.clear = function clear() {
-	    this.w = 1;
-	    this.x = 0;
-	    this.y = 0;
-	    this.z = 0;
-	    return this;
-	};
-	Quaternion.prototype.isEqual = function isEqual(q) {
-	    return q.w === this.w && q.x === this.x && q.y === this.y && q.z === this.z;
-	};
-	Quaternion.prototype.dot = function dot(q) {
-	    return this.w * q.w + this.x * q.x + this.y * q.y + this.z * q.z;
-	};
-	Quaternion.prototype.normSquared = function normSquared() {
-	    return this.dot(this);
-	};
-	Quaternion.prototype.norm = function norm() {
-	    return Math.sqrt(this.normSquared());
-	};
-	Quaternion.prototype.isZero = function isZero() {
-	    return !(this.x || this.y || this.z);
-	};
-	Quaternion.prototype.getTransform = function getTransform() {
-	    var temp = this.normalize(1);
-	    var x = temp.x;
-	    var y = temp.y;
-	    var z = temp.z;
-	    var w = temp.w;
-	    return [
-	        1 - 2 * y * y - 2 * z * z,
-	        2 * x * y - 2 * z * w,
-	        2 * x * z + 2 * y * w,
-	        0,
-	        2 * x * y + 2 * z * w,
-	        1 - 2 * x * x - 2 * z * z,
-	        2 * y * z - 2 * x * w,
-	        0,
-	        2 * x * z - 2 * y * w,
-	        2 * y * z + 2 * x * w,
-	        1 - 2 * x * x - 2 * y * y,
-	        0,
-	        0,
-	        0,
-	        0,
-	        1
-	    ];
-	};
-	var matrixRegister = new Matrix();
-	Quaternion.prototype.getMatrix = function getMatrix() {
-	    var temp = this.normalize(1);
-	    var x = temp.x;
-	    var y = temp.y;
-	    var z = temp.z;
-	    var w = temp.w;
-	    return matrixRegister.set([
-	        [
-	            1 - 2 * y * y - 2 * z * z,
-	            2 * x * y + 2 * z * w,
-	            2 * x * z - 2 * y * w
-	        ],
-	        [
-	            2 * x * y - 2 * z * w,
-	            1 - 2 * x * x - 2 * z * z,
-	            2 * y * z + 2 * x * w
-	        ],
-	        [
-	            2 * x * z + 2 * y * w,
-	            2 * y * z - 2 * x * w,
-	            1 - 2 * x * x - 2 * y * y
-	        ]
-	    ]);
-	};
-	var epsilon = 0.00001;
-	Quaternion.prototype.slerp = function slerp(q, t) {
-	    var omega;
-	    var cosomega;
-	    var sinomega;
-	    var scaleFrom;
-	    var scaleTo;
-	    cosomega = this.dot(q);
-	    if (1 - cosomega > epsilon) {
-	        omega = Math.acos(cosomega);
-	        sinomega = Math.sin(omega);
-	        scaleFrom = Math.sin((1 - t) * omega) / sinomega;
-	        scaleTo = Math.sin(t * omega) / sinomega;
-	    } else {
-	        scaleFrom = 1 - t;
-	        scaleTo = t;
-	    }
-	    return register.set(this.scalarMultiply(scaleFrom / scaleTo).add(q).scalarMultiply(scaleTo));
-	};
-	module.exports = Quaternion;
-
-/***/ },
-/* 169 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var RAND = Math.random;
-	function _randomFloat(min, max) {
-	    return min + RAND() * (max - min);
-	}
-	function _randomInteger(min, max) {
-	    return min + (RAND() * (max - min + 1) >> 0);
-	}
-	function _range(randomFunction, min, max, dim) {
-	    min = min !== undefined ? min : 0;
-	    max = max !== undefined ? max : 1;
-	    if (dim !== undefined) {
-	        var result = [];
-	        for (var i = 0; i < dim; i++)
-	            result.push(randomFunction(min, max));
-	        return result;
-	    } else
-	        return randomFunction(min, max);
-	}
-	var Random = {};
-	Random.integer = function integer(min, max, dim) {
-	    return _range(_randomInteger, min, max, dim);
-	};
-	Random.range = function range(min, max, dim) {
-	    return _range(_randomFloat, min, max, dim);
-	};
-	Random.sign = function sign(prob) {
-	    return Random.bool(prob) ? 1 : -1;
-	};
-	Random.bool = function bool(prob) {
-	    prob = prob !== undefined ? prob : 0.5;
-	    return RAND() < prob;
-	};
-	module.exports = Random;
-
-/***/ },
-/* 170 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Utilities = {};
-	Utilities.clamp = function clamp(value, range) {
-	    return Math.max(Math.min(value, range[1]), range[0]);
-	};
-	Utilities.length = function length(array) {
-	    var distanceSquared = 0;
-	    for (var i = 0; i < array.length; i++) {
-	        distanceSquared += array[i] * array[i];
-	    }
-	    return Math.sqrt(distanceSquared);
-	};
-	module.exports = Utilities;
-
-/***/ },
-/* 171 */
+/* 164 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49832,7 +49506,7 @@
 	module.exports = ElementAllocator;
 
 /***/ },
-/* 172 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49842,9 +49516,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(76);
-	var Transitionable = __webpack_require__(81);
-	var TransitionableTransform = __webpack_require__(179);
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var TransitionableTransform = __webpack_require__(183);
 	function Modifier(options) {
 	    this._transformGetter = null;
 	    this._opacityGetter = null;
@@ -50089,7 +49763,7 @@
 	module.exports = Modifier;
 
 /***/ },
-/* 173 */
+/* 166 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50099,9 +49773,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(76);
-	var Modifier = __webpack_require__(172);
-	var RenderNode = __webpack_require__(151);
+	var Transform = __webpack_require__(37);
+	var Modifier = __webpack_require__(165);
+	var RenderNode = __webpack_require__(121);
 	function Scene(definition) {
 	    this.id = null;
 	    this._objects = null;
@@ -50213,7 +49887,7 @@
 	module.exports = Scene;
 
 /***/ },
-/* 174 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50223,7 +49897,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(76);
+	var Transform = __webpack_require__(37);
 	function SpecParser() {
 	    this.result = {};
 	}
@@ -50349,7 +50023,906 @@
 	module.exports = SpecParser;
 
 /***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	function EventArbiter(startMode) {
+	    this.dispatchers = {};
+	    this.currMode = undefined;
+	    this.setMode(startMode);
+	}
+	EventArbiter.prototype.setMode = function setMode(mode) {
+	    if (mode !== this.currMode) {
+	        var startMode = this.currMode;
+	        if (this.dispatchers[this.currMode])
+	            this.dispatchers[this.currMode].trigger('unpipe');
+	        this.currMode = mode;
+	        if (this.dispatchers[mode])
+	            this.dispatchers[mode].emit('pipe');
+	        this.emit('change', {
+	            from: startMode,
+	            to: mode
+	        });
+	    }
+	};
+	EventArbiter.prototype.forMode = function forMode(mode) {
+	    if (!this.dispatchers[mode])
+	        this.dispatchers[mode] = new EventHandler();
+	    return this.dispatchers[mode];
+	};
+	EventArbiter.prototype.emit = function emit(eventType, event) {
+	    if (this.currMode === undefined)
+	        return false;
+	    if (!event)
+	        event = {};
+	    var dispatcher = this.dispatchers[this.currMode];
+	    if (dispatcher)
+	        return dispatcher.trigger(eventType, event);
+	};
+	module.exports = EventArbiter;
+
+/***/ },
+/* 169 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	function EventFilter(condition) {
+	    EventHandler.call(this);
+	    this._condition = condition;
+	}
+	EventFilter.prototype = Object.create(EventHandler.prototype);
+	EventFilter.prototype.constructor = EventFilter;
+	EventFilter.prototype.emit = function emit(type, data) {
+	    if (this._condition(type, data))
+	        return EventHandler.prototype.emit.apply(this, arguments);
+	};
+	EventFilter.prototype.trigger = EventFilter.prototype.emit;
+	module.exports = EventFilter;
+
+/***/ },
+/* 170 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(46);
+	function EventMapper(mappingFunction) {
+	    EventHandler.call(this);
+	    this._mappingFunction = mappingFunction;
+	}
+	EventMapper.prototype = Object.create(EventHandler.prototype);
+	EventMapper.prototype.constructor = EventMapper;
+	EventMapper.prototype.subscribe = null;
+	EventMapper.prototype.unsubscribe = null;
+	EventMapper.prototype.emit = function emit(type, data) {
+	    var target = this._mappingFunction.apply(this, arguments);
+	    if (target && target.emit instanceof Function)
+	        target.emit(type, data);
+	};
+	EventMapper.prototype.trigger = EventMapper.prototype.emit;
+	module.exports = EventMapper;
+
+/***/ },
+/* 171 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Vector = __webpack_require__(38);
+	function Matrix(values) {
+	    this.values = values || [
+	        [
+	            1,
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            1,
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            1
+	        ]
+	    ];
+	    return this;
+	}
+	var _register = new Matrix();
+	var _vectorRegister = new Vector();
+	Matrix.prototype.get = function get() {
+	    return this.values;
+	};
+	Matrix.prototype.set = function set(values) {
+	    this.values = values;
+	};
+	Matrix.prototype.vectorMultiply = function vectorMultiply(v) {
+	    var M = this.get();
+	    var v0 = v.x;
+	    var v1 = v.y;
+	    var v2 = v.z;
+	    var M0 = M[0];
+	    var M1 = M[1];
+	    var M2 = M[2];
+	    var M00 = M0[0];
+	    var M01 = M0[1];
+	    var M02 = M0[2];
+	    var M10 = M1[0];
+	    var M11 = M1[1];
+	    var M12 = M1[2];
+	    var M20 = M2[0];
+	    var M21 = M2[1];
+	    var M22 = M2[2];
+	    return _vectorRegister.setXYZ(M00 * v0 + M01 * v1 + M02 * v2, M10 * v0 + M11 * v1 + M12 * v2, M20 * v0 + M21 * v1 + M22 * v2);
+	};
+	Matrix.prototype.multiply = function multiply(M2) {
+	    var M1 = this.get();
+	    var result = [[]];
+	    for (var i = 0; i < 3; i++) {
+	        result[i] = [];
+	        for (var j = 0; j < 3; j++) {
+	            var sum = 0;
+	            for (var k = 0; k < 3; k++) {
+	                sum += M1[i][k] * M2[k][j];
+	            }
+	            result[i][j] = sum;
+	        }
+	    }
+	    return _register.set(result);
+	};
+	Matrix.prototype.transpose = function transpose() {
+	    var result = [
+	        [],
+	        [],
+	        []
+	    ];
+	    var M = this.get();
+	    for (var row = 0; row < 3; row++) {
+	        for (var col = 0; col < 3; col++) {
+	            result[row][col] = M[col][row];
+	        }
+	    }
+	    return _register.set(result);
+	};
+	Matrix.prototype.clone = function clone() {
+	    var values = this.get();
+	    var M = [];
+	    for (var row = 0; row < 3; row++)
+	        M[row] = values[row].slice();
+	    return new Matrix(M);
+	};
+	module.exports = Matrix;
+
+/***/ },
+/* 172 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Matrix = __webpack_require__(171);
+	function Quaternion(w, x, y, z) {
+	    if (arguments.length === 1)
+	        this.set(w);
+	    else {
+	        this.w = w !== undefined ? w : 1;
+	        this.x = x !== undefined ? x : 0;
+	        this.y = y !== undefined ? y : 0;
+	        this.z = z !== undefined ? z : 0;
+	    }
+	    return this;
+	}
+	var register = new Quaternion(1, 0, 0, 0);
+	Quaternion.prototype.add = function add(q) {
+	    return register.setWXYZ(this.w + q.w, this.x + q.x, this.y + q.y, this.z + q.z);
+	};
+	Quaternion.prototype.sub = function sub(q) {
+	    return register.setWXYZ(this.w - q.w, this.x - q.x, this.y - q.y, this.z - q.z);
+	};
+	Quaternion.prototype.scalarDivide = function scalarDivide(s) {
+	    return this.scalarMultiply(1 / s);
+	};
+	Quaternion.prototype.scalarMultiply = function scalarMultiply(s) {
+	    return register.setWXYZ(this.w * s, this.x * s, this.y * s, this.z * s);
+	};
+	Quaternion.prototype.multiply = function multiply(q) {
+	    var x1 = this.x;
+	    var y1 = this.y;
+	    var z1 = this.z;
+	    var w1 = this.w;
+	    var x2 = q.x;
+	    var y2 = q.y;
+	    var z2 = q.z;
+	    var w2 = q.w || 0;
+	    return register.setWXYZ(w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2, x1 * w2 + x2 * w1 + y2 * z1 - y1 * z2, y1 * w2 + y2 * w1 + x1 * z2 - x2 * z1, z1 * w2 + z2 * w1 + x2 * y1 - x1 * y2);
+	};
+	var conj = new Quaternion(1, 0, 0, 0);
+	Quaternion.prototype.rotateVector = function rotateVector(v) {
+	    conj.set(this.conj());
+	    return register.set(this.multiply(v).multiply(conj));
+	};
+	Quaternion.prototype.inverse = function inverse() {
+	    return register.set(this.conj().scalarDivide(this.normSquared()));
+	};
+	Quaternion.prototype.negate = function negate() {
+	    return this.scalarMultiply(-1);
+	};
+	Quaternion.prototype.conj = function conj() {
+	    return register.setWXYZ(this.w, -this.x, -this.y, -this.z);
+	};
+	Quaternion.prototype.normalize = function normalize(length) {
+	    length = length === undefined ? 1 : length;
+	    return this.scalarDivide(length * this.norm());
+	};
+	Quaternion.prototype.makeFromAngleAndAxis = function makeFromAngleAndAxis(angle, v) {
+	    var n = v.normalize();
+	    var ha = angle * 0.5;
+	    var s = -Math.sin(ha);
+	    this.x = s * n.x;
+	    this.y = s * n.y;
+	    this.z = s * n.z;
+	    this.w = Math.cos(ha);
+	    return this;
+	};
+	Quaternion.prototype.setWXYZ = function setWXYZ(w, x, y, z) {
+	    register.clear();
+	    this.w = w;
+	    this.x = x;
+	    this.y = y;
+	    this.z = z;
+	    return this;
+	};
+	Quaternion.prototype.set = function set(v) {
+	    if (v instanceof Array) {
+	        this.w = 0;
+	        this.x = v[0];
+	        this.y = v[1];
+	        this.z = v[2];
+	    } else {
+	        this.w = v.w;
+	        this.x = v.x;
+	        this.y = v.y;
+	        this.z = v.z;
+	    }
+	    if (this !== register)
+	        register.clear();
+	    return this;
+	};
+	Quaternion.prototype.put = function put(q) {
+	    q.set(register);
+	};
+	Quaternion.prototype.clone = function clone() {
+	    return new Quaternion(this);
+	};
+	Quaternion.prototype.clear = function clear() {
+	    this.w = 1;
+	    this.x = 0;
+	    this.y = 0;
+	    this.z = 0;
+	    return this;
+	};
+	Quaternion.prototype.isEqual = function isEqual(q) {
+	    return q.w === this.w && q.x === this.x && q.y === this.y && q.z === this.z;
+	};
+	Quaternion.prototype.dot = function dot(q) {
+	    return this.w * q.w + this.x * q.x + this.y * q.y + this.z * q.z;
+	};
+	Quaternion.prototype.normSquared = function normSquared() {
+	    return this.dot(this);
+	};
+	Quaternion.prototype.norm = function norm() {
+	    return Math.sqrt(this.normSquared());
+	};
+	Quaternion.prototype.isZero = function isZero() {
+	    return !(this.x || this.y || this.z);
+	};
+	Quaternion.prototype.getTransform = function getTransform() {
+	    var temp = this.normalize(1);
+	    var x = temp.x;
+	    var y = temp.y;
+	    var z = temp.z;
+	    var w = temp.w;
+	    return [
+	        1 - 2 * y * y - 2 * z * z,
+	        2 * x * y - 2 * z * w,
+	        2 * x * z + 2 * y * w,
+	        0,
+	        2 * x * y + 2 * z * w,
+	        1 - 2 * x * x - 2 * z * z,
+	        2 * y * z - 2 * x * w,
+	        0,
+	        2 * x * z - 2 * y * w,
+	        2 * y * z + 2 * x * w,
+	        1 - 2 * x * x - 2 * y * y,
+	        0,
+	        0,
+	        0,
+	        0,
+	        1
+	    ];
+	};
+	var matrixRegister = new Matrix();
+	Quaternion.prototype.getMatrix = function getMatrix() {
+	    var temp = this.normalize(1);
+	    var x = temp.x;
+	    var y = temp.y;
+	    var z = temp.z;
+	    var w = temp.w;
+	    return matrixRegister.set([
+	        [
+	            1 - 2 * y * y - 2 * z * z,
+	            2 * x * y + 2 * z * w,
+	            2 * x * z - 2 * y * w
+	        ],
+	        [
+	            2 * x * y - 2 * z * w,
+	            1 - 2 * x * x - 2 * z * z,
+	            2 * y * z + 2 * x * w
+	        ],
+	        [
+	            2 * x * z + 2 * y * w,
+	            2 * y * z - 2 * x * w,
+	            1 - 2 * x * x - 2 * y * y
+	        ]
+	    ]);
+	};
+	var epsilon = 0.00001;
+	Quaternion.prototype.slerp = function slerp(q, t) {
+	    var omega;
+	    var cosomega;
+	    var sinomega;
+	    var scaleFrom;
+	    var scaleTo;
+	    cosomega = this.dot(q);
+	    if (1 - cosomega > epsilon) {
+	        omega = Math.acos(cosomega);
+	        sinomega = Math.sin(omega);
+	        scaleFrom = Math.sin((1 - t) * omega) / sinomega;
+	        scaleTo = Math.sin(t * omega) / sinomega;
+	    } else {
+	        scaleFrom = 1 - t;
+	        scaleTo = t;
+	    }
+	    return register.set(this.scalarMultiply(scaleFrom / scaleTo).add(q).scalarMultiply(scaleTo));
+	};
+	module.exports = Quaternion;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var RAND = Math.random;
+	function _randomFloat(min, max) {
+	    return min + RAND() * (max - min);
+	}
+	function _randomInteger(min, max) {
+	    return min + (RAND() * (max - min + 1) >> 0);
+	}
+	function _range(randomFunction, min, max, dim) {
+	    min = min !== undefined ? min : 0;
+	    max = max !== undefined ? max : 1;
+	    if (dim !== undefined) {
+	        var result = [];
+	        for (var i = 0; i < dim; i++)
+	            result.push(randomFunction(min, max));
+	        return result;
+	    } else
+	        return randomFunction(min, max);
+	}
+	var Random = {};
+	Random.integer = function integer(min, max, dim) {
+	    return _range(_randomInteger, min, max, dim);
+	};
+	Random.range = function range(min, max, dim) {
+	    return _range(_randomFloat, min, max, dim);
+	};
+	Random.sign = function sign(prob) {
+	    return Random.bool(prob) ? 1 : -1;
+	};
+	Random.bool = function bool(prob) {
+	    prob = prob !== undefined ? prob : 0.5;
+	    return RAND() < prob;
+	};
+	module.exports = Random;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Utilities = {};
+	Utilities.clamp = function clamp(value, range) {
+	    return Math.max(Math.min(value, range[1]), range[0]);
+	};
+	Utilities.length = function length(array) {
+	    var distanceSquared = 0;
+	    for (var i = 0; i < array.length; i++) {
+	        distanceSquared += array[i] * array[i];
+	    }
+	    return Math.sqrt(distanceSquared);
+	};
+	module.exports = Utilities;
+
+/***/ },
 /* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var EventHandler = __webpack_require__(46);
+	var Utilities = __webpack_require__(174);
+	var GenericSync = __webpack_require__(156);
+	var MouseSync = __webpack_require__(157);
+	var TouchSync = __webpack_require__(161);
+	GenericSync.register({
+	    'mouse': MouseSync,
+	    'touch': TouchSync
+	});
+	function Draggable(options) {
+	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this._positionState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._differential = [
+	        0,
+	        0
+	    ];
+	    this._active = true;
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], { scale: this.options.scale });
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.sync);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    _bindEvents.call(this);
+	}
+	var _direction = {
+	    x: 1,
+	    y: 2
+	};
+	Draggable.DIRECTION_X = _direction.x;
+	Draggable.DIRECTION_Y = _direction.y;
+	var _clamp = Utilities.clamp;
+	Draggable.DEFAULT_OPTIONS = {
+	    projection: _direction.x | _direction.y,
+	    scale: 1,
+	    xRange: null,
+	    yRange: null,
+	    snapX: 0,
+	    snapY: 0,
+	    transition: { duration: 0 }
+	};
+	function _mapDifferential(differential) {
+	    var opts = this.options;
+	    var projection = opts.projection;
+	    var snapX = opts.snapX;
+	    var snapY = opts.snapY;
+	    var tx = projection & _direction.x ? differential[0] : 0;
+	    var ty = projection & _direction.y ? differential[1] : 0;
+	    if (snapX > 0)
+	        tx -= tx % snapX;
+	    if (snapY > 0)
+	        ty -= ty % snapY;
+	    return [
+	        tx,
+	        ty
+	    ];
+	}
+	function _handleStart() {
+	    if (!this._active)
+	        return;
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this.eventOutput.emit('start', { position: this.getPosition() });
+	}
+	function _handleMove(event) {
+	    if (!this._active)
+	        return;
+	    var options = this.options;
+	    this._differential = event.position;
+	    var newDifferential = _mapDifferential.call(this, this._differential);
+	    this._differential[0] -= newDifferential[0];
+	    this._differential[1] -= newDifferential[1];
+	    var pos = this.getPosition();
+	    pos[0] += newDifferential[0];
+	    pos[1] += newDifferential[1];
+	    if (options.xRange) {
+	        var xRange = [
+	            options.xRange[0] + 0.5 * options.snapX,
+	            options.xRange[1] - 0.5 * options.snapX
+	        ];
+	        pos[0] = _clamp(pos[0], xRange);
+	    }
+	    if (options.yRange) {
+	        var yRange = [
+	            options.yRange[0] + 0.5 * options.snapY,
+	            options.yRange[1] - 0.5 * options.snapY
+	        ];
+	        pos[1] = _clamp(pos[1], yRange);
+	    }
+	    this.eventOutput.emit('update', { position: pos });
+	}
+	function _handleEnd() {
+	    if (!this._active)
+	        return;
+	    this.eventOutput.emit('end', { position: this.getPosition() });
+	}
+	function _bindEvents() {
+	    this.sync.on('start', _handleStart.bind(this));
+	    this.sync.on('update', _handleMove.bind(this));
+	    this.sync.on('end', _handleEnd.bind(this));
+	}
+	Draggable.prototype.setOptions = function setOptions(options) {
+	    var currentOptions = this.options;
+	    if (options.projection !== undefined) {
+	        var proj = options.projection;
+	        this.options.projection = 0;
+	        [
+	            'x',
+	            'y'
+	        ].forEach(function (val) {
+	            if (proj.indexOf(val) !== -1)
+	                currentOptions.projection |= _direction[val];
+	        });
+	    }
+	    if (options.scale !== undefined) {
+	        currentOptions.scale = options.scale;
+	        this.sync.setOptions({ scale: options.scale });
+	    }
+	    if (options.xRange !== undefined)
+	        currentOptions.xRange = options.xRange;
+	    if (options.yRange !== undefined)
+	        currentOptions.yRange = options.yRange;
+	    if (options.snapX !== undefined)
+	        currentOptions.snapX = options.snapX;
+	    if (options.snapY !== undefined)
+	        currentOptions.snapY = options.snapY;
+	};
+	Draggable.prototype.getPosition = function getPosition() {
+	    return this._positionState.get();
+	};
+	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
+	    var currPos = this.getPosition();
+	    var relativePosition = [
+	        currPos[0] + position[0],
+	        currPos[1] + position[1]
+	    ];
+	    this.setPosition(relativePosition, transition, callback);
+	};
+	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
+	    if (this._positionState.isActive())
+	        this._positionState.halt();
+	    this._positionState.set(position, transition, callback);
+	};
+	Draggable.prototype.activate = function activate() {
+	    this._active = true;
+	};
+	Draggable.prototype.deactivate = function deactivate() {
+	    this._active = false;
+	};
+	Draggable.prototype.toggle = function toggle() {
+	    this._active = !this._active;
+	};
+	Draggable.prototype.modify = function modify(target) {
+	    var pos = this.getPosition();
+	    return {
+	        transform: Transform.translate(pos[0], pos[1]),
+	        target: target
+	    };
+	};
+	module.exports = Draggable;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Transitionable = __webpack_require__(42);
+	var OptionsManager = __webpack_require__(36);
+	function Fader(options, startState) {
+	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    if (!startState)
+	        startState = 0;
+	    this.transitionHelper = new Transitionable(startState);
+	}
+	Fader.DEFAULT_OPTIONS = {
+	    cull: false,
+	    transition: true,
+	    pulseInTransition: true,
+	    pulseOutTransition: true
+	};
+	Fader.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	Fader.prototype.show = function show(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(1, transition, callback);
+	};
+	Fader.prototype.hide = function hide(transition, callback) {
+	    transition = transition || this.options.transition;
+	    this.set(0, transition, callback);
+	};
+	Fader.prototype.set = function set(state, transition, callback) {
+	    this.halt();
+	    this.transitionHelper.set(state, transition, callback);
+	};
+	Fader.prototype.halt = function halt() {
+	    this.transitionHelper.halt();
+	};
+	Fader.prototype.isVisible = function isVisible() {
+	    return this.transitionHelper.get() > 0;
+	};
+	Fader.prototype.modify = function modify(target) {
+	    var currOpacity = this.transitionHelper.get();
+	    if (this.options.cull && !currOpacity)
+	        return undefined;
+	    else
+	        return {
+	            opacity: currOpacity,
+	            target: target
+	        };
+	};
+	module.exports = Fader;
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function ModifierChain() {
+	    this._chain = [];
+	    if (arguments.length)
+	        this.addModifier.apply(this, arguments);
+	}
+	ModifierChain.prototype.addModifier = function addModifier(varargs) {
+	    Array.prototype.push.apply(this._chain, arguments);
+	};
+	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
+	    var index = this._chain.indexOf(modifier);
+	    if (index < 0)
+	        return;
+	    this._chain.splice(index, 1);
+	};
+	ModifierChain.prototype.modify = function modify(input) {
+	    var chain = this._chain;
+	    var result = input;
+	    for (var i = 0; i < chain.length; i++) {
+	        result = chain[i].modify(result);
+	    }
+	    return result;
+	};
+	module.exports = ModifierChain;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Modifier = __webpack_require__(165);
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var TransitionableTransform = __webpack_require__(183);
+	function StateModifier(options) {
+	    this._transformState = new TransitionableTransform(Transform.identity);
+	    this._opacityState = new Transitionable(1);
+	    this._originState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._alignState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._sizeState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._proportionsState = new Transitionable([
+	        0,
+	        0
+	    ]);
+	    this._modifier = new Modifier({
+	        transform: this._transformState,
+	        opacity: this._opacityState,
+	        origin: null,
+	        align: null,
+	        size: null,
+	        proportions: null
+	    });
+	    this._hasOrigin = false;
+	    this._hasAlign = false;
+	    this._hasSize = false;
+	    this._hasProportions = false;
+	    if (options) {
+	        if (options.transform)
+	            this.setTransform(options.transform);
+	        if (options.opacity !== undefined)
+	            this.setOpacity(options.opacity);
+	        if (options.origin)
+	            this.setOrigin(options.origin);
+	        if (options.align)
+	            this.setAlign(options.align);
+	        if (options.size)
+	            this.setSize(options.size);
+	        if (options.proportions)
+	            this.setProportions(options.proportions);
+	    }
+	}
+	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
+	    this._transformState.set(transform, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
+	    this._opacityState.set(opacity, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
+	    if (origin === null) {
+	        if (this._hasOrigin) {
+	            this._modifier.originFrom(null);
+	            this._hasOrigin = false;
+	        }
+	        return this;
+	    } else if (!this._hasOrigin) {
+	        this._hasOrigin = true;
+	        this._modifier.originFrom(this._originState);
+	    }
+	    this._originState.set(origin, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
+	    if (align === null) {
+	        if (this._hasAlign) {
+	            this._modifier.alignFrom(null);
+	            this._hasAlign = false;
+	        }
+	        return this;
+	    } else if (!this._hasAlign) {
+	        this._hasAlign = true;
+	        this._modifier.alignFrom(this._alignState);
+	    }
+	    this._alignState.set(align, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
+	    if (size === null) {
+	        if (this._hasSize) {
+	            this._modifier.sizeFrom(null);
+	            this._hasSize = false;
+	        }
+	        return this;
+	    } else if (!this._hasSize) {
+	        this._hasSize = true;
+	        this._modifier.sizeFrom(this._sizeState);
+	    }
+	    this._sizeState.set(size, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
+	    if (proportions === null) {
+	        if (this._hasProportions) {
+	            this._modifier.proportionsFrom(null);
+	            this._hasProportions = false;
+	        }
+	        return this;
+	    } else if (!this._hasProportions) {
+	        this._hasProportions = true;
+	        this._modifier.proportionsFrom(this._proportionsState);
+	    }
+	    this._proportionsState.set(proportions, transition, callback);
+	    return this;
+	};
+	StateModifier.prototype.halt = function halt() {
+	    this._transformState.halt();
+	    this._opacityState.halt();
+	    this._originState.halt();
+	    this._alignState.halt();
+	    this._sizeState.halt();
+	    this._proportionsState.halt();
+	};
+	StateModifier.prototype.getTransform = function getTransform() {
+	    return this._transformState.get();
+	};
+	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
+	    return this._transformState.getFinal();
+	};
+	StateModifier.prototype.getOpacity = function getOpacity() {
+	    return this._opacityState.get();
+	};
+	StateModifier.prototype.getOrigin = function getOrigin() {
+	    return this._hasOrigin ? this._originState.get() : null;
+	};
+	StateModifier.prototype.getAlign = function getAlign() {
+	    return this._hasAlign ? this._alignState.get() : null;
+	};
+	StateModifier.prototype.getSize = function getSize() {
+	    return this._hasSize ? this._sizeState.get() : null;
+	};
+	StateModifier.prototype.getProportions = function getProportions() {
+	    return this._hasProportions ? this._proportionsState.get() : null;
+	};
+	StateModifier.prototype.modify = function modify(target) {
+	    return this._modifier.modify(target);
+	};
+	module.exports = StateModifier;
+
+/***/ },
+/* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50378,7 +50951,7 @@
 	module.exports = CachedMap;
 
 /***/ },
-/* 176 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50549,7 +51122,7 @@
 	module.exports = Easing;
 
 /***/ },
-/* 177 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50559,10 +51132,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(80);
-	var Particle = __webpack_require__(78);
+	var PE = __webpack_require__(41);
+	var Particle = __webpack_require__(39);
 	var Spring = __webpack_require__(218);
-	var Vector = __webpack_require__(77);
+	var Vector = __webpack_require__(38);
 	function SnapTransition(state) {
 	    state = state || 0;
 	    this.endState = new Vector(state);
@@ -50689,7 +51262,7 @@
 	module.exports = SnapTransition;
 
 /***/ },
-/* 178 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50699,10 +51272,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(80);
-	var Particle = __webpack_require__(78);
-	var Spring = __webpack_require__(79);
-	var Vector = __webpack_require__(77);
+	var PE = __webpack_require__(41);
+	var Particle = __webpack_require__(39);
+	var Spring = __webpack_require__(40);
+	var Vector = __webpack_require__(38);
 	function SpringTransition(state) {
 	    state = state || 0;
 	    this.endState = new Vector(state);
@@ -50833,7 +51406,7 @@
 	module.exports = SpringTransition;
 
 /***/ },
-/* 179 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50843,9 +51416,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transitionable = __webpack_require__(81);
-	var Transform = __webpack_require__(76);
-	var Utility = __webpack_require__(82);
+	var Transitionable = __webpack_require__(42);
+	var Transform = __webpack_require__(37);
+	var Utility = __webpack_require__(43);
 	function TransitionableTransform(transform) {
 	    this._final = Transform.identity.slice();
 	    this._finalTranslate = [
@@ -50962,7 +51535,7 @@
 	module.exports = TransitionableTransform;
 
 /***/ },
-/* 180 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50972,11 +51545,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PE = __webpack_require__(80);
-	var Particle = __webpack_require__(78);
-	var Spring = __webpack_require__(79);
+	var PE = __webpack_require__(41);
+	var Particle = __webpack_require__(39);
+	var Spring = __webpack_require__(40);
 	var Wall = __webpack_require__(219);
-	var Vector = __webpack_require__(77);
+	var Vector = __webpack_require__(38);
 	function WallTransition(state) {
 	    state = state || 0;
 	    this.endState = new Vector(state);
@@ -51125,441 +51698,6 @@
 	module.exports = WallTransition;
 
 /***/ },
-/* 181 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transform = __webpack_require__(76);
-	var Transitionable = __webpack_require__(81);
-	var EventHandler = __webpack_require__(85);
-	var Utilities = __webpack_require__(170);
-	var GenericSync = __webpack_require__(159);
-	var MouseSync = __webpack_require__(160);
-	var TouchSync = __webpack_require__(164);
-	GenericSync.register({
-	    'mouse': MouseSync,
-	    'touch': TouchSync
-	});
-	function Draggable(options) {
-	    this.options = Object.create(Draggable.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this._positionState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._differential = [
-	        0,
-	        0
-	    ];
-	    this._active = true;
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], { scale: this.options.scale });
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.sync);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    _bindEvents.call(this);
-	}
-	var _direction = {
-	    x: 1,
-	    y: 2
-	};
-	Draggable.DIRECTION_X = _direction.x;
-	Draggable.DIRECTION_Y = _direction.y;
-	var _clamp = Utilities.clamp;
-	Draggable.DEFAULT_OPTIONS = {
-	    projection: _direction.x | _direction.y,
-	    scale: 1,
-	    xRange: null,
-	    yRange: null,
-	    snapX: 0,
-	    snapY: 0,
-	    transition: { duration: 0 }
-	};
-	function _mapDifferential(differential) {
-	    var opts = this.options;
-	    var projection = opts.projection;
-	    var snapX = opts.snapX;
-	    var snapY = opts.snapY;
-	    var tx = projection & _direction.x ? differential[0] : 0;
-	    var ty = projection & _direction.y ? differential[1] : 0;
-	    if (snapX > 0)
-	        tx -= tx % snapX;
-	    if (snapY > 0)
-	        ty -= ty % snapY;
-	    return [
-	        tx,
-	        ty
-	    ];
-	}
-	function _handleStart() {
-	    if (!this._active)
-	        return;
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this.eventOutput.emit('start', { position: this.getPosition() });
-	}
-	function _handleMove(event) {
-	    if (!this._active)
-	        return;
-	    var options = this.options;
-	    this._differential = event.position;
-	    var newDifferential = _mapDifferential.call(this, this._differential);
-	    this._differential[0] -= newDifferential[0];
-	    this._differential[1] -= newDifferential[1];
-	    var pos = this.getPosition();
-	    pos[0] += newDifferential[0];
-	    pos[1] += newDifferential[1];
-	    if (options.xRange) {
-	        var xRange = [
-	            options.xRange[0] + 0.5 * options.snapX,
-	            options.xRange[1] - 0.5 * options.snapX
-	        ];
-	        pos[0] = _clamp(pos[0], xRange);
-	    }
-	    if (options.yRange) {
-	        var yRange = [
-	            options.yRange[0] + 0.5 * options.snapY,
-	            options.yRange[1] - 0.5 * options.snapY
-	        ];
-	        pos[1] = _clamp(pos[1], yRange);
-	    }
-	    this.eventOutput.emit('update', { position: pos });
-	}
-	function _handleEnd() {
-	    if (!this._active)
-	        return;
-	    this.eventOutput.emit('end', { position: this.getPosition() });
-	}
-	function _bindEvents() {
-	    this.sync.on('start', _handleStart.bind(this));
-	    this.sync.on('update', _handleMove.bind(this));
-	    this.sync.on('end', _handleEnd.bind(this));
-	}
-	Draggable.prototype.setOptions = function setOptions(options) {
-	    var currentOptions = this.options;
-	    if (options.projection !== undefined) {
-	        var proj = options.projection;
-	        this.options.projection = 0;
-	        [
-	            'x',
-	            'y'
-	        ].forEach(function (val) {
-	            if (proj.indexOf(val) !== -1)
-	                currentOptions.projection |= _direction[val];
-	        });
-	    }
-	    if (options.scale !== undefined) {
-	        currentOptions.scale = options.scale;
-	        this.sync.setOptions({ scale: options.scale });
-	    }
-	    if (options.xRange !== undefined)
-	        currentOptions.xRange = options.xRange;
-	    if (options.yRange !== undefined)
-	        currentOptions.yRange = options.yRange;
-	    if (options.snapX !== undefined)
-	        currentOptions.snapX = options.snapX;
-	    if (options.snapY !== undefined)
-	        currentOptions.snapY = options.snapY;
-	};
-	Draggable.prototype.getPosition = function getPosition() {
-	    return this._positionState.get();
-	};
-	Draggable.prototype.setRelativePosition = function setRelativePosition(position, transition, callback) {
-	    var currPos = this.getPosition();
-	    var relativePosition = [
-	        currPos[0] + position[0],
-	        currPos[1] + position[1]
-	    ];
-	    this.setPosition(relativePosition, transition, callback);
-	};
-	Draggable.prototype.setPosition = function setPosition(position, transition, callback) {
-	    if (this._positionState.isActive())
-	        this._positionState.halt();
-	    this._positionState.set(position, transition, callback);
-	};
-	Draggable.prototype.activate = function activate() {
-	    this._active = true;
-	};
-	Draggable.prototype.deactivate = function deactivate() {
-	    this._active = false;
-	};
-	Draggable.prototype.toggle = function toggle() {
-	    this._active = !this._active;
-	};
-	Draggable.prototype.modify = function modify(target) {
-	    var pos = this.getPosition();
-	    return {
-	        transform: Transform.translate(pos[0], pos[1]),
-	        target: target
-	    };
-	};
-	module.exports = Draggable;
-
-/***/ },
-/* 182 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transitionable = __webpack_require__(81);
-	var OptionsManager = __webpack_require__(75);
-	function Fader(options, startState) {
-	    this.options = Object.create(Fader.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    if (!startState)
-	        startState = 0;
-	    this.transitionHelper = new Transitionable(startState);
-	}
-	Fader.DEFAULT_OPTIONS = {
-	    cull: false,
-	    transition: true,
-	    pulseInTransition: true,
-	    pulseOutTransition: true
-	};
-	Fader.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	Fader.prototype.show = function show(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(1, transition, callback);
-	};
-	Fader.prototype.hide = function hide(transition, callback) {
-	    transition = transition || this.options.transition;
-	    this.set(0, transition, callback);
-	};
-	Fader.prototype.set = function set(state, transition, callback) {
-	    this.halt();
-	    this.transitionHelper.set(state, transition, callback);
-	};
-	Fader.prototype.halt = function halt() {
-	    this.transitionHelper.halt();
-	};
-	Fader.prototype.isVisible = function isVisible() {
-	    return this.transitionHelper.get() > 0;
-	};
-	Fader.prototype.modify = function modify(target) {
-	    var currOpacity = this.transitionHelper.get();
-	    if (this.options.cull && !currOpacity)
-	        return undefined;
-	    else
-	        return {
-	            opacity: currOpacity,
-	            target: target
-	        };
-	};
-	module.exports = Fader;
-
-/***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	function ModifierChain() {
-	    this._chain = [];
-	    if (arguments.length)
-	        this.addModifier.apply(this, arguments);
-	}
-	ModifierChain.prototype.addModifier = function addModifier(varargs) {
-	    Array.prototype.push.apply(this._chain, arguments);
-	};
-	ModifierChain.prototype.removeModifier = function removeModifier(modifier) {
-	    var index = this._chain.indexOf(modifier);
-	    if (index < 0)
-	        return;
-	    this._chain.splice(index, 1);
-	};
-	ModifierChain.prototype.modify = function modify(input) {
-	    var chain = this._chain;
-	    var result = input;
-	    for (var i = 0; i < chain.length; i++) {
-	        result = chain[i].modify(result);
-	    }
-	    return result;
-	};
-	module.exports = ModifierChain;
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Modifier = __webpack_require__(172);
-	var Transform = __webpack_require__(76);
-	var Transitionable = __webpack_require__(81);
-	var TransitionableTransform = __webpack_require__(179);
-	function StateModifier(options) {
-	    this._transformState = new TransitionableTransform(Transform.identity);
-	    this._opacityState = new Transitionable(1);
-	    this._originState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._alignState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._sizeState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._proportionsState = new Transitionable([
-	        0,
-	        0
-	    ]);
-	    this._modifier = new Modifier({
-	        transform: this._transformState,
-	        opacity: this._opacityState,
-	        origin: null,
-	        align: null,
-	        size: null,
-	        proportions: null
-	    });
-	    this._hasOrigin = false;
-	    this._hasAlign = false;
-	    this._hasSize = false;
-	    this._hasProportions = false;
-	    if (options) {
-	        if (options.transform)
-	            this.setTransform(options.transform);
-	        if (options.opacity !== undefined)
-	            this.setOpacity(options.opacity);
-	        if (options.origin)
-	            this.setOrigin(options.origin);
-	        if (options.align)
-	            this.setAlign(options.align);
-	        if (options.size)
-	            this.setSize(options.size);
-	        if (options.proportions)
-	            this.setProportions(options.proportions);
-	    }
-	}
-	StateModifier.prototype.setTransform = function setTransform(transform, transition, callback) {
-	    this._transformState.set(transform, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOpacity = function setOpacity(opacity, transition, callback) {
-	    this._opacityState.set(opacity, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setOrigin = function setOrigin(origin, transition, callback) {
-	    if (origin === null) {
-	        if (this._hasOrigin) {
-	            this._modifier.originFrom(null);
-	            this._hasOrigin = false;
-	        }
-	        return this;
-	    } else if (!this._hasOrigin) {
-	        this._hasOrigin = true;
-	        this._modifier.originFrom(this._originState);
-	    }
-	    this._originState.set(origin, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setAlign = function setOrigin(align, transition, callback) {
-	    if (align === null) {
-	        if (this._hasAlign) {
-	            this._modifier.alignFrom(null);
-	            this._hasAlign = false;
-	        }
-	        return this;
-	    } else if (!this._hasAlign) {
-	        this._hasAlign = true;
-	        this._modifier.alignFrom(this._alignState);
-	    }
-	    this._alignState.set(align, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setSize = function setSize(size, transition, callback) {
-	    if (size === null) {
-	        if (this._hasSize) {
-	            this._modifier.sizeFrom(null);
-	            this._hasSize = false;
-	        }
-	        return this;
-	    } else if (!this._hasSize) {
-	        this._hasSize = true;
-	        this._modifier.sizeFrom(this._sizeState);
-	    }
-	    this._sizeState.set(size, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.setProportions = function setSize(proportions, transition, callback) {
-	    if (proportions === null) {
-	        if (this._hasProportions) {
-	            this._modifier.proportionsFrom(null);
-	            this._hasProportions = false;
-	        }
-	        return this;
-	    } else if (!this._hasProportions) {
-	        this._hasProportions = true;
-	        this._modifier.proportionsFrom(this._proportionsState);
-	    }
-	    this._proportionsState.set(proportions, transition, callback);
-	    return this;
-	};
-	StateModifier.prototype.halt = function halt() {
-	    this._transformState.halt();
-	    this._opacityState.halt();
-	    this._originState.halt();
-	    this._alignState.halt();
-	    this._sizeState.halt();
-	    this._proportionsState.halt();
-	};
-	StateModifier.prototype.getTransform = function getTransform() {
-	    return this._transformState.get();
-	};
-	StateModifier.prototype.getFinalTransform = function getFinalTransform() {
-	    return this._transformState.getFinal();
-	};
-	StateModifier.prototype.getOpacity = function getOpacity() {
-	    return this._opacityState.get();
-	};
-	StateModifier.prototype.getOrigin = function getOrigin() {
-	    return this._hasOrigin ? this._originState.get() : null;
-	};
-	StateModifier.prototype.getAlign = function getAlign() {
-	    return this._hasAlign ? this._alignState.get() : null;
-	};
-	StateModifier.prototype.getSize = function getSize() {
-	    return this._hasSize ? this._sizeState.get() : null;
-	};
-	StateModifier.prototype.getProportions = function getProportions() {
-	    return this._hasProportions ? this._proportionsState.get() : null;
-	};
-	StateModifier.prototype.modify = function modify(target) {
-	    return this._modifier.modify(target);
-	};
-	module.exports = StateModifier;
-
-/***/ },
 /* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -51570,7 +51708,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(91);
+	var Surface = __webpack_require__(52);
 	function CanvasSurface(options) {
 	    if (options && options.canvasSize)
 	        this._canvasSize = options.canvasSize;
@@ -51640,7 +51778,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var ContainerSurface = __webpack_require__(86);
+	var ContainerSurface = __webpack_require__(47);
 	function FormContainerSurface(options) {
 	    if (options)
 	        this._method = options.method || '';
@@ -51667,7 +51805,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(91);
+	var Surface = __webpack_require__(52);
 	function ImageSurface(options) {
 	    this._imageUrl = undefined;
 	    Surface.apply(this, arguments);
@@ -51744,7 +51882,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(91);
+	var Surface = __webpack_require__(52);
 	function InputSurface(options) {
 	    this._placeholder = options.placeholder || '';
 	    this._value = options.value || '';
@@ -51851,7 +51989,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(91);
+	var Surface = __webpack_require__(52);
 	function TextareaSurface(options) {
 	    this._placeholder = options.placeholder || '';
 	    this._value = options.value || '';
@@ -51943,7 +52081,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(91);
+	var Surface = __webpack_require__(52);
 	function VideoSurface(options) {
 	    Surface.apply(this, arguments);
 	    this._videoUrl = undefined;
@@ -51994,10 +52132,682 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(83);
-	var Transform = __webpack_require__(76);
-	var EventHandler = __webpack_require__(85);
-	var OptionsManager = __webpack_require__(75);
+	var KeyCodes = {
+	    0: 48,
+	    1: 49,
+	    2: 50,
+	    3: 51,
+	    4: 52,
+	    5: 53,
+	    6: 54,
+	    7: 55,
+	    8: 56,
+	    9: 57,
+	    a: 97,
+	    b: 98,
+	    c: 99,
+	    d: 100,
+	    e: 101,
+	    f: 102,
+	    g: 103,
+	    h: 104,
+	    i: 105,
+	    j: 106,
+	    k: 107,
+	    l: 108,
+	    m: 109,
+	    n: 110,
+	    o: 111,
+	    p: 112,
+	    q: 113,
+	    r: 114,
+	    s: 115,
+	    t: 116,
+	    u: 117,
+	    v: 118,
+	    w: 119,
+	    x: 120,
+	    y: 121,
+	    z: 122,
+	    A: 65,
+	    B: 66,
+	    C: 67,
+	    D: 68,
+	    E: 69,
+	    F: 70,
+	    G: 71,
+	    H: 72,
+	    I: 73,
+	    J: 74,
+	    K: 75,
+	    L: 76,
+	    M: 77,
+	    N: 78,
+	    O: 79,
+	    P: 80,
+	    Q: 81,
+	    R: 82,
+	    S: 83,
+	    T: 84,
+	    U: 85,
+	    V: 86,
+	    W: 87,
+	    X: 88,
+	    Y: 89,
+	    Z: 90,
+	    ENTER: 13,
+	    LEFT_ARROW: 37,
+	    RIGHT_ARROW: 39,
+	    UP_ARROW: 38,
+	    DOWN_ARROW: 40,
+	    SPACE: 32,
+	    SHIFT: 16,
+	    TAB: 9
+	};
+	module.exports = KeyCodes;
+
+/***/ },
+/* 193 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var FamousEngine = __webpack_require__(122);
+	var _event = 'prerender';
+	var getTime = window.performance && window.performance.now ? function () {
+	    return window.performance.now();
+	} : function () {
+	    return Date.now();
+	};
+	function addTimerFunction(fn) {
+	    FamousEngine.on(_event, fn);
+	    return fn;
+	}
+	function setTimeout(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            FamousEngine.removeListener(_event, callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function setInterval(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            t = getTime();
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function after(fn, numTicks) {
+	    if (numTicks === undefined)
+	        return undefined;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            clear(callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function every(fn, numTicks) {
+	    numTicks = numTicks || 1;
+	    var initial = numTicks;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            numTicks = initial;
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function clear(fn) {
+	    FamousEngine.removeListener(_event, fn);
+	}
+	function debounce(func, wait) {
+	    var timeout;
+	    var ctx;
+	    var timestamp;
+	    var result;
+	    var args;
+	    return function () {
+	        ctx = this;
+	        args = arguments;
+	        timestamp = getTime();
+	        var fn = function () {
+	            var last = getTime - timestamp;
+	            if (last < wait) {
+	                timeout = setTimeout(fn, wait - last);
+	            } else {
+	                timeout = null;
+	                result = func.apply(ctx, args);
+	            }
+	        };
+	        clear(timeout);
+	        timeout = setTimeout(fn, wait);
+	        return result;
+	    };
+	}
+	module.exports = {
+	    setTimeout: setTimeout,
+	    setInterval: setInterval,
+	    debounce: debounce,
+	    after: after,
+	    every: every,
+	    clear: clear
+	};
+
+/***/ },
+/* 194 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Scene = __webpack_require__(166);
+	var Surface = __webpack_require__(52);
+	var Transform = __webpack_require__(37);
+	var View = __webpack_require__(51);
+	function NavigationBar(options) {
+	    View.apply(this, arguments);
+	    this.title = new Surface({
+	        classes: this.options.classes,
+	        content: this.options.content
+	    });
+	    this.back = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.backContent
+	    });
+	    this.back.on('click', function () {
+	        this._eventOutput.emit('back', {});
+	    }.bind(this));
+	    this.more = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.moreContent
+	    });
+	    this.more.on('click', function () {
+	        this._eventOutput.emit('more', {});
+	    }.bind(this));
+	    this.layout = new Scene({
+	        id: 'master',
+	        size: this.options.size,
+	        target: [
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    0,
+	                    0.5
+	                ],
+	                align: [
+	                    0,
+	                    0.5
+	                ],
+	                target: this.back
+	            },
+	            {
+	                origin: [
+	                    0.5,
+	                    0.5
+	                ],
+	                align: [
+	                    0.5,
+	                    0.5
+	                ],
+	                target: this.title
+	            },
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    1,
+	                    0.5
+	                ],
+	                align: [
+	                    1,
+	                    0.5
+	                ],
+	                target: this.more
+	            }
+	        ]
+	    });
+	    this._add(this.layout);
+	    this._optionsManager.on('change', function (event) {
+	        var key = event.id;
+	        var data = event.value;
+	        if (key === 'size') {
+	            this.layout.id.master.setSize(data);
+	            this.title.setSize(data);
+	            this.back.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	            this.more.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	        } else if (key === 'backClasses') {
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	        } else if (key === 'backContent') {
+	            this.back.setContent(this.options.backContent);
+	        } else if (key === 'classes') {
+	            this.title.setOptions({ classes: this.options.classes });
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'content') {
+	            this.setContent(this.options.content);
+	        } else if (key === 'moreClasses') {
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'moreContent') {
+	            this.more.setContent(this.options.content);
+	        }
+	    }.bind(this));
+	}
+	NavigationBar.prototype = Object.create(View.prototype);
+	NavigationBar.prototype.constructor = NavigationBar;
+	NavigationBar.DEFAULT_OPTIONS = {
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    backClasses: ['back'],
+	    backContent: '&#x25c0;',
+	    classes: ['navigation'],
+	    content: '',
+	    moreClasses: ['more'],
+	    moreContent: '&#x271a;'
+	};
+	NavigationBar.prototype.setContent = function setContent(content) {
+	    return this.title.setContent(content);
+	};
+	module.exports = NavigationBar;
+
+/***/ },
+/* 195 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	var CanvasSurface = __webpack_require__(185);
+	var Transform = __webpack_require__(37);
+	var EventHandler = __webpack_require__(46);
+	var Utilities = __webpack_require__(174);
+	var OptionsManager = __webpack_require__(36);
+	var MouseSync = __webpack_require__(157);
+	var TouchSync = __webpack_require__(161);
+	var GenericSync = __webpack_require__(156);
+	GenericSync.register({
+	    mouse: MouseSync,
+	    touch: TouchSync
+	});
+	function Slider(options) {
+	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
+	    this.optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.indicator = new CanvasSurface({
+	        size: this.options.indicatorSize,
+	        classes: ['slider-back']
+	    });
+	    this.label = new Surface({
+	        size: this.options.labelSize,
+	        content: this.options.label,
+	        properties: { pointerEvents: 'none' },
+	        classes: ['slider-label']
+	    });
+	    this.eventOutput = new EventHandler();
+	    this.eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.eventInput);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], {
+	        scale: scale,
+	        direction: GenericSync.DIRECTION_X
+	    });
+	    this.indicator.pipe(this.sync);
+	    this.sync.pipe(this);
+	    this.eventInput.on('update', function (data) {
+	        this.set(data.position);
+	    }.bind(this));
+	    this._drawPos = 0;
+	    _updateLabel.call(this);
+	}
+	Slider.DEFAULT_OPTIONS = {
+	    size: [
+	        200,
+	        60
+	    ],
+	    indicatorSize: [
+	        200,
+	        30
+	    ],
+	    labelSize: [
+	        200,
+	        30
+	    ],
+	    range: [
+	        0,
+	        1
+	    ],
+	    precision: 2,
+	    value: 0,
+	    label: '',
+	    fillColor: 'rgba(170, 170, 170, 1)'
+	};
+	function _updateLabel() {
+	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
+	}
+	Slider.prototype.setOptions = function setOptions(options) {
+	    return this.optionsManager.setOptions(options);
+	};
+	Slider.prototype.get = function get() {
+	    return this.options.value;
+	};
+	Slider.prototype.set = function set(value) {
+	    if (value === this.options.value)
+	        return;
+	    this.options.value = Utilities.clamp(value, this.options.range);
+	    _updateLabel.call(this);
+	    this.eventOutput.emit('change', { value: value });
+	};
+	Slider.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	Slider.prototype.render = function render() {
+	    var range = this.options.range;
+	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
+	    if (fillSize < this._drawPos) {
+	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
+	    } else if (fillSize > this._drawPos) {
+	        var ctx = this.indicator.getContext('2d');
+	        ctx.fillStyle = this.options.fillColor;
+	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
+	    }
+	    this._drawPos = fillSize;
+	    return {
+	        size: this.options.size,
+	        target: [
+	            {
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.indicator.render()
+	            },
+	            {
+	                transform: Transform.translate(0, 0, 1),
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.label.render()
+	            }
+	        ]
+	    };
+	};
+	module.exports = Slider;
+
+/***/ },
+/* 196 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Utility = __webpack_require__(43);
+	var View = __webpack_require__(51);
+	var GridLayout = __webpack_require__(204);
+	var ToggleButton = __webpack_require__(197);
+	function TabBar(options) {
+	    View.apply(this, arguments);
+	    this.layout = new GridLayout();
+	    this.buttons = [];
+	    this._buttonIds = {};
+	    this._buttonCallbacks = {};
+	    this.layout.sequenceFrom(this.buttons);
+	    this._add(this.layout);
+	    this._optionsManager.on('change', _updateOptions.bind(this));
+	}
+	TabBar.prototype = Object.create(View.prototype);
+	TabBar.prototype.constructor = TabBar;
+	TabBar.DEFAULT_OPTIONS = {
+	    sections: [],
+	    widget: ToggleButton,
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    direction: Utility.Direction.X,
+	    buttons: { toggleMode: ToggleButton.ON }
+	};
+	function _updateOptions(data) {
+	    var id = data.id;
+	    var value = data.value;
+	    if (id === 'direction') {
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
+	    } else if (id === 'buttons') {
+	        for (var i in this.buttons) {
+	            this.buttons[i].setOptions(value);
+	        }
+	    } else if (id === 'sections') {
+	        for (var sectionId in this.options.sections) {
+	            this.defineSection(sectionId, this.options.sections[sectionId]);
+	        }
+	    }
+	}
+	function _resolveGridDimensions(count, direction) {
+	    if (direction === Utility.Direction.X)
+	        return [
+	            count,
+	            1
+	        ];
+	    else
+	        return [
+	            1,
+	            count
+	        ];
+	}
+	TabBar.prototype.defineSection = function defineSection(id, content) {
+	    var button;
+	    var i = this._buttonIds[id];
+	    if (i === undefined) {
+	        i = this.buttons.length;
+	        this._buttonIds[id] = i;
+	        var widget = this.options.widget;
+	        button = new widget();
+	        this.buttons[i] = button;
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
+	    } else {
+	        button = this.buttons[i];
+	        button.unbind('select', this._buttonCallbacks[id]);
+	    }
+	    if (this.options.buttons)
+	        button.setOptions(this.options.buttons);
+	    button.setOptions(content);
+	    this._buttonCallbacks[id] = this.select.bind(this, id);
+	    button.on('select', this._buttonCallbacks[id]);
+	};
+	TabBar.prototype.select = function select(id) {
+	    var btn = this._buttonIds[id];
+	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
+	        this._eventOutput.emit('select', { id: id });
+	    } else if (this.buttons[btn]) {
+	        this.buttons[btn].select();
+	    }
+	    for (var i = 0; i < this.buttons.length; i++) {
+	        if (i !== btn)
+	            this.buttons[i].deselect();
+	    }
+	};
+	module.exports = TabBar;
+
+/***/ },
+/* 197 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Surface = __webpack_require__(52);
+	var EventHandler = __webpack_require__(46);
+	var RenderController = __webpack_require__(207);
+	function ToggleButton(options) {
+	    this.options = {
+	        content: [
+	            '',
+	            ''
+	        ],
+	        offClasses: ['off'],
+	        onClasses: ['on'],
+	        size: undefined,
+	        outTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        inTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        toggleMode: ToggleButton.TOGGLE,
+	        crossfade: true
+	    };
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.offSurface = new Surface();
+	    this.offSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.OFF)
+	            this.select();
+	    }.bind(this));
+	    this.offSurface.pipe(this._eventOutput);
+	    this.onSurface = new Surface();
+	    this.onSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.ON)
+	            this.deselect();
+	    }.bind(this));
+	    this.onSurface.pipe(this._eventOutput);
+	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
+	    this.deselect();
+	    if (options)
+	        this.setOptions(options);
+	}
+	ToggleButton.OFF = 0;
+	ToggleButton.ON = 1;
+	ToggleButton.TOGGLE = 2;
+	ToggleButton.prototype.select = function select(suppressEvent) {
+	    this.selected = true;
+	    this.arbiter.show(this.onSurface, this.options.inTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('select');
+	    }
+	};
+	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
+	    this.selected = false;
+	    this.arbiter.show(this.offSurface, this.options.outTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('deselect');
+	    }
+	};
+	ToggleButton.prototype.isSelected = function isSelected() {
+	    return this.selected;
+	};
+	ToggleButton.prototype.setOptions = function setOptions(options) {
+	    if (options.content !== undefined) {
+	        if (!(options.content instanceof Array))
+	            options.content = [
+	                options.content,
+	                options.content
+	            ];
+	        this.options.content = options.content;
+	        this.offSurface.setContent(this.options.content[0]);
+	        this.onSurface.setContent(this.options.content[1]);
+	    }
+	    if (options.offClasses) {
+	        this.options.offClasses = options.offClasses;
+	        this.offSurface.setClasses(this.options.offClasses);
+	    }
+	    if (options.onClasses) {
+	        this.options.onClasses = options.onClasses;
+	        this.onSurface.setClasses(this.options.onClasses);
+	    }
+	    if (options.size !== undefined) {
+	        this.options.size = options.size;
+	        this.onSurface.setSize(this.options.size);
+	        this.offSurface.setSize(this.options.size);
+	    }
+	    if (options.toggleMode !== undefined)
+	        this.options.toggleMode = options.toggleMode;
+	    if (options.outTransition !== undefined)
+	        this.options.outTransition = options.outTransition;
+	    if (options.inTransition !== undefined)
+	        this.options.inTransition = options.inTransition;
+	    if (options.crossfade !== undefined) {
+	        this.options.crossfade = options.crossfade;
+	        this.arbiter.setOptions({ overlap: this.options.crossfade });
+	    }
+	};
+	ToggleButton.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	ToggleButton.prototype.render = function render() {
+	    return this.arbiter.render();
+	};
+	module.exports = ToggleButton;
+
+/***/ },
+/* 198 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(44);
+	var Transform = __webpack_require__(37);
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
 	function ContextualView(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS || ContextualView.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -52024,7 +52834,7 @@
 	module.exports = ContextualView;
 
 /***/ },
-/* 193 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52034,11 +52844,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(76);
-	var OptionsManager = __webpack_require__(75);
-	var Transitionable = __webpack_require__(81);
-	var Utility = __webpack_require__(82);
-	var SequentialLayout = __webpack_require__(205);
+	var Transform = __webpack_require__(37);
+	var OptionsManager = __webpack_require__(36);
+	var Transitionable = __webpack_require__(42);
+	var Utility = __webpack_require__(43);
+	var SequentialLayout = __webpack_require__(211);
 	function Deck(options) {
 	    SequentialLayout.apply(this, arguments);
 	    this.state = new Transitionable(0);
@@ -52122,7 +52932,7 @@
 	module.exports = Deck;
 
 /***/ },
-/* 194 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52132,11 +52942,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var RenderNode = __webpack_require__(151);
-	var Transform = __webpack_require__(76);
-	var OptionsManager = __webpack_require__(75);
-	var Transitionable = __webpack_require__(81);
-	var EventHandler = __webpack_require__(85);
+	var RenderNode = __webpack_require__(121);
+	var Transform = __webpack_require__(37);
+	var OptionsManager = __webpack_require__(36);
+	var Transitionable = __webpack_require__(42);
+	var EventHandler = __webpack_require__(46);
 	function DrawerLayout(options) {
 	    this.options = Object.create(DrawerLayout.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -52311,7 +53121,7 @@
 	module.exports = DrawerLayout;
 
 /***/ },
-/* 195 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52321,11 +53131,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var CachedMap = __webpack_require__(175);
-	var Entity = __webpack_require__(83);
-	var EventHandler = __webpack_require__(85);
-	var Transform = __webpack_require__(76);
-	var RenderController = __webpack_require__(201);
+	var CachedMap = __webpack_require__(179);
+	var Entity = __webpack_require__(44);
+	var EventHandler = __webpack_require__(46);
+	var Transform = __webpack_require__(37);
+	var RenderController = __webpack_require__(207);
 	function EdgeSwapper(options) {
 	    this._currentTarget = null;
 	    this._size = [
@@ -52372,7 +53182,7 @@
 	module.exports = EdgeSwapper;
 
 /***/ },
-/* 196 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52382,11 +53192,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(83);
-	var Transform = __webpack_require__(76);
-	var OptionsManager = __webpack_require__(75);
-	var EventHandler = __webpack_require__(85);
-	var Transitionable = __webpack_require__(81);
+	var Entity = __webpack_require__(44);
+	var Transform = __webpack_require__(37);
+	var OptionsManager = __webpack_require__(36);
+	var EventHandler = __webpack_require__(46);
+	var Transitionable = __webpack_require__(42);
 	function FlexibleLayout(options) {
 	    this.options = Object.create(FlexibleLayout.DEFAULT_OPTIONS);
 	    this.optionsManager = new OptionsManager(this.options);
@@ -52529,7 +53339,7 @@
 	module.exports = FlexibleLayout;
 
 /***/ },
-/* 197 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52539,10 +53349,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(76);
-	var Transitionable = __webpack_require__(81);
-	var RenderNode = __webpack_require__(151);
-	var OptionsManager = __webpack_require__(75);
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var RenderNode = __webpack_require__(121);
+	var OptionsManager = __webpack_require__(36);
 	function Flipper(options) {
 	    this.options = Object.create(Flipper.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -52614,7 +53424,7 @@
 	module.exports = Flipper;
 
 /***/ },
-/* 198 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52624,15 +53434,15 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(83);
-	var RenderNode = __webpack_require__(151);
-	var Transform = __webpack_require__(76);
-	var ViewSequence = __webpack_require__(84);
-	var EventHandler = __webpack_require__(85);
-	var Modifier = __webpack_require__(172);
-	var OptionsManager = __webpack_require__(75);
-	var Transitionable = __webpack_require__(81);
-	var TransitionableTransform = __webpack_require__(179);
+	var Entity = __webpack_require__(44);
+	var RenderNode = __webpack_require__(121);
+	var Transform = __webpack_require__(37);
+	var ViewSequence = __webpack_require__(45);
+	var EventHandler = __webpack_require__(46);
+	var Modifier = __webpack_require__(165);
+	var OptionsManager = __webpack_require__(36);
+	var Transitionable = __webpack_require__(42);
+	var TransitionableTransform = __webpack_require__(183);
 	function GridLayout(options) {
 	    this.options = Object.create(GridLayout.DEFAULT_OPTIONS);
 	    this.optionsManager = new OptionsManager(this.options);
@@ -52808,7 +53618,7 @@
 	module.exports = GridLayout;
 
 /***/ },
-/* 199 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52818,10 +53628,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(83);
-	var RenderNode = __webpack_require__(151);
-	var Transform = __webpack_require__(76);
-	var OptionsManager = __webpack_require__(75);
+	var Entity = __webpack_require__(44);
+	var RenderNode = __webpack_require__(121);
+	var Transform = __webpack_require__(37);
+	var OptionsManager = __webpack_require__(36);
 	function HeaderFooterLayout(options) {
 	    this.options = Object.create(HeaderFooterLayout.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -52909,7 +53719,7 @@
 	module.exports = HeaderFooterLayout;
 
 /***/ },
-/* 200 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52919,13 +53729,13 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Transform = __webpack_require__(76);
-	var Modifier = __webpack_require__(172);
-	var RenderNode = __webpack_require__(151);
-	var Utility = __webpack_require__(82);
-	var OptionsManager = __webpack_require__(75);
-	var Transitionable = __webpack_require__(81);
-	var TransitionableTransform = __webpack_require__(179);
+	var Transform = __webpack_require__(37);
+	var Modifier = __webpack_require__(165);
+	var RenderNode = __webpack_require__(121);
+	var Utility = __webpack_require__(43);
+	var OptionsManager = __webpack_require__(36);
+	var Transitionable = __webpack_require__(42);
+	var TransitionableTransform = __webpack_require__(183);
 	function Lightbox(options) {
 	    this.options = Object.create(Lightbox.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -53050,7 +53860,7 @@
 	module.exports = Lightbox;
 
 /***/ },
-/* 201 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53060,11 +53870,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Modifier = __webpack_require__(172);
-	var RenderNode = __webpack_require__(151);
-	var Transform = __webpack_require__(76);
-	var Transitionable = __webpack_require__(81);
-	var View = __webpack_require__(90);
+	var Modifier = __webpack_require__(165);
+	var RenderNode = __webpack_require__(121);
+	var Transform = __webpack_require__(37);
+	var Transitionable = __webpack_require__(42);
+	var View = __webpack_require__(51);
 	function RenderController(options) {
 	    View.apply(this, arguments);
 	    this._showing = -1;
@@ -53279,7 +54089,7 @@
 	module.exports = RenderController;
 
 /***/ },
-/* 202 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53289,11 +54099,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var ContainerSurface = __webpack_require__(86);
-	var EventHandler = __webpack_require__(85);
-	var Scrollview = __webpack_require__(204);
-	var Utility = __webpack_require__(82);
-	var OptionsManager = __webpack_require__(75);
+	var ContainerSurface = __webpack_require__(47);
+	var EventHandler = __webpack_require__(46);
+	var Scrollview = __webpack_require__(210);
+	var Utility = __webpack_require__(43);
+	var OptionsManager = __webpack_require__(36);
 	function ScrollContainer(options) {
 	    this.options = Object.create(ScrollContainer.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -53329,7 +54139,7 @@
 	module.exports = ScrollContainer;
 
 /***/ },
-/* 203 */
+/* 209 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53339,13 +54149,13 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Entity = __webpack_require__(83);
-	var Group = __webpack_require__(87);
-	var OptionsManager = __webpack_require__(75);
-	var Transform = __webpack_require__(76);
-	var Utility = __webpack_require__(82);
-	var ViewSequence = __webpack_require__(84);
-	var EventHandler = __webpack_require__(85);
+	var Entity = __webpack_require__(44);
+	var Group = __webpack_require__(48);
+	var OptionsManager = __webpack_require__(36);
+	var Transform = __webpack_require__(37);
+	var Utility = __webpack_require__(43);
+	var ViewSequence = __webpack_require__(45);
+	var EventHandler = __webpack_require__(46);
 	function Scroller(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -53551,7 +54361,7 @@
 	module.exports = Scroller;
 
 /***/ },
-/* 204 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53561,18 +54371,18 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var PhysicsEngine = __webpack_require__(80);
-	var Particle = __webpack_require__(78);
-	var Drag = __webpack_require__(88);
-	var Spring = __webpack_require__(79);
-	var EventHandler = __webpack_require__(85);
-	var OptionsManager = __webpack_require__(75);
-	var ViewSequence = __webpack_require__(84);
-	var Scroller = __webpack_require__(203);
-	var Utility = __webpack_require__(82);
-	var GenericSync = __webpack_require__(159);
-	var ScrollSync = __webpack_require__(89);
-	var TouchSync = __webpack_require__(164);
+	var PhysicsEngine = __webpack_require__(41);
+	var Particle = __webpack_require__(39);
+	var Drag = __webpack_require__(49);
+	var Spring = __webpack_require__(40);
+	var EventHandler = __webpack_require__(46);
+	var OptionsManager = __webpack_require__(36);
+	var ViewSequence = __webpack_require__(45);
+	var Scroller = __webpack_require__(209);
+	var Utility = __webpack_require__(43);
+	var GenericSync = __webpack_require__(156);
+	var ScrollSync = __webpack_require__(50);
+	var TouchSync = __webpack_require__(161);
 	GenericSync.register({
 	    scroll: ScrollSync,
 	    touch: TouchSync
@@ -54024,7 +54834,7 @@
 	module.exports = Scrollview;
 
 /***/ },
-/* 205 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -54034,11 +54844,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var OptionsManager = __webpack_require__(75);
-	var Entity = __webpack_require__(83);
-	var Transform = __webpack_require__(76);
-	var ViewSequence = __webpack_require__(84);
-	var Utility = __webpack_require__(82);
+	var OptionsManager = __webpack_require__(36);
+	var Entity = __webpack_require__(44);
+	var Transform = __webpack_require__(37);
+	var ViewSequence = __webpack_require__(45);
+	var Utility = __webpack_require__(43);
 	function SequentialLayout(options) {
 	    this._items = null;
 	    this._size = null;
@@ -54133,7 +54943,7 @@
 	module.exports = SequentialLayout;
 
 /***/ },
-/* 206 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -54143,9 +54953,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var View = __webpack_require__(90);
-	var Entity = __webpack_require__(83);
-	var Transform = __webpack_require__(76);
+	var View = __webpack_require__(51);
+	var Entity = __webpack_require__(44);
+	var Transform = __webpack_require__(37);
 	function SizeAwareView() {
 	    View.apply(this, arguments);
 	    this._id = Entity.register(this);
@@ -54187,728 +54997,56 @@
 	module.exports = SizeAwareView;
 
 /***/ },
-/* 207 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Body: __webpack_require__(225),
-	  Circle: __webpack_require__(226),
-	  Particle: __webpack_require__(78),
-	  Rectangle: __webpack_require__(227)
-	};
-
-
-/***/ },
-/* 208 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Collision: __webpack_require__(228),
-	  Constraint: __webpack_require__(229),
-	  Curve: __webpack_require__(230),
-	  Distance: __webpack_require__(231),
-	  Snap: __webpack_require__(218),
-	  Surface: __webpack_require__(232),
-	  Wall: __webpack_require__(219),
-	  Walls: __webpack_require__(233)
-	};
-
-
-/***/ },
-/* 209 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Drag: __webpack_require__(88),
-	  Force: __webpack_require__(145),
-	  Repulsion: __webpack_require__(234),
-	  RotationalDrag: __webpack_require__(235),
-	  RotationalSpring: __webpack_require__(236),
-	  Spring: __webpack_require__(79),
-	  VectorField: __webpack_require__(237)
-	};
-
-
-/***/ },
-/* 210 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  SymplecticEuler: __webpack_require__(144)
-	};
-
-
-/***/ },
-/* 211 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Scene = __webpack_require__(173);
-	var Surface = __webpack_require__(91);
-	var Transform = __webpack_require__(76);
-	var View = __webpack_require__(90);
-	function NavigationBar(options) {
-	    View.apply(this, arguments);
-	    this.title = new Surface({
-	        classes: this.options.classes,
-	        content: this.options.content
-	    });
-	    this.back = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.backContent
-	    });
-	    this.back.on('click', function () {
-	        this._eventOutput.emit('back', {});
-	    }.bind(this));
-	    this.more = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.moreContent
-	    });
-	    this.more.on('click', function () {
-	        this._eventOutput.emit('more', {});
-	    }.bind(this));
-	    this.layout = new Scene({
-	        id: 'master',
-	        size: this.options.size,
-	        target: [
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    0,
-	                    0.5
-	                ],
-	                align: [
-	                    0,
-	                    0.5
-	                ],
-	                target: this.back
-	            },
-	            {
-	                origin: [
-	                    0.5,
-	                    0.5
-	                ],
-	                align: [
-	                    0.5,
-	                    0.5
-	                ],
-	                target: this.title
-	            },
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    1,
-	                    0.5
-	                ],
-	                align: [
-	                    1,
-	                    0.5
-	                ],
-	                target: this.more
-	            }
-	        ]
-	    });
-	    this._add(this.layout);
-	    this._optionsManager.on('change', function (event) {
-	        var key = event.id;
-	        var data = event.value;
-	        if (key === 'size') {
-	            this.layout.id.master.setSize(data);
-	            this.title.setSize(data);
-	            this.back.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	            this.more.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	        } else if (key === 'backClasses') {
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	        } else if (key === 'backContent') {
-	            this.back.setContent(this.options.backContent);
-	        } else if (key === 'classes') {
-	            this.title.setOptions({ classes: this.options.classes });
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'content') {
-	            this.setContent(this.options.content);
-	        } else if (key === 'moreClasses') {
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'moreContent') {
-	            this.more.setContent(this.options.content);
-	        }
-	    }.bind(this));
-	}
-	NavigationBar.prototype = Object.create(View.prototype);
-	NavigationBar.prototype.constructor = NavigationBar;
-	NavigationBar.DEFAULT_OPTIONS = {
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    backClasses: ['back'],
-	    backContent: '&#x25c0;',
-	    classes: ['navigation'],
-	    content: '',
-	    moreClasses: ['more'],
-	    moreContent: '&#x271a;'
-	};
-	NavigationBar.prototype.setContent = function setContent(content) {
-	    return this.title.setContent(content);
-	};
-	module.exports = NavigationBar;
-
-/***/ },
-/* 212 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(91);
-	var CanvasSurface = __webpack_require__(185);
-	var Transform = __webpack_require__(76);
-	var EventHandler = __webpack_require__(85);
-	var Utilities = __webpack_require__(170);
-	var OptionsManager = __webpack_require__(75);
-	var MouseSync = __webpack_require__(160);
-	var TouchSync = __webpack_require__(164);
-	var GenericSync = __webpack_require__(159);
-	GenericSync.register({
-	    mouse: MouseSync,
-	    touch: TouchSync
-	});
-	function Slider(options) {
-	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
-	    this.optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.indicator = new CanvasSurface({
-	        size: this.options.indicatorSize,
-	        classes: ['slider-back']
-	    });
-	    this.label = new Surface({
-	        size: this.options.labelSize,
-	        content: this.options.label,
-	        properties: { pointerEvents: 'none' },
-	        classes: ['slider-label']
-	    });
-	    this.eventOutput = new EventHandler();
-	    this.eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.eventInput);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], {
-	        scale: scale,
-	        direction: GenericSync.DIRECTION_X
-	    });
-	    this.indicator.pipe(this.sync);
-	    this.sync.pipe(this);
-	    this.eventInput.on('update', function (data) {
-	        this.set(data.position);
-	    }.bind(this));
-	    this._drawPos = 0;
-	    _updateLabel.call(this);
-	}
-	Slider.DEFAULT_OPTIONS = {
-	    size: [
-	        200,
-	        60
-	    ],
-	    indicatorSize: [
-	        200,
-	        30
-	    ],
-	    labelSize: [
-	        200,
-	        30
-	    ],
-	    range: [
-	        0,
-	        1
-	    ],
-	    precision: 2,
-	    value: 0,
-	    label: '',
-	    fillColor: 'rgba(170, 170, 170, 1)'
-	};
-	function _updateLabel() {
-	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
-	}
-	Slider.prototype.setOptions = function setOptions(options) {
-	    return this.optionsManager.setOptions(options);
-	};
-	Slider.prototype.get = function get() {
-	    return this.options.value;
-	};
-	Slider.prototype.set = function set(value) {
-	    if (value === this.options.value)
-	        return;
-	    this.options.value = Utilities.clamp(value, this.options.range);
-	    _updateLabel.call(this);
-	    this.eventOutput.emit('change', { value: value });
-	};
-	Slider.prototype.getSize = function getSize() {
-	    return this.options.size;
-	};
-	Slider.prototype.render = function render() {
-	    var range = this.options.range;
-	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
-	    if (fillSize < this._drawPos) {
-	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
-	    } else if (fillSize > this._drawPos) {
-	        var ctx = this.indicator.getContext('2d');
-	        ctx.fillStyle = this.options.fillColor;
-	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
-	    }
-	    this._drawPos = fillSize;
-	    return {
-	        size: this.options.size,
-	        target: [
-	            {
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.indicator.render()
-	            },
-	            {
-	                transform: Transform.translate(0, 0, 1),
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.label.render()
-	            }
-	        ]
-	    };
-	};
-	module.exports = Slider;
-
-/***/ },
 /* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Utility = __webpack_require__(82);
-	var View = __webpack_require__(90);
-	var GridLayout = __webpack_require__(198);
-	var ToggleButton = __webpack_require__(214);
-	function TabBar(options) {
-	    View.apply(this, arguments);
-	    this.layout = new GridLayout();
-	    this.buttons = [];
-	    this._buttonIds = {};
-	    this._buttonCallbacks = {};
-	    this.layout.sequenceFrom(this.buttons);
-	    this._add(this.layout);
-	    this._optionsManager.on('change', _updateOptions.bind(this));
-	}
-	TabBar.prototype = Object.create(View.prototype);
-	TabBar.prototype.constructor = TabBar;
-	TabBar.DEFAULT_OPTIONS = {
-	    sections: [],
-	    widget: ToggleButton,
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    direction: Utility.Direction.X,
-	    buttons: { toggleMode: ToggleButton.ON }
+	module.exports = {
+	  Body: __webpack_require__(231),
+	  Circle: __webpack_require__(232),
+	  Particle: __webpack_require__(39),
+	  Rectangle: __webpack_require__(233)
 	};
-	function _updateOptions(data) {
-	    var id = data.id;
-	    var value = data.value;
-	    if (id === 'direction') {
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
-	    } else if (id === 'buttons') {
-	        for (var i in this.buttons) {
-	            this.buttons[i].setOptions(value);
-	        }
-	    } else if (id === 'sections') {
-	        for (var sectionId in this.options.sections) {
-	            this.defineSection(sectionId, this.options.sections[sectionId]);
-	        }
-	    }
-	}
-	function _resolveGridDimensions(count, direction) {
-	    if (direction === Utility.Direction.X)
-	        return [
-	            count,
-	            1
-	        ];
-	    else
-	        return [
-	            1,
-	            count
-	        ];
-	}
-	TabBar.prototype.defineSection = function defineSection(id, content) {
-	    var button;
-	    var i = this._buttonIds[id];
-	    if (i === undefined) {
-	        i = this.buttons.length;
-	        this._buttonIds[id] = i;
-	        var widget = this.options.widget;
-	        button = new widget();
-	        this.buttons[i] = button;
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
-	    } else {
-	        button = this.buttons[i];
-	        button.unbind('select', this._buttonCallbacks[id]);
-	    }
-	    if (this.options.buttons)
-	        button.setOptions(this.options.buttons);
-	    button.setOptions(content);
-	    this._buttonCallbacks[id] = this.select.bind(this, id);
-	    button.on('select', this._buttonCallbacks[id]);
-	};
-	TabBar.prototype.select = function select(id) {
-	    var btn = this._buttonIds[id];
-	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
-	        this._eventOutput.emit('select', { id: id });
-	    } else if (this.buttons[btn]) {
-	        this.buttons[btn].select();
-	    }
-	    for (var i = 0; i < this.buttons.length; i++) {
-	        if (i !== btn)
-	            this.buttons[i].deselect();
-	    }
-	};
-	module.exports = TabBar;
+
 
 /***/ },
 /* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Surface = __webpack_require__(91);
-	var EventHandler = __webpack_require__(85);
-	var RenderController = __webpack_require__(201);
-	function ToggleButton(options) {
-	    this.options = {
-	        content: [
-	            '',
-	            ''
-	        ],
-	        offClasses: ['off'],
-	        onClasses: ['on'],
-	        size: undefined,
-	        outTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        inTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        toggleMode: ToggleButton.TOGGLE,
-	        crossfade: true
-	    };
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.offSurface = new Surface();
-	    this.offSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.OFF)
-	            this.select();
-	    }.bind(this));
-	    this.offSurface.pipe(this._eventOutput);
-	    this.onSurface = new Surface();
-	    this.onSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.ON)
-	            this.deselect();
-	    }.bind(this));
-	    this.onSurface.pipe(this._eventOutput);
-	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
-	    this.deselect();
-	    if (options)
-	        this.setOptions(options);
-	}
-	ToggleButton.OFF = 0;
-	ToggleButton.ON = 1;
-	ToggleButton.TOGGLE = 2;
-	ToggleButton.prototype.select = function select(suppressEvent) {
-	    this.selected = true;
-	    this.arbiter.show(this.onSurface, this.options.inTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('select');
-	    }
+	module.exports = {
+	  Collision: __webpack_require__(225),
+	  Constraint: __webpack_require__(226),
+	  Curve: __webpack_require__(227),
+	  Distance: __webpack_require__(228),
+	  Snap: __webpack_require__(218),
+	  Surface: __webpack_require__(229),
+	  Wall: __webpack_require__(219),
+	  Walls: __webpack_require__(230)
 	};
-	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
-	    this.selected = false;
-	    this.arbiter.show(this.offSurface, this.options.outTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('deselect');
-	    }
-	};
-	ToggleButton.prototype.isSelected = function isSelected() {
-	    return this.selected;
-	};
-	ToggleButton.prototype.setOptions = function setOptions(options) {
-	    if (options.content !== undefined) {
-	        if (!(options.content instanceof Array))
-	            options.content = [
-	                options.content,
-	                options.content
-	            ];
-	        this.options.content = options.content;
-	        this.offSurface.setContent(this.options.content[0]);
-	        this.onSurface.setContent(this.options.content[1]);
-	    }
-	    if (options.offClasses) {
-	        this.options.offClasses = options.offClasses;
-	        this.offSurface.setClasses(this.options.offClasses);
-	    }
-	    if (options.onClasses) {
-	        this.options.onClasses = options.onClasses;
-	        this.onSurface.setClasses(this.options.onClasses);
-	    }
-	    if (options.size !== undefined) {
-	        this.options.size = options.size;
-	        this.onSurface.setSize(this.options.size);
-	        this.offSurface.setSize(this.options.size);
-	    }
-	    if (options.toggleMode !== undefined)
-	        this.options.toggleMode = options.toggleMode;
-	    if (options.outTransition !== undefined)
-	        this.options.outTransition = options.outTransition;
-	    if (options.inTransition !== undefined)
-	        this.options.inTransition = options.inTransition;
-	    if (options.crossfade !== undefined) {
-	        this.options.crossfade = options.crossfade;
-	        this.arbiter.setOptions({ overlap: this.options.crossfade });
-	    }
-	};
-	ToggleButton.prototype.getSize = function getSize() {
-	    return this.options.size;
-	};
-	ToggleButton.prototype.render = function render() {
-	    return this.arbiter.render();
-	};
-	module.exports = ToggleButton;
+
 
 /***/ },
 /* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var KeyCodes = {
-	    0: 48,
-	    1: 49,
-	    2: 50,
-	    3: 51,
-	    4: 52,
-	    5: 53,
-	    6: 54,
-	    7: 55,
-	    8: 56,
-	    9: 57,
-	    a: 97,
-	    b: 98,
-	    c: 99,
-	    d: 100,
-	    e: 101,
-	    f: 102,
-	    g: 103,
-	    h: 104,
-	    i: 105,
-	    j: 106,
-	    k: 107,
-	    l: 108,
-	    m: 109,
-	    n: 110,
-	    o: 111,
-	    p: 112,
-	    q: 113,
-	    r: 114,
-	    s: 115,
-	    t: 116,
-	    u: 117,
-	    v: 118,
-	    w: 119,
-	    x: 120,
-	    y: 121,
-	    z: 122,
-	    A: 65,
-	    B: 66,
-	    C: 67,
-	    D: 68,
-	    E: 69,
-	    F: 70,
-	    G: 71,
-	    H: 72,
-	    I: 73,
-	    J: 74,
-	    K: 75,
-	    L: 76,
-	    M: 77,
-	    N: 78,
-	    O: 79,
-	    P: 80,
-	    Q: 81,
-	    R: 82,
-	    S: 83,
-	    T: 84,
-	    U: 85,
-	    V: 86,
-	    W: 87,
-	    X: 88,
-	    Y: 89,
-	    Z: 90,
-	    ENTER: 13,
-	    LEFT_ARROW: 37,
-	    RIGHT_ARROW: 39,
-	    UP_ARROW: 38,
-	    DOWN_ARROW: 40,
-	    SPACE: 32,
-	    SHIFT: 16,
-	    TAB: 9
+	module.exports = {
+	  Drag: __webpack_require__(49),
+	  Force: __webpack_require__(116),
+	  Repulsion: __webpack_require__(234),
+	  RotationalDrag: __webpack_require__(235),
+	  RotationalSpring: __webpack_require__(236),
+	  Spring: __webpack_require__(40),
+	  VectorField: __webpack_require__(237)
 	};
-	module.exports = KeyCodes;
+
 
 /***/ },
 /* 216 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var FamousEngine = __webpack_require__(150);
-	var _event = 'prerender';
-	var getTime = window.performance && window.performance.now ? function () {
-	    return window.performance.now();
-	} : function () {
-	    return Date.now();
-	};
-	function addTimerFunction(fn) {
-	    FamousEngine.on(_event, fn);
-	    return fn;
-	}
-	function setTimeout(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            FamousEngine.removeListener(_event, callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function setInterval(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            t = getTime();
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function after(fn, numTicks) {
-	    if (numTicks === undefined)
-	        return undefined;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            clear(callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function every(fn, numTicks) {
-	    numTicks = numTicks || 1;
-	    var initial = numTicks;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            numTicks = initial;
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function clear(fn) {
-	    FamousEngine.removeListener(_event, fn);
-	}
-	function debounce(func, wait) {
-	    var timeout;
-	    var ctx;
-	    var timestamp;
-	    var result;
-	    var args;
-	    return function () {
-	        ctx = this;
-	        args = arguments;
-	        timestamp = getTime();
-	        var fn = function () {
-	            var last = getTime - timestamp;
-	            if (last < wait) {
-	                timeout = setTimeout(fn, wait - last);
-	            } else {
-	                timeout = null;
-	                result = func.apply(ctx, args);
-	            }
-	        };
-	        clear(timeout);
-	        timeout = setTimeout(fn, wait);
-	        return result;
-	    };
-	}
 	module.exports = {
-	    setTimeout: setTimeout,
-	    setInterval: setInterval,
-	    debounce: debounce,
-	    after: after,
-	    every: every,
-	    clear: clear
+	  SymplecticEuler: __webpack_require__(115)
 	};
+
 
 /***/ },
 /* 217 */
@@ -64132,8 +64270,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(229);
-	var Vector = __webpack_require__(77);
+	var Constraint = __webpack_require__(226);
+	var Vector = __webpack_require__(38);
 	function Snap(options) {
 	    Constraint.call(this);
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -64244,8 +64382,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(229);
-	var Vector = __webpack_require__(77);
+	var Constraint = __webpack_require__(226);
+	var Vector = __webpack_require__(38);
 	function Wall(options) {
 	    this.options = Object.create(Wall.DEFAULT_OPTIONS);
 	    if (options)
@@ -64398,264 +64536,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Particle = __webpack_require__(78);
-	var Transform = __webpack_require__(76);
-	var Vector = __webpack_require__(77);
-	var Quaternion = __webpack_require__(168);
-	var Matrix = __webpack_require__(167);
-	var Integrator = __webpack_require__(144);
-	function Body(options) {
-	    Particle.call(this, options);
-	    options = options || {};
-	    this.orientation = new Quaternion();
-	    this.angularVelocity = new Vector();
-	    this.angularMomentum = new Vector();
-	    this.torque = new Vector();
-	    if (options.orientation)
-	        this.orientation.set(options.orientation);
-	    if (options.angularVelocity)
-	        this.angularVelocity.set(options.angularVelocity);
-	    if (options.angularMomentum)
-	        this.angularMomentum.set(options.angularMomentum);
-	    if (options.torque)
-	        this.torque.set(options.torque);
-	    this.angularVelocity.w = 0;
-	    this.setMomentsOfInertia();
-	    this.pWorld = new Vector();
-	}
-	Body.DEFAULT_OPTIONS = Particle.DEFAULT_OPTIONS;
-	Body.DEFAULT_OPTIONS.orientation = [
-	    0,
-	    0,
-	    0,
-	    1
-	];
-	Body.DEFAULT_OPTIONS.angularVelocity = [
-	    0,
-	    0,
-	    0
-	];
-	Body.prototype = Object.create(Particle.prototype);
-	Body.prototype.constructor = Body;
-	Body.prototype.isBody = true;
-	Body.prototype.setMass = function setMass() {
-	    Particle.prototype.setMass.apply(this, arguments);
-	    this.setMomentsOfInertia();
-	};
-	Body.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
-	    this.inertia = new Matrix();
-	    this.inverseInertia = new Matrix();
-	};
-	Body.prototype.updateAngularVelocity = function updateAngularVelocity() {
-	    this.angularVelocity.set(this.inverseInertia.vectorMultiply(this.angularMomentum));
-	};
-	Body.prototype.toWorldCoordinates = function toWorldCoordinates(localPosition) {
-	    return this.pWorld.set(this.orientation.rotateVector(localPosition));
-	};
-	Body.prototype.getEnergy = function getEnergy() {
-	    return Particle.prototype.getEnergy.call(this) + 0.5 * this.inertia.vectorMultiply(this.angularVelocity).dot(this.angularVelocity);
-	};
-	Body.prototype.reset = function reset(p, v, q, L) {
-	    Particle.prototype.reset.call(this, p, v);
-	    this.angularVelocity.clear();
-	    this.setOrientation(q || [
-	        1,
-	        0,
-	        0,
-	        0
-	    ]);
-	    this.setAngularMomentum(L || [
-	        0,
-	        0,
-	        0
-	    ]);
-	};
-	Body.prototype.setOrientation = function setOrientation(q) {
-	    this.orientation.set(q);
-	};
-	Body.prototype.setAngularVelocity = function setAngularVelocity(w) {
-	    this.wake();
-	    this.angularVelocity.set(w);
-	};
-	Body.prototype.setAngularMomentum = function setAngularMomentum(L) {
-	    this.wake();
-	    this.angularMomentum.set(L);
-	};
-	Body.prototype.applyForce = function applyForce(force, location) {
-	    Particle.prototype.applyForce.call(this, force);
-	    if (location !== undefined)
-	        this.applyTorque(location.cross(force));
-	};
-	Body.prototype.applyTorque = function applyTorque(torque) {
-	    this.wake();
-	    this.torque.set(this.torque.add(torque));
-	};
-	Body.prototype.getTransform = function getTransform() {
-	    return Transform.thenMove(this.orientation.getTransform(), Transform.getTranslate(Particle.prototype.getTransform.call(this)));
-	};
-	Body.prototype._integrate = function _integrate(dt) {
-	    Particle.prototype._integrate.call(this, dt);
-	    this.integrateAngularMomentum(dt);
-	    this.updateAngularVelocity(dt);
-	    this.integrateOrientation(dt);
-	};
-	Body.prototype.integrateAngularMomentum = function integrateAngularMomentum(dt) {
-	    Integrator.integrateAngularMomentum(this, dt);
-	};
-	Body.prototype.integrateOrientation = function integrateOrientation(dt) {
-	    Integrator.integrateOrientation(this, dt);
-	};
-	module.exports = Body;
-
-/***/ },
-/* 226 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Body = __webpack_require__(225);
-	var Matrix = __webpack_require__(167);
-	function Circle(options) {
-	    options = options || {};
-	    this.setRadius(options.radius || 0);
-	    Body.call(this, options);
-	}
-	Circle.prototype = Object.create(Body.prototype);
-	Circle.prototype.constructor = Circle;
-	Circle.prototype.setRadius = function setRadius(r) {
-	    this.radius = r;
-	    this.size = [
-	        2 * this.radius,
-	        2 * this.radius
-	    ];
-	    this.setMomentsOfInertia();
-	};
-	Circle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
-	    var m = this.mass;
-	    var r = this.radius;
-	    this.inertia = new Matrix([
-	        [
-	            0.25 * m * r * r,
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            0.25 * m * r * r,
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            0.5 * m * r * r
-	        ]
-	    ]);
-	    this.inverseInertia = new Matrix([
-	        [
-	            4 / (m * r * r),
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            4 / (m * r * r),
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            2 / (m * r * r)
-	        ]
-	    ]);
-	};
-	module.exports = Circle;
-
-/***/ },
-/* 227 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Body = __webpack_require__(225);
-	var Matrix = __webpack_require__(167);
-	function Rectangle(options) {
-	    options = options || {};
-	    this.size = options.size || [
-	        0,
-	        0
-	    ];
-	    Body.call(this, options);
-	}
-	Rectangle.prototype = Object.create(Body.prototype);
-	Rectangle.prototype.constructor = Rectangle;
-	Rectangle.prototype.setSize = function setSize(size) {
-	    this.size = size;
-	    this.setMomentsOfInertia();
-	};
-	Rectangle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
-	    var m = this.mass;
-	    var w = this.size[0];
-	    var h = this.size[1];
-	    this.inertia = new Matrix([
-	        [
-	            m * h * h / 12,
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            m * w * w / 12,
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            m * (w * w + h * h) / 12
-	        ]
-	    ]);
-	    this.inverseInertia = new Matrix([
-	        [
-	            12 / (m * h * h),
-	            0,
-	            0
-	        ],
-	        [
-	            0,
-	            12 / (m * w * w),
-	            0
-	        ],
-	        [
-	            0,
-	            0,
-	            12 / (m * (w * w + h * h))
-	        ]
-	    ]);
-	};
-	module.exports = Rectangle;
-
-/***/ },
-/* 228 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Constraint = __webpack_require__(229);
-	var Vector = __webpack_require__(77);
+	var Constraint = __webpack_require__(226);
+	var Vector = __webpack_require__(38);
 	function Collision(options) {
 	    this.options = Object.create(Collision.DEFAULT_OPTIONS);
 	    if (options)
@@ -64736,7 +64618,7 @@
 	module.exports = Collision;
 
 /***/ },
-/* 229 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64746,7 +64628,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var EventHandler = __webpack_require__(85);
+	var EventHandler = __webpack_require__(46);
 	function Constraint() {
 	    this.options = this.options || {};
 	    this._eventOutput = new EventHandler();
@@ -64763,7 +64645,7 @@
 	module.exports = Constraint;
 
 /***/ },
-/* 230 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64773,8 +64655,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(229);
-	var Vector = __webpack_require__(77);
+	var Constraint = __webpack_require__(226);
+	var Vector = __webpack_require__(38);
 	function Curve(options) {
 	    this.options = Object.create(Curve.DEFAULT_OPTIONS);
 	    if (options)
@@ -64846,7 +64728,7 @@
 	module.exports = Curve;
 
 /***/ },
-/* 231 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64856,8 +64738,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(229);
-	var Vector = __webpack_require__(77);
+	var Constraint = __webpack_require__(226);
+	var Vector = __webpack_require__(38);
 	function Distance(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
 	    if (options)
@@ -64961,7 +64843,7 @@
 	module.exports = Distance;
 
 /***/ },
-/* 232 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -64971,8 +64853,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(229);
-	var Vector = __webpack_require__(77);
+	var Constraint = __webpack_require__(226);
+	var Vector = __webpack_require__(38);
 	function Surface(options) {
 	    this.options = Object.create(Surface.DEFAULT_OPTIONS);
 	    if (options)
@@ -65034,7 +64916,7 @@
 	module.exports = Surface;
 
 /***/ },
-/* 233 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65044,9 +64926,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(229);
+	var Constraint = __webpack_require__(226);
 	var Wall = __webpack_require__(219);
-	var Vector = __webpack_require__(77);
+	var Vector = __webpack_require__(38);
 	function Walls(options) {
 	    this.options = Object.create(Walls.DEFAULT_OPTIONS);
 	    if (options)
@@ -65215,6 +65097,262 @@
 	module.exports = Walls;
 
 /***/ },
+/* 231 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Particle = __webpack_require__(39);
+	var Transform = __webpack_require__(37);
+	var Vector = __webpack_require__(38);
+	var Quaternion = __webpack_require__(172);
+	var Matrix = __webpack_require__(171);
+	var Integrator = __webpack_require__(115);
+	function Body(options) {
+	    Particle.call(this, options);
+	    options = options || {};
+	    this.orientation = new Quaternion();
+	    this.angularVelocity = new Vector();
+	    this.angularMomentum = new Vector();
+	    this.torque = new Vector();
+	    if (options.orientation)
+	        this.orientation.set(options.orientation);
+	    if (options.angularVelocity)
+	        this.angularVelocity.set(options.angularVelocity);
+	    if (options.angularMomentum)
+	        this.angularMomentum.set(options.angularMomentum);
+	    if (options.torque)
+	        this.torque.set(options.torque);
+	    this.angularVelocity.w = 0;
+	    this.setMomentsOfInertia();
+	    this.pWorld = new Vector();
+	}
+	Body.DEFAULT_OPTIONS = Particle.DEFAULT_OPTIONS;
+	Body.DEFAULT_OPTIONS.orientation = [
+	    0,
+	    0,
+	    0,
+	    1
+	];
+	Body.DEFAULT_OPTIONS.angularVelocity = [
+	    0,
+	    0,
+	    0
+	];
+	Body.prototype = Object.create(Particle.prototype);
+	Body.prototype.constructor = Body;
+	Body.prototype.isBody = true;
+	Body.prototype.setMass = function setMass() {
+	    Particle.prototype.setMass.apply(this, arguments);
+	    this.setMomentsOfInertia();
+	};
+	Body.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
+	    this.inertia = new Matrix();
+	    this.inverseInertia = new Matrix();
+	};
+	Body.prototype.updateAngularVelocity = function updateAngularVelocity() {
+	    this.angularVelocity.set(this.inverseInertia.vectorMultiply(this.angularMomentum));
+	};
+	Body.prototype.toWorldCoordinates = function toWorldCoordinates(localPosition) {
+	    return this.pWorld.set(this.orientation.rotateVector(localPosition));
+	};
+	Body.prototype.getEnergy = function getEnergy() {
+	    return Particle.prototype.getEnergy.call(this) + 0.5 * this.inertia.vectorMultiply(this.angularVelocity).dot(this.angularVelocity);
+	};
+	Body.prototype.reset = function reset(p, v, q, L) {
+	    Particle.prototype.reset.call(this, p, v);
+	    this.angularVelocity.clear();
+	    this.setOrientation(q || [
+	        1,
+	        0,
+	        0,
+	        0
+	    ]);
+	    this.setAngularMomentum(L || [
+	        0,
+	        0,
+	        0
+	    ]);
+	};
+	Body.prototype.setOrientation = function setOrientation(q) {
+	    this.orientation.set(q);
+	};
+	Body.prototype.setAngularVelocity = function setAngularVelocity(w) {
+	    this.wake();
+	    this.angularVelocity.set(w);
+	};
+	Body.prototype.setAngularMomentum = function setAngularMomentum(L) {
+	    this.wake();
+	    this.angularMomentum.set(L);
+	};
+	Body.prototype.applyForce = function applyForce(force, location) {
+	    Particle.prototype.applyForce.call(this, force);
+	    if (location !== undefined)
+	        this.applyTorque(location.cross(force));
+	};
+	Body.prototype.applyTorque = function applyTorque(torque) {
+	    this.wake();
+	    this.torque.set(this.torque.add(torque));
+	};
+	Body.prototype.getTransform = function getTransform() {
+	    return Transform.thenMove(this.orientation.getTransform(), Transform.getTranslate(Particle.prototype.getTransform.call(this)));
+	};
+	Body.prototype._integrate = function _integrate(dt) {
+	    Particle.prototype._integrate.call(this, dt);
+	    this.integrateAngularMomentum(dt);
+	    this.updateAngularVelocity(dt);
+	    this.integrateOrientation(dt);
+	};
+	Body.prototype.integrateAngularMomentum = function integrateAngularMomentum(dt) {
+	    Integrator.integrateAngularMomentum(this, dt);
+	};
+	Body.prototype.integrateOrientation = function integrateOrientation(dt) {
+	    Integrator.integrateOrientation(this, dt);
+	};
+	module.exports = Body;
+
+/***/ },
+/* 232 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Body = __webpack_require__(231);
+	var Matrix = __webpack_require__(171);
+	function Circle(options) {
+	    options = options || {};
+	    this.setRadius(options.radius || 0);
+	    Body.call(this, options);
+	}
+	Circle.prototype = Object.create(Body.prototype);
+	Circle.prototype.constructor = Circle;
+	Circle.prototype.setRadius = function setRadius(r) {
+	    this.radius = r;
+	    this.size = [
+	        2 * this.radius,
+	        2 * this.radius
+	    ];
+	    this.setMomentsOfInertia();
+	};
+	Circle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
+	    var m = this.mass;
+	    var r = this.radius;
+	    this.inertia = new Matrix([
+	        [
+	            0.25 * m * r * r,
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            0.25 * m * r * r,
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            0.5 * m * r * r
+	        ]
+	    ]);
+	    this.inverseInertia = new Matrix([
+	        [
+	            4 / (m * r * r),
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            4 / (m * r * r),
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            2 / (m * r * r)
+	        ]
+	    ]);
+	};
+	module.exports = Circle;
+
+/***/ },
+/* 233 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Body = __webpack_require__(231);
+	var Matrix = __webpack_require__(171);
+	function Rectangle(options) {
+	    options = options || {};
+	    this.size = options.size || [
+	        0,
+	        0
+	    ];
+	    Body.call(this, options);
+	}
+	Rectangle.prototype = Object.create(Body.prototype);
+	Rectangle.prototype.constructor = Rectangle;
+	Rectangle.prototype.setSize = function setSize(size) {
+	    this.size = size;
+	    this.setMomentsOfInertia();
+	};
+	Rectangle.prototype.setMomentsOfInertia = function setMomentsOfInertia() {
+	    var m = this.mass;
+	    var w = this.size[0];
+	    var h = this.size[1];
+	    this.inertia = new Matrix([
+	        [
+	            m * h * h / 12,
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            m * w * w / 12,
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            m * (w * w + h * h) / 12
+	        ]
+	    ]);
+	    this.inverseInertia = new Matrix([
+	        [
+	            12 / (m * h * h),
+	            0,
+	            0
+	        ],
+	        [
+	            0,
+	            12 / (m * w * w),
+	            0
+	        ],
+	        [
+	            0,
+	            0,
+	            12 / (m * (w * w + h * h))
+	        ]
+	    ]);
+	};
+	module.exports = Rectangle;
+
+/***/ },
 /* 234 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -65225,8 +65363,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(145);
-	var Vector = __webpack_require__(77);
+	var Force = __webpack_require__(116);
+	var Vector = __webpack_require__(38);
 	function Repulsion(options) {
 	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
 	    if (options)
@@ -65319,7 +65457,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Drag = __webpack_require__(88);
+	var Drag = __webpack_require__(49);
 	function RotationalDrag(options) {
 	    Drag.call(this, options);
 	}
@@ -65364,9 +65502,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(145);
-	var Spring = __webpack_require__(79);
-	var Quaternion = __webpack_require__(168);
+	var Force = __webpack_require__(116);
+	var Spring = __webpack_require__(40);
+	var Quaternion = __webpack_require__(172);
 	function RotationalSpring(options) {
 	    Spring.call(this, options);
 	}
@@ -65463,8 +65601,8 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(145);
-	var Vector = __webpack_require__(77);
+	var Force = __webpack_require__(116);
+	var Vector = __webpack_require__(38);
 	function VectorField(options) {
 	    Force.call(this);
 	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);

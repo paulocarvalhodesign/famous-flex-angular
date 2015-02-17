@@ -18,6 +18,7 @@
     "fs": "0.0.2",
     "glob": "^4.3.5",
     "gulp": "^3.8.11",
+    "gulp-chug": "^0.4.2",
     "gulp-concat": "^2.5.0",
     "gulp-util": "^3.0.3",
     "gulp-webpack": "^1.2.0",

@@ -1,29 +1,38 @@
 var webpack = require('webpack');
 var AngularPlugin = require('angular-webpack-plugin');
 var path = require('path');
+var globule = require('globule');
 
 var node_dir = __dirname + '/node_modules';
 
+String.prototype.hypthenatedToCamelCase = function() {
+  return this.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); });
+}
+
+// modules/dist/hypthenated-name.js is aliased with camelcase(hypthenated-name)
+var AddModuleAliases = function(aliases) {
+  return globule.find('modules/*/dist/*.js').reduce(function(obj,x) {obj[x.split('/').pop().split('.js').shift().hypthenatedToCamelCase()] = x; return obj;},aliases || {});
+};
+
+var aliases = {
+	'bootstrap-webpack': node_dir + '/bootstrap-webpack',
+        'famous': node_dir + '/famous',
+        'famous-angular': node_dir + '/famous-angular/dist/famous-angular.js',
+        'famous.angular': 'famous-angular',
+        'famous-flex': node_dir + '/famous-flex/src'
+}
+
 module.exports = {
-  entry: ['./app.js'],
+  entry: ['./modules/app/dist/app.js'],
   output: {
-    path: __dirname,
+    path: __dirname + '/dist',
     filename: 'bundle.js'
   },
   resolve: {
     root: [
-	path.resolve('.'),
-	path.resolve('module/dist'),
-	path.resolve('node_modules'),
-	path.resolve('bower_components')
+	path.resolve('.')
     ],
-    alias: {
-	'bootstrap-webpack': node_dir + '/bootstrap-webpack',
-	'famous': node_dir + '/famous',
-	'famous-angular': node_dir + '/famous-angular/dist/famous-angular.js',
-	'famous.angular': 'famous-angular',
-	'famous-flex': node_dir + '/famous-flex/src'
-    }
+    alias: AddModuleAliases(aliases)
   },
   module: {
     loaders: [

@@ -4,6 +4,7 @@ var gutil = require("gulp-util");
 var concat = require('gulp-concat');
 var webpack = require('gulp-webpack');
 var runSequence = require('run-sequence');
+var chug = require('gulp-chug');
 
 gulp.task('registerFlexwithFamous', function() {
   var stack = [];
@@ -28,13 +29,11 @@ gulp.task('registerFlexwithFamous', function() {
 });
  
 gulp.task('concatenate', function() {
-  return gulp.src(['./module/module.js','./module/directives/**/*.js','./module/services/**/*.js'])
-    .pipe(concat('famousflexangular.js', {newLine: '\n'}))
-    .pipe(gulp.dest('./module/dist/'));
+  return gulp.src('./modules/gulpfile.js').pipe(chug())
 });
 
 gulp.task('webpack', function() {
-  return gulp.src('app.js')
+  return gulp.src('./modules/app/dist/app.js')
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('dist/'));
 });
