@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>My project</title>
+<link rel="stylesheet" href="../bower_components/famous-angular/dist/famous-angular.css">
+</head>
+<body>
+<div ng-controller="FlexScrollViewCtrl">
+{{myOptions}}
+<button ng-click="changeDirection()">Change Direction</button>
+<fa-app resizable ng-style="{height: windowHeight + 'px', top: '10px'}">
+  <ffa-flex-scroll-view fa-options="myOptions">
+    <fa-modifier ng-repeat="grid in grids" fa-size="[100,100]">
+      <fa-surface fa-background-color="grid.bgColor">{{windowHeight}}</fa-surface>
+    </fa-modifier>
+  </ffa-flex-scroll-view>
+</fa-app>
+</div>
+<script src="bundle.js"></script>
+</body>
+</html>
