@@ -12,8 +12,9 @@ angular.module('famousFlexAngular')
 		$scope.options = $scope.$eval($attrs.faOptions) || {};
 		$scope.$watch('options', function() {
 			alert('options changed. direction =' + $scope.options.direction);
-			//$scope.isolate.renderNode.setDirection($scope.options.direction);
+			$scope.postma.setDirection($scope.options.direction);
 			//console.log(Object.keys($scope.isolate));//.renderNode);
+			//console.log($scope.postma);
 		},true); // deep watch.
         },
 	compile: function(tElem, tAttrs, transclude) {
@@ -26,6 +27,7 @@ angular.module('famousFlexAngular')
 		
 		var FlexScrollView = $famous['famous-flex/FlexScrollView'];
 	 	isolate.renderNode = new FlexScrollView(options);
+		scope.postma = isolate.renderNode;
 			ffaFlexScrollViewService.setScrollView(isolate.renderNode);
 
 			$famousDecorator.sequenceWith(scope,ffaFlexScrollViewService.push,ffaFlexScrollViewService.remove,ffaFlexScrollViewService.push);
