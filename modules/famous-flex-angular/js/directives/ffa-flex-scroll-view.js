@@ -11,7 +11,7 @@ angular.module('famousFlexAngular')
 		//},true);
 		$scope.options = $scope.$eval($attrs.faOptions) || {};
 		$scope.$watch('options', function() {
-			alert('options changed. direction =' + $scope.options.direction);
+			console.log('options changed. direction =' + $scope.options.direction);
 			$scope.postma.setDirection($scope.options.direction);
 			//console.log(Object.keys($scope.isolate));//.renderNode);
 			//console.log($scope.postma);

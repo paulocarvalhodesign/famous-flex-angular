@@ -203,9 +203,10 @@ angular.module('famousFlexAngular')
 		//},true);
 		$scope.options = $scope.$eval($attrs.faOptions) || {};
 		$scope.$watch('options', function() {
-			alert('options changed. direction =' + $scope.options.direction);
-			//$scope.isolate.renderNode.setDirection($scope.options.direction);
-			console.log(Object.keys($scope.isolate));//.renderNode);
+			console.log('options changed. direction =' + $scope.options.direction);
+			$scope.postma.setDirection($scope.options.direction);
+			//console.log(Object.keys($scope.isolate));//.renderNode);
+			//console.log($scope.postma);
 		},true); // deep watch.
         },
 	compile: function(tElem, tAttrs, transclude) {
@@ -218,7 +219,7 @@ angular.module('famousFlexAngular')
 		
 		var FlexScrollView = $famous['famous-flex/FlexScrollView'];
 	 	isolate.renderNode = new FlexScrollView(options);
-		alert(isolate.renderNode.id);
+		scope.postma = isolate.renderNode;
 			ffaFlexScrollViewService.setScrollView(isolate.renderNode);
 
 			$famousDecorator.sequenceWith(scope,ffaFlexScrollViewService.push,ffaFlexScrollViewService.remove,ffaFlexScrollViewService.push);
@@ -396,7 +397,7 @@ angular.module('famousFlexAngular')
    			var _createButton = function(content) {
         			return new Surface({
             				size: [50, undefined],
-            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
+            				content: '<button type="button" class="btn btn-danger">' + content + '</button>'
         			});
     			};
 
@@ -414,22 +415,39 @@ angular.module('famousFlexAngular')
 				},
 				post: function(scope,element,attrs) {
                 			var isolate = $famousDecorator.ensureIsolate(scope);
-	
+					
 					transclude(scope, function(clone) {
-						var title = clone.find('div.title');
-						var buttons = clone.find('button.left');
+						var divs = clone.find('div');
+						var title;
+						angular.forEach(divs, function(div) {
+						  switch(div.className) {
+						    case 'title':
+						      title = _createTitle(div.innerHTML);
+						      break;
+						  }
+						});
+						var buttons = clone.find('button');
 						var rightItems = [];
+						var leftItems = [];
+						console.log(clone);
 						console.log(title);
 						angular.forEach(buttons, function(button) {
-							rightItems.push(_createButton('hello'));//button);
+							switch(button.className) {
+							  case 'left':
+							    leftItems.push(_createButton(button.innerHTML));
+							    break;
+							  case 'right':
+							    rightItems.push(_createButton(button.innerHTML));
+							    break;
+							}
 						});
                 				var isolate = $famousDecorator.ensureIsolate(scope);
 						console.log(rightItems);
-						console.log(_createTitle());
 						isolate.renderNode.setDataSource({
 							background: _createBackground(),
-							title: _createTitle(),
-							rightItems: rightItems
+							title: title,
+							rightItems: rightItems,
+							leftItems: leftItems
 						});
 					});
 
@@ -449,6 +467,9 @@ angular.module('famousFlexAngular')
             $scope.windowHeight = $window.innerHeight;
             $scope.windowWidth = $window.innerWidth;
           };
+
+	  $scope.initializeWindowSize();
+	  $scope.$apply();
         
           angular.element($window).bind('resize', function() {
             $scope.initializeWindowSize();
