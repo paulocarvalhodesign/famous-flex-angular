@@ -9,9 +9,10 @@
 <body>
 <div ng-controller="TabBarCtrl">
 <!--fa-app resizable ng-style="{height: windowHeight + 'px', top: '100px'}"-->
+<button ng-click="addItem()">Add Item</button>{{items}}
 <fa-app style="height:100px;">
-  <ffa-tab-bar style="height:100px" fa-options="myTabBarOptions">
-    <div ng-repeat="item in items" class="item">{{item}}</div>
+  <ffa-tab-bar style="height:100px" radio="items" fa-options="myTabBarOptions">
+    <!--div ng-repeat="item in items" class="item">{{item}}</div-->
   </ffa-tab-bar>
 </fa-app>
 </div>

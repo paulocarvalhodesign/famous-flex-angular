@@ -75,6 +75,9 @@ angular.module('app',['famousFlexAngular'])
         selectedItemOverlay: true
     }
   };
-
+  
   $scope.items = ['One','Two','Three','Four'];
+  $scope.addItem = function() {
+	$scope.items.push($scope.items.length);
+  }
 }]);
