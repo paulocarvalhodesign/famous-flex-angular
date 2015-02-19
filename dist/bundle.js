@@ -107,6 +107,30 @@
 
 
 	    $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}, {bgColor: "pink"}, {bgColor: "blue"}];
+	}])
+	.controller('DatePickerCtrl', ['$scope', function($scope) {
+	  $scope.myDatePickerOptions = {
+	    date: new Date(),
+	    wheelLayout: {
+	      itemSize: 100,
+	      diameter: 300
+	    },
+	    createRenderables: {
+	        top: true,
+	        middle: true,
+	        bottom: true
+	    }
+	  };
+	}])
+	.controller('TabBarCtrl', ['$scope', function($scope) {
+	  $scope.myTabBarOptions = {
+	    createRenderables: {
+	        background: true,
+	        selectedItemOverlay: true
+	    }
+	  };
+
+	  $scope.items = ['One','Two','Three','Four'];
 	}]);
 	
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
@@ -309,6 +333,47 @@
 				
 
 	angular.module('famousFlexAngular')
+	.directive('ffaDatePicker', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+	  return {
+		template: '<div></div>',
+		restrict: 'E',
+		transclude: true,
+		scope: true,
+		compile: function(tElem, tAttrs, transclude) {
+		  var mySelection = 1;
+
+		  return {
+		    pre: function(scope, element, attrs) {
+	            	var isolate = $famousDecorator.ensureIsolate(scope);
+	            	var options = scope.$eval(attrs.faOptions) || {};
+
+			var DatePicker = $famous['famous-flex/widgets/DatePicker'];
+		 	isolate.renderNode = new DatePicker(options);
+
+			isolate.renderNode.setComponents([
+			  new DatePicker.Component.FullDay(),
+			  new DatePicker.Component.Hour(),
+			  new DatePicker.Component.Minute()
+			]);
+
+	            	$famousDecorator.addRole('renderable',isolate);
+	            	isolate.show();
+			console.log(isolate);
+
+		    	},
+		    post: function(scope,element,attrs) {
+		       		var isolate = $famousDecorator.ensureIsolate(scope);
+	            	    	transclude(scope, function(clone) {
+	              			element.find('div').append(clone);
+	            		});
+	            	    	$famousDecorator.registerChild(scope, element, isolate);
+		    }
+		  }
+		}
+	  }
+	}]);
+
+	angular.module('famousFlexAngular')
 	.directive('ffaFlexScrollView', ['$famous', '$famousDecorator', 'ffaFlexScrollViewService', function($famous, $famousDecorator, ffaFlexScrollViewService) {
 	  return {
 		template: '<div></div>',
@@ -321,9 +386,10 @@
 			//},true);
 			$scope.options = $scope.$eval($attrs.faOptions) || {};
 			$scope.$watch('options', function() {
-				alert('options changed. direction =' + $scope.options.direction);
-				//$scope.isolate.renderNode.setDirection($scope.options.direction);
-				console.log(Object.keys($scope.isolate));//.renderNode);
+				console.log('options changed. direction =' + $scope.options.direction);
+				$scope.postma.setDirection($scope.options.direction);
+				//console.log(Object.keys($scope.isolate));//.renderNode);
+				//console.log($scope.postma);
 			},true); // deep watch.
 	        },
 		compile: function(tElem, tAttrs, transclude) {
@@ -336,7 +402,7 @@
 			
 			var FlexScrollView = $famous['famous-flex/FlexScrollView'];
 		 	isolate.renderNode = new FlexScrollView(options);
-			alert(isolate.renderNode.id);
+			scope.postma = isolate.renderNode;
 				ffaFlexScrollViewService.setScrollView(isolate.renderNode);
 
 				$famousDecorator.sequenceWith(scope,ffaFlexScrollViewService.push,ffaFlexScrollViewService.remove,ffaFlexScrollViewService.push);
@@ -514,7 +580,7 @@
 	   			var _createButton = function(content) {
 	        			return new Surface({
 	            				size: [50, undefined],
-	            				content: '<button type="button" class="btn btn-default">' + content + '</button>'
+	            				content: '<button type="button" class="btn btn-danger">' + content + '</button>'
 	        			});
 	    			};
 
@@ -532,22 +598,39 @@
 					},
 					post: function(scope,element,attrs) {
 	                			var isolate = $famousDecorator.ensureIsolate(scope);
-		
+						
 						transclude(scope, function(clone) {
-							var title = clone.find('div.title');
-							var buttons = clone.find('button.left');
+							var divs = clone.find('div');
+							var title;
+							angular.forEach(divs, function(div) {
+							  switch(div.className) {
+							    case 'title':
+							      title = _createTitle(div.innerHTML);
+							      break;
+							  }
+							});
+							var buttons = clone.find('button');
 							var rightItems = [];
+							var leftItems = [];
+							console.log(clone);
 							console.log(title);
 							angular.forEach(buttons, function(button) {
-								rightItems.push(_createButton('hello'));//button);
+								switch(button.className) {
+								  case 'left':
+								    leftItems.push(_createButton(button.innerHTML));
+								    break;
+								  case 'right':
+								    rightItems.push(_createButton(button.innerHTML));
+								    break;
+								}
 							});
 	                				var isolate = $famousDecorator.ensureIsolate(scope);
 							console.log(rightItems);
-							console.log(_createTitle());
 							isolate.renderNode.setDataSource({
 								background: _createBackground(),
-								title: _createTitle(),
-								rightItems: rightItems
+								title: title,
+								rightItems: rightItems,
+								leftItems: leftItems
 							});
 						});
 
@@ -561,12 +644,81 @@
 				
 
 	angular.module('famousFlexAngular')
+	.directive('ffaTabBar', ['$famous', '$famousDecorator', function($famous, $famousDecorator) {
+
+	  var tabBar;
+
+	  return {
+		template: '<div></div>',
+		restrict: 'E',
+		transclude: true,
+		scope: true,
+		controller: ['$scope','$element', '$attrs', '$transclude', function($scope,$element,$attrs,$transclude) {
+			//$transclude(function(clone) {
+			//	console.log($element);
+			//});
+		}], 
+		compile: function(tElem, tAttrs, transclude) {
+		  return {
+		    pre: function(scope, element, attrs) {
+	            	var isolate = $famousDecorator.ensureIsolate(scope);
+	            	var options = scope.$eval(attrs.faOptions) || {};
+
+			var TabBar = $famous['famous-flex/widgets/TabBar'];
+		 	isolate.renderNode = new TabBar(options);
+			tabBar = isolate.renderNode;
+
+			isolate.renderNode.setItems([
+				'one', 'two', 'three'
+			]);
+
+	            	$famousDecorator.addRole('renderable',isolate);
+	            	isolate.show();
+			console.log(isolate);
+
+		    	},
+		    post: function(scope,element,attrs) {
+		       		var isolate = $famousDecorator.ensureIsolate(scope);
+	            	    	transclude(scope, function(clone) {
+	              			element.find('div').append(clone);
+					//console.log(jQuery(element).filter('div.item'));
+					var temp = element.children();
+					var items = temp[0].children;
+					for (item in items) {
+						console.log(item);
+					};
+					console.log(items.length);
+					console.log(items.item());
+					//console.log(jQuery(element).find('div.item'));
+					//console.log(angular.element(element).find('div').children());
+					//console.log(angular.element(element.find('div')));
+					//var temp = element.find('div');
+					//console.log(jQuery(clone).filter(":div"));
+					//var temp = element.find('div')[0];
+					//console.log(clone.filter(':div')); 
+					//console.log(jQuery(clone).find('div'));//filter(':div'));
+					//console.log(jQuery(clone).find('div'));
+					//console.log(element.find('div')[0].children());
+					//console.log(clone);
+					
+	            		});
+	            	    	$famousDecorator.registerChild(scope, element, isolate);
+		    }
+		  }
+		}
+	  }
+	}]);
+
+	angular.module('famousFlexAngular')
 	.directive('resizable', function($window) {
 	        return function($scope) {
 	          $scope.initializeWindowSize = function() {
 	            $scope.windowHeight = $window.innerHeight;
 	            $scope.windowWidth = $window.innerWidth;
 	          };
+
+		  $scope.initializeWindowSize();
+		  $scope.$apply();
 	        
 	          angular.element($window).bind('resize', function() {
 	            $scope.initializeWindowSize();
@@ -26887,6 +27039,11 @@
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
+	__webpack_require__(90);
+	__webpack_require__(91);
+	__webpack_require__(92);
+	__webpack_require__(93);
+	__webpack_require__(94);
 	__webpack_require__(95);
 	__webpack_require__(96);
 	__webpack_require__(97);
@@ -26894,11 +27051,6 @@
 	__webpack_require__(99);
 	__webpack_require__(100);
 	__webpack_require__(101);
-	__webpack_require__(102);
-	__webpack_require__(103);
-	__webpack_require__(104);
-	__webpack_require__(105);
-	__webpack_require__(106);
 
 /***/ },
 /* 6 */
@@ -40946,8 +41098,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var View = __webpack_require__(50);
-	    var Surface = __webpack_require__(49);
+	    var View = __webpack_require__(49);
+	    var Surface = __webpack_require__(50);
 	    var Utility = __webpack_require__(41);
 	    var ContainerSurface = __webpack_require__(45);
 	    var LayoutController = __webpack_require__(10);
@@ -41365,7 +41517,7 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Surface = __webpack_require__(49);
+	    var Surface = __webpack_require__(50);
 	    var EventHandler = __webpack_require__(44);
 
 	    /**
@@ -41733,8 +41885,8 @@
 	!(__WEBPACK_AMD_DEFINE_RESULT__ = function(require, exports, module) {
 
 	    // import dependencies
-	    var Surface = __webpack_require__(49);
-	    var View = __webpack_require__(50);
+	    var Surface = __webpack_require__(50);
+	    var View = __webpack_require__(49);
 	    var LayoutController = __webpack_require__(10);
 	    var TabBarLayout = __webpack_require__(25);
 
@@ -42018,11 +42170,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  core: __webpack_require__(90),
-	  events: __webpack_require__(91),
-	  inputs: __webpack_require__(92),
-	  math: __webpack_require__(93),
-	  modifiers: __webpack_require__(94),
+	  core: __webpack_require__(102),
+	  events: __webpack_require__(103),
+	  inputs: __webpack_require__(104),
+	  math: __webpack_require__(105),
+	  modifiers: __webpack_require__(106),
 	  physics: __webpack_require__(107),
 	  surfaces: __webpack_require__(108),
 	  transitions: __webpack_require__(109),
@@ -44253,7 +44405,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
+	var Surface = __webpack_require__(50);
 	var Context = __webpack_require__(117);
 	function ContainerSurface(options) {
 	    Surface.call(this, options);
@@ -44308,7 +44460,7 @@
 	 */
 	var Context = __webpack_require__(117);
 	var Transform = __webpack_require__(35);
-	var Surface = __webpack_require__(49);
+	var Surface = __webpack_require__(50);
 	function Group(options) {
 	    Surface.call(this, options);
 	    this._shouldRecalculateSize = false;
@@ -44574,7 +44726,55 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var ElementOutput = __webpack_require__(120);
+	var EventHandler = __webpack_require__(44);
+	var OptionsManager = __webpack_require__(34);
+	var RenderNode = __webpack_require__(120);
+	var Utility = __webpack_require__(41);
+	function View(options) {
+	    this._node = new RenderNode();
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.options = Utility.clone(this.constructor.DEFAULT_OPTIONS || View.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	}
+	View.DEFAULT_OPTIONS = {};
+	View.prototype.getOptions = function getOptions(key) {
+	    return this._optionsManager.getOptions(key);
+	};
+	View.prototype.setOptions = function setOptions(options) {
+	    this._optionsManager.patch(options);
+	};
+	View.prototype.add = function add() {
+	    return this._node.add.apply(this._node, arguments);
+	};
+	View.prototype._add = View.prototype.add;
+	View.prototype.render = function render() {
+	    return this._node.render();
+	};
+	View.prototype.getSize = function getSize() {
+	    if (this._node && this._node.getSize) {
+	        return this._node.getSize.apply(this._node, arguments) || this.options.size;
+	    } else
+	        return this.options.size;
+	};
+	module.exports = View;
+
+/***/ },
+/* 50 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var ElementOutput = __webpack_require__(121);
 	function Surface(options) {
 	    ElementOutput.call(this);
 	    this.options = {};
@@ -44878,54 +45078,6 @@
 	module.exports = Surface;
 
 /***/ },
-/* 50 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(44);
-	var OptionsManager = __webpack_require__(34);
-	var RenderNode = __webpack_require__(121);
-	var Utility = __webpack_require__(41);
-	function View(options) {
-	    this._node = new RenderNode();
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.options = Utility.clone(this.constructor.DEFAULT_OPTIONS || View.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	}
-	View.DEFAULT_OPTIONS = {};
-	View.prototype.getOptions = function getOptions(key) {
-	    return this._optionsManager.getOptions(key);
-	};
-	View.prototype.setOptions = function setOptions(options) {
-	    this._optionsManager.patch(options);
-	};
-	View.prototype.add = function add() {
-	    return this._node.add.apply(this._node, arguments);
-	};
-	View.prototype._add = View.prototype.add;
-	View.prototype.render = function render() {
-	    return this._node.render();
-	};
-	View.prototype.getSize = function getSize() {
-	    if (this._node && this._node.getSize) {
-	        return this._node.getSize.apply(this._node, arguments) || this.options.size;
-	    } else
-	        return this.options.size;
-	};
-	module.exports = View;
-
-/***/ },
 /* 51 */,
 /* 52 */,
 /* 53 */,
@@ -44966,87 +45118,6 @@
 /* 88 */,
 /* 89 */,
 /* 90 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Context: __webpack_require__(117),
-	  ElementAllocator: __webpack_require__(165),
-	  ElementOutput: __webpack_require__(120),
-	  Engine: __webpack_require__(119),
-	  Entity: __webpack_require__(42),
-	  EventEmitter: __webpack_require__(118),
-	  EventHandler: __webpack_require__(44),
-	  Group: __webpack_require__(46),
-	  Modifier: __webpack_require__(166),
-	  OptionsManager: __webpack_require__(34),
-	  RenderNode: __webpack_require__(121),
-	  Scene: __webpack_require__(167),
-	  SpecParser: __webpack_require__(168),
-	  Surface: __webpack_require__(49),
-	  Transform: __webpack_require__(35),
-	  View: __webpack_require__(50),
-	  ViewSequence: __webpack_require__(43)
-	};
-
-
-/***/ },
-/* 91 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  EventArbiter: __webpack_require__(162),
-	  EventFilter: __webpack_require__(163),
-	  EventMapper: __webpack_require__(164)
-	};
-
-
-/***/ },
-/* 92 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Accumulator: __webpack_require__(151),
-	  DesktopEmulationMode: __webpack_require__(152),
-	  FastClick: __webpack_require__(153),
-	  GenericSync: __webpack_require__(154),
-	  MouseSync: __webpack_require__(155),
-	  PinchSync: __webpack_require__(156),
-	  RotateSync: __webpack_require__(157),
-	  ScaleSync: __webpack_require__(158),
-	  ScrollSync: __webpack_require__(48),
-	  TouchSync: __webpack_require__(159),
-	  TouchTracker: __webpack_require__(160),
-	  TwoFingerSync: __webpack_require__(161)
-	};
-
-
-/***/ },
-/* 93 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Matrix: __webpack_require__(169),
-	  Quaternion: __webpack_require__(170),
-	  Random: __webpack_require__(171),
-	  Utilities: __webpack_require__(172),
-	  Vector: __webpack_require__(36)
-	};
-
-
-/***/ },
-/* 94 */
-/***/ function(module, exports, __webpack_require__) {
-
-	module.exports = {
-	  Draggable: __webpack_require__(173),
-	  Fader: __webpack_require__(174),
-	  ModifierChain: __webpack_require__(175),
-	  StateModifier: __webpack_require__(176)
-	};
-
-
-/***/ },
-/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45114,7 +45185,7 @@
 
 
 /***/ },
-/* 96 */
+/* 91 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45217,7 +45288,7 @@
 
 
 /***/ },
-/* 97 */
+/* 92 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45342,7 +45413,7 @@
 
 
 /***/ },
-/* 98 */
+/* 93 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45588,7 +45659,7 @@
 
 
 /***/ },
-/* 99 */
+/* 94 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45808,7 +45879,7 @@
 
 
 /***/ },
-/* 100 */
+/* 95 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -45978,7 +46049,7 @@
 
 
 /***/ },
-/* 101 */
+/* 96 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -46311,7 +46382,7 @@
 
 
 /***/ },
-/* 102 */
+/* 97 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -46792,7 +46863,7 @@
 
 
 /***/ },
-/* 103 */
+/* 98 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -46914,7 +46985,7 @@
 
 
 /***/ },
-/* 104 */
+/* 99 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -47098,7 +47169,7 @@
 
 
 /***/ },
-/* 105 */
+/* 100 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -47260,7 +47331,7 @@
 
 
 /***/ },
-/* 106 */
+/* 101 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*** IMPORTS FROM imports-loader ***/
@@ -47431,6 +47502,87 @@
 
 
 /***/ },
+/* 102 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Context: __webpack_require__(117),
+	  ElementAllocator: __webpack_require__(154),
+	  ElementOutput: __webpack_require__(121),
+	  Engine: __webpack_require__(119),
+	  Entity: __webpack_require__(42),
+	  EventEmitter: __webpack_require__(118),
+	  EventHandler: __webpack_require__(44),
+	  Group: __webpack_require__(46),
+	  Modifier: __webpack_require__(155),
+	  OptionsManager: __webpack_require__(34),
+	  RenderNode: __webpack_require__(120),
+	  Scene: __webpack_require__(156),
+	  SpecParser: __webpack_require__(157),
+	  Surface: __webpack_require__(50),
+	  Transform: __webpack_require__(35),
+	  View: __webpack_require__(49),
+	  ViewSequence: __webpack_require__(43)
+	};
+
+
+/***/ },
+/* 103 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  EventArbiter: __webpack_require__(151),
+	  EventFilter: __webpack_require__(152),
+	  EventMapper: __webpack_require__(153)
+	};
+
+
+/***/ },
+/* 104 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Accumulator: __webpack_require__(158),
+	  DesktopEmulationMode: __webpack_require__(159),
+	  FastClick: __webpack_require__(160),
+	  GenericSync: __webpack_require__(161),
+	  MouseSync: __webpack_require__(162),
+	  PinchSync: __webpack_require__(163),
+	  RotateSync: __webpack_require__(164),
+	  ScaleSync: __webpack_require__(165),
+	  ScrollSync: __webpack_require__(48),
+	  TouchSync: __webpack_require__(166),
+	  TouchTracker: __webpack_require__(167),
+	  TwoFingerSync: __webpack_require__(168)
+	};
+
+
+/***/ },
+/* 105 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Matrix: __webpack_require__(169),
+	  Quaternion: __webpack_require__(170),
+	  Random: __webpack_require__(171),
+	  Utilities: __webpack_require__(172),
+	  Vector: __webpack_require__(36)
+	};
+
+
+/***/ },
+/* 106 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = {
+	  Draggable: __webpack_require__(173),
+	  Fader: __webpack_require__(174),
+	  ModifierChain: __webpack_require__(175),
+	  StateModifier: __webpack_require__(176)
+	};
+
+
+/***/ },
 /* 107 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -47464,15 +47616,15 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  CachedMap: __webpack_require__(186),
-	  Easing: __webpack_require__(187),
+	  CachedMap: __webpack_require__(205),
+	  Easing: __webpack_require__(206),
 	  MultipleTransition: __webpack_require__(115),
-	  SnapTransition: __webpack_require__(188),
-	  SpringTransition: __webpack_require__(189),
+	  SnapTransition: __webpack_require__(207),
+	  SpringTransition: __webpack_require__(208),
 	  Transitionable: __webpack_require__(40),
-	  TransitionableTransform: __webpack_require__(190),
+	  TransitionableTransform: __webpack_require__(209),
 	  TweenTransition: __webpack_require__(116),
-	  WallTransition: __webpack_require__(191)
+	  WallTransition: __webpack_require__(210)
 	};
 
 
@@ -47481,8 +47633,8 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  KeyCodes: __webpack_require__(184),
-	  Timer: __webpack_require__(185),
+	  KeyCodes: __webpack_require__(203),
+	  Timer: __webpack_require__(204),
 	  Utility: __webpack_require__(41)
 	};
 
@@ -47492,21 +47644,21 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  ContextualView: __webpack_require__(192),
-	  Deck: __webpack_require__(193),
-	  DrawerLayout: __webpack_require__(194),
-	  EdgeSwapper: __webpack_require__(195),
-	  FlexibleLayout: __webpack_require__(196),
-	  Flipper: __webpack_require__(197),
-	  GridLayout: __webpack_require__(198),
-	  HeaderFooterLayout: __webpack_require__(199),
-	  Lightbox: __webpack_require__(200),
-	  RenderController: __webpack_require__(201),
-	  ScrollContainer: __webpack_require__(202),
-	  Scroller: __webpack_require__(203),
-	  Scrollview: __webpack_require__(204),
-	  SequentialLayout: __webpack_require__(205),
-	  SizeAwareView: __webpack_require__(206)
+	  ContextualView: __webpack_require__(188),
+	  Deck: __webpack_require__(189),
+	  DrawerLayout: __webpack_require__(190),
+	  EdgeSwapper: __webpack_require__(191),
+	  FlexibleLayout: __webpack_require__(192),
+	  Flipper: __webpack_require__(193),
+	  GridLayout: __webpack_require__(194),
+	  HeaderFooterLayout: __webpack_require__(195),
+	  Lightbox: __webpack_require__(196),
+	  RenderController: __webpack_require__(197),
+	  ScrollContainer: __webpack_require__(198),
+	  Scroller: __webpack_require__(199),
+	  Scrollview: __webpack_require__(200),
+	  SequentialLayout: __webpack_require__(201),
+	  SizeAwareView: __webpack_require__(202)
 	};
 
 
@@ -47515,10 +47667,10 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  NavigationBar: __webpack_require__(207),
-	  Slider: __webpack_require__(208),
-	  TabBar: __webpack_require__(209),
-	  ToggleButton: __webpack_require__(210)
+	  NavigationBar: __webpack_require__(184),
+	  Slider: __webpack_require__(185),
+	  TabBar: __webpack_require__(186),
+	  ToggleButton: __webpack_require__(187)
 	};
 
 
@@ -47899,9 +48051,9 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(120);
 	var EventHandler = __webpack_require__(44);
-	var ElementAllocator = __webpack_require__(165);
+	var ElementAllocator = __webpack_require__(154);
 	var Transform = __webpack_require__(35);
 	var Transitionable = __webpack_require__(40);
 	var _zeroZero = [
@@ -48247,6 +48399,115 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Entity = __webpack_require__(42);
+	var SpecParser = __webpack_require__(157);
+	function RenderNode(object) {
+	    this._object = null;
+	    this._child = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = false;
+	    this._isModifier = false;
+	    this._resultCache = {};
+	    this._prevResults = {};
+	    this._childResult = null;
+	    if (object)
+	        this.set(object);
+	}
+	RenderNode.prototype.add = function add(child) {
+	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
+	    if (this._child instanceof Array)
+	        this._child.push(childNode);
+	    else if (this._child) {
+	        this._child = [
+	            this._child,
+	            childNode
+	        ];
+	        this._hasMultipleChildren = true;
+	        this._childResult = [];
+	    } else
+	        this._child = childNode;
+	    return childNode;
+	};
+	RenderNode.prototype.get = function get() {
+	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
+	};
+	RenderNode.prototype.set = function set(child) {
+	    this._childResult = null;
+	    this._hasMultipleChildren = false;
+	    this._isRenderable = child.render ? true : false;
+	    this._isModifier = child.modify ? true : false;
+	    this._object = child;
+	    this._child = null;
+	    if (child instanceof RenderNode)
+	        return child;
+	    else
+	        return this;
+	};
+	RenderNode.prototype.getSize = function getSize() {
+	    var result = null;
+	    var target = this.get();
+	    if (target && target.getSize)
+	        result = target.getSize();
+	    if (!result && this._child && this._child.getSize)
+	        result = this._child.getSize();
+	    return result;
+	};
+	function _applyCommit(spec, context, cacheStorage) {
+	    var result = SpecParser.parse(spec, context);
+	    var keys = Object.keys(result);
+	    for (var i = 0; i < keys.length; i++) {
+	        var id = keys[i];
+	        var childNode = Entity.get(id);
+	        var commitParams = result[id];
+	        commitParams.allocator = context.allocator;
+	        var commitResult = childNode.commit(commitParams);
+	        if (commitResult)
+	            _applyCommit(commitResult, context, cacheStorage);
+	        else
+	            cacheStorage[id] = commitParams;
+	    }
+	}
+	RenderNode.prototype.commit = function commit(context) {
+	    var prevKeys = Object.keys(this._prevResults);
+	    for (var i = 0; i < prevKeys.length; i++) {
+	        var id = prevKeys[i];
+	        if (this._resultCache[id] === undefined) {
+	            var object = Entity.get(id);
+	            if (object.cleanup)
+	                object.cleanup(context.allocator);
+	        }
+	    }
+	    this._prevResults = this._resultCache;
+	    this._resultCache = {};
+	    _applyCommit(this.render(), context, this._resultCache);
+	};
+	RenderNode.prototype.render = function render() {
+	    if (this._isRenderable)
+	        return this._object.render();
+	    var result = null;
+	    if (this._hasMultipleChildren) {
+	        result = this._childResult;
+	        var children = this._child;
+	        for (var i = 0; i < children.length; i++) {
+	            result[i] = children[i].render();
+	        }
+	    } else if (this._child)
+	        result = this._child.render();
+	    return this._isModifier ? this._object.modify(result) : result;
+	};
+	module.exports = RenderNode;
+
+/***/ },
+/* 121 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Entity = __webpack_require__(42);
 	var EventHandler = __webpack_require__(44);
 	var Transform = __webpack_require__(35);
 	var usePrefix = !('transform' in document.documentElement.style);
@@ -48423,115 +48684,6 @@
 	module.exports = ElementOutput;
 
 /***/ },
-/* 121 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Entity = __webpack_require__(42);
-	var SpecParser = __webpack_require__(168);
-	function RenderNode(object) {
-	    this._object = null;
-	    this._child = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = false;
-	    this._isModifier = false;
-	    this._resultCache = {};
-	    this._prevResults = {};
-	    this._childResult = null;
-	    if (object)
-	        this.set(object);
-	}
-	RenderNode.prototype.add = function add(child) {
-	    var childNode = child instanceof RenderNode ? child : new RenderNode(child);
-	    if (this._child instanceof Array)
-	        this._child.push(childNode);
-	    else if (this._child) {
-	        this._child = [
-	            this._child,
-	            childNode
-	        ];
-	        this._hasMultipleChildren = true;
-	        this._childResult = [];
-	    } else
-	        this._child = childNode;
-	    return childNode;
-	};
-	RenderNode.prototype.get = function get() {
-	    return this._object || (this._hasMultipleChildren ? null : this._child ? this._child.get() : null);
-	};
-	RenderNode.prototype.set = function set(child) {
-	    this._childResult = null;
-	    this._hasMultipleChildren = false;
-	    this._isRenderable = child.render ? true : false;
-	    this._isModifier = child.modify ? true : false;
-	    this._object = child;
-	    this._child = null;
-	    if (child instanceof RenderNode)
-	        return child;
-	    else
-	        return this;
-	};
-	RenderNode.prototype.getSize = function getSize() {
-	    var result = null;
-	    var target = this.get();
-	    if (target && target.getSize)
-	        result = target.getSize();
-	    if (!result && this._child && this._child.getSize)
-	        result = this._child.getSize();
-	    return result;
-	};
-	function _applyCommit(spec, context, cacheStorage) {
-	    var result = SpecParser.parse(spec, context);
-	    var keys = Object.keys(result);
-	    for (var i = 0; i < keys.length; i++) {
-	        var id = keys[i];
-	        var childNode = Entity.get(id);
-	        var commitParams = result[id];
-	        commitParams.allocator = context.allocator;
-	        var commitResult = childNode.commit(commitParams);
-	        if (commitResult)
-	            _applyCommit(commitResult, context, cacheStorage);
-	        else
-	            cacheStorage[id] = commitParams;
-	    }
-	}
-	RenderNode.prototype.commit = function commit(context) {
-	    var prevKeys = Object.keys(this._prevResults);
-	    for (var i = 0; i < prevKeys.length; i++) {
-	        var id = prevKeys[i];
-	        if (this._resultCache[id] === undefined) {
-	            var object = Entity.get(id);
-	            if (object.cleanup)
-	                object.cleanup(context.allocator);
-	        }
-	    }
-	    this._prevResults = this._resultCache;
-	    this._resultCache = {};
-	    _applyCommit(this.render(), context, this._resultCache);
-	};
-	RenderNode.prototype.render = function render() {
-	    if (this._isRenderable)
-	        return this._object.render();
-	    var result = null;
-	    if (this._hasMultipleChildren) {
-	        result = this._childResult;
-	        var children = this._child;
-	        for (var i = 0; i < children.length; i++) {
-	            result[i] = children[i].render();
-	        }
-	    } else if (this._child)
-	        result = this._child.render();
-	    return this._isModifier ? this._object.modify(result) : result;
-	};
-	module.exports = RenderNode;
-
-/***/ },
 /* 122 */,
 /* 123 */,
 /* 124 */,
@@ -48562,985 +48714,6 @@
 /* 149 */,
 /* 150 */,
 /* 151 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(44);
-	var Transitionable = __webpack_require__(40);
-	function Accumulator(value, eventName) {
-	    if (eventName === undefined)
-	        eventName = 'update';
-	    this._state = value && value.get && value.set ? value : new Transitionable(value || 0);
-	    this._eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    this._eventInput.on(eventName, _handleUpdate.bind(this));
-	}
-	function _handleUpdate(data) {
-	    var delta = data.delta;
-	    var state = this.get();
-	    if (delta.constructor === state.constructor) {
-	        var newState = delta instanceof Array ? [
-	            state[0] + delta[0],
-	            state[1] + delta[1]
-	        ] : state + delta;
-	        this.set(newState);
-	    }
-	}
-	Accumulator.prototype.get = function get() {
-	    return this._state.get();
-	};
-	Accumulator.prototype.set = function set(value) {
-	    this._state.set(value);
-	};
-	module.exports = Accumulator;
-
-/***/ },
-/* 152 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var hasTouch = 'ontouchstart' in window;
-	function kill(type) {
-	    window.addEventListener(type, function (event) {
-	        event.stopPropagation();
-	        return false;
-	    }, true);
-	}
-	if (hasTouch) {
-	    kill('mousedown');
-	    kill('mousemove');
-	    kill('mouseup');
-	    kill('mouseleave');
-	}
-
-/***/ },
-/* 153 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	(function () {
-	    if (!window.CustomEvent)
-	        return;
-	    var clickThreshold = 300;
-	    var clickWindow = 500;
-	    var potentialClicks = {};
-	    var recentlyDispatched = {};
-	    var _now = Date.now;
-	    window.addEventListener('touchstart', function (event) {
-	        var timestamp = _now();
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            potentialClicks[touch.identifier] = timestamp;
-	        }
-	    });
-	    window.addEventListener('touchmove', function (event) {
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            delete potentialClicks[touch.identifier];
-	        }
-	    });
-	    window.addEventListener('touchend', function (event) {
-	        var currTime = _now();
-	        for (var i = 0; i < event.changedTouches.length; i++) {
-	            var touch = event.changedTouches[i];
-	            var startTime = potentialClicks[touch.identifier];
-	            if (startTime && currTime - startTime < clickThreshold) {
-	                var clickEvt = new window.CustomEvent('click', {
-	                    'bubbles': true,
-	                    'detail': touch
-	                });
-	                recentlyDispatched[currTime] = event;
-	                event.target.dispatchEvent(clickEvt);
-	            }
-	            delete potentialClicks[touch.identifier];
-	        }
-	    });
-	    window.addEventListener('click', function (event) {
-	        var currTime = _now();
-	        for (var i in recentlyDispatched) {
-	            var previousEvent = recentlyDispatched[i];
-	            if (currTime - i < clickWindow) {
-	                if (event instanceof window.MouseEvent && event.target === previousEvent.target)
-	                    event.stopPropagation();
-	            } else
-	                delete recentlyDispatched[i];
-	        }
-	    }, true);
-	}());
-
-/***/ },
-/* 154 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(44);
-	function GenericSync(syncs, options) {
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._syncs = {};
-	    if (syncs)
-	        this.addSync(syncs);
-	    if (options)
-	        this.setOptions(options);
-	}
-	GenericSync.DIRECTION_X = 0;
-	GenericSync.DIRECTION_Y = 1;
-	GenericSync.DIRECTION_Z = 2;
-	var registry = {};
-	GenericSync.register = function register(syncObject) {
-	    for (var key in syncObject) {
-	        if (registry[key]) {
-	            if (registry[key] !== syncObject[key])
-	                throw new Error('Conflicting sync classes for key: ' + key);
-	        } else
-	            registry[key] = syncObject[key];
-	    }
-	};
-	GenericSync.prototype.setOptions = function (options) {
-	    for (var key in this._syncs) {
-	        this._syncs[key].setOptions(options);
-	    }
-	};
-	GenericSync.prototype.pipeSync = function pipeToSync(key) {
-	    var sync = this._syncs[key];
-	    this._eventInput.pipe(sync);
-	    sync.pipe(this._eventOutput);
-	};
-	GenericSync.prototype.unpipeSync = function unpipeFromSync(key) {
-	    var sync = this._syncs[key];
-	    this._eventInput.unpipe(sync);
-	    sync.unpipe(this._eventOutput);
-	};
-	function _addSingleSync(key, options) {
-	    if (!registry[key])
-	        return;
-	    this._syncs[key] = new registry[key](options);
-	    this.pipeSync(key);
-	}
-	GenericSync.prototype.addSync = function addSync(syncs) {
-	    if (syncs instanceof Array)
-	        for (var i = 0; i < syncs.length; i++)
-	            _addSingleSync.call(this, syncs[i]);
-	    else if (syncs instanceof Object)
-	        for (var key in syncs)
-	            _addSingleSync.call(this, key, syncs[key]);
-	};
-	module.exports = GenericSync;
-
-/***/ },
-/* 155 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(44);
-	var OptionsManager = __webpack_require__(34);
-	function MouseSync(options) {
-	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this._eventInput.on('mousedown', _handleStart.bind(this));
-	    this._eventInput.on('mousemove', _handleMove.bind(this));
-	    this._eventInput.on('mouseup', _handleEnd.bind(this));
-	    if (this.options.propogate)
-	        this._eventInput.on('mouseleave', _handleLeave.bind(this));
-	    else
-	        this._eventInput.on('mouseleave', _handleEnd.bind(this));
-	    if (this.options.clickThreshold) {
-	        window.addEventListener('click', function (event) {
-	            if (Math.sqrt(Math.pow(this._displacement[0], 2) + Math.pow(this._displacement[1], 2)) > this.options.clickThreshold) {
-	                event.stopPropagation();
-	            }
-	        }.bind(this), true);
-	    }
-	    this._payload = {
-	        delta: null,
-	        position: null,
-	        velocity: null,
-	        clientX: 0,
-	        clientY: 0,
-	        offsetX: 0,
-	        offsetY: 0
-	    };
-	    this._positionHistory = [];
-	    this._position = null;
-	    this._prevCoord = undefined;
-	    this._prevTime = undefined;
-	    this._down = false;
-	    this._moved = false;
-	    this._displacement = [
-	        0,
-	        0
-	    ];
-	    this._documentActive = false;
-	}
-	MouseSync.DEFAULT_OPTIONS = {
-	    clickThreshold: undefined,
-	    direction: undefined,
-	    rails: false,
-	    scale: 1,
-	    propogate: true,
-	    velocitySampleLength: 10,
-	    preventDefault: true
-	};
-	MouseSync.DIRECTION_X = 0;
-	MouseSync.DIRECTION_Y = 1;
-	var MINIMUM_TICK_TIME = 8;
-	function _handleStart(event) {
-	    var delta;
-	    var velocity;
-	    if (this.options.preventDefault)
-	        event.preventDefault();
-	    var x = event.clientX;
-	    var y = event.clientY;
-	    this._prevCoord = [
-	        x,
-	        y
-	    ];
-	    this._prevTime = Date.now();
-	    this._down = true;
-	    this._move = false;
-	    if (this.options.direction !== undefined) {
-	        this._position = 0;
-	        delta = 0;
-	        velocity = 0;
-	    } else {
-	        this._position = [
-	            0,
-	            0
-	        ];
-	        delta = [
-	            0,
-	            0
-	        ];
-	        velocity = [
-	            0,
-	            0
-	        ];
-	    }
-	    if (this.options.clickThreshold) {
-	        this._displacement = [
-	            0,
-	            0
-	        ];
-	    }
-	    var payload = this._payload;
-	    payload.delta = delta;
-	    payload.position = this._position;
-	    payload.velocity = velocity;
-	    payload.clientX = x;
-	    payload.clientY = y;
-	    payload.offsetX = event.offsetX;
-	    payload.offsetY = event.offsetY;
-	    this._positionHistory.push({
-	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
-	        time: this._prevTime
-	    });
-	    this._eventOutput.emit('start', payload);
-	    this._documentActive = false;
-	}
-	function _handleMove(event) {
-	    if (!this._prevCoord)
-	        return;
-	    var prevCoord = this._prevCoord;
-	    var prevTime = this._prevTime;
-	    var x = event.clientX;
-	    var y = event.clientY;
-	    var currTime = Date.now();
-	    var diffX = x - prevCoord[0];
-	    var diffY = y - prevCoord[1];
-	    if (this.options.rails) {
-	        if (Math.abs(diffX) > Math.abs(diffY))
-	            diffY = 0;
-	        else
-	            diffX = 0;
-	    }
-	    var diffTime = Math.max(currTime - this._positionHistory[0].time, MINIMUM_TICK_TIME);
-	    var scale = this.options.scale;
-	    var nextVel;
-	    var nextDelta;
-	    if (this.options.direction === MouseSync.DIRECTION_X) {
-	        nextDelta = scale * diffX;
-	        this._position += nextDelta;
-	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
-	    } else if (this.options.direction === MouseSync.DIRECTION_Y) {
-	        nextDelta = scale * diffY;
-	        this._position += nextDelta;
-	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
-	    } else {
-	        nextDelta = [
-	            scale * diffX,
-	            scale * diffY
-	        ];
-	        nextVel = [
-	            scale * (this._position[0] - this._positionHistory[0].position[0]) / diffTime,
-	            scale * (this._position[1] - this._positionHistory[0].position[1]) / diffTime
-	        ];
-	        this._position[0] += nextDelta[0];
-	        this._position[1] += nextDelta[1];
-	    }
-	    if (this.options.clickThreshold !== false) {
-	        this._displacement[0] += diffX;
-	        this._displacement[1] += diffY;
-	    }
-	    var payload = this._payload;
-	    payload.delta = nextDelta;
-	    payload.position = this._position;
-	    payload.velocity = nextVel;
-	    payload.clientX = x;
-	    payload.clientY = y;
-	    payload.offsetX = event.offsetX;
-	    payload.offsetY = event.offsetY;
-	    if (this._positionHistory.length === this.options.velocitySampleLength) {
-	        this._positionHistory.shift();
-	    }
-	    this._positionHistory.push({
-	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
-	        time: currTime
-	    });
-	    this._eventOutput.emit('update', payload);
-	    this._prevCoord = [
-	        x,
-	        y
-	    ];
-	    this._prevTime = currTime;
-	    this._move = true;
-	}
-	function _handleEnd(event) {
-	    if (!this._down)
-	        return;
-	    this._eventOutput.emit('end', this._payload);
-	    this._prevCoord = undefined;
-	    this._prevTime = undefined;
-	    this._down = false;
-	    this._move = false;
-	    this._positionHistory = [];
-	}
-	function _handleLeave(event) {
-	    if (!this._down || !this._move)
-	        return;
-	    if (!this._documentActive) {
-	        var boundMove = _handleMove.bind(this);
-	        var boundEnd = function (event) {
-	            _handleEnd.call(this, event);
-	            document.removeEventListener('mousemove', boundMove);
-	            document.removeEventListener('mouseup', boundEnd);
-	        }.bind(this, event);
-	        document.addEventListener('mousemove', boundMove);
-	        document.addEventListener('mouseup', boundEnd);
-	        this._documentActive = true;
-	    }
-	}
-	MouseSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	MouseSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = MouseSync;
-
-/***/ },
-/* 156 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(161);
-	var OptionsManager = __webpack_require__(34);
-	function PinchSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._displacement = 0;
-	    this._previousDistance = 0;
-	}
-	PinchSync.prototype = Object.create(TwoFingerSync.prototype);
-	PinchSync.prototype.constructor = PinchSync;
-	PinchSync.DEFAULT_OPTIONS = { scale: 1 };
-	PinchSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._previousDistance = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    this._displacement = 0;
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ],
-	        distance: this._dist,
-	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
-	    });
-	};
-	PinchSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var scale = this.options.scale;
-	    var delta = scale * (currDist - this._previousDistance);
-	    var velocity = delta / diffTime;
-	    this._previousDistance = currDist;
-	    this._displacement += delta;
-	    this._eventOutput.emit('update', {
-	        delta: delta,
-	        velocity: velocity,
-	        distance: currDist,
-	        displacement: this._displacement,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	};
-	PinchSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	PinchSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = PinchSync;
-
-/***/ },
-/* 157 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(161);
-	var OptionsManager = __webpack_require__(34);
-	function RotateSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._angle = 0;
-	    this._previousAngle = 0;
-	}
-	RotateSync.prototype = Object.create(TwoFingerSync.prototype);
-	RotateSync.prototype.constructor = RotateSync;
-	RotateSync.DEFAULT_OPTIONS = { scale: 1 };
-	RotateSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._angle = 0;
-	    this._previousAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        angle: this._angle,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	};
-	RotateSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var scale = this.options.scale;
-	    var currAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var diffTheta = scale * (currAngle - this._previousAngle);
-	    var velTheta = diffTheta / diffTime;
-	    this._angle += diffTheta;
-	    this._eventOutput.emit('update', {
-	        delta: diffTheta,
-	        velocity: velTheta,
-	        angle: this._angle,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	    this._previousAngle = currAngle;
-	};
-	RotateSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	RotateSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = RotateSync;
-
-/***/ },
-/* 158 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TwoFingerSync = __webpack_require__(161);
-	var OptionsManager = __webpack_require__(34);
-	function ScaleSync(options) {
-	    TwoFingerSync.call(this);
-	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._scaleFactor = 1;
-	    this._startDist = 0;
-	    this._eventInput.on('pipe', _reset.bind(this));
-	}
-	ScaleSync.prototype = Object.create(TwoFingerSync.prototype);
-	ScaleSync.prototype.constructor = ScaleSync;
-	ScaleSync.DEFAULT_OPTIONS = { scale: 1 };
-	function _reset() {
-	    this.touchAId = undefined;
-	    this.touchBId = undefined;
-	}
-	ScaleSync.prototype._startUpdate = function _startUpdate(event) {
-	    this._scaleFactor = 1;
-	    this._startDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    this._eventOutput.emit('start', {
-	        count: event.touches.length,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ],
-	        distance: this._startDist,
-	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
-	    });
-	};
-	ScaleSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
-	    var scale = this.options.scale;
-	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
-	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
-	    var delta = (currDist - this._startDist) / this._startDist;
-	    var newScaleFactor = Math.max(1 + scale * delta, 0);
-	    var veloScale = (newScaleFactor - this._scaleFactor) / diffTime;
-	    this._eventOutput.emit('update', {
-	        delta: delta,
-	        scale: newScaleFactor,
-	        velocity: veloScale,
-	        distance: currDist,
-	        center: center,
-	        touches: [
-	            this.touchAId,
-	            this.touchBId
-	        ]
-	    });
-	    this._scaleFactor = newScaleFactor;
-	};
-	ScaleSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	ScaleSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	module.exports = ScaleSync;
-
-/***/ },
-/* 159 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var TouchTracker = __webpack_require__(160);
-	var EventHandler = __webpack_require__(44);
-	var OptionsManager = __webpack_require__(34);
-	function TouchSync(options) {
-	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
-	    this._optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this._eventOutput = new EventHandler();
-	    this._touchTracker = new TouchTracker({ touchLimit: this.options.touchLimit });
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    EventHandler.setInputHandler(this, this._touchTracker);
-	    this._touchTracker.on('trackstart', _handleStart.bind(this));
-	    this._touchTracker.on('trackmove', _handleMove.bind(this));
-	    this._touchTracker.on('trackend', _handleEnd.bind(this));
-	    this._payload = {
-	        delta: null,
-	        position: null,
-	        velocity: null,
-	        clientX: undefined,
-	        clientY: undefined,
-	        count: 0,
-	        touch: undefined
-	    };
-	    this._position = null;
-	}
-	TouchSync.DEFAULT_OPTIONS = {
-	    direction: undefined,
-	    rails: false,
-	    touchLimit: 1,
-	    velocitySampleLength: 10,
-	    scale: 1
-	};
-	TouchSync.DIRECTION_X = 0;
-	TouchSync.DIRECTION_Y = 1;
-	var MINIMUM_TICK_TIME = 8;
-	function _handleStart(data) {
-	    var velocity;
-	    var delta;
-	    if (this.options.direction !== undefined) {
-	        this._position = 0;
-	        velocity = 0;
-	        delta = 0;
-	    } else {
-	        this._position = [
-	            0,
-	            0
-	        ];
-	        velocity = [
-	            0,
-	            0
-	        ];
-	        delta = [
-	            0,
-	            0
-	        ];
-	    }
-	    var payload = this._payload;
-	    payload.delta = delta;
-	    payload.position = this._position;
-	    payload.velocity = velocity;
-	    payload.clientX = data.x;
-	    payload.clientY = data.y;
-	    payload.count = data.count;
-	    payload.touch = data.identifier;
-	    this._eventOutput.emit('start', payload);
-	}
-	function _handleMove(data) {
-	    var history = data.history;
-	    var currHistory = history[history.length - 1];
-	    var prevHistory = history[history.length - 2];
-	    var distantHistory = history[history.length - this.options.velocitySampleLength] ? history[history.length - this.options.velocitySampleLength] : history[history.length - 2];
-	    var distantTime = distantHistory.timestamp;
-	    var currTime = currHistory.timestamp;
-	    var diffX = currHistory.x - prevHistory.x;
-	    var diffY = currHistory.y - prevHistory.y;
-	    var velDiffX = currHistory.x - distantHistory.x;
-	    var velDiffY = currHistory.y - distantHistory.y;
-	    if (this.options.rails) {
-	        if (Math.abs(diffX) > Math.abs(diffY))
-	            diffY = 0;
-	        else
-	            diffX = 0;
-	        if (Math.abs(velDiffX) > Math.abs(velDiffY))
-	            velDiffY = 0;
-	        else
-	            velDiffX = 0;
-	    }
-	    var diffTime = Math.max(currTime - distantTime, MINIMUM_TICK_TIME);
-	    var velX = velDiffX / diffTime;
-	    var velY = velDiffY / diffTime;
-	    var scale = this.options.scale;
-	    var nextVel;
-	    var nextDelta;
-	    if (this.options.direction === TouchSync.DIRECTION_X) {
-	        nextDelta = scale * diffX;
-	        nextVel = scale * velX;
-	        this._position += nextDelta;
-	    } else if (this.options.direction === TouchSync.DIRECTION_Y) {
-	        nextDelta = scale * diffY;
-	        nextVel = scale * velY;
-	        this._position += nextDelta;
-	    } else {
-	        nextDelta = [
-	            scale * diffX,
-	            scale * diffY
-	        ];
-	        nextVel = [
-	            scale * velX,
-	            scale * velY
-	        ];
-	        this._position[0] += nextDelta[0];
-	        this._position[1] += nextDelta[1];
-	    }
-	    var payload = this._payload;
-	    payload.delta = nextDelta;
-	    payload.velocity = nextVel;
-	    payload.position = this._position;
-	    payload.clientX = data.x;
-	    payload.clientY = data.y;
-	    payload.count = data.count;
-	    payload.touch = data.identifier;
-	    this._eventOutput.emit('update', payload);
-	}
-	function _handleEnd(data) {
-	    this._payload.count = data.count;
-	    this._eventOutput.emit('end', this._payload);
-	}
-	TouchSync.prototype.setOptions = function setOptions(options) {
-	    return this._optionsManager.setOptions(options);
-	};
-	TouchSync.prototype.getOptions = function getOptions() {
-	    return this.options;
-	};
-	module.exports = TouchSync;
-
-/***/ },
-/* 160 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(44);
-	var _now = Date.now;
-	function _timestampTouch(touch, event, history) {
-	    return {
-	        x: touch.clientX,
-	        y: touch.clientY,
-	        identifier: touch.identifier,
-	        origin: event.origin,
-	        timestamp: _now(),
-	        count: event.touches.length,
-	        history: history
-	    };
-	}
-	function _handleStart(event) {
-	    if (event.touches.length > this.touchLimit)
-	        return;
-	    this.isTouched = true;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var data = _timestampTouch(touch, event, null);
-	        this.eventOutput.emit('trackstart', data);
-	        if (!this.selective && !this.touchHistory[touch.identifier])
-	            this.track(data);
-	    }
-	}
-	function _handleMove(event) {
-	    if (event.touches.length > this.touchLimit)
-	        return;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var history = this.touchHistory[touch.identifier];
-	        if (history) {
-	            var data = _timestampTouch(touch, event, history);
-	            this.touchHistory[touch.identifier].push(data);
-	            this.eventOutput.emit('trackmove', data);
-	        }
-	    }
-	}
-	function _handleEnd(event) {
-	    if (!this.isTouched)
-	        return;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        var history = this.touchHistory[touch.identifier];
-	        if (history) {
-	            var data = _timestampTouch(touch, event, history);
-	            this.eventOutput.emit('trackend', data);
-	            delete this.touchHistory[touch.identifier];
-	        }
-	    }
-	    this.isTouched = false;
-	}
-	function _handleUnpipe() {
-	    for (var i in this.touchHistory) {
-	        var history = this.touchHistory[i];
-	        this.eventOutput.emit('trackend', {
-	            touch: history[history.length - 1].touch,
-	            timestamp: Date.now(),
-	            count: 0,
-	            history: history
-	        });
-	        delete this.touchHistory[i];
-	    }
-	}
-	function TouchTracker(options) {
-	    this.selective = options.selective;
-	    this.touchLimit = options.touchLimit || 1;
-	    this.touchHistory = {};
-	    this.eventInput = new EventHandler();
-	    this.eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.eventInput);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    this.eventInput.on('touchstart', _handleStart.bind(this));
-	    this.eventInput.on('touchmove', _handleMove.bind(this));
-	    this.eventInput.on('touchend', _handleEnd.bind(this));
-	    this.eventInput.on('touchcancel', _handleEnd.bind(this));
-	    this.eventInput.on('unpipe', _handleUnpipe.bind(this));
-	    this.isTouched = false;
-	}
-	TouchTracker.prototype.track = function track(data) {
-	    this.touchHistory[data.identifier] = [data];
-	};
-	module.exports = TouchTracker;
-
-/***/ },
-/* 161 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var EventHandler = __webpack_require__(44);
-	function TwoFingerSync() {
-	    this._eventInput = new EventHandler();
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setInputHandler(this, this._eventInput);
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.touchAEnabled = false;
-	    this.touchAId = 0;
-	    this.posA = null;
-	    this.timestampA = 0;
-	    this.touchBEnabled = false;
-	    this.touchBId = 0;
-	    this.posB = null;
-	    this.timestampB = 0;
-	    this._eventInput.on('touchstart', this.handleStart.bind(this));
-	    this._eventInput.on('touchmove', this.handleMove.bind(this));
-	    this._eventInput.on('touchend', this.handleEnd.bind(this));
-	    this._eventInput.on('touchcancel', this.handleEnd.bind(this));
-	}
-	TwoFingerSync.calculateAngle = function (posA, posB) {
-	    var diffX = posB[0] - posA[0];
-	    var diffY = posB[1] - posA[1];
-	    return Math.atan2(diffY, diffX);
-	};
-	TwoFingerSync.calculateDistance = function (posA, posB) {
-	    var diffX = posB[0] - posA[0];
-	    var diffY = posB[1] - posA[1];
-	    return Math.sqrt(diffX * diffX + diffY * diffY);
-	};
-	TwoFingerSync.calculateCenter = function (posA, posB) {
-	    return [
-	        (posA[0] + posB[0]) / 2,
-	        (posA[1] + posB[1]) / 2
-	    ];
-	};
-	var _now = Date.now;
-	TwoFingerSync.prototype.handleStart = function handleStart(event) {
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (!this.touchAEnabled) {
-	            this.touchAId = touch.identifier;
-	            this.touchAEnabled = true;
-	            this.posA = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampA = _now();
-	        } else if (!this.touchBEnabled) {
-	            this.touchBId = touch.identifier;
-	            this.touchBEnabled = true;
-	            this.posB = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampB = _now();
-	            this._startUpdate(event);
-	        }
-	    }
-	};
-	TwoFingerSync.prototype.handleMove = function handleMove(event) {
-	    if (!(this.touchAEnabled && this.touchBEnabled))
-	        return;
-	    var prevTimeA = this.timestampA;
-	    var prevTimeB = this.timestampB;
-	    var diffTime;
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (touch.identifier === this.touchAId) {
-	            this.posA = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampA = _now();
-	            diffTime = this.timestampA - prevTimeA;
-	        } else if (touch.identifier === this.touchBId) {
-	            this.posB = [
-	                touch.pageX,
-	                touch.pageY
-	            ];
-	            this.timestampB = _now();
-	            diffTime = this.timestampB - prevTimeB;
-	        }
-	    }
-	    if (diffTime)
-	        this._moveUpdate(diffTime);
-	};
-	TwoFingerSync.prototype.handleEnd = function handleEnd(event) {
-	    for (var i = 0; i < event.changedTouches.length; i++) {
-	        var touch = event.changedTouches[i];
-	        if (touch.identifier === this.touchAId || touch.identifier === this.touchBId) {
-	            if (this.touchAEnabled && this.touchBEnabled) {
-	                this._eventOutput.emit('end', {
-	                    touches: [
-	                        this.touchAId,
-	                        this.touchBId
-	                    ],
-	                    angle: this._angle
-	                });
-	            }
-	            this.touchAEnabled = false;
-	            this.touchAId = 0;
-	            this.touchBEnabled = false;
-	            this.touchBId = 0;
-	        }
-	    }
-	};
-	module.exports = TwoFingerSync;
-
-/***/ },
-/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49587,7 +48760,7 @@
 	module.exports = EventArbiter;
 
 /***/ },
-/* 163 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49612,7 +48785,7 @@
 	module.exports = EventFilter;
 
 /***/ },
-/* 164 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49640,7 +48813,7 @@
 	module.exports = EventMapper;
 
 /***/ },
-/* 165 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49697,7 +48870,7 @@
 	module.exports = ElementAllocator;
 
 /***/ },
-/* 166 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49709,7 +48882,7 @@
 	 */
 	var Transform = __webpack_require__(35);
 	var Transitionable = __webpack_require__(40);
-	var TransitionableTransform = __webpack_require__(190);
+	var TransitionableTransform = __webpack_require__(209);
 	function Modifier(options) {
 	    this._transformGetter = null;
 	    this._opacityGetter = null;
@@ -49954,7 +49127,7 @@
 	module.exports = Modifier;
 
 /***/ },
-/* 167 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -49965,8 +49138,8 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Transform = __webpack_require__(35);
-	var Modifier = __webpack_require__(166);
-	var RenderNode = __webpack_require__(121);
+	var Modifier = __webpack_require__(155);
+	var RenderNode = __webpack_require__(120);
 	function Scene(definition) {
 	    this.id = null;
 	    this._objects = null;
@@ -50078,7 +49251,7 @@
 	module.exports = Scene;
 
 /***/ },
-/* 168 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -50212,6 +49385,985 @@
 	    }
 	};
 	module.exports = SpecParser;
+
+/***/ },
+/* 158 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(44);
+	var Transitionable = __webpack_require__(40);
+	function Accumulator(value, eventName) {
+	    if (eventName === undefined)
+	        eventName = 'update';
+	    this._state = value && value.get && value.set ? value : new Transitionable(value || 0);
+	    this._eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    this._eventInput.on(eventName, _handleUpdate.bind(this));
+	}
+	function _handleUpdate(data) {
+	    var delta = data.delta;
+	    var state = this.get();
+	    if (delta.constructor === state.constructor) {
+	        var newState = delta instanceof Array ? [
+	            state[0] + delta[0],
+	            state[1] + delta[1]
+	        ] : state + delta;
+	        this.set(newState);
+	    }
+	}
+	Accumulator.prototype.get = function get() {
+	    return this._state.get();
+	};
+	Accumulator.prototype.set = function set(value) {
+	    this._state.set(value);
+	};
+	module.exports = Accumulator;
+
+/***/ },
+/* 159 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var hasTouch = 'ontouchstart' in window;
+	function kill(type) {
+	    window.addEventListener(type, function (event) {
+	        event.stopPropagation();
+	        return false;
+	    }, true);
+	}
+	if (hasTouch) {
+	    kill('mousedown');
+	    kill('mousemove');
+	    kill('mouseup');
+	    kill('mouseleave');
+	}
+
+/***/ },
+/* 160 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	(function () {
+	    if (!window.CustomEvent)
+	        return;
+	    var clickThreshold = 300;
+	    var clickWindow = 500;
+	    var potentialClicks = {};
+	    var recentlyDispatched = {};
+	    var _now = Date.now;
+	    window.addEventListener('touchstart', function (event) {
+	        var timestamp = _now();
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            potentialClicks[touch.identifier] = timestamp;
+	        }
+	    });
+	    window.addEventListener('touchmove', function (event) {
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            delete potentialClicks[touch.identifier];
+	        }
+	    });
+	    window.addEventListener('touchend', function (event) {
+	        var currTime = _now();
+	        for (var i = 0; i < event.changedTouches.length; i++) {
+	            var touch = event.changedTouches[i];
+	            var startTime = potentialClicks[touch.identifier];
+	            if (startTime && currTime - startTime < clickThreshold) {
+	                var clickEvt = new window.CustomEvent('click', {
+	                    'bubbles': true,
+	                    'detail': touch
+	                });
+	                recentlyDispatched[currTime] = event;
+	                event.target.dispatchEvent(clickEvt);
+	            }
+	            delete potentialClicks[touch.identifier];
+	        }
+	    });
+	    window.addEventListener('click', function (event) {
+	        var currTime = _now();
+	        for (var i in recentlyDispatched) {
+	            var previousEvent = recentlyDispatched[i];
+	            if (currTime - i < clickWindow) {
+	                if (event instanceof window.MouseEvent && event.target === previousEvent.target)
+	                    event.stopPropagation();
+	            } else
+	                delete recentlyDispatched[i];
+	        }
+	    }, true);
+	}());
+
+/***/ },
+/* 161 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(44);
+	function GenericSync(syncs, options) {
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._syncs = {};
+	    if (syncs)
+	        this.addSync(syncs);
+	    if (options)
+	        this.setOptions(options);
+	}
+	GenericSync.DIRECTION_X = 0;
+	GenericSync.DIRECTION_Y = 1;
+	GenericSync.DIRECTION_Z = 2;
+	var registry = {};
+	GenericSync.register = function register(syncObject) {
+	    for (var key in syncObject) {
+	        if (registry[key]) {
+	            if (registry[key] !== syncObject[key])
+	                throw new Error('Conflicting sync classes for key: ' + key);
+	        } else
+	            registry[key] = syncObject[key];
+	    }
+	};
+	GenericSync.prototype.setOptions = function (options) {
+	    for (var key in this._syncs) {
+	        this._syncs[key].setOptions(options);
+	    }
+	};
+	GenericSync.prototype.pipeSync = function pipeToSync(key) {
+	    var sync = this._syncs[key];
+	    this._eventInput.pipe(sync);
+	    sync.pipe(this._eventOutput);
+	};
+	GenericSync.prototype.unpipeSync = function unpipeFromSync(key) {
+	    var sync = this._syncs[key];
+	    this._eventInput.unpipe(sync);
+	    sync.unpipe(this._eventOutput);
+	};
+	function _addSingleSync(key, options) {
+	    if (!registry[key])
+	        return;
+	    this._syncs[key] = new registry[key](options);
+	    this.pipeSync(key);
+	}
+	GenericSync.prototype.addSync = function addSync(syncs) {
+	    if (syncs instanceof Array)
+	        for (var i = 0; i < syncs.length; i++)
+	            _addSingleSync.call(this, syncs[i]);
+	    else if (syncs instanceof Object)
+	        for (var key in syncs)
+	            _addSingleSync.call(this, key, syncs[key]);
+	};
+	module.exports = GenericSync;
+
+/***/ },
+/* 162 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(44);
+	var OptionsManager = __webpack_require__(34);
+	function MouseSync(options) {
+	    this.options = Object.create(MouseSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this._eventInput.on('mousedown', _handleStart.bind(this));
+	    this._eventInput.on('mousemove', _handleMove.bind(this));
+	    this._eventInput.on('mouseup', _handleEnd.bind(this));
+	    if (this.options.propogate)
+	        this._eventInput.on('mouseleave', _handleLeave.bind(this));
+	    else
+	        this._eventInput.on('mouseleave', _handleEnd.bind(this));
+	    if (this.options.clickThreshold) {
+	        window.addEventListener('click', function (event) {
+	            if (Math.sqrt(Math.pow(this._displacement[0], 2) + Math.pow(this._displacement[1], 2)) > this.options.clickThreshold) {
+	                event.stopPropagation();
+	            }
+	        }.bind(this), true);
+	    }
+	    this._payload = {
+	        delta: null,
+	        position: null,
+	        velocity: null,
+	        clientX: 0,
+	        clientY: 0,
+	        offsetX: 0,
+	        offsetY: 0
+	    };
+	    this._positionHistory = [];
+	    this._position = null;
+	    this._prevCoord = undefined;
+	    this._prevTime = undefined;
+	    this._down = false;
+	    this._moved = false;
+	    this._displacement = [
+	        0,
+	        0
+	    ];
+	    this._documentActive = false;
+	}
+	MouseSync.DEFAULT_OPTIONS = {
+	    clickThreshold: undefined,
+	    direction: undefined,
+	    rails: false,
+	    scale: 1,
+	    propogate: true,
+	    velocitySampleLength: 10,
+	    preventDefault: true
+	};
+	MouseSync.DIRECTION_X = 0;
+	MouseSync.DIRECTION_Y = 1;
+	var MINIMUM_TICK_TIME = 8;
+	function _handleStart(event) {
+	    var delta;
+	    var velocity;
+	    if (this.options.preventDefault)
+	        event.preventDefault();
+	    var x = event.clientX;
+	    var y = event.clientY;
+	    this._prevCoord = [
+	        x,
+	        y
+	    ];
+	    this._prevTime = Date.now();
+	    this._down = true;
+	    this._move = false;
+	    if (this.options.direction !== undefined) {
+	        this._position = 0;
+	        delta = 0;
+	        velocity = 0;
+	    } else {
+	        this._position = [
+	            0,
+	            0
+	        ];
+	        delta = [
+	            0,
+	            0
+	        ];
+	        velocity = [
+	            0,
+	            0
+	        ];
+	    }
+	    if (this.options.clickThreshold) {
+	        this._displacement = [
+	            0,
+	            0
+	        ];
+	    }
+	    var payload = this._payload;
+	    payload.delta = delta;
+	    payload.position = this._position;
+	    payload.velocity = velocity;
+	    payload.clientX = x;
+	    payload.clientY = y;
+	    payload.offsetX = event.offsetX;
+	    payload.offsetY = event.offsetY;
+	    this._positionHistory.push({
+	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
+	        time: this._prevTime
+	    });
+	    this._eventOutput.emit('start', payload);
+	    this._documentActive = false;
+	}
+	function _handleMove(event) {
+	    if (!this._prevCoord)
+	        return;
+	    var prevCoord = this._prevCoord;
+	    var prevTime = this._prevTime;
+	    var x = event.clientX;
+	    var y = event.clientY;
+	    var currTime = Date.now();
+	    var diffX = x - prevCoord[0];
+	    var diffY = y - prevCoord[1];
+	    if (this.options.rails) {
+	        if (Math.abs(diffX) > Math.abs(diffY))
+	            diffY = 0;
+	        else
+	            diffX = 0;
+	    }
+	    var diffTime = Math.max(currTime - this._positionHistory[0].time, MINIMUM_TICK_TIME);
+	    var scale = this.options.scale;
+	    var nextVel;
+	    var nextDelta;
+	    if (this.options.direction === MouseSync.DIRECTION_X) {
+	        nextDelta = scale * diffX;
+	        this._position += nextDelta;
+	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
+	    } else if (this.options.direction === MouseSync.DIRECTION_Y) {
+	        nextDelta = scale * diffY;
+	        this._position += nextDelta;
+	        nextVel = scale * (this._position - this._positionHistory[0].position) / diffTime;
+	    } else {
+	        nextDelta = [
+	            scale * diffX,
+	            scale * diffY
+	        ];
+	        nextVel = [
+	            scale * (this._position[0] - this._positionHistory[0].position[0]) / diffTime,
+	            scale * (this._position[1] - this._positionHistory[0].position[1]) / diffTime
+	        ];
+	        this._position[0] += nextDelta[0];
+	        this._position[1] += nextDelta[1];
+	    }
+	    if (this.options.clickThreshold !== false) {
+	        this._displacement[0] += diffX;
+	        this._displacement[1] += diffY;
+	    }
+	    var payload = this._payload;
+	    payload.delta = nextDelta;
+	    payload.position = this._position;
+	    payload.velocity = nextVel;
+	    payload.clientX = x;
+	    payload.clientY = y;
+	    payload.offsetX = event.offsetX;
+	    payload.offsetY = event.offsetY;
+	    if (this._positionHistory.length === this.options.velocitySampleLength) {
+	        this._positionHistory.shift();
+	    }
+	    this._positionHistory.push({
+	        position: payload.position.slice ? payload.position.slice(0) : payload.position,
+	        time: currTime
+	    });
+	    this._eventOutput.emit('update', payload);
+	    this._prevCoord = [
+	        x,
+	        y
+	    ];
+	    this._prevTime = currTime;
+	    this._move = true;
+	}
+	function _handleEnd(event) {
+	    if (!this._down)
+	        return;
+	    this._eventOutput.emit('end', this._payload);
+	    this._prevCoord = undefined;
+	    this._prevTime = undefined;
+	    this._down = false;
+	    this._move = false;
+	    this._positionHistory = [];
+	}
+	function _handleLeave(event) {
+	    if (!this._down || !this._move)
+	        return;
+	    if (!this._documentActive) {
+	        var boundMove = _handleMove.bind(this);
+	        var boundEnd = function (event) {
+	            _handleEnd.call(this, event);
+	            document.removeEventListener('mousemove', boundMove);
+	            document.removeEventListener('mouseup', boundEnd);
+	        }.bind(this, event);
+	        document.addEventListener('mousemove', boundMove);
+	        document.addEventListener('mouseup', boundEnd);
+	        this._documentActive = true;
+	    }
+	}
+	MouseSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	MouseSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = MouseSync;
+
+/***/ },
+/* 163 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(168);
+	var OptionsManager = __webpack_require__(34);
+	function PinchSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(PinchSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._displacement = 0;
+	    this._previousDistance = 0;
+	}
+	PinchSync.prototype = Object.create(TwoFingerSync.prototype);
+	PinchSync.prototype.constructor = PinchSync;
+	PinchSync.DEFAULT_OPTIONS = { scale: 1 };
+	PinchSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._previousDistance = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    this._displacement = 0;
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ],
+	        distance: this._dist,
+	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
+	    });
+	};
+	PinchSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var scale = this.options.scale;
+	    var delta = scale * (currDist - this._previousDistance);
+	    var velocity = delta / diffTime;
+	    this._previousDistance = currDist;
+	    this._displacement += delta;
+	    this._eventOutput.emit('update', {
+	        delta: delta,
+	        velocity: velocity,
+	        distance: currDist,
+	        displacement: this._displacement,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	};
+	PinchSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	PinchSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = PinchSync;
+
+/***/ },
+/* 164 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(168);
+	var OptionsManager = __webpack_require__(34);
+	function RotateSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(RotateSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._angle = 0;
+	    this._previousAngle = 0;
+	}
+	RotateSync.prototype = Object.create(TwoFingerSync.prototype);
+	RotateSync.prototype.constructor = RotateSync;
+	RotateSync.DEFAULT_OPTIONS = { scale: 1 };
+	RotateSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._angle = 0;
+	    this._previousAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        angle: this._angle,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	};
+	RotateSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var scale = this.options.scale;
+	    var currAngle = TwoFingerSync.calculateAngle(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var diffTheta = scale * (currAngle - this._previousAngle);
+	    var velTheta = diffTheta / diffTime;
+	    this._angle += diffTheta;
+	    this._eventOutput.emit('update', {
+	        delta: diffTheta,
+	        velocity: velTheta,
+	        angle: this._angle,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	    this._previousAngle = currAngle;
+	};
+	RotateSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	RotateSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = RotateSync;
+
+/***/ },
+/* 165 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TwoFingerSync = __webpack_require__(168);
+	var OptionsManager = __webpack_require__(34);
+	function ScaleSync(options) {
+	    TwoFingerSync.call(this);
+	    this.options = Object.create(ScaleSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._scaleFactor = 1;
+	    this._startDist = 0;
+	    this._eventInput.on('pipe', _reset.bind(this));
+	}
+	ScaleSync.prototype = Object.create(TwoFingerSync.prototype);
+	ScaleSync.prototype.constructor = ScaleSync;
+	ScaleSync.DEFAULT_OPTIONS = { scale: 1 };
+	function _reset() {
+	    this.touchAId = undefined;
+	    this.touchBId = undefined;
+	}
+	ScaleSync.prototype._startUpdate = function _startUpdate(event) {
+	    this._scaleFactor = 1;
+	    this._startDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    this._eventOutput.emit('start', {
+	        count: event.touches.length,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ],
+	        distance: this._startDist,
+	        center: TwoFingerSync.calculateCenter(this.posA, this.posB)
+	    });
+	};
+	ScaleSync.prototype._moveUpdate = function _moveUpdate(diffTime) {
+	    var scale = this.options.scale;
+	    var currDist = TwoFingerSync.calculateDistance(this.posA, this.posB);
+	    var center = TwoFingerSync.calculateCenter(this.posA, this.posB);
+	    var delta = (currDist - this._startDist) / this._startDist;
+	    var newScaleFactor = Math.max(1 + scale * delta, 0);
+	    var veloScale = (newScaleFactor - this._scaleFactor) / diffTime;
+	    this._eventOutput.emit('update', {
+	        delta: delta,
+	        scale: newScaleFactor,
+	        velocity: veloScale,
+	        distance: currDist,
+	        center: center,
+	        touches: [
+	            this.touchAId,
+	            this.touchBId
+	        ]
+	    });
+	    this._scaleFactor = newScaleFactor;
+	};
+	ScaleSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	ScaleSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	module.exports = ScaleSync;
+
+/***/ },
+/* 166 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var TouchTracker = __webpack_require__(167);
+	var EventHandler = __webpack_require__(44);
+	var OptionsManager = __webpack_require__(34);
+	function TouchSync(options) {
+	    this.options = Object.create(TouchSync.DEFAULT_OPTIONS);
+	    this._optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this._eventOutput = new EventHandler();
+	    this._touchTracker = new TouchTracker({ touchLimit: this.options.touchLimit });
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    EventHandler.setInputHandler(this, this._touchTracker);
+	    this._touchTracker.on('trackstart', _handleStart.bind(this));
+	    this._touchTracker.on('trackmove', _handleMove.bind(this));
+	    this._touchTracker.on('trackend', _handleEnd.bind(this));
+	    this._payload = {
+	        delta: null,
+	        position: null,
+	        velocity: null,
+	        clientX: undefined,
+	        clientY: undefined,
+	        count: 0,
+	        touch: undefined
+	    };
+	    this._position = null;
+	}
+	TouchSync.DEFAULT_OPTIONS = {
+	    direction: undefined,
+	    rails: false,
+	    touchLimit: 1,
+	    velocitySampleLength: 10,
+	    scale: 1
+	};
+	TouchSync.DIRECTION_X = 0;
+	TouchSync.DIRECTION_Y = 1;
+	var MINIMUM_TICK_TIME = 8;
+	function _handleStart(data) {
+	    var velocity;
+	    var delta;
+	    if (this.options.direction !== undefined) {
+	        this._position = 0;
+	        velocity = 0;
+	        delta = 0;
+	    } else {
+	        this._position = [
+	            0,
+	            0
+	        ];
+	        velocity = [
+	            0,
+	            0
+	        ];
+	        delta = [
+	            0,
+	            0
+	        ];
+	    }
+	    var payload = this._payload;
+	    payload.delta = delta;
+	    payload.position = this._position;
+	    payload.velocity = velocity;
+	    payload.clientX = data.x;
+	    payload.clientY = data.y;
+	    payload.count = data.count;
+	    payload.touch = data.identifier;
+	    this._eventOutput.emit('start', payload);
+	}
+	function _handleMove(data) {
+	    var history = data.history;
+	    var currHistory = history[history.length - 1];
+	    var prevHistory = history[history.length - 2];
+	    var distantHistory = history[history.length - this.options.velocitySampleLength] ? history[history.length - this.options.velocitySampleLength] : history[history.length - 2];
+	    var distantTime = distantHistory.timestamp;
+	    var currTime = currHistory.timestamp;
+	    var diffX = currHistory.x - prevHistory.x;
+	    var diffY = currHistory.y - prevHistory.y;
+	    var velDiffX = currHistory.x - distantHistory.x;
+	    var velDiffY = currHistory.y - distantHistory.y;
+	    if (this.options.rails) {
+	        if (Math.abs(diffX) > Math.abs(diffY))
+	            diffY = 0;
+	        else
+	            diffX = 0;
+	        if (Math.abs(velDiffX) > Math.abs(velDiffY))
+	            velDiffY = 0;
+	        else
+	            velDiffX = 0;
+	    }
+	    var diffTime = Math.max(currTime - distantTime, MINIMUM_TICK_TIME);
+	    var velX = velDiffX / diffTime;
+	    var velY = velDiffY / diffTime;
+	    var scale = this.options.scale;
+	    var nextVel;
+	    var nextDelta;
+	    if (this.options.direction === TouchSync.DIRECTION_X) {
+	        nextDelta = scale * diffX;
+	        nextVel = scale * velX;
+	        this._position += nextDelta;
+	    } else if (this.options.direction === TouchSync.DIRECTION_Y) {
+	        nextDelta = scale * diffY;
+	        nextVel = scale * velY;
+	        this._position += nextDelta;
+	    } else {
+	        nextDelta = [
+	            scale * diffX,
+	            scale * diffY
+	        ];
+	        nextVel = [
+	            scale * velX,
+	            scale * velY
+	        ];
+	        this._position[0] += nextDelta[0];
+	        this._position[1] += nextDelta[1];
+	    }
+	    var payload = this._payload;
+	    payload.delta = nextDelta;
+	    payload.velocity = nextVel;
+	    payload.position = this._position;
+	    payload.clientX = data.x;
+	    payload.clientY = data.y;
+	    payload.count = data.count;
+	    payload.touch = data.identifier;
+	    this._eventOutput.emit('update', payload);
+	}
+	function _handleEnd(data) {
+	    this._payload.count = data.count;
+	    this._eventOutput.emit('end', this._payload);
+	}
+	TouchSync.prototype.setOptions = function setOptions(options) {
+	    return this._optionsManager.setOptions(options);
+	};
+	TouchSync.prototype.getOptions = function getOptions() {
+	    return this.options;
+	};
+	module.exports = TouchSync;
+
+/***/ },
+/* 167 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(44);
+	var _now = Date.now;
+	function _timestampTouch(touch, event, history) {
+	    return {
+	        x: touch.clientX,
+	        y: touch.clientY,
+	        identifier: touch.identifier,
+	        origin: event.origin,
+	        timestamp: _now(),
+	        count: event.touches.length,
+	        history: history
+	    };
+	}
+	function _handleStart(event) {
+	    if (event.touches.length > this.touchLimit)
+	        return;
+	    this.isTouched = true;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var data = _timestampTouch(touch, event, null);
+	        this.eventOutput.emit('trackstart', data);
+	        if (!this.selective && !this.touchHistory[touch.identifier])
+	            this.track(data);
+	    }
+	}
+	function _handleMove(event) {
+	    if (event.touches.length > this.touchLimit)
+	        return;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var history = this.touchHistory[touch.identifier];
+	        if (history) {
+	            var data = _timestampTouch(touch, event, history);
+	            this.touchHistory[touch.identifier].push(data);
+	            this.eventOutput.emit('trackmove', data);
+	        }
+	    }
+	}
+	function _handleEnd(event) {
+	    if (!this.isTouched)
+	        return;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        var history = this.touchHistory[touch.identifier];
+	        if (history) {
+	            var data = _timestampTouch(touch, event, history);
+	            this.eventOutput.emit('trackend', data);
+	            delete this.touchHistory[touch.identifier];
+	        }
+	    }
+	    this.isTouched = false;
+	}
+	function _handleUnpipe() {
+	    for (var i in this.touchHistory) {
+	        var history = this.touchHistory[i];
+	        this.eventOutput.emit('trackend', {
+	            touch: history[history.length - 1].touch,
+	            timestamp: Date.now(),
+	            count: 0,
+	            history: history
+	        });
+	        delete this.touchHistory[i];
+	    }
+	}
+	function TouchTracker(options) {
+	    this.selective = options.selective;
+	    this.touchLimit = options.touchLimit || 1;
+	    this.touchHistory = {};
+	    this.eventInput = new EventHandler();
+	    this.eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.eventInput);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    this.eventInput.on('touchstart', _handleStart.bind(this));
+	    this.eventInput.on('touchmove', _handleMove.bind(this));
+	    this.eventInput.on('touchend', _handleEnd.bind(this));
+	    this.eventInput.on('touchcancel', _handleEnd.bind(this));
+	    this.eventInput.on('unpipe', _handleUnpipe.bind(this));
+	    this.isTouched = false;
+	}
+	TouchTracker.prototype.track = function track(data) {
+	    this.touchHistory[data.identifier] = [data];
+	};
+	module.exports = TouchTracker;
+
+/***/ },
+/* 168 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var EventHandler = __webpack_require__(44);
+	function TwoFingerSync() {
+	    this._eventInput = new EventHandler();
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setInputHandler(this, this._eventInput);
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.touchAEnabled = false;
+	    this.touchAId = 0;
+	    this.posA = null;
+	    this.timestampA = 0;
+	    this.touchBEnabled = false;
+	    this.touchBId = 0;
+	    this.posB = null;
+	    this.timestampB = 0;
+	    this._eventInput.on('touchstart', this.handleStart.bind(this));
+	    this._eventInput.on('touchmove', this.handleMove.bind(this));
+	    this._eventInput.on('touchend', this.handleEnd.bind(this));
+	    this._eventInput.on('touchcancel', this.handleEnd.bind(this));
+	}
+	TwoFingerSync.calculateAngle = function (posA, posB) {
+	    var diffX = posB[0] - posA[0];
+	    var diffY = posB[1] - posA[1];
+	    return Math.atan2(diffY, diffX);
+	};
+	TwoFingerSync.calculateDistance = function (posA, posB) {
+	    var diffX = posB[0] - posA[0];
+	    var diffY = posB[1] - posA[1];
+	    return Math.sqrt(diffX * diffX + diffY * diffY);
+	};
+	TwoFingerSync.calculateCenter = function (posA, posB) {
+	    return [
+	        (posA[0] + posB[0]) / 2,
+	        (posA[1] + posB[1]) / 2
+	    ];
+	};
+	var _now = Date.now;
+	TwoFingerSync.prototype.handleStart = function handleStart(event) {
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (!this.touchAEnabled) {
+	            this.touchAId = touch.identifier;
+	            this.touchAEnabled = true;
+	            this.posA = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampA = _now();
+	        } else if (!this.touchBEnabled) {
+	            this.touchBId = touch.identifier;
+	            this.touchBEnabled = true;
+	            this.posB = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampB = _now();
+	            this._startUpdate(event);
+	        }
+	    }
+	};
+	TwoFingerSync.prototype.handleMove = function handleMove(event) {
+	    if (!(this.touchAEnabled && this.touchBEnabled))
+	        return;
+	    var prevTimeA = this.timestampA;
+	    var prevTimeB = this.timestampB;
+	    var diffTime;
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (touch.identifier === this.touchAId) {
+	            this.posA = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampA = _now();
+	            diffTime = this.timestampA - prevTimeA;
+	        } else if (touch.identifier === this.touchBId) {
+	            this.posB = [
+	                touch.pageX,
+	                touch.pageY
+	            ];
+	            this.timestampB = _now();
+	            diffTime = this.timestampB - prevTimeB;
+	        }
+	    }
+	    if (diffTime)
+	        this._moveUpdate(diffTime);
+	};
+	TwoFingerSync.prototype.handleEnd = function handleEnd(event) {
+	    for (var i = 0; i < event.changedTouches.length; i++) {
+	        var touch = event.changedTouches[i];
+	        if (touch.identifier === this.touchAId || touch.identifier === this.touchBId) {
+	            if (this.touchAEnabled && this.touchBEnabled) {
+	                this._eventOutput.emit('end', {
+	                    touches: [
+	                        this.touchAId,
+	                        this.touchBId
+	                    ],
+	                    angle: this._angle
+	                });
+	            }
+	            this.touchAEnabled = false;
+	            this.touchAId = 0;
+	            this.touchBEnabled = false;
+	            this.touchBId = 0;
+	        }
+	    }
+	};
+	module.exports = TwoFingerSync;
 
 /***/ },
 /* 169 */
@@ -50592,9 +50744,9 @@
 	var Transitionable = __webpack_require__(40);
 	var EventHandler = __webpack_require__(44);
 	var Utilities = __webpack_require__(172);
-	var GenericSync = __webpack_require__(154);
-	var MouseSync = __webpack_require__(155);
-	var TouchSync = __webpack_require__(159);
+	var GenericSync = __webpack_require__(161);
+	var MouseSync = __webpack_require__(162);
+	var TouchSync = __webpack_require__(166);
 	GenericSync.register({
 	    'mouse': MouseSync,
 	    'touch': TouchSync
@@ -50864,10 +51016,10 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Modifier = __webpack_require__(166);
+	var Modifier = __webpack_require__(155);
 	var Transform = __webpack_require__(35);
 	var Transitionable = __webpack_require__(40);
-	var TransitionableTransform = __webpack_require__(190);
+	var TransitionableTransform = __webpack_require__(209);
 	function StateModifier(options) {
 	    this._transformState = new TransitionableTransform(Transform.identity);
 	    this._opacityState = new Transitionable(1);
@@ -51023,7 +51175,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
+	var Surface = __webpack_require__(50);
 	function CanvasSurface(options) {
 	    if (options && options.canvasSize)
 	        this._canvasSize = options.canvasSize;
@@ -51120,7 +51272,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
+	var Surface = __webpack_require__(50);
 	function ImageSurface(options) {
 	    this._imageUrl = undefined;
 	    Surface.apply(this, arguments);
@@ -51197,7 +51349,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
+	var Surface = __webpack_require__(50);
 	function InputSurface(options) {
 	    this._placeholder = options.placeholder || '';
 	    this._value = options.value || '';
@@ -51304,7 +51456,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
+	var Surface = __webpack_require__(50);
 	function TextareaSurface(options) {
 	    this._placeholder = options.placeholder || '';
 	    this._value = options.value || '';
@@ -51396,7 +51548,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
+	var Surface = __webpack_require__(50);
 	function VideoSurface(options) {
 	    Surface.apply(this, arguments);
 	    this._videoUrl = undefined;
@@ -51447,79 +51599,129 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var KeyCodes = {
-	    0: 48,
-	    1: 49,
-	    2: 50,
-	    3: 51,
-	    4: 52,
-	    5: 53,
-	    6: 54,
-	    7: 55,
-	    8: 56,
-	    9: 57,
-	    a: 97,
-	    b: 98,
-	    c: 99,
-	    d: 100,
-	    e: 101,
-	    f: 102,
-	    g: 103,
-	    h: 104,
-	    i: 105,
-	    j: 106,
-	    k: 107,
-	    l: 108,
-	    m: 109,
-	    n: 110,
-	    o: 111,
-	    p: 112,
-	    q: 113,
-	    r: 114,
-	    s: 115,
-	    t: 116,
-	    u: 117,
-	    v: 118,
-	    w: 119,
-	    x: 120,
-	    y: 121,
-	    z: 122,
-	    A: 65,
-	    B: 66,
-	    C: 67,
-	    D: 68,
-	    E: 69,
-	    F: 70,
-	    G: 71,
-	    H: 72,
-	    I: 73,
-	    J: 74,
-	    K: 75,
-	    L: 76,
-	    M: 77,
-	    N: 78,
-	    O: 79,
-	    P: 80,
-	    Q: 81,
-	    R: 82,
-	    S: 83,
-	    T: 84,
-	    U: 85,
-	    V: 86,
-	    W: 87,
-	    X: 88,
-	    Y: 89,
-	    Z: 90,
-	    ENTER: 13,
-	    LEFT_ARROW: 37,
-	    RIGHT_ARROW: 39,
-	    UP_ARROW: 38,
-	    DOWN_ARROW: 40,
-	    SPACE: 32,
-	    SHIFT: 16,
-	    TAB: 9
+	var Scene = __webpack_require__(156);
+	var Surface = __webpack_require__(50);
+	var Transform = __webpack_require__(35);
+	var View = __webpack_require__(49);
+	function NavigationBar(options) {
+	    View.apply(this, arguments);
+	    this.title = new Surface({
+	        classes: this.options.classes,
+	        content: this.options.content
+	    });
+	    this.back = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.backContent
+	    });
+	    this.back.on('click', function () {
+	        this._eventOutput.emit('back', {});
+	    }.bind(this));
+	    this.more = new Surface({
+	        size: [
+	            this.options.size[1],
+	            this.options.size[1]
+	        ],
+	        classes: this.options.classes,
+	        content: this.options.moreContent
+	    });
+	    this.more.on('click', function () {
+	        this._eventOutput.emit('more', {});
+	    }.bind(this));
+	    this.layout = new Scene({
+	        id: 'master',
+	        size: this.options.size,
+	        target: [
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    0,
+	                    0.5
+	                ],
+	                align: [
+	                    0,
+	                    0.5
+	                ],
+	                target: this.back
+	            },
+	            {
+	                origin: [
+	                    0.5,
+	                    0.5
+	                ],
+	                align: [
+	                    0.5,
+	                    0.5
+	                ],
+	                target: this.title
+	            },
+	            {
+	                transform: Transform.inFront,
+	                origin: [
+	                    1,
+	                    0.5
+	                ],
+	                align: [
+	                    1,
+	                    0.5
+	                ],
+	                target: this.more
+	            }
+	        ]
+	    });
+	    this._add(this.layout);
+	    this._optionsManager.on('change', function (event) {
+	        var key = event.id;
+	        var data = event.value;
+	        if (key === 'size') {
+	            this.layout.id.master.setSize(data);
+	            this.title.setSize(data);
+	            this.back.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	            this.more.setSize([
+	                data[1],
+	                data[1]
+	            ]);
+	        } else if (key === 'backClasses') {
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	        } else if (key === 'backContent') {
+	            this.back.setContent(this.options.backContent);
+	        } else if (key === 'classes') {
+	            this.title.setOptions({ classes: this.options.classes });
+	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'content') {
+	            this.setContent(this.options.content);
+	        } else if (key === 'moreClasses') {
+	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
+	        } else if (key === 'moreContent') {
+	            this.more.setContent(this.options.content);
+	        }
+	    }.bind(this));
+	}
+	NavigationBar.prototype = Object.create(View.prototype);
+	NavigationBar.prototype.constructor = NavigationBar;
+	NavigationBar.DEFAULT_OPTIONS = {
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    backClasses: ['back'],
+	    backContent: '&#x25c0;',
+	    classes: ['navigation'],
+	    content: '',
+	    moreClasses: ['more'],
+	    moreContent: '&#x271a;'
 	};
-	module.exports = KeyCodes;
+	NavigationBar.prototype.setContent = function setContent(content) {
+	    return this.title.setContent(content);
+	};
+	module.exports = NavigationBar;
 
 /***/ },
 /* 185 */
@@ -51532,98 +51734,128 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var FamousEngine = __webpack_require__(119);
-	var _event = 'prerender';
-	var getTime = window.performance && window.performance.now ? function () {
-	    return window.performance.now();
-	} : function () {
-	    return Date.now();
+	var Surface = __webpack_require__(50);
+	var CanvasSurface = __webpack_require__(177);
+	var Transform = __webpack_require__(35);
+	var EventHandler = __webpack_require__(44);
+	var Utilities = __webpack_require__(172);
+	var OptionsManager = __webpack_require__(34);
+	var MouseSync = __webpack_require__(162);
+	var TouchSync = __webpack_require__(166);
+	var GenericSync = __webpack_require__(161);
+	GenericSync.register({
+	    mouse: MouseSync,
+	    touch: TouchSync
+	});
+	function Slider(options) {
+	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
+	    this.optionsManager = new OptionsManager(this.options);
+	    if (options)
+	        this.setOptions(options);
+	    this.indicator = new CanvasSurface({
+	        size: this.options.indicatorSize,
+	        classes: ['slider-back']
+	    });
+	    this.label = new Surface({
+	        size: this.options.labelSize,
+	        content: this.options.label,
+	        properties: { pointerEvents: 'none' },
+	        classes: ['slider-label']
+	    });
+	    this.eventOutput = new EventHandler();
+	    this.eventInput = new EventHandler();
+	    EventHandler.setInputHandler(this, this.eventInput);
+	    EventHandler.setOutputHandler(this, this.eventOutput);
+	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
+	    this.sync = new GenericSync([
+	        'mouse',
+	        'touch'
+	    ], {
+	        scale: scale,
+	        direction: GenericSync.DIRECTION_X
+	    });
+	    this.indicator.pipe(this.sync);
+	    this.sync.pipe(this);
+	    this.eventInput.on('update', function (data) {
+	        this.set(data.position);
+	    }.bind(this));
+	    this._drawPos = 0;
+	    _updateLabel.call(this);
+	}
+	Slider.DEFAULT_OPTIONS = {
+	    size: [
+	        200,
+	        60
+	    ],
+	    indicatorSize: [
+	        200,
+	        30
+	    ],
+	    labelSize: [
+	        200,
+	        30
+	    ],
+	    range: [
+	        0,
+	        1
+	    ],
+	    precision: 2,
+	    value: 0,
+	    label: '',
+	    fillColor: 'rgba(170, 170, 170, 1)'
 	};
-	function addTimerFunction(fn) {
-	    FamousEngine.on(_event, fn);
-	    return fn;
+	function _updateLabel() {
+	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
 	}
-	function setTimeout(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            FamousEngine.removeListener(_event, callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function setInterval(fn, duration) {
-	    var t = getTime();
-	    var callback = function () {
-	        var t2 = getTime();
-	        if (t2 - t >= duration) {
-	            fn.apply(this, arguments);
-	            t = getTime();
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function after(fn, numTicks) {
-	    if (numTicks === undefined)
-	        return undefined;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            clear(callback);
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function every(fn, numTicks) {
-	    numTicks = numTicks || 1;
-	    var initial = numTicks;
-	    var callback = function () {
-	        numTicks--;
-	        if (numTicks <= 0) {
-	            fn.apply(this, arguments);
-	            numTicks = initial;
-	        }
-	    };
-	    return addTimerFunction(callback);
-	}
-	function clear(fn) {
-	    FamousEngine.removeListener(_event, fn);
-	}
-	function debounce(func, wait) {
-	    var timeout;
-	    var ctx;
-	    var timestamp;
-	    var result;
-	    var args;
-	    return function () {
-	        ctx = this;
-	        args = arguments;
-	        timestamp = getTime();
-	        var fn = function () {
-	            var last = getTime - timestamp;
-	            if (last < wait) {
-	                timeout = setTimeout(fn, wait - last);
-	            } else {
-	                timeout = null;
-	                result = func.apply(ctx, args);
+	Slider.prototype.setOptions = function setOptions(options) {
+	    return this.optionsManager.setOptions(options);
+	};
+	Slider.prototype.get = function get() {
+	    return this.options.value;
+	};
+	Slider.prototype.set = function set(value) {
+	    if (value === this.options.value)
+	        return;
+	    this.options.value = Utilities.clamp(value, this.options.range);
+	    _updateLabel.call(this);
+	    this.eventOutput.emit('change', { value: value });
+	};
+	Slider.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	Slider.prototype.render = function render() {
+	    var range = this.options.range;
+	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
+	    if (fillSize < this._drawPos) {
+	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
+	    } else if (fillSize > this._drawPos) {
+	        var ctx = this.indicator.getContext('2d');
+	        ctx.fillStyle = this.options.fillColor;
+	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
+	    }
+	    this._drawPos = fillSize;
+	    return {
+	        size: this.options.size,
+	        target: [
+	            {
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.indicator.render()
+	            },
+	            {
+	                transform: Transform.translate(0, 0, 1),
+	                origin: [
+	                    0,
+	                    0
+	                ],
+	                target: this.label.render()
 	            }
-	        };
-	        clear(timeout);
-	        timeout = setTimeout(fn, wait);
-	        return result;
+	        ]
 	    };
-	}
-	module.exports = {
-	    setTimeout: setTimeout,
-	    setInterval: setInterval,
-	    debounce: debounce,
-	    after: after,
-	    every: every,
-	    clear: clear
 	};
+	module.exports = Slider;
 
 /***/ },
 /* 186 */
@@ -51636,23 +51868,92 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	function CachedMap(mappingFunction) {
-	    this._map = mappingFunction || null;
-	    this._cachedOutput = null;
-	    this._cachedInput = Number.NaN;
+	var Utility = __webpack_require__(41);
+	var View = __webpack_require__(49);
+	var GridLayout = __webpack_require__(194);
+	var ToggleButton = __webpack_require__(187);
+	function TabBar(options) {
+	    View.apply(this, arguments);
+	    this.layout = new GridLayout();
+	    this.buttons = [];
+	    this._buttonIds = {};
+	    this._buttonCallbacks = {};
+	    this.layout.sequenceFrom(this.buttons);
+	    this._add(this.layout);
+	    this._optionsManager.on('change', _updateOptions.bind(this));
 	}
-	CachedMap.create = function create(mappingFunction) {
-	    var instance = new CachedMap(mappingFunction);
-	    return instance.get.bind(instance);
+	TabBar.prototype = Object.create(View.prototype);
+	TabBar.prototype.constructor = TabBar;
+	TabBar.DEFAULT_OPTIONS = {
+	    sections: [],
+	    widget: ToggleButton,
+	    size: [
+	        undefined,
+	        50
+	    ],
+	    direction: Utility.Direction.X,
+	    buttons: { toggleMode: ToggleButton.ON }
 	};
-	CachedMap.prototype.get = function get(input) {
-	    if (input !== this._cachedInput) {
-	        this._cachedInput = input;
-	        this._cachedOutput = this._map(input);
+	function _updateOptions(data) {
+	    var id = data.id;
+	    var value = data.value;
+	    if (id === 'direction') {
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
+	    } else if (id === 'buttons') {
+	        for (var i in this.buttons) {
+	            this.buttons[i].setOptions(value);
+	        }
+	    } else if (id === 'sections') {
+	        for (var sectionId in this.options.sections) {
+	            this.defineSection(sectionId, this.options.sections[sectionId]);
+	        }
 	    }
-	    return this._cachedOutput;
+	}
+	function _resolveGridDimensions(count, direction) {
+	    if (direction === Utility.Direction.X)
+	        return [
+	            count,
+	            1
+	        ];
+	    else
+	        return [
+	            1,
+	            count
+	        ];
+	}
+	TabBar.prototype.defineSection = function defineSection(id, content) {
+	    var button;
+	    var i = this._buttonIds[id];
+	    if (i === undefined) {
+	        i = this.buttons.length;
+	        this._buttonIds[id] = i;
+	        var widget = this.options.widget;
+	        button = new widget();
+	        this.buttons[i] = button;
+	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
+	    } else {
+	        button = this.buttons[i];
+	        button.unbind('select', this._buttonCallbacks[id]);
+	    }
+	    if (this.options.buttons)
+	        button.setOptions(this.options.buttons);
+	    button.setOptions(content);
+	    this._buttonCallbacks[id] = this.select.bind(this, id);
+	    button.on('select', this._buttonCallbacks[id]);
 	};
-	module.exports = CachedMap;
+	TabBar.prototype.select = function select(id) {
+	    var btn = this._buttonIds[id];
+	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
+	        this._eventOutput.emit('select', { id: id });
+	    } else if (this.buttons[btn]) {
+	        this.buttons[btn].select();
+	    }
+	    for (var i = 0; i < this.buttons.length; i++) {
+	        if (i !== btn)
+	            this.buttons[i].deselect();
+	    }
+	};
+	module.exports = TabBar;
 
 /***/ },
 /* 187 */
@@ -51665,744 +51966,113 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Easing = {
-	    inQuad: function (t) {
-	        return t * t;
-	    },
-	    outQuad: function (t) {
-	        return -(t -= 1) * t + 1;
-	    },
-	    inOutQuad: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t;
-	        return -0.5 * (--t * (t - 2) - 1);
-	    },
-	    inCubic: function (t) {
-	        return t * t * t;
-	    },
-	    outCubic: function (t) {
-	        return --t * t * t + 1;
-	    },
-	    inOutCubic: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t;
-	        return 0.5 * ((t -= 2) * t * t + 2);
-	    },
-	    inQuart: function (t) {
-	        return t * t * t * t;
-	    },
-	    outQuart: function (t) {
-	        return -(--t * t * t * t - 1);
-	    },
-	    inOutQuart: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t * t;
-	        return -0.5 * ((t -= 2) * t * t * t - 2);
-	    },
-	    inQuint: function (t) {
-	        return t * t * t * t * t;
-	    },
-	    outQuint: function (t) {
-	        return --t * t * t * t * t + 1;
-	    },
-	    inOutQuint: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * t * t * t * t * t;
-	        return 0.5 * ((t -= 2) * t * t * t * t + 2);
-	    },
-	    inSine: function (t) {
-	        return -1 * Math.cos(t * (Math.PI / 2)) + 1;
-	    },
-	    outSine: function (t) {
-	        return Math.sin(t * (Math.PI / 2));
-	    },
-	    inOutSine: function (t) {
-	        return -0.5 * (Math.cos(Math.PI * t) - 1);
-	    },
-	    inExpo: function (t) {
-	        return t === 0 ? 0 : Math.pow(2, 10 * (t - 1));
-	    },
-	    outExpo: function (t) {
-	        return t === 1 ? 1 : -Math.pow(2, -10 * t) + 1;
-	    },
-	    inOutExpo: function (t) {
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * Math.pow(2, 10 * (t - 1));
-	        return 0.5 * (-Math.pow(2, -10 * --t) + 2);
-	    },
-	    inCirc: function (t) {
-	        return -(Math.sqrt(1 - t * t) - 1);
-	    },
-	    outCirc: function (t) {
-	        return Math.sqrt(1 - --t * t);
-	    },
-	    inOutCirc: function (t) {
-	        if ((t /= 0.5) < 1)
-	            return -0.5 * (Math.sqrt(1 - t * t) - 1);
-	        return 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1);
-	    },
-	    inElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if (!p)
-	            p = 0.3;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
-	    },
-	    outElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if (t === 1)
-	            return 1;
-	        if (!p)
-	            p = 0.3;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
-	    },
-	    inOutElastic: function (t) {
-	        var s = 1.70158;
-	        var p = 0;
-	        var a = 1;
-	        if (t === 0)
-	            return 0;
-	        if ((t /= 0.5) === 2)
-	            return 1;
-	        if (!p)
-	            p = 0.3 * 1.5;
-	        s = p / (2 * Math.PI) * Math.asin(1 / a);
-	        if (t < 1)
-	            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
-	        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p) * 0.5 + 1;
-	    },
-	    inBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        return t * t * ((s + 1) * t - s);
-	    },
-	    outBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        return --t * t * ((s + 1) * t + s) + 1;
-	    },
-	    inOutBack: function (t, s) {
-	        if (s === undefined)
-	            s = 1.70158;
-	        if ((t /= 0.5) < 1)
-	            return 0.5 * (t * t * (((s *= 1.525) + 1) * t - s));
-	        return 0.5 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2);
-	    },
-	    inBounce: function (t) {
-	        return 1 - Easing.outBounce(1 - t);
-	    },
-	    outBounce: function (t) {
-	        if (t < 1 / 2.75) {
-	            return 7.5625 * t * t;
-	        } else if (t < 2 / 2.75) {
-	            return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
-	        } else if (t < 2.5 / 2.75) {
-	            return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
-	        } else {
-	            return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
-	        }
-	    },
-	    inOutBounce: function (t) {
-	        if (t < 0.5)
-	            return Easing.inBounce(t * 2) * 0.5;
-	        return Easing.outBounce(t * 2 - 1) * 0.5 + 0.5;
+	var Surface = __webpack_require__(50);
+	var EventHandler = __webpack_require__(44);
+	var RenderController = __webpack_require__(197);
+	function ToggleButton(options) {
+	    this.options = {
+	        content: [
+	            '',
+	            ''
+	        ],
+	        offClasses: ['off'],
+	        onClasses: ['on'],
+	        size: undefined,
+	        outTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        inTransition: {
+	            curve: 'easeInOut',
+	            duration: 300
+	        },
+	        toggleMode: ToggleButton.TOGGLE,
+	        crossfade: true
+	    };
+	    this._eventOutput = new EventHandler();
+	    EventHandler.setOutputHandler(this, this._eventOutput);
+	    this.offSurface = new Surface();
+	    this.offSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.OFF)
+	            this.select();
+	    }.bind(this));
+	    this.offSurface.pipe(this._eventOutput);
+	    this.onSurface = new Surface();
+	    this.onSurface.on('click', function () {
+	        if (this.options.toggleMode !== ToggleButton.ON)
+	            this.deselect();
+	    }.bind(this));
+	    this.onSurface.pipe(this._eventOutput);
+	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
+	    this.deselect();
+	    if (options)
+	        this.setOptions(options);
+	}
+	ToggleButton.OFF = 0;
+	ToggleButton.ON = 1;
+	ToggleButton.TOGGLE = 2;
+	ToggleButton.prototype.select = function select(suppressEvent) {
+	    this.selected = true;
+	    this.arbiter.show(this.onSurface, this.options.inTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('select');
 	    }
 	};
-	module.exports = Easing;
+	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
+	    this.selected = false;
+	    this.arbiter.show(this.offSurface, this.options.outTransition);
+	    if (!suppressEvent) {
+	        this._eventOutput.emit('deselect');
+	    }
+	};
+	ToggleButton.prototype.isSelected = function isSelected() {
+	    return this.selected;
+	};
+	ToggleButton.prototype.setOptions = function setOptions(options) {
+	    if (options.content !== undefined) {
+	        if (!(options.content instanceof Array))
+	            options.content = [
+	                options.content,
+	                options.content
+	            ];
+	        this.options.content = options.content;
+	        this.offSurface.setContent(this.options.content[0]);
+	        this.onSurface.setContent(this.options.content[1]);
+	    }
+	    if (options.offClasses) {
+	        this.options.offClasses = options.offClasses;
+	        this.offSurface.setClasses(this.options.offClasses);
+	    }
+	    if (options.onClasses) {
+	        this.options.onClasses = options.onClasses;
+	        this.onSurface.setClasses(this.options.onClasses);
+	    }
+	    if (options.size !== undefined) {
+	        this.options.size = options.size;
+	        this.onSurface.setSize(this.options.size);
+	        this.offSurface.setSize(this.options.size);
+	    }
+	    if (options.toggleMode !== undefined)
+	        this.options.toggleMode = options.toggleMode;
+	    if (options.outTransition !== undefined)
+	        this.options.outTransition = options.outTransition;
+	    if (options.inTransition !== undefined)
+	        this.options.inTransition = options.inTransition;
+	    if (options.crossfade !== undefined) {
+	        this.options.crossfade = options.crossfade;
+	        this.arbiter.setOptions({ overlap: this.options.crossfade });
+	    }
+	};
+	ToggleButton.prototype.getSize = function getSize() {
+	    return this.options.size;
+	};
+	ToggleButton.prototype.render = function render() {
+	    return this.arbiter.render();
+	};
+	module.exports = ToggleButton;
 
 /***/ },
 /* 188 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var PE = __webpack_require__(39);
-	var Particle = __webpack_require__(37);
-	var Spring = __webpack_require__(216);
-	var Vector = __webpack_require__(36);
-	function SnapTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this._dimensions = 1;
-	    this._restTolerance = 1e-10;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.particle = new Particle();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.PE.addBody(this.particle);
-	    this.PE.attach(this.spring, this.particle);
-	}
-	SnapTransition.SUPPORTS_MULTIPLE = 3;
-	SnapTransition.DEFAULT_OPTIONS = {
-	    period: 100,
-	    dampingRatio: 0.2,
-	    velocity: 0
-	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _setParticlePosition(p) {
-	    this.particle.position.set(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.velocity.set(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _setupDefinition(definition) {
-	    var defaults = SnapTransition.DEFAULT_OPTIONS;
-	    if (definition.period === undefined)
-	        definition.period = defaults.period;
-	    if (definition.dampingRatio === undefined)
-	        definition.dampingRatio = defaults.dampingRatio;
-	    if (definition.velocity === undefined)
-	        definition.velocity = defaults.velocity;
-	    this.spring.setOptions({
-	        period: definition.period,
-	        dampingRatio: definition.dampingRatio
-	    });
-	    _setParticleVelocity.call(this, definition.velocity);
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
-	    }
-	    if (_getEnergy.call(this) < this._absRestTolerance) {
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	        _sleep.call(this);
-	    }
-	}
-	SnapTransition.prototype.reset = function reset(state, velocity) {
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    this.initState.set(state);
-	    _setParticlePosition.call(this, state);
-	    _setTarget.call(this, state);
-	    if (velocity)
-	        _setParticleVelocity.call(this, velocity);
-	    _setCallback.call(this, undefined);
-	};
-	SnapTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
-	};
-	SnapTransition.prototype.setVelocity = function setVelocity(velocity) {
-	    this.call(this, _setParticleVelocity(velocity));
-	};
-	SnapTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
-	};
-	SnapTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	SnapTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	SnapTransition.prototype.set = function set(state, definition, callback) {
-	    if (!definition) {
-	        this.reset(state);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, callback);
-	};
-	module.exports = SnapTransition;
-
-/***/ },
-/* 189 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var PE = __webpack_require__(39);
-	var Particle = __webpack_require__(37);
-	var Spring = __webpack_require__(38);
-	var Vector = __webpack_require__(36);
-	function SpringTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this._dimensions = undefined;
-	    this._restTolerance = 1e-10;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.particle = new Particle();
-	    this.PE.addBody(this.particle);
-	    this.PE.attach(this.spring, this.particle);
-	}
-	SpringTransition.SUPPORTS_MULTIPLE = 3;
-	SpringTransition.DEFAULT_OPTIONS = {
-	    period: 300,
-	    dampingRatio: 0.5,
-	    velocity: 0
-	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setParticlePosition(p) {
-	    this.particle.setPosition(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.setVelocity(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
-	    }
-	    if (_getEnergy.call(this) < this._absRestTolerance) {
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	        _sleep.call(this);
-	    }
-	}
-	function _setupDefinition(definition) {
-	    var defaults = SpringTransition.DEFAULT_OPTIONS;
-	    if (definition.period === undefined)
-	        definition.period = defaults.period;
-	    if (definition.dampingRatio === undefined)
-	        definition.dampingRatio = defaults.dampingRatio;
-	    if (definition.velocity === undefined)
-	        definition.velocity = defaults.velocity;
-	    if (definition.period < 150) {
-	        definition.period = 150;
-	        console.warn('The period of a SpringTransition is capped at 150 ms. Use a SnapTransition for faster transitions');
-	    }
-	    this.spring.setOptions({
-	        period: definition.period,
-	        dampingRatio: definition.dampingRatio
-	    });
-	    _setParticleVelocity.call(this, definition.velocity);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	SpringTransition.prototype.reset = function reset(pos, vel) {
-	    this._dimensions = pos instanceof Array ? pos.length : 0;
-	    this.initState.set(pos);
-	    _setParticlePosition.call(this, pos);
-	    _setTarget.call(this, pos);
-	    if (vel)
-	        _setParticleVelocity.call(this, vel);
-	    _setCallback.call(this, undefined);
-	};
-	SpringTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
-	};
-	SpringTransition.prototype.setVelocity = function setVelocity(v) {
-	    this.call(this, _setParticleVelocity(v));
-	};
-	SpringTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
-	};
-	SpringTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	SpringTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	SpringTransition.prototype.set = function set(endState, definition, callback) {
-	    if (!definition) {
-	        this.reset(endState);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = endState instanceof Array ? endState.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, endState);
-	    _setCallback.call(this, callback);
-	};
-	module.exports = SpringTransition;
-
-/***/ },
-/* 190 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Transitionable = __webpack_require__(40);
-	var Transform = __webpack_require__(35);
-	var Utility = __webpack_require__(41);
-	function TransitionableTransform(transform) {
-	    this._final = Transform.identity.slice();
-	    this._finalTranslate = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalRotate = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalSkew = [
-	        0,
-	        0,
-	        0
-	    ];
-	    this._finalScale = [
-	        1,
-	        1,
-	        1
-	    ];
-	    this.translate = new Transitionable(this._finalTranslate);
-	    this.rotate = new Transitionable(this._finalRotate);
-	    this.skew = new Transitionable(this._finalSkew);
-	    this.scale = new Transitionable(this._finalScale);
-	    if (transform)
-	        this.set(transform);
-	}
-	function _build() {
-	    return Transform.build({
-	        translate: this.translate.get(),
-	        rotate: this.rotate.get(),
-	        skew: this.skew.get(),
-	        scale: this.scale.get()
-	    });
-	}
-	function _buildFinal() {
-	    return Transform.build({
-	        translate: this._finalTranslate,
-	        rotate: this._finalRotate,
-	        skew: this._finalSkew,
-	        scale: this._finalScale
-	    });
-	}
-	TransitionableTransform.prototype.setTranslate = function setTranslate(translate, transition, callback) {
-	    this._finalTranslate = translate;
-	    this._final = _buildFinal.call(this);
-	    this.translate.set(translate, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setScale = function setScale(scale, transition, callback) {
-	    this._finalScale = scale;
-	    this._final = _buildFinal.call(this);
-	    this.scale.set(scale, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setRotate = function setRotate(eulerAngles, transition, callback) {
-	    this._finalRotate = eulerAngles;
-	    this._final = _buildFinal.call(this);
-	    this.rotate.set(eulerAngles, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setSkew = function setSkew(skewAngles, transition, callback) {
-	    this._finalSkew = skewAngles;
-	    this._final = _buildFinal.call(this);
-	    this.skew.set(skewAngles, transition, callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.set = function set(transform, transition, callback) {
-	    var components = Transform.interpret(transform);
-	    this._finalTranslate = components.translate;
-	    this._finalRotate = components.rotate;
-	    this._finalSkew = components.skew;
-	    this._finalScale = components.scale;
-	    this._final = transform;
-	    var _callback = callback ? Utility.after(4, callback) : null;
-	    this.translate.set(components.translate, transition, _callback);
-	    this.rotate.set(components.rotate, transition, _callback);
-	    this.skew.set(components.skew, transition, _callback);
-	    this.scale.set(components.scale, transition, _callback);
-	    return this;
-	};
-	TransitionableTransform.prototype.setDefaultTransition = function setDefaultTransition(transition) {
-	    this.translate.setDefault(transition);
-	    this.rotate.setDefault(transition);
-	    this.skew.setDefault(transition);
-	    this.scale.setDefault(transition);
-	};
-	TransitionableTransform.prototype.get = function get() {
-	    if (this.isActive()) {
-	        return _build.call(this);
-	    } else
-	        return this._final;
-	};
-	TransitionableTransform.prototype.getFinal = function getFinal() {
-	    return this._final;
-	};
-	TransitionableTransform.prototype.isActive = function isActive() {
-	    return this.translate.isActive() || this.rotate.isActive() || this.scale.isActive() || this.skew.isActive();
-	};
-	TransitionableTransform.prototype.halt = function halt() {
-	    this.translate.halt();
-	    this.rotate.halt();
-	    this.skew.halt();
-	    this.scale.halt();
-	    this._final = this.get();
-	    this._finalTranslate = this.translate.get();
-	    this._finalRotate = this.rotate.get();
-	    this._finalSkew = this.skew.get();
-	    this._finalScale = this.scale.get();
-	    return this;
-	};
-	module.exports = TransitionableTransform;
-
-/***/ },
-/* 191 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var PE = __webpack_require__(39);
-	var Particle = __webpack_require__(37);
-	var Spring = __webpack_require__(38);
-	var Wall = __webpack_require__(217);
-	var Vector = __webpack_require__(36);
-	function WallTransition(state) {
-	    state = state || 0;
-	    this.endState = new Vector(state);
-	    this.initState = new Vector();
-	    this.spring = new Spring({ anchor: this.endState });
-	    this.wall = new Wall();
-	    this._restTolerance = 1e-10;
-	    this._dimensions = 1;
-	    this._absRestTolerance = this._restTolerance;
-	    this._callback = undefined;
-	    this.PE = new PE();
-	    this.particle = new Particle();
-	    this.PE.addBody(this.particle);
-	    this.PE.attach([
-	        this.wall,
-	        this.spring
-	    ], this.particle);
-	}
-	WallTransition.SUPPORTS_MULTIPLE = 3;
-	WallTransition.DEFAULT_OPTIONS = {
-	    period: 300,
-	    dampingRatio: 0.5,
-	    velocity: 0,
-	    restitution: 0.5
-	};
-	function _getEnergy() {
-	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
-	}
-	function _setAbsoluteRestTolerance() {
-	    var distance = this.endState.sub(this.initState).normSquared();
-	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
-	}
-	function _wake() {
-	    this.PE.wake();
-	}
-	function _sleep() {
-	    this.PE.sleep();
-	}
-	function _setTarget(target) {
-	    this.endState.set(target);
-	    var dist = this.endState.sub(this.initState).norm();
-	    this.wall.setOptions({
-	        distance: this.endState.norm(),
-	        normal: dist === 0 ? this.particle.velocity.normalize(-1) : this.endState.sub(this.initState).normalize(-1)
-	    });
-	    _setAbsoluteRestTolerance.call(this);
-	}
-	function _setParticlePosition(p) {
-	    this.particle.position.set(p);
-	}
-	function _setParticleVelocity(v) {
-	    this.particle.velocity.set(v);
-	}
-	function _getParticlePosition() {
-	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
-	}
-	function _getParticleVelocity() {
-	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
-	}
-	function _setCallback(callback) {
-	    this._callback = callback;
-	}
-	function _update() {
-	    if (this.PE.isSleeping()) {
-	        if (this._callback) {
-	            var cb = this._callback;
-	            this._callback = undefined;
-	            cb();
-	        }
-	        return;
-	    }
-	    var energy = _getEnergy.call(this);
-	    if (energy < this._absRestTolerance) {
-	        _sleep.call(this);
-	        _setParticlePosition.call(this, this.endState);
-	        _setParticleVelocity.call(this, [
-	            0,
-	            0,
-	            0
-	        ]);
-	    }
-	}
-	function _setupDefinition(def) {
-	    var defaults = WallTransition.DEFAULT_OPTIONS;
-	    if (def.period === undefined)
-	        def.period = defaults.period;
-	    if (def.dampingRatio === undefined)
-	        def.dampingRatio = defaults.dampingRatio;
-	    if (def.velocity === undefined)
-	        def.velocity = defaults.velocity;
-	    if (def.restitution === undefined)
-	        def.restitution = defaults.restitution;
-	    if (def.drift === undefined)
-	        def.drift = Wall.DEFAULT_OPTIONS.drift;
-	    if (def.slop === undefined)
-	        def.slop = Wall.DEFAULT_OPTIONS.slop;
-	    this.spring.setOptions({
-	        period: def.period,
-	        dampingRatio: def.dampingRatio
-	    });
-	    this.wall.setOptions({
-	        restitution: def.restitution,
-	        drift: def.drift,
-	        slop: def.slop
-	    });
-	    _setParticleVelocity.call(this, def.velocity);
-	}
-	WallTransition.prototype.reset = function reset(state, velocity) {
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    this.initState.set(state);
-	    _setParticlePosition.call(this, state);
-	    if (velocity)
-	        _setParticleVelocity.call(this, velocity);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, undefined);
-	};
-	WallTransition.prototype.getVelocity = function getVelocity() {
-	    return _getParticleVelocity.call(this);
-	};
-	WallTransition.prototype.setVelocity = function setVelocity(velocity) {
-	    this.call(this, _setParticleVelocity(velocity));
-	};
-	WallTransition.prototype.isActive = function isActive() {
-	    return !this.PE.isSleeping();
-	};
-	WallTransition.prototype.halt = function halt() {
-	    this.set(this.get());
-	};
-	WallTransition.prototype.get = function get() {
-	    _update.call(this);
-	    return _getParticlePosition.call(this);
-	};
-	WallTransition.prototype.set = function set(state, definition, callback) {
-	    if (!definition) {
-	        this.reset(state);
-	        if (callback)
-	            callback();
-	        return;
-	    }
-	    this._dimensions = state instanceof Array ? state.length : 0;
-	    _wake.call(this);
-	    _setupDefinition.call(this, definition);
-	    _setTarget.call(this, state);
-	    _setCallback.call(this, callback);
-	};
-	module.exports = WallTransition;
-
-/***/ },
-/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52442,7 +52112,7 @@
 	module.exports = ContextualView;
 
 /***/ },
-/* 193 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52456,7 +52126,7 @@
 	var OptionsManager = __webpack_require__(34);
 	var Transitionable = __webpack_require__(40);
 	var Utility = __webpack_require__(41);
-	var SequentialLayout = __webpack_require__(205);
+	var SequentialLayout = __webpack_require__(201);
 	function Deck(options) {
 	    SequentialLayout.apply(this, arguments);
 	    this.state = new Transitionable(0);
@@ -52540,7 +52210,7 @@
 	module.exports = Deck;
 
 /***/ },
-/* 194 */
+/* 190 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52550,7 +52220,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(120);
 	var Transform = __webpack_require__(35);
 	var OptionsManager = __webpack_require__(34);
 	var Transitionable = __webpack_require__(40);
@@ -52729,7 +52399,7 @@
 	module.exports = DrawerLayout;
 
 /***/ },
-/* 195 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52739,11 +52409,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var CachedMap = __webpack_require__(186);
+	var CachedMap = __webpack_require__(205);
 	var Entity = __webpack_require__(42);
 	var EventHandler = __webpack_require__(44);
 	var Transform = __webpack_require__(35);
-	var RenderController = __webpack_require__(201);
+	var RenderController = __webpack_require__(197);
 	function EdgeSwapper(options) {
 	    this._currentTarget = null;
 	    this._size = [
@@ -52790,7 +52460,7 @@
 	module.exports = EdgeSwapper;
 
 /***/ },
-/* 196 */
+/* 192 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52947,7 +52617,7 @@
 	module.exports = FlexibleLayout;
 
 /***/ },
-/* 197 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -52959,7 +52629,7 @@
 	 */
 	var Transform = __webpack_require__(35);
 	var Transitionable = __webpack_require__(40);
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(120);
 	var OptionsManager = __webpack_require__(34);
 	function Flipper(options) {
 	    this.options = Object.create(Flipper.DEFAULT_OPTIONS);
@@ -53032,7 +52702,7 @@
 	module.exports = Flipper;
 
 /***/ },
-/* 198 */
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53043,14 +52713,14 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Entity = __webpack_require__(42);
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(120);
 	var Transform = __webpack_require__(35);
 	var ViewSequence = __webpack_require__(43);
 	var EventHandler = __webpack_require__(44);
-	var Modifier = __webpack_require__(166);
+	var Modifier = __webpack_require__(155);
 	var OptionsManager = __webpack_require__(34);
 	var Transitionable = __webpack_require__(40);
-	var TransitionableTransform = __webpack_require__(190);
+	var TransitionableTransform = __webpack_require__(209);
 	function GridLayout(options) {
 	    this.options = Object.create(GridLayout.DEFAULT_OPTIONS);
 	    this.optionsManager = new OptionsManager(this.options);
@@ -53226,7 +52896,7 @@
 	module.exports = GridLayout;
 
 /***/ },
-/* 199 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53237,7 +52907,7 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Entity = __webpack_require__(42);
-	var RenderNode = __webpack_require__(121);
+	var RenderNode = __webpack_require__(120);
 	var Transform = __webpack_require__(35);
 	var OptionsManager = __webpack_require__(34);
 	function HeaderFooterLayout(options) {
@@ -53327,7 +52997,7 @@
 	module.exports = HeaderFooterLayout;
 
 /***/ },
-/* 200 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53338,12 +53008,12 @@
 	 * @copyright Famous Industries, Inc. 2015
 	 */
 	var Transform = __webpack_require__(35);
-	var Modifier = __webpack_require__(166);
-	var RenderNode = __webpack_require__(121);
+	var Modifier = __webpack_require__(155);
+	var RenderNode = __webpack_require__(120);
 	var Utility = __webpack_require__(41);
 	var OptionsManager = __webpack_require__(34);
 	var Transitionable = __webpack_require__(40);
-	var TransitionableTransform = __webpack_require__(190);
+	var TransitionableTransform = __webpack_require__(209);
 	function Lightbox(options) {
 	    this.options = Object.create(Lightbox.DEFAULT_OPTIONS);
 	    this._optionsManager = new OptionsManager(this.options);
@@ -53468,7 +53138,7 @@
 	module.exports = Lightbox;
 
 /***/ },
-/* 201 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53478,11 +53148,11 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Modifier = __webpack_require__(166);
-	var RenderNode = __webpack_require__(121);
+	var Modifier = __webpack_require__(155);
+	var RenderNode = __webpack_require__(120);
 	var Transform = __webpack_require__(35);
 	var Transitionable = __webpack_require__(40);
-	var View = __webpack_require__(50);
+	var View = __webpack_require__(49);
 	function RenderController(options) {
 	    View.apply(this, arguments);
 	    this._showing = -1;
@@ -53697,7 +53367,7 @@
 	module.exports = RenderController;
 
 /***/ },
-/* 202 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53709,7 +53379,7 @@
 	 */
 	var ContainerSurface = __webpack_require__(45);
 	var EventHandler = __webpack_require__(44);
-	var Scrollview = __webpack_require__(204);
+	var Scrollview = __webpack_require__(200);
 	var Utility = __webpack_require__(41);
 	var OptionsManager = __webpack_require__(34);
 	function ScrollContainer(options) {
@@ -53747,7 +53417,7 @@
 	module.exports = ScrollContainer;
 
 /***/ },
-/* 203 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53969,7 +53639,7 @@
 	module.exports = Scroller;
 
 /***/ },
-/* 204 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -53986,11 +53656,11 @@
 	var EventHandler = __webpack_require__(44);
 	var OptionsManager = __webpack_require__(34);
 	var ViewSequence = __webpack_require__(43);
-	var Scroller = __webpack_require__(203);
+	var Scroller = __webpack_require__(199);
 	var Utility = __webpack_require__(41);
-	var GenericSync = __webpack_require__(154);
+	var GenericSync = __webpack_require__(161);
 	var ScrollSync = __webpack_require__(48);
-	var TouchSync = __webpack_require__(159);
+	var TouchSync = __webpack_require__(166);
 	GenericSync.register({
 	    scroll: ScrollSync,
 	    touch: TouchSync
@@ -54442,7 +54112,7 @@
 	module.exports = Scrollview;
 
 /***/ },
-/* 205 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -54551,7 +54221,7 @@
 	module.exports = SequentialLayout;
 
 /***/ },
-/* 206 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -54561,7 +54231,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var View = __webpack_require__(50);
+	var View = __webpack_require__(49);
 	var Entity = __webpack_require__(42);
 	var Transform = __webpack_require__(35);
 	function SizeAwareView() {
@@ -54605,6 +54275,395 @@
 	module.exports = SizeAwareView;
 
 /***/ },
+/* 203 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var KeyCodes = {
+	    0: 48,
+	    1: 49,
+	    2: 50,
+	    3: 51,
+	    4: 52,
+	    5: 53,
+	    6: 54,
+	    7: 55,
+	    8: 56,
+	    9: 57,
+	    a: 97,
+	    b: 98,
+	    c: 99,
+	    d: 100,
+	    e: 101,
+	    f: 102,
+	    g: 103,
+	    h: 104,
+	    i: 105,
+	    j: 106,
+	    k: 107,
+	    l: 108,
+	    m: 109,
+	    n: 110,
+	    o: 111,
+	    p: 112,
+	    q: 113,
+	    r: 114,
+	    s: 115,
+	    t: 116,
+	    u: 117,
+	    v: 118,
+	    w: 119,
+	    x: 120,
+	    y: 121,
+	    z: 122,
+	    A: 65,
+	    B: 66,
+	    C: 67,
+	    D: 68,
+	    E: 69,
+	    F: 70,
+	    G: 71,
+	    H: 72,
+	    I: 73,
+	    J: 74,
+	    K: 75,
+	    L: 76,
+	    M: 77,
+	    N: 78,
+	    O: 79,
+	    P: 80,
+	    Q: 81,
+	    R: 82,
+	    S: 83,
+	    T: 84,
+	    U: 85,
+	    V: 86,
+	    W: 87,
+	    X: 88,
+	    Y: 89,
+	    Z: 90,
+	    ENTER: 13,
+	    LEFT_ARROW: 37,
+	    RIGHT_ARROW: 39,
+	    UP_ARROW: 38,
+	    DOWN_ARROW: 40,
+	    SPACE: 32,
+	    SHIFT: 16,
+	    TAB: 9
+	};
+	module.exports = KeyCodes;
+
+/***/ },
+/* 204 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var FamousEngine = __webpack_require__(119);
+	var _event = 'prerender';
+	var getTime = window.performance && window.performance.now ? function () {
+	    return window.performance.now();
+	} : function () {
+	    return Date.now();
+	};
+	function addTimerFunction(fn) {
+	    FamousEngine.on(_event, fn);
+	    return fn;
+	}
+	function setTimeout(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            FamousEngine.removeListener(_event, callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function setInterval(fn, duration) {
+	    var t = getTime();
+	    var callback = function () {
+	        var t2 = getTime();
+	        if (t2 - t >= duration) {
+	            fn.apply(this, arguments);
+	            t = getTime();
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function after(fn, numTicks) {
+	    if (numTicks === undefined)
+	        return undefined;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            clear(callback);
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function every(fn, numTicks) {
+	    numTicks = numTicks || 1;
+	    var initial = numTicks;
+	    var callback = function () {
+	        numTicks--;
+	        if (numTicks <= 0) {
+	            fn.apply(this, arguments);
+	            numTicks = initial;
+	        }
+	    };
+	    return addTimerFunction(callback);
+	}
+	function clear(fn) {
+	    FamousEngine.removeListener(_event, fn);
+	}
+	function debounce(func, wait) {
+	    var timeout;
+	    var ctx;
+	    var timestamp;
+	    var result;
+	    var args;
+	    return function () {
+	        ctx = this;
+	        args = arguments;
+	        timestamp = getTime();
+	        var fn = function () {
+	            var last = getTime - timestamp;
+	            if (last < wait) {
+	                timeout = setTimeout(fn, wait - last);
+	            } else {
+	                timeout = null;
+	                result = func.apply(ctx, args);
+	            }
+	        };
+	        clear(timeout);
+	        timeout = setTimeout(fn, wait);
+	        return result;
+	    };
+	}
+	module.exports = {
+	    setTimeout: setTimeout,
+	    setInterval: setInterval,
+	    debounce: debounce,
+	    after: after,
+	    every: every,
+	    clear: clear
+	};
+
+/***/ },
+/* 205 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	function CachedMap(mappingFunction) {
+	    this._map = mappingFunction || null;
+	    this._cachedOutput = null;
+	    this._cachedInput = Number.NaN;
+	}
+	CachedMap.create = function create(mappingFunction) {
+	    var instance = new CachedMap(mappingFunction);
+	    return instance.get.bind(instance);
+	};
+	CachedMap.prototype.get = function get(input) {
+	    if (input !== this._cachedInput) {
+	        this._cachedInput = input;
+	        this._cachedOutput = this._map(input);
+	    }
+	    return this._cachedOutput;
+	};
+	module.exports = CachedMap;
+
+/***/ },
+/* 206 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Easing = {
+	    inQuad: function (t) {
+	        return t * t;
+	    },
+	    outQuad: function (t) {
+	        return -(t -= 1) * t + 1;
+	    },
+	    inOutQuad: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t;
+	        return -0.5 * (--t * (t - 2) - 1);
+	    },
+	    inCubic: function (t) {
+	        return t * t * t;
+	    },
+	    outCubic: function (t) {
+	        return --t * t * t + 1;
+	    },
+	    inOutCubic: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t;
+	        return 0.5 * ((t -= 2) * t * t + 2);
+	    },
+	    inQuart: function (t) {
+	        return t * t * t * t;
+	    },
+	    outQuart: function (t) {
+	        return -(--t * t * t * t - 1);
+	    },
+	    inOutQuart: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t * t;
+	        return -0.5 * ((t -= 2) * t * t * t - 2);
+	    },
+	    inQuint: function (t) {
+	        return t * t * t * t * t;
+	    },
+	    outQuint: function (t) {
+	        return --t * t * t * t * t + 1;
+	    },
+	    inOutQuint: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * t * t * t * t * t;
+	        return 0.5 * ((t -= 2) * t * t * t * t + 2);
+	    },
+	    inSine: function (t) {
+	        return -1 * Math.cos(t * (Math.PI / 2)) + 1;
+	    },
+	    outSine: function (t) {
+	        return Math.sin(t * (Math.PI / 2));
+	    },
+	    inOutSine: function (t) {
+	        return -0.5 * (Math.cos(Math.PI * t) - 1);
+	    },
+	    inExpo: function (t) {
+	        return t === 0 ? 0 : Math.pow(2, 10 * (t - 1));
+	    },
+	    outExpo: function (t) {
+	        return t === 1 ? 1 : -Math.pow(2, -10 * t) + 1;
+	    },
+	    inOutExpo: function (t) {
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * Math.pow(2, 10 * (t - 1));
+	        return 0.5 * (-Math.pow(2, -10 * --t) + 2);
+	    },
+	    inCirc: function (t) {
+	        return -(Math.sqrt(1 - t * t) - 1);
+	    },
+	    outCirc: function (t) {
+	        return Math.sqrt(1 - --t * t);
+	    },
+	    inOutCirc: function (t) {
+	        if ((t /= 0.5) < 1)
+	            return -0.5 * (Math.sqrt(1 - t * t) - 1);
+	        return 0.5 * (Math.sqrt(1 - (t -= 2) * t) + 1);
+	    },
+	    inElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if (!p)
+	            p = 0.3;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        return -(a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+	    },
+	    outElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if (t === 1)
+	            return 1;
+	        if (!p)
+	            p = 0.3;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        return a * Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
+	    },
+	    inOutElastic: function (t) {
+	        var s = 1.70158;
+	        var p = 0;
+	        var a = 1;
+	        if (t === 0)
+	            return 0;
+	        if ((t /= 0.5) === 2)
+	            return 1;
+	        if (!p)
+	            p = 0.3 * 1.5;
+	        s = p / (2 * Math.PI) * Math.asin(1 / a);
+	        if (t < 1)
+	            return -0.5 * (a * Math.pow(2, 10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p));
+	        return a * Math.pow(2, -10 * (t -= 1)) * Math.sin((t - s) * (2 * Math.PI) / p) * 0.5 + 1;
+	    },
+	    inBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        return t * t * ((s + 1) * t - s);
+	    },
+	    outBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        return --t * t * ((s + 1) * t + s) + 1;
+	    },
+	    inOutBack: function (t, s) {
+	        if (s === undefined)
+	            s = 1.70158;
+	        if ((t /= 0.5) < 1)
+	            return 0.5 * (t * t * (((s *= 1.525) + 1) * t - s));
+	        return 0.5 * ((t -= 2) * t * (((s *= 1.525) + 1) * t + s) + 2);
+	    },
+	    inBounce: function (t) {
+	        return 1 - Easing.outBounce(1 - t);
+	    },
+	    outBounce: function (t) {
+	        if (t < 1 / 2.75) {
+	            return 7.5625 * t * t;
+	        } else if (t < 2 / 2.75) {
+	            return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
+	        } else if (t < 2.5 / 2.75) {
+	            return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
+	        } else {
+	            return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
+	        }
+	    },
+	    inOutBounce: function (t) {
+	        if (t < 0.5)
+	            return Easing.inBounce(t * 2) * 0.5;
+	        return Easing.outBounce(t * 2 - 1) * 0.5 + 0.5;
+	    }
+	};
+	module.exports = Easing;
+
+/***/ },
 /* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -54615,129 +54674,134 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Scene = __webpack_require__(167);
-	var Surface = __webpack_require__(49);
-	var Transform = __webpack_require__(35);
-	var View = __webpack_require__(50);
-	function NavigationBar(options) {
-	    View.apply(this, arguments);
-	    this.title = new Surface({
-	        classes: this.options.classes,
-	        content: this.options.content
-	    });
-	    this.back = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.backContent
-	    });
-	    this.back.on('click', function () {
-	        this._eventOutput.emit('back', {});
-	    }.bind(this));
-	    this.more = new Surface({
-	        size: [
-	            this.options.size[1],
-	            this.options.size[1]
-	        ],
-	        classes: this.options.classes,
-	        content: this.options.moreContent
-	    });
-	    this.more.on('click', function () {
-	        this._eventOutput.emit('more', {});
-	    }.bind(this));
-	    this.layout = new Scene({
-	        id: 'master',
-	        size: this.options.size,
-	        target: [
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    0,
-	                    0.5
-	                ],
-	                align: [
-	                    0,
-	                    0.5
-	                ],
-	                target: this.back
-	            },
-	            {
-	                origin: [
-	                    0.5,
-	                    0.5
-	                ],
-	                align: [
-	                    0.5,
-	                    0.5
-	                ],
-	                target: this.title
-	            },
-	            {
-	                transform: Transform.inFront,
-	                origin: [
-	                    1,
-	                    0.5
-	                ],
-	                align: [
-	                    1,
-	                    0.5
-	                ],
-	                target: this.more
-	            }
-	        ]
-	    });
-	    this._add(this.layout);
-	    this._optionsManager.on('change', function (event) {
-	        var key = event.id;
-	        var data = event.value;
-	        if (key === 'size') {
-	            this.layout.id.master.setSize(data);
-	            this.title.setSize(data);
-	            this.back.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	            this.more.setSize([
-	                data[1],
-	                data[1]
-	            ]);
-	        } else if (key === 'backClasses') {
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	        } else if (key === 'backContent') {
-	            this.back.setContent(this.options.backContent);
-	        } else if (key === 'classes') {
-	            this.title.setOptions({ classes: this.options.classes });
-	            this.back.setOptions({ classes: this.options.classes.concat(this.options.backClasses) });
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'content') {
-	            this.setContent(this.options.content);
-	        } else if (key === 'moreClasses') {
-	            this.more.setOptions({ classes: this.options.classes.concat(this.options.moreClasses) });
-	        } else if (key === 'moreContent') {
-	            this.more.setContent(this.options.content);
-	        }
-	    }.bind(this));
+	var PE = __webpack_require__(39);
+	var Particle = __webpack_require__(37);
+	var Spring = __webpack_require__(216);
+	var Vector = __webpack_require__(36);
+	function SnapTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this._dimensions = 1;
+	    this._restTolerance = 1e-10;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.particle = new Particle();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.PE.addBody(this.particle);
+	    this.PE.attach(this.spring, this.particle);
 	}
-	NavigationBar.prototype = Object.create(View.prototype);
-	NavigationBar.prototype.constructor = NavigationBar;
-	NavigationBar.DEFAULT_OPTIONS = {
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    backClasses: ['back'],
-	    backContent: '&#x25c0;',
-	    classes: ['navigation'],
-	    content: '',
-	    moreClasses: ['more'],
-	    moreContent: '&#x271a;'
+	SnapTransition.SUPPORTS_MULTIPLE = 3;
+	SnapTransition.DEFAULT_OPTIONS = {
+	    period: 100,
+	    dampingRatio: 0.2,
+	    velocity: 0
 	};
-	NavigationBar.prototype.setContent = function setContent(content) {
-	    return this.title.setContent(content);
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _setParticlePosition(p) {
+	    this.particle.position.set(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.velocity.set(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _setupDefinition(definition) {
+	    var defaults = SnapTransition.DEFAULT_OPTIONS;
+	    if (definition.period === undefined)
+	        definition.period = defaults.period;
+	    if (definition.dampingRatio === undefined)
+	        definition.dampingRatio = defaults.dampingRatio;
+	    if (definition.velocity === undefined)
+	        definition.velocity = defaults.velocity;
+	    this.spring.setOptions({
+	        period: definition.period,
+	        dampingRatio: definition.dampingRatio
+	    });
+	    _setParticleVelocity.call(this, definition.velocity);
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
+	    }
+	    if (_getEnergy.call(this) < this._absRestTolerance) {
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	        _sleep.call(this);
+	    }
+	}
+	SnapTransition.prototype.reset = function reset(state, velocity) {
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    this.initState.set(state);
+	    _setParticlePosition.call(this, state);
+	    _setTarget.call(this, state);
+	    if (velocity)
+	        _setParticleVelocity.call(this, velocity);
+	    _setCallback.call(this, undefined);
 	};
-	module.exports = NavigationBar;
+	SnapTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
+	};
+	SnapTransition.prototype.setVelocity = function setVelocity(velocity) {
+	    this.call(this, _setParticleVelocity(velocity));
+	};
+	SnapTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
+	};
+	SnapTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	SnapTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	SnapTransition.prototype.set = function set(state, definition, callback) {
+	    if (!definition) {
+	        this.reset(state);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = SnapTransition;
 
 /***/ },
 /* 208 */
@@ -54750,128 +54814,138 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
-	var CanvasSurface = __webpack_require__(177);
-	var Transform = __webpack_require__(35);
-	var EventHandler = __webpack_require__(44);
-	var Utilities = __webpack_require__(172);
-	var OptionsManager = __webpack_require__(34);
-	var MouseSync = __webpack_require__(155);
-	var TouchSync = __webpack_require__(159);
-	var GenericSync = __webpack_require__(154);
-	GenericSync.register({
-	    mouse: MouseSync,
-	    touch: TouchSync
-	});
-	function Slider(options) {
-	    this.options = Object.create(Slider.DEFAULT_OPTIONS);
-	    this.optionsManager = new OptionsManager(this.options);
-	    if (options)
-	        this.setOptions(options);
-	    this.indicator = new CanvasSurface({
-	        size: this.options.indicatorSize,
-	        classes: ['slider-back']
-	    });
-	    this.label = new Surface({
-	        size: this.options.labelSize,
-	        content: this.options.label,
-	        properties: { pointerEvents: 'none' },
-	        classes: ['slider-label']
-	    });
-	    this.eventOutput = new EventHandler();
-	    this.eventInput = new EventHandler();
-	    EventHandler.setInputHandler(this, this.eventInput);
-	    EventHandler.setOutputHandler(this, this.eventOutput);
-	    var scale = (this.options.range[1] - this.options.range[0]) / this.options.indicatorSize[0];
-	    this.sync = new GenericSync([
-	        'mouse',
-	        'touch'
-	    ], {
-	        scale: scale,
-	        direction: GenericSync.DIRECTION_X
-	    });
-	    this.indicator.pipe(this.sync);
-	    this.sync.pipe(this);
-	    this.eventInput.on('update', function (data) {
-	        this.set(data.position);
-	    }.bind(this));
-	    this._drawPos = 0;
-	    _updateLabel.call(this);
+	var PE = __webpack_require__(39);
+	var Particle = __webpack_require__(37);
+	var Spring = __webpack_require__(38);
+	var Vector = __webpack_require__(36);
+	function SpringTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this._dimensions = undefined;
+	    this._restTolerance = 1e-10;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.particle = new Particle();
+	    this.PE.addBody(this.particle);
+	    this.PE.attach(this.spring, this.particle);
 	}
-	Slider.DEFAULT_OPTIONS = {
-	    size: [
-	        200,
-	        60
-	    ],
-	    indicatorSize: [
-	        200,
-	        30
-	    ],
-	    labelSize: [
-	        200,
-	        30
-	    ],
-	    range: [
-	        0,
-	        1
-	    ],
-	    precision: 2,
-	    value: 0,
-	    label: '',
-	    fillColor: 'rgba(170, 170, 170, 1)'
+	SpringTransition.SUPPORTS_MULTIPLE = 3;
+	SpringTransition.DEFAULT_OPTIONS = {
+	    period: 300,
+	    dampingRatio: 0.5,
+	    velocity: 0
 	};
-	function _updateLabel() {
-	    this.label.setContent(this.options.label + '<span style="float: right">' + this.get().toFixed(this.options.precision) + '</span>');
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
 	}
-	Slider.prototype.setOptions = function setOptions(options) {
-	    return this.optionsManager.setOptions(options);
-	};
-	Slider.prototype.get = function get() {
-	    return this.options.value;
-	};
-	Slider.prototype.set = function set(value) {
-	    if (value === this.options.value)
+	function _setParticlePosition(p) {
+	    this.particle.setPosition(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.setVelocity(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
 	        return;
-	    this.options.value = Utilities.clamp(value, this.options.range);
-	    _updateLabel.call(this);
-	    this.eventOutput.emit('change', { value: value });
-	};
-	Slider.prototype.getSize = function getSize() {
-	    return this.options.size;
-	};
-	Slider.prototype.render = function render() {
-	    var range = this.options.range;
-	    var fillSize = Math.floor((this.get() - range[0]) / (range[1] - range[0]) * this.options.indicatorSize[0]);
-	    if (fillSize < this._drawPos) {
-	        this.indicator.getContext('2d').clearRect(fillSize, 0, this._drawPos - fillSize + 1, this.options.indicatorSize[1]);
-	    } else if (fillSize > this._drawPos) {
-	        var ctx = this.indicator.getContext('2d');
-	        ctx.fillStyle = this.options.fillColor;
-	        ctx.fillRect(this._drawPos - 1, 0, fillSize - this._drawPos + 1, this.options.indicatorSize[1]);
 	    }
-	    this._drawPos = fillSize;
-	    return {
-	        size: this.options.size,
-	        target: [
-	            {
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.indicator.render()
-	            },
-	            {
-	                transform: Transform.translate(0, 0, 1),
-	                origin: [
-	                    0,
-	                    0
-	                ],
-	                target: this.label.render()
-	            }
-	        ]
-	    };
+	    if (_getEnergy.call(this) < this._absRestTolerance) {
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	        _sleep.call(this);
+	    }
+	}
+	function _setupDefinition(definition) {
+	    var defaults = SpringTransition.DEFAULT_OPTIONS;
+	    if (definition.period === undefined)
+	        definition.period = defaults.period;
+	    if (definition.dampingRatio === undefined)
+	        definition.dampingRatio = defaults.dampingRatio;
+	    if (definition.velocity === undefined)
+	        definition.velocity = defaults.velocity;
+	    if (definition.period < 150) {
+	        definition.period = 150;
+	        console.warn('The period of a SpringTransition is capped at 150 ms. Use a SnapTransition for faster transitions');
+	    }
+	    this.spring.setOptions({
+	        period: definition.period,
+	        dampingRatio: definition.dampingRatio
+	    });
+	    _setParticleVelocity.call(this, definition.velocity);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	SpringTransition.prototype.reset = function reset(pos, vel) {
+	    this._dimensions = pos instanceof Array ? pos.length : 0;
+	    this.initState.set(pos);
+	    _setParticlePosition.call(this, pos);
+	    _setTarget.call(this, pos);
+	    if (vel)
+	        _setParticleVelocity.call(this, vel);
+	    _setCallback.call(this, undefined);
 	};
-	module.exports = Slider;
+	SpringTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
+	};
+	SpringTransition.prototype.setVelocity = function setVelocity(v) {
+	    this.call(this, _setParticleVelocity(v));
+	};
+	SpringTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
+	};
+	SpringTransition.prototype.halt = function halt() {
+	    this.set(this.get());
+	};
+	SpringTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	SpringTransition.prototype.set = function set(endState, definition, callback) {
+	    if (!definition) {
+	        this.reset(endState);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = endState instanceof Array ? endState.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, endState);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = SpringTransition;
 
 /***/ },
 /* 209 */
@@ -54884,92 +54958,123 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
+	var Transitionable = __webpack_require__(40);
+	var Transform = __webpack_require__(35);
 	var Utility = __webpack_require__(41);
-	var View = __webpack_require__(50);
-	var GridLayout = __webpack_require__(198);
-	var ToggleButton = __webpack_require__(210);
-	function TabBar(options) {
-	    View.apply(this, arguments);
-	    this.layout = new GridLayout();
-	    this.buttons = [];
-	    this._buttonIds = {};
-	    this._buttonCallbacks = {};
-	    this.layout.sequenceFrom(this.buttons);
-	    this._add(this.layout);
-	    this._optionsManager.on('change', _updateOptions.bind(this));
+	function TransitionableTransform(transform) {
+	    this._final = Transform.identity.slice();
+	    this._finalTranslate = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalRotate = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalSkew = [
+	        0,
+	        0,
+	        0
+	    ];
+	    this._finalScale = [
+	        1,
+	        1,
+	        1
+	    ];
+	    this.translate = new Transitionable(this._finalTranslate);
+	    this.rotate = new Transitionable(this._finalRotate);
+	    this.skew = new Transitionable(this._finalSkew);
+	    this.scale = new Transitionable(this._finalScale);
+	    if (transform)
+	        this.set(transform);
 	}
-	TabBar.prototype = Object.create(View.prototype);
-	TabBar.prototype.constructor = TabBar;
-	TabBar.DEFAULT_OPTIONS = {
-	    sections: [],
-	    widget: ToggleButton,
-	    size: [
-	        undefined,
-	        50
-	    ],
-	    direction: Utility.Direction.X,
-	    buttons: { toggleMode: ToggleButton.ON }
-	};
-	function _updateOptions(data) {
-	    var id = data.id;
-	    var value = data.value;
-	    if (id === 'direction') {
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions.call(this.buttons.length, this.options.direction) });
-	    } else if (id === 'buttons') {
-	        for (var i in this.buttons) {
-	            this.buttons[i].setOptions(value);
-	        }
-	    } else if (id === 'sections') {
-	        for (var sectionId in this.options.sections) {
-	            this.defineSection(sectionId, this.options.sections[sectionId]);
-	        }
-	    }
+	function _build() {
+	    return Transform.build({
+	        translate: this.translate.get(),
+	        rotate: this.rotate.get(),
+	        skew: this.skew.get(),
+	        scale: this.scale.get()
+	    });
 	}
-	function _resolveGridDimensions(count, direction) {
-	    if (direction === Utility.Direction.X)
-	        return [
-	            count,
-	            1
-	        ];
-	    else
-	        return [
-	            1,
-	            count
-	        ];
+	function _buildFinal() {
+	    return Transform.build({
+	        translate: this._finalTranslate,
+	        rotate: this._finalRotate,
+	        skew: this._finalSkew,
+	        scale: this._finalScale
+	    });
 	}
-	TabBar.prototype.defineSection = function defineSection(id, content) {
-	    var button;
-	    var i = this._buttonIds[id];
-	    if (i === undefined) {
-	        i = this.buttons.length;
-	        this._buttonIds[id] = i;
-	        var widget = this.options.widget;
-	        button = new widget();
-	        this.buttons[i] = button;
-	        this.layout.setOptions({ dimensions: _resolveGridDimensions(this.buttons.length, this.options.direction) });
-	    } else {
-	        button = this.buttons[i];
-	        button.unbind('select', this._buttonCallbacks[id]);
-	    }
-	    if (this.options.buttons)
-	        button.setOptions(this.options.buttons);
-	    button.setOptions(content);
-	    this._buttonCallbacks[id] = this.select.bind(this, id);
-	    button.on('select', this._buttonCallbacks[id]);
+	TransitionableTransform.prototype.setTranslate = function setTranslate(translate, transition, callback) {
+	    this._finalTranslate = translate;
+	    this._final = _buildFinal.call(this);
+	    this.translate.set(translate, transition, callback);
+	    return this;
 	};
-	TabBar.prototype.select = function select(id) {
-	    var btn = this._buttonIds[id];
-	    if (this.buttons[btn] && this.buttons[btn].isSelected()) {
-	        this._eventOutput.emit('select', { id: id });
-	    } else if (this.buttons[btn]) {
-	        this.buttons[btn].select();
-	    }
-	    for (var i = 0; i < this.buttons.length; i++) {
-	        if (i !== btn)
-	            this.buttons[i].deselect();
-	    }
+	TransitionableTransform.prototype.setScale = function setScale(scale, transition, callback) {
+	    this._finalScale = scale;
+	    this._final = _buildFinal.call(this);
+	    this.scale.set(scale, transition, callback);
+	    return this;
 	};
-	module.exports = TabBar;
+	TransitionableTransform.prototype.setRotate = function setRotate(eulerAngles, transition, callback) {
+	    this._finalRotate = eulerAngles;
+	    this._final = _buildFinal.call(this);
+	    this.rotate.set(eulerAngles, transition, callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.setSkew = function setSkew(skewAngles, transition, callback) {
+	    this._finalSkew = skewAngles;
+	    this._final = _buildFinal.call(this);
+	    this.skew.set(skewAngles, transition, callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.set = function set(transform, transition, callback) {
+	    var components = Transform.interpret(transform);
+	    this._finalTranslate = components.translate;
+	    this._finalRotate = components.rotate;
+	    this._finalSkew = components.skew;
+	    this._finalScale = components.scale;
+	    this._final = transform;
+	    var _callback = callback ? Utility.after(4, callback) : null;
+	    this.translate.set(components.translate, transition, _callback);
+	    this.rotate.set(components.rotate, transition, _callback);
+	    this.skew.set(components.skew, transition, _callback);
+	    this.scale.set(components.scale, transition, _callback);
+	    return this;
+	};
+	TransitionableTransform.prototype.setDefaultTransition = function setDefaultTransition(transition) {
+	    this.translate.setDefault(transition);
+	    this.rotate.setDefault(transition);
+	    this.skew.setDefault(transition);
+	    this.scale.setDefault(transition);
+	};
+	TransitionableTransform.prototype.get = function get() {
+	    if (this.isActive()) {
+	        return _build.call(this);
+	    } else
+	        return this._final;
+	};
+	TransitionableTransform.prototype.getFinal = function getFinal() {
+	    return this._final;
+	};
+	TransitionableTransform.prototype.isActive = function isActive() {
+	    return this.translate.isActive() || this.rotate.isActive() || this.scale.isActive() || this.skew.isActive();
+	};
+	TransitionableTransform.prototype.halt = function halt() {
+	    this.translate.halt();
+	    this.rotate.halt();
+	    this.skew.halt();
+	    this.scale.halt();
+	    this._final = this.get();
+	    this._finalTranslate = this.translate.get();
+	    this._finalRotate = this.rotate.get();
+	    this._finalSkew = this.skew.get();
+	    this._finalScale = this.scale.get();
+	    return this;
+	};
+	module.exports = TransitionableTransform;
 
 /***/ },
 /* 210 */
@@ -54982,120 +55087,167 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Surface = __webpack_require__(49);
-	var EventHandler = __webpack_require__(44);
-	var RenderController = __webpack_require__(201);
-	function ToggleButton(options) {
-	    this.options = {
-	        content: [
-	            '',
-	            ''
-	        ],
-	        offClasses: ['off'],
-	        onClasses: ['on'],
-	        size: undefined,
-	        outTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        inTransition: {
-	            curve: 'easeInOut',
-	            duration: 300
-	        },
-	        toggleMode: ToggleButton.TOGGLE,
-	        crossfade: true
-	    };
-	    this._eventOutput = new EventHandler();
-	    EventHandler.setOutputHandler(this, this._eventOutput);
-	    this.offSurface = new Surface();
-	    this.offSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.OFF)
-	            this.select();
-	    }.bind(this));
-	    this.offSurface.pipe(this._eventOutput);
-	    this.onSurface = new Surface();
-	    this.onSurface.on('click', function () {
-	        if (this.options.toggleMode !== ToggleButton.ON)
-	            this.deselect();
-	    }.bind(this));
-	    this.onSurface.pipe(this._eventOutput);
-	    this.arbiter = new RenderController({ overlap: this.options.crossfade });
-	    this.deselect();
-	    if (options)
-	        this.setOptions(options);
+	var PE = __webpack_require__(39);
+	var Particle = __webpack_require__(37);
+	var Spring = __webpack_require__(38);
+	var Wall = __webpack_require__(217);
+	var Vector = __webpack_require__(36);
+	function WallTransition(state) {
+	    state = state || 0;
+	    this.endState = new Vector(state);
+	    this.initState = new Vector();
+	    this.spring = new Spring({ anchor: this.endState });
+	    this.wall = new Wall();
+	    this._restTolerance = 1e-10;
+	    this._dimensions = 1;
+	    this._absRestTolerance = this._restTolerance;
+	    this._callback = undefined;
+	    this.PE = new PE();
+	    this.particle = new Particle();
+	    this.PE.addBody(this.particle);
+	    this.PE.attach([
+	        this.wall,
+	        this.spring
+	    ], this.particle);
 	}
-	ToggleButton.OFF = 0;
-	ToggleButton.ON = 1;
-	ToggleButton.TOGGLE = 2;
-	ToggleButton.prototype.select = function select(suppressEvent) {
-	    this.selected = true;
-	    this.arbiter.show(this.onSurface, this.options.inTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('select');
-	    }
+	WallTransition.SUPPORTS_MULTIPLE = 3;
+	WallTransition.DEFAULT_OPTIONS = {
+	    period: 300,
+	    dampingRatio: 0.5,
+	    velocity: 0,
+	    restitution: 0.5
 	};
-	ToggleButton.prototype.deselect = function deselect(suppressEvent) {
-	    this.selected = false;
-	    this.arbiter.show(this.offSurface, this.options.outTransition);
-	    if (!suppressEvent) {
-	        this._eventOutput.emit('deselect');
+	function _getEnergy() {
+	    return this.particle.getEnergy() + this.spring.getEnergy([this.particle]);
+	}
+	function _setAbsoluteRestTolerance() {
+	    var distance = this.endState.sub(this.initState).normSquared();
+	    this._absRestTolerance = distance === 0 ? this._restTolerance : this._restTolerance * distance;
+	}
+	function _wake() {
+	    this.PE.wake();
+	}
+	function _sleep() {
+	    this.PE.sleep();
+	}
+	function _setTarget(target) {
+	    this.endState.set(target);
+	    var dist = this.endState.sub(this.initState).norm();
+	    this.wall.setOptions({
+	        distance: this.endState.norm(),
+	        normal: dist === 0 ? this.particle.velocity.normalize(-1) : this.endState.sub(this.initState).normalize(-1)
+	    });
+	    _setAbsoluteRestTolerance.call(this);
+	}
+	function _setParticlePosition(p) {
+	    this.particle.position.set(p);
+	}
+	function _setParticleVelocity(v) {
+	    this.particle.velocity.set(v);
+	}
+	function _getParticlePosition() {
+	    return this._dimensions === 0 ? this.particle.getPosition1D() : this.particle.getPosition();
+	}
+	function _getParticleVelocity() {
+	    return this._dimensions === 0 ? this.particle.getVelocity1D() : this.particle.getVelocity();
+	}
+	function _setCallback(callback) {
+	    this._callback = callback;
+	}
+	function _update() {
+	    if (this.PE.isSleeping()) {
+	        if (this._callback) {
+	            var cb = this._callback;
+	            this._callback = undefined;
+	            cb();
+	        }
+	        return;
 	    }
+	    var energy = _getEnergy.call(this);
+	    if (energy < this._absRestTolerance) {
+	        _sleep.call(this);
+	        _setParticlePosition.call(this, this.endState);
+	        _setParticleVelocity.call(this, [
+	            0,
+	            0,
+	            0
+	        ]);
+	    }
+	}
+	function _setupDefinition(def) {
+	    var defaults = WallTransition.DEFAULT_OPTIONS;
+	    if (def.period === undefined)
+	        def.period = defaults.period;
+	    if (def.dampingRatio === undefined)
+	        def.dampingRatio = defaults.dampingRatio;
+	    if (def.velocity === undefined)
+	        def.velocity = defaults.velocity;
+	    if (def.restitution === undefined)
+	        def.restitution = defaults.restitution;
+	    if (def.drift === undefined)
+	        def.drift = Wall.DEFAULT_OPTIONS.drift;
+	    if (def.slop === undefined)
+	        def.slop = Wall.DEFAULT_OPTIONS.slop;
+	    this.spring.setOptions({
+	        period: def.period,
+	        dampingRatio: def.dampingRatio
+	    });
+	    this.wall.setOptions({
+	        restitution: def.restitution,
+	        drift: def.drift,
+	        slop: def.slop
+	    });
+	    _setParticleVelocity.call(this, def.velocity);
+	}
+	WallTransition.prototype.reset = function reset(state, velocity) {
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    this.initState.set(state);
+	    _setParticlePosition.call(this, state);
+	    if (velocity)
+	        _setParticleVelocity.call(this, velocity);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, undefined);
 	};
-	ToggleButton.prototype.isSelected = function isSelected() {
-	    return this.selected;
+	WallTransition.prototype.getVelocity = function getVelocity() {
+	    return _getParticleVelocity.call(this);
 	};
-	ToggleButton.prototype.setOptions = function setOptions(options) {
-	    if (options.content !== undefined) {
-	        if (!(options.content instanceof Array))
-	            options.content = [
-	                options.content,
-	                options.content
-	            ];
-	        this.options.content = options.content;
-	        this.offSurface.setContent(this.options.content[0]);
-	        this.onSurface.setContent(this.options.content[1]);
-	    }
-	    if (options.offClasses) {
-	        this.options.offClasses = options.offClasses;
-	        this.offSurface.setClasses(this.options.offClasses);
-	    }
-	    if (options.onClasses) {
-	        this.options.onClasses = options.onClasses;
-	        this.onSurface.setClasses(this.options.onClasses);
-	    }
-	    if (options.size !== undefined) {
-	        this.options.size = options.size;
-	        this.onSurface.setSize(this.options.size);
-	        this.offSurface.setSize(this.options.size);
-	    }
-	    if (options.toggleMode !== undefined)
-	        this.options.toggleMode = options.toggleMode;
-	    if (options.outTransition !== undefined)
-	        this.options.outTransition = options.outTransition;
-	    if (options.inTransition !== undefined)
-	        this.options.inTransition = options.inTransition;
-	    if (options.crossfade !== undefined) {
-	        this.options.crossfade = options.crossfade;
-	        this.arbiter.setOptions({ overlap: this.options.crossfade });
-	    }
+	WallTransition.prototype.setVelocity = function setVelocity(velocity) {
+	    this.call(this, _setParticleVelocity(velocity));
 	};
-	ToggleButton.prototype.getSize = function getSize() {
-	    return this.options.size;
+	WallTransition.prototype.isActive = function isActive() {
+	    return !this.PE.isSleeping();
 	};
-	ToggleButton.prototype.render = function render() {
-	    return this.arbiter.render();
+	WallTransition.prototype.halt = function halt() {
+	    this.set(this.get());
 	};
-	module.exports = ToggleButton;
+	WallTransition.prototype.get = function get() {
+	    _update.call(this);
+	    return _getParticlePosition.call(this);
+	};
+	WallTransition.prototype.set = function set(state, definition, callback) {
+	    if (!definition) {
+	        this.reset(state);
+	        if (callback)
+	            callback();
+	        return;
+	    }
+	    this._dimensions = state instanceof Array ? state.length : 0;
+	    _wake.call(this);
+	    _setupDefinition.call(this, definition);
+	    _setTarget.call(this, state);
+	    _setCallback.call(this, callback);
+	};
+	module.exports = WallTransition;
 
 /***/ },
 /* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Body: __webpack_require__(222),
-	  Circle: __webpack_require__(223),
+	  Body: __webpack_require__(218),
+	  Circle: __webpack_require__(219),
 	  Particle: __webpack_require__(37),
-	  Rectangle: __webpack_require__(224)
+	  Rectangle: __webpack_require__(220)
 	};
 
 
@@ -55104,14 +55256,14 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Collision: __webpack_require__(225),
-	  Constraint: __webpack_require__(226),
-	  Curve: __webpack_require__(227),
-	  Distance: __webpack_require__(228),
+	  Collision: __webpack_require__(221),
+	  Constraint: __webpack_require__(222),
+	  Curve: __webpack_require__(223),
+	  Distance: __webpack_require__(224),
 	  Snap: __webpack_require__(216),
-	  Surface: __webpack_require__(229),
+	  Surface: __webpack_require__(225),
 	  Wall: __webpack_require__(217),
-	  Walls: __webpack_require__(230)
+	  Walls: __webpack_require__(226)
 	};
 
 
@@ -55122,11 +55274,11 @@
 	module.exports = {
 	  Drag: __webpack_require__(47),
 	  Force: __webpack_require__(114),
-	  Repulsion: __webpack_require__(218),
-	  RotationalDrag: __webpack_require__(219),
-	  RotationalSpring: __webpack_require__(220),
+	  Repulsion: __webpack_require__(227),
+	  RotationalDrag: __webpack_require__(228),
+	  RotationalSpring: __webpack_require__(229),
 	  Spring: __webpack_require__(38),
-	  VectorField: __webpack_require__(221)
+	  VectorField: __webpack_require__(230)
 	};
 
 
@@ -64361,7 +64513,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(222);
 	var Vector = __webpack_require__(36);
 	function Snap(options) {
 	    Constraint.call(this);
@@ -64473,7 +64625,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(222);
 	var Vector = __webpack_require__(36);
 	function Wall(options) {
 	    this.options = Object.create(Wall.DEFAULT_OPTIONS);
@@ -64597,352 +64749,6 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Force = __webpack_require__(114);
-	var Vector = __webpack_require__(36);
-	function Repulsion(options) {
-	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.disp = new Vector();
-	    Force.call(this);
-	}
-	Repulsion.prototype = Object.create(Force.prototype);
-	Repulsion.prototype.constructor = Repulsion;
-	Repulsion.DECAY_FUNCTIONS = {
-	    LINEAR: function (r, cutoff) {
-	        return Math.max(1 - 1 / cutoff * r, 0);
-	    },
-	    MORSE: function (r, cutoff) {
-	        var r0 = cutoff === 0 ? 100 : cutoff;
-	        var rShifted = r + r0 * (1 - Math.log(2));
-	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
-	    },
-	    INVERSE: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r);
-	    },
-	    GRAVITY: function (r, cutoff) {
-	        return 1 / (1 - cutoff + r * r);
-	    }
-	};
-	Repulsion.DEFAULT_OPTIONS = {
-	    strength: 1,
-	    anchor: undefined,
-	    range: [
-	        0,
-	        Infinity
-	    ],
-	    cutoff: 0,
-	    cap: Infinity,
-	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
-	};
-	Repulsion.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor.position instanceof Vector)
-	            this.options.anchor = options.anchor.position;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Vector(options.anchor);
-	        delete options.anchor;
-	    }
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	Repulsion.prototype.applyForce = function applyForce(targets, source) {
-	    var options = this.options;
-	    var force = this.force;
-	    var disp = this.disp;
-	    var strength = options.strength;
-	    var anchor = options.anchor || source.position;
-	    var cap = options.cap;
-	    var cutoff = options.cutoff;
-	    var rMin = options.range[0];
-	    var rMax = options.range[1];
-	    var decayFn = options.decayFunction;
-	    if (strength === 0)
-	        return;
-	    var length = targets.length;
-	    var particle;
-	    var m1;
-	    var p1;
-	    var r;
-	    while (length--) {
-	        particle = targets[length];
-	        if (particle === source)
-	            continue;
-	        m1 = particle.mass;
-	        p1 = particle.position;
-	        disp.set(p1.sub(anchor));
-	        r = disp.norm();
-	        if (r < rMax && r > rMin) {
-	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
-	            particle.applyForce(force);
-	        }
-	    }
-	};
-	module.exports = Repulsion;
-
-/***/ },
-/* 219 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Drag = __webpack_require__(47);
-	function RotationalDrag(options) {
-	    Drag.call(this, options);
-	}
-	RotationalDrag.prototype = Object.create(Drag.prototype);
-	RotationalDrag.prototype.constructor = RotationalDrag;
-	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
-	RotationalDrag.FORCE_FUNCTIONS = {
-	    LINEAR: function (angularVelocity) {
-	        return angularVelocity;
-	    },
-	    QUADRATIC: function (angularVelocity) {
-	        return angularVelocity.mult(angularVelocity.norm());
-	    }
-	};
-	RotationalDrag.prototype.applyForce = function applyForce(targets) {
-	    var strength = this.options.strength;
-	    var forceFunction = this.options.forceFunction;
-	    var force = this.force;
-	    var index;
-	    var particle;
-	    for (index = 0; index < targets.length; index++) {
-	        particle = targets[index];
-	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
-	        particle.applyTorque(force);
-	    }
-	};
-	RotationalDrag.prototype.setOptions = function setOptions(options) {
-	    for (var key in options)
-	        this.options[key] = options[key];
-	};
-	module.exports = RotationalDrag;
-
-/***/ },
-/* 220 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(114);
-	var Spring = __webpack_require__(38);
-	var Quaternion = __webpack_require__(170);
-	function RotationalSpring(options) {
-	    Spring.call(this, options);
-	}
-	RotationalSpring.prototype = Object.create(Spring.prototype);
-	RotationalSpring.prototype.constructor = RotationalSpring;
-	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
-	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
-	var pi = Math.PI;
-	function _calcStiffness() {
-	    var options = this.options;
-	    options.stiffness = Math.pow(2 * pi / options.period, 2);
-	}
-	function _calcDamping() {
-	    var options = this.options;
-	    options.damping = 4 * pi * options.dampingRatio / options.period;
-	}
-	function _init() {
-	    _calcStiffness.call(this);
-	    _calcDamping.call(this);
-	}
-	RotationalSpring.prototype.setOptions = function setOptions(options) {
-	    if (options.anchor !== undefined) {
-	        if (options.anchor instanceof Quaternion)
-	            this.options.anchor = options.anchor;
-	        if (options.anchor instanceof Array)
-	            this.options.anchor = new Quaternion(options.anchor);
-	    }
-	    if (options.period !== undefined) {
-	        this.options.period = options.period;
-	    }
-	    if (options.dampingRatio !== undefined)
-	        this.options.dampingRatio = options.dampingRatio;
-	    if (options.length !== undefined)
-	        this.options.length = options.length;
-	    if (options.forceFunction !== undefined)
-	        this.options.forceFunction = options.forceFunction;
-	    if (options.maxLength !== undefined)
-	        this.options.maxLength = options.maxLength;
-	    _init.call(this);
-	    Force.prototype.setOptions.call(this, options);
-	};
-	RotationalSpring.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var options = this.options;
-	    var disp = this.disp;
-	    var stiffness = options.stiffness;
-	    var damping = options.damping;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var forceFunction = options.forceFunction;
-	    var maxLength = options.maxLength;
-	    var i;
-	    var target;
-	    var dist;
-	    var m;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        disp.set(anchor.sub(target.orientation));
-	        dist = disp.norm() - restLength;
-	        if (dist === 0)
-	            return;
-	        m = target.mass;
-	        stiffness *= m;
-	        damping *= m;
-	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
-	        if (damping)
-	            force.add(target.angularVelocity.mult(-damping)).put(force);
-	        target.applyTorque(force);
-	    }
-	};
-	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
-	    var options = this.options;
-	    var restLength = options.length;
-	    var anchor = options.anchor;
-	    var strength = options.stiffness;
-	    var energy = 0;
-	    for (var i = 0; i < targets.length; i++) {
-	        var target = targets[i];
-	        var dist = anchor.sub(target.orientation).norm() - restLength;
-	        energy += 0.5 * strength * dist * dist;
-	    }
-	    return energy;
-	};
-	module.exports = RotationalSpring;
-
-/***/ },
-/* 221 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
-	var Force = __webpack_require__(114);
-	var Vector = __webpack_require__(36);
-	function VectorField(options) {
-	    Force.call(this);
-	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
-	    if (options)
-	        this.setOptions(options);
-	    this.evaluation = new Vector();
-	}
-	VectorField.prototype = Object.create(Force.prototype);
-	VectorField.prototype.constructor = VectorField;
-	VectorField.FIELDS = {
-	    CONSTANT: function (v, options) {
-	        options.direction.put(this.evaluation);
-	    },
-	    LINEAR: function (v) {
-	        v.put(this.evaluation);
-	    },
-	    RADIAL: function (v) {
-	        v.mult(-1).put(this.evaluation);
-	    },
-	    POINT_ATTRACTOR: function (v, options) {
-	        options.position.sub(v).put(this.evaluation);
-	    }
-	};
-	VectorField.DEFAULT_OPTIONS = {
-	    strength: 0.01,
-	    field: VectorField.FIELDS.CONSTANT
-	};
-	VectorField.prototype.setOptions = function setOptions(options) {
-	    if (options.strength !== undefined)
-	        this.options.strength = options.strength;
-	    if (options.direction !== undefined)
-	        this.options.direction = options.direction;
-	    if (options.field !== undefined) {
-	        this.options.field = options.field;
-	        _setFieldOptions.call(this, this.options.field);
-	    }
-	};
-	function _setFieldOptions(field) {
-	    var FIELDS = VectorField.FIELDS;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        if (!this.options.direction)
-	            this.options.direction = new Vector(0, 1, 0);
-	        else if (this.options.direction instanceof Array)
-	            this.options.direction = new Vector(this.options.direction);
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        if (!this.options.position)
-	            this.options.position = new Vector(0, 0, 0);
-	        else if (this.options.position instanceof Array)
-	            this.options.position = new Vector(this.options.position);
-	        break;
-	    }
-	}
-	VectorField.prototype.applyForce = function applyForce(targets) {
-	    var force = this.force;
-	    var strength = this.options.strength;
-	    var field = this.options.field;
-	    var i;
-	    var target;
-	    for (i = 0; i < targets.length; i++) {
-	        target = targets[i];
-	        field.call(this, target.position, this.options);
-	        this.evaluation.mult(target.mass * strength).put(force);
-	        target.applyForce(force);
-	    }
-	};
-	VectorField.prototype.getEnergy = function getEnergy(targets) {
-	    var field = this.options.field;
-	    var FIELDS = VectorField.FIELDS;
-	    var energy = 0;
-	    var i;
-	    var target;
-	    switch (field) {
-	    case FIELDS.CONSTANT:
-	        energy = targets.length * this.options.direction.norm();
-	        break;
-	    case FIELDS.RADIAL:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.norm();
-	        }
-	        break;
-	    case FIELDS.POINT_ATTRACTOR:
-	        for (i = 0; i < targets.length; i++) {
-	            target = targets[i];
-	            energy += target.position.sub(this.options.position).norm();
-	        }
-	        break;
-	    }
-	    energy *= this.options.strength;
-	    return energy;
-	};
-	module.exports = VectorField;
-
-/***/ },
-/* 222 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* This Source Code Form is subject to the terms of the Mozilla Public
-	 * License, v. 2.0. If a copy of the MPL was not distributed with this
-	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
-	 *
-	 * @license MPL 2.0
-	 * @copyright Famous Industries, Inc. 2015
-	 */
 	var Particle = __webpack_require__(37);
 	var Transform = __webpack_require__(35);
 	var Vector = __webpack_require__(36);
@@ -65053,7 +64859,7 @@
 	module.exports = Body;
 
 /***/ },
-/* 223 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65063,7 +64869,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(222);
+	var Body = __webpack_require__(218);
 	var Matrix = __webpack_require__(169);
 	function Circle(options) {
 	    options = options || {};
@@ -65121,7 +64927,7 @@
 	module.exports = Circle;
 
 /***/ },
-/* 224 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65131,7 +64937,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Body = __webpack_require__(222);
+	var Body = __webpack_require__(218);
 	var Matrix = __webpack_require__(169);
 	function Rectangle(options) {
 	    options = options || {};
@@ -65189,7 +64995,7 @@
 	module.exports = Rectangle;
 
 /***/ },
-/* 225 */
+/* 221 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65199,7 +65005,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(222);
 	var Vector = __webpack_require__(36);
 	function Collision(options) {
 	    this.options = Object.create(Collision.DEFAULT_OPTIONS);
@@ -65281,7 +65087,7 @@
 	module.exports = Collision;
 
 /***/ },
-/* 226 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65308,7 +65114,7 @@
 	module.exports = Constraint;
 
 /***/ },
-/* 227 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65318,7 +65124,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(222);
 	var Vector = __webpack_require__(36);
 	function Curve(options) {
 	    this.options = Object.create(Curve.DEFAULT_OPTIONS);
@@ -65391,7 +65197,7 @@
 	module.exports = Curve;
 
 /***/ },
-/* 228 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65401,7 +65207,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(222);
 	var Vector = __webpack_require__(36);
 	function Distance(options) {
 	    this.options = Object.create(this.constructor.DEFAULT_OPTIONS);
@@ -65506,7 +65312,7 @@
 	module.exports = Distance;
 
 /***/ },
-/* 229 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65516,7 +65322,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(222);
 	var Vector = __webpack_require__(36);
 	function Surface(options) {
 	    this.options = Object.create(Surface.DEFAULT_OPTIONS);
@@ -65579,7 +65385,7 @@
 	module.exports = Surface;
 
 /***/ },
-/* 230 */
+/* 226 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* This Source Code Form is subject to the terms of the Mozilla Public
@@ -65589,7 +65395,7 @@
 	 * @license MPL 2.0
 	 * @copyright Famous Industries, Inc. 2015
 	 */
-	var Constraint = __webpack_require__(226);
+	var Constraint = __webpack_require__(222);
 	var Wall = __webpack_require__(217);
 	var Vector = __webpack_require__(36);
 	function Walls(options) {
@@ -65758,6 +65564,352 @@
 	    }
 	};
 	module.exports = Walls;
+
+/***/ },
+/* 227 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(114);
+	var Vector = __webpack_require__(36);
+	function Repulsion(options) {
+	    this.options = Object.create(Repulsion.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.disp = new Vector();
+	    Force.call(this);
+	}
+	Repulsion.prototype = Object.create(Force.prototype);
+	Repulsion.prototype.constructor = Repulsion;
+	Repulsion.DECAY_FUNCTIONS = {
+	    LINEAR: function (r, cutoff) {
+	        return Math.max(1 - 1 / cutoff * r, 0);
+	    },
+	    MORSE: function (r, cutoff) {
+	        var r0 = cutoff === 0 ? 100 : cutoff;
+	        var rShifted = r + r0 * (1 - Math.log(2));
+	        return Math.max(1 - Math.pow(1 - Math.exp(rShifted / r0 - 1), 2), 0);
+	    },
+	    INVERSE: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r);
+	    },
+	    GRAVITY: function (r, cutoff) {
+	        return 1 / (1 - cutoff + r * r);
+	    }
+	};
+	Repulsion.DEFAULT_OPTIONS = {
+	    strength: 1,
+	    anchor: undefined,
+	    range: [
+	        0,
+	        Infinity
+	    ],
+	    cutoff: 0,
+	    cap: Infinity,
+	    decayFunction: Repulsion.DECAY_FUNCTIONS.GRAVITY
+	};
+	Repulsion.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor.position instanceof Vector)
+	            this.options.anchor = options.anchor.position;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Vector(options.anchor);
+	        delete options.anchor;
+	    }
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	Repulsion.prototype.applyForce = function applyForce(targets, source) {
+	    var options = this.options;
+	    var force = this.force;
+	    var disp = this.disp;
+	    var strength = options.strength;
+	    var anchor = options.anchor || source.position;
+	    var cap = options.cap;
+	    var cutoff = options.cutoff;
+	    var rMin = options.range[0];
+	    var rMax = options.range[1];
+	    var decayFn = options.decayFunction;
+	    if (strength === 0)
+	        return;
+	    var length = targets.length;
+	    var particle;
+	    var m1;
+	    var p1;
+	    var r;
+	    while (length--) {
+	        particle = targets[length];
+	        if (particle === source)
+	            continue;
+	        m1 = particle.mass;
+	        p1 = particle.position;
+	        disp.set(p1.sub(anchor));
+	        r = disp.norm();
+	        if (r < rMax && r > rMin) {
+	            force.set(disp.normalize(strength * m1 * decayFn(r, cutoff)).cap(cap));
+	            particle.applyForce(force);
+	        }
+	    }
+	};
+	module.exports = Repulsion;
+
+/***/ },
+/* 228 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Drag = __webpack_require__(47);
+	function RotationalDrag(options) {
+	    Drag.call(this, options);
+	}
+	RotationalDrag.prototype = Object.create(Drag.prototype);
+	RotationalDrag.prototype.constructor = RotationalDrag;
+	RotationalDrag.DEFAULT_OPTIONS = Drag.DEFAULT_OPTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = Drag.FORCE_FUNCTIONS;
+	RotationalDrag.FORCE_FUNCTIONS = {
+	    LINEAR: function (angularVelocity) {
+	        return angularVelocity;
+	    },
+	    QUADRATIC: function (angularVelocity) {
+	        return angularVelocity.mult(angularVelocity.norm());
+	    }
+	};
+	RotationalDrag.prototype.applyForce = function applyForce(targets) {
+	    var strength = this.options.strength;
+	    var forceFunction = this.options.forceFunction;
+	    var force = this.force;
+	    var index;
+	    var particle;
+	    for (index = 0; index < targets.length; index++) {
+	        particle = targets[index];
+	        forceFunction(particle.angularVelocity).mult(-100 * strength).put(force);
+	        particle.applyTorque(force);
+	    }
+	};
+	RotationalDrag.prototype.setOptions = function setOptions(options) {
+	    for (var key in options)
+	        this.options[key] = options[key];
+	};
+	module.exports = RotationalDrag;
+
+/***/ },
+/* 229 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(114);
+	var Spring = __webpack_require__(38);
+	var Quaternion = __webpack_require__(170);
+	function RotationalSpring(options) {
+	    Spring.call(this, options);
+	}
+	RotationalSpring.prototype = Object.create(Spring.prototype);
+	RotationalSpring.prototype.constructor = RotationalSpring;
+	RotationalSpring.DEFAULT_OPTIONS = Spring.DEFAULT_OPTIONS;
+	RotationalSpring.FORCE_FUNCTIONS = Spring.FORCE_FUNCTIONS;
+	var pi = Math.PI;
+	function _calcStiffness() {
+	    var options = this.options;
+	    options.stiffness = Math.pow(2 * pi / options.period, 2);
+	}
+	function _calcDamping() {
+	    var options = this.options;
+	    options.damping = 4 * pi * options.dampingRatio / options.period;
+	}
+	function _init() {
+	    _calcStiffness.call(this);
+	    _calcDamping.call(this);
+	}
+	RotationalSpring.prototype.setOptions = function setOptions(options) {
+	    if (options.anchor !== undefined) {
+	        if (options.anchor instanceof Quaternion)
+	            this.options.anchor = options.anchor;
+	        if (options.anchor instanceof Array)
+	            this.options.anchor = new Quaternion(options.anchor);
+	    }
+	    if (options.period !== undefined) {
+	        this.options.period = options.period;
+	    }
+	    if (options.dampingRatio !== undefined)
+	        this.options.dampingRatio = options.dampingRatio;
+	    if (options.length !== undefined)
+	        this.options.length = options.length;
+	    if (options.forceFunction !== undefined)
+	        this.options.forceFunction = options.forceFunction;
+	    if (options.maxLength !== undefined)
+	        this.options.maxLength = options.maxLength;
+	    _init.call(this);
+	    Force.prototype.setOptions.call(this, options);
+	};
+	RotationalSpring.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var options = this.options;
+	    var disp = this.disp;
+	    var stiffness = options.stiffness;
+	    var damping = options.damping;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var forceFunction = options.forceFunction;
+	    var maxLength = options.maxLength;
+	    var i;
+	    var target;
+	    var dist;
+	    var m;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        disp.set(anchor.sub(target.orientation));
+	        dist = disp.norm() - restLength;
+	        if (dist === 0)
+	            return;
+	        m = target.mass;
+	        stiffness *= m;
+	        damping *= m;
+	        force.set(disp.normalize(stiffness * forceFunction(dist, maxLength)));
+	        if (damping)
+	            force.add(target.angularVelocity.mult(-damping)).put(force);
+	        target.applyTorque(force);
+	    }
+	};
+	RotationalSpring.prototype.getEnergy = function getEnergy(targets) {
+	    var options = this.options;
+	    var restLength = options.length;
+	    var anchor = options.anchor;
+	    var strength = options.stiffness;
+	    var energy = 0;
+	    for (var i = 0; i < targets.length; i++) {
+	        var target = targets[i];
+	        var dist = anchor.sub(target.orientation).norm() - restLength;
+	        energy += 0.5 * strength * dist * dist;
+	    }
+	    return energy;
+	};
+	module.exports = RotationalSpring;
+
+/***/ },
+/* 230 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* This Source Code Form is subject to the terms of the Mozilla Public
+	 * License, v. 2.0. If a copy of the MPL was not distributed with this
+	 * file, You can obtain one at http://mozilla.org/MPL/2.0/.
+	 *
+	 * @license MPL 2.0
+	 * @copyright Famous Industries, Inc. 2015
+	 */
+	var Force = __webpack_require__(114);
+	var Vector = __webpack_require__(36);
+	function VectorField(options) {
+	    Force.call(this);
+	    this.options = Object.create(VectorField.DEFAULT_OPTIONS);
+	    if (options)
+	        this.setOptions(options);
+	    this.evaluation = new Vector();
+	}
+	VectorField.prototype = Object.create(Force.prototype);
+	VectorField.prototype.constructor = VectorField;
+	VectorField.FIELDS = {
+	    CONSTANT: function (v, options) {
+	        options.direction.put(this.evaluation);
+	    },
+	    LINEAR: function (v) {
+	        v.put(this.evaluation);
+	    },
+	    RADIAL: function (v) {
+	        v.mult(-1).put(this.evaluation);
+	    },
+	    POINT_ATTRACTOR: function (v, options) {
+	        options.position.sub(v).put(this.evaluation);
+	    }
+	};
+	VectorField.DEFAULT_OPTIONS = {
+	    strength: 0.01,
+	    field: VectorField.FIELDS.CONSTANT
+	};
+	VectorField.prototype.setOptions = function setOptions(options) {
+	    if (options.strength !== undefined)
+	        this.options.strength = options.strength;
+	    if (options.direction !== undefined)
+	        this.options.direction = options.direction;
+	    if (options.field !== undefined) {
+	        this.options.field = options.field;
+	        _setFieldOptions.call(this, this.options.field);
+	    }
+	};
+	function _setFieldOptions(field) {
+	    var FIELDS = VectorField.FIELDS;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        if (!this.options.direction)
+	            this.options.direction = new Vector(0, 1, 0);
+	        else if (this.options.direction instanceof Array)
+	            this.options.direction = new Vector(this.options.direction);
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        if (!this.options.position)
+	            this.options.position = new Vector(0, 0, 0);
+	        else if (this.options.position instanceof Array)
+	            this.options.position = new Vector(this.options.position);
+	        break;
+	    }
+	}
+	VectorField.prototype.applyForce = function applyForce(targets) {
+	    var force = this.force;
+	    var strength = this.options.strength;
+	    var field = this.options.field;
+	    var i;
+	    var target;
+	    for (i = 0; i < targets.length; i++) {
+	        target = targets[i];
+	        field.call(this, target.position, this.options);
+	        this.evaluation.mult(target.mass * strength).put(force);
+	        target.applyForce(force);
+	    }
+	};
+	VectorField.prototype.getEnergy = function getEnergy(targets) {
+	    var field = this.options.field;
+	    var FIELDS = VectorField.FIELDS;
+	    var energy = 0;
+	    var i;
+	    var target;
+	    switch (field) {
+	    case FIELDS.CONSTANT:
+	        energy = targets.length * this.options.direction.norm();
+	        break;
+	    case FIELDS.RADIAL:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.norm();
+	        }
+	        break;
+	    case FIELDS.POINT_ATTRACTOR:
+	        for (i = 0; i < targets.length; i++) {
+	            target = targets[i];
+	            energy += target.position.sub(this.options.position).norm();
+	        }
+	        break;
+	    }
+	    energy *= this.options.strength;
+	    return energy;
+	};
+	module.exports = VectorField;
 
 /***/ },
 /* 231 */

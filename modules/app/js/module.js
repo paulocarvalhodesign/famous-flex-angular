@@ -53,4 +53,28 @@ angular.module('app',['famousFlexAngular'])
 
 
     $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}, {bgColor: "pink"}, {bgColor: "blue"}];
+}])
+.controller('DatePickerCtrl', ['$scope', function($scope) {
+  $scope.myDatePickerOptions = {
+    date: new Date(),
+    wheelLayout: {
+      itemSize: 100,
+      diameter: 300
+    },
+    createRenderables: {
+        top: true,
+        middle: true,
+        bottom: true
+    }
+  };
+}])
+.controller('TabBarCtrl', ['$scope', function($scope) {
+  $scope.myTabBarOptions = {
+    createRenderables: {
+        background: true,
+        selectedItemOverlay: true
+    }
+  };
+
+  $scope.items = ['One','Two','Three','Four'];
 }]);

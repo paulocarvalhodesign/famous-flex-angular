@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>My project</title>
+<link rel="stylesheet" href="../bower_components/famous-angular/dist/famous-angular.css">
+<link rel="stylesheet" type="text/css" href="../node_modules/famous-flex/src/widgets/styles.css">
+</head>
+<body>
+<div ng-controller="TabBarCtrl">
+<!--fa-app resizable ng-style="{height: windowHeight + 'px', top: '100px'}"-->
+<fa-app style="height:100px;">
+  <ffa-tab-bar style="height:100px" fa-options="myTabBarOptions">
+    <div ng-repeat="item in items" class="item">{{item}}</div>
+  </ffa-tab-bar>
+</fa-app>
+</div>
+<script src="bundle.js"></script>
+</body>
+</html>
