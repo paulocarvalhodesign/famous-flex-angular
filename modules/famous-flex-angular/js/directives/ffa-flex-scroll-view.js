@@ -13,6 +13,7 @@ angular.module('famousFlexAngular')
 		$scope.$watch('options', function() {
 			console.log('options changed. direction =' + $scope.options.direction);
 			$scope.postma.setDirection($scope.options.direction);
+			console.log($scope.options);
 			//console.log(Object.keys($scope.isolate));//.renderNode);
 			//console.log($scope.postma);
 		},true); // deep watch.

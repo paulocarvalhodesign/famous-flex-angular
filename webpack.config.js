@@ -21,7 +21,8 @@ var aliases = {
         'famous.angular': 'famous-angular',
         'famous-angular': node_dir + '/famous-angular/dist/famous-angular.js',
         'famous-flex': node_dir + '/famous-flex/src',
-	ngRoute$: 'angular-route'
+	ngRoute$: 'angular-route',
+	'ui.router': bower_components + '/angular-ui-router/release/angular-ui-router.js'
 }
 
 module.exports = {

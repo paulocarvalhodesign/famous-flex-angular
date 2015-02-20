@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<div ng-controller="FlexScrollViewCtrl">
+<button ng-click="changeDirection()">Change Direction</button>
+<button ng-click="addSquare()">Add Square</button>
+{{myOptions}}
+<br>
+{{grids}}
+<form ng-repeat="layout in availableLayouts">
+<input type="radio" ng-model="$parent.selectedLayout" ng-change="updateLayout()" value="{{layout}}">{{layout}}
+</form>
+{{selectedLayout}}
+<fa-app resizable ng-style="{height: windowHeight + 'px', top: '10px'}">
+  <ffa-flex-scroll-view fa-options="myOptions">
+    <fa-modifier ng-repeat="grid in grids" fa-size="[100,100]">
+      <fa-surface fa-background-color="grid.bgColor">{{windowHeight}}</fa-surface>
+    </fa-modifier>
+  </ffa-flex-scroll-view>
+</fa-app>
+</div>

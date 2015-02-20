@@ -8,76 +8,20 @@
 //require('bootstrap.min.css');
 require('bootstrap-webpack');
 
-angular.module('app',['famousFlexAngular'])
-.controller('GridCtrl', ['$scope', '$famous', function($scope,$famous) {
-    $scope.direction = 1;
-    $scope.changeDirection = function() {
-	$scope.direction = ($scope.direction === 1 ? 0 : 1);
-    };
+angular.module('app',['famousFlexAngular','ui.router'])
+.constant('appPath','../modules/app')
+.constant('stateNames',['date-picker','grid-layout','tab-bar','flex-scroll-view','layout-controller','nav-bar'].sort())
+.config(['$stateProvider', 'appPath', 'stateNames', function($stateProvider,appPath,stateNames) {
 
-    $scope.myGridLayoutOptions = {
-       layout: $famous['famous-flex/layouts/CollectionLayout'], //GridLayout, //GridLayout, //WheelLayout, //ListLayout, //CollectionLayout,
-       //size: [undefined, undefined],
-       layoutOptions: {
-	cells: [3,3],
-	//itemSize: [100,100],
-	margins: [10,10,10,10],
-	spacing: [10,10],
-	//justify: false
-       },
-       flow: true,
-       direction: $scope.direction
-    };
-
-    $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}, {bgColor: "pink"}, {bgColor: "blue"}];
-
-}])
-.controller('FlexScrollViewCtrl', ['$scope', '$famous', function($scope,$famous) {
-    $scope.direction = 0;
-
-    $scope.myOptions = {
-       layout: $famous['famous-flex/layouts/CollectionLayout'], //GridLayout, //GridLayout, //WheelLayout, //ListLayout, //CollectionLayout,
-       layoutOptions: {
-        itemSize: [100,100],
-        margins: [10,10,10,10],
-        spacing: [10,10],
-       },
-       flow: true,
-       direction: $scope.direction
-    };
-
-    $scope.changeDirection = function() {
-	$scope.direction = ($scope.direction + 1) % 2;
- 	$scope.myOptions.direction = $scope.direction;
-    };
-
-
-    $scope.grids = [{bgColor: "orange"}, {bgColor: "red"}, {bgColor: "green"}, {bgColor: "yellow"}, {bgColor: "pink"}, {bgColor: "blue"}];
-}])
-.controller('DatePickerCtrl', ['$scope', function($scope) {
-  $scope.myDatePickerOptions = {
-    date: new Date(),
-    wheelLayout: {
-      itemSize: 100,
-      diameter: 300
-    },
-    createRenderables: {
-        top: true,
-        middle: true,
-        bottom: true
-    }
+  var generateState = function(name) {
+    return {name: name, url: '/' + name, templateUrl: appPath + '/partials/' + name + '.html'};
   };
+
+  $stateProvider.state(generateState('home'));
+  for (var i = 0; i < stateNames.length; i++) {
+	$stateProvider.state(generateState(stateNames[i]));
+  }  
 }])
-.controller('TabBarCtrl', ['$scope', function($scope) {
-  $scope.myTabBarOptions = {
-    createRenderables: {
-        background: true,
-        selectedItemOverlay: true
-    }
-  };
-  
-  $scope.items = ['One','Two','Three','Four'];
-  $scope.addItem = function() {
-	$scope.items.push($scope.items.length);
-  }
+.run(['$state', function($state) {
+  $state.transitionTo('home');
 }]);

@@ -23,6 +23,7 @@
     "gulp-util": "^3.0.3",
     "gulp-webpack": "^1.2.0",
     "jquery": "^2.1.3",
+    "ng-cache-loader": "0.0.8",
     "path": "^0.11.14",
     "run-sequence": "^1.0.2",
     "style-loader": "^0.8.3",
